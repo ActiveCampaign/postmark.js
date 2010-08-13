@@ -1,4 +1,9 @@
-var request = require("./vendor/request");
+var request;
+try {
+  request = require("request"); // use NPM installed if available.
+} catch(e) {  // resort to vendored.
+  request = require("./vendor/request");
+}
 var sys = require("sys")
 
 module.exports = (function (api_key, options) {
