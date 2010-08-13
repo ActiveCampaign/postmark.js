@@ -16,6 +16,11 @@ Replace YOURAPIKEY with the API key provided by Postmark and you are good to go!
 
 Enjoy sending.
 
+## Install
+
+<pre>
+  npm install postmark
+</pre>
 
 ### Special Thanks
   * [Postmark](http://www.postmarkapp.com) 
