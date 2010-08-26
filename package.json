@@ -1,9 +1,9 @@
 { "name" : "postmark"
-, "description" : "Ridiculously Simple Email Sending From Node.js"
+, "description" : "Ridiculously Simple Email Sending From Node.js using http://www.postmarkapp.com"
 , "tags" : ["email", "utility"]
-, "version" : "0.0.3"
+, "version" : "0.0.4"
 , "author" : "Chris Williams <voodootikigod@gmail.com>"
-, "directories": { "lib": "." }
+, "directories": { "lib": "./lib/postmark" }
 , "repository" :
   { "type" : "git"
   , "url" : "http://github.com/voodootikigod/postmark.js.git"
