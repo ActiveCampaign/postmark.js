@@ -16,7 +16,7 @@ Send emails with the greatest of ease! Now your node.js application can send ema
 </pre>
 
 Replace YOURAPIKEY with the API key provided by Postmark and you are good to go! 
-Your message must be provided in the format specified in the (Postmark API)[http://developer.postmarkapp.com/developer-build.html#message-format] and will be verified. 
+Your message must be provided in the format specified in the [Postmark API](http://developer.postmarkapp.com/developer-build.html#message-format) and will be verified. 
 If you provide the object in a manner not as specified (including case sensitivity), an exception will be thrown. 
 Send takes a callback as the second parameter that indicates success or failure, following the normal node.js callback 
 pattern callback(error, result), if there is an issue with the submission an error object will be returned as the first
@@ -76,7 +76,7 @@ For example:
         console.info("Messages sent to postmark");
     });
 
-The Postmark API will return an array of statuses, one for each message sent. You can access the data about individual messages in either `error` or `success`. For further details, please see the (Postmark Batch API)(http://developer.postmarkapp.com/developer-build.html#batching-messages).
+The Postmark API will return an array of statuses, one for each message sent. You can access the data about individual messages in either `error` or `success`. For further details, please see the [Postmark Batch API](http://developer.postmarkapp.com/developer-build.html#batching-messages).
 
 Enjoy sending.
 
