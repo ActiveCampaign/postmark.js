@@ -1,7 +1,7 @@
 { "name" : "postmark"
 , "description" : "Ridiculously Simple Email Sending From Node.js using http://www.postmarkapp.com"
 , "tags" : ["email", "utility"]
-, "version" : "0.1.8"
+, "version" : "0.1.9"
 , "author" : "Chris Williams <voodootikigod@gmail.com>"
 , "main" : "./lib/postmark"
 , "directories": { "lib": "./lib/postmark" }
