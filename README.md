@@ -1,9 +1,18 @@
-# Postmark.js -- Simple Email Sending
+# Postmark.js - Simple Email Sending
 
 
-Note: This was recently updated to run directly on node.js 0.4.0 so there are no other dependencies. If you were using this before, it should upgrade perfectly fine without any change. 
+Send emails with the greatest of ease! Now your node.js application can send emails through [Postmark](http://www.postmarkapp.com) using their HTTP API.
 
-Send emails with the greatest of ease! Now your node.js application can send emails through [Postmark](http://www.postmarkapp.com) using their HTTP API. To send any email, including attachments, all you need to do is this:
+
+## Install
+
+````
+npm install postmark
+```
+
+### Sending emails
+
+To send any email, including attachments, all you need to do is this:
 
 ```javascript
 var postmark = require("postmark")("YOURAPIKEY");
@@ -81,12 +90,6 @@ For example:
 The Postmark API will return an array of statuses, one for each message sent. You can access the data about individual messages in either `error` or `success`. For further details, please see the [Postmark Batch API](http://developer.postmarkapp.com/developer-build.html#batching-messages).
 
 Enjoy sending.
-
-## Install
-
-````
-npm install postmark
-```
 
 ### Special Thanks
   * [Postmark](http://www.postmarkapp.com) 
