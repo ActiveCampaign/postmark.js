@@ -12,6 +12,22 @@ describe('client', function() {
     _client = new postmark.Client(testingKeys.WRITE_TEST_SERVER_TOKEN);
   });
 
+  describe('"legacy" initialization support', function() {
+    it('properly handles options.', function() {
+      var client = postmark(testingKeys.WRITE_TEST_SERVER_TOKEN, {
+        testOption: 'asdf'
+      });
+      assert.notEqual(client, null);
+      assert.equal(testingKeys.WRITE_TEST_SERVER_TOKEN, client.options.apiKey);
+      assert.equal(client.options.testOption, 'asdf');
+    });
+  });
+
+  it('should assign apiKey to options', function() {
+    assert.equal(_client.options.ssl, true);
+    assert.equal(_client.options.apiKey, testingKeys.WRITE_TEST_SERVER_TOKEN);
+  });
+
   it('should send a single email', function(done) {
     _client.send({
       to: testingKeys.WRITE_TEST_EMAIL_RECIPIENT_ADDRESS,
