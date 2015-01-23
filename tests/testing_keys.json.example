@@ -1,0 +1,9 @@
+{
+	"READ_INBOUND_TEST_SERVER_TOKEN" : "<token>",
+	"READ_SELENIUM_TEST_SERVER_TOKEN" : "<token>",
+	
+	"WRITE_ACCOUNT_TOKEN" : "<token>",
+	"WRITE_TEST_SERVER_TOKEN" : "<token>",
+	"WRITE_TEST_SENDER_EMAIL_ADDRESS" : "apps@example.com",
+	"WRITE_TEST_EMAIL_RECIPIENT_ADDRESS" : "andrew+testing@example.com"
+}
