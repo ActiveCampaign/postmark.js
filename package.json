@@ -1,24 +1,39 @@
 {
-    "name": "postmark",
-    "description": "Ridiculously Simple Email Sending From Node.js For http://www.postmarkapp.com",
-    "tags": ["email", "utility", "postmark"],
-    "version": "0.2.6",
-    "author": "Chris Williams <voodootikigod@gmail.com>",
-    "main": "./lib/postmark",
-    "directories": {
-        "lib": "./lib/postmark"
-    },
-    "scripts" : {
-    	"test" : "node_modules/.bin/mocha tests/fixture_*.js",
-    	"watchtests" : "node_modules/.bin/mocha -R list -w --recursive -G tests/fixture_*.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/voodootikigod/postmark.js.git"
-    },
-    "bugs": {
-        "url": "https://github.com/voodootikigod/postmark.js/issues"
-    },
-    "precommit": ["test"],
-    "engines": ["node >=0.4.0"]
+  "name": "postmark",
+  "description": "Ridiculously Simple Email Sending From Node.js For http://www.postmarkapp.com",
+  "tags": [
+    "email",
+    "utility",
+    "postmark"
+  ],
+  "version": "0.2.6",
+  "author": "Chris Williams <voodootikigod@gmail.com>",
+  "main": "./lib/postmark",
+  "directories": {
+    "lib": "./lib/postmark"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/mocha tests/fixture_*.js",
+    "watchtests": "node_modules/.bin/mocha -R list -w --recursive -G tests/fixture_*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/voodootikigod/postmark.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/voodootikigod/postmark.js/issues"
+  },
+  "precommit": [
+    "test"
+  ],
+  "engines": [
+    "node >=0.4.0"
+  ],
+  "devDependencies": {
+    "mocha": "^2.1.0",
+    "pre-commit": "0.0.11"
+  },
+  "dependencies": {
+    "merge": "^1.2.0"
+  }
 }
