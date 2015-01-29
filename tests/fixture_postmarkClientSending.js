@@ -15,7 +15,7 @@ describe('client email sending', function() {
     _client = new postmark.Client(testingKeys.WRITE_TEST_SERVER_TOKEN);
   });
 
-  it('can send single email', function(done) {
+  it('can send single email ("send" alias)', function(done) {
     _client.send({
       To: testingKeys.WRITE_TEST_EMAIL_RECIPIENT_ADDRESS,
       From: testingKeys.WRITE_TEST_SENDER_EMAIL_ADDRESS,
@@ -24,10 +24,19 @@ describe('client email sending', function() {
     }, done);
   });
 
-  it('can send a batch of emails', function(done) {
+  it('can send single email', function(done) {
+    _client.sendEmail({
+      To: testingKeys.WRITE_TEST_EMAIL_RECIPIENT_ADDRESS,
+      From: testingKeys.WRITE_TEST_SENDER_EMAIL_ADDRESS,
+      Subject: "Hello from the node.js client! " + new Date(),
+      TextBody: "Testing 1.2.3..."
+    }, done);
+  });
+
+  it('can send a batch of emails ("batch" alias)', function(done) {
     var emailBatch = [];
 
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < 3; i++) {
       emailBatch.push({
         to: testingKeys.WRITE_TEST_EMAIL_RECIPIENT_ADDRESS,
         from: testingKeys.WRITE_TEST_SENDER_EMAIL_ADDRESS,
@@ -36,5 +45,19 @@ describe('client email sending', function() {
       });
     }
     _client.batch(emailBatch, done);
+  });
+
+  it('can send a batch of emails', function(done) {
+    var emailBatch = [];
+
+    for (var i = 0; i < 3; i++) {
+      emailBatch.push({
+        to: testingKeys.WRITE_TEST_EMAIL_RECIPIENT_ADDRESS,
+        from: testingKeys.WRITE_TEST_SENDER_EMAIL_ADDRESS,
+        subject: "Hello from the node.js client! " + new Date(),
+        textBody: "Testing batch email: " + i
+      });
+    }
+    _client.sendEmailBatch(emailBatch, done);
   });
 });
