@@ -24,7 +24,7 @@ describe('admin client server management', function() {
         for (var i = 0; i < resp.Servers.length; i++) {
           var server = resp.Servers[i];
           if (rulePrefixTester.test(server.Name)) {
-            c.deleteServer(trigger.ID);
+            c.deleteServer(server.ID);
           }
         }
       }
