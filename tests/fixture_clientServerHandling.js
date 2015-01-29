@@ -1,6 +1,3 @@
-// getServer
-// editServer
-
 var mocha = require('mocha');
 var assert = require('assert');
 var testingKeys = require('./testing_keys.json');
