@@ -50,5 +50,4 @@ describe('client', function() {
     }
     _client.batch([emailBatch], done);
   });
-
 });
