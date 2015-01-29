@@ -1,7 +1,7 @@
 // getBounces
 // getBounce
 // getBounceDump
-// activateBounceDump
+
 // getBounceTags
 
 var mocha = require('mocha');
@@ -20,4 +20,31 @@ describe('client bounce operations', function() {
     _client = new postmark.Client(testingKeys.WRITE_TEST_SERVER_TOKEN);
   });
 
+  it('can get get bounce', function(done) {
+    _client.getBounces({
+      count: 1
+    }, function(err, bounces) {
+      _client.getBounce(bounces.Bounces[0].ID, done);
+    });
+  });
+
+  it('can get bounces', function(done) {
+    _client.getBounces({
+      count: 10
+    }, done);
+  });
+
+  it('can get bounce dump', function(done) {
+    _client.getBounces({
+      count: 1
+    }, function(err, bounces) {
+      _client.getBounceDump(bounces.Bounces[0].ID, done);
+    });
+  });
+
+  it('can get bounce tags', function(done) {
+    _client.getBounceTags(done);
+  });
+
+  // activateBounce cannot be directly tested from integration tests.
 });
