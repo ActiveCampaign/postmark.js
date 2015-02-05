@@ -1,6 +1,5 @@
 # Postmark.js - Simple Email Sending
 
-
 Send emails with the greatest of ease! Now your node.js application can send emails through [Postmark](http://www.postmarkapp.com) using their HTTP API.
 
 
@@ -92,5 +91,4 @@ The Postmark API will return an array of statuses, one for each message sent. Yo
 Enjoy sending.
 
 ### Special Thanks
-  * [Postmark](http://www.postmarkapp.com) 
-
+  * [Postmark](http://www.postmarkapp.com)
