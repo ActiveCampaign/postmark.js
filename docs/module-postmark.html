@@ -73,7 +73,13 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>The postmark module.</p></div>
+            <div class="description"><p>The postmark module. This is the entry point for the postmark client.</p>
+<p>To send an email:</p>
+<pre class="prettyprint source lang-javascript"><code>var postmark = require('postmark');
+
+var client = new postmark.Client('&lt;server key>');
+
+client.send({ ... }, function(err, response){ ... });</code></pre></div>
         
 
         
