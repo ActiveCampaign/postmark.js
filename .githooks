@@ -8,10 +8,7 @@ post-applypatch:
 
 
 pre-commit:
-	npm run compile-docs
-	echo 'Starting unit tests...'
-	npm run test
-	echo 'Unit tests completed.'
+
 
 prepare-commit-msg:
 
@@ -20,7 +17,7 @@ commit-msg:
 
 
 post-commit:
-	git subtree push --prefix ./docs origin gh-pages
+
 
 pre-rebase:
 
