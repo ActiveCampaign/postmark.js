@@ -14,7 +14,9 @@ describe('admin client signature management', function() {
   var _email = null
 
   beforeEach(function() {
-    _email = prefix + new Date().valueOf() + "@example.com";
+
+    _email = testingKeys.WRITE_TEST_SENDER_SIGNATURE_PROTOTYPE
+      .replace("[TOKEN]", prefix + new Date().valueOf());
     _client = new postmark.AdminClient(testingKeys.WRITE_ACCOUNT_TOKEN);
   });
 
