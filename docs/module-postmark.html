@@ -49,10 +49,6 @@
 							<a href="Client.html">Client</a>
 						</li>
 						
-						<li>
-							<a href="ClientDefaults.html">ClientDefaults</a>
-						</li>
-						
 
 					</ul>
 				</li>
@@ -85,8 +81,6 @@
     
 
     
-        
-            <div class="description"><p>The entry point for the postmark module...</p></div>
         
 
         
@@ -267,7 +261,7 @@ handle bounces. In most cases, this is the Client you should use.</p>
         
             
 <dt class="name" id="defaults">
-    <h4><span class="type-signature"></span>defaults<span class="type-signature"> :<a href="ClientDefaults.html">ClientDefaults</a></span></h4>
+    <h4><span class="type-signature"></span>defaults<span class="type-signature"> :<a href="global.html#ClientDefaults">ClientDefaults</a></span></h4>
 
     
 </dt>
@@ -276,9 +270,7 @@ handle bounces. In most cases, this is the Client you should use.</p>
     <div class="description">
         <p>The defaults used during the construction of
 new Clients. You may modify this property directly
-in order to alter all future clients requests, or
-you may call &quot;new ClientDefaults()&quot; and modify the
-resulting object.</p>
+in order to alter all future clients requests.</p>
     </div>
     
 
@@ -287,7 +279,7 @@ resulting object.</p>
         <ul>
             <li>
                 
-<span class="param-type"><a href="ClientDefaults.html">ClientDefaults</a></span>
+<span class="param-type"><a href="global.html#ClientDefaults">ClientDefaults</a></span>
 
 
             </li>
@@ -332,6 +324,187 @@ resulting object.</p>
         </dl>
     
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="postmark"><span class="type-signature"></span>postmark<span class="signature">(apiKey, <span class="optional">options</span>)</span><span class="type-signature"> &rarr; {<a href="Client.html">Client</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The postmark module.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>apiKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The server key used to access the API.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#ClientDefaults">ClientDefaults</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The options to use when creating requests. {postmark.ClientDefaults} are used if you do not specify your own options.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="Client.html">Client</a></span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        </dl>
     
 
     
