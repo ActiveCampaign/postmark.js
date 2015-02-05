@@ -15,7 +15,7 @@
   "scripts": {
     "test": "node_modules/.bin/mocha tests/fixture_*.js",
     "watchtests": "node_modules/.bin/mocha -R list -w --recursive -G tests/fixture_*.js",
-    "compiledocs": "echo 'Generating docs.' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/jsdoc -c jsdoc.conf.json -t ./node_modules/ink-docstrap/template -d docs ./lib/postmark/*.js && git add -A ./docs && echo 'generated docs.'"
+    "compile-docs": "echo 'Generating docs.' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/jsdoc -c jsdoc.conf.json -t ./node_modules/ink-docstrap/template -d docs ./lib/postmark/*.js && git add -A ./docs && echo 'generated docs.'"
   },
   "repository": {
     "type": "git",
@@ -24,18 +24,14 @@
   "bugs": {
     "url": "https://github.com/voodootikigod/postmark.js/issues"
   },
-  "precommit": [
-    "compiledocs",
-    "test"
-  ],
   "engines": [
     "node >=0.4.0"
   ],
   "devDependencies": {
+    "git-hook-modules": "^0.1.0",
     "ink-docstrap": "^0.4.12",
     "jsdoc": "^3.3.0-beta1",
-    "mocha": "^2.1.0",
-    "pre-commit": "0.0.11"
+    "mocha": "^2.1.0"
   },
   "dependencies": {
     "git-rev-sync": "^1.0.0",
