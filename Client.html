@@ -403,7 +403,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Send a batch of email messages.</p>
     </div>
     
 
@@ -442,6 +442,11 @@ This is the main entry point to the standard Postmark API.</p>
             
 
             <td class="type">
+            
+                
+<span class="param-type">Array.&lt;PostmarkMessage></span>
+
+
             
             </td>
 
@@ -499,6 +504,15 @@ This is the main entry point to the standard Postmark API.</p>
 
     
 
+	
+	<dt class="important tag-deprecated">Deprecated:</dt>
+	
+	<dd>
+		<ul class="dummy">
+			<li>Consider using <a href="Client.html#sendEmailBatch"><code>Client#sendEmailBatch</code></a> instead of this method.</li>
+		</ul>
+	</dd>
+	
 	
 
 	
@@ -4985,186 +4999,6 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="processRequestWithoutBody"><span class="type-signature"></span>processRequestWithoutBody<span class="signature">(path, type, query, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Description</p>
-    </div>
-    
-
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>path</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>type</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>query</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#PostmarkCallback">PostmarkCallback</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-	
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
     <h4 class="name" id="send"><span class="type-signature"></span>send<span class="signature">(message, callback)</span><span class="type-signature"></span></h4>
     
     
@@ -5173,7 +5007,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Send a single email message.</p>
     </div>
     
 
@@ -5213,6 +5047,11 @@ This is the main entry point to the standard Postmark API.</p>
 
             <td class="type">
             
+                
+<span class="param-type">PostmarkMessage</span>
+
+
+            
             </td>
 
             
@@ -5269,6 +5108,15 @@ This is the main entry point to the standard Postmark API.</p>
 
     
 
+	
+	<dt class="important tag-deprecated">Deprecated:</dt>
+	
+	<dd>
+		<ul class="dummy">
+			<li>Consider using <a href="Client.html#sendEmail"><code>Client#sendEmail</code></a> instead of this method.</li>
+		</ul>
+	</dd>
+	
 	
 
 	
@@ -5356,6 +5204,11 @@ This is the main entry point to the standard Postmark API.</p>
             
 
             <td class="type">
+            
+                
+<span class="param-type">PostmarkMessage</span>
+
+
             
             </td>
 
@@ -5500,6 +5353,11 @@ This is the main entry point to the standard Postmark API.</p>
             
 
             <td class="type">
+            
+                
+<span class="param-type">Array.&lt;PostmarkMessage></span>
+
+
             
             </td>
 
