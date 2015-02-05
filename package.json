@@ -33,7 +33,6 @@
     "test"
   ],
   "devDependencies": {
-    "git-hook-modules": "^0.1.0",
     "ink-docstrap": "^0.4.12",
     "jsdoc": "^3.3.0-beta1",
     "mocha": "^2.1.0",
