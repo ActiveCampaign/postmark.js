@@ -5,7 +5,7 @@
   "plugins": ["plugins/markdown"],
 
   "templates": {
-    "cleverLinks": false,
+    "cleverLinks": true,
     "monospaceLinks": false,
     "dateFormat": "ddd MMM Do YYYY",
     "outputSourceFiles": false,
@@ -14,7 +14,7 @@
     "footer": "",
     "copyright": "",
     "navType": "vertical",
-    "theme": "journal",
+    "theme": "simplex",
     "linenums": false,
     "collapseSymbols": false,
     "inverseNav": true,
