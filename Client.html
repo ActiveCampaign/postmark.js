@@ -91,7 +91,7 @@
 This is the main entry point to the standard Postmark API.</p>
 <pre class="prettyprint source lang-javascript"><code>var client = new Client('&lt;server key>');
 
-//You can now send mail with the client.</code></pre>
+// You can now use any of the methods associated with the client.</code></pre>
     </div>
     
 
@@ -489,7 +489,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>An array of <code>PostmarkMessage</code> you wish to send using this Client.</p></td>
         </tr>
 
 	
@@ -745,7 +745,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Create an Inbound Rule Trigger.</p>
     </div>
     
 
@@ -886,7 +886,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="createTagTrigger"><span class="type-signature"></span>createTagTrigger<span class="signature">(<span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="createTagTrigger"><span class="type-signature"></span>createTagTrigger<span class="signature">(options, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -894,7 +894,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Create a new Tag Trigger.</p>
     </div>
     
 
@@ -916,8 +916,6 @@ This is the main entry point to the standard Postmark API.</p>
 
 		<th>Type</th>
 
-		
-		<th>Argument</th>
 		
 
 		
@@ -944,20 +942,10 @@ This is the main entry point to the standard Postmark API.</p>
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Configuration options to be used in creating the trigger.</p></td>
         </tr>
 
 	
@@ -976,14 +964,6 @@ This is the main entry point to the standard Postmark API.</p>
             
             </td>
 
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
             
 
             
@@ -1063,7 +1043,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Delete an Inbound Rule Trigger.</p>
     </div>
     
 
@@ -1114,7 +1094,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The ID of the Inbound Rule Trigger you wish to delete.</p></td>
         </tr>
 
 	
@@ -1212,7 +1192,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Delete an existing Tag Trigger.</p>
     </div>
     
 
@@ -1263,7 +1243,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The ID of the Tag Trigger you wish to delete.</p></td>
         </tr>
 
 	
@@ -1510,7 +1490,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Modify an existing Tag Trigger.</p>
     </div>
     
 
@@ -1561,7 +1541,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The ID of the Tag Trigger you wish to modify.</p></td>
         </tr>
 
 	
@@ -1584,7 +1564,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The updated configuration options for this Tag Trigger.</p></td>
         </tr>
 
 	
@@ -1831,7 +1811,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get statistiscs on emails that bounced after being sent from the Server associated with this Client.</p>
     </div>
     
 
@@ -1894,7 +1874,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Optional filtering parameters.</p></td>
         </tr>
 
 	
@@ -2570,7 +2550,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get statistics on which Email Clients were used to open messages sent from the Server associated with this Client.</p>
     </div>
     
 
@@ -2633,7 +2613,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Optional filtering parameters.</p></td>
         </tr>
 
 	
@@ -2739,7 +2719,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get Open statistics for messages sent from the Server associated with this Client.</p>
     </div>
     
 
@@ -2802,7 +2782,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Optional filtering parameters.</p></td>
         </tr>
 
 	
@@ -2908,7 +2888,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get Email Client Platform statistics  for messages sent from the Server associated with this Client.</p>
     </div>
     
 
@@ -2971,7 +2951,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Optional filtering parameters.</p></td>
         </tr>
 
 	
@@ -3077,7 +3057,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get Read Time statistics for messages sent from the Server associated with this Client.</p>
     </div>
     
 
@@ -3140,7 +3120,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Optional filtering parameters.</p></td>
         </tr>
 
 	
@@ -3565,7 +3545,8 @@ You can make successive calls to the API to retrieve additional Inbound Messages
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get a list of Inbound Rule Triggers. The default batch count is 100, and the offset is 0.
+You may retrieve additional Inbound Rule Tag Triggers by making successive calls to the API.</p>
     </div>
     
 
@@ -3628,7 +3609,7 @@ You can make successive calls to the API to retrieve additional Inbound Messages
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Optional filtering parameters.</p></td>
         </tr>
 
 	
@@ -4104,7 +4085,7 @@ You can make successive calls to the API to retrieve additional Opens informatio
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get overview statistics on Outbound Messages sent from the Server associated with this Client.</p>
     </div>
     
 
@@ -4167,7 +4148,7 @@ You can make successive calls to the API to retrieve additional Opens informatio
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Optional filtering parameters.</p></td>
         </tr>
 
 	
@@ -4592,7 +4573,7 @@ You can make successive calls to the API to retrieve additional Outbound Message
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get statistics on email sent from the Server associated with this Client.</p>
     </div>
     
 
@@ -4655,7 +4636,7 @@ You can make successive calls to the API to retrieve additional Outbound Message
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Optional filtering parameters.</p></td>
         </tr>
 
 	
@@ -4887,7 +4868,7 @@ You can make successive calls to the API to retrieve additional Outbound Message
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get SPAM complaint statistics for email sent from the Server associated with this Client.</p>
     </div>
     
 
@@ -4950,7 +4931,7 @@ You can make successive calls to the API to retrieve additional Outbound Message
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Optional filtering parameters.</p></td>
         </tr>
 
 	
@@ -5056,7 +5037,7 @@ You can make successive calls to the API to retrieve additional Outbound Message
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get a specific Tag Trigger.</p>
     </div>
     
 
@@ -5107,7 +5088,7 @@ You can make successive calls to the API to retrieve additional Outbound Message
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The ID of the Tag Trigger you wish to retrieve.</p></td>
         </tr>
 
 	
@@ -5205,7 +5186,8 @@ You can make successive calls to the API to retrieve additional Outbound Message
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get a list of Tag Trigger. The default batch count is 100, and the offset is 0.
+You may retrieve additional Tag Triggers by making successive calls to the API.</p>
     </div>
     
 
@@ -5268,7 +5250,7 @@ You can make successive calls to the API to retrieve additional Outbound Message
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Optional filtering parameters.</p></td>
         </tr>
 
 	
@@ -5374,7 +5356,7 @@ You can make successive calls to the API to retrieve additional Outbound Message
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get email tracking statistics for messages sent from the Server associated with this Client.</p>
     </div>
     
 
@@ -5437,7 +5419,7 @@ You can make successive calls to the API to retrieve additional Outbound Message
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Optional filtering parameters.</p></td>
         </tr>
 
 	
