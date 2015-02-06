@@ -5,6 +5,7 @@
   "plugins": ["plugins/markdown"],
 
   "templates": {
+    "logoFile": "postmark-logo.png",
     "cleverLinks": true,
     "monospaceLinks": false,
     "dateFormat": "ddd MMM Do YYYY",
