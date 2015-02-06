@@ -62,7 +62,7 @@ client.sendEmail({
 });
 ```
 
-## Sending Batch Messages
+### Sending Batch Messages
 
 The Postmark API provides functionality for sending batches of emails with a single command, rather than issuing separate API calls for each message. You can access this feature by using `postmark.batch()`, which behaves similarly to `postmark.send()` except that the first parameter is an array of messages formatted as above.
 
