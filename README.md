@@ -1,21 +1,25 @@
-# Postmark.js - Simple Email Sending
+## Postmark.js - Simple Email Sending
 
 Send emails with the greatest of ease! Now your node.js application can send emails through [Postmark](http://www.postmarkapp.com) using their HTTP API.
 
 
-## Install
+### Install
 
-````
+Installing `postmark` is super simple:
+
+```bash
 npm install postmark
 ```
 
 ### Sending emails
 
-To send any email, including attachments, all you need to do is this:
+To send your first email, all you need to do is:
 
 ```javascript
-var postmark = require("postmark")("YOURAPIKEY");
-postmark.send({
+var postmark = require("postmark");
+var client = new postmark.Client("<server key>");
+
+client.sendEmail({
     "From": "donotreply@example.com", 
     "To": "target@example.us", 
     "Subject": "Test", 
@@ -23,9 +27,12 @@ postmark.send({
 });
 ```
 
-Replace YOURAPIKEY with the API key provided by Postmark and you are good to go! 
-Your message must be provided in the format specified in the [Postmark API](http://developer.postmarkapp.com/developer-build.html#message-format) and will be verified. 
-If you provide the object in a manner not as specified (including case sensitivity), an exception will be thrown. 
+Replace <server key> with the server key provided by Postmark and you are good to go!
+
+Your message must be provided in the format specified in the [Postmark API](http://developer.postmarkapp.com/developer-build.html#message-format) and will be verified. The member names of 
+message payloads are case-sensitive, and messages not matching the documented format will not
+be accepted by the API.
+
 Send takes a callback as the second parameter that indicates success or failure, following the normal node.js callback 
 pattern callback(error, result), if there is an issue with the submission an error object will be returned as the first
 argument. 
@@ -33,8 +40,10 @@ argument.
 To send attachments with the email, use the following format:
 
 ```javascript
-var postmark = require("postmark")("YOURAPIKEY");
-postmark.send({
+var postmark = require("postmark");
+var client = new postmark.Client("<server key>");
+
+client.sendEmail({
     "From": "donotreply@example.com", 
     "To": "target@example.us", 
     "Subject": "Test", 
@@ -60,7 +69,8 @@ The Postmark API provides functionality for sending batches of emails with a sin
 For example:
 
 ```javascript
-var postmark = require("postmark")("YOURAPIKEY");
+var postmark = require("postmark");
+var client = new postmark.Client("<server key>");
 
 var messages = [
     {
@@ -77,7 +87,7 @@ var messages = [
     }
 ];
 
-postmark.batch(messages, function (error, success) {
+postmark.sendEmailBatch(messages, function (error, success) {
     if (error) {
         console.error("Unable to send via postmark: " + error.message);
         return;
@@ -87,8 +97,3 @@ postmark.batch(messages, function (error, success) {
 ```
 
 The Postmark API will return an array of statuses, one for each message sent. You can access the data about individual messages in either `error` or `success`. For further details, please see the [Postmark Batch API](http://developer.postmarkapp.com/developer-build.html#batching-messages).
-
-Enjoy sending.
-
-### Special Thanks
-  * [Postmark](http://www.postmarkapp.com)
