@@ -119,7 +119,7 @@ client.sendEmail({
         return;
     }
     console.info(&quot;Sent to postmark for delivery&quot;)
-});</code></pre><h2>Sending Batch Messages</h2><p>The Postmark API provides functionality for sending batches of emails with a single command, rather than issuing separate API calls for each message. You can access this feature by using <code>postmark.batch()</code>, which behaves similarly to <code>postmark.send()</code> except that the first parameter is an array of messages formatted as above.</p>
+});</code></pre><h3>Sending Batch Messages</h3><p>The Postmark API provides functionality for sending batches of emails with a single command, rather than issuing separate API calls for each message. You can access this feature by using <code>postmark.batch()</code>, which behaves similarly to <code>postmark.send()</code> except that the first parameter is an array of messages formatted as above.</p>
 <p>For example:</p>
 <pre class="prettyprint source lang-javascript"><code>var postmark = require(&quot;postmark&quot;);
 var client = new postmark.Client(&quot;&lt;server key>&quot;);
