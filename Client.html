@@ -79,7 +79,7 @@
     
         
 <dt>
-    <h4 class="name" id="Client"><span class="type-signature"></span>new Client<span class="signature">(apiKey, options)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Client"><span class="type-signature"></span>new Client<span class="signature">(serverKey, <span class="optional">options</span>)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -114,6 +114,8 @@ This is the main entry point to the standard Postmark API.</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -126,18 +128,31 @@ This is the main entry point to the standard Postmark API.</p>
 
         <tr>
             
-                <td class="name"><code>apiKey</code></td>
+                <td class="name"><code>serverKey</code></td>
             
 
             <td class="type">
             
+                
+<span class="param-type">string</span>
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The <strong>server key</strong> is required, and specifies which Server you wish to use when making API calls from this Client.</p></td>
         </tr>
 
 	
@@ -149,13 +164,28 @@ This is the main entry point to the standard Postmark API.</p>
 
             <td class="type">
             
+                
+<span class="param-type">ClientOptions</span>
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The configuration options for this client. If not specified, the global defaults will be used.</p></td>
         </tr>
 
 	
@@ -259,7 +289,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Cause an email address that was deactivated due to a Bounce to be reactivated.</p>
     </div>
     
 
@@ -299,13 +329,18 @@ This is the main entry point to the standard Postmark API.</p>
 
             <td class="type">
             
+                
+<span class="param-type">number</span>
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The ID of the Bounce for which you wish to activate the associated email.</p></td>
         </tr>
 
 	
@@ -328,7 +363,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -477,7 +512,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -561,7 +596,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Cause an Inbound Message to bypass filtering rules defined on this Client's associated Server.</p>
     </div>
     
 
@@ -601,13 +636,18 @@ This is the main entry point to the standard Postmark API.</p>
 
             <td class="type">
             
+                
+<span class="param-type">number</span>
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The ID of the Inbound Message for which you wish to bypass the filtering rules.</p></td>
         </tr>
 
 	
@@ -630,7 +670,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -745,6 +785,11 @@ This is the main entry point to the standard Postmark API.</p>
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
             
@@ -774,7 +819,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -841,7 +886,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="createTagTrigger"><span class="type-signature"></span>createTagTrigger<span class="signature">(options, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="createTagTrigger"><span class="type-signature"></span>createTagTrigger<span class="signature">(<span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -872,6 +917,8 @@ This is the main entry point to the standard Postmark API.</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -889,8 +936,23 @@ This is the main entry point to the standard Postmark API.</p>
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -915,10 +977,18 @@ This is the main entry point to the standard Postmark API.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -1033,6 +1103,11 @@ This is the main entry point to the standard Postmark API.</p>
 
             <td class="type">
             
+                
+<span class="param-type">number</span>
+
+
+            
             </td>
 
             
@@ -1062,7 +1137,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -1177,6 +1252,11 @@ This is the main entry point to the standard Postmark API.</p>
 
             <td class="type">
             
+                
+<span class="param-type">number</span>
+
+
+            
             </td>
 
             
@@ -1206,7 +1286,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -1281,7 +1361,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Modify the Server associated with this Client.</p>
     </div>
     
 
@@ -1321,13 +1401,18 @@ This is the main entry point to the standard Postmark API.</p>
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The options you wish to modify for this server.</p></td>
         </tr>
 
 	
@@ -1350,7 +1435,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -1465,6 +1550,11 @@ This is the main entry point to the standard Postmark API.</p>
 
             <td class="type">
             
+                
+<span class="param-type">number</span>
+
+
+            
             </td>
 
             
@@ -1482,6 +1572,11 @@ This is the main entry point to the standard Postmark API.</p>
             
 
             <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
             
             </td>
 
@@ -1512,7 +1607,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -1587,7 +1682,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get a information for a specific Bounce.</p>
     </div>
     
 
@@ -1627,13 +1722,18 @@ This is the main entry point to the standard Postmark API.</p>
 
             <td class="type">
             
+                
+<span class="param-type">number</span>
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The ID of the Bounce you wish to retrieve.</p></td>
         </tr>
 
 	
@@ -1656,7 +1756,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -1723,7 +1823,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="getBounceCounts"><span class="type-signature"></span>getBounceCounts<span class="signature">(query, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getBounceCounts"><span class="type-signature"></span>getBounceCounts<span class="signature">(<span class="optional">filter</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -1754,6 +1854,8 @@ This is the main entry point to the standard Postmark API.</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -1766,13 +1868,28 @@ This is the main entry point to the standard Postmark API.</p>
 
         <tr>
             
-                <td class="name"><code>query</code></td>
+                <td class="name"><code>filter</code></td>
             
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -1797,10 +1914,18 @@ This is the main entry point to the standard Postmark API.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -1875,7 +2000,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get a Bounce Dump for a specific Bounce.</p>
     </div>
     
 
@@ -1915,13 +2040,18 @@ This is the main entry point to the standard Postmark API.</p>
 
             <td class="type">
             
+                
+<span class="param-type">number</span>
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The ID of the Bounce for which you wish to retrieve a dump.</p></td>
         </tr>
 
 	
@@ -1944,7 +2074,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -2011,7 +2141,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="getBounces"><span class="type-signature"></span>getBounces<span class="signature">(query, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getBounces"><span class="type-signature"></span>getBounces<span class="signature">(<span class="optional">filter</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -2019,7 +2149,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Retrieve a batch of bounces. The default batch size is 100, and the offset is 0.</p>
     </div>
     
 
@@ -2042,6 +2172,8 @@ This is the main entry point to the standard Postmark API.</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -2054,18 +2186,33 @@ This is the main entry point to the standard Postmark API.</p>
 
         <tr>
             
-                <td class="name"><code>query</code></td>
+                <td class="name"><code>filter</code></td>
             
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>An optional filter for which bounces to retrieve.</p></td>
         </tr>
 
 	
@@ -2085,10 +2232,18 @@ This is the main entry point to the standard Postmark API.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -2163,7 +2318,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get an array of tags associated with bounces.</p>
     </div>
     
 
@@ -2214,7 +2369,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -2289,7 +2444,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Retrieve delivery statistic information for the associated Server.</p>
     </div>
     
 
@@ -2340,7 +2495,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -2407,7 +2562,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="getEmailClientUsage"><span class="type-signature"></span>getEmailClientUsage<span class="signature">(query, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getEmailClientUsage"><span class="type-signature"></span>getEmailClientUsage<span class="signature">(<span class="optional">filter</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -2438,6 +2593,8 @@ This is the main entry point to the standard Postmark API.</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -2450,13 +2607,28 @@ This is the main entry point to the standard Postmark API.</p>
 
         <tr>
             
-                <td class="name"><code>query</code></td>
+                <td class="name"><code>filter</code></td>
             
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -2481,10 +2653,18 @@ This is the main entry point to the standard Postmark API.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -2551,7 +2731,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="getEmailOpenCounts"><span class="type-signature"></span>getEmailOpenCounts<span class="signature">(query, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getEmailOpenCounts"><span class="type-signature"></span>getEmailOpenCounts<span class="signature">(<span class="optional">filter</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -2582,6 +2762,8 @@ This is the main entry point to the standard Postmark API.</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -2594,13 +2776,28 @@ This is the main entry point to the standard Postmark API.</p>
 
         <tr>
             
-                <td class="name"><code>query</code></td>
+                <td class="name"><code>filter</code></td>
             
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -2625,10 +2822,18 @@ This is the main entry point to the standard Postmark API.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -2695,7 +2900,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="getEmailPlatformUsage"><span class="type-signature"></span>getEmailPlatformUsage<span class="signature">(query, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getEmailPlatformUsage"><span class="type-signature"></span>getEmailPlatformUsage<span class="signature">(<span class="optional">filter</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -2726,6 +2931,8 @@ This is the main entry point to the standard Postmark API.</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -2738,13 +2945,28 @@ This is the main entry point to the standard Postmark API.</p>
 
         <tr>
             
-                <td class="name"><code>query</code></td>
+                <td class="name"><code>filter</code></td>
             
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -2769,10 +2991,18 @@ This is the main entry point to the standard Postmark API.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -2839,7 +3069,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="getEmailReadTimes"><span class="type-signature"></span>getEmailReadTimes<span class="signature">(query, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getEmailReadTimes"><span class="type-signature"></span>getEmailReadTimes<span class="signature">(<span class="optional">filter</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -2870,6 +3100,8 @@ This is the main entry point to the standard Postmark API.</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -2882,13 +3114,28 @@ This is the main entry point to the standard Postmark API.</p>
 
         <tr>
             
-                <td class="name"><code>query</code></td>
+                <td class="name"><code>filter</code></td>
             
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -2913,10 +3160,18 @@ This is the main entry point to the standard Postmark API.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -2991,7 +3246,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get details for a specific Inbound Message.</p>
     </div>
     
 
@@ -3031,13 +3286,18 @@ This is the main entry point to the standard Postmark API.</p>
 
             <td class="type">
             
+                
+<span class="param-type">number</span>
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The ID of the Inbound Message for which you wish to retrieve details.</p></td>
         </tr>
 
 	
@@ -3060,7 +3320,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -3127,7 +3387,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="getInboundMessages"><span class="type-signature"></span>getInboundMessages<span class="signature">(query, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getInboundMessages"><span class="type-signature"></span>getInboundMessages<span class="signature">(<span class="optional">filter</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -3135,7 +3395,8 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Retrieve a batch of Inbound Messages. The default batch size is 100, and the offset is 0.
+You can make successive calls to the API to retrieve additional Inbound Messages.</p>
     </div>
     
 
@@ -3157,6 +3418,8 @@ This is the main entry point to the standard Postmark API.</p>
 
 		<th>Type</th>
 
+		
+		<th>Argument</th>
 		
 
 		
@@ -3170,18 +3433,33 @@ This is the main entry point to the standard Postmark API.</p>
 
         <tr>
             
-                <td class="name"><code>query</code></td>
+                <td class="name"><code>filter</code></td>
             
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Optional filtering parameters.</p></td>
         </tr>
 
 	
@@ -3201,10 +3479,18 @@ This is the main entry point to the standard Postmark API.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -3271,7 +3557,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="getInboundRuleTriggers"><span class="type-signature"></span>getInboundRuleTriggers<span class="signature">(query, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getInboundRuleTriggers"><span class="type-signature"></span>getInboundRuleTriggers<span class="signature">(<span class="optional">filter</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -3301,6 +3587,8 @@ This is the main entry point to the standard Postmark API.</p>
 
 		<th>Type</th>
 
+		
+		<th>Argument</th>
 		
 
 		
@@ -3314,13 +3602,28 @@ This is the main entry point to the standard Postmark API.</p>
 
         <tr>
             
-                <td class="name"><code>query</code></td>
+                <td class="name"><code>filter</code></td>
             
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -3345,10 +3648,18 @@ This is the main entry point to the standard Postmark API.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -3415,7 +3726,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="getMessageOpens"><span class="type-signature"></span>getMessageOpens<span class="signature">(query, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getMessageOpens"><span class="type-signature"></span>getMessageOpens<span class="signature">(<span class="optional">filter</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -3423,7 +3734,8 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get the Opens for Outbound Messages. The default batch size is 100, and offset is 0.
+You can make successive calls to the API to retrieve additional Opens information.</p>
     </div>
     
 
@@ -3445,6 +3757,8 @@ This is the main entry point to the standard Postmark API.</p>
 
 		<th>Type</th>
 
+		
+		<th>Argument</th>
 		
 
 		
@@ -3458,18 +3772,33 @@ This is the main entry point to the standard Postmark API.</p>
 
         <tr>
             
-                <td class="name"><code>query</code></td>
+                <td class="name"><code>filter</code></td>
             
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Optional filtering parameters.</p></td>
         </tr>
 
 	
@@ -3489,10 +3818,18 @@ This is the main entry point to the standard Postmark API.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -3559,7 +3896,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="getMessageOpensForSingleMessage"><span class="type-signature"></span>getMessageOpensForSingleMessage<span class="signature">(id, query, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getMessageOpensForSingleMessage"><span class="type-signature"></span>getMessageOpensForSingleMessage<span class="signature">(id, <span class="optional">filter</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -3567,7 +3904,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get Open information for a single Outbound Message. The default batch size is 100, and offset is 0.</p>
     </div>
     
 
@@ -3589,6 +3926,8 @@ This is the main entry point to the standard Postmark API.</p>
 
 		<th>Type</th>
 
+		
+		<th>Argument</th>
 		
 
 		
@@ -3607,31 +3946,59 @@ This is the main entry point to the standard Postmark API.</p>
 
             <td class="type">
             
+                
+<span class="param-type">number</span>
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The ID of the Message for which you wish to retrieve Opens.</p></td>
         </tr>
 
 	
 
         <tr>
             
-                <td class="name"><code>query</code></td>
+                <td class="name"><code>filter</code></td>
             
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Optional filtering parameters.</p></td>
         </tr>
 
 	
@@ -3651,10 +4018,18 @@ This is the main entry point to the standard Postmark API.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -3721,7 +4096,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="getOuboundOverview"><span class="type-signature"></span>getOuboundOverview<span class="signature">(query, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getOuboundOverview"><span class="type-signature"></span>getOuboundOverview<span class="signature">(<span class="optional">filter</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -3752,6 +4127,8 @@ This is the main entry point to the standard Postmark API.</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -3764,13 +4141,28 @@ This is the main entry point to the standard Postmark API.</p>
 
         <tr>
             
-                <td class="name"><code>query</code></td>
+                <td class="name"><code>filter</code></td>
             
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -3795,10 +4187,18 @@ This is the main entry point to the standard Postmark API.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -3873,7 +4273,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get details for a specific Outbound Message.</p>
     </div>
     
 
@@ -3913,13 +4313,18 @@ This is the main entry point to the standard Postmark API.</p>
 
             <td class="type">
             
+                
+<span class="param-type">number</span>
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The ID of the Outbound Message for which you wish to retrieve details.</p></td>
         </tr>
 
 	
@@ -3942,7 +4347,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -4009,7 +4414,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="getOutboundMessages"><span class="type-signature"></span>getOutboundMessages<span class="signature">(query, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getOutboundMessages"><span class="type-signature"></span>getOutboundMessages<span class="signature">(<span class="optional">filter</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -4017,7 +4422,8 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Retrieve a batch of Outbound Messages. The default batch size is 100, and the offset is 0.
+You can make successive calls to the API to retrieve additional Outbound Messages.</p>
     </div>
     
 
@@ -4040,6 +4446,8 @@ This is the main entry point to the standard Postmark API.</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -4052,18 +4460,33 @@ This is the main entry point to the standard Postmark API.</p>
 
         <tr>
             
-                <td class="name"><code>query</code></td>
+                <td class="name"><code>filter</code></td>
             
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Optional filtering parameters.</p></td>
         </tr>
 
 	
@@ -4083,10 +4506,18 @@ This is the main entry point to the standard Postmark API.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -4153,7 +4584,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="getSentCounts"><span class="type-signature"></span>getSentCounts<span class="signature">(query, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getSentCounts"><span class="type-signature"></span>getSentCounts<span class="signature">(<span class="optional">filter</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -4184,6 +4615,8 @@ This is the main entry point to the standard Postmark API.</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -4196,13 +4629,28 @@ This is the main entry point to the standard Postmark API.</p>
 
         <tr>
             
-                <td class="name"><code>query</code></td>
+                <td class="name"><code>filter</code></td>
             
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -4227,10 +4675,18 @@ This is the main entry point to the standard Postmark API.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -4305,7 +4761,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Get the information for the Server associated with this Client.</p>
     </div>
     
 
@@ -4356,7 +4812,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -4423,7 +4879,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="getSpamComplaints"><span class="type-signature"></span>getSpamComplaints<span class="signature">(query, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getSpamComplaints"><span class="type-signature"></span>getSpamComplaints<span class="signature">(<span class="optional">filter</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -4454,6 +4910,8 @@ This is the main entry point to the standard Postmark API.</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -4466,13 +4924,28 @@ This is the main entry point to the standard Postmark API.</p>
 
         <tr>
             
-                <td class="name"><code>query</code></td>
+                <td class="name"><code>filter</code></td>
             
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -4497,10 +4970,18 @@ This is the main entry point to the standard Postmark API.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -4615,6 +5096,11 @@ This is the main entry point to the standard Postmark API.</p>
 
             <td class="type">
             
+                
+<span class="param-type">number</span>
+
+
+            
             </td>
 
             
@@ -4644,7 +5130,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -4711,7 +5197,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="getTagTriggers"><span class="type-signature"></span>getTagTriggers<span class="signature">(query, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getTagTriggers"><span class="type-signature"></span>getTagTriggers<span class="signature">(<span class="optional">filter</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -4742,6 +5228,8 @@ This is the main entry point to the standard Postmark API.</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -4754,13 +5242,28 @@ This is the main entry point to the standard Postmark API.</p>
 
         <tr>
             
-                <td class="name"><code>query</code></td>
+                <td class="name"><code>filter</code></td>
             
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -4785,10 +5288,18 @@ This is the main entry point to the standard Postmark API.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -4855,7 +5366,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="getTrackedEmailCounts"><span class="type-signature"></span>getTrackedEmailCounts<span class="signature">(query, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getTrackedEmailCounts"><span class="type-signature"></span>getTrackedEmailCounts<span class="signature">(<span class="optional">filter</span>, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -4886,6 +5397,8 @@ This is the main entry point to the standard Postmark API.</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -4898,13 +5411,28 @@ This is the main entry point to the standard Postmark API.</p>
 
         <tr>
             
-                <td class="name"><code>query</code></td>
+                <td class="name"><code>filter</code></td>
             
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -4929,10 +5457,18 @@ This is the main entry point to the standard Postmark API.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -5081,7 +5617,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -5165,7 +5701,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Send a single email message.</p>
     </div>
     
 
@@ -5239,7 +5775,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -5314,7 +5850,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Description</p>
+        <p>Send a batch of email messages.</p>
     </div>
     
 
@@ -5388,7 +5924,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A standard callback that is called when API request completes.</p></td>
         </tr>
 
 	
@@ -5485,7 +6021,7 @@ This is the main entry point to the standard Postmark API.</p>
 
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta1</a>
-	on Thu Feb 5th 2015 using the <a
+	on Fri Feb 6th 2015 using the <a
 	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 </span>
 </footer>
