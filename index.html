@@ -10,13 +10,13 @@
 	<![endif]-->
 	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
 
-	<link type="text/css" rel="stylesheet" href="styles/site.simplex.css">
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
 
 </head>
 
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="navbar navbar-default navbar-fixed-top ">
 <div class="container">
 	<div class="navbar-header">
 		<a class="navbar-brand" href="index.html">Postmark.js</a>
@@ -26,21 +26,21 @@
 			
 			<li class="dropdown">
 				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
+				<ul class="dropdown-menu inline">
 					<li><a href="module-postmark.html">postmark</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
+				<ul class="dropdown-menu inline">
 					<li><a href="AdminClient.html">AdminClient</a></li><li><a href="Client.html">Client</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
+				<ul class="dropdown-menu inline">
 					<li><a href="global.html">Global</a></li>
 				</ul>
 			</li>
@@ -58,11 +58,8 @@
 	<div class="col-md-8">
 	
 		<div id="main">
-    		<h1 class="page-title">Index</h1>
-			
+    		
 
-	
-	<span class="page-title">Index</span>
 	
 	
 
@@ -82,6 +79,71 @@
 
 
 
+
+    <section class="readme-section">
+        <article><h1>Postmark.js - Simple Email Sending</h1><p>Send emails with the greatest of ease! Now your node.js application can send emails through <a href="http://www.postmarkapp.com">Postmark</a> using their HTTP API.</p>
+<h2>Install</h2><pre class="prettyprint source lang-`"><code>npm install postmark</code></pre><h3>Sending emails</h3><p>To send any email, including attachments, all you need to do is this:</p>
+<pre class="prettyprint source lang-javascript"><code>var postmark = require(&quot;postmark&quot;)(&quot;YOURAPIKEY&quot;);
+postmark.send({
+    &quot;From&quot;: &quot;donotreply@example.com&quot;, 
+    &quot;To&quot;: &quot;target@example.us&quot;, 
+    &quot;Subject&quot;: &quot;Test&quot;, 
+    &quot;TextBody&quot;: &quot;Test Message&quot;
+});</code></pre><p>Replace YOURAPIKEY with the API key provided by Postmark and you are good to go! 
+Your message must be provided in the format specified in the <a href="http://developer.postmarkapp.com/developer-build.html#message-format">Postmark API</a> and will be verified. 
+If you provide the object in a manner not as specified (including case sensitivity), an exception will be thrown. 
+Send takes a callback as the second parameter that indicates success or failure, following the normal node.js callback 
+pattern callback(error, result), if there is an issue with the submission an error object will be returned as the first
+argument. </p>
+<p>To send attachments with the email, use the following format:</p>
+<pre class="prettyprint source lang-javascript"><code>var postmark = require(&quot;postmark&quot;)(&quot;YOURAPIKEY&quot;);
+postmark.send({
+    &quot;From&quot;: &quot;donotreply@example.com&quot;, 
+    &quot;To&quot;: &quot;target@example.us&quot;, 
+    &quot;Subject&quot;: &quot;Test&quot;, 
+    &quot;TextBody&quot;: &quot;Test Message&quot;,
+    &quot;Attachments&quot;: [{
+      &quot;Content&quot;: File.readFileSync(&quot;./unicorns.jpg&quot;).toString('base64'),
+      &quot;Name&quot;: &quot;PrettyUnicorn.jpg&quot;,
+      &quot;ContentType&quot;: &quot;image/jpeg&quot;
+    }]
+}, function(error, success) {
+    if(error) {
+        console.error(&quot;Unable to send via postmark: &quot; + error.message);
+        return;
+    }
+    console.info(&quot;Sent to postmark for delivery&quot;)
+});</code></pre><h2>Sending Batch Messages</h2><p>The Postmark API provides functionality for sending batches of emails with a single command, rather than issuing separate API calls for each message. You can access this feature by using <code>postmark.batch()</code>, which behaves similarly to <code>postmark.send()</code> except that the first parameter is an array of messages formatted as above.</p>
+<p>For example:</p>
+<pre class="prettyprint source lang-javascript"><code>var postmark = require(&quot;postmark&quot;)(&quot;YOURAPIKEY&quot;);
+
+var messages = [
+    {
+        &quot;From&quot;: &quot;email@example.com&quot;,
+        &quot;To&quot;: &quot;recipient@example.com&quot;,
+        &quot;Subject&quot;: &quot;Message #1&quot;,
+        &quot;TextBody&quot;: &quot;This is email number 1.&quot;
+    },
+    {
+        &quot;From&quot;: &quot;email@example.com&quot;,
+        &quot;To&quot;: &quot;recipient@example.com&quot;,
+        &quot;Subject&quot;: &quot;Message #2&quot;,
+        &quot;TextBody&quot;: &quot;This is email number 2.&quot;
+    }
+];
+
+postmark.batch(messages, function (error, success) {
+    if (error) {
+        console.error(&quot;Unable to send via postmark: &quot; + error.message);
+        return;
+    }
+    console.info(&quot;Messages sent to postmark&quot;);
+});</code></pre><p>The Postmark API will return an array of statuses, one for each message sent. You can access the data about individual messages in either <code>error</code> or <code>success</code>. For further details, please see the <a href="http://developer.postmarkapp.com/developer-build.html#batching-messages">Postmark Batch API</a>.</p>
+<p>Enjoy sending.</p>
+<h3>Special Thanks</h3><ul>
+<li><a href="http://www.postmarkapp.com">Postmark</a></li>
+</ul></article>
+    </section>
 
 
 
