@@ -6,8 +6,29 @@
     "utility",
     "postmark"
   ],
-  "version": "0.2.6",
+  "version": "0.9.0",
   "author": "Chris Williams <voodootikigod@gmail.com>",
+  "contributors": [
+    "Aaron Blum",
+    "Aleksey Aleksandrov",
+    "Alex Shepard",
+    "Andrew Theken",
+    "Antony Jones",
+    "Ben Burwell",
+    "Ben Williamson",
+    "Chris Williams",
+    "Jakub Borys",
+    "Mark Nguyen",
+    "Matt",
+    "Matthew Blackshaw",
+    "Matthew Conlen",
+    "Ryan Kirkman",
+    "Scott Anderson",
+    "Sebastien Chopin",
+    "Theophane RUPIN",
+    "codesplicer",
+    "francescoRubini"
+  ],
   "main": "./lib/postmark",
   "directories": {
     "lib": "./lib/postmark"
@@ -19,6 +40,7 @@
     "pull-docs": "git subtree pull --prefix docs https://github.com/voodootikigod/postmark.js gh-pages",
     "push-docs": "git subtree push --prefix docs https://github.com/voodootikigod/postmark.js gh-pages"
   },
+  "homepage": "http://voodootikigod.github.io/postmark.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/voodootikigod/postmark.js.git"
