@@ -1,6 +1,9 @@
 var mocha = require('mocha');
 var assert = require('assert');
-var testingKeys = require('./testing_keys.json');
+var nconf = require('nconf');
+var testingKeys = nconf.env().file({
+  file: __dirname + '/testing_keys.json'
+});
 var util = require('util');
 var merge = require('merge');
 
@@ -13,12 +16,12 @@ describe('client', function() {
   var _client = null;
 
   beforeEach(function() {
-    _client = new postmark.Client(testingKeys.WRITE_TEST_SERVER_TOKEN);
+    _client = new postmark.Client(testingKeys.get('WRITE_TEST_SERVER_TOKEN'));
   });
 
   after(function() {
     var rulePrefixTester = new RegExp(prefix);
-    var c = new postmark.Client(testingKeys.WRITE_TEST_SERVER_TOKEN);
+    var c = new postmark.Client(testingKeys.get('WRITE_TEST_SERVER_TOKEN'));
     c.getInboundRuleTriggers(function(err, trigs) {
       if (!err) {
         for (var i = 0; i < trigs.InboundRules.length; i++) {

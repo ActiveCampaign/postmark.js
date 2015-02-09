@@ -1,6 +1,9 @@
 var mocha = require('mocha');
 var assert = require('assert');
-var testingKeys = require('./testing_keys.json');
+var nconf = require('nconf');
+var testingKeys = nconf.env().file({
+  file: __dirname + '/testing_keys.json'
+});
 var util = require('util');
 var merge = require('merge');
 
@@ -12,13 +15,13 @@ describe('client email sending', function() {
   var _client = null;
 
   beforeEach(function() {
-    _client = new postmark.Client(testingKeys.WRITE_TEST_SERVER_TOKEN);
+    _client = new postmark.Client(testingKeys.get('WRITE_TEST_SERVER_TOKEN'));
   });
 
   it('can send single email ("send" alias)', function(done) {
     _client.send({
-      To: testingKeys.WRITE_TEST_EMAIL_RECIPIENT_ADDRESS,
-      From: testingKeys.WRITE_TEST_SENDER_EMAIL_ADDRESS,
+      To: testingKeys.get('WRITE_TEST_EMAIL_RECIPIENT_ADDRESS'),
+      From: testingKeys.get('WRITE_TEST_SENDER_EMAIL_ADDRESS'),
       Subject: "Hello from the node.js client! " + new Date(),
       TextBody: "Testing 1.2.3..."
     }, done);
@@ -26,8 +29,8 @@ describe('client email sending', function() {
 
   it('can send single email', function(done) {
     _client.sendEmail({
-      To: testingKeys.WRITE_TEST_EMAIL_RECIPIENT_ADDRESS,
-      From: testingKeys.WRITE_TEST_SENDER_EMAIL_ADDRESS,
+      To: testingKeys.get('WRITE_TEST_EMAIL_RECIPIENT_ADDRESS'),
+      From: testingKeys.get('WRITE_TEST_SENDER_EMAIL_ADDRESS'),
       Subject: "Hello from the node.js client! " + new Date(),
       TextBody: "Testing 1.2.3..."
     }, done);
@@ -38,8 +41,8 @@ describe('client email sending', function() {
 
     for (var i = 0; i < 3; i++) {
       emailBatch.push({
-        to: testingKeys.WRITE_TEST_EMAIL_RECIPIENT_ADDRESS,
-        from: testingKeys.WRITE_TEST_SENDER_EMAIL_ADDRESS,
+        to: testingKeys.get('WRITE_TEST_EMAIL_RECIPIENT_ADDRESS'),
+        from: testingKeys.get('WRITE_TEST_SENDER_EMAIL_ADDRESS'),
         subject: "Hello from the node.js client! " + new Date(),
         textBody: "Testing batch email: " + i
       });
@@ -52,8 +55,8 @@ describe('client email sending', function() {
 
     for (var i = 0; i < 3; i++) {
       emailBatch.push({
-        to: testingKeys.WRITE_TEST_EMAIL_RECIPIENT_ADDRESS,
-        from: testingKeys.WRITE_TEST_SENDER_EMAIL_ADDRESS,
+        to: testingKeys.get('WRITE_TEST_EMAIL_RECIPIENT_ADDRESS'),
+        from: testingKeys.get('WRITE_TEST_SENDER_EMAIL_ADDRESS'),
         subject: "Hello from the node.js client! " + new Date(),
         textBody: "Testing batch email: " + i
       });

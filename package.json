@@ -59,6 +59,7 @@
     "ink-docstrap": "git://github.com/wildbit/docstrap",
     "jsdoc": "^3.3.0-beta1",
     "mocha": "^2.1.0",
+    "nconf": "^0.7.1",
     "pre-commit": "^1.0.2"
   },
   "dependencies": {

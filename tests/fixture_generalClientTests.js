@@ -1,6 +1,9 @@
 var mocha = require('mocha');
 var assert = require('assert');
-var testingKeys = require('./testing_keys.json');
+var nconf = require('nconf');
+var testingKeys = nconf.env().file({
+  file: __dirname + '/testing_keys.json'
+});
 var util = require('util');
 var merge = require('merge');
 
@@ -12,24 +15,24 @@ describe('general client functionality', function() {
   var _client = null;
 
   beforeEach(function() {
-    _client = new postmark.Client(testingKeys.WRITE_TEST_SERVER_TOKEN);
+    _client = new postmark.Client(testingKeys.get('WRITE_TEST_SERVER_TOKEN'));
   });
 
   it('properly handles "legacy" options', function() {
-    var client = postmark(testingKeys.WRITE_TEST_SERVER_TOKEN, {
+    var client = postmark(testingKeys.get('WRITE_TEST_SERVER_TOKEN'), {
       testOption: 'asdf',
       ssl: false
     });
 
     assert.notEqual(client, null);
-    assert.equal(testingKeys.WRITE_TEST_SERVER_TOKEN, client.options.apiKey);
+    assert.equal(testingKeys.get('WRITE_TEST_SERVER_TOKEN'), client.options.apiKey);
     assert.equal(client.options.testOption, 'asdf');
     assert.equal(client.options.ssl, false, "ssl should have been set to 'false'");
   });
 
   it('constructor assigns options.', function() {
     assert.equal(_client.options.ssl, true, "ssl should default to 'true'");
-    assert.equal(_client.options.apiKey, testingKeys.WRITE_TEST_SERVER_TOKEN);
+    assert.equal(_client.options.apiKey, testingKeys.get('WRITE_TEST_SERVER_TOKEN'));
   });
 });
 
@@ -49,7 +52,7 @@ describe('integration test assertion', function() {
     // and "done" throws on any error. But, let's go ahead
     // and assert that here.
 
-    var client = postmark(testingKeys.WRITE_TEST_SERVER_TOKEN)
+    var client = postmark(testingKeys.get('WRITE_TEST_SERVER_TOKEN'))
 
     client.getBounces({
       count: "invalid count"
