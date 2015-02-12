@@ -1,7 +1,8 @@
-## Postmark.js - Simple Email Sending
+## Postmark.js
 
-Send emails with the greatest of ease! Now your node.js application can send emails through [Postmark](http://www.postmarkapp.com) using their HTTP API.
+Send emails with the greatest of ease! Now your node.js application can send emails through [Postmark](http://www.postmarkapp.com).
 
+[![Build Status](https://travis-ci.org/wildbit/postmark.js.svg?branch=master)](https://travis-ci.org/wildbit/postmark.js)
 
 ### Install
 
@@ -11,7 +12,7 @@ Installing `postmark` is super simple:
 npm install postmark
 ```
 
-### Sending emails
+### Sending an Email:
 
 To send your first email, all you need to do is:
 
@@ -29,15 +30,18 @@ client.sendEmail({
 
 Replace <server key> with the server key provided by Postmark and you are good to go!
 
-Your message must be provided in the format specified in the [Postmark API](http://developer.postmarkapp.com/developer-build.html#message-format) and will be verified. The member names of 
-message payloads are case-sensitive, and messages not matching the documented format will not
+Your message must be provided in the format specified in the [Postmark API](http://developer.postmarkapp.com/developer-build.html#message-format) and will be verified. The **member names of 
+message payloads are case-sensitive**, and messages not matching the documented format will not
 be accepted by the API.
 
-Send takes a callback as the second parameter that indicates success or failure, following the normal node.js callback 
-pattern callback(error, result), if there is an issue with the submission an error object will be returned as the first
-argument. 
+All client methods accept a callback as the their last parameter, following the normal node.js callback 
+convention: 
 
-To send attachments with the email, use the following format:
+```javascript
+callback(error, result){...} 
+```
+
+To send attachments with the email, use the following format may be used:
 
 ```javascript
 var postmark = require("postmark");
@@ -62,9 +66,9 @@ client.sendEmail({
 });
 ```
 
-### Sending Batch Messages
+### Sending a Batch of Messages
 
-The Postmark API provides functionality for sending batches of emails with a single command, rather than issuing separate API calls for each message. You can access this feature by using `postmark.batch()`, which behaves similarly to `postmark.send()` except that the first parameter is an array of messages formatted as above.
+The Postmark API provides functionality for sending batches of emails with a single command, rather than issuing separate API calls for each message. You may access this feature by calling `Client.sendEmailBatch(...)`, which behaves similarly to `postmark.sendEmail(...)` except that the first parameter is an array of messages formatted in the same manner as outlined above:
 
 For example:
 
@@ -87,7 +91,7 @@ var messages = [
     }
 ];
 
-postmark.sendEmailBatch(messages, function (error, success) {
+postmark.sendEmailBatch(messages, function (error, batchResults) {
     if (error) {
         console.error("Unable to send via postmark: " + error.message);
         return;
@@ -96,4 +100,4 @@ postmark.sendEmailBatch(messages, function (error, success) {
 });
 ```
 
-The Postmark API will return an array of statuses, one for each message sent. You can access the data about individual messages in either `error` or `success`. For further details, please see the [Postmark Batch API](http://developer.postmarkapp.com/developer-build.html#batching-messages).
+The Postmark API will return an array of statuses, one for each message sent. You may iterate over the `batchResults` for information about each sent message. For further details, please see the [Postmark Batch API](http://developer.postmarkapp.com/developer-build.html#batching-messages).
