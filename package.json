@@ -37,16 +37,16 @@
     "test": "node_modules/.bin/mocha tests/fixture_*.js",
     "watchtests": "node_modules/.bin/mocha -R list -w --recursive -G tests/fixture_*.js",
     "compile-docs": "echo 'Generating docs...' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/jsdoc -u ./tutorials -R README.md -c jsdoc.conf.json -t ./node_modules/ink-docstrap/template -d docs ./lib/postmark/*.js && cp ./tutorials/postmark-logo.png ./docs && git add -A ./docs && echo 'Generated docs!'",
-    "pull-docs": "git subtree pull --prefix docs https://github.com/voodootikigod/postmark.js gh-pages",
-    "push-docs": "git subtree push --prefix docs https://github.com/voodootikigod/postmark.js gh-pages"
+    "pull-docs": "git subtree pull --prefix docs origin gh-pages",
+    "push-docs": "git subtree push --prefix docs origin gh-pages"
   },
-  "homepage": "http://voodootikigod.github.io/postmark.js",
+  "homepage": "http://wildbit.github.io/postmark.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/voodootikigod/postmark.js.git"
+    "url": "https://github.com/wildbit/postmark.js.git"
   },
   "bugs": {
-    "url": "https://github.com/voodootikigod/postmark.js/issues"
+    "url": "https://github.com/wildbit/postmark.js/issues"
   },
   "engines": [
     "node >=0.4.0"

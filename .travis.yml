@@ -3,13 +3,14 @@ branches:
   except:
   - gh-pages
 node_js:
-  - "0.11"
-  - "0.10"
-  - "0.8"
-  - "0.6"
-  - iojs
-  - iojs-v1.0.2
+- '0.12'
+- '0.11'
+- '0.10'
+- '0.8'
+- '0.6'
+- iojs
+- iojs-v1.0.2
 notifications:
   hipchat:
     rooms:
-      secure: AHOKOMewMeiZ5jCVRuqK5aAqf6+kkZSdjD0ngre27LeZujq/0TALzD6KwQ8y3ctAqCMWA6WMX/nnPoUdmEAMbKq8l3bHB4Ji7GCQO+jWbMT5E1IzLA319NzN3A6MZm4j7xzLdqNFEKPnz8PJzCyMoTC4tM6nUbQud1EhDHkOIfM=
+      secure: AFbi3+f9C3UV5WmWpxDVZKU+7eEbaR6Kh6fRSx0yEeaihToGEjg1dlFSJXlkq1ok5CyKn/JfEMpCtMbu4V6fqf0Qbc2lvClD0S5VaE01F5a3gKW00fXMaHM6HXkRptYdDmnxjO7HWMZwEngYXAnSnQ0mpMsyF7GHVeEJ6G0+0JE=
