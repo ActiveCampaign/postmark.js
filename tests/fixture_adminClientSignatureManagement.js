@@ -19,7 +19,7 @@ describe('admin client signature management', function() {
   beforeEach(function() {
 
     _email = testingKeys.get('WRITE_TEST_SENDER_SIGNATURE_PROTOTYPE')
-      .replace("[TOKEN]", prefix + new Date().valueOf());
+      .replace(/\[TOKEN]/i, prefix + new Date().valueOf());
     _client = new postmark.AdminClient(testingKeys.get('WRITE_ACCOUNT_TOKEN'));
   });
 
