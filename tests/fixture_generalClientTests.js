@@ -52,14 +52,15 @@ describe('integration test assertion', function() {
         // and "done" throws on any error. But, let's go ahead
         // and assert that here.
 
-        var client = postmark(testingKeys.get('WRITE_TEST_SERVER_TOKEN'))
+        var client = postmark(testingKeys.get('READ_SELENIUM_TEST_SERVER_TOKEN'))
 
         client.getBounces({
             count: "invalid count"
         }, function(err, result) {
+
             assert.equal(null, result);
-            assert.equal(err.status, 404);
-            assert.equal(err.message, 'Unsupported Request Method and Protocol');
+            assert.equal(err.status, 422);
+            assert.equal(err.message, 'Parameter \'count\' should be integer value');
             done();
         });
     });
