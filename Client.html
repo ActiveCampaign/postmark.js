@@ -479,7 +479,7 @@ This is the main entry point to the standard Postmark API.</p>
             <td class="type">
             
                 
-<span class="param-type">Array.&lt;PostmarkMessage></span>
+<span class="param-type">Array.&lt;<a href="global.html#PostmarkMessage">PostmarkMessage</a>></span>
 
 
             
@@ -1043,7 +1043,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Update a template on the associated server.</p>
+        <p>Create a new template on the associated server.</p>
     </div>
     
 
@@ -1106,7 +1106,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"><p>The template you wish to update.</p></td>
+            <td class="description last"><p>The template you wish to create.</p></td>
         </tr>
 
 	
@@ -1204,7 +1204,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="createTemplate"><span class="type-signature"></span>createTemplate<span class="signature">(<span class="optional">template</span>, callback)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="createTemplate"><span class="type-signature"></span>createTemplate<span class="signature">(id, template, callback)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -1212,7 +1212,7 @@ This is the main entry point to the standard Postmark API.</p>
     
     
     <div class="description">
-        <p>Create a new template on the associated server.</p>
+        <p>Update a template on the associated server.</p>
     </div>
     
 
@@ -1235,8 +1235,6 @@ This is the main entry point to the standard Postmark API.</p>
 		<th>Type</th>
 
 		
-		<th>Argument</th>
-		
 
 		
 
@@ -1245,6 +1243,29 @@ This is the main entry point to the standard Postmark API.</p>
 	</thead>
 
 	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The id of the template you wish to update.</p></td>
+        </tr>
+
 	
 
         <tr>
@@ -1262,20 +1283,10 @@ This is the main entry point to the standard Postmark API.</p>
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p>The template you wish to create.</p></td>
+            <td class="description last"><p>The values on the template you wish to update.</p></td>
         </tr>
 
 	
@@ -1294,14 +1305,6 @@ This is the main entry point to the standard Postmark API.</p>
             
             </td>
 
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
             
 
             
@@ -6560,7 +6563,7 @@ You may retrieve additional Tag Triggers by making successive calls to the API.<
             <td class="type">
             
                 
-<span class="param-type">PostmarkMessage</span>
+<span class="param-type"><a href="global.html#PostmarkMessage">PostmarkMessage</a></span>
 
 
             
@@ -6718,7 +6721,7 @@ You may retrieve additional Tag Triggers by making successive calls to the API.<
             <td class="type">
             
                 
-<span class="param-type">PostmarkMessage</span>
+<span class="param-type"><a href="global.html#PostmarkMessage">PostmarkMessage</a></span>
 
 
             
@@ -6867,7 +6870,7 @@ You may retrieve additional Tag Triggers by making successive calls to the API.<
             <td class="type">
             
                 
-<span class="param-type">Array.&lt;PostmarkMessage></span>
+<span class="param-type">Array.&lt;<a href="global.html#PostmarkMessage">PostmarkMessage</a>></span>
 
 
             

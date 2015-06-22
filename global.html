@@ -650,15 +650,438 @@ You can pass options in client constructors to override these options.</p>
 
             
                 
-<dt class="name" id="PostmarkTemplateMessage">
-    <h4>PostmarkTemplateMessage</h4>
+<dt class="name" id="PostmarkMessage">
+    <h4>PostmarkMessage</h4>
 
     
 </dt>
 <dd>
     
     <div class="description">
-        <p>Postmark Template Message</p>
+        <p>Postmark Message</p>
+    </div>
+    
+
+    
+
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>To</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A comma-separate list of recipients.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>From</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The email address of the sender, must be a registered and confirmed Sender Signature.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Cc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A comma-separated list of 'Cc' recipients.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Bcc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A comma-separated list of 'Bcc' recipients.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>ReplyTo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The email address that should be used in the reply. Defaults to the 'From' address.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Tag</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Tag to apply to this message when it is sent.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Subject</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The subject to be used in the message being sent.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>HtmlBody</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The HTML part of the email being sent. Optional when TextBody is specified.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>TextBody</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The text part of the email being sent. Optional when HTMLBody is specified.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Headers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="global.html#PostmarkMessageHeader">PostmarkMessageHeader</a>></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The headers to apply when sending this message.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Attachments</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;PostmarkAttachment></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Any attachments that should be included when sending the email.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
+<dt class="name" id="PostmarkMessageHeader">
+    <h4>PostmarkMessageHeader</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Postmark Message Header</p>
     </div>
     
 
@@ -694,6 +1117,142 @@ You can pass options in client constructors to override these options.</p>
 
         <tr>
             
+                <td class="name"><code>Name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the MIME Header.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The content of the MIME Header.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
+<dt class="name" id="PostmarkTemplateMessage">
+    <h4>PostmarkTemplateMessage</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Postmark Template Message</p>
+    </div>
+    
+
+    
+
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
                 <td class="name"><code>TemplateId</code></td>
             
 
@@ -706,6 +1265,12 @@ You can pass options in client constructors to override these options.</p>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -730,56 +1295,16 @@ You can pass options in client constructors to override these options.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
             <td class="description last"><p>A comma-separate list of recipients.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>Cc</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>A comma-separated list of 'Cc' recipients.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>Bcc</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>A comma-separated list of 'Bcc' recipients.</p></td>
         </tr>
 
 	
@@ -798,6 +1323,12 @@ You can pass options in client constructors to override these options.</p>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -822,10 +1353,109 @@ You can pass options in client constructors to override these options.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
             <td class="description last"><p>The model that will be applied to the Template when the email is sent.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Cc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A comma-separated list of 'Cc' recipients.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>Bcc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A comma-separated list of 'Bcc' recipients.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>ReplyTo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The email address that should be used in the reply. Defaults to the 'From' address.</p></td>
         </tr>
 
 	
@@ -838,12 +1468,20 @@ You can pass options in client constructors to override these options.</p>
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">string</span>
 
 
             
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
             
 
             
@@ -861,12 +1499,20 @@ You can pass options in client constructors to override these options.</p>
             <td class="type">
             
                 
-<span class="param-type">Array.&lt;PostmarkHeader></span>
+<span class="param-type">Array.&lt;<a href="global.html#PostmarkMessageHeader">PostmarkMessageHeader</a>></span>
 
 
             
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
             
 
             
@@ -891,6 +1537,14 @@ You can pass options in client constructors to override these options.</p>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
 
             
 
@@ -913,6 +1567,14 @@ You can pass options in client constructors to override these options.</p>
             
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
             
 
             
