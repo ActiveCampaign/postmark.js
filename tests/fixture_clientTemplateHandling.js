@@ -91,7 +91,10 @@ describe('client template handling', function() {
                 To: testingKeys.get('WRITE_TEST_EMAIL_RECIPIENT_ADDRESS'),
                 From: testingKeys.get('WRITE_TEST_SENDER_EMAIL_ADDRESS'),
                 TemplateId: t.TemplateId,
-                TemplateModel: {}
+                TemplateModel: {
+                  subject: "Hello from the node.js client! " + new Date(),
+                  content: "Testing templated email"
+                }
             }, done);
         });
     });
