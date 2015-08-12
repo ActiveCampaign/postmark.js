@@ -48,6 +48,7 @@ To send attachments with the email, use the following format may be used:
 ```javascript
 var postmark = require("postmark");
 var client = new postmark.Client("<server key>");
+var fs = require('fs');
 
 client.sendEmail({
     "From": "donotreply@example.com", 
@@ -55,7 +56,8 @@ client.sendEmail({
     "Subject": "Test", 
     "TextBody": "Test Message",
     "Attachments": [{
-      "Content": File.readFileSync("./unicorns.jpg").toString('base64'),
+      // Reading synchronously here to condense code snippet:
+      "Content": fs.readFileSync("./unicorns.jpg").toString('base64'),
       "Name": "PrettyUnicorn.jpg",
       "ContentType": "image/jpeg"
     }]
