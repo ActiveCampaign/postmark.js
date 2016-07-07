@@ -15,7 +15,3 @@ node_js:
 - '0.6'
 - node
 - iojs
-notifications:
-  hipchat:
-    rooms:
-      secure: AFbi3+f9C3UV5WmWpxDVZKU+7eEbaR6Kh6fRSx0yEeaihToGEjg1dlFSJXlkq1ok5CyKn/JfEMpCtMbu4V6fqf0Qbc2lvClD0S5VaE01F5a3gKW00fXMaHM6HXkRptYdDmnxjO7HWMZwEngYXAnSnQ0mpMsyF7GHVeEJ6G0+0JE=
