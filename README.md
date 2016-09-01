@@ -105,3 +105,37 @@ postmark.sendEmailBatch(messages, function (error, batchResults) {
 ```
 
 The Postmark API will return an array of statuses, one for each message sent. You may iterate over the `batchResults` for information about each sent message. For further details, please see the [Postmark Batch API](http://developer.postmarkapp.com/developer-build.html#batching-messages).
+
+### Sending an Email using a Template:
+
+The process of sending an email using a template in Postmark is similar to sending a single email, but there is a little bit of setup.
+
+If you have not already created a template, login to the [Postmark UI](https://postmarkapp.com), navigate to one of your `Server`s, and add a template. Make note of the `TemplateId`, you will use that below. (You can also use our Template API to manage templates, if you wish to do so).
+
+After you have created/selected a template to use, there are minor differences in the request payload for sending with a template..
+
+First, you need to include the `TemplateId`, and `TemplateModel` (the values that you want to use in your template), 
+Next, *exclude* the `Subject`, `TextBody`, and `HtmlBody` properties that you'd normally include when sending a non-templated email. 
+
+That's it! You're ready to send using a template stored with Postmark.
+
+The following is a snippet showing a complete email with template request:
+
+```javascript
+var postmark = require("postmark");
+var client = new postmark.Client("<server key>");
+
+client.sendEmailWithTemplate({
+    "From": "donotreply@example.com", 
+    "TemplateId": <templateId>,
+    "To": "target@example.us", 
+    "TemplateModel": {
+        "Property1" : 1,
+        "Property2" : "hello"
+    }
+});
+```
+
+As with all other Postmark client calls, you can include an optional callback function, allowing you to handle any errors, and to examine the API response.
+
+*Happy Sending!*
