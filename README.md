@@ -14,7 +14,7 @@ Installing `postmark` is super simple:
 npm install postmark
 ```
 
-### Sending an Email:
+### Sending an Email
 
 To send your first email, all you need to do is:
 
@@ -106,7 +106,7 @@ postmark.sendEmailBatch(messages, function (error, batchResults) {
 
 The Postmark API will return an array of statuses, one for each message sent. You may iterate over the `batchResults` for information about each sent message. For further details, please see the [Postmark Batch API](http://developer.postmarkapp.com/developer-build.html#batching-messages).
 
-### Sending an Email using a Template:
+### Sending an Email using a Template
 
 The process of sending an email using a template in Postmark is similar to sending a single email, but there is a little bit of setup.
 
