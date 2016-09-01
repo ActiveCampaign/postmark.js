@@ -86,7 +86,7 @@
 <p><a href="https://travis-ci.org/wildbit/postmark.js"><img src="https://travis-ci.org/wildbit/postmark.js.svg?branch=master" alt="Build Status"></a></p>
 <p><a href="https://wildbit.github.io/postmark.js/">Complete documentation can be found here</a>, but the following information should get you started...</p>
 <h3>Install</h3><p>Installing <code>postmark</code> is super simple:</p>
-<pre class="prettyprint source lang-bash"><code>npm install postmark</code></pre><h3>Sending an Email:</h3><p>To send your first email, all you need to do is:</p>
+<pre class="prettyprint source lang-bash"><code>npm install postmark</code></pre><h3>Sending an Email</h3><p>To send your first email, all you need to do is:</p>
 <pre class="prettyprint source lang-javascript"><code>var postmark = require(&quot;postmark&quot;);
 var client = new postmark.Client(&quot;&lt;server key>&quot;);
 
@@ -150,7 +150,7 @@ postmark.sendEmailBatch(messages, function (error, batchResults) {
     }
     console.info(&quot;Messages sent to postmark&quot;);
 });</code></pre><p>The Postmark API will return an array of statuses, one for each message sent. You may iterate over the <code>batchResults</code> for information about each sent message. For further details, please see the <a href="http://developer.postmarkapp.com/developer-build.html#batching-messages">Postmark Batch API</a>.</p>
-<h3>Sending an Email using a Template:</h3><p>The process of sending an email using a template in Postmark is similar to sending a single email, but there is a little bit of setup.</p>
+<h3>Sending an Email using a Template</h3><p>The process of sending an email using a template in Postmark is similar to sending a single email, but there is a little bit of setup.</p>
 <p>If you have not already created a template, login to the <a href="https://postmarkapp.com">Postmark UI</a>, navigate to one of your <code>Server</code>s, and add a template. Make note of the <code>TemplateId</code>, you will use that below. (You can also use our Template API to manage templates, if you wish to do so).</p>
 <p>After you have created/selected a template to use, there are minor differences in the request payload for sending with a template..</p>
 <p>First, you need to include the <code>TemplateId</code>, and <code>TemplateModel</code> (the values that you want to use in your template), 
