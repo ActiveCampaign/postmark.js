@@ -61,7 +61,7 @@ client.sendEmail({
       "Name": "PrettyUnicorn.jpg",
       "ContentType": "image/jpeg"
     }]
-}, function(error, success) {
+}, function(error, result) {
     if(error) {
         console.error("Unable to send via postmark: " + error.message);
         return;
