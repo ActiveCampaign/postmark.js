@@ -117,7 +117,7 @@ client.sendEmail({
       &quot;Name&quot;: &quot;PrettyUnicorn.jpg&quot;,
       &quot;ContentType&quot;: &quot;image/jpeg&quot;
     }]
-}, function(error, success) {
+}, function(error, result) {
     if(error) {
         console.error(&quot;Unable to send via postmark: &quot; + error.message);
         return;
