@@ -13,14 +13,14 @@ describe('client message processing', function() {
   this.timeout(30000);
 
   it('can search outbound message', function(done) {
-    var client = new postmark.Client(testingKeys.get('WRITE_TEST_SERVER_TOKEN'));
+    var client = new postmark.Client(testingKeys.get('READ_SELENIUM_TEST_SERVER_TOKEN'));
     client.getOutboundMessages({
       count: 1
     }, done);
   });
 
   it('can get outbound message details', function(done) {
-    var client = new postmark.Client(testingKeys.get('WRITE_TEST_SERVER_TOKEN'));
+    var client = new postmark.Client(testingKeys.get('READ_SELENIUM_TEST_SERVER_TOKEN'));
     client.getOutboundMessages({
       count: 1
     }, function(err, msgs) {

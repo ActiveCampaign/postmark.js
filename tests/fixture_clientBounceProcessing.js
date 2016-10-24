@@ -14,7 +14,7 @@ describe('client bounce operations', function() {
   var _client = null;
 
   beforeEach(function() {
-    _client = new postmark.Client(testingKeys.get('WRITE_TEST_SERVER_TOKEN'));
+    _client = new postmark.Client(testingKeys.get('READ_SELENIUM_TEST_SERVER_TOKEN'));
   });
 
   it('can get get bounce', function(done) {

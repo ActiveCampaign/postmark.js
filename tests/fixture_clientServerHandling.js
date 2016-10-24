@@ -22,13 +22,14 @@ describe('client server handling', function() {
   });
 
   it("should edit current server", function() {
-    var newName = "test-server" + (new Date()).toISOString()
+    var newName = "node-js-base-test-server" + (new Date()).toISOString()
     _client.editServer({
       Name: newName
     }, function(err, updatedServer) {
       _client.getServer(function(err, server) {
         assert.equal(server.Name, updatedServer.Name);
         assert.equal(server.Name, newName);
+
       });
     });
   });
