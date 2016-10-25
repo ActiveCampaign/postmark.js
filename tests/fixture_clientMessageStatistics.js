@@ -2,7 +2,7 @@ var mocha = require('mocha');
 var assert = require('assert');
 var nconf = require('nconf');
 var testingKeys = nconf.env().file({
-  file: __dirname + '/testing_keys.json'
+  file: __dirname + '/../testing_keys.json'
 });
 var util = require('util');
 var merge = require('merge');
@@ -54,6 +54,10 @@ describe('client stats operations', function() {
 
   it('can get email client usage', function(done) {
     _client.getEmailClientUsage(done);
+  });
+
+  it('can get bounce counts', function(done) {
+    _client.getMessageOpens(done);
   });
 
   it('can get bounce counts', function(done) {

@@ -2,7 +2,7 @@ var mocha = require('mocha');
 var assert = require('assert');
 var nconf = require('nconf');
 var testingKeys = nconf.env().file({
-  file: __dirname + '/testing_keys.json'
+  file: __dirname + '/../testing_keys.json'
 });
 var util = require('util');
 var merge = require('merge');
