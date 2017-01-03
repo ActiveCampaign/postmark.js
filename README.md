@@ -4,7 +4,7 @@ Send emails with the greatest of ease! Now your node.js application can send ema
 
 [![Build Status](https://travis-ci.org/wildbit/postmark.js.svg?branch=master)](https://travis-ci.org/wildbit/postmark.js)
 
-[Complete documentation can be found here](https://wildbit.github.io/postmark.js/), but the following information should get you started...
+As the official node.js library for Postmark, postmark.js has support for the entire REST API. To see everything that is supported, have a look at the [complete documentation](https://wildbit.github.io/postmark.js/), but the following information covers the most common sending cases...
 
 ### Install
 
