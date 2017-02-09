@@ -10,7 +10,7 @@ var merge = require('merge');
 var postmark = require('../lib/postmark/index.js');
 
 describe('admin client signature management', function() {
-  this.timeout(4000);
+  this.timeout(10000);
   var prefix = "node-js-tests";
 
   var _client = null;
