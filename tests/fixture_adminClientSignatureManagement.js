@@ -23,7 +23,7 @@ describe('admin client signature management', function() {
     _client = new postmark.AdminClient(testingKeys.get('WRITE_ACCOUNT_TOKEN'));
   });
 
-  after(function() {
+  function cleanup() {
     var rulePrefixTester = new RegExp(prefix);
     var c = new postmark.AdminClient(testingKeys.get('WRITE_ACCOUNT_TOKEN'));
     c.listSenderSignatures(function(err, resp) {
@@ -34,9 +34,24 @@ describe('admin client signature management', function() {
             c.deleteSenderSignature(signature.ID);
           }
         }
+          
+        c.listDomains(function(err, resp) {
+            if (!err) {
+                var tester = new RegExp(_email.split('@')[1]);  
+                for (var i = 0; i < resp.Domains.length; i++) {
+                  var domain = resp.Domains[i];  
+                  if (tester.test(domain.Name)) {
+                    c.deleteDomain(domain.ID);
+                  }
+                }
+            }
+        });
       }
     });
-  });
+  }
+    
+  after(cleanup);
+  before(cleanup);
 
   it("can list signatures", function(done) {
     _client.listSenderSignatures(done);

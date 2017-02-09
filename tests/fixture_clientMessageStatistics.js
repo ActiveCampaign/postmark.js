@@ -67,11 +67,15 @@ describe('client stats operations', function() {
   it('can get message opens for single message', function(done) {
     _client.getMessageOpens({
       count: 1
-    }, function(err, batch) {
-      _client.getMessageOpensForSingleMessage(batch.Opens[0].MessageID, {
+    }, function (err, batch) {
+      if (err) {
+        done(err);
+      } else {
+        _client.getMessageOpensForSingleMessage(batch.Opens[0].MessageID, {
           count: 1
         },
-        done);
+          done);
+      }
     });
   });
 

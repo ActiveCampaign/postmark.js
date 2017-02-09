@@ -24,7 +24,10 @@ describe('admin client domain management', function() {
     _returnPath = 'return.' + _domainName;
   });
 
-  after(function() {
+  before(cleanup);
+  after(cleanup);
+
+  function cleanup(){
     var rulePrefixTester = new RegExp(prefix);
     var c = new postmark.AdminClient(testingKeys.get('WRITE_ACCOUNT_TOKEN'));
     c.listDomains(function(err, resp) {
@@ -37,8 +40,8 @@ describe('admin client domain management', function() {
         }
       }
     });
-  });
-
+  };
+  
   it("can create a domain", function(done) {
     _client.createDomain({
       Name: _domainName,

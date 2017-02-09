@@ -19,7 +19,7 @@ describe('admin client server management', function() {
     _client = new postmark.AdminClient(testingKeys.get('WRITE_ACCOUNT_TOKEN'));
   });
 
-  after(function() {
+  function cleanup() {
     var rulePrefixTester = new RegExp(prefix);
     var c = new postmark.AdminClient(testingKeys.get('WRITE_ACCOUNT_TOKEN'));
     c.listServers(function(err, resp) {
@@ -32,7 +32,10 @@ describe('admin client server management', function() {
         }
       }
     });
-  });
+  };
+
+  before(cleanup);  
+  after(cleanup);
 
   it("can get a server", function(done) {
     _client.listServers(function(err, servers) {
