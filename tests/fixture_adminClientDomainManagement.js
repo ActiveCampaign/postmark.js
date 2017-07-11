@@ -8,6 +8,7 @@ var util = require('util');
 var merge = require('merge');
 
 var postmark = require('../lib/postmark/index.js');
+var helpers = require('./test_helpers.js');
 
 describe('admin client domain management', function() {
   this.timeout(10000);
@@ -35,7 +36,7 @@ describe('admin client domain management', function() {
         for (var i = 0; i < resp.Domains.length; i++) {
           var domain = resp.Domains[i];
           if (rulePrefixTester.test(domain.Name)) {
-            c.deleteDomain(domain.ID);
+            c.deleteDomain(domain.ID, helpers.report);
           }
         }
       }
@@ -56,8 +57,12 @@ describe('admin client domain management', function() {
   it("can get a domain", function(done) {
     _client.createDomain({
       Name: 'get-test-' + _domainName
-    }, function(err, domain) {
-      _client.getDomain(domain.ID, done);
+    }, function (err, domain) {
+      if (err) {
+        done(err);
+      } else {
+        _client.getDomain(domain.ID, done);
+      }  
     });
   });
   

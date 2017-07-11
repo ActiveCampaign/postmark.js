@@ -8,6 +8,7 @@ var util = require('util');
 var merge = require('merge');
 
 var postmark = require('../lib/postmark/index.js');
+var helpers = require('./test_helpers.js');
 
 describe('client tag handling', function() {
     this.timeout(10000);
@@ -27,7 +28,7 @@ describe('client tag handling', function() {
                 for (var i = 0; i < trigs.InboundRules.length; i++) {
                     var trigger = trigs.InboundRules[i];
                     if (rulePrefixTester.test(trigger.Rule)) {
-                        c.deleteInboundRuleTrigger(trigger.ID);
+                        c.deleteInboundRuleTrigger(trigger.ID, helpers.report);
                     }
                 }
             }
@@ -38,7 +39,7 @@ describe('client tag handling', function() {
                 for (var i = 0; i < trigs.Tags.length; i++) {
                     var trigger = trigs.Tags[i];
                     if (rulePrefixTester.test(trigger.MatchName)) {
-                        c.deleteTagTrigger(trigger.ID);
+                        c.deleteTagTrigger(trigger.ID, helpers.report);
                     }
                 }
             }

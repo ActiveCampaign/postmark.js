@@ -8,13 +8,14 @@ var util = require('util');
 var merge = require('merge');
 
 var postmark = require('../lib/postmark/index.js');
+var helpers = require('./test_helpers.js');
 
 describe('admin client signature management', function() {
   this.timeout(10000);
   var prefix = "node-js-tests";
 
   var _client = null;
-  var _email = null
+  var _email = null;
 
   beforeEach(function() {
 
@@ -31,7 +32,7 @@ describe('admin client signature management', function() {
         for (var i = 0; i < resp.SenderSignatures.length; i++) {
           var signature = resp.SenderSignatures[i];
           if (rulePrefixTester.test(signature.Name)) {
-            c.deleteSenderSignature(signature.ID);
+            c.deleteSenderSignature(signature.ID, helpers.report);
           }
         }
           
@@ -41,7 +42,7 @@ describe('admin client signature management', function() {
                 for (var i = 0; i < resp.Domains.length; i++) {
                   var domain = resp.Domains[i];  
                   if (tester.test(domain.Name)) {
-                    c.deleteDomain(domain.ID);
+                    c.deleteDomain(domain.ID, helpers.report);
                   }
                 }
             }
@@ -61,8 +62,12 @@ describe('admin client signature management', function() {
     _client.createSenderSignature({
       Name: _email,
       FromEmail: _email
-    }, function(err, signature) {
-      _client.getSenderSignature(signature.ID, done);
+    }, function (err, signature) {
+      if (!err) {
+        _client.getSenderSignature(signature.ID, done);
+      } else {
+        done(err);
+      }
     });
   });
 

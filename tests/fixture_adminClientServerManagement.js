@@ -8,6 +8,7 @@ var util = require('util');
 var merge = require('merge');
 
 var postmark = require('../lib/postmark/index.js');
+var helpers = require('./test_helpers.js');
 
 describe('admin client server management', function() {
   this.timeout(10000);
@@ -27,7 +28,7 @@ describe('admin client server management', function() {
         for (var i = 0; i < resp.Servers.length; i++) {
           var server = resp.Servers[i];
           if (rulePrefixTester.test(server.Name)) {
-            c.deleteServer(server.ID);
+            c.deleteServer(server.ID, helpers.report);
           }
         }
       }
