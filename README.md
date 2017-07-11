@@ -32,7 +32,7 @@ client.sendEmail({
 
 Replace <server key> with the server key provided by Postmark and you are good to go!
 
-Your message must be provided in the format specified in the [Postmark API](http://developer.postmarkapp.com/developer-build.html#message-format) and will be verified. The **member names of 
+Your message must be provided in the format specified in the [Postmark API](http://developer.postmarkapp.com/developer-api-messages.html#outbound-message-details) and will be verified. The **member names of 
 message payloads are case-sensitive**, and messages not matching the documented format will not
 be accepted by the API.
 
