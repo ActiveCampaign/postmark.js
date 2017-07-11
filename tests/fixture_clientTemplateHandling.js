@@ -8,6 +8,7 @@ var util = require('util');
 var merge = require('merge');
 
 var postmark = require('../lib/postmark/index.js');
+var helpers = require('./test_helpers.js');
 
 describe('client template handling', function() {
     this.timeout(10000);
@@ -15,19 +16,21 @@ describe('client template handling', function() {
 
     beforeEach(function() {
         _client = new postmark.Client(testingKeys.get('WRITE_TEST_SERVER_TOKEN'));
+        cleanup();
     });
 
-    after(function() {
-        _client.getTemplates(function(err, results) {
-
+    function cleanup() {
+        _client.getTemplates({ offset : 0, count : 100 }, function(err, results) {
             while (results.Templates.length > 0) {
                 var t = results.Templates.pop();
                 if (/testing-template-node-js/.test(t.Name)) {
-                    _client.deleteTemplate(t.TemplateId);
+                    _client.deleteTemplate(t.TemplateId, helpers.report);
                 }
             }
         });
-    });
+    }
+
+    after(cleanup);
 
     it('should retrieve a list of templates.', function(done) {
         _client.getTemplates(done);

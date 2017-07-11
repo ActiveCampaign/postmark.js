@@ -8,13 +8,14 @@ var util = require('util');
 var merge = require('merge');
 
 var postmark = require('../lib/postmark/index.js');
+var helpers = require('./test_helpers.js');
 
 describe('admin client signature management', function() {
-  this.timeout(4000);
+  this.timeout(10000);
   var prefix = "node-js-tests";
 
   var _client = null;
-  var _email = null
+  var _email = null;
 
   beforeEach(function() {
 
@@ -23,7 +24,7 @@ describe('admin client signature management', function() {
     _client = new postmark.AdminClient(testingKeys.get('WRITE_ACCOUNT_TOKEN'));
   });
 
-  after(function() {
+  function cleanup() {
     var rulePrefixTester = new RegExp(prefix);
     var c = new postmark.AdminClient(testingKeys.get('WRITE_ACCOUNT_TOKEN'));
     c.listSenderSignatures(function(err, resp) {
@@ -31,12 +32,27 @@ describe('admin client signature management', function() {
         for (var i = 0; i < resp.SenderSignatures.length; i++) {
           var signature = resp.SenderSignatures[i];
           if (rulePrefixTester.test(signature.Name)) {
-            c.deleteSenderSignature(signature.ID);
+            c.deleteSenderSignature(signature.ID, helpers.report);
           }
         }
+          
+        c.listDomains(function(err, resp) {
+            if (!err) {
+                var tester = new RegExp(_email.split('@')[1]);  
+                for (var i = 0; i < resp.Domains.length; i++) {
+                  var domain = resp.Domains[i];  
+                  if (tester.test(domain.Name)) {
+                    c.deleteDomain(domain.ID, helpers.report);
+                  }
+                }
+            }
+        });
       }
     });
-  });
+  }
+    
+  after(cleanup);
+  before(cleanup);
 
   it("can list signatures", function(done) {
     _client.listSenderSignatures(done);
@@ -46,8 +62,12 @@ describe('admin client signature management', function() {
     _client.createSenderSignature({
       Name: _email,
       FromEmail: _email
-    }, function(err, signature) {
-      _client.getSenderSignature(signature.ID, done);
+    }, function (err, signature) {
+      if (!err) {
+        _client.getSenderSignature(signature.ID, done);
+      } else {
+        done(err);
+      }
     });
   });
 

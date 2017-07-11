@@ -8,9 +8,10 @@ var util = require('util');
 var merge = require('merge');
 
 var postmark = require('../lib/postmark/index.js');
+var helpers = require('./test_helpers.js');
 
 describe('admin client server management', function() {
-  this.timeout(4000);
+  this.timeout(10000);
   var prefix = "node-js-tests";
 
   var _client = null;
@@ -19,7 +20,7 @@ describe('admin client server management', function() {
     _client = new postmark.AdminClient(testingKeys.get('WRITE_ACCOUNT_TOKEN'));
   });
 
-  after(function() {
+  function cleanup() {
     var rulePrefixTester = new RegExp(prefix);
     var c = new postmark.AdminClient(testingKeys.get('WRITE_ACCOUNT_TOKEN'));
     c.listServers(function(err, resp) {
@@ -27,12 +28,15 @@ describe('admin client server management', function() {
         for (var i = 0; i < resp.Servers.length; i++) {
           var server = resp.Servers[i];
           if (rulePrefixTester.test(server.Name)) {
-            c.deleteServer(server.ID);
+            c.deleteServer(server.ID, helpers.report);
           }
         }
       }
     });
-  });
+  };
+
+  before(cleanup);  
+  after(cleanup);
 
   it("can get a server", function(done) {
     _client.listServers(function(err, servers) {

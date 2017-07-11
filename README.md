@@ -4,7 +4,7 @@ Send emails with the greatest of ease! Now your node.js application can send ema
 
 [![Build Status](https://travis-ci.org/wildbit/postmark.js.svg?branch=master)](https://travis-ci.org/wildbit/postmark.js)
 
-[Complete documentation can be found here](https://wildbit.github.io/postmark.js/), but the following information should get you started...
+As the official node.js library for Postmark, postmark.js has support for the entire REST API. To see everything that is supported, have a look at the [complete documentation](https://wildbit.github.io/postmark.js/), but the following information covers the most common sending cases...
 
 ### Install
 
@@ -32,7 +32,7 @@ client.sendEmail({
 
 Replace <server key> with the server key provided by Postmark and you are good to go!
 
-Your message must be provided in the format specified in the [Postmark API](http://developer.postmarkapp.com/developer-build.html#message-format) and will be verified. The **member names of 
+Your message must be provided in the format specified in the [Postmark API](http://developer.postmarkapp.com/developer-api-messages.html#outbound-message-details) and will be verified. The **member names of 
 message payloads are case-sensitive**, and messages not matching the documented format will not
 be accepted by the API.
 

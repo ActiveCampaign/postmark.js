@@ -22,10 +22,6 @@ describe('client click stats operations', function() {
     _client.getClickCounts(done);
   });
 
-  it('can get bounce counts', function(done) {
-    _client.getMessageOpens(done);
-  });
-
   it('can get browser usage', function(done) {
     _client.getBrowserUsage(done);
   });

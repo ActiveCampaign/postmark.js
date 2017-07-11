@@ -8,9 +8,10 @@ var util = require('util');
 var merge = require('merge');
 
 var postmark = require('../lib/postmark/index.js');
+var helpers = require('./test_helpers.js');
 
 describe('admin client domain management', function() {
-  this.timeout(4000);
+  this.timeout(10000);
   var prefix = 'node-js-test-domain';
 
   var _client = null;
@@ -24,7 +25,10 @@ describe('admin client domain management', function() {
     _returnPath = 'return.' + _domainName;
   });
 
-  after(function() {
+  before(cleanup);
+  after(cleanup);
+
+  function cleanup(){
     var rulePrefixTester = new RegExp(prefix);
     var c = new postmark.AdminClient(testingKeys.get('WRITE_ACCOUNT_TOKEN'));
     c.listDomains(function(err, resp) {
@@ -32,13 +36,13 @@ describe('admin client domain management', function() {
         for (var i = 0; i < resp.Domains.length; i++) {
           var domain = resp.Domains[i];
           if (rulePrefixTester.test(domain.Name)) {
-            c.deleteDomain(domain.ID);
+            c.deleteDomain(domain.ID, helpers.report);
           }
         }
       }
     });
-  });
-
+  };
+  
   it("can create a domain", function(done) {
     _client.createDomain({
       Name: _domainName,
@@ -53,8 +57,12 @@ describe('admin client domain management', function() {
   it("can get a domain", function(done) {
     _client.createDomain({
       Name: 'get-test-' + _domainName
-    }, function(err, domain) {
-      _client.getDomain(domain.ID, done);
+    }, function (err, domain) {
+      if (err) {
+        done(err);
+      } else {
+        _client.getDomain(domain.ID, done);
+      }  
     });
   });
   
