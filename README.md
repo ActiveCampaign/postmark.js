@@ -104,7 +104,7 @@ postmark.sendEmailBatch(messages, function (error, batchResults) {
 });
 ```
 
-The Postmark API will return an array of statuses, one for each message sent. You may iterate over the `batchResults` for information about each sent message. For further details, please see the [Postmark Batch API](http://developer.postmarkapp.com/developer-build.html#batching-messages).
+The Postmark API will return an array of statuses, one for each message sent. You may iterate over the `batchResults` for information about each sent message. For further details, please see the [Postmark Batch API](https://postmarkapp.com/developer/user-guide/sending-email/sending-with-api#batch-emails).
 
 ### Sending an Email using a Template
 
