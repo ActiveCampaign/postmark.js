@@ -6,8 +6,8 @@
         "utility",
         "postmark"
     ],
-    "version": "1.4.1",
-    "author": "Chris Williams <voodootikigod@gmail.com>",
+    "version": "1.5.0",
+    "author": "Andrew Theken <andrew+postmark.js@wildbit.com>",
     "contributors": [
         "Aaron Blum",
         "Aleksey Aleksandrov",
