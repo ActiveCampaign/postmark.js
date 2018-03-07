@@ -1686,7 +1686,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="deleteTemplate"><span class="type-signature"></span>deleteTemplate<span class="signature">(<span class="optional">id</span>, callback)</span><span class="type-signature"> &rarr; {<a href="Promise.html">Promise</a>}</span></h4>
+    <h4 class="name" id="deleteTemplate"><span class="type-signature"></span>deleteTemplate<span class="signature">(<span class="optional">idOrAlias</span>, callback)</span><span class="type-signature"> &rarr; {<a href="Promise.html">Promise</a>}</span></h4>
     
     
 </dt>
@@ -1731,13 +1731,16 @@ This is the main entry point to the standard Postmark API.</p>
 
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>idOrAlias</code></td>
             
 
             <td class="type">
             
                 
 <span class="param-type">int</span>
+|
+
+<span class="param-type">string</span>
 
 
             
@@ -1757,7 +1760,7 @@ This is the main entry point to the standard Postmark API.</p>
 
             
 
-            <td class="description last"><p>The templateid you wish to delete.</p></td>
+            <td class="description last"><p>The templateid or template alias you wish to delete.</p></td>
         </tr>
 
 	
@@ -2245,7 +2248,7 @@ This is the main entry point to the standard Postmark API.</p>
         
             
 <dt>
-    <h4 class="name" id="editTemplate"><span class="type-signature"></span>editTemplate<span class="signature">(id, template, callback)</span><span class="type-signature"> &rarr; {<a href="Promise.html">Promise</a>}</span></h4>
+    <h4 class="name" id="editTemplate"><span class="type-signature"></span>editTemplate<span class="signature">(<span class="optional">idOrAlias</span>, <span class="optional">template</span>, <span class="optional">callback</span>)</span><span class="type-signature"> &rarr; {<a href="Promise.html">Promise</a>}</span></h4>
     
     
 </dt>
@@ -2276,6 +2279,8 @@ This is the main entry point to the standard Postmark API.</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -2288,23 +2293,36 @@ This is the main entry point to the standard Postmark API.</p>
 
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>idOrAlias</code></td>
             
 
             <td class="type">
             
                 
 <span class="param-type">number</span>
+|
+
+<span class="param-type">string</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The id of the template you wish to update.</p></td>
+            <td class="description last"><p>The id or alias of the template you wish to update.</p></td>
         </tr>
 
 	
@@ -2323,6 +2341,16 @@ This is the main entry point to the standard Postmark API.</p>
             
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -2346,6 +2374,16 @@ This is the main entry point to the standard Postmark API.</p>
             
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -7848,7 +7886,7 @@ You may retrieve additional Tag Triggers by making successive calls to the API.<
         
             
 <dt>
-    <h4 class="name" id="getTemplate"><span class="type-signature"></span>getTemplate<span class="signature">(<span class="optional">id</span>, callback)</span><span class="type-signature"> &rarr; {<a href="Promise.html">Promise</a>}</span></h4>
+    <h4 class="name" id="getTemplate"><span class="type-signature"></span>getTemplate<span class="signature">(<span class="optional">idOrAlias</span>, callback)</span><span class="type-signature"> &rarr; {<a href="Promise.html">Promise</a>}</span></h4>
     
     
 </dt>
@@ -7893,13 +7931,16 @@ You may retrieve additional Tag Triggers by making successive calls to the API.<
 
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>idOrAlias</code></td>
             
 
             <td class="type">
             
                 
 <span class="param-type">int</span>
+|
+
+<span class="param-type">string</span>
 
 
             
@@ -7919,7 +7960,7 @@ You may retrieve additional Tag Triggers by making successive calls to the API.<
 
             
 
-            <td class="description last"><p>The templateid for the template you wish to retrieve.</p></td>
+            <td class="description last"><p>The templateid or alias for the template you wish to retrieve.</p></td>
         </tr>
 
 	
@@ -8957,6 +8998,178 @@ You may retrieve additional Tag Triggers by making successive calls to the API.<
     
     
     <div class="description">
+        <p>Send a batch of templated email messages.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>messages</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="global.html#PostmarkTemplateMessage">PostmarkTemplateMessage</a>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>An array of <code>PostmarkTemplateMessage</code> you wish to send using this Client.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#PostmarkCallback">PostmarkCallback</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A standard callback that is called when the API request completes.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>If no callback is passed, returns a Promise with the JSON response from the API (or error).</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="Promise.html">Promise</a></span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="sendEmailBatch"><span class="type-signature"></span>sendEmailBatch<span class="signature">(messages, callback)</span><span class="type-signature"> &rarr; {<a href="Promise.html">Promise</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
         <p>Send a batch of email messages.</p>
     </div>
     
@@ -9365,7 +9578,7 @@ model to be used when sending using the specified template content.</p>
 
             
 
-            <td class="description last"><p>The template you wish to update.</p></td>
+            <td class="description last"><p>The template you wish to validate.</p></td>
         </tr>
 
 	
@@ -9516,7 +9729,7 @@ model to be used when sending using the specified template content.</p>
 
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta1</a>
-	on Mon Nov 20th 2017 using the <a
+	on Wed Mar 7th 2018 using the <a
 	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 </span>
 </footer>
