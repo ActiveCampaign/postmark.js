@@ -1,3 +1,5 @@
+'use strict';
+
 var mocha = require('mocha');
 var assert = require('assert');
 var nconf = require('nconf');
@@ -13,9 +15,11 @@ describe('client email sending', function() {
   // allow some of the more intensive tests to take longer.
   this.timeout(30000);
   var _client = null;
+  var testTemplateAlias = 'postmark-js-batch-testing template';
 
   beforeEach(function() {
     _client = new postmark.Client(testingKeys.get('WRITE_TEST_SERVER_TOKEN'));
+    _client.deleteTemplate(testTemplateAlias);
   });
 
   it('can send single email ("send" alias)', function(done) {
@@ -63,4 +67,24 @@ describe('client email sending', function() {
     }
     _client.sendEmailBatch(emailBatch, done);
   });
+
+  it('can send a batch of templated emails', function(done) {
+    var emailBatch = [];
+    //create a template, and then send with it.
+    _client.createTemplate({
+      subject: 'postmark-js-batch-testing template',
+      textBody: 'postmark-js-batch-testing template',
+      name: testTemplateAlias,
+      alias: testTemplateAlias
+    }, function(){
+        for (var i = 0; i < 3; i++) {
+          emailBatch.push({
+            to: testingKeys.get('WRITE_TEST_EMAIL_RECIPIENT_ADDRESS'),
+            from: testingKeys.get('WRITE_TEST_SENDER_EMAIL_ADDRESS'),
+            templateAlias: 'postmark-js-batch-testing'
+          });
+        }
+        _client.sendEmailBatchWithTemplates(emailBatch, done);
+      });
+    });  
 });
