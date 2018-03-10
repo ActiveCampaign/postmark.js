@@ -1,68 +1,64 @@
 {
-    "name": "postmark",
-    "description": "Ridiculously Simple Email Sending From Node.js For http://www.postmarkapp.com",
-    "tags": [
-        "email",
-        "utility",
-        "postmark"
-    ],
-    "version": "1.6.1",
-    "author": "Andrew Theken <andrew+postmark.js@wildbit.com>",
-    "contributors": [
-        "Aaron Blum",
-        "Aleksey Aleksandrov",
-        "Alex Shepard",
-        "Andrew Theken",
-        "Antony Jones",
-        "Ben Burwell",
-        "Ben Williamson",
-        "Chris Williams",
-        "Jakub Borys",
-        "Mark Nguyen",
-        "Matt",
-        "Matthew Blackshaw",
-        "Matthew Conlen",
-        "Ryan Kirkman",
-        "Scott Anderson",
-        "Sebastien Chopin",
-        "Theophane RUPIN",
-        "codesplicer",
-        "francescoRubini"
-    ],
-    "main": "./lib/postmark",
-    "directories": {
-        "lib": "./lib/postmark"
-    },
-    "scripts": {
-        "test": "node_modules/.bin/mocha tests/fixture_*.js",
-        "watchtests": "node_modules/.bin/mocha -R list -w --recursive -G tests/fixture_*.js",
-        "compile-docs": "echo 'Generating docs...' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/jsdoc -u ./tutorials -R README.md -c jsdoc.conf.json -t ./node_modules/ink-docstrap/template -d docs ./lib/postmark/*.js && cp ./tutorials/postmark-logo.png ./docs && git add -A ./docs && echo 'Generated docs!'",
-        "pull-docs": "git subtree pull --prefix docs origin gh-pages",
-        "push-docs": "git subtree push --prefix docs origin gh-pages"
-    },
-    "homepage": "http://wildbit.github.io/postmark.js",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/wildbit/postmark.js.git"
-    },
-    "bugs": {
-        "url": "https://github.com/wildbit/postmark.js/issues"
-    },
-    "engines": [
-        "node >=0.8.0"
-    ],
-    "precommit": [
-        "compile-docs",
-        "test"
-    ],
-    "devDependencies": {
-        "ink-docstrap": "git://github.com/wildbit/docstrap",
-        "jsdoc": "3.3.0-beta1",
-        "mocha": "2.1.0",
-        "nconf": "0.7.1",
-        "pre-commit": "1.0.2"
-    },
-    "dependencies": {
-        "merge": "1.2.0"
-    }
+  "name": "postmark",
+  "description": "Ridiculously Simple Email Sending From Node.js For http://www.postmarkapp.com",
+  "tags": [
+    "email",
+    "utility",
+    "postmark"
+  ],
+  "version": "2.0",
+  "author": "Andrew Theken <andrew+postmark.js@wildbit.com>",
+  "contributors": [
+    "Aaron Blum",
+    "Aleksey Aleksandrov",
+    "Alex Shepard",
+    "Andrew Theken",
+    "Antony Jones",
+    "Ben Burwell",
+    "Ben Williamson",
+    "Chris Williams",
+    "Jakub Borys",
+    "Mark Nguyen",
+    "Matt",
+    "Matthew Blackshaw",
+    "Matthew Conlen",
+    "Ryan Kirkman",
+    "Scott Anderson",
+    "Sebastien Chopin",
+    "Theophane RUPIN",
+    "codesplicer",
+    "francescoRubini"
+  ],
+  "main": "./dist/index.js",
+  "directories": {
+    "lib": "./dist/index.js"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/mocha tests/fixture_*.js",
+    "watchtests": "node_modules/.bin/mocha -R list -w --recursive -G tests/fixture_*.js",
+    "compile-docs": "echo 'Generating docs...' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/typedoc --module postmark --out ./docs && git add -A ./docs && echo 'Generated docs!'",
+    "pull-docs": "git subtree pull --prefix docs origin gh-pages",
+    "push-docs": "git subtree push --prefix docs origin gh-pages"
+  },
+  "homepage": "http://wildbit.github.io/postmark.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wildbit/postmark.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wildbit/postmark.js/issues"
+  },
+  "precommit": [
+    "compile-docs",
+    "test"
+  ],
+  "devDependencies": {
+    "mocha": "2.1.0",
+    "nconf": "0.7.1",
+    "pre-commit": "1.0.2"
+  },
+  "dependencies": {
+    "merge": "1.2.0",
+    "ts-promise": "^1.0.0"
+  }
 }
