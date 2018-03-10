@@ -1,5 +1,5 @@
-import Client from './Client'
-import AdminClient from './AdminClient';
+import ServerClient from './ServerClient';
+import AccountClient from './AccountClient';
 
-export default Client;
-export { Client, AdminClient };
+export default ServerClient;
+export { ServerClient, AccountClient };

@@ -7,7 +7,7 @@
     "utility",
     "postmark"
   ],
-  "version": "2.0.0",
+  "version": "2.0.0-alpha",
   "author": "Andrew Theken <andrew+postmark.js@wildbit.com>",
   "contributors": [
     "Aaron Blum",
@@ -38,7 +38,7 @@
     "compile": "node_modules/.bin/tsc && git add -A ./dist",
     "test": "node_modules/.bin/mocha tests/fixture_*.js",
     "watchtests": "node_modules/.bin/mocha -R list -w --recursive -G tests/fixture_*.js",
-    "compile-docs": "echo 'Generating docs...' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/typedoc --module postmark --out ./docs && git add -A ./docs && echo 'Generated docs!'",
+    "compile-docs": "echo 'Generating docs...' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/typedoc --module postmark --name Postmark.js --out ./docs --excludeProtected --excludePrivate --excludeNotExported --hideGenerator --theme minimal --mode file && git add -A ./docs && echo 'Generated docs!'",
     "pull-docs": "git subtree pull --prefix docs origin gh-pages",
     "push-docs": "git subtree push --prefix docs origin gh-pages"
   },

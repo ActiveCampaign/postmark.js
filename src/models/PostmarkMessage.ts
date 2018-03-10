@@ -1,3 +1,3 @@
-export default class PostmarkMessage{
+export default interface PostmarkMessage {
 
 }

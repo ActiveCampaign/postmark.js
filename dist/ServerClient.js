@@ -13,25 +13,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var _1 = require("./models/");
 var BaseClient_1 = require("./BaseClient");
 var utils_1 = require("./utils");
-var Client = /** @class */ (function (_super) {
-    __extends(Client, _super);
+var ServerClient = /** @class */ (function (_super) {
+    __extends(ServerClient, _super);
     /**
      * Create a client that can be used to interact with an individual Postmark Server.
      * @param serverToken The token for the server that you wish to interact with.
      * @param options Options to customize the behavior of the this client.
      */
-    function Client(serverToken, options) {
+    function ServerClient(serverToken, options) {
         return _super.call(this, serverToken, 'X-Postmark-Server-Token', options) || this;
     }
     /** Send a single email message. */
-    Client.prototype.sendEmail = function (message) {
+    ServerClient.prototype.sendEmail = function (message) {
         return this.processRequestWithBody('/email', _1.HttpMethod.POST, message);
     };
     /**
      * Send a message using a template.
      * @param message The message you wish to send.
      */
-    Client.prototype.sendEmailWithTemplate = function (message) {
+    ServerClient.prototype.sendEmailWithTemplate = function (message) {
         return this.processRequestWithBody('/email/withTemplate', _1.HttpMethod.POST, message);
     };
     ;
@@ -39,7 +39,7 @@ var Client = /** @class */ (function (_super) {
      * Send a batch of templated email messages.
      * @param messages An array of `TemplatedPostmarkMessage` you wish to send using this Client.
      */
-    Client.prototype.sendEmailBatchWithTemplates = function (messages) {
+    ServerClient.prototype.sendEmailBatchWithTemplates = function (messages) {
         return this.processRequestWithBody('/email/batchWithTemplates', _1.HttpMethod.POST, { Messages: messages });
     };
     ;
@@ -47,14 +47,14 @@ var Client = /** @class */ (function (_super) {
      * Send a batch of email messages.
      * @param messages An array of `PostmarkMessage` you wish to send using this Client.
      */
-    Client.prototype.sendEmailBatch = function (messages) {
+    ServerClient.prototype.sendEmailBatch = function (messages) {
         return this.processRequestWithBody('/email/batch', _1.HttpMethod.POST, messages);
     };
     ;
     /**
      * Retrieve delivery statistic information for the associated Server.
      */
-    Client.prototype.getDeliveryStatistics = function () {
+    ServerClient.prototype.getDeliveryStatistics = function () {
         return this.processRequestWithoutBody('/deliverystats', _1.HttpMethod.GET);
     };
     ;
@@ -63,7 +63,7 @@ var Client = /** @class */ (function (_super) {
      * @method getBounces
      * @param filter An optional filter for which bounces to retrieve.
      */
-    Client.prototype.getBounces = function (filter) {
+    ServerClient.prototype.getBounces = function (filter) {
         filter = utils_1.coalesce(filter, {
             count: 100,
             offset: 0
@@ -75,7 +75,7 @@ var Client = /** @class */ (function (_super) {
      * Get a information for a specific Bounce.
      * @param id The ID of the Bounce you wish to retrieve.
      */
-    Client.prototype.getBounce = function (id) {
+    ServerClient.prototype.getBounce = function (id) {
         return this.processRequestWithoutBody('/bounces/' + id, _1.HttpMethod.GET);
     };
     ;
@@ -83,7 +83,7 @@ var Client = /** @class */ (function (_super) {
      * Get a Bounce Dump for a specific Bounce.
      * @param id
      */
-    Client.prototype.getBounceDump = function (id) {
+    ServerClient.prototype.getBounceDump = function (id) {
         return this.processRequestWithoutBody('/bounces/' + id + '/dump', _1.HttpMethod.GET);
     };
     ;
@@ -91,21 +91,21 @@ var Client = /** @class */ (function (_super) {
      * Cause an email address that was deactivated due to a Bounce to be reactivated.
      * @param id The ID of the Bounce for which you wish to activate the associated email.
      */
-    Client.prototype.activateBounce = function (id) {
+    ServerClient.prototype.activateBounce = function (id) {
         return this.processRequestWithBody('/bounces/' + id + '/activate', _1.HttpMethod.PUT, null);
     };
     ;
     /**
      * Get an array of tags associated with bounces.
      */
-    Client.prototype.getBounceTags = function () {
+    ServerClient.prototype.getBounceTags = function () {
         return this.processRequestWithoutBody('/bounces/tags', _1.HttpMethod.GET);
     };
     ;
     /**
      * Get the information for the Server associated with this Client.
      */
-    Client.prototype.getServer = function () {
+    ServerClient.prototype.getServer = function () {
         return this.processRequestWithoutBody('/server', _1.HttpMethod.GET);
     };
     ;
@@ -113,7 +113,7 @@ var Client = /** @class */ (function (_super) {
      * Modify the Server associated with this Client.
      * @param serverOptions The options you wish to modify for this server.
      */
-    Client.prototype.editServer = function (serverOptions) {
+    ServerClient.prototype.editServer = function (serverOptions) {
         return this.processRequestWithBody('/server', _1.HttpMethod.PUT, serverOptions);
     };
     ;
@@ -122,7 +122,7 @@ var Client = /** @class */ (function (_super) {
      * You can make successive calls to the API to retrieve additional Outbound Messages.
      * @param filter Optional filtering parameters.
      */
-    Client.prototype.getOutboundMessages = function (filter) {
+    ServerClient.prototype.getOutboundMessages = function (filter) {
         filter = utils_1.coalesce(filter, {
             count: 100,
             offset: 0
@@ -134,7 +134,7 @@ var Client = /** @class */ (function (_super) {
      * Get details for a specific Outbound Message.
      * @param id The ID of the Outbound Message for which you wish to retrieve details.
      */
-    Client.prototype.getOutboundMessageDetails = function (id) {
+    ServerClient.prototype.getOutboundMessageDetails = function (id) {
         return this.processRequestWithoutBody('/messages/outbound/' + id + '/details', _1.HttpMethod.GET);
     };
     ;
@@ -143,7 +143,7 @@ var Client = /** @class */ (function (_super) {
      * You can make successive calls to the API to retrieve additional Opens information.
      * @param filter Optional filtering parameters.
      */
-    Client.prototype.getMessageOpens = function (filter) {
+    ServerClient.prototype.getMessageOpens = function (filter) {
         filter = utils_1.coalesce(filter, {
             count: 100,
             offset: 0
@@ -156,7 +156,7 @@ var Client = /** @class */ (function (_super) {
      * You can make successive calls to the API to retrieve additional Opens information.
      * @param filter Optional filtering parameters.
      */
-    Client.prototype.getMessageClicks = function (filter) {
+    ServerClient.prototype.getMessageClicks = function (filter) {
         filter = utils_1.coalesce(filter, {
             count: 100,
             offset: 0
@@ -169,7 +169,7 @@ var Client = /** @class */ (function (_super) {
      * @param messageId The MessageID for which clicks should be retrieved.
      * @param filter Optional filtering parameters.
      */
-    Client.prototype.getMessageClicksForSingleMessage = function (messageId, filter) {
+    ServerClient.prototype.getMessageClicksForSingleMessage = function (messageId, filter) {
         filter = utils_1.coalesce(filter, {
             count: 100,
             offset: 0
@@ -182,7 +182,7 @@ var Client = /** @class */ (function (_super) {
      * @param messageId The ID of the Message for which you wish to retrieve Opens.
      * @param filter Optional filtering parameters.
      */
-    Client.prototype.getMessageOpensForSingleMessage = function (messageId, filter) {
+    ServerClient.prototype.getMessageOpensForSingleMessage = function (messageId, filter) {
         filter = utils_1.coalesce(filter, {
             count: 100,
             offset: 0
@@ -195,7 +195,7 @@ var Client = /** @class */ (function (_super) {
      * You can make successive calls to the API to retrieve additional Inbound Messages.
      * @param filter Optional filtering parameters.
      */
-    Client.prototype.getInboundMessages = function (filter) {
+    ServerClient.prototype.getInboundMessages = function (filter) {
         filter = utils_1.coalesce(filter, {
             count: 100,
             offset: 0
@@ -207,7 +207,7 @@ var Client = /** @class */ (function (_super) {
      * Get details for a specific Inbound Message.
      * @param messageId The ID of the Inbound Message for which you wish to retrieve details.
      */
-    Client.prototype.getInboundMessageDetails = function (messageId) {
+    ServerClient.prototype.getInboundMessageDetails = function (messageId) {
         return this.processRequestWithoutBody("/messages/inbound/" + messageId + "/details", _1.HttpMethod.GET);
     };
     ;
@@ -215,7 +215,7 @@ var Client = /** @class */ (function (_super) {
      * Cause an Inbound Message to bypass filtering rules defined on this Client's associated Server.
      * @param messageId The ID of the Inbound Message for which you wish to bypass the filtering rules.
      */
-    Client.prototype.bypassBlockedInboundMessage = function (messageId) {
+    ServerClient.prototype.bypassBlockedInboundMessage = function (messageId) {
         return this.processRequestWithoutBody("/messages/inbound/" + messageId + "/bypass", _1.HttpMethod.PUT);
     };
     ;
@@ -223,7 +223,7 @@ var Client = /** @class */ (function (_super) {
      * Request that Postmark retry POSTing to the Inbound Hook for the specified message.
      * @param messageId The ID of the Inbound Message for which you wish to retry the inbound hook.
      */
-    Client.prototype.retryInboundHookForMessage = function (messageId) {
+    ServerClient.prototype.retryInboundHookForMessage = function (messageId) {
         return this.processRequestWithoutBody("/messages/inbound/" + messageId + "/retry", _1.HttpMethod.PUT);
     };
     ;
@@ -231,7 +231,7 @@ var Client = /** @class */ (function (_super) {
      * Get overview statistics on Outbound Messages sent from the Server associated with this Client.
      * @param filter Optional filtering parameters.
      */
-    Client.prototype.getOuboundOverview = function (filter) {
+    ServerClient.prototype.getOuboundOverview = function (filter) {
         return this.processRequestWithoutBody('/stats/outbound', _1.HttpMethod.GET, filter);
     };
     ;
@@ -239,7 +239,7 @@ var Client = /** @class */ (function (_super) {
      * Get statistics on email sent from the Server associated with this Client.
      * @param filter Optional filtering parameters.
      */
-    Client.prototype.getSentCounts = function (filter) {
+    ServerClient.prototype.getSentCounts = function (filter) {
         return this.processRequestWithoutBody('/stats/outbound/sends', _1.HttpMethod.GET, filter);
     };
     ;
@@ -247,7 +247,7 @@ var Client = /** @class */ (function (_super) {
      * Get statistiscs on emails that bounced after being sent from the Server associated with this Client.
      * @param filter Optional filtering parameters.
      */
-    Client.prototype.getBounceCounts = function (filter) {
+    ServerClient.prototype.getBounceCounts = function (filter) {
         return this.processRequestWithoutBody('/stats/outbound/bounces', _1.HttpMethod.GET, filter);
     };
     ;
@@ -255,7 +255,7 @@ var Client = /** @class */ (function (_super) {
      * Get SPAM complaint statistics for email sent from the Server associated with this Client.
      * @param filter Optional filtering parameters.
      */
-    Client.prototype.getSpamComplaints = function (filter) {
+    ServerClient.prototype.getSpamComplaints = function (filter) {
         return this.processRequestWithoutBody('/stats/outbound/spam', _1.HttpMethod.GET, filter);
     };
     ;
@@ -263,7 +263,7 @@ var Client = /** @class */ (function (_super) {
      * Get email tracking statistics for messages sent from the Server associated with this Client.
      * @param filter Optional filtering parameters.
      */
-    Client.prototype.getTrackedEmailCounts = function (filter) {
+    ServerClient.prototype.getTrackedEmailCounts = function (filter) {
         return this.processRequestWithoutBody('/stats/outbound/tracked', _1.HttpMethod.GET, filter);
     };
     ;
@@ -271,7 +271,7 @@ var Client = /** @class */ (function (_super) {
      * Get Open statistics for messages sent from the Server associated with this Client.
      * @param filter Optional filtering parameters.
      */
-    Client.prototype.getEmailOpenCounts = function (filter) {
+    ServerClient.prototype.getEmailOpenCounts = function (filter) {
         return this.processRequestWithoutBody('/stats/outbound/opens', _1.HttpMethod.GET, filter);
     };
     ;
@@ -279,7 +279,7 @@ var Client = /** @class */ (function (_super) {
      * Get Email Client Platform statistics  for messages sent from the Server associated with this Client.
      * @param filter Optional filtering parameters.
      */
-    Client.prototype.getEmailPlatformUsage = function (filter) {
+    ServerClient.prototype.getEmailPlatformUsage = function (filter) {
         return this.processRequestWithoutBody('/stats/outbound/opens/platforms', _1.HttpMethod.GET, filter);
     };
     ;
@@ -292,7 +292,7 @@ var Client = /** @class */ (function (_super) {
      * @param {PostmarkCallback} callback A standard callback that is called when the API request completes.
      * @return {Promise} If no callback is passed, returns a Promise with the JSON response from the API (or error).
      */
-    Client.prototype.getEmailClientUsage = function (filter) {
+    ServerClient.prototype.getEmailClientUsage = function (filter) {
         return this.processRequestWithoutBody('/stats/outbound/opens/emailclients', _1.HttpMethod.GET, filter);
     };
     ;
@@ -305,7 +305,7 @@ var Client = /** @class */ (function (_super) {
      * @param {PostmarkCallback} callback A standard callback that is called when the API request completes.
      * @return {Promise} If no callback is passed, returns a Promise with the JSON response from the API (or error).
      */
-    Client.prototype.getEmailReadTimes = function (filter) {
+    ServerClient.prototype.getEmailReadTimes = function (filter) {
         return this.processRequestWithoutBody('/stats/outbound/opens/readtimes', _1.HttpMethod.GET, filter);
     };
     ;
@@ -318,7 +318,7 @@ var Client = /** @class */ (function (_super) {
      * @param {PostmarkCallback} callback A standard callback that is called when the API request completes.
      * @return {Promise} If no callback is passed, returns a Promise with the JSON response from the API (or error).
      */
-    Client.prototype.getClickCounts = function (filter) {
+    ServerClient.prototype.getClickCounts = function (filter) {
         return this.processRequestWithoutBody('/stats/outbound/clicks', _1.HttpMethod.GET, filter);
     };
     ;
@@ -331,7 +331,7 @@ var Client = /** @class */ (function (_super) {
      * @param {PostmarkCallback} callback A standard callback that is called when the API request completes.
      * @return {Promise} If no callback is passed, returns a Promise with the JSON response from the API (or error).
      */
-    Client.prototype.getBrowserUsage = function (filter) {
+    ServerClient.prototype.getBrowserUsage = function (filter) {
         return this.processRequestWithoutBody('/stats/outbound/clicks/browserfamilies', _1.HttpMethod.GET, filter);
     };
     ;
@@ -344,21 +344,21 @@ var Client = /** @class */ (function (_super) {
      * @param {PostmarkCallback} callback A standard callback that is called when the API request completes.
      * @return {Promise} If no callback is passed, returns a Promise with the JSON response from the API (or error).
      */
-    Client.prototype.getBrowserPlatforms = function (filter) {
+    ServerClient.prototype.getBrowserPlatforms = function (filter) {
         return this.processRequestWithoutBody('/stats/outbound/clicks/platforms', _1.HttpMethod.GET, filter);
     };
     ;
     /**
-   * Get click location statistics for tracked links for messages sent from the Server associated with this Client.
-   * (Shows whether a tracked link was clicked from "HTML" or "Text" body of the email)
-   *
-   * @memberof Client.prototype
-   * @method getClickLocation
-   * @param {object} [filter] Optional filtering parameters.
-   * @param {PostmarkCallback} callback A standard callback that is called when the API request completes.
-   * @return {Promise} If no callback is passed, returns a Promise with the JSON response from the API (or error).
-   */
-    Client.prototype.getClickLocation = function (filter) {
+     * Get click location statistics for tracked links for messages sent from the Server associated with this Client.
+     * (Shows whether a tracked link was clicked from "HTML" or "Text" body of the email)
+     *
+     * @memberof Client.prototype
+     * @method getClickLocation
+     * @param {object} [filter] Optional filtering parameters.
+     * @param {PostmarkCallback} callback A standard callback that is called when the API request completes.
+     * @return {Promise} If no callback is passed, returns a Promise with the JSON response from the API (or error).
+     */
+    ServerClient.prototype.getClickLocation = function (filter) {
         return this.processRequestWithoutBody('/stats/outbound/clicks/location', _1.HttpMethod.GET, filter);
     };
     ;
@@ -366,7 +366,7 @@ var Client = /** @class */ (function (_super) {
      * Create a new Tag Trigger.
      * @param options Configuration options to be used in creating the trigger.
      */
-    Client.prototype.createTagTrigger = function (options) {
+    ServerClient.prototype.createTagTrigger = function (options) {
         return this.processRequestWithBody('/triggers/tags', _1.HttpMethod.POST, options);
     };
     ;
@@ -375,7 +375,7 @@ var Client = /** @class */ (function (_super) {
      * @param id The ID of the Tag Trigger you wish to modify.
      * @param options The tag trigger options
      */
-    Client.prototype.editTagTrigger = function (id, options) {
+    ServerClient.prototype.editTagTrigger = function (id, options) {
         this.processRequestWithBody('/triggers/tags/' + id, _1.HttpMethod.PUT, options);
     };
     ;
@@ -383,7 +383,7 @@ var Client = /** @class */ (function (_super) {
      * Delete an existing Tag Trigger.
      * @param id The ID of the Tag Trigger you wish to delete.
      */
-    Client.prototype.deleteTagTrigger = function (id) {
+    ServerClient.prototype.deleteTagTrigger = function (id) {
         return this.processRequestWithoutBody("/triggers/tags/" + id, _1.HttpMethod.DELETE);
     };
     ;
@@ -391,7 +391,7 @@ var Client = /** @class */ (function (_super) {
      * Get a specific Tag Trigger.
      * @param id The ID of the Tag Trigger you wish to retrieve.
      */
-    Client.prototype.getTagTrigger = function (id) {
+    ServerClient.prototype.getTagTrigger = function (id) {
         return this.processRequestWithoutBody('/triggers/tags/' + id, _1.HttpMethod.GET);
     };
     ;
@@ -400,7 +400,7 @@ var Client = /** @class */ (function (_super) {
      * You may retrieve additional Tag Triggers by making successive calls to the API.
      * @param filter Optional filtering parameters.
      */
-    Client.prototype.getTagTriggers = function (filter) {
+    ServerClient.prototype.getTagTriggers = function (filter) {
         filter = utils_1.coalesce({
             count: 100,
             offset: 0
@@ -412,7 +412,7 @@ var Client = /** @class */ (function (_super) {
      * Create an Inbound Rule Trigger.
      * @param options The configuration options to used when creating this Trigger.
      */
-    Client.prototype.createInboundRuleTrigger = function (options) {
+    ServerClient.prototype.createInboundRuleTrigger = function (options) {
         return this.processRequestWithBody('/triggers/inboundrules', _1.HttpMethod.POST, options);
     };
     ;
@@ -420,7 +420,7 @@ var Client = /** @class */ (function (_super) {
      * Delete an Inbound Rule Trigger.
      * @param {number} id The ID of the Inbound Rule Trigger you wish to delete.
      */
-    Client.prototype.deleteInboundRuleTrigger = function (id) {
+    ServerClient.prototype.deleteInboundRuleTrigger = function (id) {
         return this.processRequestWithoutBody("/triggers/inboundrules/" + id, _1.HttpMethod.DELETE);
     };
     ;
@@ -429,7 +429,7 @@ var Client = /** @class */ (function (_super) {
      * You may retrieve additional Inbound Rule Tag Triggers by making successive calls to the API.
      * @param filter Optional filtering parameters.
      */
-    Client.prototype.getInboundRuleTriggers = function (filter) {
+    ServerClient.prototype.getInboundRuleTriggers = function (filter) {
         filter = utils_1.coalesce({
             count: 100,
             offset: 0
@@ -441,7 +441,7 @@ var Client = /** @class */ (function (_super) {
      * Get the list of templates assoicated with this server.
      * @param filter Optional filtering options.
      */
-    Client.prototype.getTemplates = function (filter) {
+    ServerClient.prototype.getTemplates = function (filter) {
         filter = utils_1.coalesce(filter, {
             count: 100,
             offset: 0
@@ -453,7 +453,7 @@ var Client = /** @class */ (function (_super) {
      * Get the a specific template assoicated with this server.
      * @param idOrAlias The templateid or alias for the template you wish to retrieve.
      */
-    Client.prototype.getTemplate = function (idOrAlias) {
+    ServerClient.prototype.getTemplate = function (idOrAlias) {
         return this.processRequestWithoutBody("/templates/" + idOrAlias, _1.HttpMethod.GET);
     };
     ;
@@ -461,14 +461,14 @@ var Client = /** @class */ (function (_super) {
      * Delete a template associated with this server.
      * @param idOrAlias The templateid or template alias you wish to delete.
      */
-    Client.prototype.deleteTemplate = function (idOrAlias) {
+    ServerClient.prototype.deleteTemplate = function (idOrAlias) {
         return this.processRequestWithoutBody("/templates/" + idOrAlias, _1.HttpMethod.DELETE);
     };
     /**
      * Create a new template on the associated server.
      * @param template The template you wish to create.
      */
-    Client.prototype.createTemplate = function (template) {
+    ServerClient.prototype.createTemplate = function (template) {
         return this.processRequestWithBody('/templates/', _1.HttpMethod.POST, template);
     };
     /**
@@ -476,7 +476,7 @@ var Client = /** @class */ (function (_super) {
      * @param idOrAlias The id or alias of the template you wish to update.
      * @param template The values on the template you wish to update.
      */
-    Client.prototype.editTemplate = function (idOrAlias, template) {
+    ServerClient.prototype.editTemplate = function (idOrAlias, template) {
         return this.processRequestWithBody("/templates/" + idOrAlias, _1.HttpMethod.PUT, template);
     };
     /**
@@ -484,9 +484,9 @@ var Client = /** @class */ (function (_super) {
      * model to be used when sending using the specified template content.
      * @param templateContent The template you wish to validate.
      */
-    Client.prototype.validateTemplate = function (templateContent) {
+    ServerClient.prototype.validateTemplate = function (templateContent) {
         return this.processRequestWithBody('/templates/validate', _1.HttpMethod.POST, templateContent);
     };
-    return Client;
+    return ServerClient;
 }(BaseClient_1.default));
-exports.default = Client;
+exports.default = ServerClient;

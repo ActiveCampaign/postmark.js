@@ -1,25 +1,28 @@
-import Promise from 'ts-promise';
 import { PostmarkError, HttpMethod } from './models';
+import IClientOptions from './models/IClientOptions';
+import Promise from 'ts-promise';
 
-export interface IClientOptions {
-    
-}
+export default abstract class BaseClient {
 
-export default class BaseClient {
+    public static ClientDefaults: IClientOptions = {
+        useHttps: true,
+        requestHost: 'api.postmarkapp.com'
+    };
+
     protected client_options: IClientOptions;
 
-    constructor(token: string, authHeader: string, options: IClientOptions) {
+    constructor(token: string, authHeader: string, options?: IClientOptions) {
         if (!token || token.trim() == '') {
-            throw new PostmarkError('An value API token must be provided when creating a client.');
+            throw new PostmarkError('A valid API token must be provided when creating a client.');
         }
-        this.client_options = options;
+        this.client_options = options || BaseClient.ClientDefaults;
     }
 
-    protected processRequestWithBody<P, T>( url: string, method: HttpMethod, payload: P): Promise<T> {
-        return Promise.reject<T>(new Error("Not implemented."));
-    }
-    protected processRequestWithoutBody<T>( url: string, method:HttpMethod): Promise<T> {
-        return Promise.reject<T>(new Error("Not implemented."));
+    protected processRequestWithBody<T>(path: string, method: HttpMethod, payload: any): Promise<T> {
+        return Promise.reject<T>(new PostmarkError("Not implemented."));
     }
 
+    protected processRequestWithoutBody<T>(path: string, method:HttpMethod, queryParameters?: object): Promise<T> {
+        return Promise.reject<T>(new PostmarkError("Not implemented."));
+    }
 }
