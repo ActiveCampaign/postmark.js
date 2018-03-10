@@ -1,12 +1,13 @@
 {
   "name": "postmark",
   "description": "Ridiculously Simple Email Sending From Node.js For http://www.postmarkapp.com",
+  "license": "MITNFA",
   "tags": [
     "email",
     "utility",
     "postmark"
   ],
-  "version": "2.0",
+  "version": "2.0.0",
   "author": "Andrew Theken <andrew+postmark.js@wildbit.com>",
   "contributors": [
     "Aaron Blum",
@@ -54,11 +55,10 @@
   ],
   "devDependencies": {
     "mocha": "2.1.0",
-    "nconf": "0.7.1",
-    "pre-commit": "1.0.2"
+    "pre-commit": "1.0.2",
+    "typedoc": "^0.11.1"
   },
   "dependencies": {
-    "merge": "1.2.0",
     "ts-promise": "^1.0.0"
   }
 }
