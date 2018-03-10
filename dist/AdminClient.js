@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var AdminClient = (function () {
+var AdminClient = /** @class */ (function () {
     function AdminClient() {
     }
     return AdminClient;

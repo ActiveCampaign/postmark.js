@@ -35,6 +35,7 @@
     "lib": "./dist/index.js"
   },
   "scripts": {
+    "compile": "node_modules/.bin/tsc && git add -A ./dist",
     "test": "node_modules/.bin/mocha tests/fixture_*.js",
     "watchtests": "node_modules/.bin/mocha -R list -w --recursive -G tests/fixture_*.js",
     "compile-docs": "echo 'Generating docs...' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/typedoc --module postmark --out ./docs && git add -A ./docs && echo 'Generated docs!'",
@@ -50,13 +51,15 @@
     "url": "https://github.com/wildbit/postmark.js/issues"
   },
   "precommit": [
+    "compile",
     "compile-docs",
     "test"
   ],
   "devDependencies": {
     "mocha": "2.1.0",
     "pre-commit": "1.0.2",
-    "typedoc": "^0.11.1"
+    "typedoc": "^0.11.1",
+    "typescript": "^2.7.2"
   },
   "dependencies": {
     "ts-promise": "^1.0.0"

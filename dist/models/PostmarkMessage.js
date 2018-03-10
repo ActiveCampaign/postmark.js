@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var PostmarkMessage = (function () {
+var PostmarkMessage = /** @class */ (function () {
     function PostmarkMessage() {
     }
     return PostmarkMessage;
