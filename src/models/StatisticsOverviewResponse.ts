@@ -1,0 +1,19 @@
+export default interface StatisticsOverviewResponse {
+        Sent:number
+        Bounced:number
+        SMTPApiErrors:number
+        BounceRate:number
+        SpamComplaints:number
+        SpamComplaintsRate:number
+        Opens:number
+        UniqueOpens:number
+        Tracked:number
+        WithLinkTracking:number
+        WithOpenTracking:number
+        TotalTrackedLinksSent:number
+        UniqueLinksClicked:number
+        TotalClicks:number
+        WithClientRecorded:number
+        WithPlatformRecorded:number
+        WithReadTimeRecorded:number     
+}

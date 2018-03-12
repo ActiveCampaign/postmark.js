@@ -42,12 +42,14 @@ export default abstract class BaseClient {
         let payloadType = hasBody ? 'body' : 'qs';
 
         let scheme = this.clientOptions.useHttps ? 'https' : 'http';
-        var req = request(`${scheme}://${this.clientOptions.requestHost}/${path}`, {
+        let url = `${scheme}://${this.clientOptions.requestHost}/${path}`;
+        var req = request(url, {
             method: method.toString(),
-            headers: new Headers({ [this.authHeader]: this.token, 'Accept': 'application/json' }),
+            headers: { [this.authHeader]: this.token, 'Accept': 'application/json' },
             [payloadType]: payload,
-            timeout: this.clientOptions.timeout,
-            json: true
+            timeout: (this.clientOptions.timeout || 30) * 1000,
+            json: true,
+            gzip: true
         }).then(json => {
             return <T>json;
             }).catch(e => { 

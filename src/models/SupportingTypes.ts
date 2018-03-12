@@ -6,3 +6,21 @@ export enum HttpMethod {
     OPTIONS = 'OPTIONS',
     HEAD = 'HEAD'
 }
+
+export enum LinkTrackingOptions {
+    TextOnly,
+    HtmlOnly,
+    HtmlAndText,
+    None
+}
+
+export interface Header {
+    Name: string,
+    Value: string
+}
+export interface Attachment {
+    Name: string,
+    ContentID?: string,
+    Content: string,
+    ContentType: string
+}

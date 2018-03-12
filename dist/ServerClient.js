@@ -25,7 +25,7 @@ var ServerClient = /** @class */ (function (_super) {
     }
     /** Send a single email message.
      * @param message The message to send.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
     */
     ServerClient.prototype.sendEmail = function (message, callback) {
@@ -34,7 +34,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Send a message using a template.
      * @param message The message you wish to send.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.sendEmailWithTemplate = function (message, callback) {
@@ -44,7 +44,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Send a batch of templated email messages.
      * @param messages An array of `TemplatedPostmarkMessage` you wish to send using this Client.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.sendEmailBatchWithTemplates = function (messages, callback) {
@@ -54,7 +54,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Send a batch of email messages.
      * @param messages An array of `PostmarkMessage` you wish to send using this Client.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.sendEmailBatch = function (messages, callback) {
@@ -62,18 +62,18 @@ var ServerClient = /** @class */ (function (_super) {
     };
     ;
     /**
-     * Retrieve delivery statistic information for the associated Server.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * Retrieve bounce statistic information for the associated Server.
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getDeliveryStatistics = function (callback) {
-        return this.processRequestWithoutBody('/deliverystats', _1.HttpMethod.GET, callback);
+        return this.processRequestWithoutBody('/deliverystats', _1.HttpMethod.GET, null, callback);
     };
     ;
     /**
      * Retrieve a batch of bounces. The default batch size is 100, and the offset is 0.
      * @param filter An optional filter for which bounces to retrieve.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getBounces = function (filter, callback) {
@@ -87,7 +87,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Get a information for a specific Bounce.
      * @param id The ID of the Bounce you wish to retrieve.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getBounce = function (id, callback) {
@@ -97,7 +97,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Get a Bounce Dump for a specific Bounce.
      * @param id
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getBounceDump = function (id, callback) {
@@ -107,7 +107,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Cause an email address that was deactivated due to a Bounce to be reactivated.
      * @param id The ID of the Bounce for which you wish to activate the associated email.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.activateBounce = function (id, callback) {
@@ -116,7 +116,7 @@ var ServerClient = /** @class */ (function (_super) {
     ;
     /**
      * Get an array of tags associated with bounces.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getBounceTags = function (callback) {
@@ -125,7 +125,7 @@ var ServerClient = /** @class */ (function (_super) {
     ;
     /**
      * Get the information for the Server associated with this Client.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getServer = function (callback) {
@@ -135,7 +135,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Modify the Server associated with this Client.
      * @param serverOptions The options you wish to modify for this server.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.editServer = function (serverOptions, callback) {
@@ -146,7 +146,7 @@ var ServerClient = /** @class */ (function (_super) {
      * Retrieve a batch of Outbound Messages. The default batch size is 100, and the offset is 0.
      * You can make successive calls to the API to retrieve additional Outbound Messages.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getOutboundMessages = function (filter, callback) {
@@ -160,7 +160,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Get details for a specific Outbound Message.
      * @param id The ID of the Outbound Message for which you wish to retrieve details.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getOutboundMessageDetails = function (id, callback) {
@@ -171,7 +171,7 @@ var ServerClient = /** @class */ (function (_super) {
      * Get the Opens for Outbound Messages. The default batch size is 100, and offset is 0.
      * You can make successive calls to the API to retrieve additional Opens information.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getMessageOpens = function (filter, callback) {
@@ -186,7 +186,7 @@ var ServerClient = /** @class */ (function (_super) {
      * Get the Clicks for Outbound Messages. The default batch size is 100, and offset is 0.
      * You can make successive calls to the API to retrieve additional Opens information.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getMessageClicks = function (filter, callback) {
@@ -201,7 +201,7 @@ var ServerClient = /** @class */ (function (_super) {
      * Get Click information for a single Outbound Message. The default batch size is 100, and offset is 0.
      * @param messageId The MessageID for which clicks should be retrieved.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getMessageClicksForSingleMessage = function (messageId, filter, callback) {
@@ -216,7 +216,7 @@ var ServerClient = /** @class */ (function (_super) {
      * Get Open information for a single Outbound Message. The default batch size is 100, and offset is 0.
      * @param messageId The ID of the Message for which you wish to retrieve Opens.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getMessageOpensForSingleMessage = function (messageId, filter, callback) {
@@ -231,7 +231,7 @@ var ServerClient = /** @class */ (function (_super) {
      * Retrieve a batch of Inbound Messages. The default batch size is 100, and the offset is 0.
      * You can make successive calls to the API to retrieve additional Inbound Messages.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getInboundMessages = function (filter, callback) {
@@ -245,7 +245,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Get details for a specific Inbound Message.
      * @param messageId The ID of the Inbound Message for which you wish to retrieve details.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getInboundMessageDetails = function (messageId, callback) {
@@ -255,7 +255,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Cause an Inbound Message to bypass filtering rules defined on this Client's associated Server.
      * @param messageId The ID of the Inbound Message for which you wish to bypass the filtering rules.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.bypassBlockedInboundMessage = function (messageId, callback) {
@@ -265,7 +265,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Request that Postmark retry POSTing to the Inbound Hook for the specified message.
      * @param messageId The ID of the Inbound Message for which you wish to retry the inbound hook.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.retryInboundHookForMessage = function (messageId, callback) {
@@ -275,7 +275,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Get overview statistics on Outbound Messages sent from the Server associated with this Client.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getOuboundOverview = function (filter, callback) {
@@ -285,7 +285,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Get statistics on email sent from the Server associated with this Client.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getSentCounts = function (filter, callback) {
@@ -295,7 +295,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Get statistiscs on emails that bounced after being sent from the Server associated with this Client.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getBounceCounts = function (filter, callback) {
@@ -305,7 +305,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Get SPAM complaint statistics for email sent from the Server associated with this Client.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getSpamComplaints = function (filter, callback) {
@@ -315,7 +315,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Get email tracking statistics for messages sent from the Server associated with this Client.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getTrackedEmailCounts = function (filter, callback) {
@@ -325,7 +325,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Get Open statistics for messages sent from the Server associated with this Client.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getEmailOpenCounts = function (filter, callback) {
@@ -335,7 +335,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Get Email Client Platform statistics  for messages sent from the Server associated with this Client.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getEmailPlatformUsage = function (filter, callback) {
@@ -345,7 +345,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Get statistics on which Email Clients were used to open messages sent from the Server associated with this Client.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getEmailClientUsage = function (filter, callback) {
@@ -355,7 +355,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Get Read Time statistics for messages sent from the Server associated with this Client.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getEmailReadTimes = function (filter, callback) {
@@ -365,7 +365,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Get total clicks statistics for tracked links for messages sent from the Server associated with this Client.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getClickCounts = function (filter, callback) {
@@ -375,7 +375,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Get browser family statistics for tracked links for messages sent from the Server associated with this Client.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getBrowserUsage = function (filter, callback) {
@@ -385,7 +385,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Get browser platform statistics for tracked links for messages sent from the Server associated with this Client.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getBrowserPlatforms = function (filter, callback) {
@@ -396,7 +396,7 @@ var ServerClient = /** @class */ (function (_super) {
      * Get click location statistics for tracked links for messages sent from the Server associated with this Client.
      * (Shows whether a tracked link was clicked from "HTML" or "Text" body of the email)
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getClickLocation = function (filter, callback) {
@@ -406,7 +406,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Create a new Tag Trigger.
      * @param options Configuration options to be used in creating the trigger.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.createTagTrigger = function (options, callback) {
@@ -417,7 +417,7 @@ var ServerClient = /** @class */ (function (_super) {
      * Modify an existing Tag Trigger.
      * @param id The ID of the Tag Trigger you wish to modify.
      * @param options The tag trigger options
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.editTagTrigger = function (id, options, callback) {
@@ -427,7 +427,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Delete an existing Tag Trigger.
      * @param id The ID of the Tag Trigger you wish to delete.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.deleteTagTrigger = function (id, callback) {
@@ -437,7 +437,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Get a specific Tag Trigger.
      * @param id The ID of the Tag Trigger you wish to retrieve.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getTagTrigger = function (id, callback) {
@@ -448,7 +448,7 @@ var ServerClient = /** @class */ (function (_super) {
      * Get a list of Tag Trigger. The default batch count is 100, and the offset is 0.
      * You may retrieve additional Tag Triggers by making successive calls to the API.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getTagTriggers = function (filter, callback) {
@@ -462,7 +462,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Create an Inbound Rule Trigger.
      * @param options The configuration options to used when creating this Trigger.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.createInboundRuleTrigger = function (options, callback) {
@@ -472,7 +472,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Delete an Inbound Rule Trigger.
      * @param id The ID of the Inbound Rule Trigger you wish to delete.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.deleteInboundRuleTrigger = function (id, callback) {
@@ -483,7 +483,7 @@ var ServerClient = /** @class */ (function (_super) {
      * Get a list of Inbound Rule Triggers. The default batch count is 100, and the offset is 0.
      * You may retrieve additional Inbound Rule Tag Triggers by making successive calls to the API.
      * @param filter Optional filtering parameters.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getInboundRuleTriggers = function (filter, callback) {
@@ -497,7 +497,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Get the list of templates assoicated with this server.
      * @param filter Optional filtering options.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getTemplates = function (filter, callback) {
@@ -511,7 +511,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Get the a specific template assoicated with this server.
      * @param idOrAlias The templateid or alias for the template you wish to retrieve.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getTemplate = function (idOrAlias, callback) {
@@ -521,7 +521,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Delete a template associated with this server.
      * @param idOrAlias The templateid or template alias you wish to delete.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.deleteTemplate = function (idOrAlias, callback) {
@@ -530,7 +530,7 @@ var ServerClient = /** @class */ (function (_super) {
     /**
      * Create a new template on the associated server.
      * @param template The template you wish to create.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.createTemplate = function (template, callback) {
@@ -540,7 +540,7 @@ var ServerClient = /** @class */ (function (_super) {
      * Update a template on the associated server.
      * @param idOrAlias The id or alias of the template you wish to update.
      * @param template The values on the template you wish to update.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.editTemplate = function (idOrAlias, template, callback) {
@@ -550,7 +550,7 @@ var ServerClient = /** @class */ (function (_super) {
      * Validate template markup to verify that it will be parsed. Also provides a recommended template
      * model to be used when sending using the specified template content.
      * @param templateContent The template you wish to validate.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.validateTemplate = function (templateContent, callback) {

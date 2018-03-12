@@ -1,18 +1,7 @@
 import { Promise } from 'bluebird';
 import {
-    HttpMethod,
-    IClientOptions,
-    PostmarkMessage, 
-    PostmarkResponse,
-    TemplatedPostmarkMessage,
-    IOutboundMessageFilter,
-    IBounceQueryFilter, 
-    IOpensFilter,
-    IClicksFilter,
-    IServerOptions,
-
-    DeliveryStatisticsResponse,
-    BounceListingResponse,
+    StatisticsOverviewResponse, HttpMethod, IClientOptions, PostmarkMessage, PostmarkResponse, TemplatedPostmarkMessage, IOutboundMessageFilter, IBounceQueryFilter,
+    IOpensFilter, IClicksFilter, IServerOptions, BounceListingResponse, Server
 } from './models/';
 
 import { IFakeFilteringOptions, IFakeOptions } from './models';
@@ -20,6 +9,7 @@ import { IFakeFilteringOptions, IFakeOptions } from './models';
 import BaseClient from './BaseClient';
 import { coalesce, PostmarkCallback } from './utils';
 import PostmarkError from './models/PostmarkError';
+import DeliveryStatisticsResponse from './models/DeliveryStatisticsResponse';
 
 
 export default class ServerClient extends BaseClient {
@@ -37,7 +27,7 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
     */
-    sendEmail(message: PostmarkMessage, callback?:PostmarkCallback<PostmarkResponse>): Promise<PostmarkResponse> {
+    sendEmail(message: PostmarkMessage, callback?: PostmarkCallback<PostmarkResponse>): Promise<PostmarkResponse> {
         return this.processRequestWithBody<PostmarkResponse>('/email', HttpMethod.POST, message, callback);
     }
 
@@ -72,7 +62,7 @@ export default class ServerClient extends BaseClient {
     };
 
     /**
-     * Retrieve delivery statistic information for the associated Server.
+     * Retrieve bounce statistic information for the associated Server.
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
@@ -130,7 +120,7 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getBounceTags(callback?:PostmarkCallback<object>) : Promise<object> {
+    getBounceTags(callback?:PostmarkCallback<string[]>) : Promise<string[]> {
         return this.processRequestWithoutBody('/bounces/tags', HttpMethod.GET, null, callback);
     };
 
@@ -139,7 +129,7 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getServer(callback?:PostmarkCallback<object>) : Promise<object> {
+    getServer(callback?:PostmarkCallback<Server>) : Promise<Server> {
         return this.processRequestWithoutBody('/server', HttpMethod.GET, null);
     };
 
@@ -291,7 +281,8 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getOuboundOverview(filter?: IFakeFilteringOptions, callback?:PostmarkCallback<object>) : Promise<object> {
+    getOuboundOverview(filter?: IFakeFilteringOptions, callback?: PostmarkCallback<StatisticsOverviewResponse>):
+        Promise<StatisticsOverviewResponse> {
         return this.processRequestWithoutBody('/stats/outbound', HttpMethod.GET, filter, callback);
     };
 
