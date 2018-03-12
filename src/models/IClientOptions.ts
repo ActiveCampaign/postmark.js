@@ -5,6 +5,7 @@ export default interface IClientOptions {
      * Require HTTPS for API requests? Defaults to `true`
      */
     useHttps?: boolean,
+    
     /**
      * The base url for accessing the Postmark API.
      * Defaults to `api.postmarkapp.com`
@@ -12,7 +13,7 @@ export default interface IClientOptions {
     requestHost?: string,
     
     /**
-     * A specialized method of creating requests.
+     * The request timeout (in seconds) for API calls.
      */
-    requestFactory?:((path: string, method: string, payload: any) => Promise<any>)
+    timeout?:number
 }

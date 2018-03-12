@@ -9,10 +9,10 @@ var BaseClient = /** @class */ (function () {
         }
         this.client_options = options || BaseClient.ClientDefaults;
     }
-    BaseClient.prototype.processRequestWithBody = function (path, method, payload) {
+    BaseClient.prototype.processRequestWithBody = function (path, method, payload, callback) {
         return ts_promise_1.default.reject(new models_1.PostmarkError("Not implemented."));
     };
-    BaseClient.prototype.processRequestWithoutBody = function (path, method, queryParameters) {
+    BaseClient.prototype.processRequestWithoutBody = function (path, method, queryParameters, callback) {
         return ts_promise_1.default.reject(new models_1.PostmarkError("Not implemented."));
     };
     BaseClient.ClientDefaults = {

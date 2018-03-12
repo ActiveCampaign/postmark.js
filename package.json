@@ -62,6 +62,8 @@
     "typescript": "^2.7.2"
   },
   "dependencies": {
-    "ts-promise": "^1.0.0"
+    "bluebird": "^3.5.1",
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2"
   }
 }

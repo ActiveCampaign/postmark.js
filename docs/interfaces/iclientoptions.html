@@ -919,6 +919,12 @@ img { max-width: 100%; }
 			<a href="../classes/baseclient.html" class="tsd-kind-icon">Base<wbr>Client</a>
 		</li>
 		<li class=" tsd-kind-class">
+			<a href="../classes/bouncelistingresponse.html" class="tsd-kind-icon">Bounce<wbr>Listing<wbr>Response</a>
+		</li>
+		<li class=" tsd-kind-class">
+			<a href="../classes/deliverystatisticsresponse.html" class="tsd-kind-icon">Delivery<wbr>Statistics<wbr>Response</a>
+		</li>
+		<li class=" tsd-kind-class">
 			<a href="../classes/postmarkerror.html" class="tsd-kind-icon">Postmark<wbr>Error</a>
 		</li>
 		<li class=" tsd-kind-class">
@@ -937,10 +943,10 @@ img { max-width: 100%; }
 			<a href="iclientoptions.html" class="tsd-kind-icon">IClient<wbr>Options</a>
 			<ul>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="iclientoptions.html#requestfactory" class="tsd-kind-icon">request<wbr>Factory</a>
+					<a href="iclientoptions.html#requesthost" class="tsd-kind-icon">request<wbr>Host</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="iclientoptions.html#requesthost" class="tsd-kind-icon">request<wbr>Host</a>
+					<a href="iclientoptions.html#timeout" class="tsd-kind-icon">timeout</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
 					<a href="iclientoptions.html#usehttps" class="tsd-kind-icon">use<wbr>Https</a>
@@ -961,6 +967,9 @@ img { max-width: 100%; }
 		</li>
 		<li class=" tsd-kind-interface">
 			<a href="iserveroptions.html" class="tsd-kind-icon">IServer<wbr>Options</a>
+		</li>
+		<li class=" tsd-kind-interface tsd-has-type-parameter">
+			<a href="postmarkcallback.html" class="tsd-kind-icon">Postmark<wbr>Callback</a>
 		</li>
 		<li class=" tsd-kind-interface">
 			<a href="postmarkmessage.html" class="tsd-kind-icon">Postmark<wbr>Message</a>
@@ -990,8 +999,8 @@ img { max-width: 100%; }
 					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iclientoptions.html#requestfactory" class="tsd-kind-icon">request<wbr>Factory</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iclientoptions.html#requesthost" class="tsd-kind-icon">request<wbr>Host</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iclientoptions.html#timeout" class="tsd-kind-icon">timeout</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iclientoptions.html#usehttps" class="tsd-kind-icon">use<wbr>Https</a></li>
 						</ul>
 					</section>
@@ -1001,27 +1010,12 @@ img { max-width: 100%; }
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="requestfactory" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> request<wbr>Factory</h3>
-				<div class="tsd-signature tsd-kind-icon">request<wbr>Factory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in models/IClientOptions.ts:17</li>
-					</ul>
-				</aside>
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>A specialized method of creating requests.</p>
-					</div>
-				</div>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 				<a name="requesthost" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagOptional">Optional</span> request<wbr>Host</h3>
 				<div class="tsd-signature tsd-kind-icon">request<wbr>Host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in models/IClientOptions.ts:12</li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/b0736d5/src/models/IClientOptions.ts#L13">models/IClientOptions.ts:13</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1032,12 +1026,27 @@ img { max-width: 100%; }
 				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="timeout" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> timeout</h3>
+				<div class="tsd-signature tsd-kind-icon">timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/b0736d5/src/models/IClientOptions.ts#L18">models/IClientOptions.ts:18</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The request timeout (in seconds) for API calls.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 				<a name="usehttps" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagOptional">Optional</span> use<wbr>Https</h3>
 				<div class="tsd-signature tsd-kind-icon">use<wbr>Https<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in models/IClientOptions.ts:7</li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/b0736d5/src/models/IClientOptions.ts#L7">models/IClientOptions.ts:7</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">

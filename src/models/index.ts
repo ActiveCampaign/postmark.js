@@ -4,6 +4,8 @@ import PostmarkResponse from './PostmarkResponse';
 import PostmarkError from './PostmarkError';
 import TemplatedPostmarkMessage from './TemplatedPostmarkMessage';
 import IClientOptions from './IClientOptions';
+import DeliveryStatisticsResponse from './DeliveryStatisticsResponse';
+import BounceListingResponse from './BounceListingResponse';
 
 export {
     HttpMethod,
@@ -11,6 +13,8 @@ export {
     PostmarkResponse,
     PostmarkError,
     TemplatedPostmarkMessage,
+    DeliveryStatisticsResponse,
+    BounceListingResponse,
     IClientOptions
 };
 
