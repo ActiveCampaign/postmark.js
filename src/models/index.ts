@@ -12,6 +12,8 @@ import BounceInfo from './BounceInfo';
 import BounceDump from './BounceDump';
 import ActivateBounceResponse from './ActivateBounceResponse';
 import IServerOptions from './IServerOptions';
+import OutboundMessageDetails, { OutboundMessageDetailsExtended } from './OutboundMessageDetails';
+import OutboundMessageDetailSearchResponse from './OutboundMessageDetailSearchResponse';
 
 export {
     HttpMethod,
@@ -26,6 +28,9 @@ export {
     BounceInfo,
     BounceDump,
     ActivateBounceResponse,
+    OutboundMessageDetails,
+    OutboundMessageDetailSearchResponse,
+    OutboundMessageDetailsExtended,
     IClientOptions,
     IServerOptions
 };

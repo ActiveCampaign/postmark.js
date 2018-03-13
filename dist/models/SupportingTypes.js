@@ -11,8 +11,13 @@ var HttpMethod;
 })(HttpMethod = exports.HttpMethod || (exports.HttpMethod = {}));
 var LinkTrackingOptions;
 (function (LinkTrackingOptions) {
-    LinkTrackingOptions[LinkTrackingOptions["TextOnly"] = 0] = "TextOnly";
-    LinkTrackingOptions[LinkTrackingOptions["HtmlOnly"] = 1] = "HtmlOnly";
-    LinkTrackingOptions[LinkTrackingOptions["HtmlAndText"] = 2] = "HtmlAndText";
-    LinkTrackingOptions[LinkTrackingOptions["None"] = 3] = "None";
+    LinkTrackingOptions["TextOnly"] = "TextOnly";
+    LinkTrackingOptions["HtmlOnly"] = "HtmlOnly";
+    LinkTrackingOptions["HtmlAndText"] = "HtmlAndText";
+    LinkTrackingOptions["None"] = "None";
 })(LinkTrackingOptions = exports.LinkTrackingOptions || (exports.LinkTrackingOptions = {}));
+var LinkClickLocation;
+(function (LinkClickLocation) {
+    LinkClickLocation["HTML"] = "HTML";
+    LinkClickLocation["Text"] = "Text";
+})(LinkClickLocation = exports.LinkClickLocation || (exports.LinkClickLocation = {}));

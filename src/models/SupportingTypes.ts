@@ -8,10 +8,15 @@ export enum HttpMethod {
 }
 
 export enum LinkTrackingOptions {
-    TextOnly,
-    HtmlOnly,
-    HtmlAndText,
-    None
+    TextOnly = 'TextOnly',
+    HtmlOnly = 'HtmlOnly',
+    HtmlAndText = 'HtmlAndText',
+    None = 'None'
+}
+
+export enum LinkClickLocation {
+    HTML = 'HTML',
+    Text = 'Text'
 }
 
 export interface Header {

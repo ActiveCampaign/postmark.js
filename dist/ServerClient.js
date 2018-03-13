@@ -13,7 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var _1 = require("./models/");
 var BaseClient_1 = require("./BaseClient");
 var utils_1 = require("./utils");
-var ServerClient = /** @class */ (function (_super) {
+var ServerClient = (function (_super) {
     __extends(ServerClient, _super);
     /**
      * Create a client that can be used to interact with an individual Postmark Server.
@@ -153,7 +153,7 @@ var ServerClient = /** @class */ (function (_super) {
         filter = utils_1.coalesce(filter, {
             count: 100,
             offset: 0
-        }, filter);
+        });
         return this.processRequestWithoutBody('/messages/outbound', _1.HttpMethod.GET, filter, callback);
     };
     ;
@@ -164,7 +164,7 @@ var ServerClient = /** @class */ (function (_super) {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getOutboundMessageDetails = function (id, callback) {
-        return this.processRequestWithoutBody('/messages/outbound/' + id + '/details', _1.HttpMethod.GET, null, callback);
+        return this.processRequestWithoutBody("/messages/outbound/" + id + "/details", _1.HttpMethod.GET, null, callback);
     };
     ;
     /**

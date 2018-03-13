@@ -1,7 +1,7 @@
 import { Promise } from 'bluebird';
 import {
     StatisticsOverviewResponse, HttpMethod, IClientOptions, PostmarkMessage, PostmarkResponse, TemplatedPostmarkMessage, IOutboundMessageFilter, IBounceQueryFilter,
-    IOpensFilter, IClicksFilter, IServerOptions, BounceListingResponse, Server, BounceInfo, ActivateBounceResponse
+    IOpensFilter, IClicksFilter, IServerOptions, BounceListingResponse, Server, BounceInfo, ActivateBounceResponse, OutboundMessageDetailSearchResponse, OutboundMessageDetailsExtended
 } from './models/';
 
 import { IFakeFilteringOptions, IFakeOptions } from './models';
@@ -11,6 +11,7 @@ import { coalesce, PostmarkCallback } from './utils';
 import PostmarkError from './models/PostmarkError';
 import DeliveryStatisticsResponse from './models/DeliveryStatisticsResponse';
 import BounceDump from './models/BounceDump';
+import OutboundMessageDetails from './models/OutboundMessageDetails';
 
 
 export default class ServerClient extends BaseClient {
@@ -152,11 +153,12 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getOutboundMessages(filter?: IFakeFilteringOptions, callback?:PostmarkCallback<object>) : Promise<object> {
+    getOutboundMessages(filter?: IFakeFilteringOptions, callback?: PostmarkCallback<OutboundMessageDetailSearchResponse>):
+        Promise<OutboundMessageDetailSearchResponse> {
         filter = coalesce(filter, {
             count: 100,
             offset: 0
-        }, filter);
+        });
         return this.processRequestWithoutBody('/messages/outbound', HttpMethod.GET, filter, callback);
     };
 
@@ -166,8 +168,8 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getOutboundMessageDetails(id: string, callback?:PostmarkCallback<object>) : Promise<object> {
-        return this.processRequestWithoutBody('/messages/outbound/' + id + '/details', HttpMethod.GET, null, callback);
+    getOutboundMessageDetails(id: string, callback?:PostmarkCallback<OutboundMessageDetailsExtended>) : Promise<OutboundMessageDetailsExtended> {
+        return this.processRequestWithoutBody(`/messages/outbound/${id}/details`, HttpMethod.GET, null, callback);
     };
 
     /**
@@ -177,7 +179,7 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getMessageOpens(filter?: IOpensFilter, callback?:PostmarkCallback<object>) : Promise<object> {
+    getMessageOpens(filter?: IFakeFilteringOptions, callback?:PostmarkCallback<object>) : Promise<object> {
         filter = coalesce(filter, {
             count: 100,
             offset: 0
@@ -193,7 +195,7 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getMessageClicks(filter?: IClicksFilter, callback?:PostmarkCallback<object>) : Promise<object> {
+    getMessageClicks(filter?: IFakeFilteringOptions, callback?:PostmarkCallback<object>) : Promise<object> {
         filter = coalesce(filter, {
             count: 100,
             offset: 0
