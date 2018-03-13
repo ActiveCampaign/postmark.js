@@ -75,15 +75,16 @@ export default abstract class BaseClient {
         }).then(json => {
             return <T>json;
             }).catch(e => { 
+                //TODO: remap this to a more useful error.
                 let err = <Error>e;
                 throw new PostmarkError(`Request failed: ${err.message}`);
             });
 
         if (callback) {
             req = req.then(json => {
-                callback(json);
+                callback(null, json);
                 return json;
-            }).tapCatch(e => callback(undefined, e));
+            }).tapCatch(error => callback(error, null));
             req.suppressUnhandledRejections();
         }
         return req;

@@ -15,5 +15,5 @@ export function coalesce<T>(target: T, ...sources: T[]): T {
 }
 
 export interface PostmarkCallback<T> {
-    (result?: T, error?: PostmarkError): void;
+    (error: (PostmarkError | null), result: (T | null)): void;
 }

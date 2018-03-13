@@ -38,14 +38,15 @@ var BaseClient = /** @class */ (function () {
             _a)).then(function (json) {
             return json;
         }).catch(function (e) {
+            //TODO: remap this to a more useful error.
             var err = e;
             throw new models_1.PostmarkError("Request failed: " + err.message);
         });
         if (callback) {
             req = req.then(function (json) {
-                callback(json);
+                callback(null, json);
                 return json;
-            }).tapCatch(function (e) { return callback(undefined, e); });
+            }).tapCatch(function (error) { return callback(error, null); });
             req.suppressUnhandledRejections();
         }
         return req;
