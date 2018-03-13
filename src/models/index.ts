@@ -8,6 +8,10 @@ import StatisticsOverviewResponse from './StatisticsOverviewResponse';
 import BounceListingResponse from './BounceListingResponse';
 import Server from './Server';
 import DeliveryStatisticsResponse from './DeliveryStatisticsResponse';
+import BounceInfo from './BounceInfo';
+import BounceDump from './BounceDump';
+import ActivateBounceResponse from './ActivateBounceResponse';
+import IServerOptions from './IServerOptions';
 
 export {
     HttpMethod,
@@ -19,7 +23,11 @@ export {
     BounceListingResponse,
     DeliveryStatisticsResponse,
     Server,
-    IClientOptions
+    BounceInfo,
+    BounceDump,
+    ActivateBounceResponse,
+    IClientOptions,
+    IServerOptions
 };
 
 interface IPagedFilter {
@@ -31,10 +39,6 @@ export interface IBounceQueryFilter extends IPagedFilter { }
 export interface IOutboundMessageFilter extends IPagedFilter { }
 export interface IOpensFilter extends IPagedFilter { }
 export interface IClicksFilter extends IPagedFilter { }
-
-export interface IServerOptions{
-    name?: string
-}
 
 export interface IFakeFilteringOptions { }
 export interface IFakeOptions { }

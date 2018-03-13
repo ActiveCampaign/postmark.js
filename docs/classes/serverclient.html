@@ -1086,10 +1086,19 @@ img { max-width: 100%; }
 			</ul>
 		</li>
 		<li class=" tsd-kind-interface">
+			<a href="../interfaces/activatebounceresponse.html" class="tsd-kind-icon">Activate<wbr>Bounce<wbr>Response</a>
+		</li>
+		<li class=" tsd-kind-interface">
 			<a href="../interfaces/attachment.html" class="tsd-kind-icon">Attachment</a>
 		</li>
 		<li class=" tsd-kind-interface">
+			<a href="../interfaces/bouncedump.html" class="tsd-kind-icon">Bounce<wbr>Dump</a>
+		</li>
+		<li class=" tsd-kind-interface">
 			<a href="../interfaces/bounceinfo.html" class="tsd-kind-icon">Bounce<wbr>Info</a>
+		</li>
+		<li class=" tsd-kind-interface">
+			<a href="../interfaces/bounceinfoextended.html" class="tsd-kind-icon">Bounce<wbr>Info<wbr>Extended</a>
 		</li>
 		<li class=" tsd-kind-interface">
 			<a href="../interfaces/bouncelistingresponse.html" class="tsd-kind-icon">Bounce<wbr>Listing<wbr>Response</a>
@@ -1248,7 +1257,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Overrides <a href="baseclient.html">BaseClient</a>.<a href="baseclient.html#constructor">constructor</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L15">ServerClient.ts:15</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L16">ServerClient.ts:16</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1286,13 +1295,13 @@ img { max-width: 100%; }
 				<a name="activatebounce" class="tsd-anchor"></a>
 				<h3>activate<wbr>Bounce</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">activate<wbr>Bounce<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">activate<wbr>Bounce<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/activatebounceresponse.html" class="tsd-signature-type">ActivateBounceResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/activatebounceresponse.html" class="tsd-signature-type">ActivateBounceResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L114">ServerClient.ts:114</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L115">ServerClient.ts:115</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1309,13 +1318,13 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/activatebounceresponse.html" class="tsd-signature-type">ActivateBounceResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/activatebounceresponse.html" class="tsd-signature-type">ActivateBounceResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -1330,7 +1339,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L263">ServerClient.ts:263</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L265">ServerClient.ts:265</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1368,7 +1377,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L472">ServerClient.ts:472</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L474">ServerClient.ts:474</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1406,7 +1415,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L416">ServerClient.ts:416</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L418">ServerClient.ts:418</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1444,7 +1453,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L542">ServerClient.ts:542</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L544">ServerClient.ts:544</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1482,7 +1491,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L482">ServerClient.ts:482</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L484">ServerClient.ts:484</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1520,7 +1529,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L437">ServerClient.ts:437</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L439">ServerClient.ts:439</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1558,7 +1567,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L532">ServerClient.ts:532</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L534">ServerClient.ts:534</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1590,13 +1599,13 @@ img { max-width: 100%; }
 				<a name="editserver" class="tsd-anchor"></a>
 				<h3>edit<wbr>Server</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">edit<wbr>Server<span class="tsd-signature-symbol">(</span>serverOptions<span class="tsd-signature-symbol">: </span><a href="../interfaces/iserveroptions.html" class="tsd-signature-type">IServerOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">edit<wbr>Server<span class="tsd-signature-symbol">(</span>serverOptions<span class="tsd-signature-symbol">: </span><a href="../interfaces/iserveroptions.html" class="tsd-signature-type">IServerOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L142">ServerClient.ts:142</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L144">ServerClient.ts:144</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1613,13 +1622,13 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -1634,7 +1643,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L427">ServerClient.ts:427</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L429">ServerClient.ts:429</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1678,7 +1687,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L553">ServerClient.ts:553</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L555">ServerClient.ts:555</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1716,13 +1725,13 @@ img { max-width: 100%; }
 				<a name="getbounce" class="tsd-anchor"></a>
 				<h3>get<wbr>Bounce</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Bounce<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Bounce<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/bounceinfo.html" class="tsd-signature-type">BounceInfo</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/bounceinfo.html" class="tsd-signature-type">BounceInfo</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L94">ServerClient.ts:94</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L95">ServerClient.ts:95</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1739,13 +1748,13 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/bounceinfo.html" class="tsd-signature-type">BounceInfo</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/bounceinfo.html" class="tsd-signature-type">BounceInfo</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -1760,7 +1769,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L305">ServerClient.ts:305</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L307">ServerClient.ts:307</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1792,13 +1801,13 @@ img { max-width: 100%; }
 				<a name="getbouncedump" class="tsd-anchor"></a>
 				<h3>get<wbr>Bounce<wbr>Dump</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Bounce<wbr>Dump<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Bounce<wbr>Dump<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/bouncedump.html" class="tsd-signature-type">BounceDump</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/bouncedump.html" class="tsd-signature-type">BounceDump</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L104">ServerClient.ts:104</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L105">ServerClient.ts:105</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1812,13 +1821,13 @@ img { max-width: 100%; }
 								<h5>id: <span class="tsd-signature-type">string</span></h5>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/bouncedump.html" class="tsd-signature-type">BounceDump</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/bouncedump.html" class="tsd-signature-type">BounceDump</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -1833,7 +1842,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L123">ServerClient.ts:123</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L125">ServerClient.ts:125</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1859,13 +1868,13 @@ img { max-width: 100%; }
 				<a name="getbounces" class="tsd-anchor"></a>
 				<h3>get<wbr>Bounces</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Bounces<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ibouncequeryfilter.html" class="tsd-signature-type">IBounceQueryFilter</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/bouncelistingresponse.html" class="tsd-signature-type">BounceListingResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/bouncelistingresponse.html" class="tsd-signature-type">BounceListingResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Bounces<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/bouncelistingresponse.html" class="tsd-signature-type">BounceListingResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/bouncelistingresponse.html" class="tsd-signature-type">BounceListingResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L79">ServerClient.ts:79</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L80">ServerClient.ts:80</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1876,7 +1885,7 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ibouncequeryfilter.html" class="tsd-signature-type">IBounceQueryFilter</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>An optional filter for which bounces to retrieve.</p>
 								</div>
@@ -1903,7 +1912,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L395">ServerClient.ts:395</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L397">ServerClient.ts:397</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1941,7 +1950,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L385">ServerClient.ts:385</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L387">ServerClient.ts:387</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1979,7 +1988,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L375">ServerClient.ts:375</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L377">ServerClient.ts:377</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2017,7 +2026,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L406">ServerClient.ts:406</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L408">ServerClient.ts:408</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2056,7 +2065,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L69">ServerClient.ts:69</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L70">ServerClient.ts:70</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2088,7 +2097,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L355">ServerClient.ts:355</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L357">ServerClient.ts:357</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2126,7 +2135,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L335">ServerClient.ts:335</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L337">ServerClient.ts:337</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2164,7 +2173,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L345">ServerClient.ts:345</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L347">ServerClient.ts:347</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2202,7 +2211,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L365">ServerClient.ts:365</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L367">ServerClient.ts:367</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2240,7 +2249,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L253">ServerClient.ts:253</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L255">ServerClient.ts:255</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2278,7 +2287,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L239">ServerClient.ts:239</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L241">ServerClient.ts:241</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2317,7 +2326,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L493">ServerClient.ts:493</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L495">ServerClient.ts:495</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2356,7 +2365,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L194">ServerClient.ts:194</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L196">ServerClient.ts:196</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2395,7 +2404,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L209">ServerClient.ts:209</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L211">ServerClient.ts:211</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2439,7 +2448,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L178">ServerClient.ts:178</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L180">ServerClient.ts:180</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2478,7 +2487,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L224">ServerClient.ts:224</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L226">ServerClient.ts:226</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2522,7 +2531,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L284">ServerClient.ts:284</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L286">ServerClient.ts:286</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2560,7 +2569,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L167">ServerClient.ts:167</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L169">ServerClient.ts:169</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2592,13 +2601,13 @@ img { max-width: 100%; }
 				<a name="getoutboundmessages" class="tsd-anchor"></a>
 				<h3>get<wbr>Outbound<wbr>Messages</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Outbound<wbr>Messages<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ioutboundmessagefilter.html" class="tsd-signature-type">IOutboundMessageFilter</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Outbound<wbr>Messages<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L153">ServerClient.ts:153</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L155">ServerClient.ts:155</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2610,7 +2619,7 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ioutboundmessagefilter.html" class="tsd-signature-type">IOutboundMessageFilter</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
@@ -2637,7 +2646,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L295">ServerClient.ts:295</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L297">ServerClient.ts:297</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2675,7 +2684,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L132">ServerClient.ts:132</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L134">ServerClient.ts:134</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2707,7 +2716,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L315">ServerClient.ts:315</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L317">ServerClient.ts:317</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2745,7 +2754,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L447">ServerClient.ts:447</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L449">ServerClient.ts:449</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2783,7 +2792,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L458">ServerClient.ts:458</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L460">ServerClient.ts:460</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2822,7 +2831,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L522">ServerClient.ts:522</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L524">ServerClient.ts:524</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2860,7 +2869,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L507">ServerClient.ts:507</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L509">ServerClient.ts:509</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2898,7 +2907,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L325">ServerClient.ts:325</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L327">ServerClient.ts:327</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2936,7 +2945,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L273">ServerClient.ts:273</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L275">ServerClient.ts:275</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2974,7 +2983,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L30">ServerClient.ts:30</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L31">ServerClient.ts:31</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3012,7 +3021,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L60">ServerClient.ts:60</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L61">ServerClient.ts:61</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3050,7 +3059,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L50">ServerClient.ts:50</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L51">ServerClient.ts:51</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3088,7 +3097,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L40">ServerClient.ts:40</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L41">ServerClient.ts:41</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3126,7 +3135,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/ServerClient.ts#L564">ServerClient.ts:564</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/ServerClient.ts#L566">ServerClient.ts:566</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3165,7 +3174,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="baseclient.html">BaseClient</a>.<a href="baseclient.html#clientdefaults">ClientDefaults</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/BaseClient.ts#L10">BaseClient.ts:10</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/BaseClient.ts#L10">BaseClient.ts:10</a></li>
 					</ul>
 				</aside>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -3174,7 +3183,7 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">request<wbr>Host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;api.postmarkapp.com&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/BaseClient.ts#L12">BaseClient.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/BaseClient.ts#L12">BaseClient.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -3184,7 +3193,7 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;30</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/BaseClient.ts#L13">BaseClient.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/BaseClient.ts#L13">BaseClient.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -3194,7 +3203,7 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">use<wbr>Https<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2888684/src/BaseClient.ts#L11">BaseClient.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/BaseClient.ts#L11">BaseClient.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>

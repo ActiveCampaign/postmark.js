@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IBounceQueryFilter | Postmark.js</title>
+	<title>ActivateBounceResponse | Postmark.js</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -930,8 +930,16 @@ img { max-width: 100%; }
 		<li class=" tsd-kind-class">
 			<a href="../classes/serverclient.html" class="tsd-kind-icon">Server<wbr>Client</a>
 		</li>
-		<li class=" tsd-kind-interface">
+		<li class="current tsd-kind-interface">
 			<a href="activatebounceresponse.html" class="tsd-kind-icon">Activate<wbr>Bounce<wbr>Response</a>
+			<ul>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="activatebounceresponse.html#bounce" class="tsd-kind-icon">Bounce</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="activatebounceresponse.html#message" class="tsd-kind-icon">Message</a>
+				</li>
+			</ul>
 		</li>
 		<li class=" tsd-kind-interface">
 			<a href="attachment.html" class="tsd-kind-icon">Attachment</a>
@@ -957,16 +965,8 @@ img { max-width: 100%; }
 		<li class=" tsd-kind-interface">
 			<a href="header.html" class="tsd-kind-icon">Header</a>
 		</li>
-		<li class="current tsd-kind-interface">
+		<li class=" tsd-kind-interface">
 			<a href="ibouncequeryfilter.html" class="tsd-kind-icon">IBounce<wbr>Query<wbr>Filter</a>
-			<ul>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a href="ibouncequeryfilter.html#count" class="tsd-kind-icon">count</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a href="ibouncequeryfilter.html#offset" class="tsd-kind-icon">offset</a>
-				</li>
-			</ul>
 		</li>
 		<li class=" tsd-kind-interface">
 			<a href="iclicksfilter.html" class="tsd-kind-icon">IClicks<wbr>Filter</a>
@@ -1015,12 +1015,7 @@ img { max-width: 100%; }
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
 				<li>
-					<span class="tsd-signature-type">IPagedFilter</span>
-					<ul class="tsd-hierarchy">
-						<li>
-							<span class="target">IBounceQueryFilter</span>
-						</li>
-					</ul>
+					<span class="target">ActivateBounceResponse</span>
 				</li>
 			</ul>
 		</section>
@@ -1028,37 +1023,35 @@ img { max-width: 100%; }
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
-					<section class="tsd-index-section tsd-is-inherited">
+					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ibouncequeryfilter.html#count" class="tsd-kind-icon">count</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ibouncequeryfilter.html#offset" class="tsd-kind-icon">offset</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="activatebounceresponse.html#bounce" class="tsd-kind-icon">Bounce</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="activatebounceresponse.html#message" class="tsd-kind-icon">Message</a></li>
 						</ul>
 					</section>
 				</div>
 			</section>
 		</section>
-		<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-				<a name="count" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> count</h3>
-				<div class="tsd-signature tsd-kind-icon">count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="bounce" class="tsd-anchor"></a>
+				<h3>Bounce</h3>
+				<div class="tsd-signature tsd-kind-icon">Bounce<span class="tsd-signature-symbol">:</span> <a href="bounceinfoextended.html" class="tsd-signature-type">BounceInfoExtended</a></div>
 				<aside class="tsd-sources">
-					<p>Inherited from IPagedFilter.count</p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/models/index.ts#L34">models/index.ts:34</a></li>
+						<li>Defined in models/ActivateBounceResponse.ts:5</li>
 					</ul>
 				</aside>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-				<a name="offset" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> offset</h3>
-				<div class="tsd-signature tsd-kind-icon">offset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="message" class="tsd-anchor"></a>
+				<h3>Message</h3>
+				<div class="tsd-signature tsd-kind-icon">Message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
-					<p>Inherited from IPagedFilter.offset</p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2682134/src/models/index.ts#L35">models/index.ts:35</a></li>
+						<li>Defined in models/ActivateBounceResponse.ts:4</li>
 					</ul>
 				</aside>
 			</section>
