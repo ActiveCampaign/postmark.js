@@ -1,7 +1,23 @@
 import { Promise } from 'bluebird';
 import {
-    StatisticsOverviewResponse, HttpMethod, IClientOptions, PostmarkMessage, PostmarkResponse, TemplatedPostmarkMessage, IOutboundMessageFilter, IBounceQueryFilter,
-    IOpensFilter, IClicksFilter, IServerOptions, BounceListingResponse, Server, BounceInfo, ActivateBounceResponse, OutboundMessageDetailSearchResponse, OutboundMessageDetailsExtended
+    StatisticsOverviewResponse,
+    HttpMethod, IClientOptions,
+    PostmarkMessage,
+    PostmarkResponse,
+    TemplatedPostmarkMessage,
+    IOutboundMessageFilter,
+    IBounceQueryFilter,
+    IOpensFilter,
+    IClicksFilter,
+    IServerOptions,
+    BounceListingResponse,
+    Server,
+    BounceInfo,
+    ActivateBounceResponse,
+    OutboundMessageDetailSearchResponse,
+    OutboundMessageDetailsExtended,
+    ValidateTemplateContentResponse,
+    ValidateTemplateContentRequest
 } from './models/';
 
 import { IFakeFilteringOptions, IFakeOptions } from './models';
@@ -94,7 +110,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getBounce(id: string, callback?:PostmarkCallback<BounceInfo>) : Promise<BounceInfo> {
-        return this.processRequestWithoutBody('/bounces/' + id, HttpMethod.GET, callback);
+        return this.processRequestWithoutBody(`/bounces/${id}`, HttpMethod.GET, callback);
     };
 
     /**
@@ -104,7 +120,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getBounceDump(id: string, callback?:PostmarkCallback<BounceDump>) : Promise<BounceDump> {
-        return this.processRequestWithoutBody('/bounces/' + id + '/dump', HttpMethod.GET, callback);
+        return this.processRequestWithoutBody(`/bounces/${id}/dump`, HttpMethod.GET, callback);
     };
 
     /**
@@ -115,7 +131,7 @@ export default class ServerClient extends BaseClient {
      */
     activateBounce(id: string, callback?: PostmarkCallback<ActivateBounceResponse>):
         Promise<ActivateBounceResponse> {
-        return this.processRequestWithBody('/bounces/' + id + '/activate', HttpMethod.PUT, null, callback);
+        return this.processRequestWithBody(`/bounces/${id}/activate`, HttpMethod.PUT, null, callback);
     };
 
     /**
@@ -168,7 +184,8 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getOutboundMessageDetails(id: string, callback?:PostmarkCallback<OutboundMessageDetailsExtended>) : Promise<OutboundMessageDetailsExtended> {
+    getOutboundMessageDetails(id: string, callback?: PostmarkCallback<OutboundMessageDetailsExtended>):
+        Promise<OutboundMessageDetailsExtended> {
         return this.processRequestWithoutBody(`/messages/outbound/${id}/details`, HttpMethod.GET, null, callback);
     };
 
@@ -215,7 +232,7 @@ export default class ServerClient extends BaseClient {
             count: 100,
             offset: 0
         });
-        return this.processRequestWithoutBody('/messages/outbound/clicks/' + messageId, HttpMethod.GET, filter, callback);
+        return this.processRequestWithoutBody(`/messages/outbound/clicks/${messageId}`, HttpMethod.GET, filter, callback);
     };
 
     /**
@@ -449,7 +466,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getTagTrigger(id: number, callback?:PostmarkCallback<object>) : Promise<object> {
-        return this.processRequestWithoutBody('/triggers/tags/' + id, HttpMethod.GET, callback);
+        return this.processRequestWithoutBody(`/triggers/tags/${id}`, HttpMethod.GET, callback);
     };
 
     /**
@@ -565,7 +582,8 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    validateTemplate(templateContent: IFakeOptions, callback?:PostmarkCallback<object>) : Promise<object> {
+    validateTemplate(templateContent: ValidateTemplateContentRequest, callback?: PostmarkCallback<ValidateTemplateContentResponse>):
+        Promise<ValidateTemplateContentResponse> {
         return this.processRequestWithBody('/templates/validate', HttpMethod.POST, templateContent, callback);
     }
 }

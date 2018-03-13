@@ -14,6 +14,7 @@ import ActivateBounceResponse from './ActivateBounceResponse';
 import IServerOptions from './IServerOptions';
 import OutboundMessageDetails, { OutboundMessageDetailsExtended } from './OutboundMessageDetails';
 import OutboundMessageDetailSearchResponse from './OutboundMessageDetailSearchResponse';
+import { ValidateTemplateContentResponse, ValidateTemplateContentRequest } from './ValidateTemplateContentRequest';
 
 export {
     HttpMethod,
@@ -32,7 +33,9 @@ export {
     OutboundMessageDetailSearchResponse,
     OutboundMessageDetailsExtended,
     IClientOptions,
-    IServerOptions
+    IServerOptions,
+    ValidateTemplateContentResponse,
+    ValidateTemplateContentRequest
 };
 
 interface IPagedFilter {
