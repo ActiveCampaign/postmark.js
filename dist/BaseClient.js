@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var models_1 = require("./models");
 var request = require("request-promise");
-var BaseClient = (function () {
+var BaseClient = /** @class */ (function () {
     function BaseClient(token, authHeader, options) {
         if (!token || token.trim() == '') {
             throw new models_1.PostmarkError('A valid API token must be provided when creating a client.');

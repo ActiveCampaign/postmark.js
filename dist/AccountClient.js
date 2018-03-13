@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseClient_1 = require("./BaseClient");
-var AccountClient = (function (_super) {
+var AccountClient = /** @class */ (function (_super) {
     __extends(AccountClient, _super);
     /**
      * Create a new AccountClient

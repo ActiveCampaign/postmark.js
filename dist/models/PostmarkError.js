@@ -10,7 +10,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var PostmarkError = (function (_super) {
+var PostmarkError = /** @class */ (function (_super) {
     __extends(PostmarkError, _super);
     function PostmarkError() {
         return _super !== null && _super.apply(this, arguments) || this;

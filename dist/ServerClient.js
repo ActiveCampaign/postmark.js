@@ -13,7 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var _1 = require("./models/");
 var BaseClient_1 = require("./BaseClient");
 var utils_1 = require("./utils");
-var ServerClient = (function (_super) {
+var ServerClient = /** @class */ (function (_super) {
     __extends(ServerClient, _super);
     /**
      * Create a client that can be used to interact with an individual Postmark Server.
@@ -91,7 +91,7 @@ var ServerClient = (function (_super) {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getBounce = function (id, callback) {
-        return this.processRequestWithoutBody('/bounces/' + id, _1.HttpMethod.GET, callback);
+        return this.processRequestWithoutBody("/bounces/" + id, _1.HttpMethod.GET, callback);
     };
     ;
     /**
@@ -101,7 +101,7 @@ var ServerClient = (function (_super) {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getBounceDump = function (id, callback) {
-        return this.processRequestWithoutBody('/bounces/' + id + '/dump', _1.HttpMethod.GET, callback);
+        return this.processRequestWithoutBody("/bounces/" + id + "/dump", _1.HttpMethod.GET, callback);
     };
     ;
     /**
@@ -111,7 +111,7 @@ var ServerClient = (function (_super) {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.activateBounce = function (id, callback) {
-        return this.processRequestWithBody('/bounces/' + id + '/activate', _1.HttpMethod.PUT, null, callback);
+        return this.processRequestWithBody("/bounces/" + id + "/activate", _1.HttpMethod.PUT, null, callback);
     };
     ;
     /**
@@ -209,7 +209,7 @@ var ServerClient = (function (_super) {
             count: 100,
             offset: 0
         });
-        return this.processRequestWithoutBody('/messages/outbound/clicks/' + messageId, _1.HttpMethod.GET, filter, callback);
+        return this.processRequestWithoutBody("/messages/outbound/clicks/" + messageId, _1.HttpMethod.GET, filter, callback);
     };
     ;
     /**
@@ -441,7 +441,7 @@ var ServerClient = (function (_super) {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     ServerClient.prototype.getTagTrigger = function (id, callback) {
-        return this.processRequestWithoutBody('/triggers/tags/' + id, _1.HttpMethod.GET, callback);
+        return this.processRequestWithoutBody("/triggers/tags/" + id, _1.HttpMethod.GET, callback);
     };
     ;
     /**

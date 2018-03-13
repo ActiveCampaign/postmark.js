@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ClickEventInfo | Postmark.js</title>
+	<title>TemplateValidationResult | Postmark.js</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -910,19 +910,16 @@ img { max-width: 100%; }
 <nav class="tsd-navigation secondary">
 	<ul>
 		<li class="current tsd-kind-interface">
-			<a href="clickeventinfo.html" class="tsd-kind-icon">Click<wbr>Event<wbr>Info</a>
+			<a href="templatevalidationresult.html" class="tsd-kind-icon">Template<wbr>Validation<wbr>Result</a>
 			<ul>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-					<a href="clickeventinfo.html#details" class="tsd-kind-icon">Details</a>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="templatevalidationresult.html#contentisvalid" class="tsd-kind-icon">Content<wbr>IsValid</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a href="clickeventinfo.html#receivedat" class="tsd-kind-icon">Received<wbr>At</a>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="templatevalidationresult.html#renderedcontent" class="tsd-kind-icon">Rendered<wbr>Content</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a href="clickeventinfo.html#recipient" class="tsd-kind-icon">Recipient</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a href="clickeventinfo.html#type" class="tsd-kind-icon">Type</a>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="templatevalidationresult.html#validationerrors" class="tsd-kind-icon">Validation<wbr>Errors</a>
 				</li>
 			</ul>
 		</li>
@@ -934,12 +931,7 @@ img { max-width: 100%; }
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
 				<li>
-					<a href="messageeventinfo.html" class="tsd-signature-type">MessageEventInfo</a>
-					<ul class="tsd-hierarchy">
-						<li>
-							<span class="target">ClickEventInfo</span>
-						</li>
-					</ul>
+					<span class="target">TemplateValidationResult</span>
 				</li>
 			</ul>
 		</section>
@@ -950,10 +942,9 @@ img { max-width: 100%; }
 					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="clickeventinfo.html#details" class="tsd-kind-icon">Details</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="clickeventinfo.html#receivedat" class="tsd-kind-icon">Received<wbr>At</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="clickeventinfo.html#recipient" class="tsd-kind-icon">Recipient</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="clickeventinfo.html#type" class="tsd-kind-icon">Type</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="templatevalidationresult.html#contentisvalid" class="tsd-kind-icon">Content<wbr>IsValid</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="templatevalidationresult.html#renderedcontent" class="tsd-kind-icon">Rendered<wbr>Content</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="templatevalidationresult.html#validationerrors" class="tsd-kind-icon">Validation<wbr>Errors</a></li>
 						</ul>
 					</section>
 				</div>
@@ -961,52 +952,33 @@ img { max-width: 100%; }
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-				<a name="details" class="tsd-anchor"></a>
-				<h3>Details</h3>
-				<div class="tsd-signature tsd-kind-icon">Details<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="contentisvalid" class="tsd-anchor"></a>
+				<h3>Content<wbr>IsValid</h3>
+				<div class="tsd-signature tsd-kind-icon">Content<wbr>IsValid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 				<aside class="tsd-sources">
-					<p>Overrides <a href="messageeventinfo.html">MessageEventInfo</a>.<a href="messageeventinfo.html#details">Details</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/77c46bd/src/models/OutboundMessageDetails.ts#L11">models/OutboundMessageDetails.ts:11</a></li>
-					</ul>
-				</aside>
-				<div class="tsd-type-declaration">
-					<h4>Type declaration</h4>
-					<ul class="tsd-parameters">
-					</ul>
-				</div>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-				<a name="receivedat" class="tsd-anchor"></a>
-				<h3>Received<wbr>At</h3>
-				<div class="tsd-signature tsd-kind-icon">Received<wbr>At<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-				<aside class="tsd-sources">
-					<p>Inherited from <a href="messageeventinfo.html">MessageEventInfo</a>.<a href="messageeventinfo.html#receivedat">ReceivedAt</a></p>
-					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/77c46bd/src/models/OutboundMessageDetails.ts#L6">models/OutboundMessageDetails.ts:6</a></li>
+						<li>Defined in models/ValidateTemplateContentRequest.ts:15</li>
 					</ul>
 				</aside>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-				<a name="recipient" class="tsd-anchor"></a>
-				<h3>Recipient</h3>
-				<div class="tsd-signature tsd-kind-icon">Recipient<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="renderedcontent" class="tsd-anchor"></a>
+				<h3>Rendered<wbr>Content</h3>
+				<div class="tsd-signature tsd-kind-icon">Rendered<wbr>Content<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
-					<p>Inherited from <a href="messageeventinfo.html">MessageEventInfo</a>.<a href="messageeventinfo.html#recipient">Recipient</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/77c46bd/src/models/OutboundMessageDetails.ts#L4">models/OutboundMessageDetails.ts:4</a></li>
+						<li>Defined in models/ValidateTemplateContentRequest.ts:17</li>
 					</ul>
 				</aside>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-				<a name="type" class="tsd-anchor"></a>
-				<h3>Type</h3>
-				<div class="tsd-signature tsd-kind-icon">Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="validationerrors" class="tsd-anchor"></a>
+				<h3>Validation<wbr>Errors</h3>
+				<div class="tsd-signature tsd-kind-icon">Validation<wbr>Errors<span class="tsd-signature-symbol">:</span> <a href="templatevalidationerror.html" class="tsd-signature-type">TemplateValidationError</a><span class="tsd-signature-symbol">[]</span></div>
 				<aside class="tsd-sources">
-					<p>Inherited from <a href="messageeventinfo.html">MessageEventInfo</a>.<a href="messageeventinfo.html#type">Type</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/77c46bd/src/models/OutboundMessageDetails.ts#L5">models/OutboundMessageDetails.ts:5</a></li>
+						<li>Defined in models/ValidateTemplateContentRequest.ts:16</li>
 					</ul>
 				</aside>
 			</section>
