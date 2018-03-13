@@ -1,7 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var models_1 = require("./models");
+var utils_1 = require("./utils");
 var request = require("request-promise");
+/**
+ * Provides a base class from which both the AccountClient and ServerClient classes can be implemented.
+ *
+ * This class is not intended to be instantiated directly.
+ */
 var BaseClient = /** @class */ (function () {
     function BaseClient(token, authHeader, options) {
         if (!token || token.trim() == '') {
@@ -9,7 +15,7 @@ var BaseClient = /** @class */ (function () {
         }
         this.token = token.trim();
         this.authHeader = authHeader;
-        this.clientOptions = options || BaseClient.ClientDefaults;
+        this.clientOptions = utils_1.coalesce(options || {}, BaseClient.ClientDefaults);
     }
     BaseClient.prototype.processRequestWithBody = function (path, method, payload, callback) {
         return this.processRequest(path, method, payload, true, callback);
@@ -45,9 +51,26 @@ var BaseClient = /** @class */ (function () {
         return req;
         var _a, _b;
     };
+    /**
+     * These are the connection defaults that will be combined with any options that are provided during Client instantiation (Any values provided to a Client constructor will override these defaults.)
+     *
+     * You may modify these values and new clients will use them.
+     */
     BaseClient.ClientDefaults = {
+        /**
+         * Should https be used for API requests?
+         * @default true
+         */
         useHttps: true,
+        /**
+         * The hostname that should be used for API requests.
+         * @default api.postmarkapp.com
+         */
         requestHost: 'api.postmarkapp.com',
+        /**
+         * The number of seconds to wait before a client should timeout during an API request.
+         * @default 30
+         */
         timeout: 30
     };
     return BaseClient;

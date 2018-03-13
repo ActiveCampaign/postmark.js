@@ -2,18 +2,20 @@ import Promise from 'ts-promise';
 
 export default interface IClientOptions {
     /**
-     * Require HTTPS for API requests? Defaults to `true`
+     * Require HTTPS for API requests?
+     * @default true
      */
-    useHttps?: boolean,
+    useHttps?: boolean
     
     /**
      * The base url for accessing the Postmark API.
-     * Defaults to `api.postmarkapp.com`
+     * @default api.postmarkapp.com
      */
-    requestHost?: string,
+    requestHost?: string
     
     /**
      * The request timeout (in seconds) for API calls.
+     * @default 30
      */
     timeout?:number
 }

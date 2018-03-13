@@ -912,7 +912,7 @@ img { max-width: 100%; }
 		<li class="current tsd-kind-class">
 			<a href="accountclient.html" class="tsd-kind-icon">Account<wbr>Client</a>
 			<ul>
-				<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+				<li class=" tsd-kind-constructor tsd-parent-kind-class">
 					<a href="accountclient.html#constructor" class="tsd-kind-icon">constructor</a>
 				</li>
 				<li class=" tsd-kind-object-literal tsd-parent-kind-class tsd-is-inherited tsd-is-static">
@@ -944,7 +944,7 @@ img { max-width: 100%; }
 					<section class="tsd-index-section ">
 						<h3>Constructors</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="accountclient.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="accountclient.html#constructor" class="tsd-kind-icon">constructor</a></li>
 						</ul>
 					</section>
 					<section class="tsd-index-section tsd-is-inherited">
@@ -958,18 +958,17 @@ img { max-width: 100%; }
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Constructors</h2>
-			<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+			<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
 				<a name="constructor" class="tsd-anchor"></a>
 				<h3>constructor</h3>
-				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
 					<li class="tsd-signature tsd-kind-icon">new <wbr>Account<wbr>Client<span class="tsd-signature-symbol">(</span>accountToken<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">?: </span><a href="../interfaces/iclientoptions.html" class="tsd-signature-type">IClientOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="accountclient.html" class="tsd-signature-type">AccountClient</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
-							<p>Overrides <a href="baseclient.html">BaseClient</a>.<a href="baseclient.html#constructor">constructor</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/392a6f3/src/AccountClient.ts#L4">AccountClient.ts:4</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2a82826/src/AccountClient.ts#L4">AccountClient.ts:4</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1010,18 +1009,34 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="baseclient.html">BaseClient</a>.<a href="baseclient.html#clientdefaults">ClientDefaults</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/392a6f3/src/BaseClient.ts#L10">BaseClient.ts:10</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2a82826/src/BaseClient.ts#L20">BaseClient.ts:20</a></li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>These are the connection defaults that will be combined with any options that are provided during Client instantiation (Any values provided to a Client constructor will override these defaults.)</p>
+					</div>
+					<p>You may modify these values and new clients will use them.</p>
+				</div>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
 					<a name="clientdefaults.requesthost" class="tsd-anchor"></a>
 					<h3>request<wbr>Host</h3>
 					<div class="tsd-signature tsd-kind-icon">request<wbr>Host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;api.postmarkapp.com&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/392a6f3/src/BaseClient.ts#L12">BaseClient.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2a82826/src/BaseClient.ts#L30">BaseClient.ts:30</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The hostname that should be used for API requests.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>api.postmarkapp.com</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
 					<a name="clientdefaults.timeout" class="tsd-anchor"></a>
@@ -1029,9 +1044,19 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;30</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/392a6f3/src/BaseClient.ts#L13">BaseClient.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2a82826/src/BaseClient.ts#L35">BaseClient.ts:35</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The number of seconds to wait before a client should timeout during an API request.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>30</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
 					<a name="clientdefaults.usehttps" class="tsd-anchor"></a>
@@ -1039,9 +1064,19 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">use<wbr>Https<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/392a6f3/src/BaseClient.ts#L11">BaseClient.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/2a82826/src/BaseClient.ts#L25">BaseClient.ts:25</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Should https be used for API requests?</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>true</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 			</section>
 		</section>
