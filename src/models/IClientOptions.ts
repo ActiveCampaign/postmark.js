@@ -1,5 +1,3 @@
-import Promise from 'ts-promise';
-
 export default interface IClientOptions {
     /**
      * Require HTTPS for API requests?

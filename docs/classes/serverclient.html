@@ -1169,7 +1169,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L33">ServerClient.ts:33</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L90">ServerClient.ts:90</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1213,7 +1213,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L132">ServerClient.ts:132</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L189">ServerClient.ts:189</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1245,13 +1245,13 @@ img { max-width: 100%; }
 				<a name="bypassblockedinboundmessage" class="tsd-anchor"></a>
 				<h3>bypass<wbr>Blocked<wbr>Inbound<wbr>Message</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">bypass<wbr>Blocked<wbr>Inbound<wbr>Message<span class="tsd-signature-symbol">(</span>messageId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">bypass<wbr>Blocked<wbr>Inbound<wbr>Message<span class="tsd-signature-symbol">(</span>messageId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundbypassresponse.html" class="tsd-signature-type">InboundBypassResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundbypassresponse.html" class="tsd-signature-type">InboundBypassResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L284">ServerClient.ts:284</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L341">ServerClient.ts:341</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1268,13 +1268,13 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundbypassresponse.html" class="tsd-signature-type">InboundBypassResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundbypassresponse.html" class="tsd-signature-type">InboundBypassResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -1283,13 +1283,13 @@ img { max-width: 100%; }
 				<a name="createinboundruletrigger" class="tsd-anchor"></a>
 				<h3>create<wbr>Inbound<wbr>Rule<wbr>Trigger</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">create<wbr>Inbound<wbr>Rule<wbr>Trigger<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/ifakeoptions.html" class="tsd-signature-type">IFakeOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">create<wbr>Inbound<wbr>Rule<wbr>Trigger<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/createinboundruletriggerrequest.html" class="tsd-signature-type">CreateInboundRuleTriggerRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/createinboundruletriggerresponse.html" class="tsd-signature-type">CreateInboundRuleTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/createinboundruletriggerresponse.html" class="tsd-signature-type">CreateInboundRuleTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L493">ServerClient.ts:493</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L550">ServerClient.ts:550</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1300,19 +1300,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>options: <a href="../interfaces/ifakeoptions.html" class="tsd-signature-type">IFakeOptions</a></h5>
+								<h5>options: <a href="../interfaces/createinboundruletriggerrequest.html" class="tsd-signature-type">CreateInboundRuleTriggerRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>The configuration options to used when creating this Trigger.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/createinboundruletriggerresponse.html" class="tsd-signature-type">CreateInboundRuleTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/createinboundruletriggerresponse.html" class="tsd-signature-type">CreateInboundRuleTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -1321,13 +1321,13 @@ img { max-width: 100%; }
 				<a name="createtagtrigger" class="tsd-anchor"></a>
 				<h3>create<wbr>Tag<wbr>Trigger</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">create<wbr>Tag<wbr>Trigger<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/ifakeoptions.html" class="tsd-signature-type">IFakeOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">create<wbr>Tag<wbr>Trigger<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/createtagtriggerrequest.html" class="tsd-signature-type">CreateTagTriggerRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/createtagtriggerresponse.html" class="tsd-signature-type">CreateTagTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/createtagtriggerresponse.html" class="tsd-signature-type">CreateTagTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L437">ServerClient.ts:437</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L494">ServerClient.ts:494</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1338,19 +1338,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>options: <a href="../interfaces/ifakeoptions.html" class="tsd-signature-type">IFakeOptions</a></h5>
+								<h5>options: <a href="../interfaces/createtagtriggerrequest.html" class="tsd-signature-type">CreateTagTriggerRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Configuration options to be used in creating the trigger.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/createtagtriggerresponse.html" class="tsd-signature-type">CreateTagTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/createtagtriggerresponse.html" class="tsd-signature-type">CreateTagTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -1359,13 +1359,13 @@ img { max-width: 100%; }
 				<a name="createtemplate" class="tsd-anchor"></a>
 				<h3>create<wbr>Template</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">create<wbr>Template<span class="tsd-signature-symbol">(</span>template<span class="tsd-signature-symbol">: </span><a href="../interfaces/ifakeoptions.html" class="tsd-signature-type">IFakeOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">create<wbr>Template<span class="tsd-signature-symbol">(</span>template<span class="tsd-signature-symbol">: </span><a href="../interfaces/createtemplaterequest.html" class="tsd-signature-type">CreateTemplateRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/createtemplateresponse.html" class="tsd-signature-type">CreateTemplateResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/createtemplateresponse.html" class="tsd-signature-type">CreateTemplateResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L563">ServerClient.ts:563</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L620">ServerClient.ts:620</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1376,19 +1376,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>template: <a href="../interfaces/ifakeoptions.html" class="tsd-signature-type">IFakeOptions</a></h5>
+								<h5>template: <a href="../interfaces/createtemplaterequest.html" class="tsd-signature-type">CreateTemplateRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>The template you wish to create.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/createtemplateresponse.html" class="tsd-signature-type">CreateTemplateResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/createtemplateresponse.html" class="tsd-signature-type">CreateTemplateResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -1397,13 +1397,13 @@ img { max-width: 100%; }
 				<a name="deleteinboundruletrigger" class="tsd-anchor"></a>
 				<h3>delete<wbr>Inbound<wbr>Rule<wbr>Trigger</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">delete<wbr>Inbound<wbr>Rule<wbr>Trigger<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">delete<wbr>Inbound<wbr>Rule<wbr>Trigger<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/deleteinboundruletriggerresponse.html" class="tsd-signature-type">DeleteInboundRuleTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/deleteinboundruletriggerresponse.html" class="tsd-signature-type">DeleteInboundRuleTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L503">ServerClient.ts:503</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L560">ServerClient.ts:560</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1420,13 +1420,13 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/deleteinboundruletriggerresponse.html" class="tsd-signature-type">DeleteInboundRuleTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/deleteinboundruletriggerresponse.html" class="tsd-signature-type">DeleteInboundRuleTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -1435,13 +1435,13 @@ img { max-width: 100%; }
 				<a name="deletetagtrigger" class="tsd-anchor"></a>
 				<h3>delete<wbr>Tag<wbr>Trigger</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">delete<wbr>Tag<wbr>Trigger<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">delete<wbr>Tag<wbr>Trigger<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/deletetagtriggerresponse.html" class="tsd-signature-type">DeleteTagTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/deletetagtriggerresponse.html" class="tsd-signature-type">DeleteTagTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L458">ServerClient.ts:458</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L515">ServerClient.ts:515</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1458,13 +1458,13 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/deletetagtriggerresponse.html" class="tsd-signature-type">DeleteTagTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/deletetagtriggerresponse.html" class="tsd-signature-type">DeleteTagTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -1473,13 +1473,13 @@ img { max-width: 100%; }
 				<a name="deletetemplate" class="tsd-anchor"></a>
 				<h3>delete<wbr>Template</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">delete<wbr>Template<span class="tsd-signature-symbol">(</span>idOrAlias<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">delete<wbr>Template<span class="tsd-signature-symbol">(</span>idOrAlias<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/deletetemplateresponse.html" class="tsd-signature-type">DeleteTemplateResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L553">ServerClient.ts:553</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L610">ServerClient.ts:610</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1496,7 +1496,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/deletetemplateresponse.html" class="tsd-signature-type">DeleteTemplateResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1517,7 +1517,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L161">ServerClient.ts:161</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L218">ServerClient.ts:218</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1549,13 +1549,13 @@ img { max-width: 100%; }
 				<a name="edittagtrigger" class="tsd-anchor"></a>
 				<h3>edit<wbr>Tag<wbr>Trigger</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">edit<wbr>Tag<wbr>Trigger<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/ifakeoptions.html" class="tsd-signature-type">IFakeOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">edit<wbr>Tag<wbr>Trigger<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/edittagtriggerrequest.html" class="tsd-signature-type">EditTagTriggerRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/edittagtriggerresponse.html" class="tsd-signature-type">EditTagTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/edittagtriggerresponse.html" class="tsd-signature-type">EditTagTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L448">ServerClient.ts:448</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L505">ServerClient.ts:505</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1572,19 +1572,19 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5>options: <a href="../interfaces/ifakeoptions.html" class="tsd-signature-type">IFakeOptions</a></h5>
+								<h5>options: <a href="../interfaces/edittagtriggerrequest.html" class="tsd-signature-type">EditTagTriggerRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>The tag trigger options</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/edittagtriggerresponse.html" class="tsd-signature-type">EditTagTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/edittagtriggerresponse.html" class="tsd-signature-type">EditTagTriggerResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -1593,13 +1593,13 @@ img { max-width: 100%; }
 				<a name="edittemplate" class="tsd-anchor"></a>
 				<h3>edit<wbr>Template</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">edit<wbr>Template<span class="tsd-signature-symbol">(</span>idOrAlias<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span>, template<span class="tsd-signature-symbol">: </span><a href="../interfaces/ifakeoptions.html" class="tsd-signature-type">IFakeOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">edit<wbr>Template<span class="tsd-signature-symbol">(</span>idOrAlias<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span>, template<span class="tsd-signature-symbol">: </span><a href="../interfaces/edittemplaterequest.html" class="tsd-signature-type">EditTemplateRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/edittemplateresponse.html" class="tsd-signature-type">EditTemplateResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/edittemplateresponse.html" class="tsd-signature-type">EditTemplateResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L574">ServerClient.ts:574</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L631">ServerClient.ts:631</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1616,19 +1616,19 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5>template: <a href="../interfaces/ifakeoptions.html" class="tsd-signature-type">IFakeOptions</a></h5>
+								<h5>template: <a href="../interfaces/edittemplaterequest.html" class="tsd-signature-type">EditTemplateRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>The values on the template you wish to update.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/edittemplateresponse.html" class="tsd-signature-type">EditTemplateResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/edittemplateresponse.html" class="tsd-signature-type">EditTemplateResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -1643,7 +1643,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L112">ServerClient.ts:112</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L169">ServerClient.ts:169</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1675,13 +1675,13 @@ img { max-width: 100%; }
 				<a name="getbouncecounts" class="tsd-anchor"></a>
 				<h3>get<wbr>Bounce<wbr>Counts</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Bounce<wbr>Counts<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Bounce<wbr>Counts<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/bouncecountsrequest.html" class="tsd-signature-type">BounceCountsRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/bouncecountsresponse.html" class="tsd-signature-type">BounceCountsResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/bouncecountsresponse.html" class="tsd-signature-type">BounceCountsResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L326">ServerClient.ts:326</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L383">ServerClient.ts:383</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1692,19 +1692,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/bouncecountsrequest.html" class="tsd-signature-type">BounceCountsRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/bouncecountsresponse.html" class="tsd-signature-type">BounceCountsResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/bouncecountsresponse.html" class="tsd-signature-type">BounceCountsResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -1719,7 +1719,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L122">ServerClient.ts:122</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L179">ServerClient.ts:179</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1754,7 +1754,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L142">ServerClient.ts:142</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L199">ServerClient.ts:199</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1786,7 +1786,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L97">ServerClient.ts:97</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L154">ServerClient.ts:154</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1818,13 +1818,13 @@ img { max-width: 100%; }
 				<a name="getbrowserplatforms" class="tsd-anchor"></a>
 				<h3>get<wbr>Browser<wbr>Platforms</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Browser<wbr>Platforms<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Browser<wbr>Platforms<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/browserplatformsrequest.html" class="tsd-signature-type">BrowserPlatformsRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/browserplatformsresponse.html" class="tsd-signature-type">BrowserPlatformsResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/browserplatformsresponse.html" class="tsd-signature-type">BrowserPlatformsResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L416">ServerClient.ts:416</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L473">ServerClient.ts:473</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1835,19 +1835,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/browserplatformsrequest.html" class="tsd-signature-type">BrowserPlatformsRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/browserplatformsresponse.html" class="tsd-signature-type">BrowserPlatformsResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/browserplatformsresponse.html" class="tsd-signature-type">BrowserPlatformsResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -1856,13 +1856,13 @@ img { max-width: 100%; }
 				<a name="getbrowserusage" class="tsd-anchor"></a>
 				<h3>get<wbr>Browser<wbr>Usage</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Browser<wbr>Usage<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Browser<wbr>Usage<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/browserusagerequest.html" class="tsd-signature-type">BrowserUsageRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/browserusageresponse.html" class="tsd-signature-type">BrowserUsageResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/browserusageresponse.html" class="tsd-signature-type">BrowserUsageResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L406">ServerClient.ts:406</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L463">ServerClient.ts:463</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1873,19 +1873,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/browserusagerequest.html" class="tsd-signature-type">BrowserUsageRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/browserusageresponse.html" class="tsd-signature-type">BrowserUsageResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/browserusageresponse.html" class="tsd-signature-type">BrowserUsageResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -1894,13 +1894,13 @@ img { max-width: 100%; }
 				<a name="getclickcounts" class="tsd-anchor"></a>
 				<h3>get<wbr>Click<wbr>Counts</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Click<wbr>Counts<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Click<wbr>Counts<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/clickcountsrequest.html" class="tsd-signature-type">ClickCountsRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/clickcountsresponse.html" class="tsd-signature-type">ClickCountsResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/clickcountsresponse.html" class="tsd-signature-type">ClickCountsResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L396">ServerClient.ts:396</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L453">ServerClient.ts:453</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1911,19 +1911,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/clickcountsrequest.html" class="tsd-signature-type">ClickCountsRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/clickcountsresponse.html" class="tsd-signature-type">ClickCountsResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/clickcountsresponse.html" class="tsd-signature-type">ClickCountsResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -1932,13 +1932,13 @@ img { max-width: 100%; }
 				<a name="getclicklocation" class="tsd-anchor"></a>
 				<h3>get<wbr>Click<wbr>Location</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Click<wbr>Location<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Click<wbr>Location<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/clicklocationrequest.html" class="tsd-signature-type">ClickLocationRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/clicklocationresponse.html" class="tsd-signature-type">ClickLocationResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/clicklocationresponse.html" class="tsd-signature-type">ClickLocationResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L427">ServerClient.ts:427</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L484">ServerClient.ts:484</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1950,19 +1950,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/clicklocationrequest.html" class="tsd-signature-type">ClickLocationRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/clicklocationresponse.html" class="tsd-signature-type">ClickLocationResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/clicklocationresponse.html" class="tsd-signature-type">ClickLocationResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -1977,7 +1977,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L87">ServerClient.ts:87</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L144">ServerClient.ts:144</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2003,13 +2003,13 @@ img { max-width: 100%; }
 				<a name="getemailclientusage" class="tsd-anchor"></a>
 				<h3>get<wbr>Email<wbr>Client<wbr>Usage</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Email<wbr>Client<wbr>Usage<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Email<wbr>Client<wbr>Usage<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/emailclientusagerequest.html" class="tsd-signature-type">EmailClientUsageRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/emailclientusageresponse.html" class="tsd-signature-type">EmailClientUsageResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/emailclientusageresponse.html" class="tsd-signature-type">EmailClientUsageResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L376">ServerClient.ts:376</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L433">ServerClient.ts:433</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2020,19 +2020,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/emailclientusagerequest.html" class="tsd-signature-type">EmailClientUsageRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/emailclientusageresponse.html" class="tsd-signature-type">EmailClientUsageResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/emailclientusageresponse.html" class="tsd-signature-type">EmailClientUsageResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -2041,13 +2041,13 @@ img { max-width: 100%; }
 				<a name="getemailopencounts" class="tsd-anchor"></a>
 				<h3>get<wbr>Email<wbr>Open<wbr>Counts</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Email<wbr>Open<wbr>Counts<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Email<wbr>Open<wbr>Counts<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/emailopencountsrequest.html" class="tsd-signature-type">EmailOpenCountsRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/emailopencountsresponse.html" class="tsd-signature-type">EmailOpenCountsResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/emailopencountsresponse.html" class="tsd-signature-type">EmailOpenCountsResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L356">ServerClient.ts:356</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L413">ServerClient.ts:413</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2058,19 +2058,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/emailopencountsrequest.html" class="tsd-signature-type">EmailOpenCountsRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/emailopencountsresponse.html" class="tsd-signature-type">EmailOpenCountsResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/emailopencountsresponse.html" class="tsd-signature-type">EmailOpenCountsResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -2079,13 +2079,13 @@ img { max-width: 100%; }
 				<a name="getemailplatformusage" class="tsd-anchor"></a>
 				<h3>get<wbr>Email<wbr>Platform<wbr>Usage</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Email<wbr>Platform<wbr>Usage<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Email<wbr>Platform<wbr>Usage<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/emailplatformusagerequest.html" class="tsd-signature-type">EmailPlatformUsageRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/emailplatformusageresponse.html" class="tsd-signature-type">EmailPlatformUsageResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/emailplatformusageresponse.html" class="tsd-signature-type">EmailPlatformUsageResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L366">ServerClient.ts:366</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L423">ServerClient.ts:423</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2096,19 +2096,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/emailplatformusagerequest.html" class="tsd-signature-type">EmailPlatformUsageRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/emailplatformusageresponse.html" class="tsd-signature-type">EmailPlatformUsageResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/emailplatformusageresponse.html" class="tsd-signature-type">EmailPlatformUsageResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -2117,13 +2117,13 @@ img { max-width: 100%; }
 				<a name="getemailreadtimes" class="tsd-anchor"></a>
 				<h3>get<wbr>Email<wbr>Read<wbr>Times</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Email<wbr>Read<wbr>Times<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Email<wbr>Read<wbr>Times<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/emailreadtimesrequest.html" class="tsd-signature-type">EmailReadTimesRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/emailreadtimesresponse.html" class="tsd-signature-type">EmailReadTimesResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/emailreadtimesresponse.html" class="tsd-signature-type">EmailReadTimesResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L386">ServerClient.ts:386</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L443">ServerClient.ts:443</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2134,19 +2134,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/emailreadtimesrequest.html" class="tsd-signature-type">EmailReadTimesRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/emailreadtimesresponse.html" class="tsd-signature-type">EmailReadTimesResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/emailreadtimesresponse.html" class="tsd-signature-type">EmailReadTimesResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -2155,13 +2155,13 @@ img { max-width: 100%; }
 				<a name="getinboundmessagedetails" class="tsd-anchor"></a>
 				<h3>get<wbr>Inbound<wbr>Message<wbr>Details</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Inbound<wbr>Message<wbr>Details<span class="tsd-signature-symbol">(</span>messageId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Inbound<wbr>Message<wbr>Details<span class="tsd-signature-symbol">(</span>messageId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundmessagedetails.html" class="tsd-signature-type">InboundMessageDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundmessagedetails.html" class="tsd-signature-type">InboundMessageDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L274">ServerClient.ts:274</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L331">ServerClient.ts:331</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2178,13 +2178,13 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundmessagedetails.html" class="tsd-signature-type">InboundMessageDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundmessagedetails.html" class="tsd-signature-type">InboundMessageDetails</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -2193,13 +2193,13 @@ img { max-width: 100%; }
 				<a name="getinboundmessages" class="tsd-anchor"></a>
 				<h3>get<wbr>Inbound<wbr>Messages</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Inbound<wbr>Messages<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Inbound<wbr>Messages<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/inboundmessagesearchrequest.html" class="tsd-signature-type">InboundMessageSearchRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundmessagesearchresponse.html" class="tsd-signature-type">InboundMessageSearchResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundmessagesearchresponse.html" class="tsd-signature-type">InboundMessageSearchResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L260">ServerClient.ts:260</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L317">ServerClient.ts:317</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2211,19 +2211,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/inboundmessagesearchrequest.html" class="tsd-signature-type">InboundMessageSearchRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundmessagesearchresponse.html" class="tsd-signature-type">InboundMessageSearchResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundmessagesearchresponse.html" class="tsd-signature-type">InboundMessageSearchResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -2232,13 +2232,13 @@ img { max-width: 100%; }
 				<a name="getinboundruletriggers" class="tsd-anchor"></a>
 				<h3>get<wbr>Inbound<wbr>Rule<wbr>Triggers</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Inbound<wbr>Rule<wbr>Triggers<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Inbound<wbr>Rule<wbr>Triggers<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/inboundruleslistingrequest.html" class="tsd-signature-type">InboundRulesListingRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundruleslistingresponse.html" class="tsd-signature-type">InboundRulesListingResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundruleslistingresponse.html" class="tsd-signature-type">InboundRulesListingResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L514">ServerClient.ts:514</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L571">ServerClient.ts:571</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2250,19 +2250,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/inboundruleslistingrequest.html" class="tsd-signature-type">InboundRulesListingRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundruleslistingresponse.html" class="tsd-signature-type">InboundRulesListingResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundruleslistingresponse.html" class="tsd-signature-type">InboundRulesListingResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -2271,13 +2271,13 @@ img { max-width: 100%; }
 				<a name="getmessageclicks" class="tsd-anchor"></a>
 				<h3>get<wbr>Message<wbr>Clicks</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Message<wbr>Clicks<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Message<wbr>Clicks<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/messageclicksrequest.html" class="tsd-signature-type">MessageClicksRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/messageclicksresponse.html" class="tsd-signature-type">MessageClicksResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/messageclicksresponse.html" class="tsd-signature-type">MessageClicksResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L215">ServerClient.ts:215</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L272">ServerClient.ts:272</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2289,19 +2289,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/messageclicksrequest.html" class="tsd-signature-type">MessageClicksRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/messageclicksresponse.html" class="tsd-signature-type">MessageClicksResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/messageclicksresponse.html" class="tsd-signature-type">MessageClicksResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -2310,13 +2310,13 @@ img { max-width: 100%; }
 				<a name="getmessageclicksforsinglemessage" class="tsd-anchor"></a>
 				<h3>get<wbr>Message<wbr>Clicks<wbr>For<wbr>Single<wbr>Message</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Message<wbr>Clicks<wbr>For<wbr>Single<wbr>Message<span class="tsd-signature-symbol">(</span>messageId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Message<wbr>Clicks<wbr>For<wbr>Single<wbr>Message<span class="tsd-signature-symbol">(</span>messageId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/singlemessageclicksrequest.html" class="tsd-signature-type">SingleMessageClicksRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/singlemessageclicksresponse.html" class="tsd-signature-type">SingleMessageClicksResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/singlemessageclicksresponse.html" class="tsd-signature-type">SingleMessageClicksResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L230">ServerClient.ts:230</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L287">ServerClient.ts:287</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2333,19 +2333,19 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/singlemessageclicksrequest.html" class="tsd-signature-type">SingleMessageClicksRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/singlemessageclicksresponse.html" class="tsd-signature-type">SingleMessageClicksResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/singlemessageclicksresponse.html" class="tsd-signature-type">SingleMessageClicksResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -2354,13 +2354,13 @@ img { max-width: 100%; }
 				<a name="getmessageopens" class="tsd-anchor"></a>
 				<h3>get<wbr>Message<wbr>Opens</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Message<wbr>Opens<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Message<wbr>Opens<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/messageopensrequest.html" class="tsd-signature-type">MessageOpensRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/messageopensresponse.html" class="tsd-signature-type">MessageOpensResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/messageopensresponse.html" class="tsd-signature-type">MessageOpensResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L199">ServerClient.ts:199</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L256">ServerClient.ts:256</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2372,19 +2372,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/messageopensrequest.html" class="tsd-signature-type">MessageOpensRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/messageopensresponse.html" class="tsd-signature-type">MessageOpensResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/messageopensresponse.html" class="tsd-signature-type">MessageOpensResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -2393,13 +2393,13 @@ img { max-width: 100%; }
 				<a name="getmessageopensforsinglemessage" class="tsd-anchor"></a>
 				<h3>get<wbr>Message<wbr>Opens<wbr>For<wbr>Single<wbr>Message</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Message<wbr>Opens<wbr>For<wbr>Single<wbr>Message<span class="tsd-signature-symbol">(</span>messageId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Message<wbr>Opens<wbr>For<wbr>Single<wbr>Message<span class="tsd-signature-symbol">(</span>messageId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/singlemessageopensrequest.html" class="tsd-signature-type">SingleMessageOpensRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/singlemessageopensresponse.html" class="tsd-signature-type">SingleMessageOpensResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/singlemessageopensresponse.html" class="tsd-signature-type">SingleMessageOpensResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L245">ServerClient.ts:245</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L302">ServerClient.ts:302</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2416,19 +2416,19 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/singlemessageopensrequest.html" class="tsd-signature-type">SingleMessageOpensRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/singlemessageopensresponse.html" class="tsd-signature-type">SingleMessageOpensResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/singlemessageopensresponse.html" class="tsd-signature-type">SingleMessageOpensResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -2437,13 +2437,13 @@ img { max-width: 100%; }
 				<a name="getouboundoverview" class="tsd-anchor"></a>
 				<h3>get<wbr>Oubound<wbr>Overview</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Oubound<wbr>Overview<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/statisticsoverviewresponse.html" class="tsd-signature-type">StatisticsOverviewResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/statisticsoverviewresponse.html" class="tsd-signature-type">StatisticsOverviewResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Oubound<wbr>Overview<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/statisticsoverviewrequest.html" class="tsd-signature-type">StatisticsOverviewRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/statisticsoverviewresponse.html" class="tsd-signature-type">StatisticsOverviewResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/statisticsoverviewresponse.html" class="tsd-signature-type">StatisticsOverviewResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L305">ServerClient.ts:305</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L362">ServerClient.ts:362</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2454,7 +2454,7 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/statisticsoverviewrequest.html" class="tsd-signature-type">StatisticsOverviewRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
@@ -2481,7 +2481,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L187">ServerClient.ts:187</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L244">ServerClient.ts:244</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2519,7 +2519,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L172">ServerClient.ts:172</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L229">ServerClient.ts:229</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2552,13 +2552,13 @@ img { max-width: 100%; }
 				<a name="getsentcounts" class="tsd-anchor"></a>
 				<h3>get<wbr>Sent<wbr>Counts</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Sent<wbr>Counts<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Sent<wbr>Counts<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/sentcountsrequest.html" class="tsd-signature-type">SentCountsRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/sentcountsresponse.html" class="tsd-signature-type">SentCountsResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/sentcountsresponse.html" class="tsd-signature-type">SentCountsResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L316">ServerClient.ts:316</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L373">ServerClient.ts:373</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2569,19 +2569,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/sentcountsrequest.html" class="tsd-signature-type">SentCountsRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/sentcountsresponse.html" class="tsd-signature-type">SentCountsResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/sentcountsresponse.html" class="tsd-signature-type">SentCountsResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -2596,7 +2596,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L151">ServerClient.ts:151</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L208">ServerClient.ts:208</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2622,13 +2622,13 @@ img { max-width: 100%; }
 				<a name="getspamcomplaints" class="tsd-anchor"></a>
 				<h3>get<wbr>Spam<wbr>Complaints</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Spam<wbr>Complaints<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Spam<wbr>Complaints<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/spamcomplaintsrequest.html" class="tsd-signature-type">SpamComplaintsRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/spamcomplaintsresponse.html" class="tsd-signature-type">SpamComplaintsResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/spamcomplaintsresponse.html" class="tsd-signature-type">SpamComplaintsResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L336">ServerClient.ts:336</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L393">ServerClient.ts:393</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2639,19 +2639,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/spamcomplaintsrequest.html" class="tsd-signature-type">SpamComplaintsRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/spamcomplaintsresponse.html" class="tsd-signature-type">SpamComplaintsResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/spamcomplaintsresponse.html" class="tsd-signature-type">SpamComplaintsResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -2660,13 +2660,13 @@ img { max-width: 100%; }
 				<a name="gettagtrigger" class="tsd-anchor"></a>
 				<h3>get<wbr>Tag<wbr>Trigger</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Tag<wbr>Trigger<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Tag<wbr>Trigger<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/tagtrigger.html" class="tsd-signature-type">TagTrigger</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/tagtrigger.html" class="tsd-signature-type">TagTrigger</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L468">ServerClient.ts:468</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L525">ServerClient.ts:525</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2683,13 +2683,13 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/tagtrigger.html" class="tsd-signature-type">TagTrigger</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/tagtrigger.html" class="tsd-signature-type">TagTrigger</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -2698,13 +2698,13 @@ img { max-width: 100%; }
 				<a name="gettagtriggers" class="tsd-anchor"></a>
 				<h3>get<wbr>Tag<wbr>Triggers</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Tag<wbr>Triggers<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Tag<wbr>Triggers<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/tagtriggerlistingrequest.html" class="tsd-signature-type">TagTriggerListingRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/tagtriggerlistingresponse.html" class="tsd-signature-type">TagTriggerListingResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/tagtriggerlistingresponse.html" class="tsd-signature-type">TagTriggerListingResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L479">ServerClient.ts:479</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L536">ServerClient.ts:536</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2716,19 +2716,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/tagtriggerlistingrequest.html" class="tsd-signature-type">TagTriggerListingRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/tagtriggerlistingresponse.html" class="tsd-signature-type">TagTriggerListingResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/tagtriggerlistingresponse.html" class="tsd-signature-type">TagTriggerListingResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -2737,13 +2737,13 @@ img { max-width: 100%; }
 				<a name="gettemplate" class="tsd-anchor"></a>
 				<h3>get<wbr>Template</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Template<span class="tsd-signature-symbol">(</span>idOrAlias<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Template<span class="tsd-signature-symbol">(</span>idOrAlias<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/template.html" class="tsd-signature-type">Template</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/template.html" class="tsd-signature-type">Template</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L543">ServerClient.ts:543</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L600">ServerClient.ts:600</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2760,13 +2760,13 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/template.html" class="tsd-signature-type">Template</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/template.html" class="tsd-signature-type">Template</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -2775,13 +2775,13 @@ img { max-width: 100%; }
 				<a name="gettemplates" class="tsd-anchor"></a>
 				<h3>get<wbr>Templates</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Templates<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Templates<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">: </span><a href="../interfaces/templatelistingrequest.html" class="tsd-signature-type">TemplateListingRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/templatelistingresponse.html" class="tsd-signature-type">TemplateListingResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/templatelistingresponse.html" class="tsd-signature-type">TemplateListingResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L528">ServerClient.ts:528</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L585">ServerClient.ts:585</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2792,19 +2792,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5>filter: <a href="../interfaces/templatelistingrequest.html" class="tsd-signature-type">TemplateListingRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering options.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/templatelistingresponse.html" class="tsd-signature-type">TemplateListingResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/templatelistingresponse.html" class="tsd-signature-type">TemplateListingResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -2813,13 +2813,13 @@ img { max-width: 100%; }
 				<a name="gettrackedemailcounts" class="tsd-anchor"></a>
 				<h3>get<wbr>Tracked<wbr>Email<wbr>Counts</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Tracked<wbr>Email<wbr>Counts<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Tracked<wbr>Email<wbr>Counts<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/trackedemailcountsrequest.html" class="tsd-signature-type">TrackedEmailCountsRequest</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/trackedemailcountsresponse.html" class="tsd-signature-type">TrackedEmailCountsResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/trackedemailcountsresponse.html" class="tsd-signature-type">TrackedEmailCountsResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L346">ServerClient.ts:346</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L403">ServerClient.ts:403</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2830,19 +2830,19 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/ifakefilteringoptions.html" class="tsd-signature-type">IFakeFilteringOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/trackedemailcountsrequest.html" class="tsd-signature-type">TrackedEmailCountsRequest</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Optional filtering parameters.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/trackedemailcountsresponse.html" class="tsd-signature-type">TrackedEmailCountsResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/trackedemailcountsresponse.html" class="tsd-signature-type">TrackedEmailCountsResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -2851,13 +2851,13 @@ img { max-width: 100%; }
 				<a name="retryinboundhookformessage" class="tsd-anchor"></a>
 				<h3>retry<wbr>Inbound<wbr>Hook<wbr>For<wbr>Message</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">retry<wbr>Inbound<wbr>Hook<wbr>For<wbr>Message<span class="tsd-signature-symbol">(</span>messageId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">retry<wbr>Inbound<wbr>Hook<wbr>For<wbr>Message<span class="tsd-signature-symbol">(</span>messageId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundretryresponse.html" class="tsd-signature-type">InboundRetryResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundretryresponse.html" class="tsd-signature-type">InboundRetryResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L294">ServerClient.ts:294</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L351">ServerClient.ts:351</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2874,13 +2874,13 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundretryresponse.html" class="tsd-signature-type">InboundRetryResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/inboundretryresponse.html" class="tsd-signature-type">InboundRetryResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>A promise that will complete when the API responds (or an error occurs).</p>
 					</li>
 				</ul>
@@ -2895,7 +2895,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L48">ServerClient.ts:48</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L105">ServerClient.ts:105</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2933,7 +2933,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L78">ServerClient.ts:78</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L135">ServerClient.ts:135</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2971,7 +2971,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L68">ServerClient.ts:68</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L125">ServerClient.ts:125</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3009,7 +3009,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L58">ServerClient.ts:58</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L115">ServerClient.ts:115</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3047,7 +3047,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/ServerClient.ts#L585">ServerClient.ts:585</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/ServerClient.ts#L642">ServerClient.ts:642</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3086,7 +3086,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="baseclient.html">BaseClient</a>.<a href="baseclient.html#clientdefaults">ClientDefaults</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/BaseClient.ts#L20">BaseClient.ts:20</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/BaseClient.ts#L20">BaseClient.ts:20</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3101,7 +3101,7 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">request<wbr>Host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;api.postmarkapp.com&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/BaseClient.ts#L30">BaseClient.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/BaseClient.ts#L30">BaseClient.ts:30</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -3121,7 +3121,7 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;30</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/BaseClient.ts#L35">BaseClient.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/BaseClient.ts#L35">BaseClient.ts:35</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -3141,7 +3141,7 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">use<wbr>Https<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5655142/src/BaseClient.ts#L25">BaseClient.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/0dc8fef/src/BaseClient.ts#L25">BaseClient.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">

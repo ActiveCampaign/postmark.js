@@ -1,5 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @internal
+ */
 function coalesce(target) {
     var sources = [];
     for (var _i = 1; _i < arguments.length; _i++) {
