@@ -7,3 +7,4 @@ tests/testing_keys.json
 **/*.idea
 **/*.iml
 test.js
+dist
