@@ -1,5 +1,5 @@
-import ServerClient from './ServerClient';
-import AccountClient from './AccountClient';
+import ServerClient from './client/ServerClient';
+import AccountClient from './client/AccountClient';
 
 export default ServerClient;
 export { ServerClient, AccountClient };

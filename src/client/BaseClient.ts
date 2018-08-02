@@ -1,19 +1,22 @@
+import { Promise } from 'bluebird'
+import * as request from 'request-promise';
+
 import { PostmarkError, HttpMethod } from './models';
 import IClientOptions from './models/IClientOptions';
-import { Promise } from 'bluebird'
 import { PostmarkCallback, coalesce } from './utils';
-import * as request from 'request-promise';
+
 import { Stream } from 'stream';
 
 /**
- * Provides a base class from which both the AccountClient and ServerClient classes can be implemented. 
+ * Provides a base client class from which both the AccountClient and ServerClient classes can be implemented.
  * 
  * This class is not intended to be instantiated directly.
  */
 export default abstract class BaseClient {
 
     /**
-     * These are the connection defaults that will be combined with any options that are provided during Client instantiation (Any values provided to a Client constructor will override these defaults.)
+     * These are the connection defaults that will be combined with any options that are provided during Client instantiation.
+     * Any values provided to a Client constructor will override these defaults.
      * 
      * You may modify these values and new clients will use them.
      */
@@ -40,9 +43,8 @@ export default abstract class BaseClient {
     private token: string;
 
     protected constructor(token: string, authHeader: string, options?: IClientOptions) {
-        if (!token || token.trim() == '') {
-            throw new PostmarkError('A valid API token must be provided when creating a client.');
-        }
+        this.verifyToken(token);
+
         this.token = token.trim();
         this.authHeader = authHeader;
         this.clientOptions = coalesce(options || {}, BaseClient.ClientDefaults);
@@ -88,6 +90,12 @@ export default abstract class BaseClient {
             req.suppressUnhandledRejections();
         }
         return req;
+    }
+
+    private verifyToken(token:string) {
+        if (!token || token.trim() == '') {
+            throw new PostmarkError('A valid API token must be provided when creating a client.');
+        }
     }
 
 }

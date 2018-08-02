@@ -2,5 +2,8 @@ node_modules
 npm-debug.log
 testing_keys.json
 tests/testing_keys.json
-.DS_Store
 *.swp
+**/*.DS_Store
+**/*.idea
+**/*.iml
+test.js
