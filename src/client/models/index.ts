@@ -5,12 +5,16 @@ import PostmarkError from './PostmarkError';
 import TemplatedPostmarkMessage from './TemplatedPostmarkMessage';
 import IClientOptions from './IClientOptions';
 import StatisticsOverviewResponse from './StatisticsOverviewResponse';
-import BounceListingResponse from './BounceListingResponse';
+
+import Bounces from './bounces/Bounces';
+import Bounce from './bounces/Bounce';
+import BounceDump from './bounces/BounceDump';
+import BounceActivateResponse from './bounces/BounceActivateResponse';
+import DeliveryStats from './bounces/DeliveryStats';
+
+
 import Server from './Server';
-import DeliveryStatisticsResponse from './DeliveryStatisticsResponse';
-import BounceInfo from './BounceInfo';
-import BounceDump from './BounceDump';
-import ActivateBounceResponse from './ActivateBounceResponse';
+
 import IServerOptions from './IServerOptions';
 import OutboundMessageDetails, { OutboundMessageDetailsExtended } from './OutboundMessageDetails';
 import OutboundMessageDetailSearchResponse from './OutboundMessageDetailSearchResponse';
@@ -83,12 +87,12 @@ export {
     PostmarkError,
     TemplatedPostmarkMessage,
     StatisticsOverviewResponse,
-    BounceListingResponse,
-    DeliveryStatisticsResponse,
-    Server,
-    BounceInfo,
+    Bounce,
+    Bounces,
     BounceDump,
-    ActivateBounceResponse,
+    BounceActivateResponse,
+    DeliveryStats,
+    Server,
     OutboundMessageDetails,
     OutboundMessageDetailSearchResponse,
     OutboundMessageDetailsExtended,

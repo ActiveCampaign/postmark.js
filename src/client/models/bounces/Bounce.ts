@@ -1,4 +1,4 @@
-export default interface BounceInfo{
+export default interface Bounce {
     ID: number
     Type: string
     TypeCode: number
@@ -15,8 +15,5 @@ export default interface BounceInfo{
     Inactive: boolean
     CanActivate: boolean
     Subject: string
-}
-
-export interface BounceInfoExtended extends BounceInfo {
-    Content: string
+    Content?: string
 }
