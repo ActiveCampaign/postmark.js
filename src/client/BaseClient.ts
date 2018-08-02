@@ -5,12 +5,10 @@ import { PostmarkError, HttpMethod } from './models';
 import IClientOptions from './models/IClientOptions';
 import { PostmarkCallback, coalesce } from './utils';
 
-import { Stream } from 'stream';
-
 /**
  * Provides a base client class from which both the AccountClient and ServerClient classes can be implemented.
- * 
- * This class is not intended to be instantiated directly.
+ *
+ * This class is NOT intended to be instantiated directly.
  */
 export default abstract class BaseClient {
 

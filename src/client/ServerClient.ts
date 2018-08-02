@@ -86,6 +86,7 @@ import { IFakeFilteringOptions, IFakeOptions } from './models';
 import BaseClient from './BaseClient';
 import { coalesce, PostmarkCallback } from './utils';
 import PostmarkError from './models/PostmarkError';
+import {DefaultHeaderNames} from "./models/SupportingTypes";
 
 export default class ServerClient extends BaseClient {
     /**
@@ -94,7 +95,7 @@ export default class ServerClient extends BaseClient {
      * @param options Options to customize the behavior of the this client.
      */
     constructor(serverToken: string, options?: IClientOptions) {
-        super(serverToken, 'X-Postmark-Server-Token', options);
+        super(serverToken, DefaultHeaderNames.SERVER_TOKEN, options);
     }
 
     /** Send a single email message. 

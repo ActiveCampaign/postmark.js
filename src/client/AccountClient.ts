@@ -1,5 +1,6 @@
 import BaseClient from './BaseClient';
 import { IClientOptions } from './models'
+import {DefaultHeaderNames} from "./models/SupportingTypes";
 
 export default class AccountClient extends BaseClient {
 
@@ -9,6 +10,6 @@ export default class AccountClient extends BaseClient {
      * @param options Various options to customize client behavior.
      */
     constructor(accountToken: string, options?: IClientOptions) {
-        super(accountToken, 'X-Postmark-Account-Token', options);
+        super(accountToken, DefaultHeaderNames.ACCOUNT_TOKEN, options);
     }
 }

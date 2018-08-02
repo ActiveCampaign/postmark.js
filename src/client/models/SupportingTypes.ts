@@ -29,3 +29,8 @@ export interface Attachment {
     Content: string,
     ContentType: string
 }
+
+export enum DefaultHeaderNames {
+    SERVER_TOKEN = 'X-Postmark-Server-Token',
+    ACCOUNT_TOKEN = 'X-Postmark-Account-Token'
+}
