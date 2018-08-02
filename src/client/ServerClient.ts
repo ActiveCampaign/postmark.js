@@ -84,8 +84,7 @@ import {
 import { IFakeFilteringOptions, IFakeOptions } from './models';
 
 import BaseClient from './BaseClient';
-import { coalesce, PostmarkCallback } from './utils';
-import PostmarkError from './models/PostmarkError';
+import {PostmarkCallback} from './utils';
 import {DefaultHeaderNames} from "./models/SupportingTypes";
 
 export default class ServerClient extends BaseClient {
@@ -152,12 +151,8 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getBounces(filter?: IFakeFilteringOptions, callback?:PostmarkCallback<BounceListingResponse>) : Promise<BounceListingResponse> {
-        filter = coalesce(filter, {
-            count: 100,
-            offset: 0
-        });
-
+    getBounces(filter: IFakeFilteringOptions = {}, callback?:PostmarkCallback<BounceListingResponse>) : Promise<BounceListingResponse> {
+        filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody('/bounces', HttpMethod.GET, filter, callback);
     };
 
@@ -229,10 +224,8 @@ export default class ServerClient extends BaseClient {
      */
     getOutboundMessages(filter?: IFakeFilteringOptions, callback?: PostmarkCallback<OutboundMessageDetailSearchResponse>):
         Promise<OutboundMessageDetailSearchResponse> {
-        filter = coalesce(filter, {
-            count: 100,
-            offset: 0
-        });
+
+        filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody('/messages/outbound', HttpMethod.GET, filter, callback);
     };
 
@@ -255,10 +248,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getMessageOpens(filter?: MessageOpensRequest, callback?:PostmarkCallback<MessageOpensResponse>) : Promise<MessageOpensResponse> {
-        filter = coalesce(filter, {
-            count: 100,
-            offset: 0
-        });
+        filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody('/messages/outbound/opens', HttpMethod.GET, filter, callback);
     };
 
@@ -271,10 +261,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getMessageClicks(filter?: MessageClicksRequest, callback?:PostmarkCallback<MessageClicksResponse>) : Promise<MessageClicksResponse> {
-        filter = coalesce(filter, {
-            count: 100,
-            offset: 0
-        });
+        filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody('/messages/outbound/clicks', HttpMethod.GET, filter, callback);
     };
 
@@ -286,10 +273,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getMessageClicksForSingleMessage(messageId: string, filter?: SingleMessageClicksRequest, callback?:PostmarkCallback<SingleMessageClicksResponse>) : Promise<SingleMessageClicksResponse> {
-        filter = coalesce(filter, {
-            count: 100,
-            offset: 0
-        });
+        filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody(`/messages/outbound/clicks/${messageId}`, HttpMethod.GET, filter, callback);
     };
 
@@ -301,10 +285,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getMessageOpensForSingleMessage(messageId: string, filter?: SingleMessageOpensRequest, callback?:PostmarkCallback<SingleMessageOpensResponse>) : Promise<SingleMessageOpensResponse> {
-        filter = coalesce(filter, {
-            count: 100,
-            offset: 0
-        });
+        filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody(`/messages/outbound/opens/${messageId}`, HttpMethod.GET, filter, callback);
     };
 
@@ -316,10 +297,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getInboundMessages(filter?: InboundMessageSearchRequest, callback?:PostmarkCallback<InboundMessageSearchResponse>) : Promise<InboundMessageSearchResponse> {
-        filter = coalesce(filter, {
-            count: 100,
-            offset: 0
-        });
+        filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody('/messages/inbound', HttpMethod.GET, filter, callback);
     };
 
@@ -535,10 +513,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getTagTriggers(filter?: TagTriggerListingRequest, callback?:PostmarkCallback<TagTriggerListingResponse>) : Promise<TagTriggerListingResponse> {
-        filter = coalesce({
-            count: 100,
-            offset: 0
-        }, filter);
+        filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody('/triggers/tags/', HttpMethod.GET, filter, callback);
     };
 
@@ -570,10 +545,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getInboundRuleTriggers(filter?: InboundRulesListingRequest, callback?:PostmarkCallback<InboundRulesListingResponse>) : Promise<InboundRulesListingResponse> {
-        filter = coalesce({
-            count: 100,
-            offset: 0
-        }, filter);
+        filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody('/triggers/inboundrules', HttpMethod.GET, filter, callback);
     };
 
@@ -584,10 +556,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getTemplates(filter: TemplateListingRequest, callback?:PostmarkCallback<TemplateListingResponse>) : Promise<TemplateListingResponse> {
-        filter = coalesce(filter, {
-            count: 100,
-            offset: 0
-        });
+        filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody('/templates', HttpMethod.GET, filter, callback);
     };
 

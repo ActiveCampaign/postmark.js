@@ -3,7 +3,7 @@ import * as request from 'request-promise';
 
 import { PostmarkError, HttpMethod } from './models';
 import IClientOptions from './models/IClientOptions';
-import { PostmarkCallback, coalesce } from './utils';
+import { PostmarkCallback } from './utils';
 
 /**
  * Provides a base client class from which both the AccountClient and ServerClient classes can be implemented.
@@ -18,7 +18,7 @@ export default abstract class BaseClient {
      * 
      * You may modify these values and new clients will use them.
      */
-    public static ClientDefaults: IClientOptions = {
+    public static DefaultOptions: IClientOptions = {
         /**
          * Should https be used for API requests?
          * @default true
@@ -45,8 +45,9 @@ export default abstract class BaseClient {
 
         this.token = token.trim();
         this.authHeader = authHeader;
-        this.clientOptions = coalesce(options || {}, BaseClient.ClientDefaults);
+        this.clientOptions = {...BaseClient.DefaultOptions, ...options};
     }
+
 
     protected processRequestWithBody<T>(path: string, method: HttpMethod,
         payload: (null | object), callback?: PostmarkCallback<T>): Promise<T> {
@@ -57,7 +58,7 @@ export default abstract class BaseClient {
         callback?: PostmarkCallback<T>): Promise<T> {
         return this.processRequest(path, method, queryParameters || {}, false, callback);
     }
-    
+
     private processRequest<T>(path: string, method: HttpMethod, payload: (null | object),
         hasBody: boolean, callback?: PostmarkCallback<T>): Promise<T> {
         
@@ -65,7 +66,7 @@ export default abstract class BaseClient {
 
         let scheme = this.clientOptions.useHttps ? 'https' : 'http';
         let url = `${scheme}://${this.clientOptions.requestHost}/${path}`;
-        var req = request(url, {
+        let req = request(url, {
             method: method.toString(),
             headers: { [this.authHeader]: this.token, 'Accept': 'application/json' },
             [payloadType]: payload,
