@@ -2,7 +2,6 @@ import { HttpMethod } from './SupportingTypes';
 import PostmarkMessage from './PostmarkMessage';
 import PostmarkResponse from './PostmarkResponse';
 import PostmarkError from './PostmarkError';
-import TemplatedPostmarkMessage from './TemplatedPostmarkMessage';
 import IClientOptions from './IClientOptions';
 import StatisticsOverviewResponse from './StatisticsOverviewResponse';
 
@@ -69,15 +68,18 @@ import CreateInboundRuleTriggerResponse from './CreateInboundRuleTriggerResponse
 import DeleteInboundRuleTriggerResponse from './DeleteInboundRuleTriggerResponse';
 import InboundRulesListingRequest from './InboundRulesListingRequest';
 import InboundRulesListingResponse from './InboundRulesListingResponse';
-import TemplateListingResponse from './TemplateListingResponse';
-import TemplateListingRequest from './TemplateListingRequest';
-import Template from './Template';
-import DeleteTemplateResponse from './DeleteTemplateResponse';
-import CreateTemplateRequest from './CreateTemplateRequest';
-import CreateTemplateResponse from './CreateTemplateResponse';
-import EditTemplateResponse from './EditTemplateResponse';
-import EditTemplateRequest from './EditTemplateRequest';
-import { ValidateTemplateContentResponse, ValidateTemplateContentRequest } from './ValidateTemplateContentRequest';
+
+import TemplateListingResponse from './templates/TemplateListingResponse';
+import TemplateListingRequest from './templates/TemplateListingRequest';
+import Template from './templates/Template';
+import DeleteTemplateResponse from './templates/DeleteTemplateResponse';
+import CreateTemplateRequest from './templates/CreateTemplateRequest';
+import CreateTemplateResponse from './templates/CreateTemplateResponse';
+import EditTemplateResponse from './templates/EditTemplateResponse';
+import EditTemplateRequest from './templates/EditTemplateRequest';
+import TemplatedPostmarkMessage from './templates/TemplatedPostmarkMessage';
+import { ValidateTemplateContentResponse, ValidateTemplateContentRequest } from './templates/ValidateTemplateContentRequest';
+
 import IPagedFilter from './IPagedFilter';
 
 export {

@@ -48,7 +48,6 @@ export default abstract class BaseClient {
         this.clientOptions = {...BaseClient.DefaultOptions, ...options};
     }
 
-
     protected processRequestWithBody<T>(path: string, method: HttpMethod,
         payload: (null | object), callback?: PostmarkCallback<T>): Promise<T> {
         return this.processRequest(path, method, payload,true,callback);

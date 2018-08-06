@@ -6,5 +6,6 @@ tests/testing_keys.json
 **/*.DS_Store
 **/*.idea
 **/*.iml
-test.js
+
 dist/**/*
+src/test.js

@@ -10,16 +10,18 @@ import {
     IOpensFilter,
     IClicksFilter,
     IServerOptions,
-    BounceListingResponse,
+
+    Bounce,
+    Bounces,
+    BounceDump,
+    BounceActivateResponse,
+    DeliveryStats,
+
     Server,
-    BounceInfo,
-    ActivateBounceResponse,
     OutboundMessageDetailSearchResponse,
     OutboundMessageDetailsExtended,
     ValidateTemplateContentResponse,
     ValidateTemplateContentRequest,
-    DeliveryStatisticsResponse,
-    BounceDump,
     MessageOpensResponse,
     MessageOpensRequest,
     MessageClicksRequest,
@@ -79,7 +81,7 @@ import {
     EditTemplateRequest,
     EditTemplateResponse,
     CreateTemplateRequest
-} from './models/';
+} from './models/index';
 
 import { IFakeFilteringOptions, IFakeOptions } from './models';
 
@@ -136,12 +138,14 @@ export default class ServerClient extends BaseClient {
         return this.processRequestWithBody('/email/batch', HttpMethod.POST, messages, callback);
     };
 
+    // Bounce messages endpoints
+
     /**
      * Retrieve bounce statistic information for the associated Server.
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getDeliveryStatistics(callback?: PostmarkCallback<DeliveryStatisticsResponse>) : Promise<DeliveryStatisticsResponse> {
+    getDeliveryStatistics(callback?: PostmarkCallback<DeliveryStats>) : Promise<DeliveryStats> {
         return this.processRequestWithoutBody('/deliverystats', HttpMethod.GET, null, callback);
     };
 
@@ -151,7 +155,7 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getBounces(filter: IFakeFilteringOptions = {}, callback?:PostmarkCallback<BounceListingResponse>) : Promise<BounceListingResponse> {
+    getBounces(filter: IFakeFilteringOptions = {}, callback?:PostmarkCallback<Bounces>) : Promise<Bounces> {
         filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody('/bounces', HttpMethod.GET, filter, callback);
     };
@@ -162,7 +166,7 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getBounce(id: string, callback?:PostmarkCallback<BounceInfo>) : Promise<BounceInfo> {
+    getBounce(id: string, callback?:PostmarkCallback<Bounce>) : Promise<Bounce> {
         return this.processRequestWithoutBody(`/bounces/${id}`, HttpMethod.GET, callback);
     };
 
@@ -182,8 +186,8 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    activateBounce(id: string, callback?: PostmarkCallback<ActivateBounceResponse>):
-        Promise<ActivateBounceResponse> {
+    activateBounce(id: string, callback?: PostmarkCallback<BounceActivateResponse>):
+        Promise<BounceActivateResponse> {
         return this.processRequestWithBody(`/bounces/${id}/activate`, HttpMethod.PUT, null, callback);
     };
 
