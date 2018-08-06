@@ -11,6 +11,10 @@ import BounceDump from './bounces/BounceDump';
 import BounceActivateResponse from './bounces/BounceActivateResponse';
 import DeliveryStats from './bounces/DeliveryStats';
 
+import Domain from './domains/Domain'
+import Domains from './domains/Domains'
+import DomainDetails from './domains/DomainDetails'
+
 
 import Server from './Server';
 
@@ -94,6 +98,11 @@ export {
     BounceDump,
     BounceActivateResponse,
     DeliveryStats,
+
+    Domain,
+    Domains,
+    DomainDetails,
+
     Server,
     OutboundMessageDetails,
     OutboundMessageDetailSearchResponse,

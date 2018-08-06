@@ -166,7 +166,7 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getBounce(id: string, callback?:PostmarkCallback<Bounce>) : Promise<Bounce> {
+    getBounce(id: number, callback?:PostmarkCallback<Bounce>) : Promise<Bounce> {
         return this.processRequestWithoutBody(`/bounces/${id}`, HttpMethod.GET, callback);
     };
 
@@ -176,7 +176,7 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getBounceDump(id: string, callback?:PostmarkCallback<BounceDump>) : Promise<BounceDump> {
+    getBounceDump(id: number, callback?:PostmarkCallback<BounceDump>) : Promise<BounceDump> {
         return this.processRequestWithoutBody(`/bounces/${id}/dump`, HttpMethod.GET, callback);
     };
 
@@ -186,7 +186,7 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    activateBounce(id: string, callback?: PostmarkCallback<BounceActivateResponse>):
+    activateBounce(id: number, callback?: PostmarkCallback<BounceActivateResponse>):
         Promise<BounceActivateResponse> {
         return this.processRequestWithBody(`/bounces/${id}/activate`, HttpMethod.PUT, null, callback);
     };

@@ -8,4 +8,4 @@ tests/testing_keys.json
 **/*.iml
 
 dist/**/*
-src/test.js
+src/test.ts

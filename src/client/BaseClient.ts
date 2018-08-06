@@ -95,5 +95,4 @@ export default abstract class BaseClient {
             throw new PostmarkError('A valid API token must be provided when creating a client.');
         }
     }
-
 }
