@@ -1,4 +1,4 @@
-import {BounceEventInfo} from "../OutboundMessageDetails";
+import {BounceEventInfo} from "../messages/OutboundMessageDetails";
 
 export default interface BounceDump {
     Body: string

@@ -1,9 +1,10 @@
-import { HttpMethod } from './SupportingTypes';
-import PostmarkMessage from './PostmarkMessage';
-import PostmarkResponse from './PostmarkResponse';
-import PostmarkError from './PostmarkError';
-import IClientOptions from './IClientOptions';
-import StatisticsOverviewResponse from './StatisticsOverviewResponse';
+import ClientOptions from './client/ClientOptions';
+import {HttpMethod} from './client/ClientOptions';
+import {DefaultHeaderNames} from "./client/ClientOptions";
+
+import QueryStringParameters from './client/QueryStringParameters';
+import * as PostmarkErrors from './client/PostmarkError';
+import {PostmarkCallback} from './client/PostmarkCallbacks';
 
 import Bounces from './bounces/Bounces';
 import Bounce from './bounces/Bounce';
@@ -15,67 +16,28 @@ import Domain from './domains/Domain'
 import Domains from './domains/Domains'
 import DomainDetails from './domains/DomainDetails'
 
+import Signature from './senders/Signature'
+import Signatures from './senders/Signatures'
+import SignatureDetails from './senders/SignatureDetails'
+import SignatureToCreate from './senders/SignatureToCreate'
 
-import Server from './Server';
+import Server from './server/Server';
+import Servers from './server/Servers';
 
-import IServerOptions from './IServerOptions';
-import OutboundMessageDetails, { OutboundMessageDetailsExtended } from './OutboundMessageDetails';
-import OutboundMessageDetailSearchResponse from './OutboundMessageDetailSearchResponse';
-import MessageOpensResponse from './MessageOpensResponse';
-import MessageClicksRequest from './MessageClicksRequest';
-import MessageClicksResponse from './MessageClicksResponse';
-import SingleMessageClicksRequest from './SingleMessageClicksRequest';
-import SingleMessageClicksResponse from './SingleMessageClicksResponse';
-import SingleMessageOpensRequest from './SingleMessageOpensRequest';
-import SingleMessageOpensResponse from './SingleMessageOpensResponse';
-import MessageOpensRequest from './MessageOpensRequest';
-import InboundMessageSearchRequest from './InboundMessageSearchRequest';
-import InboundMessageSearchResponse from './InboundMessageSearchResponse';
-import InboundMessageDetails from './InboundMessageDetails';
-import InboundBypassResponse from './InboundBypassResponse';
-import InboundRetryResponse from './InboundRetryResponse';
-import StatisticsOverviewRequest from './StatisticsOverviewRequest';
-import SentCountsResponse from './SentCountsResponse';
-import SentCountsRequest from './SentCountsRequest';
-import BounceCountsRequest from './BounceCountsRequest';
-import BounceCountsResponse from './BounceCountsResponse';
-import SpamComplaintsResponse from './SpamComplaintsResponse';
-import SpamComplaintsRequest from './SpamComplaintsRequest';
-import TrackedEmailCountsRequest from './TrackedEmailCountsRequest';
-import TrackedEmailCountsResponse from './TrackedEmailCountsResponse';
-import EmailOpenCountsResponse from './EmailOpenCountsResponse';
-import EmailOpenCountsRequest from './EmailOpenCountsRequest';
-import EmailPlatformUsageRequest from './EmailPlatformUsageRequest';
-import EmailPlatformUsageResponse from './EmailPlatformUsageResponse';
-import EmailClientUsageRequest from './EmailClientUsageRequest';
-import EmailClientUsageResponse from './EmailClientUsageResponse';
-import EmailReadTimesRequest from './EmailReadTimesRequest';
-import EmailReadTimesResponse from './EmailReadTimesResponse';
-import ClickCountsResponse from './ClickCountsResponse';
-import ClickCountsRequest from './ClickCountsRequest';
-import BrowserUsageRequest from './BrowserUsageRequest';
-import BrowserUsageResponse from './BrowserUsageResponse';
-import BrowserPlatformsRequest from './BrowserPlatformsRequest';
-import BrowserPlatformsResponse from './BrowserPlatformsResponse';
-import ClickLocationRequest from './ClickLocationRequest';
-import ClickLocationResponse from './ClickLocationResponse';
-import CreateTagTriggerResponse from './CreateTagTriggerResponse';
-import CreateTagTriggerRequest from './CreateTagTriggerRequest';
-import EditTagTriggerRequest from './EditTagTriggerRequest';
-import EditTagTriggerResponse from './EditTagTriggerResponse';
-import TagTrigger from './TagTrigger';
-import DeleteTagTriggerResponse from './DeleteTagTriggerResponse';
-import TagTriggerListingRequest from './TagTriggerListingRequest';
-import TagTriggerListingResponse from './TagTriggerListingResponse';
-import CreateInboundRuleTriggerRequest from './CreateInboundRuleTriggerRequest';
-import CreateInboundRuleTriggerResponse from './CreateInboundRuleTriggerResponse';
-import DeleteInboundRuleTriggerResponse from './DeleteInboundRuleTriggerResponse';
-import InboundRulesListingRequest from './InboundRulesListingRequest';
-import InboundRulesListingResponse from './InboundRulesListingResponse';
+import OutboundMessageDetails, { OutboundMessageDetailsExtended } from './messages/OutboundMessageDetails';
 
+import CreateTagTriggerResponse from './triggers/CreateTagTriggerResponse';
+import CreateTagTriggerRequest from './triggers/CreateTagTriggerRequest';
+import EditTagTriggerRequest from './triggers/EditTagTriggerRequest';
+import TagTrigger from './triggers/TagTrigger';
+import TagTriggerListingRequest from './triggers/TagTriggerListingRequest';
+import TagTriggerListingResponse from './triggers/TagTriggerListingResponse';
+import CreateInboundRuleTriggerRequest from './triggers/CreateInboundRuleTriggerRequest';
+import CreateInboundRuleTriggerResponse from './triggers/CreateInboundRuleTriggerResponse';
+
+import Template from './templates/Template';
 import TemplateListingResponse from './templates/TemplateListingResponse';
 import TemplateListingRequest from './templates/TemplateListingRequest';
-import Template from './templates/Template';
 import DeleteTemplateResponse from './templates/DeleteTemplateResponse';
 import CreateTemplateRequest from './templates/CreateTemplateRequest';
 import CreateTemplateResponse from './templates/CreateTemplateResponse';
@@ -84,84 +46,48 @@ import EditTemplateRequest from './templates/EditTemplateRequest';
 import TemplatedPostmarkMessage from './templates/TemplatedPostmarkMessage';
 import { ValidateTemplateContentResponse, ValidateTemplateContentRequest } from './templates/ValidateTemplateContentRequest';
 
-import IPagedFilter from './IPagedFilter';
-
 export {
     HttpMethod,
-    PostmarkMessage,
-    PostmarkResponse,
-    PostmarkError,
+    ClientOptions,
+    PostmarkErrors,
+    DefaultHeaderNames,
+
     TemplatedPostmarkMessage,
-    StatisticsOverviewResponse,
+    PostmarkCallback,
+    QueryStringParameters,
+
     Bounce,
     Bounces,
     BounceDump,
     BounceActivateResponse,
     DeliveryStats,
 
+    Signature,
+    Signatures,
+    SignatureDetails,
+    SignatureToCreate,
+
     Domain,
     Domains,
     DomainDetails,
 
     Server,
+    Servers,
+
     OutboundMessageDetails,
-    OutboundMessageDetailSearchResponse,
     OutboundMessageDetailsExtended,
-    IClientOptions,
-    IServerOptions,
     ValidateTemplateContentResponse,
     ValidateTemplateContentRequest,
-    MessageOpensResponse,
-    MessageClicksRequest,
-    MessageClicksResponse,
-    SingleMessageClicksRequest,
-    SingleMessageClicksResponse,
-    SingleMessageOpensRequest,
-    SingleMessageOpensResponse,
-    MessageOpensRequest,
-    InboundMessageSearchRequest,
-    InboundMessageSearchResponse,
-    InboundMessageDetails,
-    InboundBypassResponse,
-    InboundRetryResponse,
-    StatisticsOverviewRequest,
-    SentCountsResponse,
-    SentCountsRequest,
-    BounceCountsRequest,
-    BounceCountsResponse,
-    SpamComplaintsResponse,
-    SpamComplaintsRequest,
-    TrackedEmailCountsRequest,
-    TrackedEmailCountsResponse,
-    EmailOpenCountsResponse,
-    EmailOpenCountsRequest,
-    EmailPlatformUsageRequest,
-    EmailPlatformUsageResponse,
-    EmailClientUsageRequest,
-    EmailClientUsageResponse,
-    EmailReadTimesRequest,
-    EmailReadTimesResponse,
-    ClickCountsResponse,
-    ClickCountsRequest,
-    BrowserUsageRequest,
-    BrowserUsageResponse,
-    BrowserPlatformsRequest,
-    BrowserPlatformsResponse,
-    ClickLocationRequest,
-    ClickLocationResponse,
+
     CreateTagTriggerResponse,
     CreateTagTriggerRequest,
     EditTagTriggerRequest,
-    EditTagTriggerResponse,
     TagTrigger,
-    DeleteTagTriggerResponse,
     TagTriggerListingRequest,
     TagTriggerListingResponse,
     CreateInboundRuleTriggerRequest,
     CreateInboundRuleTriggerResponse,
-    DeleteInboundRuleTriggerResponse,
-    InboundRulesListingRequest,
-    InboundRulesListingResponse,
+
     TemplateListingResponse,
     TemplateListingRequest,
     Template,
@@ -171,11 +97,3 @@ export {
     EditTemplateResponse,
     EditTemplateRequest
 };
-
-export interface IBounceQueryFilter extends IPagedFilter { }
-export interface IOutboundMessageFilter extends IPagedFilter { }
-export interface IOpensFilter extends IPagedFilter { }
-export interface IClicksFilter extends IPagedFilter { }
-
-export interface IFakeFilteringOptions extends IPagedFilter { }
-export interface IFakeOptions { }

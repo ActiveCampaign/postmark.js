@@ -1,7 +1,6 @@
-import { LinkTrackingOptions } from "./SupportingTypes";
+import { LinkTrackingOptions } from "../SupportingTypes";
 
-export default interface Server
-{
+export default interface Server {
     ID: number
     Name: string
     ApiTokens: string[]

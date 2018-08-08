@@ -1,12 +1,3 @@
-export enum HttpMethod {
-    GET = 'GET',
-    POST = 'POST',
-    DELETE = 'DELETE',
-    PUT = 'PUT',
-    OPTIONS = 'OPTIONS',
-    HEAD = 'HEAD'
-}
-
 export enum LinkTrackingOptions {
     TextOnly = 'TextOnly',
     HtmlOnly = 'HtmlOnly',
@@ -28,9 +19,4 @@ export interface Attachment {
     ContentID?: string,
     Content: string,
     ContentType: string
-}
-
-export enum DefaultHeaderNames {
-    SERVER_TOKEN = 'X-Postmark-Server-Token',
-    ACCOUNT_TOKEN = 'X-Postmark-Account-Token'
 }

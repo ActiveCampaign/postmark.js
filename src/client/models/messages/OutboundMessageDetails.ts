@@ -1,4 +1,4 @@
-import { LinkTrackingOptions, LinkClickLocation } from "./SupportingTypes";
+import { LinkTrackingOptions, LinkClickLocation } from "../SupportingTypes";
 
 export interface MessageEventInfo {
     Recipient: string
