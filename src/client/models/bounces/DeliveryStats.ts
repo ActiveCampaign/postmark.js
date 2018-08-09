@@ -4,8 +4,7 @@ export interface BounceMetric {
     Type?: string
 }
 
-export default interface DeliveryStats {
-    
+export default interface DeliveryStatistics {
     InactiveMails: number
-    Bounces: BounceMetric
+    Bounces: BounceMetric[]
 }

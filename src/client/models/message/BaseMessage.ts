@@ -1,4 +1,4 @@
-import { LinkTrackingOptions, Header, Attachment } from "../SupportingTypes";
+import { LinkTrackingOptions, Header, Attachment } from "../message/SupportingTypes";
 
 export default interface BaseMessage {
     From: string

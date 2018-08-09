@@ -1,4 +1,4 @@
-import { LinkTrackingOptions } from "../SupportingTypes";
+import { LinkTrackingOptions } from "../message/SupportingTypes";
 
 export default interface Server {
     ID: number
@@ -13,13 +13,31 @@ export default interface Server {
     BounceHookUrl?: string,
     OpenHookUrl?: string,
     DeliveryHookUrl?: string,
-    PostFirstOpenOnly:boolean,
-    InboundDomain?:string,
-    InboundHash:string,
+    ClickHookUrl?: string,
+    PostFirstOpenOnly: boolean,
+    InboundDomain?: string,
+    InboundHash: string,
     InboundSpamThreshold: number,
-    TrackOpens?:boolean,
+    TrackOpens?: boolean,
     TrackLinks: LinkTrackingOptions,
     IncludeBounceContentInHook: boolean,
-    ClickHookUrl?:string,
     EnableSmtpApiErrorHooks: boolean
+}
+
+export interface ServerOptions {
+    Name?: string
+    Color?: string,
+    SmtpApiActivated?: boolean,
+    RawEmailEnabled?: boolean,
+    InboundHookUrl?: string,
+    BounceHookUrl?: string,
+    OpenHookUrl?: string,
+    DeliveryHookUrl?: string,
+    ClickHookUrl?: string,
+    PostFirstOpenOnly?: boolean,
+    InboundSpamThreshold?: number,
+    TrackOpens?: boolean,
+    TrackLinks?: LinkTrackingOptions,
+    IncludeBounceContentInHook?: boolean,
+    EnableSmtpApiErrorHooks?: boolean
 }

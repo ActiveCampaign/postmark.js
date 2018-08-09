@@ -115,7 +115,7 @@ export default abstract class BaseClient {
         return req;
     }
 
-    private verifyToken(token: string) {
+    private verifyToken(token: string):void {
         if (!token || token.trim() == '') {
             throw new PostmarkErrors.InvalidAPIKeyError('A valid API token must be provided when creating a client.');
         }

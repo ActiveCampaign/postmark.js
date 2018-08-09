@@ -9,17 +9,24 @@ import {
     QueryStringParameters
 } from './models/index';
 
+
 import {
+    Message,
+    MessageResponse,
+
     Bounce,
     Bounces,
     BounceDump,
     BounceActivateResponse,
-    DeliveryStats,
+    DeliveryStatistics,
+
+    Server,
+    ServerOptions,
 
 
     TemplatedPostmarkMessage,
 
-    Server,
+
     OutboundMessageDetailsExtended,
     ValidateTemplateContentResponse,
     ValidateTemplateContentRequest,
@@ -58,23 +65,110 @@ export default class ServerClient extends BaseClient {
         super(serverToken, DefaultHeaderNames.SERVER_TOKEN, options);
     }
 
-    /**
-     * Retrieve bounce statistic information for the associated Server.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
+    /** Send a single email message.
+     *
+     * @param message - Email message to send.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getDeliveryStatistics(callback?: PostmarkCallback<DeliveryStats>): Promise<DeliveryStats> {
+    sendEmail(message: Message, callback?: PostmarkCallback<MessageResponse>): Promise<MessageResponse> {
+        return this.processRequestWithBody<MessageResponse>(HttpMethod.POST, '/email', message, callback);
+    }
+
+    /**
+     * Send a batch of email messages.
+     *
+     * @param messages - An array of messages to send.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    sendEmailBatch(messages: Message[], callback?: PostmarkCallback<MessageResponse[]>): Promise<MessageResponse[]> {
+        return this.processRequestWithBody(HttpMethod.POST, '/email/batch', messages, callback);
+    };
+
+    /**
+     * Get bounce statistic information for the associated Server.
+     *
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getDeliveryStatistics(callback?: PostmarkCallback<DeliveryStatistics>): Promise<DeliveryStatistics> {
         return this.processRequestWithoutBody(HttpMethod.GET, '/deliverystats', {}, callback);
     };
 
     /**
-     * Retrieve a batch of bounces. The default batch size is 100, and the offset is 0.
-     * @param filter An optional filter for which bounces to retrieve.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * Get a batch of bounces. The default batch size is 100, and the offset is 0.
+     *
+     * @param filter - An optional filter for which data is retrieved.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getBounces(filter: QueryStringParameters = {}, callback?:PostmarkCallback<Bounces>) : Promise<Bounces> {
-        filter = {...{count: 100, offset: 0},...filter};
+    getBounces(filter: QueryStringParameters = {}, callback?: PostmarkCallback<Bounces>): Promise<Bounces> {
+        filter = {...{count: 100, offset: 0}, ...filter};
         return this.processRequestWithoutBody(HttpMethod.GET, '/bounces', filter, callback);
+    };
+
+    /**
+     * Get bounce information for a specific Bounce.
+     *
+     * @param id - The ID of the Bounce you wish to retrieve.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getBounce(id: number, callback?: PostmarkCallback<Bounce>): Promise<Bounce> {
+        return this.processRequestWithoutBody(HttpMethod.GET, `/bounces/${id}`, {}, callback);
+    };
+
+    /**
+     * Get a Bounce Dump for a specific Bounce.
+     *
+     * @param id - The ID of the Bounce for which you wish to retrieve Bounce Dump.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getBounceDump(id: number, callback?: PostmarkCallback<BounceDump>): Promise<BounceDump> {
+        return this.processRequestWithoutBody(HttpMethod.GET, `/bounces/${id}/dump`, {}, callback);
+    };
+
+    /**
+     * Activate email address that was deactivated due to a Bounce.
+     *
+     * @param id - The ID of the Bounce for which you wish to activate the associated email.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    activateBounce(id: number, callback?: PostmarkCallback<BounceActivateResponse>): Promise<BounceActivateResponse> {
+        return this.processRequestWithBody(HttpMethod.PUT, `/bounces/${id}/activate`, {}, callback);
+    };
+
+    /**
+     * Get an array of tags associated with bounces.
+     *
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getBounceTags(callback?: PostmarkCallback<string[]>): Promise<string[]> {
+        return this.processRequestWithoutBody(HttpMethod.GET, '/bounces/tags', {}, callback);
+    };
+
+    /**
+     * Get the information for the Server associated with this Client.
+     *
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getServer(callback?: PostmarkCallback<Server>): Promise<Server> {
+        return this.processRequestWithoutBody(HttpMethod.GET, '/server', {}, callback);
+    };
+
+    /**
+     * Modify the Server associated with this Client.
+     *
+     * @param options - The options you wish to modify.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    editServer(options: ServerOptions, callback?: PostmarkCallback<Server>): Promise<Server> {
+        return this.processRequestWithBody(HttpMethod.PUT, '/server', options, callback);
     };
 }

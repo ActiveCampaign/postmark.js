@@ -6,3 +6,8 @@ export default interface Domain {
     WeakDKIM: boolean
     ReturnPathDomainVerified: boolean
 }
+
+export interface DomainOptions {
+    Name: string,
+    ReturnPathDomain?: string
+}

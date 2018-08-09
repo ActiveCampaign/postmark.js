@@ -1,1 +1,4 @@
-export default interface PostmarkResponse{}
+export default interface DefaultResponse {
+    ErrorCode: number,
+    Message: string
+}
