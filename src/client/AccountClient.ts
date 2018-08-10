@@ -145,7 +145,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    deleteDomain(id: number, callback?:PostmarkCallback<DomainDetails>) : Promise<DomainDetails> {
+    deleteDomain(id: number, callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
         return this.processRequestWithoutBody(HttpMethod.DELETE, `/domains/${id}`, {}, callback);
     };
 

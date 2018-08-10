@@ -23,13 +23,12 @@ import {
     Server,
     ServerOptions,
 
+    OutboundMessage,
+    OutboundMessageDetails,
+    OutboundMessages,
+    OutboundMessageDump,
 
-    TemplatedPostmarkMessage,
 
-
-    OutboundMessageDetailsExtended,
-    ValidateTemplateContentResponse,
-    ValidateTemplateContentRequest,
     CreateTagTriggerRequest,
     CreateTagTriggerResponse,
     EditTagTriggerRequest,
@@ -39,6 +38,9 @@ import {
     CreateInboundRuleTriggerRequest,
     CreateInboundRuleTriggerResponse,
 
+    ValidateTemplateContentResponse,
+    ValidateTemplateContentRequest,
+    TemplatedPostmarkMessage,
     TemplateListingResponse,
     TemplateListingRequest,
     Template,
@@ -99,7 +101,7 @@ export default class ServerClient extends BaseClient {
     /**
      * Get a batch of bounces. The default batch size is 100, and the offset is 0.
      *
-     * @param filter - An optional filter for which data is retrieved.
+     * @param filter - Optional filtering parameters.
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
@@ -109,7 +111,7 @@ export default class ServerClient extends BaseClient {
     };
 
     /**
-     * Get bounce information for a specific Bounce.
+     * Get details for a specific Bounce.
      *
      * @param id - The ID of the Bounce you wish to retrieve.
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
@@ -170,5 +172,43 @@ export default class ServerClient extends BaseClient {
      */
     editServer(options: ServerOptions, callback?: PostmarkCallback<Server>): Promise<Server> {
         return this.processRequestWithBody(HttpMethod.PUT, '/server', options, callback);
+    };
+
+    /**
+     * Get a batch of Outbound Messages. The default batch size is 100, and the offset is 0.
+     *
+     * @param filter - Optional filtering parameters.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getOutboundMessages(filter: QueryStringParameters = {},
+                        callback?: PostmarkCallback<OutboundMessages>): Promise<OutboundMessages> {
+
+        filter = {...{count: 100, offset: 0},...filter};
+        return this.processRequestWithoutBody(HttpMethod.GET, '/messages/outbound', filter, callback);
+    };
+
+    /**
+     * Get details for a specific Outbound Message.
+     *
+     * @param id - The ID of the OutboundMessage you wish to retrieve.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getOutboundMessageDetails(id: string,
+                              callback?: PostmarkCallback<OutboundMessageDetails>): Promise<OutboundMessageDetails> {
+        return this.processRequestWithoutBody(HttpMethod.GET, `/messages/outbound/${id}`, {}, callback);
+    };
+
+    /**
+     * Get details for a specific Outbound Message.
+     *
+     * @param id - The ID of the OutboundMessage you wish to retrieve.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getOutboundMessageDump(id: string,
+                              callback?: PostmarkCallback<OutboundMessageDump>): Promise<OutboundMessageDump> {
+        return this.processRequestWithoutBody(HttpMethod.GET, `/messages/outbound/${id}/dump`, {}, callback);
     };
 }

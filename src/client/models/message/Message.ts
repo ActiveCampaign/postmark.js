@@ -1,8 +1,5 @@
 import BaseMessage from "./BaseMessage";
-
-interface Hash<T> {
-    [key: string]: T;
-}
+import {Hash} from "../client/ClientOptions"
 
 export default interface Message extends BaseMessage {
     Metadata?: Hash<string>;

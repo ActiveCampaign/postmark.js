@@ -31,3 +31,7 @@ export enum DefaultHeaderNames {
     SERVER_TOKEN = 'X-Postmark-Server-Token',
     ACCOUNT_TOKEN = 'X-Postmark-Account-Token'
 }
+
+export interface Hash<T> {
+    [key: string]: T;
+}

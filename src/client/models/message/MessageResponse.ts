@@ -1,9 +1,9 @@
-import BaseMessageResponse from "./BaseMessageResponse";
+import DefaultResponse from "../client/PostmarkResponse";
 
-export default interface MessageResponse extends BaseMessageResponse {
+export default interface MessageResponse extends DefaultResponse {
     To: string;
     Cc: string;
     Bcc: string;
     SubmittedAt: string;
-    MessageId: string;
+    MessageID: string;
 }

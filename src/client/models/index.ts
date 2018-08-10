@@ -33,7 +33,8 @@ import SignatureToCreate from './senders/SignatureToCreate';
 
 import Servers from './server/Servers';
 
-import OutboundMessageDetails, { OutboundMessageDetailsExtended } from './messages/OutboundMessageDetails';
+import OutboundMessage, { OutboundMessageDetails, OutboundMessageDump } from './messages/OutboundMessage';
+import OutboundMessages from './messages/OutboundMessages'
 
 import CreateTagTriggerResponse from './triggers/CreateTagTriggerResponse';
 import CreateTagTriggerRequest from './triggers/CreateTagTriggerRequest';
@@ -77,6 +78,11 @@ export {
     Server,
     ServerOptions,
 
+    OutboundMessage,
+    OutboundMessageDetails,
+    OutboundMessages,
+    OutboundMessageDump,
+
     Signature,
     Signatures,
     SignatureDetails,
@@ -90,8 +96,8 @@ export {
 
     Servers,
 
-    OutboundMessageDetails,
-    OutboundMessageDetailsExtended,
+
+
     ValidateTemplateContentResponse,
     ValidateTemplateContentRequest,
 
