@@ -33,8 +33,8 @@ import SignatureToCreate from './senders/SignatureToCreate';
 
 import Servers from './server/Servers';
 
-import OutboundMessage, { OutboundMessageDetails, OutboundMessageDump } from './messages/OutboundMessage';
-import OutboundMessages from './messages/OutboundMessages'
+import OutboundMessage, { OutboundMessageDetails, OutboundMessageDump, OutboundMessages } from './messages/OutboundMessage';
+import InboundMessage, { InboundMessageDetails, InboundMessages } from './messages/InboundMessage';
 
 import CreateTagTriggerResponse from './triggers/CreateTagTriggerResponse';
 import CreateTagTriggerRequest from './triggers/CreateTagTriggerRequest';
@@ -64,8 +64,7 @@ export {
     QueryStringParameters,
     PostmarkCallback,
     DefaultResponse,
-
-
+    
     Message,
     MessageResponse,
 
@@ -82,6 +81,10 @@ export {
     OutboundMessageDetails,
     OutboundMessages,
     OutboundMessageDump,
+
+    InboundMessage,
+    InboundMessageDetails,
+    InboundMessages,
 
     Signature,
     Signatures,

@@ -34,3 +34,8 @@ export interface OutboundMessageDetails extends OutboundMessage {
 export interface OutboundMessageDump {
     Body: string;
 }
+
+export interface OutboundMessages {
+    TotalCount: string;
+    Messages: OutboundMessage[];
+}

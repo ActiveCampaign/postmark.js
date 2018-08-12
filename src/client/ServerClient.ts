@@ -6,7 +6,7 @@ import {
     HttpMethod,
     DefaultHeaderNames,
     PostmarkCallback,
-    QueryStringParameters
+    QueryStringParameters,
 } from './models/index';
 
 
@@ -28,28 +28,12 @@ import {
     OutboundMessages,
     OutboundMessageDump,
 
+    InboundMessage,
+    InboundMessages,
+    InboundMessageDetails,
 
-    CreateTagTriggerRequest,
-    CreateTagTriggerResponse,
-    EditTagTriggerRequest,
-    TagTrigger,
-    TagTriggerListingRequest,
-    TagTriggerListingResponse,
-    CreateInboundRuleTriggerRequest,
-    CreateInboundRuleTriggerResponse,
-
-    ValidateTemplateContentResponse,
-    ValidateTemplateContentRequest,
-    TemplatedPostmarkMessage,
-    TemplateListingResponse,
-    TemplateListingRequest,
-    Template,
-    DeleteTemplateResponse,
-    CreateTemplateResponse,
-    EditTemplateRequest,
-    EditTemplateResponse,
-    CreateTemplateRequest
 } from './models/index';
+import DefaultResponse from "./models/client/PostmarkResponse";
 
 
 /**
@@ -191,24 +175,69 @@ export default class ServerClient extends BaseClient {
     /**
      * Get details for a specific Outbound Message.
      *
-     * @param id - The ID of the OutboundMessage you wish to retrieve.
+     * @param messageId - The ID of the OutboundMessage you wish to retrieve.
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getOutboundMessageDetails(id: string,
+    getOutboundMessageDetails(messageId: string,
                               callback?: PostmarkCallback<OutboundMessageDetails>): Promise<OutboundMessageDetails> {
-        return this.processRequestWithoutBody(HttpMethod.GET, `/messages/outbound/${id}`, {}, callback);
+        return this.processRequestWithoutBody(HttpMethod.GET, `/messages/outbound/${messageId}`, {}, callback);
     };
 
     /**
      * Get details for a specific Outbound Message.
      *
-     * @param id - The ID of the OutboundMessage you wish to retrieve.
+     * @param messageId - The ID of the OutboundMessage you wish to retrieve.
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getOutboundMessageDump(id: string,
+    getOutboundMessageDump(messageId: string,
                               callback?: PostmarkCallback<OutboundMessageDump>): Promise<OutboundMessageDump> {
-        return this.processRequestWithoutBody(HttpMethod.GET, `/messages/outbound/${id}/dump`, {}, callback);
+        return this.processRequestWithoutBody(HttpMethod.GET, `/messages/outbound/${messageId}/dump`, {}, callback);
+    };
+
+    /**
+     * Get a batch of Inbound Messages. The default batch size is 100, and the offset is 0.
+     *
+     * @param filter - Optional filtering parameters.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getInboundMessages(filter: QueryStringParameters = {}, callback?:PostmarkCallback<InboundMessages>) : Promise<InboundMessages> {
+        filter = {...{count: 100, offset: 0},...filter};
+        return this.processRequestWithoutBody(HttpMethod.GET, '/messages/inbound', filter, callback);
+    };
+
+    /**
+     * Get details for a specific Inbound Message.
+     *
+     * @param messageId - The ID of the Inbound Message you wish to retrieve.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getInboundMessageDetails(messageId: string, callback?:PostmarkCallback<InboundMessageDetails>) : Promise<InboundMessageDetails> {
+        return this.processRequestWithoutBody(HttpMethod.GET, `/messages/inbound/${messageId}/details`, {}, callback);
+    };
+
+    /**
+     * Cause an Inbound Message to bypass filtering rules defined on this Client's associated Server.
+     *
+     * @param messageId - The ID of the Inbound Message for which you wish to bypass the filtering rules.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    bypassBlockedInboundMessage(messageId: string, callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
+        return this.processRequestWithoutBody(HttpMethod.PUT, `/messages/inbound/${messageId}/bypass`, {}, callback);
+    };
+
+    /**
+     * Request that Postmark retry POSTing to the Inbound Hook for the specified message.
+     *
+     * @param messageId - The ID of the Inbound Message for which you wish to retry the inbound hook.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    retryInboundHookForMessage(messageId: string, callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
+        return this.processRequestWithoutBody(HttpMethod.PUT, `/messages/inbound/${messageId}/retry`, {}, callback);
     };
 }
