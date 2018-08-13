@@ -7,8 +7,8 @@ import {
     DefaultHeaderNames,
     PostmarkCallback,
     QueryStringParameters,
+    DefaultResponse
 } from './models/index';
-
 
 import {
     Message,
@@ -27,14 +27,14 @@ import {
     OutboundMessageDetails,
     OutboundMessages,
     OutboundMessageDump,
+    OutboundMessageOpens,
+    OutboundMessageClicks,
 
     InboundMessage,
     InboundMessages,
     InboundMessageDetails,
 
 } from './models/index';
-import DefaultResponse from "./models/client/PostmarkResponse";
-
 
 /**
  * Server client class that can be used to interact with an individual Postmark Server.
@@ -239,5 +239,58 @@ export default class ServerClient extends BaseClient {
      */
     retryInboundHookForMessage(messageId: string, callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
         return this.processRequestWithoutBody(HttpMethod.PUT, `/messages/inbound/${messageId}/retry`, {}, callback);
+    };
+
+    /**
+     * Get the Opens for Outbound Messages. The default batch size is 100, and offset is 0.
+     *
+     * @param filter - Optional filtering parameters.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getMessageOpens(filter: QueryStringParameters = {}, callback?:PostmarkCallback<OutboundMessageOpens>) : Promise<OutboundMessageOpens> {
+        filter = {...{count: 100, offset: 0},...filter};
+        return this.processRequestWithoutBody(HttpMethod.GET, '/messages/outbound/opens', filter, callback);
+    };
+
+    /**
+     * Get details of Opens for specific Outbound Message.
+     *
+     * @param messageId - Message ID of the message for which you wish to retrieve Opens.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getMessageOpensForSingleMessage(messageId: string, filter: QueryStringParameters = {},
+                          callback?:PostmarkCallback<OutboundMessageOpens>) : Promise<OutboundMessageOpens> {
+
+        filter = {...{count: 50, offset: 0},...filter};
+        return this.processRequestWithoutBody(HttpMethod.GET, `/messages/outbound/opens/${messageId}`, filter, callback);
+    };
+
+    /**
+     * Get the Clicks for Outbound Messages. The default batch size is 100, and offset is 0.
+     *
+     * @param filter - Optional filtering parameters.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getMessageClicks(filter: QueryStringParameters = {}, callback?:PostmarkCallback<OutboundMessageClicks>) : Promise<OutboundMessageClicks> {
+        filter = {...{count: 100, offset: 0},...filter};
+        return this.processRequestWithoutBody(HttpMethod.GET, '/messages/outbound/clicks', filter, callback);
+    };
+
+    /**
+     * Get Click information for a single Outbound Message. The default batch size is 100, and offset is 0.
+     *
+     * @param messageId - The MessageID for which clicks should be retrieved.
+     * @param filter - Optional filtering parameters.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getMessageClicksForSingleMessage(messageId: string, filter: QueryStringParameters = {},
+                                     callback?:PostmarkCallback<OutboundMessageClicks>) : Promise<OutboundMessageClicks> {
+
+        filter = {...{count: 100, offset: 0},...filter};
+        return this.processRequestWithoutBody(HttpMethod.GET, `/messages/outbound/clicks/${messageId}`, filter, callback);
     };
 }

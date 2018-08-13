@@ -18,23 +18,21 @@ import DeliveryStatistics from './bounces/DeliveryStats';
 import Server from './server/Server';
 import {ServerOptions} from './server/Server';
 
-
+import OutboundMessage, { OutboundMessageDetails, OutboundMessageDump, OutboundMessages } from './messages/OutboundMessage';
+import OutboundMessageOpens from './messages/OutboundMessageOpen';
+import OutboundMessageClicks from './messages/OutboundMessageClick';
+import InboundMessage, { InboundMessageDetails, InboundMessages } from './messages/InboundMessage';
 
 import Domain from './domains/Domain';
 import DomainOptions from './domains/Domain';
 import Domains from './domains/Domains';
 import DomainDetails from './domains/DomainDetails';
 
-import Signature from './senders/Signature';
-import Signatures from './senders/Signatures';
-import SignatureDetails from './senders/SignatureDetails';
-import SignatureToCreate from './senders/SignatureToCreate';
-
+import Signature, {Signatures, SignatureDetails, BaseSignatureOptions, SignatureOptions} from './senders/Signature';
 
 import Servers from './server/Servers';
 
-import OutboundMessage, { OutboundMessageDetails, OutboundMessageDump, OutboundMessages } from './messages/OutboundMessage';
-import InboundMessage, { InboundMessageDetails, InboundMessages } from './messages/InboundMessage';
+
 
 import CreateTagTriggerResponse from './triggers/CreateTagTriggerResponse';
 import CreateTagTriggerRequest from './triggers/CreateTagTriggerRequest';
@@ -81,6 +79,8 @@ export {
     OutboundMessageDetails,
     OutboundMessages,
     OutboundMessageDump,
+    OutboundMessageOpens,
+    OutboundMessageClicks,
 
     InboundMessage,
     InboundMessageDetails,
@@ -89,7 +89,8 @@ export {
     Signature,
     Signatures,
     SignatureDetails,
-    SignatureToCreate,
+    SignatureOptions,
+    BaseSignatureOptions,
 
     Domain,
     DomainOptions,
