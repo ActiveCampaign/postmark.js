@@ -7,7 +7,8 @@ import {
     DefaultHeaderNames,
     PostmarkCallback,
     QueryStringParameters,
-    DefaultResponse
+    DefaultResponse,
+    Hash,
 } from './models/index';
 
 import {
@@ -33,6 +34,20 @@ import {
     InboundMessage,
     InboundMessages,
     InboundMessageDetails,
+
+    OutboundStatistics,
+    SentCounts,
+    BounceCounts,
+    SpamCounts,
+    TrackedEmailCounts,
+    OpenCounts,
+    EmailPlaformUsageCounts,
+    EmailClientUsageCounts,
+    EmailReadTimesCounts,
+    ClickCounts,
+    BrowserUsageCounts,
+    ClickPlaformUsageCounts,
+    ClickLocationCounts,
 
 } from './models/index';
 
@@ -292,5 +307,147 @@ export default class ServerClient extends BaseClient {
 
         filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody(HttpMethod.GET, `/messages/outbound/clicks/${messageId}`, filter, callback);
+    };
+
+    /**
+     * Get overview statistics on Outbound Messages sent from the Server associated with this Client.
+     *
+     * @param filter - Optional filtering parameters.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getOuboundOverview(filter: QueryStringParameters = {}, callback?: PostmarkCallback<OutboundStatistics>):
+        Promise<OutboundStatistics> {
+        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound', filter, callback);
+    };
+
+    /**
+     * Get statistics on email sent from the Server associated with this Client.
+     *
+     * @param filter - Optional filtering parameters.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getSentCounts(filter: QueryStringParameters = {}, callback?:PostmarkCallback<SentCounts>) : Promise<SentCounts> {
+        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/sends', filter, callback);
+    };
+
+    /**
+     * Get statistiscs on emails that bounced after being sent from the Server associated with this Client.
+     *
+     * @param filter - Optional filtering parameters.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getBounceCounts(filter: QueryStringParameters = {}, callback?:PostmarkCallback<BounceCounts>) : Promise<BounceCounts> {
+        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/bounces', filter, callback);
+    };
+
+    /**
+     * Get SPAM complaint statistics for email sent from the Server associated with this Client.
+     *
+     * @param filter - Optional filtering parameters.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getSpamComplaintsCounts(filter: QueryStringParameters = {}, callback?:PostmarkCallback<SpamCounts>) : Promise<SpamCounts> {
+        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/spam', filter, callback);
+    };
+
+    /**
+     * Get email tracking statistics for messages sent from the Server associated with this Client.
+     *
+     * @param filter - Optional filtering parameters.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getTrackedEmailCounts(filter: QueryStringParameters = {}, callback?:PostmarkCallback<TrackedEmailCounts>) : Promise<TrackedEmailCounts> {
+        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/tracked', filter, callback);
+    };
+
+    /**
+     * Get Open statistics for messages sent from the Server associated with this Client.
+     *
+     * @param filter - Optional filtering parameters.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getEmailOpenCounts(filter: QueryStringParameters = {}, callback?:PostmarkCallback<OpenCounts>) : Promise<OpenCounts> {
+        return this.processRequestWithoutBody( HttpMethod.GET, '/stats/outbound/opens', filter, callback);
+    };
+
+    /**
+     * Get Email Client Platform statistics for messages sent from the Server associated with this Client.
+     *
+     * @param filter - Optional filtering parameters.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getEmailOpenPlatformUsage(filter: QueryStringParameters = {}, callback?:PostmarkCallback<EmailPlaformUsageCounts>) : Promise<EmailPlaformUsageCounts> {
+        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/opens/platforms', filter, callback);
+    };
+
+    /**
+     * Get statistics on which Email Clients were used to open messages sent from the Server associated with this Client.
+     *
+     * @param filter - Optional filtering parameters.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getEmailOpenClientUsage(filter: QueryStringParameters = {} , callback?:PostmarkCallback<EmailClientUsageCounts>) : Promise<EmailClientUsageCounts> {
+        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/opens/emailClients', filter, callback);
+    };
+
+    /**
+     * Get Read Time statistics for messages sent from the Server associated with this Client.
+     * @param filter Optional filtering parameters.
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getEmailOpenReadTimes(filter: QueryStringParameters = {}, callback?:PostmarkCallback<EmailReadTimesCounts>) : Promise<EmailReadTimesCounts> {
+        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/opens/readTimes', filter, callback);
+    };
+
+    /**
+     * Get total clicks statistics for tracked links for messages sent from the Server associated with this Client.
+     *
+     * @param filter - Optional filtering parameters.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getClickCounts(filter: QueryStringParameters = {}, callback?:PostmarkCallback<ClickCounts>) : Promise<ClickCounts> {
+        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/clicks', filter, callback);
+    };
+
+    /**
+     * Get browser family statistics for tracked links for messages sent from the Server associated with this Client.
+     * @param filter Optional filtering parameters.
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getClickBrowserUsage(filter: QueryStringParameters = {}, callback?:PostmarkCallback<BrowserUsageCounts>) : Promise<BrowserUsageCounts> {
+        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/clicks/browserFamilies', filter, callback);
+    };
+
+    /**
+     * Get browser platform statistics for tracked links for messages sent from the Server associated with this Client.
+     *
+     * @param filter - Optional filtering parameters.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getClickPlatformUsage(filter: QueryStringParameters = {}, callback?:PostmarkCallback<ClickPlaformUsageCounts>) : Promise<ClickPlaformUsageCounts> {
+        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/clicks/platforms', filter, callback);
+    };
+
+    /**
+     * Get click location (in HTML or Text body of the email) statistics for tracked links for messages sent from the Server associated with this Client.
+     *
+     * @param filter - Optional filtering parameters.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getClickLocation(filter: QueryStringParameters = {}, callback?:PostmarkCallback<ClickLocationCounts>) : Promise<ClickLocationCounts> {
+        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/clicks/location', filter, callback);
     };
 }

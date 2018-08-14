@@ -1,4 +1,4 @@
-import ClientOptions from './client/ClientOptions';
+import ClientOptions, {Hash} from './client/ClientOptions';
 import {HttpMethod} from './client/ClientOptions';
 import {DefaultHeaderNames} from "./client/ClientOptions";
 import QueryStringParameters from './client/QueryStringParameters';
@@ -18,10 +18,14 @@ import DeliveryStatistics from './bounces/DeliveryStats';
 import Server from './server/Server';
 import {ServerOptions} from './server/Server';
 
-import OutboundMessage, { OutboundMessageDetails, OutboundMessageDump, OutboundMessages } from './messages/OutboundMessage';
+import OutboundMessage, {
+    OutboundMessageDetails,
+    OutboundMessageDump,
+    OutboundMessages
+} from './messages/OutboundMessage';
 import OutboundMessageOpens from './messages/OutboundMessageOpen';
 import OutboundMessageClicks from './messages/OutboundMessageClick';
-import InboundMessage, { InboundMessageDetails, InboundMessages } from './messages/InboundMessage';
+import InboundMessage, {InboundMessageDetails, InboundMessages} from './messages/InboundMessage';
 
 import Domain from './domains/Domain';
 import DomainOptions from './domains/Domain';
@@ -32,16 +36,23 @@ import Signature, {Signatures, SignatureDetails, BaseSignatureOptions, Signature
 
 import Servers from './server/Servers';
 
+import {
+    OutboundStatistics,
+    SentCounts,
+    SpamCounts,
+    BounceCounts,
+    TrackedEmailCounts,
+    OpenCounts,
+    ClickCounts,
+    EmailPlaformUsageCounts,
+    EmailClientUsageCounts,
+    EmailReadTimesCounts,
+    BrowserUsageCounts,
+    ClickPlaformUsageCounts,
+    ClickLocationCounts,
+} from "./stats/Stats";
 
 
-import CreateTagTriggerResponse from './triggers/CreateTagTriggerResponse';
-import CreateTagTriggerRequest from './triggers/CreateTagTriggerRequest';
-import EditTagTriggerRequest from './triggers/EditTagTriggerRequest';
-import TagTrigger from './triggers/TagTrigger';
-import TagTriggerListingRequest from './triggers/TagTriggerListingRequest';
-import TagTriggerListingResponse from './triggers/TagTriggerListingResponse';
-import CreateInboundRuleTriggerRequest from './triggers/CreateInboundRuleTriggerRequest';
-import CreateInboundRuleTriggerResponse from './triggers/CreateInboundRuleTriggerResponse';
 
 import Template from './templates/Template';
 import TemplateListingResponse from './templates/TemplateListingResponse';
@@ -52,7 +63,10 @@ import CreateTemplateResponse from './templates/CreateTemplateResponse';
 import EditTemplateResponse from './templates/EditTemplateResponse';
 import EditTemplateRequest from './templates/EditTemplateRequest';
 import TemplatedPostmarkMessage from './templates/TemplatedPostmarkMessage';
-import { ValidateTemplateContentResponse, ValidateTemplateContentRequest } from './templates/ValidateTemplateContentRequest';
+import {
+    ValidateTemplateContentResponse,
+    ValidateTemplateContentRequest
+} from './templates/ValidateTemplateContentRequest';
 
 export {
     HttpMethod,
@@ -62,7 +76,8 @@ export {
     QueryStringParameters,
     PostmarkCallback,
     DefaultResponse,
-    
+    Hash,
+
     Message,
     MessageResponse,
 
@@ -86,6 +101,20 @@ export {
     InboundMessageDetails,
     InboundMessages,
 
+    OutboundStatistics,
+    SentCounts,
+    BounceCounts,
+    SpamCounts,
+    TrackedEmailCounts,
+    OpenCounts,
+    EmailPlaformUsageCounts,
+    EmailClientUsageCounts,
+    EmailReadTimesCounts,
+    ClickCounts,
+    BrowserUsageCounts,
+    ClickPlaformUsageCounts,
+    ClickLocationCounts,
+
     Signature,
     Signatures,
     SignatureDetails,
@@ -101,18 +130,9 @@ export {
     Servers,
 
 
-
     ValidateTemplateContentResponse,
     ValidateTemplateContentRequest,
 
-    CreateTagTriggerResponse,
-    CreateTagTriggerRequest,
-    EditTagTriggerRequest,
-    TagTrigger,
-    TagTriggerListingRequest,
-    TagTriggerListingResponse,
-    CreateInboundRuleTriggerRequest,
-    CreateInboundRuleTriggerResponse,
 
     TemplatedPostmarkMessage,
     TemplateListingResponse,
