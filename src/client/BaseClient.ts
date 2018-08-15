@@ -1,5 +1,7 @@
 import {Promise} from 'bluebird'
+import Bluebird = require("bluebird");
 import * as request from 'request-promise';
+
 
 import {
     HttpMethod,
@@ -7,6 +9,8 @@ import {
     PostmarkErrors,
     PostmarkCallback,
 } from './models';
+
+import {ClientError} from "./ClientError";
 
 /**
  * Base client class from which both the AccountClient and ServerClient classes can be implemented.
@@ -40,6 +44,7 @@ export default abstract class BaseClient {
     };
 
     protected clientOptions: ClientOptions;
+    protected clientError: ClientError;
     private authHeader: string;
     private token: string;
 
@@ -49,6 +54,7 @@ export default abstract class BaseClient {
         this.token = token.trim();
         this.authHeader = authHeader;
         this.clientOptions = {...BaseClient.DefaultOptions, ...options};
+        this.clientError = new ClientError();
     }
 
     /**
@@ -72,7 +78,7 @@ export default abstract class BaseClient {
     }
 
     /**
-     * Process http request.
+     * Process http request and callback request.
      *
      * @param method - Which type of http request will be executed.
      * @param path - API URL endpoint.
@@ -84,10 +90,49 @@ export default abstract class BaseClient {
     private processRequest<T>(method: HttpMethod, path: string, queryParameters: ({} | object),
                               body: (null | object), callback?: PostmarkCallback<T>): Promise<T> {
 
+        let req = this.httpRequest(method, path, queryParameters, body)
+            .then(response => {
+                return <T>response;
+            })
+            .catch(error => {
+                throw this.clientError.generate(error.statusCode, error.message);
+            });
+
+        this.callbackRequest(req, callback);
+        return req;
+    }
+
+    /**
+     * Execute callback request.
+     *
+     * @param httpRequest - HTTP request for which callback will be executed
+     * @param callback - callback function to be executed.
+     */
+    private callbackRequest<T>(httpRequest: Bluebird<T>, callback?: PostmarkCallback<T>): void {
+        if (callback) {
+            httpRequest.then(response => {
+                callback(null, response);
+                return response;
+            }).tapCatch(error => callback(error, null))
+                .suppressUnhandledRejections();
+        }
+    }
+
+    /**
+     * Process http request.
+     *
+     * @param method - Which type of http request will be executed.
+     * @param path - API URL endpoint.
+     * @param queryParameters - Querystring parameters used for http request.
+     * @param body - Data sent with http request.
+     *
+     * @returns A promise that will complete when the API responds.
+     */
+    private httpRequest(method: HttpMethod, path: string, queryParameters: ({} | object), body: (null | object)): request.RequestPromise {
         const scheme = this.clientOptions.useHttps ? 'https' : 'http';
         let url = `${scheme}://${this.clientOptions.requestHost}/${path}`;
 
-        let req = request(url, {
+        return request(url, {
             method: method.toString(),
             headers: {
                 [this.authHeader]: this.token,
@@ -99,46 +144,12 @@ export default abstract class BaseClient {
             timeout: (this.clientOptions.timeout || 30) * 1000,
             json: true,
             gzip: true
-        }).then(json => {
-            return <T>json;
-        }).catch(error => {
-            throw this.buildError(error.statusCode, error.message);
         });
-
-        if (callback) {
-            req = req.then(json => {
-                callback(null, json);
-                return json;
-            }).tapCatch(error => callback(error, null));
-            req.suppressUnhandledRejections();
-        }
-        return req;
     }
 
-    private verifyToken(token: string):void {
+    private verifyToken(token: string): void {
         if (!token || token.trim() == '') {
             throw new PostmarkErrors.InvalidAPIKeyError('A valid API token must be provided when creating a client.');
-        }
-    }
-
-    private buildError(statusCode: number, errorMessage: string): PostmarkErrors.StandardError {
-
-        switch (statusCode) {
-            case 401:
-                return new PostmarkErrors.InvalidAPIKeyError(errorMessage);
-                break;
-
-            case 422:
-                return new PostmarkErrors.InvalidMessageError(errorMessage);
-                break;
-
-            case 500:
-                return new PostmarkErrors.InternalServerError(errorMessage);
-                break;
-
-            default:
-                return new PostmarkErrors.UnknownError(errorMessage);
-                break;
         }
     }
 }

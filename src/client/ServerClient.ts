@@ -353,7 +353,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getOuboundOverview(filter: QueryStringParameters = {}, callback?: PostmarkCallback<OutboundStatistics>):
+    getOutboundOverview(filter: QueryStringParameters = {}, callback?: PostmarkCallback<OutboundStatistics>):
         Promise<OutboundStatistics> {
         return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound', filter, callback);
     };
