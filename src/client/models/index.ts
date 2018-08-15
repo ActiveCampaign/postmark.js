@@ -32,7 +32,12 @@ import DomainOptions from './domains/Domain';
 import Domains from './domains/Domains';
 import DomainDetails from './domains/DomainDetails';
 
-import Signature, {Signatures, SignatureDetails, BaseSignatureOptions, SignatureOptions} from './senders/Signature';
+import Signature, {
+    Signatures,
+    SignatureDetails,
+    BaseSignatureOptions,
+    SignatureOptions
+} from './senders/Signature';
 
 import Servers from './server/Servers';
 
@@ -52,21 +57,11 @@ import {
     ClickLocationCounts,
 } from "./stats/Stats";
 
+import {TagTriggerOptions, TagTrigger, TagTriggers} from './triggers/Tag';
+import {InboundRuleOptions, InboundRule, InboundRules} from './triggers/InboundRule';
 
 
-import Template from './templates/Template';
-import TemplateListingResponse from './templates/TemplateListingResponse';
-import TemplateListingRequest from './templates/TemplateListingRequest';
-import DeleteTemplateResponse from './templates/DeleteTemplateResponse';
-import CreateTemplateRequest from './templates/CreateTemplateRequest';
-import CreateTemplateResponse from './templates/CreateTemplateResponse';
-import EditTemplateResponse from './templates/EditTemplateResponse';
-import EditTemplateRequest from './templates/EditTemplateRequest';
-import TemplatedPostmarkMessage from './templates/TemplatedPostmarkMessage';
-import {
-    ValidateTemplateContentResponse,
-    ValidateTemplateContentRequest
-} from './templates/ValidateTemplateContentRequest';
+import {Template, TemplateOptions, Templates, TemplateValidation, TemplateValidationOptions, TemplateMessage} from './templates/Template';
 
 export {
     HttpMethod,
@@ -115,6 +110,21 @@ export {
     ClickPlaformUsageCounts,
     ClickLocationCounts,
 
+    TagTriggerOptions,
+    TagTrigger,
+    TagTriggers,
+
+    InboundRuleOptions,
+    InboundRule,
+    InboundRules,
+
+    TemplateOptions,
+    Template,
+    TemplateValidationOptions,
+    TemplateValidation,
+    Templates,
+    TemplateMessage,
+
     Signature,
     Signatures,
     SignatureDetails,
@@ -126,21 +136,5 @@ export {
     Domains,
     DomainDetails,
 
-
     Servers,
-
-
-    ValidateTemplateContentResponse,
-    ValidateTemplateContentRequest,
-
-
-    TemplatedPostmarkMessage,
-    TemplateListingResponse,
-    TemplateListingRequest,
-    Template,
-    DeleteTemplateResponse,
-    CreateTemplateRequest,
-    CreateTemplateResponse,
-    EditTemplateResponse,
-    EditTemplateRequest
 };

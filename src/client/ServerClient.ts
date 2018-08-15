@@ -49,6 +49,21 @@ import {
     ClickPlaformUsageCounts,
     ClickLocationCounts,
 
+    TagTriggerOptions,
+    TagTrigger,
+    TagTriggers,
+
+    InboundRuleOptions,
+    InboundRule,
+    InboundRules,
+
+    TemplateOptions,
+    Template,
+    Templates,
+    TemplateValidationOptions,
+    TemplateValidation,
+    TemplateMessage,
+
 } from './models/index';
 
 /**
@@ -85,6 +100,28 @@ export default class ServerClient extends BaseClient {
      */
     sendEmailBatch(messages: Message[], callback?: PostmarkCallback<MessageResponse[]>): Promise<MessageResponse[]> {
         return this.processRequestWithBody(HttpMethod.POST, '/email/batch', messages, callback);
+    };
+
+    /**
+     * Send a message using a template.
+     *
+     * @param message - Message you wish to send.
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    sendEmailWithTemplate(message: TemplateMessage, callback?:PostmarkCallback<MessageResponse>): Promise<MessageResponse> {
+        return this.processRequestWithBody(HttpMethod.POST, '/email/withTemplate', message, callback);
+    };
+
+    /**
+     * Send a batch of templated email messages.
+     *
+     * @param messages - An array of templated messages you wish to send using this Client.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    sendEmailBatchWithTemplates(messages: TemplateMessage[], callback?:PostmarkCallback<MessageResponse[]>): Promise<MessageResponse[]> {
+        return this.processRequestWithBody(HttpMethod.POST, '/email/batchWithTemplates', { Messages: messages }, callback);
     };
 
     /**
@@ -450,4 +487,168 @@ export default class ServerClient extends BaseClient {
     getClickLocation(filter: QueryStringParameters = {}, callback?:PostmarkCallback<ClickLocationCounts>) : Promise<ClickLocationCounts> {
         return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/clicks/location', filter, callback);
     };
+
+    /**
+     * Create a new Tag Trigger.
+     *
+     * @param options - Configuration options to be used to create the trigger.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    createTagTrigger(options: TagTriggerOptions, callback?:PostmarkCallback<TagTrigger>) : Promise<TagTrigger> {
+        return this.processRequestWithBody(HttpMethod.POST, '/triggers/tags', options, callback);
+    };
+
+    /**
+     * Modify an existing Tag Trigger.
+     *
+     * @param id - The ID of the Tag Trigger you wish to modify.
+     * @param options - Tag trigger options
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    editTagTrigger(id: number, options: TagTriggerOptions, callback?:PostmarkCallback<TagTrigger>) : Promise<TagTrigger> {
+        return this.processRequestWithBody(HttpMethod.PUT, `/triggers/tags/${id}`, options, callback);
+    };
+
+    /**
+     * Delete an existing Tag Trigger.
+     *
+     * @param id - The ID of the Tag Trigger you wish to delete.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    deleteTagTrigger(id: number, callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
+        return this.processRequestWithoutBody(HttpMethod.DELETE, `/triggers/tags/${id}`, {}, callback);
+    };
+
+    /**
+     * Get a specific Tag Trigger.
+     *
+     * @param id - The ID of the Tag Trigger you wish to retrieve.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getTagTrigger(id: number, callback?:PostmarkCallback<TagTrigger>) : Promise<TagTrigger> {
+        return this.processRequestWithoutBody(HttpMethod.GET, `/triggers/tags/${id}`, {}, callback);
+    };
+
+    /**
+     * Get a list of Tag Trigger. The default batch count is 100, and the offset is 0.
+     *
+     * @param filter - Optional filtering parameters.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getTagTriggers(filter: QueryStringParameters = {}, callback?:PostmarkCallback<TagTriggers>) : Promise<TagTriggers> {
+        filter = {...{count: 100, offset: 0},...filter};
+        return this.processRequestWithoutBody(HttpMethod.GET, '/triggers/tags/', filter, callback);
+    };
+
+    /**
+     * Create an Inbound Rule Trigger.
+     *
+     * @param options - Configuration options to be used when creating this Trigger.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    createInboundRuleTrigger(options: InboundRuleOptions, callback?:PostmarkCallback<InboundRule>) : Promise<InboundRule> {
+        return this.processRequestWithBody(HttpMethod.POST, '/triggers/inboundRules', options, callback);
+    };
+
+    /**
+     * Delete an Inbound Rule Trigger.
+     *
+     * @param id - The ID of the Inbound Rule Trigger you wish to delete.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    deleteInboundRuleTrigger(id: number, callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
+        return this.processRequestWithoutBody(HttpMethod.DELETE, `/triggers/inboundRules/${id}`, {}, callback);
+    };
+
+    /**
+     * Get a list of Inbound Rule Triggers. The default batch count is 100, and the offset is 0.
+     *
+     * @param filter - Optional filtering parameters.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getInboundRuleTriggers(filter: QueryStringParameters = {} , callback?:PostmarkCallback<InboundRules>) : Promise<InboundRules> {
+        filter = {...{count: 100, offset: 0},...filter};
+        return this.processRequestWithoutBody( HttpMethod.GET, '/triggers/inboundRules', filter, callback);
+    };
+
+
+
+    /**
+     * Get the list of templates associated with this server.
+     *
+     * @param filter - Optional filtering options.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getTemplates(filter: QueryStringParameters = {}, callback?:PostmarkCallback<Templates>) : Promise<Templates> {
+        filter = {...{count: 100, offset: 0},...filter};
+        return this.processRequestWithoutBody(HttpMethod.GET, '/templates', filter, callback);
+    };
+
+
+    /**
+     * Get the a specific template associated with this server.
+     *
+     * @param idOrAlias - ID or alias for the template you wish to retrieve.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getTemplate(idOrAlias: (number | string), callback?:PostmarkCallback<Template>) : Promise<Template> {
+        return this.processRequestWithoutBody(HttpMethod.GET, `/templates/${idOrAlias}`, {}, callback);
+    };
+
+    /**
+     * Delete a template associated with this server.
+     *
+     * @param idOrAlias - ID or template alias you wish to delete.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    deleteTemplate(idOrAlias: (number | string), callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
+        return this.processRequestWithoutBody( HttpMethod.DELETE, `/templates/${idOrAlias}`, {}, callback);
+    }
+
+    /**
+     * Create a new template on the associated server.
+     *
+     * @param options - Configuration options to be used to create the Template.
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    createTemplate(options: TemplateOptions, callback?:PostmarkCallback<Template>) : Promise<Template> {
+        return this.processRequestWithBody(HttpMethod.POST, '/templates/', options, callback);
+    }
+
+    /**
+     * Update a template on the associated server.
+     *
+     * @param idOrAlias - Id or alias of the template you wish to update.
+     * @param options - Template options you wish to update.
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    editTemplate(idOrAlias: (number | string), options: TemplateOptions, callback?:PostmarkCallback<Template>) : Promise<Template> {
+        return this.processRequestWithBody(HttpMethod.PUT, `/templates/${idOrAlias}`, options, callback);
+    }
+
+    /**
+     * Validate template markup to verify that it will be parsed. Also provides a recommended template
+     * model to be used when sending using the specified template content.
+     *
+     * @param options - The template content you wish to validate.
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    validateTemplate(options: TemplateValidationOptions, callback?: PostmarkCallback<TemplateValidation>):
+        Promise<TemplateValidation> {
+        return this.processRequestWithBody(HttpMethod.POST, '/templates/validate', options, callback);
+    }
 }
