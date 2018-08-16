@@ -2,6 +2,8 @@ import {Promise} from 'bluebird'
 import Bluebird = require("bluebird");
 import * as request from 'request-promise';
 
+const packageJson = require("../../package.json")
+const CLIENT_VERSION = packageJson.version;
 
 import {
     HttpMethod,
@@ -45,12 +47,14 @@ export default abstract class BaseClient {
 
     protected clientOptions: ClientOptions;
     protected clientError: ClientError;
+    private clientVersion: string;
     private authHeader: string;
     private token: string;
 
     protected constructor(token: string, authHeader: string, options?: ClientOptions) {
         this.verifyToken(token);
 
+        this.clientVersion = CLIENT_VERSION;
         this.token = token.trim();
         this.authHeader = authHeader;
         this.clientOptions = {...BaseClient.DefaultOptions, ...options};
@@ -72,13 +76,32 @@ export default abstract class BaseClient {
      *
      * @see processRequest for more details.
      **/
-    protected processRequestWithoutBody<T>(method: HttpMethod, path: string, queryParameters: ({} | object),
+    protected processRequestWithoutBody<T>(method: HttpMethod, path: string, queryParameters: object,
                                            callback?: PostmarkCallback<T>): Promise<T> {
         return this.processRequest(method, path, queryParameters, null, callback);
     }
 
     /**
-     * Process http request and callback request.
+     * Process request for Postmark client.
+     *
+     * @param method - see processHttpRequest for details
+     * @param path - see processHttpRequest for details
+     * @param queryParameters - see processHttpRequest for details
+     * @param body - see processHttpRequest for details
+     * @param callback - callback function to be executed.
+     *
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     **/
+    private processRequest<T>(method: HttpMethod, path: string, queryParameters: object,
+                              body: (null | object), callback?: PostmarkCallback<T>): Promise<T> {
+
+        let httpRequest: Bluebird<T> = this.processHttpRequest(method, path, queryParameters, body);
+        this.processCallbackRequest(httpRequest, callback);
+        return httpRequest;
+    }
+
+    /**
+     * Process HTTP request.
      *
      * @param method - Which type of http request will be executed.
      * @param path - API URL endpoint.
@@ -87,36 +110,33 @@ export default abstract class BaseClient {
      *
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    private processRequest<T>(method: HttpMethod, path: string, queryParameters: ({} | object),
-                              body: (null | object), callback?: PostmarkCallback<T>): Promise<T> {
-
-        let req = this.httpRequest(method, path, queryParameters, body)
+    private processHttpRequest<T>(method: HttpMethod, path: string, queryParameters: object, body: (null | object)): Bluebird<T> {
+        return this.httpRequest(method, path, queryParameters, body)
             .then(response => {
                 return <T>response;
             })
             .catch(error => {
-                throw this.clientError.generate(error.statusCode, error.message);
+                throw this.clientError.generate(error);
             });
-
-        this.callbackRequest(req, callback);
-        return req;
     }
 
     /**
-     * Execute callback request.
+     * Process callback function for HTTP request.
      *
      * @param httpRequest - HTTP request for which callback will be executed
      * @param callback - callback function to be executed.
      */
-    private callbackRequest<T>(httpRequest: Bluebird<T>, callback?: PostmarkCallback<T>): void {
+    private processCallbackRequest<T>(httpRequest: Bluebird<T>, callback?: PostmarkCallback<T>): void {
         if (callback) {
-            httpRequest.then(response => {
-                callback(null, response);
-                return response;
-            }).tapCatch(error => callback(error, null))
+            httpRequest
+                .then(response => {
+                    callback(null, response);
+                })
+                .tapCatch(error => callback(error, null))
                 .suppressUnhandledRejections();
         }
     }
+
 
     /**
      * Process http request.
@@ -137,7 +157,7 @@ export default abstract class BaseClient {
             headers: {
                 [this.authHeader]: this.token,
                 'Accept': 'application/json',
-                'User-Agent': 'Postmark.JS'
+                'User-Agent': `Postmark.JS - ${this.clientVersion}`
             },
             qs: queryParameters,
             body: body,

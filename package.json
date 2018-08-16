@@ -9,7 +9,7 @@
     "sending",
     "transactional"
   ],
-  "version": "2.0.0-alpha",
+  "version": "2.0.0",
   "author": "Andrew Theken <andrew+postmark.js@wildbit.com>",
   "contributors": [
     "Igor Balos",
