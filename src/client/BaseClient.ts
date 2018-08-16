@@ -136,8 +136,7 @@ export default abstract class BaseClient {
                 .suppressUnhandledRejections();
         }
     }
-
-
+    
     /**
      * Process http request.
      *
@@ -154,17 +153,21 @@ export default abstract class BaseClient {
 
         return request(url, {
             method: method.toString(),
-            headers: {
-                [this.authHeader]: this.token,
-                'Accept': 'application/json',
-                'User-Agent': `Postmark.JS - ${this.clientVersion}`
-            },
+            headers: this.getComposedRequestHeaders(),
             qs: queryParameters,
             body: body,
             timeout: (this.clientOptions.timeout || 30) * 1000,
             json: true,
             gzip: true
         });
+    }
+
+    private getComposedRequestHeaders():object {
+        return {
+            [this.authHeader]: this.token,
+            'Accept': 'application/json',
+            'User-Agent': `Postmark.JS - ${this.clientVersion}`
+        }
     }
 
     private verifyToken(token: string): void {
