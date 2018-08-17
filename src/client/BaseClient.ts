@@ -172,7 +172,7 @@ export default abstract class BaseClient {
 
     private verifyToken(token: string): void {
         if (!token || token.trim() == '') {
-            throw new PostmarkErrors.InvalidAPIKeyError('A valid API token must be provided when creating a client.');
+            throw new PostmarkErrors.PostmarkError('A valid API token must be provided when creating a client.');
         }
     }
 }
