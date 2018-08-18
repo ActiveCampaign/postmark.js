@@ -43,27 +43,25 @@ export class ClientError {
     }
 
     /**
-     * Build Postmark error.
+     * Build Postmark error. Error code from Postmark and HTTP request error can not be identified for this error, so they will be default.
      *
      * @param error - http request library error, that will be transformed to Postmark error.
      *
      * @returns properly formatted Postmark error.
      */
     private buildRequestError(error: RequestError):PostmarkErrors.PostmarkHttpError {
-        const httpRequestDetails = this.formatHttpRequestDetails(error.error, error.options, error.response);
-        return new PostmarkErrors.PostmarkHttpError(error.message, httpRequestDetails);
+        return new PostmarkErrors.PostmarkHttpError(error.message, -1, 500)
     }
 
     /**
-     * Build Postmark error.
+     * Build Postmark error. Error code from Postmark and HTTP request error can not be identified for this error, so they will be default.
      *
      * @param error - http request library error, that will be transformed to Postmark error.
      *
      * @returns properly formatted Postmark error.
      */
     private buildTransformError(error: TransformError):PostmarkErrors.PostmarkHttpError {
-        const httpRequestDetails = this.formatHttpRequestDetails(error.error, error.options, error.response);
-        return new PostmarkErrors.PostmarkHttpError(error.message, httpRequestDetails);
+        return new PostmarkErrors.PostmarkHttpError(error.message, -1, 500);
     }
 
     /**
@@ -74,42 +72,26 @@ export class ClientError {
      * @returns properly formatted Postmark error.
      */
     private buildStatusError(error: StatusCodeError) {
-        const httpRequestDetails = this.formatHttpRequestDetails(error.error, error.options, error.response, error.statusCode);
-
         switch (error.statusCode) {
             case 401:
-                return new PostmarkErrors.InvalidAPIKeyError(error.message, httpRequestDetails);
+                return new PostmarkErrors.InvalidAPIKeyError(error.error.Message, error.error.ErrorCode, error.statusCode);
                 break;
 
             case 422:
-                return new PostmarkErrors.ApiInputError(error.message, httpRequestDetails);
+                return new PostmarkErrors.ApiInputError(error.error.Message, error.error.ErrorCode, error.statusCode);
                 break;
 
             case 500:
-                return new PostmarkErrors.InternalServerError(error.message, httpRequestDetails);
+                return new PostmarkErrors.InternalServerError(error.error.Message, error.error.ErrorCode, error.statusCode);
                 break;
 
             case 503:
-                return new PostmarkErrors.ServiceUnavailablerError(error.message, httpRequestDetails);
+                return new PostmarkErrors.ServiceUnavailablerError(error.error.Message, error.error.ErrorCode, error.statusCode);
                 break;
 
             default:
-                return new PostmarkErrors.UnknownError(error.message, httpRequestDetails);
+                return new PostmarkErrors.UnknownError(error.error.Message, error.error.ErrorCode, error.statusCode);
                 break;
         }
-    }
-
-    /**
-     * Format http request details to attach to a Postmark error.
-     *
-     * @param error - general httpRequest details
-     * @param options - options for httpRequest
-     * @param response - httpRequest response
-     * @param statusCode - httpRequest status code
-     *
-     * @returns properly formatted httpRequest details
-     */
-    private formatHttpRequestDetails(error:any, options:any, response: any, statusCode?: number): PostmarkErrors.HttpRequestDetails {
-        return { error: error, options: options, response: response, statusCode: statusCode }
     }
 }
