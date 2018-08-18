@@ -41,7 +41,7 @@
     "compile": "node_modules/.bin/tsc && git add -A ./dist",
     "test": "node_modules/.bin/mocha tests/fixture_*.js",
     "watchtests": "node_modules/.bin/mocha -R list -w --recursive -G tests/fixture_*.js",
-    "compile-docs": "echo 'Generating docs...' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/typedoc --module postmark --name Postmark.js --out ./docs --excludeProtected --excludePrivate --excludeNotExported --hideGenerator --theme minimal --mode file && git add -A ./docs && echo 'Generated docs!'",
+    "compile-docs": "echo 'Generating docs...' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/typedoc --options typedoc.json && git add -A ./docs && echo 'Generated docs!'",
     "pull-docs": "git subtree pull --prefix docs origin gh-pages",
     "push-docs": "git subtree push --prefix docs origin gh-pages"
   },
@@ -64,7 +64,9 @@
     "mocha": "5.2.0",
     "pre-commit": "1.0.2",
     "typedoc": "^0.11.1",
-    "typescript": "^2.7.2"
+    "typescript": "^2.7.2",
+    "nconf": "0.7.1",
+    "merge": "1.2.0"
   },
   "dependencies": {
     "bluebird": "^3.5.1",
