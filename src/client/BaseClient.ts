@@ -2,17 +2,11 @@ import {Promise} from 'bluebird'
 import Bluebird = require("bluebird");
 import * as request from 'request-promise';
 
+import {ClientOptions, HttpMethod, PostmarkErrors, PostmarkCallback} from './models';
+import {ClientError} from "./ClientError";
+
 const packageJson = require("../../package.json")
 const CLIENT_VERSION = packageJson.version;
-
-import {
-    HttpMethod,
-    ClientOptions,
-    PostmarkErrors,
-    PostmarkCallback,
-} from './models';
-
-import {ClientError} from "./ClientError";
 
 /**
  * Base client class from which both the AccountClient and ServerClient classes can be implemented.
@@ -45,9 +39,9 @@ export default abstract class BaseClient {
         timeout: 30
     };
 
-    protected clientOptions: ClientOptions;
+    public clientOptions: ClientOptions;
+    public clientVersion: string;
     protected clientError: ClientError;
-    private clientVersion: string;
     private authHeader: string;
     private token: string;
 
@@ -136,7 +130,7 @@ export default abstract class BaseClient {
                 .suppressUnhandledRejections();
         }
     }
-    
+
     /**
      * Process http request.
      *
@@ -148,21 +142,30 @@ export default abstract class BaseClient {
      * @returns A promise that will complete when the API responds.
      */
     private httpRequest(method: HttpMethod, path: string, queryParameters: ({} | object), body: (null | object)): request.RequestPromise {
-        const scheme = this.clientOptions.useHttps ? 'https' : 'http';
-        let url = `${scheme}://${this.clientOptions.requestHost}/${path}`;
-
-        return request(url, {
+        return request(this.getHttpRequestURL(path), {
             method: method.toString(),
-            headers: this.getComposedRequestHeaders(),
+            headers: this.getComposedHttpRequestHeaders(),
             qs: queryParameters,
             body: body,
-            timeout: (this.clientOptions.timeout || 30) * 1000,
+            timeout: this.getRequestTimeoutInSeconds(),
             json: true,
             gzip: true
         });
     }
 
-    private getComposedRequestHeaders():object {
+    private getRequestTimeoutInSeconds():number {
+        return (this.clientOptions.timeout || 30) * 1000
+    }
+
+    private getHttpRequestURL(path: string):string {
+        const scheme = this.clientOptions.useHttps ? 'https' : 'http';
+        return `${scheme}://${this.clientOptions.requestHost}/${path}`;
+    }
+
+    /**
+     * JSON object with all headers sent by HTTP request.
+     **/
+    private getComposedHttpRequestHeaders(): object {
         return {
             [this.authHeader]: this.token,
             'Accept': 'application/json',
