@@ -1,6 +1,4 @@
-import ClientOptions, {Hash} from './client/ClientOptions';
-import {HttpMethod} from './client/ClientOptions';
-import {DefaultHeaderNames} from "./client/ClientOptions";
+import * as ClientOptions from './client/ClientOptions';
 import QueryStringParameters from './client/QueryStringParameters';
 import * as PostmarkErrors from './client/PostmarkError';
 import {PostmarkCallback} from './client/PostmarkCallbacks';
@@ -9,11 +7,8 @@ import DefaultResponse from './client/PostmarkResponse';
 import Message from './message/Message';
 import MessageResponse from "./message/MessageResponse";
 
-import Bounces from './bounces/Bounces';
-import Bounce from './bounces/Bounce';
-import BounceDump from './bounces/BounceDump';
-import BounceActivateResponse from './bounces/BounceActivateResponse';
-import DeliveryStatistics from './bounces/DeliveryStats';
+import {Bounce, Bounces, BounceDump, BounceActivateResponse, DeliveryStatistics} from "./bounces/Bounce";
+import BounceQueryStringParameters from "./bounces/QueryStringParameters";
 
 import Server from './server/Server';
 import {ServerOptions} from './server/Server';
@@ -64,14 +59,14 @@ import {InboundRuleOptions, InboundRule, InboundRules} from './triggers/InboundR
 import {Template, TemplateOptions, Templates, TemplateValidation, TemplateValidationOptions, TemplateMessage} from './templates/Template';
 
 export {
-    HttpMethod,
     ClientOptions,
+
     PostmarkErrors,
-    DefaultHeaderNames,
+
     QueryStringParameters,
     PostmarkCallback,
     DefaultResponse,
-    Hash,
+
 
     Message,
     MessageResponse,
@@ -81,6 +76,7 @@ export {
     BounceDump,
     BounceActivateResponse,
     DeliveryStatistics,
+    BounceQueryStringParameters,
 
     Server,
     ServerOptions,

@@ -3,12 +3,9 @@ import BaseClient from './BaseClient';
 
 import {
     ClientOptions,
-    HttpMethod,
-    DefaultHeaderNames,
     PostmarkCallback,
     QueryStringParameters,
     DefaultResponse,
-    Hash,
 } from './models/index';
 
 import {
@@ -20,6 +17,7 @@ import {
     BounceDump,
     BounceActivateResponse,
     DeliveryStatistics,
+    BounceQueryStringParameters,
 
     Server,
     ServerOptions,
@@ -75,10 +73,10 @@ export default class ServerClient extends BaseClient {
      * Create a client.
      *
      * @param serverToken - The token for the server that you wish to interact with.
-     * @param options - Options to customize the behavior of the this client.
+     * @param configOptions - Options to customize the behavior of the this client.
      */
-    constructor(serverToken: string, options?: ClientOptions) {
-        super(serverToken, DefaultHeaderNames.SERVER_TOKEN, options);
+    constructor(serverToken: string, configOptions?: ClientOptions.Configuration) {
+        super(serverToken, ClientOptions.DefaultHeaderNames.SERVER_TOKEN, configOptions);
     }
 
     /** Send a single email message.
@@ -88,7 +86,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     sendEmail(message: Message, callback?: PostmarkCallback<MessageResponse>): Promise<MessageResponse> {
-        return this.processRequestWithBody<MessageResponse>(HttpMethod.POST, '/email', message, callback);
+        return this.processRequestWithBody<MessageResponse>(ClientOptions.HttpMethod.POST, '/email', message, callback);
     }
 
     /**
@@ -99,7 +97,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     sendEmailBatch(messages: Message[], callback?: PostmarkCallback<MessageResponse[]>): Promise<MessageResponse[]> {
-        return this.processRequestWithBody(HttpMethod.POST, '/email/batch', messages, callback);
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/email/batch', messages, callback);
     };
 
     /**
@@ -110,7 +108,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     sendEmailWithTemplate(message: TemplateMessage, callback?:PostmarkCallback<MessageResponse>): Promise<MessageResponse> {
-        return this.processRequestWithBody(HttpMethod.POST, '/email/withTemplate', message, callback);
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/email/withTemplate', message, callback);
     };
 
     /**
@@ -121,7 +119,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     sendEmailBatchWithTemplates(messages: TemplateMessage[], callback?:PostmarkCallback<MessageResponse[]>): Promise<MessageResponse[]> {
-        return this.processRequestWithBody(HttpMethod.POST, '/email/batchWithTemplates', { Messages: messages }, callback);
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/email/batchWithTemplates', { Messages: messages }, callback);
     };
 
     /**
@@ -131,7 +129,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getDeliveryStatistics(callback?: PostmarkCallback<DeliveryStatistics>): Promise<DeliveryStatistics> {
-        return this.processRequestWithoutBody(HttpMethod.GET, '/deliverystats', {}, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/deliverystats', {}, callback);
     };
 
     /**
@@ -141,9 +139,9 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getBounces(filter: QueryStringParameters = {}, callback?: PostmarkCallback<Bounces>): Promise<Bounces> {
+    getBounces(filter: BounceQueryStringParameters = {}, callback?: PostmarkCallback<Bounces>): Promise<Bounces> {
         filter = {...{count: 100, offset: 0}, ...filter};
-        return this.processRequestWithoutBody(HttpMethod.GET, '/bounces', filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/bounces', filter, callback);
     };
 
     /**
@@ -154,7 +152,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getBounce(id: number, callback?: PostmarkCallback<Bounce>): Promise<Bounce> {
-        return this.processRequestWithoutBody(HttpMethod.GET, `/bounces/${id}`, {}, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/bounces/${id}`, {}, callback);
     };
 
     /**
@@ -165,7 +163,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getBounceDump(id: number, callback?: PostmarkCallback<BounceDump>): Promise<BounceDump> {
-        return this.processRequestWithoutBody(HttpMethod.GET, `/bounces/${id}/dump`, {}, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/bounces/${id}/dump`, {}, callback);
     };
 
     /**
@@ -176,7 +174,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     activateBounce(id: number, callback?: PostmarkCallback<BounceActivateResponse>): Promise<BounceActivateResponse> {
-        return this.processRequestWithBody(HttpMethod.PUT, `/bounces/${id}/activate`, {}, callback);
+        return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, `/bounces/${id}/activate`, {}, callback);
     };
 
     /**
@@ -186,7 +184,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getBounceTags(callback?: PostmarkCallback<string[]>): Promise<string[]> {
-        return this.processRequestWithoutBody(HttpMethod.GET, '/bounces/tags', {}, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/bounces/tags', {}, callback);
     };
 
     /**
@@ -196,7 +194,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getServer(callback?: PostmarkCallback<Server>): Promise<Server> {
-        return this.processRequestWithoutBody(HttpMethod.GET, '/server', {}, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/server', {}, callback);
     };
 
     /**
@@ -207,7 +205,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     editServer(options: ServerOptions, callback?: PostmarkCallback<Server>): Promise<Server> {
-        return this.processRequestWithBody(HttpMethod.PUT, '/server', options, callback);
+        return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, '/server', options, callback);
     };
 
     /**
@@ -221,7 +219,7 @@ export default class ServerClient extends BaseClient {
                         callback?: PostmarkCallback<OutboundMessages>): Promise<OutboundMessages> {
 
         filter = {...{count: 100, offset: 0},...filter};
-        return this.processRequestWithoutBody(HttpMethod.GET, '/messages/outbound', filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/messages/outbound', filter, callback);
     };
 
     /**
@@ -233,7 +231,7 @@ export default class ServerClient extends BaseClient {
      */
     getOutboundMessageDetails(messageId: string,
                               callback?: PostmarkCallback<OutboundMessageDetails>): Promise<OutboundMessageDetails> {
-        return this.processRequestWithoutBody(HttpMethod.GET, `/messages/outbound/${messageId}`, {}, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/messages/outbound/${messageId}`, {}, callback);
     };
 
     /**
@@ -245,7 +243,7 @@ export default class ServerClient extends BaseClient {
      */
     getOutboundMessageDump(messageId: string,
                               callback?: PostmarkCallback<OutboundMessageDump>): Promise<OutboundMessageDump> {
-        return this.processRequestWithoutBody(HttpMethod.GET, `/messages/outbound/${messageId}/dump`, {}, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/messages/outbound/${messageId}/dump`, {}, callback);
     };
 
     /**
@@ -257,7 +255,7 @@ export default class ServerClient extends BaseClient {
      */
     getInboundMessages(filter: QueryStringParameters = {}, callback?:PostmarkCallback<InboundMessages>) : Promise<InboundMessages> {
         filter = {...{count: 100, offset: 0},...filter};
-        return this.processRequestWithoutBody(HttpMethod.GET, '/messages/inbound', filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/messages/inbound', filter, callback);
     };
 
     /**
@@ -268,7 +266,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getInboundMessageDetails(messageId: string, callback?:PostmarkCallback<InboundMessageDetails>) : Promise<InboundMessageDetails> {
-        return this.processRequestWithoutBody(HttpMethod.GET, `/messages/inbound/${messageId}/details`, {}, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/messages/inbound/${messageId}/details`, {}, callback);
     };
 
     /**
@@ -279,7 +277,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     bypassBlockedInboundMessage(messageId: string, callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
-        return this.processRequestWithoutBody(HttpMethod.PUT, `/messages/inbound/${messageId}/bypass`, {}, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.PUT, `/messages/inbound/${messageId}/bypass`, {}, callback);
     };
 
     /**
@@ -290,7 +288,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     retryInboundHookForMessage(messageId: string, callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
-        return this.processRequestWithoutBody(HttpMethod.PUT, `/messages/inbound/${messageId}/retry`, {}, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.PUT, `/messages/inbound/${messageId}/retry`, {}, callback);
     };
 
     /**
@@ -302,7 +300,7 @@ export default class ServerClient extends BaseClient {
      */
     getMessageOpens(filter: QueryStringParameters = {}, callback?:PostmarkCallback<OutboundMessageOpens>) : Promise<OutboundMessageOpens> {
         filter = {...{count: 100, offset: 0},...filter};
-        return this.processRequestWithoutBody(HttpMethod.GET, '/messages/outbound/opens', filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/messages/outbound/opens', filter, callback);
     };
 
     /**
@@ -316,7 +314,7 @@ export default class ServerClient extends BaseClient {
                           callback?:PostmarkCallback<OutboundMessageOpens>) : Promise<OutboundMessageOpens> {
 
         filter = {...{count: 50, offset: 0},...filter};
-        return this.processRequestWithoutBody(HttpMethod.GET, `/messages/outbound/opens/${messageId}`, filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/messages/outbound/opens/${messageId}`, filter, callback);
     };
 
     /**
@@ -328,7 +326,7 @@ export default class ServerClient extends BaseClient {
      */
     getMessageClicks(filter: QueryStringParameters = {}, callback?:PostmarkCallback<OutboundMessageClicks>) : Promise<OutboundMessageClicks> {
         filter = {...{count: 100, offset: 0},...filter};
-        return this.processRequestWithoutBody(HttpMethod.GET, '/messages/outbound/clicks', filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/messages/outbound/clicks', filter, callback);
     };
 
     /**
@@ -343,7 +341,7 @@ export default class ServerClient extends BaseClient {
                                      callback?:PostmarkCallback<OutboundMessageClicks>) : Promise<OutboundMessageClicks> {
 
         filter = {...{count: 100, offset: 0},...filter};
-        return this.processRequestWithoutBody(HttpMethod.GET, `/messages/outbound/clicks/${messageId}`, filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/messages/outbound/clicks/${messageId}`, filter, callback);
     };
 
     /**
@@ -355,7 +353,7 @@ export default class ServerClient extends BaseClient {
      */
     getOutboundOverview(filter: QueryStringParameters = {}, callback?: PostmarkCallback<OutboundStatistics>):
         Promise<OutboundStatistics> {
-        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound', filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound', filter, callback);
     };
 
     /**
@@ -366,7 +364,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getSentCounts(filter: QueryStringParameters = {}, callback?:PostmarkCallback<SentCounts>) : Promise<SentCounts> {
-        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/sends', filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/sends', filter, callback);
     };
 
     /**
@@ -377,7 +375,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getBounceCounts(filter: QueryStringParameters = {}, callback?:PostmarkCallback<BounceCounts>) : Promise<BounceCounts> {
-        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/bounces', filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/bounces', filter, callback);
     };
 
     /**
@@ -388,7 +386,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getSpamComplaintsCounts(filter: QueryStringParameters = {}, callback?:PostmarkCallback<SpamCounts>) : Promise<SpamCounts> {
-        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/spam', filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/spam', filter, callback);
     };
 
     /**
@@ -399,7 +397,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getTrackedEmailCounts(filter: QueryStringParameters = {}, callback?:PostmarkCallback<TrackedEmailCounts>) : Promise<TrackedEmailCounts> {
-        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/tracked', filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/tracked', filter, callback);
     };
 
     /**
@@ -410,7 +408,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getEmailOpenCounts(filter: QueryStringParameters = {}, callback?:PostmarkCallback<OpenCounts>) : Promise<OpenCounts> {
-        return this.processRequestWithoutBody( HttpMethod.GET, '/stats/outbound/opens', filter, callback);
+        return this.processRequestWithoutBody( ClientOptions.HttpMethod.GET, '/stats/outbound/opens', filter, callback);
     };
 
     /**
@@ -421,7 +419,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getEmailOpenPlatformUsage(filter: QueryStringParameters = {}, callback?:PostmarkCallback<EmailPlaformUsageCounts>) : Promise<EmailPlaformUsageCounts> {
-        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/opens/platforms', filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/opens/platforms', filter, callback);
     };
 
     /**
@@ -432,7 +430,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getEmailOpenClientUsage(filter: QueryStringParameters = {} , callback?:PostmarkCallback<EmailClientUsageCounts>) : Promise<EmailClientUsageCounts> {
-        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/opens/emailClients', filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/opens/emailClients', filter, callback);
     };
 
     /**
@@ -442,7 +440,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getEmailOpenReadTimes(filter: QueryStringParameters = {}, callback?:PostmarkCallback<EmailReadTimesCounts>) : Promise<EmailReadTimesCounts> {
-        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/opens/readTimes', filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/opens/readTimes', filter, callback);
     };
 
     /**
@@ -453,7 +451,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getClickCounts(filter: QueryStringParameters = {}, callback?:PostmarkCallback<ClickCounts>) : Promise<ClickCounts> {
-        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/clicks', filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/clicks', filter, callback);
     };
 
     /**
@@ -463,7 +461,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getClickBrowserUsage(filter: QueryStringParameters = {}, callback?:PostmarkCallback<BrowserUsageCounts>) : Promise<BrowserUsageCounts> {
-        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/clicks/browserFamilies', filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/clicks/browserFamilies', filter, callback);
     };
 
     /**
@@ -474,7 +472,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getClickPlatformUsage(filter: QueryStringParameters = {}, callback?:PostmarkCallback<ClickPlaformUsageCounts>) : Promise<ClickPlaformUsageCounts> {
-        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/clicks/platforms', filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/clicks/platforms', filter, callback);
     };
 
     /**
@@ -485,7 +483,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getClickLocation(filter: QueryStringParameters = {}, callback?:PostmarkCallback<ClickLocationCounts>) : Promise<ClickLocationCounts> {
-        return this.processRequestWithoutBody(HttpMethod.GET, '/stats/outbound/clicks/location', filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/clicks/location', filter, callback);
     };
 
     /**
@@ -496,7 +494,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     createTagTrigger(options: TagTriggerOptions, callback?:PostmarkCallback<TagTrigger>) : Promise<TagTrigger> {
-        return this.processRequestWithBody(HttpMethod.POST, '/triggers/tags', options, callback);
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/triggers/tags', options, callback);
     };
 
     /**
@@ -508,7 +506,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     editTagTrigger(id: number, options: TagTriggerOptions, callback?:PostmarkCallback<TagTrigger>) : Promise<TagTrigger> {
-        return this.processRequestWithBody(HttpMethod.PUT, `/triggers/tags/${id}`, options, callback);
+        return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, `/triggers/tags/${id}`, options, callback);
     };
 
     /**
@@ -519,7 +517,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     deleteTagTrigger(id: number, callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
-        return this.processRequestWithoutBody(HttpMethod.DELETE, `/triggers/tags/${id}`, {}, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.DELETE, `/triggers/tags/${id}`, {}, callback);
     };
 
     /**
@@ -530,7 +528,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getTagTrigger(id: number, callback?:PostmarkCallback<TagTrigger>) : Promise<TagTrigger> {
-        return this.processRequestWithoutBody(HttpMethod.GET, `/triggers/tags/${id}`, {}, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/triggers/tags/${id}`, {}, callback);
     };
 
     /**
@@ -542,7 +540,7 @@ export default class ServerClient extends BaseClient {
      */
     getTagTriggers(filter: QueryStringParameters = {}, callback?:PostmarkCallback<TagTriggers>) : Promise<TagTriggers> {
         filter = {...{count: 100, offset: 0},...filter};
-        return this.processRequestWithoutBody(HttpMethod.GET, '/triggers/tags/', filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/triggers/tags/', filter, callback);
     };
 
     /**
@@ -553,7 +551,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     createInboundRuleTrigger(options: InboundRuleOptions, callback?:PostmarkCallback<InboundRule>) : Promise<InboundRule> {
-        return this.processRequestWithBody(HttpMethod.POST, '/triggers/inboundRules', options, callback);
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/triggers/inboundRules', options, callback);
     };
 
     /**
@@ -564,7 +562,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     deleteInboundRuleTrigger(id: number, callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
-        return this.processRequestWithoutBody(HttpMethod.DELETE, `/triggers/inboundRules/${id}`, {}, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.DELETE, `/triggers/inboundRules/${id}`, {}, callback);
     };
 
     /**
@@ -576,7 +574,7 @@ export default class ServerClient extends BaseClient {
      */
     getInboundRuleTriggers(filter: QueryStringParameters = {} , callback?:PostmarkCallback<InboundRules>) : Promise<InboundRules> {
         filter = {...{count: 100, offset: 0},...filter};
-        return this.processRequestWithoutBody( HttpMethod.GET, '/triggers/inboundRules', filter, callback);
+        return this.processRequestWithoutBody( ClientOptions.HttpMethod.GET, '/triggers/inboundRules', filter, callback);
     };
 
 
@@ -590,7 +588,7 @@ export default class ServerClient extends BaseClient {
      */
     getTemplates(filter: QueryStringParameters = {}, callback?:PostmarkCallback<Templates>) : Promise<Templates> {
         filter = {...{count: 100, offset: 0},...filter};
-        return this.processRequestWithoutBody(HttpMethod.GET, '/templates', filter, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/templates', filter, callback);
     };
 
 
@@ -602,7 +600,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getTemplate(idOrAlias: (number | string), callback?:PostmarkCallback<Template>) : Promise<Template> {
-        return this.processRequestWithoutBody(HttpMethod.GET, `/templates/${idOrAlias}`, {}, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/templates/${idOrAlias}`, {}, callback);
     };
 
     /**
@@ -613,7 +611,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     deleteTemplate(idOrAlias: (number | string), callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
-        return this.processRequestWithoutBody( HttpMethod.DELETE, `/templates/${idOrAlias}`, {}, callback);
+        return this.processRequestWithoutBody( ClientOptions.HttpMethod.DELETE, `/templates/${idOrAlias}`, {}, callback);
     }
 
     /**
@@ -624,7 +622,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     createTemplate(options: TemplateOptions, callback?:PostmarkCallback<Template>) : Promise<Template> {
-        return this.processRequestWithBody(HttpMethod.POST, '/templates/', options, callback);
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/templates/', options, callback);
     }
 
     /**
@@ -636,7 +634,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     editTemplate(idOrAlias: (number | string), options: TemplateOptions, callback?:PostmarkCallback<Template>) : Promise<Template> {
-        return this.processRequestWithBody(HttpMethod.PUT, `/templates/${idOrAlias}`, options, callback);
+        return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, `/templates/${idOrAlias}`, options, callback);
     }
 
     /**
@@ -649,6 +647,6 @@ export default class ServerClient extends BaseClient {
      */
     validateTemplate(options: TemplateValidationOptions, callback?: PostmarkCallback<TemplateValidation>):
         Promise<TemplateValidation> {
-        return this.processRequestWithBody(HttpMethod.POST, '/templates/validate', options, callback);
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/templates/validate', options, callback);
     }
 }

@@ -2,56 +2,43 @@ import {Promise} from 'bluebird'
 import Bluebird = require("bluebird");
 import * as request from 'request-promise';
 
-import {ClientOptions, HttpMethod, PostmarkErrors, PostmarkCallback} from './models';
+import {ClientOptions} from './models'
 import {ClientError} from "./ClientError";
+import {PostmarkErrors, PostmarkCallback} from './models';
 
 const packageJson = require("../../package.json")
 const CLIENT_VERSION = packageJson.version;
 
 /**
  * Base client class from which both the AccountClient and ServerClient classes can be implemented.
- *
  * This class is NOT intended to be instantiated directly.
  */
 export default abstract class BaseClient {
 
     /**
-     * Connection defaults that will be combined with any options that are provided during Client instantiation.
-     * Any values provided to a Client constructor will override these defaults.
-     *
+     * Client connection configuration options.
      * You may modify these values and new clients will use them.
+     * Any values provided to a Client constructor will override default options.
      */
-    public static DefaultOptions: ClientOptions = {
-        /**
-         * Should https be used for API requests?
-         * @default true
-         */
+    public static DefaultOptions: ClientOptions.Configuration = {
         useHttps: true,
-        /**
-         * The hostname that should be used for API requests.
-         * @default api.postmarkapp.com
-         */
         requestHost: 'api.postmarkapp.com',
-        /**
-         * The number of seconds to wait before a client should timeout during an API request.
-         * @default 30
-         */
         timeout: 30
     };
 
-    public clientOptions: ClientOptions;
+    public clientOptions: ClientOptions.Configuration;
     public clientVersion: string;
     protected clientError: ClientError;
     private authHeader: string;
     private token: string;
 
-    protected constructor(token: string, authHeader: string, options?: ClientOptions) {
+    protected constructor(token: string, authHeader: string, configOptions?: ClientOptions.Configuration) {
         this.verifyToken(token);
 
         this.clientVersion = CLIENT_VERSION;
         this.token = token.trim();
         this.authHeader = authHeader;
-        this.clientOptions = {...BaseClient.DefaultOptions, ...options};
+        this.clientOptions = {...BaseClient.DefaultOptions, ...configOptions};
         this.clientError = new ClientError();
     }
 
@@ -60,7 +47,7 @@ export default abstract class BaseClient {
      *
      * @see processRequest for more details.
      **/
-    protected processRequestWithBody<T>(method: HttpMethod, path: string, body: (null | object),
+    protected processRequestWithBody<T>(method: ClientOptions.HttpMethod, path: string, body: (null | object),
                                         callback?: PostmarkCallback<T>): Promise<T> {
         return this.processRequest(method, path, {}, body, callback);
     }
@@ -70,13 +57,13 @@ export default abstract class BaseClient {
      *
      * @see processRequest for more details.
      **/
-    protected processRequestWithoutBody<T>(method: HttpMethod, path: string, queryParameters: object,
+    protected processRequestWithoutBody<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object,
                                            callback?: PostmarkCallback<T>): Promise<T> {
         return this.processRequest(method, path, queryParameters, null, callback);
     }
 
     /**
-     * Process request for Postmark client.
+     * Process request for Postmark ClientOptions.
      *
      * @param method - see processHttpRequest for details
      * @param path - see processHttpRequest for details
@@ -86,7 +73,7 @@ export default abstract class BaseClient {
      *
      * @returns A promise that will complete when the API responds (or an error occurs).
      **/
-    private processRequest<T>(method: HttpMethod, path: string, queryParameters: object,
+    private processRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object,
                               body: (null | object), callback?: PostmarkCallback<T>): Promise<T> {
 
         let httpRequest: Bluebird<T> = this.processHttpRequest(method, path, queryParameters, body);
@@ -104,7 +91,7 @@ export default abstract class BaseClient {
      *
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    private processHttpRequest<T>(method: HttpMethod, path: string, queryParameters: object, body: (null | object)): Bluebird<T> {
+    private processHttpRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object, body: (null | object)): Bluebird<T> {
         return this.httpRequest(method, path, queryParameters, body)
             .then(response => {
                 return <T>response;
@@ -141,7 +128,7 @@ export default abstract class BaseClient {
      *
      * @returns A promise that will complete when the API responds.
      */
-    private httpRequest(method: HttpMethod, path: string, queryParameters: ({} | object), body: (null | object)): request.RequestPromise {
+    private httpRequest(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object), body: (null | object)): request.RequestPromise {
         return request(this.getHttpRequestURL(path), {
             method: method.toString(),
             headers: this.getComposedHttpRequestHeaders(),
@@ -163,7 +150,7 @@ export default abstract class BaseClient {
     }
 
     /**
-     * JSON object with all headers sent by HTTP request.
+     * JSON object with default headers sent by HTTP request.
      **/
     private getComposedHttpRequestHeaders(): object {
         return {
@@ -173,9 +160,14 @@ export default abstract class BaseClient {
         }
     }
 
+    /**
+     * Token can't be empty.
+     *
+     * @param {string} token - HTTP request token
+     */
     private verifyToken(token: string): void {
         if (!token || token.trim() == '') {
-            throw new PostmarkErrors.PostmarkError('A valid API token must be provided when creating a client.');
+            throw new PostmarkErrors.PostmarkError('A valid API token must be provided when creating a ClientOptions.');
         }
     }
 }

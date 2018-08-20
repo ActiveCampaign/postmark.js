@@ -1,20 +1,6 @@
-export default interface ClientOptions {
-    /**
-     * Require HTTPS for API requests?
-     * @default true
-     */
+export interface Configuration {
     useHttps?: boolean
-    
-    /**
-     * The base url for accessing the Postmark API.
-     * @default api.postmarkapp.com
-     */
     requestHost?: string
-    
-    /**
-     * The request timeout (in seconds) for API calls.
-     * @default 30
-     */
     timeout?:number
 }
 
