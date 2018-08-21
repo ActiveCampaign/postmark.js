@@ -23,7 +23,7 @@ export interface BounceDump {
     Body: string;
 }
 
-export interface BounceActivateResponse {
+export interface BounceActivationResponse {
     Message: string;
     Bounce: Bounce;
 }

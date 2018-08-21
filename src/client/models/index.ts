@@ -7,7 +7,7 @@ import FilteringParameters from './client/FilteringParameters';
 import {Bounce} from "./bounces/Bounce";
 import {Bounces} from "./bounces/Bounce";
 import {BounceDump} from "./bounces/Bounce";
-import {BounceActivateResponse} from "./bounces/Bounce";
+import {BounceActivationResponse} from "./bounces/Bounce";
 import {DeliveryStatistics} from "./bounces/Bounce";
 import BounceFilteringParameters from "./bounces/FilteringParameters";
 
@@ -19,7 +19,7 @@ import {TemplateValidationOptions} from './templates/Template';
 import {TemplateMessage} from './templates/Template';
 
 import {Message} from "./message/Message";
-import {MessageResponse} from "./message/Message";
+import {MessageSendingResponse} from "./message/Message";
 
 import {OutboundMessage} from './messages/OutboundMessage';
 import {OutboundMessageDetails} from './messages/OutboundMessage';
@@ -78,12 +78,12 @@ export {
     FilteringParameters,
 
     Message,
-    MessageResponse,
+    MessageSendingResponse,
 
     Bounce,
     Bounces,
     BounceDump,
-    BounceActivateResponse,
+    BounceActivationResponse,
     DeliveryStatistics,
     BounceFilteringParameters,
 

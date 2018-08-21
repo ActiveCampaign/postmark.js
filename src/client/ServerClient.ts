@@ -10,12 +10,12 @@ import {
 
 import {
     Message,
-    MessageResponse,
+    MessageSendingResponse,
 
     Bounce,
     Bounces,
     BounceDump,
-    BounceActivateResponse,
+    BounceActivationResponse,
     DeliveryStatistics,
     BounceFilteringParameters,
 
@@ -91,8 +91,8 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    sendEmail(email: Message, callback?: Callback<MessageResponse>): Promise<MessageResponse> {
-        return this.processRequestWithBody<MessageResponse>(ClientOptions.HttpMethod.POST, '/email', email, callback);
+    sendEmail(email: Message, callback?: Callback<MessageSendingResponse>): Promise<MessageSendingResponse> {
+        return this.processRequestWithBody<MessageSendingResponse>(ClientOptions.HttpMethod.POST, '/email', email, callback);
     }
 
     /**
@@ -102,7 +102,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    sendEmailBatch(emails: Message[], callback?: Callback<MessageResponse[]>): Promise<MessageResponse[]> {
+    sendEmailBatch(emails: Message[], callback?: Callback<MessageSendingResponse[]>): Promise<MessageSendingResponse[]> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/email/batch', emails, callback);
     };
 
@@ -113,7 +113,7 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    sendEmailWithTemplate(template: TemplateMessage, callback?:Callback<MessageResponse>): Promise<MessageResponse> {
+    sendEmailWithTemplate(template: TemplateMessage, callback?:Callback<MessageSendingResponse>): Promise<MessageSendingResponse> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/email/withTemplate', template, callback);
     };
 
@@ -124,7 +124,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    sendEmailBatchWithTemplates(templates: TemplateMessage[], callback?:Callback<MessageResponse[]>): Promise<MessageResponse[]> {
+    sendEmailBatchWithTemplates(templates: TemplateMessage[], callback?:Callback<MessageSendingResponse[]>): Promise<MessageSendingResponse[]> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/email/batchWithTemplates', { Messages: templates }, callback);
     };
 
@@ -179,7 +179,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    activateBounce(id: number, callback?: Callback<BounceActivateResponse>): Promise<BounceActivateResponse> {
+    activateBounce(id: number, callback?: Callback<BounceActivationResponse>): Promise<BounceActivationResponse> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, `/bounces/${id}/activate`, {}, callback);
     };
 

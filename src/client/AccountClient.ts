@@ -134,7 +134,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    editDomain(id: number, options: DomainDetails, callback?:Callback<DomainDetails>) : Promise<DomainDetails> {
+    editDomain(id: number, options: DomainOptions, callback?:Callback<DomainDetails>) : Promise<DomainDetails> {
         return this.processRequestWithBody( ClientOptions.HttpMethod.PUT, `/domains/${id}`, options, callback);
     }
 

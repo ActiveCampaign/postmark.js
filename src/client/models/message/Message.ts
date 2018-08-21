@@ -19,7 +19,7 @@ export interface Message {
     Metadata?: Hash<string>;
 }
 
-export interface MessageResponse extends DefaultResponse {
+export interface MessageSendingResponse extends DefaultResponse {
     To?: string;
     Cc?: string;
     Bcc?: string;
