@@ -8,6 +8,6 @@ export interface TagTrigger extends TagTriggerOptions{
 }
 
 export interface TagTriggers {
-    TotalCount: number
-    Tags: TagTrigger[]
+    TotalCount: number;
+    Tags: TagTrigger[];
 }

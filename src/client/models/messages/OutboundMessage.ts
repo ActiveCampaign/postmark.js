@@ -1,4 +1,4 @@
-import {Hash} from "../client/ClientOptions"
+import {Hash} from "../client/SupportingTypes"
 import {Attachment, LinkTrackingOptions} from "../message/SupportingTypes";
 import * as OutboundMessageEvents from "./OutboundMessageEvents"
 

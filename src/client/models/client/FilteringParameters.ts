@@ -1,5 +1,6 @@
-export default interface FilteringParameters {
-    count?: number
-    offset?: number
-    [key: string]: any
+import {Hash} from "./SupportingTypes";
+
+export default interface FilteringParameters extends Hash<any>{
+    count?: number;
+    offset?: number;
 }

@@ -11,12 +11,12 @@ export enum LinkClickLocation {
 }
 
 export interface Header {
-    Name: string,
-    Value: string
+    Name: string;
+    Value: string;
 }
 export interface Attachment {
-    Name: string,
-    ContentID?: string,
-    Content: string,
-    ContentType: string
+    Name: string;
+    ContentID?: string;
+    Content: string;
+    ContentType: string;
 }

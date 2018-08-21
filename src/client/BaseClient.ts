@@ -3,7 +3,7 @@ import Bluebird = require("bluebird");
 import * as request from 'request-promise';
 
 import {ClientOptions} from './models'
-import {ClientError} from "./ClientError";
+import {ErrorHandler} from "./ErrorHandler";
 import {PostmarkErrors, Callback} from './models';
 
 const packageJson = require("../../package.json")
@@ -28,7 +28,7 @@ export default abstract class BaseClient {
 
     public clientOptions: ClientOptions.Configuration;
     public clientVersion: string;
-    protected clientError: ClientError;
+    protected errorHandler: ErrorHandler;
     private authHeader: string;
     private token: string;
 
@@ -39,7 +39,7 @@ export default abstract class BaseClient {
         this.token = token.trim();
         this.authHeader = authHeader;
         this.clientOptions = {...BaseClient.DefaultOptions, ...configOptions};
-        this.clientError = new ClientError();
+        this.errorHandler = new ErrorHandler();
     }
 
     /**
@@ -97,7 +97,7 @@ export default abstract class BaseClient {
                 return <T>response;
             })
             .catch(error => {
-                throw this.clientError.generate(error);
+                throw this.errorHandler.generateError(error);
             });
     }
 

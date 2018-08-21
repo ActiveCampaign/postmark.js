@@ -1,4 +1,4 @@
 export default interface DefaultResponse {
-    ErrorCode: number,
-    Message: string
+    ErrorCode: number;
+    Message: string;
 }

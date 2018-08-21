@@ -1,19 +1,19 @@
-import DomainDetails from "../domains/DomainDetails";
+import {DomainDetails} from "../domains/Domain";
 
-export default interface Signature {
-    ID: number
-    Name: string
-    Confirmed: boolean
-    Domain: string
-    EmailAddress: string
-    ReplyToEmailAddress: string
+export interface Signature {
+    ID: number;
+    Name: string;
+    Confirmed: boolean;
+    Domain: string;
+    EmailAddress: string;
+    ReplyToEmailAddress: string;
 }
 
 export interface SignatureDetails extends DomainDetails {
-    Domain: string
-    EmailAddress: string
-    ReplyToEmailAddress: string
-    Confirmed: boolean
+    Domain: string;
+    EmailAddress: string;
+    ReplyToEmailAddress: string;
+    Confirmed: boolean;
 }
 
 export interface Signatures {
@@ -22,12 +22,12 @@ export interface Signatures {
 }
 
 export interface BaseSignatureOptions {
-    Name?: string
-    ReplyToEmail?: string
-    ReturnPathDomain?: string
+    Name?: string;
+    ReplyToEmail?: string;
+    ReturnPathDomain?: string;
 }
 
 export interface SignatureOptions extends BaseSignatureOptions{
-    FromEmail: string
+    FromEmail: string;
 }
 

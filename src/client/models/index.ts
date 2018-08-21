@@ -1,81 +1,81 @@
 import * as ClientOptions from './client/ClientOptions';
-import FilteringParameters from './client/FilteringParameters';
-import * as PostmarkErrors from './client/PostmarkError';
 import Callback from './client/Callback';
 import DefaultResponse from './client/PostmarkResponse';
+import * as PostmarkErrors from './client/PostmarkError';
+import FilteringParameters from './client/FilteringParameters';
 
-import Message from './message/Message';
-import MessageResponse from "./message/MessageResponse";
-
-import {
-    Bounce,
-    Bounces,
-    BounceDump,
-    BounceActivateResponse,
-    DeliveryStatistics
-} from "./bounces/Bounce";
+import {Bounce} from "./bounces/Bounce";
+import {Bounces} from "./bounces/Bounce";
+import {BounceDump} from "./bounces/Bounce";
+import {BounceActivateResponse} from "./bounces/Bounce";
+import {DeliveryStatistics} from "./bounces/Bounce";
 import BounceFilteringParameters from "./bounces/FilteringParameters";
 
-import Server from './server/Server';
-import {ServerOptions} from './server/Server';
+import {Template} from './templates/Template';
+import {TemplateOptions} from './templates/Template';
+import {Templates} from './templates/Template';
+import {TemplateValidation} from './templates/Template';
+import {TemplateValidationOptions} from './templates/Template';
+import {TemplateMessage} from './templates/Template';
 
-import {OutboundMessage, OutboundMessageDetails, OutboundMessageDump, OutboundMessages} from './messages/OutboundMessage';
-import {OutboundMessagesFilteringParameters, OutboundMessageStatus} from './messages/FilteringParameters'
+import {Message} from "./message/Message";
+import {MessageResponse} from "./message/Message";
 
-import OutboundMessageOpens from './messages/OutboundMessageOpen';
+import {OutboundMessage} from './messages/OutboundMessage';
+import {OutboundMessageDetails} from './messages/OutboundMessage';
+import {OutboundMessageDump} from './messages/OutboundMessage';
+import {OutboundMessages} from './messages/OutboundMessage';
+import {OutboundMessagesFilteringParameters} from './messages/FilteringParameters'
+import {OutboundMessageStatus} from './messages/FilteringParameters'
+import {OutboundMessageOpens} from './messages/OutboundMessageOpen';
 import {OutboundMessageOpensFilteringParameters} from './messages/FilteringParameters'
-
-import OutboundMessageClicks from './messages/OutboundMessageClick';
+import {OutboundMessageClicks} from './messages/OutboundMessageClick';
 import {OutboundMessageClicksFilteringParameters} from './messages/FilteringParameters'
 
-import {InboundMessage, InboundMessageDetails, InboundMessages} from './messages/InboundMessage';
+import {InboundMessage} from './messages/InboundMessage';
+import {InboundMessageDetails} from './messages/InboundMessage';
+import {InboundMessages} from './messages/InboundMessage';
 import {InboundMessagesFilteringParameters, InboundMessageStatus} from './messages/FilteringParameters'
 
-import Domain from './domains/Domain';
-import DomainOptions from './domains/Domain';
-import Domains from './domains/Domains';
-import DomainDetails from './domains/DomainDetails';
-
-import Signature, {
-    Signatures,
-    SignatureDetails,
-    BaseSignatureOptions,
-    SignatureOptions
-} from './senders/Signature';
-
+import {Server, ServerOptions} from './server/Server';
 import Servers from './server/Servers';
 
-import {
-    OutboundStatistics,
-    SentCounts,
-    SpamCounts,
-    BounceCounts,
-    TrackedEmailCounts,
-    OpenCounts,
-    ClickCounts,
-    EmailPlaformUsageCounts,
-    EmailClientUsageCounts,
-    EmailReadTimesCounts,
-    BrowserUsageCounts,
-    ClickPlaformUsageCounts,
-    ClickLocationCounts,
-} from "./stats/Stats";
+import {Domain} from "./domains/Domain";
+import {DomainDetails} from "./domains/Domain";
+import {Domains} from "./domains/Domain";
+import {DomainOptions} from "./domains/Domain";
 
-import {StatisticsFilteringParameters} from './stats/FilteringParameters'
+import {Signature} from './senders/Signature';
+import {Signatures} from './senders/Signature';
+import {SignatureDetails} from './senders/Signature';
+import {BaseSignatureOptions} from './senders/Signature';
+import {SignatureOptions} from './senders/Signature';
+
+import {OutboundStatistics} from "./stats/Stats";
+import {SentCounts} from "./stats/Stats";
+import {SpamCounts} from "./stats/Stats";
+import {BounceCounts} from "./stats/Stats";
+import {TrackedEmailCounts} from "./stats/Stats";
+import {OpenCounts} from "./stats/Stats";
+import {ClickCounts} from "./stats/Stats";
+import {EmailPlaformUsageCounts} from "./stats/Stats";
+import {EmailClientUsageCounts} from "./stats/Stats";
+import {EmailReadTimesCounts} from "./stats/Stats";
+import {BrowserUsageCounts} from "./stats/Stats";
+import {ClickPlaformUsageCounts} from "./stats/Stats";
+import {ClickLocationCounts} from "./stats/Stats";
+import StatisticsFilteringParameters from './stats/FilteringParameters'
 
 import {TagTriggerOptions, TagTrigger, TagTriggers} from './triggers/Tag';
-import {TagTriggerFilteringParameters} from "./triggers/FilteringParameters";
+import TagTriggerFilteringParameters from "./triggers/FilteringParameters";
 import {InboundRuleOptions, InboundRule, InboundRules} from './triggers/InboundRule';
-
-import {Template, TemplateOptions, Templates, TemplateValidation, TemplateValidationOptions, TemplateMessage} from './templates/Template';
 
 export {
     ClientOptions,
-    PostmarkErrors,
-
-    FilteringParameters,
     Callback,
     DefaultResponse,
+    PostmarkErrors,
+    FilteringParameters,
 
     Message,
     MessageResponse,
@@ -87,8 +87,16 @@ export {
     DeliveryStatistics,
     BounceFilteringParameters,
 
+    TemplateOptions,
+    Template,
+    TemplateValidationOptions,
+    TemplateValidation,
+    Templates,
+    TemplateMessage,
+
     Server,
     ServerOptions,
+    Servers,
 
     OutboundMessage,
     OutboundMessageDetails,
@@ -96,10 +104,8 @@ export {
     OutboundMessageDump,
     OutboundMessageStatus,
     OutboundMessagesFilteringParameters,
-
     OutboundMessageOpens,
     OutboundMessageOpensFilteringParameters,
-
     OutboundMessageClicks,
     OutboundMessageClicksFilteringParameters,
 
@@ -124,22 +130,6 @@ export {
     ClickLocationCounts,
     StatisticsFilteringParameters,
 
-    TagTriggerOptions,
-    TagTrigger,
-    TagTriggers,
-    TagTriggerFilteringParameters,
-
-    InboundRuleOptions,
-    InboundRule,
-    InboundRules,
-
-    TemplateOptions,
-    Template,
-    TemplateValidationOptions,
-    TemplateValidation,
-    Templates,
-    TemplateMessage,
-
     Signature,
     Signatures,
     SignatureDetails,
@@ -151,5 +141,12 @@ export {
     Domains,
     DomainDetails,
 
-    Servers,
+    TagTriggerOptions,
+    TagTrigger,
+    TagTriggers,
+    TagTriggerFilteringParameters,
+
+    InboundRuleOptions,
+    InboundRule,
+    InboundRules,
 };

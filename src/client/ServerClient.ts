@@ -4,8 +4,8 @@ import BaseClient from './BaseClient';
 import {
     ClientOptions,
     Callback,
-    FilteringParameters,
     DefaultResponse,
+    FilteringParameters,
 } from './models/index';
 
 import {
@@ -19,6 +19,13 @@ import {
     DeliveryStatistics,
     BounceFilteringParameters,
 
+    TemplateOptions,
+    Template,
+    Templates,
+    TemplateValidationOptions,
+    TemplateValidation,
+    TemplateMessage,
+
     Server,
     ServerOptions,
 
@@ -27,10 +34,8 @@ import {
     OutboundMessages,
     OutboundMessageDump,
     OutboundMessagesFilteringParameters,
-
     OutboundMessageOpens,
     OutboundMessageOpensFilteringParameters,
-
     OutboundMessageClicks,
     OutboundMessageClicksFilteringParameters,
 
@@ -63,14 +68,6 @@ import {
     InboundRuleOptions,
     InboundRule,
     InboundRules,
-
-    TemplateOptions,
-    Template,
-    Templates,
-    TemplateValidationOptions,
-    TemplateValidation,
-    TemplateMessage,
-
 } from './models/index';
 
 /**

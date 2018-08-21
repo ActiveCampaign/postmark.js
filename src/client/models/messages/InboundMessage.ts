@@ -22,7 +22,7 @@ export interface InboundMessage {
     MailboxHash: string;
     Tag?: string;
     MessageID: string;
-    Status: string
+    Status: string;
     Attachments: Attachment[];
 }
 
@@ -30,7 +30,7 @@ export interface InboundMessageDetails extends InboundMessage{
     TextBody: string;
     HtmlBody: string;
     StrippedTextReply: string;
-    Headers: Header[]
+    Headers: Header[];
     BlockedReason: string;
 }
 

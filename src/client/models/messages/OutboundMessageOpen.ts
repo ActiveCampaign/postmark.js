@@ -31,8 +31,7 @@ export interface OpenEvent {
     Recipient: string;
 }
 
-
-export default interface OutboundMessageOpens {
+export interface OutboundMessageOpens {
     TotalCount: number;
     Opens: OpenEvent[];
 }

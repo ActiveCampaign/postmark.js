@@ -4,7 +4,6 @@ import BaseClient from './BaseClient';
 import {
     ClientOptions,
     FilteringParameters,
-    PostmarkErrors,
     Callback,
     DefaultResponse,
 } from './models';
@@ -15,14 +14,14 @@ import {
     Servers,
 
     Domain,
-    DomainOptions,
     Domains,
     DomainDetails,
+    DomainOptions,
 
     Signatures,
     SignatureDetails,
-    SignatureOptions,
-    BaseSignatureOptions
+    BaseSignatureOptions,
+    SignatureOptions
 } from './models'
 
 export default class AccountClient extends BaseClient {

@@ -1,5 +1,3 @@
-import {Hash} from "../client/ClientOptions";
-
 export interface OutboundStatistics {
     Sent: number;
     Bounced: number;

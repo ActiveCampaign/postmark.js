@@ -1,4 +1,3 @@
-import {Hash} from "../client/ClientOptions"
 import {Attachment, Header, LinkTrackingOptions} from "../message/SupportingTypes";
 
 export interface TemplateOptions {
@@ -46,7 +45,7 @@ export interface TemplateValidation {
     HtmlBody: ValidationSection;
     TextBody: ValidationSection;
     Subject: ValidationSection;
-    SuggestedTemplateModel: Hash<any>;
+    SuggestedTemplateModel: object;
 }
 
 export interface TemplateMessage {

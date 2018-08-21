@@ -17,7 +17,7 @@ export interface ClickEvent {
 }
 
 
-export default interface OutboundMessageClicks {
+export interface OutboundMessageClicks {
     TotalCount: number;
     Clicks: ClickEvent[];
 }

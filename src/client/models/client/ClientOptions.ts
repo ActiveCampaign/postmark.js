@@ -1,7 +1,7 @@
 export interface Configuration {
-    useHttps?: boolean
-    requestHost?: string
-    timeout?:number
+    useHttps?: boolean;
+    requestHost?: string;
+    timeout?:number;
 }
 
 export enum HttpMethod {
@@ -16,8 +16,4 @@ export enum HttpMethod {
 export enum DefaultHeaderNames {
     SERVER_TOKEN = 'X-Postmark-Server-Token',
     ACCOUNT_TOKEN = 'X-Postmark-Account-Token'
-}
-
-export interface Hash<T> {
-    [key: string]: T;
 }
