@@ -4,7 +4,7 @@ import * as request from 'request-promise';
 
 import {ClientOptions} from './models'
 import {ClientError} from "./ClientError";
-import {PostmarkErrors, PostmarkCallback} from './models';
+import {PostmarkErrors, Callback} from './models';
 
 const packageJson = require("../../package.json")
 const CLIENT_VERSION = packageJson.version;
@@ -48,7 +48,7 @@ export default abstract class BaseClient {
      * @see processRequest for more details.
      **/
     protected processRequestWithBody<T>(method: ClientOptions.HttpMethod, path: string, body: (null | object),
-                                        callback?: PostmarkCallback<T>): Promise<T> {
+                                        callback?: Callback<T>): Promise<T> {
         return this.processRequest(method, path, {}, body, callback);
     }
 
@@ -57,8 +57,8 @@ export default abstract class BaseClient {
      *
      * @see processRequest for more details.
      **/
-    protected processRequestWithoutBody<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object,
-                                           callback?: PostmarkCallback<T>): Promise<T> {
+    protected processRequestWithoutBody<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object = {},
+                                           callback?: Callback<T>): Promise<T> {
         return this.processRequest(method, path, queryParameters, null, callback);
     }
 
@@ -74,7 +74,7 @@ export default abstract class BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      **/
     private processRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object,
-                              body: (null | object), callback?: PostmarkCallback<T>): Promise<T> {
+                              body: (null | object), callback?: Callback<T>): Promise<T> {
 
         let httpRequest: Bluebird<T> = this.processHttpRequest(method, path, queryParameters, body);
         this.processCallbackRequest(httpRequest, callback);
@@ -107,7 +107,7 @@ export default abstract class BaseClient {
      * @param httpRequest - HTTP request for which callback will be executed
      * @param callback - callback function to be executed.
      */
-    private processCallbackRequest<T>(httpRequest: Bluebird<T>, callback?: PostmarkCallback<T>): void {
+    private processCallbackRequest<T>(httpRequest: Bluebird<T>, callback?: Callback<T>): void {
         if (callback) {
             httpRequest
                 .then(response => {

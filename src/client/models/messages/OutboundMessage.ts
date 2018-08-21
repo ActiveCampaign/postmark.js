@@ -7,7 +7,7 @@ export interface Recipient {
     Name: string
 }
 
-export default interface OutboundMessage {
+export interface OutboundMessage {
     MessageID: string;
     Tag?: string;
     To: Recipient[];

@@ -1,5 +1,5 @@
 <a href="https://postmarkapp.com">
-    <img src="postmark.png" alt="Postmark Logo" title="Postmark" width="120" height="120" align="right">
+    <img src="./postmark.png" alt="Postmark Logo" title="Postmark" width="120" height="120" align="right">
 </a>
 
 # Postmark Node.js Library

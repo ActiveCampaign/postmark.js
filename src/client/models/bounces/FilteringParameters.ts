@@ -1,4 +1,4 @@
-import QueryStringParameters from "../client/QueryStringParameters";
+import FilteringParameters from "../client/FilteringParameters";
 
 export enum BounceType {
     HardBounce = "HardBounce",
@@ -25,8 +25,7 @@ export enum BounceType {
     TemplateRenderingFailed = "TemplateRenderingFailed"
 }
 
-export default interface BounceQueryStringParameters extends QueryStringParameters {
-    count?: number;
+export default interface BounceFilteringParameters extends FilteringParameters {
     type?: BounceType | string;
     inactive?: boolean;
     emailFilter?: string;

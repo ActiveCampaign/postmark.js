@@ -3,8 +3,8 @@ import BaseClient from './BaseClient';
 
 import {
     ClientOptions,
-    PostmarkCallback,
-    QueryStringParameters,
+    Callback,
+    FilteringParameters,
     DefaultResponse,
 } from './models/index';
 
@@ -17,7 +17,7 @@ import {
     BounceDump,
     BounceActivateResponse,
     DeliveryStatistics,
-    BounceQueryStringParameters,
+    BounceFilteringParameters,
 
     Server,
     ServerOptions,
@@ -26,12 +26,19 @@ import {
     OutboundMessageDetails,
     OutboundMessages,
     OutboundMessageDump,
+    OutboundMessagesFilteringParameters,
+
     OutboundMessageOpens,
+    OutboundMessageOpensFilteringParameters,
+
     OutboundMessageClicks,
+    OutboundMessageClicksFilteringParameters,
 
     InboundMessage,
     InboundMessages,
     InboundMessageDetails,
+    InboundMessageStatus,
+    InboundMessagesFilteringParameters,
 
     OutboundStatistics,
     SentCounts,
@@ -46,10 +53,12 @@ import {
     BrowserUsageCounts,
     ClickPlaformUsageCounts,
     ClickLocationCounts,
+    StatisticsFilteringParameters,
 
     TagTriggerOptions,
     TagTrigger,
     TagTriggers,
+    TagTriggerFilteringParameters,
 
     InboundRuleOptions,
     InboundRule,
@@ -81,45 +90,45 @@ export default class ServerClient extends BaseClient {
 
     /** Send a single email message.
      *
-     * @param message - Email message to send.
+     * @param email - Email message to send.
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    sendEmail(message: Message, callback?: PostmarkCallback<MessageResponse>): Promise<MessageResponse> {
-        return this.processRequestWithBody<MessageResponse>(ClientOptions.HttpMethod.POST, '/email', message, callback);
+    sendEmail(email: Message, callback?: Callback<MessageResponse>): Promise<MessageResponse> {
+        return this.processRequestWithBody<MessageResponse>(ClientOptions.HttpMethod.POST, '/email', email, callback);
     }
 
     /**
      * Send a batch of email messages.
      *
-     * @param messages - An array of messages to send.
+     * @param emails - An array of messages to send.
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    sendEmailBatch(messages: Message[], callback?: PostmarkCallback<MessageResponse[]>): Promise<MessageResponse[]> {
-        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/email/batch', messages, callback);
+    sendEmailBatch(emails: Message[], callback?: Callback<MessageResponse[]>): Promise<MessageResponse[]> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/email/batch', emails, callback);
     };
 
     /**
      * Send a message using a template.
      *
-     * @param message - Message you wish to send.
+     * @param template - Message you wish to send.
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    sendEmailWithTemplate(message: TemplateMessage, callback?:PostmarkCallback<MessageResponse>): Promise<MessageResponse> {
-        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/email/withTemplate', message, callback);
+    sendEmailWithTemplate(template: TemplateMessage, callback?:Callback<MessageResponse>): Promise<MessageResponse> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/email/withTemplate', template, callback);
     };
 
     /**
-     * Send a batch of templated email messages.
+     * Send a batch of template email messages.
      *
-     * @param messages - An array of templated messages you wish to send using this Client.
+     * @param templates - An array of templated messages you wish to send using this Client.
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    sendEmailBatchWithTemplates(messages: TemplateMessage[], callback?:PostmarkCallback<MessageResponse[]>): Promise<MessageResponse[]> {
-        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/email/batchWithTemplates', { Messages: messages }, callback);
+    sendEmailBatchWithTemplates(templates: TemplateMessage[], callback?:Callback<MessageResponse[]>): Promise<MessageResponse[]> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/email/batchWithTemplates', { Messages: templates }, callback);
     };
 
     /**
@@ -128,8 +137,8 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getDeliveryStatistics(callback?: PostmarkCallback<DeliveryStatistics>): Promise<DeliveryStatistics> {
-        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/deliverystats', {}, callback);
+    getDeliveryStatistics(callback?: Callback<DeliveryStatistics>): Promise<DeliveryStatistics> {
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/deliveryStats', {}, callback);
     };
 
     /**
@@ -139,7 +148,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getBounces(filter: BounceQueryStringParameters = {}, callback?: PostmarkCallback<Bounces>): Promise<Bounces> {
+    getBounces(filter?: BounceFilteringParameters, callback?: Callback<Bounces>): Promise<Bounces> {
         filter = {...{count: 100, offset: 0}, ...filter};
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/bounces', filter, callback);
     };
@@ -151,7 +160,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getBounce(id: number, callback?: PostmarkCallback<Bounce>): Promise<Bounce> {
+    getBounce(id: number, callback?: Callback<Bounce>): Promise<Bounce> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/bounces/${id}`, {}, callback);
     };
 
@@ -162,7 +171,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getBounceDump(id: number, callback?: PostmarkCallback<BounceDump>): Promise<BounceDump> {
+    getBounceDump(id: number, callback?: Callback<BounceDump>): Promise<BounceDump> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/bounces/${id}/dump`, {}, callback);
     };
 
@@ -173,7 +182,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    activateBounce(id: number, callback?: PostmarkCallback<BounceActivateResponse>): Promise<BounceActivateResponse> {
+    activateBounce(id: number, callback?: Callback<BounceActivateResponse>): Promise<BounceActivateResponse> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, `/bounces/${id}/activate`, {}, callback);
     };
 
@@ -183,9 +192,79 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getBounceTags(callback?: PostmarkCallback<string[]>): Promise<string[]> {
+    getBounceTags(callback?: Callback<string[]>): Promise<string[]> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/bounces/tags', {}, callback);
     };
+
+    /**
+     * Get the list of templates associated with this server.
+     *
+     * @param filter - Optional filtering options.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getTemplates(filter?: FilteringParameters, callback?:Callback<Templates>) : Promise<Templates> {
+        filter = {...{count: 100, offset: 0},...filter};
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/templates', filter, callback);
+    };
+
+    /**
+     * Get the a specific template associated with this server.
+     *
+     * @param idOrAlias - ID or alias for the template you wish to retrieve.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    getTemplate(idOrAlias: (number | string), callback?:Callback<Template>) : Promise<Template> {
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/templates/${idOrAlias}`, {}, callback);
+    };
+
+    /**
+     * Delete a template associated with this server.
+     *
+     * @param idOrAlias - ID or template alias you wish to delete.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    deleteTemplate(idOrAlias: (number | string), callback?:Callback<DefaultResponse>) : Promise<DefaultResponse> {
+        return this.processRequestWithoutBody( ClientOptions.HttpMethod.DELETE, `/templates/${idOrAlias}`, {}, callback);
+    }
+
+    /**
+     * Create a new template on the associated server.
+     *
+     * @param options - Configuration options to be used to create the Template.
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    createTemplate(options: TemplateOptions, callback?:Callback<Template>) : Promise<Template> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/templates/', options, callback);
+    }
+
+    /**
+     * Update a template on the associated server.
+     *
+     * @param idOrAlias - Id or alias of the template you wish to update.
+     * @param options - Template options you wish to update.
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    editTemplate(idOrAlias: (number | string), options: TemplateOptions, callback?:Callback<Template>) : Promise<Template> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, `/templates/${idOrAlias}`, options, callback);
+    }
+
+    /**
+     * Validate template markup to verify that it will be parsed. Also provides a recommended template
+     * model to be used when sending using the specified template content.
+     *
+     * @param options - The template content you wish to validate.
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    validateTemplate(options: TemplateValidationOptions, callback?: Callback<TemplateValidation>):
+        Promise<TemplateValidation> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/templates/validate', options, callback);
+    }
 
     /**
      * Get the information for the Server associated with this Client.
@@ -193,7 +272,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getServer(callback?: PostmarkCallback<Server>): Promise<Server> {
+    getServer(callback?: Callback<Server>): Promise<Server> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/server', {}, callback);
     };
 
@@ -204,7 +283,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    editServer(options: ServerOptions, callback?: PostmarkCallback<Server>): Promise<Server> {
+    editServer(options: ServerOptions, callback?: Callback<Server>): Promise<Server> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, '/server', options, callback);
     };
 
@@ -215,9 +294,8 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getOutboundMessages(filter: QueryStringParameters = {},
-                        callback?: PostmarkCallback<OutboundMessages>): Promise<OutboundMessages> {
-
+    getOutboundMessages(filter?: OutboundMessagesFilteringParameters,
+                        callback?: Callback<OutboundMessages>): Promise<OutboundMessages> {
         filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/messages/outbound', filter, callback);
     };
@@ -230,7 +308,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getOutboundMessageDetails(messageId: string,
-                              callback?: PostmarkCallback<OutboundMessageDetails>): Promise<OutboundMessageDetails> {
+                              callback?: Callback<OutboundMessageDetails>): Promise<OutboundMessageDetails> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/messages/outbound/${messageId}`, {}, callback);
     };
 
@@ -242,7 +320,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getOutboundMessageDump(messageId: string,
-                              callback?: PostmarkCallback<OutboundMessageDump>): Promise<OutboundMessageDump> {
+                              callback?: Callback<OutboundMessageDump>): Promise<OutboundMessageDump> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/messages/outbound/${messageId}/dump`, {}, callback);
     };
 
@@ -253,7 +331,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getInboundMessages(filter: QueryStringParameters = {}, callback?:PostmarkCallback<InboundMessages>) : Promise<InboundMessages> {
+    getInboundMessages(filter?: InboundMessagesFilteringParameters, callback?:Callback<InboundMessages>) : Promise<InboundMessages> {
         filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/messages/inbound', filter, callback);
     };
@@ -265,7 +343,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getInboundMessageDetails(messageId: string, callback?:PostmarkCallback<InboundMessageDetails>) : Promise<InboundMessageDetails> {
+    getInboundMessageDetails(messageId: string, callback?:Callback<InboundMessageDetails>) : Promise<InboundMessageDetails> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/messages/inbound/${messageId}/details`, {}, callback);
     };
 
@@ -276,7 +354,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    bypassBlockedInboundMessage(messageId: string, callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
+    bypassBlockedInboundMessage(messageId: string, callback?:Callback<DefaultResponse>) : Promise<DefaultResponse> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.PUT, `/messages/inbound/${messageId}/bypass`, {}, callback);
     };
 
@@ -287,7 +365,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    retryInboundHookForMessage(messageId: string, callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
+    retryInboundHookForMessage(messageId: string, callback?:Callback<DefaultResponse>) : Promise<DefaultResponse> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.PUT, `/messages/inbound/${messageId}/retry`, {}, callback);
     };
 
@@ -298,7 +376,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getMessageOpens(filter: QueryStringParameters = {}, callback?:PostmarkCallback<OutboundMessageOpens>) : Promise<OutboundMessageOpens> {
+    getMessageOpens(filter?: OutboundMessageOpensFilteringParameters, callback?:Callback<OutboundMessageOpens>) : Promise<OutboundMessageOpens> {
         filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/messages/outbound/opens', filter, callback);
     };
@@ -310,9 +388,8 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getMessageOpensForSingleMessage(messageId: string, filter: QueryStringParameters = {},
-                          callback?:PostmarkCallback<OutboundMessageOpens>) : Promise<OutboundMessageOpens> {
-
+    getMessageOpensForSingleMessage(messageId: string, filter?: OutboundMessageOpensFilteringParameters,
+                          callback?:Callback<OutboundMessageOpens>) : Promise<OutboundMessageOpens> {
         filter = {...{count: 50, offset: 0},...filter};
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/messages/outbound/opens/${messageId}`, filter, callback);
     };
@@ -324,7 +401,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getMessageClicks(filter: QueryStringParameters = {}, callback?:PostmarkCallback<OutboundMessageClicks>) : Promise<OutboundMessageClicks> {
+    getMessageClicks(filter?: OutboundMessageClicksFilteringParameters, callback?:Callback<OutboundMessageClicks>) : Promise<OutboundMessageClicks> {
         filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/messages/outbound/clicks', filter, callback);
     };
@@ -337,9 +414,8 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getMessageClicksForSingleMessage(messageId: string, filter: QueryStringParameters = {},
-                                     callback?:PostmarkCallback<OutboundMessageClicks>) : Promise<OutboundMessageClicks> {
-
+    getMessageClicksForSingleMessage(messageId: string, filter?: OutboundMessageClicksFilteringParameters,
+                                     callback?:Callback<OutboundMessageClicks>) : Promise<OutboundMessageClicks> {
         filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/messages/outbound/clicks/${messageId}`, filter, callback);
     };
@@ -351,7 +427,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getOutboundOverview(filter: QueryStringParameters = {}, callback?: PostmarkCallback<OutboundStatistics>):
+    getOutboundOverview(filter?: StatisticsFilteringParameters, callback?: Callback<OutboundStatistics>):
         Promise<OutboundStatistics> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound', filter, callback);
     };
@@ -363,7 +439,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getSentCounts(filter: QueryStringParameters = {}, callback?:PostmarkCallback<SentCounts>) : Promise<SentCounts> {
+    getSentCounts(filter?: StatisticsFilteringParameters, callback?:Callback<SentCounts>) : Promise<SentCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/sends', filter, callback);
     };
 
@@ -374,7 +450,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getBounceCounts(filter: QueryStringParameters = {}, callback?:PostmarkCallback<BounceCounts>) : Promise<BounceCounts> {
+    getBounceCounts(filter?: StatisticsFilteringParameters, callback?:Callback<BounceCounts>) : Promise<BounceCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/bounces', filter, callback);
     };
 
@@ -385,7 +461,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getSpamComplaintsCounts(filter: QueryStringParameters = {}, callback?:PostmarkCallback<SpamCounts>) : Promise<SpamCounts> {
+    getSpamComplaintsCounts(filter?: StatisticsFilteringParameters, callback?:Callback<SpamCounts>) : Promise<SpamCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/spam', filter, callback);
     };
 
@@ -396,7 +472,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getTrackedEmailCounts(filter: QueryStringParameters = {}, callback?:PostmarkCallback<TrackedEmailCounts>) : Promise<TrackedEmailCounts> {
+    getTrackedEmailCounts(filter?: StatisticsFilteringParameters, callback?:Callback<TrackedEmailCounts>) : Promise<TrackedEmailCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/tracked', filter, callback);
     };
 
@@ -407,7 +483,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getEmailOpenCounts(filter: QueryStringParameters = {}, callback?:PostmarkCallback<OpenCounts>) : Promise<OpenCounts> {
+    getEmailOpenCounts(filter?: StatisticsFilteringParameters, callback?:Callback<OpenCounts>) : Promise<OpenCounts> {
         return this.processRequestWithoutBody( ClientOptions.HttpMethod.GET, '/stats/outbound/opens', filter, callback);
     };
 
@@ -418,7 +494,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getEmailOpenPlatformUsage(filter: QueryStringParameters = {}, callback?:PostmarkCallback<EmailPlaformUsageCounts>) : Promise<EmailPlaformUsageCounts> {
+    getEmailOpenPlatformUsage(filter?: StatisticsFilteringParameters, callback?:Callback<EmailPlaformUsageCounts>) : Promise<EmailPlaformUsageCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/opens/platforms', filter, callback);
     };
 
@@ -429,7 +505,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getEmailOpenClientUsage(filter: QueryStringParameters = {} , callback?:PostmarkCallback<EmailClientUsageCounts>) : Promise<EmailClientUsageCounts> {
+    getEmailOpenClientUsage(filter?: StatisticsFilteringParameters, callback?:Callback<EmailClientUsageCounts>) : Promise<EmailClientUsageCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/opens/emailClients', filter, callback);
     };
 
@@ -439,7 +515,7 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getEmailOpenReadTimes(filter: QueryStringParameters = {}, callback?:PostmarkCallback<EmailReadTimesCounts>) : Promise<EmailReadTimesCounts> {
+    getEmailOpenReadTimes(filter?: StatisticsFilteringParameters, callback?:Callback<EmailReadTimesCounts>) : Promise<EmailReadTimesCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/opens/readTimes', filter, callback);
     };
 
@@ -450,7 +526,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getClickCounts(filter: QueryStringParameters = {}, callback?:PostmarkCallback<ClickCounts>) : Promise<ClickCounts> {
+    getClickCounts(filter?: StatisticsFilteringParameters, callback?:Callback<ClickCounts>) : Promise<ClickCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/clicks', filter, callback);
     };
 
@@ -460,7 +536,7 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getClickBrowserUsage(filter: QueryStringParameters = {}, callback?:PostmarkCallback<BrowserUsageCounts>) : Promise<BrowserUsageCounts> {
+    getClickBrowserUsage(filter?: StatisticsFilteringParameters, callback?:Callback<BrowserUsageCounts>) : Promise<BrowserUsageCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/clicks/browserFamilies', filter, callback);
     };
 
@@ -471,7 +547,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getClickPlatformUsage(filter: QueryStringParameters = {}, callback?:PostmarkCallback<ClickPlaformUsageCounts>) : Promise<ClickPlaformUsageCounts> {
+    getClickPlatformUsage(filter?: StatisticsFilteringParameters, callback?:Callback<ClickPlaformUsageCounts>) : Promise<ClickPlaformUsageCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/clicks/platforms', filter, callback);
     };
 
@@ -482,7 +558,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getClickLocation(filter: QueryStringParameters = {}, callback?:PostmarkCallback<ClickLocationCounts>) : Promise<ClickLocationCounts> {
+    getClickLocation(filter?: StatisticsFilteringParameters, callback?:Callback<ClickLocationCounts>) : Promise<ClickLocationCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/clicks/location', filter, callback);
     };
 
@@ -493,7 +569,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    createTagTrigger(options: TagTriggerOptions, callback?:PostmarkCallback<TagTrigger>) : Promise<TagTrigger> {
+    createTagTrigger(options: TagTriggerOptions, callback?:Callback<TagTrigger>) : Promise<TagTrigger> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/triggers/tags', options, callback);
     };
 
@@ -505,7 +581,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    editTagTrigger(id: number, options: TagTriggerOptions, callback?:PostmarkCallback<TagTrigger>) : Promise<TagTrigger> {
+    editTagTrigger(id: number, options: TagTriggerOptions, callback?:Callback<TagTrigger>) : Promise<TagTrigger> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, `/triggers/tags/${id}`, options, callback);
     };
 
@@ -516,7 +592,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    deleteTagTrigger(id: number, callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
+    deleteTagTrigger(id: number, callback?:Callback<DefaultResponse>) : Promise<DefaultResponse> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.DELETE, `/triggers/tags/${id}`, {}, callback);
     };
 
@@ -527,7 +603,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getTagTrigger(id: number, callback?:PostmarkCallback<TagTrigger>) : Promise<TagTrigger> {
+    getTagTrigger(id: number, callback?:Callback<TagTrigger>) : Promise<TagTrigger> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/triggers/tags/${id}`, {}, callback);
     };
 
@@ -538,7 +614,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getTagTriggers(filter: QueryStringParameters = {}, callback?:PostmarkCallback<TagTriggers>) : Promise<TagTriggers> {
+    getTagTriggers(filter?: TagTriggerFilteringParameters, callback?:Callback<TagTriggers>) : Promise<TagTriggers> {
         filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/triggers/tags/', filter, callback);
     };
@@ -550,7 +626,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    createInboundRuleTrigger(options: InboundRuleOptions, callback?:PostmarkCallback<InboundRule>) : Promise<InboundRule> {
+    createInboundRuleTrigger(options: InboundRuleOptions, callback?:Callback<InboundRule>) : Promise<InboundRule> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/triggers/inboundRules', options, callback);
     };
 
@@ -561,7 +637,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    deleteInboundRuleTrigger(id: number, callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
+    deleteInboundRuleTrigger(id: number, callback?:Callback<DefaultResponse>) : Promise<DefaultResponse> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.DELETE, `/triggers/inboundRules/${id}`, {}, callback);
     };
 
@@ -572,81 +648,8 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getInboundRuleTriggers(filter: QueryStringParameters = {} , callback?:PostmarkCallback<InboundRules>) : Promise<InboundRules> {
+    getInboundRuleTriggers(filter?: FilteringParameters, callback?:Callback<InboundRules>) : Promise<InboundRules> {
         filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody( ClientOptions.HttpMethod.GET, '/triggers/inboundRules', filter, callback);
     };
-
-
-
-    /**
-     * Get the list of templates associated with this server.
-     *
-     * @param filter - Optional filtering options.
-     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
-     * @returns A promise that will complete when the API responds (or an error occurs).
-     */
-    getTemplates(filter: QueryStringParameters = {}, callback?:PostmarkCallback<Templates>) : Promise<Templates> {
-        filter = {...{count: 100, offset: 0},...filter};
-        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/templates', filter, callback);
-    };
-
-
-    /**
-     * Get the a specific template associated with this server.
-     *
-     * @param idOrAlias - ID or alias for the template you wish to retrieve.
-     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
-     * @returns A promise that will complete when the API responds (or an error occurs).
-     */
-    getTemplate(idOrAlias: (number | string), callback?:PostmarkCallback<Template>) : Promise<Template> {
-        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/templates/${idOrAlias}`, {}, callback);
-    };
-
-    /**
-     * Delete a template associated with this server.
-     *
-     * @param idOrAlias - ID or template alias you wish to delete.
-     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
-     * @returns A promise that will complete when the API responds (or an error occurs).
-     */
-    deleteTemplate(idOrAlias: (number | string), callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
-        return this.processRequestWithoutBody( ClientOptions.HttpMethod.DELETE, `/templates/${idOrAlias}`, {}, callback);
-    }
-
-    /**
-     * Create a new template on the associated server.
-     *
-     * @param options - Configuration options to be used to create the Template.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
-     * @returns A promise that will complete when the API responds (or an error occurs).
-     */
-    createTemplate(options: TemplateOptions, callback?:PostmarkCallback<Template>) : Promise<Template> {
-        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/templates/', options, callback);
-    }
-
-    /**
-     * Update a template on the associated server.
-     *
-     * @param idOrAlias - Id or alias of the template you wish to update.
-     * @param options - Template options you wish to update.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
-     * @returns A promise that will complete when the API responds (or an error occurs).
-     */
-    editTemplate(idOrAlias: (number | string), options: TemplateOptions, callback?:PostmarkCallback<Template>) : Promise<Template> {
-        return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, `/templates/${idOrAlias}`, options, callback);
-    }
-
-    /**
-     * Validate template markup to verify that it will be parsed. Also provides a recommended template
-     * model to be used when sending using the specified template content.
-     *
-     * @param options - The template content you wish to validate.
-     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
-     * @returns A promise that will complete when the API responds (or an error occurs).
-     */
-    validateTemplate(options: TemplateValidationOptions, callback?: PostmarkCallback<TemplateValidation>):
-        Promise<TemplateValidation> {
-        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/templates/validate', options, callback);
-    }
 }

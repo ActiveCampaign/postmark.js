@@ -3,6 +3,6 @@
  */
 import {PostmarkError} from "./PostmarkError";
 
-export interface PostmarkCallback<T> {
+export default interface Callback<T> {
     (error: (PostmarkError | null), result: (T | null)): void;
 }

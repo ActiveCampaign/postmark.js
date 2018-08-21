@@ -3,9 +3,9 @@ import BaseClient from './BaseClient';
 
 import {
     ClientOptions,
-    QueryStringParameters,
+    FilteringParameters,
     PostmarkErrors,
-    PostmarkCallback,
+    Callback,
     DefaultResponse,
 } from './models';
 
@@ -43,7 +43,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getServers(filter: QueryStringParameters = {}, callback?:PostmarkCallback<Servers>) : Promise<Servers> {
+    getServers(filter?: FilteringParameters, callback?:Callback<Servers>) : Promise<Servers> {
         filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/servers', filter, callback);
     };
@@ -55,7 +55,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getServer(id: number, callback?: PostmarkCallback<Server>): Promise<Server> {
+    getServer(id: number, callback?: Callback<Server>): Promise<Server> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/servers/${id}`, {}, callback);
     };
 
@@ -66,7 +66,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    createServer(options: ServerOptions, callback?: PostmarkCallback<Server>): Promise<Server> {
+    createServer(options: ServerOptions, callback?: Callback<Server>): Promise<Server> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/servers', options, callback);
     };
 
@@ -78,7 +78,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    editServer(id: number, options: ServerOptions, callback?: PostmarkCallback<Server>): Promise<Server> {
+    editServer(id: number, options: ServerOptions, callback?: Callback<Server>): Promise<Server> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, `/servers/${id}`, options, callback);
     };
 
@@ -89,7 +89,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    deleteServer(id:number, callback?: PostmarkCallback<DefaultResponse>): Promise<DefaultResponse> {
+    deleteServer(id:number, callback?: Callback<DefaultResponse>): Promise<DefaultResponse> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.DELETE, `/servers/${id}`, {}, callback);
     };
 
@@ -100,7 +100,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getDomains(filter: QueryStringParameters = {}, callback?:PostmarkCallback<Domains>) : Promise<Domains> {
+    getDomains(filter?: FilteringParameters, callback?:Callback<Domains>) : Promise<Domains> {
         filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/domains', filter, callback);
     };
@@ -112,7 +112,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getDomain(id:number, callback?:PostmarkCallback<DomainDetails>) : Promise<DomainDetails> {
+    getDomain(id:number, callback?:Callback<DomainDetails>) : Promise<DomainDetails> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/domains/${id}`, {}, callback);
     };
 
@@ -123,7 +123,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    createDomain(options: DomainOptions, callback?:PostmarkCallback<DomainDetails>) : Promise<DomainDetails> {
+    createDomain(options: DomainOptions, callback?:Callback<DomainDetails>) : Promise<DomainDetails> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/domains/', options, callback);
     };
 
@@ -135,7 +135,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    editDomain(id: number, options: DomainDetails, callback?:PostmarkCallback<DomainDetails>) : Promise<DomainDetails> {
+    editDomain(id: number, options: DomainDetails, callback?:Callback<DomainDetails>) : Promise<DomainDetails> {
         return this.processRequestWithBody( ClientOptions.HttpMethod.PUT, `/domains/${id}`, options, callback);
     }
 
@@ -147,7 +147,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    deleteDomain(id: number, callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
+    deleteDomain(id: number, callback?:Callback<DefaultResponse>) : Promise<DefaultResponse> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.DELETE, `/domains/${id}`, {}, callback);
     };
 
@@ -158,7 +158,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    verifyDomainDKIM(id: number, callback?:PostmarkCallback<DomainDetails>) : Promise<DomainDetails> {
+    verifyDomainDKIM(id: number, callback?:Callback<DomainDetails>) : Promise<DomainDetails> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.PUT, `/domains/${id}/verifyDKIM`, {}, callback);
     }
 
@@ -169,7 +169,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    verifyDomainReturnPath(id: number, callback?:PostmarkCallback<DomainDetails>) : Promise<DomainDetails> {
+    verifyDomainReturnPath(id: number, callback?:Callback<DomainDetails>) : Promise<DomainDetails> {
         return this.processRequestWithoutBody( ClientOptions.HttpMethod.PUT, `/domains/${id}/verifyReturnPath`, {}, callback);
     }
 
@@ -180,7 +180,7 @@ export default class AccountClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    verifyDomainSPF(id: number, callback?:PostmarkCallback<DomainDetails>) : Promise<DomainDetails> {
+    verifyDomainSPF(id: number, callback?:Callback<DomainDetails>) : Promise<DomainDetails> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.PUT, `/domains/${id}/verifySPF`, {}, callback);
     }
 
@@ -191,7 +191,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    rotateDomainDKIM(id: number, callback?:PostmarkCallback<DomainDetails>) : Promise<DomainDetails> {
+    rotateDomainDKIM(id: number, callback?:Callback<DomainDetails>) : Promise<DomainDetails> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.PUT, `/domains/${id}/rotateDKIM`, {}, callback);
     }
 
@@ -202,7 +202,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getSenderSignature(id: number, callback?:PostmarkCallback<SignatureDetails>) : Promise<SignatureDetails> {
+    getSenderSignature(id: number, callback?:Callback<SignatureDetails>) : Promise<SignatureDetails> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/senders/${id}`, {}, callback);
     };
 
@@ -213,7 +213,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getSenderSignatures(filter: QueryStringParameters = {}, callback?:PostmarkCallback<Signatures>) : Promise<Signatures> {
+    getSenderSignatures(filter?: FilteringParameters, callback?:Callback<Signatures>) : Promise<Signatures> {
         filter = {...{count: 100, offset: 0},...filter};
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/senders', filter, callback);
     };
@@ -225,7 +225,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    createSenderSignature(options: SignatureOptions, callback?:PostmarkCallback<SignatureDetails>) : Promise<SignatureDetails> {
+    createSenderSignature(options: SignatureOptions, callback?:Callback<SignatureDetails>) : Promise<SignatureDetails> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/senders/', options, callback);
     };
 
@@ -238,7 +238,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    editSenderSignature(id: number, options: BaseSignatureOptions, callback?:PostmarkCallback<SignatureDetails>) : Promise<SignatureDetails> {
+    editSenderSignature(id: number, options: BaseSignatureOptions, callback?:Callback<SignatureDetails>) : Promise<SignatureDetails> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, `/senders/${id}`, options, callback);
     };
 
@@ -250,7 +250,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    deleteSenderSignature(id: number, callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
+    deleteSenderSignature(id: number, callback?:Callback<DefaultResponse>) : Promise<DefaultResponse> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.DELETE, `/senders/${id}`, {}, callback);
     };
 
@@ -261,7 +261,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    resendSenderSignatureConfirmation(id: number, callback?:PostmarkCallback<DefaultResponse>) : Promise<DefaultResponse> {
+    resendSenderSignatureConfirmation(id: number, callback?:Callback<DefaultResponse>) : Promise<DefaultResponse> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.POST, `/senders/${id}/resend`, {}, callback);
     };
 
@@ -272,7 +272,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    verifySenderSignatureSPF(id: number, callback?:PostmarkCallback<SignatureDetails>) : Promise<SignatureDetails> {
+    verifySenderSignatureSPF(id: number, callback?:Callback<SignatureDetails>) : Promise<SignatureDetails> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.POST, `/senders/${id}/verifySpf`, {}, callback);
     };
 
@@ -284,7 +284,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    requestNewDKIMForSenderSignature(id: number, callback?:PostmarkCallback<SignatureDetails>) : Promise<SignatureDetails> {
+    requestNewDKIMForSenderSignature(id: number, callback?:Callback<SignatureDetails>) : Promise<SignatureDetails> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.POST, `/senders/${id}/requestNewDkim`, {}, callback);
     };
 }

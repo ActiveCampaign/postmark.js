@@ -1,15 +1,11 @@
-import {Hash} from "../client/ClientOptions"
-import {Attachment, Header, LinkTrackingOptions} from "../message/SupportingTypes";
+import {Attachment, Header} from "../message/SupportingTypes";
 import {Recipient} from "./OutboundMessage";
-import OutboundMessage from "./OutboundMessage";
-
-
 
 export interface InboundRecipient extends Recipient{
     MailboxHash: string
 }
 
-export default interface InboundMessage {
+export interface InboundMessage {
     From: string;
     FromName: string;
     FromFull: InboundRecipient;
