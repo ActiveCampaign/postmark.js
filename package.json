@@ -39,8 +39,8 @@
   },
   "scripts": {
     "compile": "node_modules/.bin/tsc && git add -A ./dist",
-    "test": "mocha test/*",
-    "watchtests": "node_modules/.bin/mocha -R list -w --recursive -G test/*",
+    "test": "mocha test/**/*test.js",
+    "watchtests": "node_modules/.bin/mocha -R list -w --recursive -G test/**/*test.js",
     "compile-docs": "echo 'Generating docs...' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/typedoc --options typedoc.json && git add -A ./docs && echo 'Generated docs!'",
     "pull-docs": "git subtree pull --prefix docs origin gh-pages",
     "push-docs": "git subtree push --prefix docs origin gh-pages"
