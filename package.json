@@ -40,7 +40,6 @@
   "scripts": {
     "compile": "node_modules/.bin/tsc && git add -A ./dist",
     "test": "mocha test/*",
-    "test-ts": "mocha --reporter spec --compilers ts:ts-node/register test/**/*.ts",
     "watchtests": "node_modules/.bin/mocha -R list -w --recursive -G test/*",
     "compile-docs": "echo 'Generating docs...' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/typedoc --options typedoc.json && git add -A ./docs && echo 'Generated docs!'",
     "pull-docs": "git subtree pull --prefix docs origin gh-pages",
@@ -61,14 +60,12 @@
   ],
   "devDependencies": {
     "@types/bluebird": "^3.5.23",
-    "@types/mocha": "^5.2.5",
     "@types/request-promise": "^4.1.42",
     "expect.js": "^0.3.1",
     "merge": "1.2.0",
     "mocha": "^5.2.0",
     "nconf": "0.7.1",
     "pre-commit": "1.0.2",
-    "ts-node": "^7.0.1",
     "typedoc": "^0.11.1",
     "typescript": "^2.7.2"
   },
