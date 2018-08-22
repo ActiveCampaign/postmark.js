@@ -2,9 +2,9 @@
 
 var expect = require('expect.js');
 var nconf = require('nconf');
-var testingKeys = nconf.env().file({file: __dirname + '/../testing_keys.json'});
+var testingKeys = nconf.env().file({file: __dirname + '/../../testing_keys.json'});
 
-var postmark = require('../lib/postmark/index.js');
+var postmark = require('../../lib/postmark/index.js');
 var helpers = require('./helpers.js');
 
 describe("Client - Sender Signatures", function () {
@@ -54,7 +54,7 @@ describe("Client - Sender Signatures", function () {
         client.listSenderSignatures(done);
     });
 
-    it("createSenderSignature", function (done) {
+    xit("createSenderSignature", function (done) {
         var emailTest = testingKeys.get('SENDER_SIGNATURE_PROTOTYPE').replace(/\[TOKEN]/i, 'create' + new Date().valueOf());
 
         client.createSenderSignature({
@@ -76,7 +76,7 @@ describe("Client - Sender Signatures", function () {
         }, done);
     });
 
-    it("editSenderSignature", function (done) {
+    xit("editSenderSignature", function (done) {
         client.createSenderSignature({
             Name: email,
             FromEmail: email
@@ -86,7 +86,6 @@ describe("Client - Sender Signatures", function () {
             }, done);
         });
     });
-
 
     it("deleteSenderSignature", function (done) {
         client.createSenderSignature({

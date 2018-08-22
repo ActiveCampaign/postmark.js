@@ -2,9 +2,9 @@
 
 var expect = require('expect.js');
 var nconf = require('nconf');
-var testingKeys = nconf.env().file({file: __dirname + '/../testing_keys.json'});
+var testingKeys = nconf.env().file({file: __dirname + '/../../testing_keys.json'});
 
-var postmark = require('../lib/postmark/index.js');
+var postmark = require('../../lib/postmark/index.js');
 
 describe('Client', function () {
     // max test length in miliseconds
