@@ -55,9 +55,11 @@ describe("Client - Sender Signatures", function () {
     });
 
     it("createSenderSignature", function (done) {
+        var emailTest = testingKeys.get('SENDER_SIGNATURE_PROTOTYPE').replace(/\[TOKEN]/i, 'create' + new Date().valueOf());
+
         client.createSenderSignature({
-            Name: email,
-            FromEmail: email
+            Name: emailTest,
+            FromEmail: emailTest
         }, function (err, signature) {
             if (!err) {
                 client.getSenderSignature(signature.ID, done);
@@ -84,6 +86,7 @@ describe("Client - Sender Signatures", function () {
             }, done);
         });
     });
+
 
     it("deleteSenderSignature", function (done) {
         client.createSenderSignature({

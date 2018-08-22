@@ -97,14 +97,18 @@ describe('Client - Triggers', function () {
     });
 
     it('createInboundRuleTrigger', function (done) {
+        var name = prefix + "-" + new Date().valueOf() + "@example.com";
+
         client.createInboundRuleTrigger({
-            Rule: name = prefix + "-" + new Date().valueOf() + "@example.com"
+            Rule: name
         }, done);
     });
 
     it('deleteInboundRuleTrigger', function (done) {
+        var name = prefix + "-" + new Date().valueOf() + "@example.com";
+
         client.createInboundRuleTrigger({
-            Rule: name = prefix + "-" + new Date().valueOf() + "@example.com"
+            Rule: name
         }, function (err, trigger) {
             client.deleteInboundRuleTrigger(trigger.ID, done);
         });

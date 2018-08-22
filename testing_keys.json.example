@@ -5,7 +5,7 @@
 	"SENDER_EMAIL_ADDRESS" : "apps@example.com",
 	"SENDER_SIGNATURE_PROTOTYPE": "anything+[TOKEN]@example.com",
 	"EMAIL_RECIPIENT_ADDRESS" : "andrew+testing@example.com",
-	"DOMAIN_NAME" : "domain-verification.pstmrk.it",
+	"DOMAIN_NAME" : "<domain.name>",
 
 	"BASE_URL" : "https://api.postmarkapp.com"
 }
