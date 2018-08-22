@@ -39,8 +39,8 @@
   },
   "scripts": {
     "compile": "node_modules/.bin/tsc && git add -A ./dist",
-    "test": "node_modules/.bin/mocha tests/fixture_*.js",
-    "watchtests": "node_modules/.bin/mocha -R list -w --recursive -G tests/fixture_*.js",
+    "test": "mocha",
+    "watchtests": "node_modules/.bin/mocha -R list -w --recursive -G test/fixture_*.js",
     "compile-docs": "echo 'Generating docs...' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/typedoc --options typedoc.json && git add -A ./docs && echo 'Generated docs!'",
     "pull-docs": "git subtree pull --prefix docs origin gh-pages",
     "push-docs": "git subtree push --prefix docs origin gh-pages"
@@ -59,14 +59,15 @@
     "test"
   ],
   "devDependencies": {
+    "merge": "1.2.0",
+    "nconf": "0.7.1",
     "@types/bluebird": "^3.5.23",
     "@types/request-promise": "^4.1.42",
-    "mocha": "5.2.0",
+    "mocha": "^5.2.0",
+    "expect.js": "^0.3.1",
     "pre-commit": "1.0.2",
     "typedoc": "^0.11.1",
-    "typescript": "^2.7.2",
-    "nconf": "0.7.1",
-    "merge": "1.2.0"
+    "typescript": "^2.7.2"
   },
   "dependencies": {
     "bluebird": "^3.5.1",

@@ -1,29 +1,26 @@
-var mocha = require('mocha');
-var assert = require('assert');
+"use strict";
+
+var expect = require('expect.js');
 var nconf = require('nconf');
-var testingKeys = nconf.env().file({
-    file: __dirname + '/../testing_keys.json'
-});
-var util = require('util');
-var merge = require('merge');
+var testingKeys = nconf.env().file({file: __dirname + '/../testing_keys.json'});
 
 var postmark = require('../lib/postmark/index.js');
-var helpers = require('./test_helpers.js');
+var helpers = require('./helpers.js');
 
-describe('client tag handling', function() {
+describe('Client - Triggers', function () {
     this.timeout(10000);
     var prefix = "node-js-tests";
+    var client = null;
+    var serverToken = testingKeys.get('SERVER_TOKEN');
 
-    var _client = null;
-
-    beforeEach(function() {
-        _client = new postmark.Client(testingKeys.get('WRITE_TEST_SERVER_TOKEN'));
+    beforeEach(function () {
+        client = new postmark.Client(serverToken);
     });
 
-    after(function() {
+    after(function () {
         var rulePrefixTester = new RegExp(prefix);
-        var c = new postmark.Client(testingKeys.get('WRITE_TEST_SERVER_TOKEN'));
-        c.getInboundRuleTriggers(function(err, trigs) {
+        var c = new postmark.Client(serverToken);
+        c.getInboundRuleTriggers(function (err, trigs) {
             if (!err) {
                 for (var i = 0; i < trigs.InboundRules.length; i++) {
                     var trigger = trigs.InboundRules[i];
@@ -34,7 +31,7 @@ describe('client tag handling', function() {
             }
         });
 
-        c.getTagTriggers(function(err, trigs) {
+        c.getTagTriggers(function (err, trigs) {
             if (!err) {
                 for (var i = 0; i < trigs.Tags.length; i++) {
                     var trigger = trigs.Tags[i];
@@ -46,20 +43,20 @@ describe('client tag handling', function() {
         });
     });
 
-    it('can create a tag trigger', function(done) {
-        _client.createTagTrigger({
+    it('createTagTrigger', function (done) {
+        client.createTagTrigger({
             MatchName: prefix + "-" + new Date().valueOf(),
             TrackOpens: true
         }, done);
     });
 
-    it('can edit a tag trigger', function(done) {
+    it('editTagTrigger', function (done) {
         var name = prefix + "-" + new Date().valueOf();
-        _client.createTagTrigger({
+        client.createTagTrigger({
             MatchName: name,
             TrackOpens: true
-        }, function(err, trigger) {
-            _client.editTagTrigger(trigger.ID, {
+        }, function (err, trigger) {
+            client.editTagTrigger(trigger.ID, {
                 MatchName: name + "-updated",
                 TrackOpens: false
             }, done);
@@ -67,50 +64,49 @@ describe('client tag handling', function() {
 
     });
 
-    it('can can delete a tag trigger', function(done) {
+    it('deleteTagTrigger', function (done) {
         var name = prefix + "-" + new Date().valueOf();
-        _client.createTagTrigger({
+        client.createTagTrigger({
             MatchName: name,
             TrackOpens: true
-        }, function(err, trigger) {
-            _client.deleteTagTrigger(trigger.ID, done);
+        }, function (err, trigger) {
+            client.deleteTagTrigger(trigger.ID, done);
         });
     });
 
-    it('can get a tag trigger', function(done) {
+    it('getTagTrigger', function (done) {
         var name = prefix + "-" + new Date().valueOf();
-        _client.createTagTrigger({
+        client.createTagTrigger({
             MatchName: name,
             TrackOpens: true
-        }, function(err, trigger) {
-            _client.getTagTrigger(trigger.ID, done);
+        }, function (err, trigger) {
+            client.getTagTrigger(trigger.ID, done);
         });
     });
 
-    it('can get tag triggers', function(done) {
-        _client.getTagTriggers({
+    it('getTagTriggers', function (done) {
+        client.getTagTriggers({
             count: 1
         }, done);
     });
 
-    it('can get inbound rule triggers', function(done) {
-        _client.getInboundRuleTriggers({
+    it('getInboundRuleTriggers', function (done) {
+        client.getInboundRuleTriggers({
             count: 1
         }, done);
     });
 
-    it('can create inbound rule triggers', function(done) {
-        _client.createInboundRuleTrigger({
+    it('createInboundRuleTrigger', function (done) {
+        client.createInboundRuleTrigger({
             Rule: name = prefix + "-" + new Date().valueOf() + "@example.com"
         }, done);
     });
 
-    it('can delete inbound rule triggers', function(done) {
-        _client.createInboundRuleTrigger({
+    it('deleteInboundRuleTrigger', function (done) {
+        client.createInboundRuleTrigger({
             Rule: name = prefix + "-" + new Date().valueOf() + "@example.com"
-        }, function(err, trigger) {
-            _client.deleteInboundRuleTrigger(trigger.ID, done);
+        }, function (err, trigger) {
+            client.deleteInboundRuleTrigger(trigger.ID, done);
         });
     });
-
 });

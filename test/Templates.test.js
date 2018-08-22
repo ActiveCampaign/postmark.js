@@ -1,32 +1,30 @@
-'use strict';
+"use strict";
 
-var mocha = require('mocha');
-var assert = require('assert');
+var expect = require('expect.js');
 var nconf = require('nconf');
-var testingKeys = nconf.env().file({
-    file: __dirname + '/../testing_keys.json'
-});
-var util = require('util');
-var merge = require('merge');
+var testingKeys = nconf.env().file({file: __dirname + '/../testing_keys.json'});
 
 var postmark = require('../lib/postmark/index.js');
-var helpers = require('./test_helpers.js');
+var helpers = require('./helpers.js');
 
-describe('client template handling', function() {
+describe('Client - Templates', function() {
     this.timeout(10000);
-    var _client = null;
+    var client = null;
+    var serverToken = testingKeys.get('SERVER_TOKEN');
+    var fromAddress = testingKeys.get('SENDER_EMAIL_ADDRESS');
+    var toAddress = testingKeys.get('EMAIL_RECIPIENT_ADDRESS');
 
     beforeEach(function() {
-        _client = new postmark.Client(testingKeys.get('WRITE_TEST_SERVER_TOKEN'));
+        client = new postmark.Client(serverToken);
         cleanup();
     });
 
     function cleanup() {
-        _client.getTemplates({ offset : 0, count : 100 }, function(err, results) {
+        client.getTemplates({ offset : 0, count : 100 }, function(err, results) {
             while (results.Templates.length > 0) {
                 var t = results.Templates.pop();
                 if (/testing-template-node-js/.test(t.Name)) {
-                    _client.deleteTemplate(t.TemplateId, helpers.report);
+                    client.deleteTemplate(t.TemplateId, helpers.report);
                 }
             }
         });
@@ -34,29 +32,29 @@ describe('client template handling', function() {
 
     after(cleanup);
 
-    it('should retrieve a list of templates.', function(done) {
-        _client.getTemplates(done);
+    it('getTemplates', function(done) {
+        client.getTemplates(done);
     });
 
-    it('should get a single template.', function(done) {
-        _client.createTemplate({
+    it('getTemplate', function(done) {
+        client.createTemplate({
             name: "testing-template-node-js" + Date(),
             textBody: "text body for template {{id}}!",
             htmlBody: "{{content}}",
             subject: "{{subject}}"
         }, function(err, template) {
-            _client.getTemplate(template.TemplateId, done);
+            client.getTemplate(template.TemplateId, done);
         });
     });
 
-    it('should a update a template.', function(done) {
-        _client.createTemplate({
+    it('editTemplate', function(done) {
+        client.createTemplate({
             name: "testing-template-node-js" + Date(),
             textBody: "text body for template {{id}}!",
             htmlBody: "{{content}}",
             subject: "{{subject}}"
         }, function(error, newTemplate) {
-            _client.editTemplate(newTemplate.TemplateId, {
+            client.editTemplate(newTemplate.TemplateId, {
                 name: "testing-template-node-js" + Date(),
                 textBody: "text body for template {{id}}!",
                 htmlBody: "{{content}}",
@@ -65,8 +63,8 @@ describe('client template handling', function() {
         });
     });
 
-    it('should a create a template.', function(done) {
-        _client.createTemplate({
+    it('createTemplate', function(done) {
+        client.createTemplate({
             name: "testing-template-node-js" + Date(),
             textBody: "text body for template {{id}}!",
             htmlBody: "{{content}}",
@@ -74,27 +72,27 @@ describe('client template handling', function() {
         }, done);
     });
 
-    it('should a delete a template.', function(done) {
-        _client.createTemplate({
+    it('deleteTemplate', function(done) {
+        client.createTemplate({
             name: "testing-template-node-js" + Date(),
             textBody: "text body for template {{id}}!",
             htmlBody: "{{content}}",
             subject: "{{subject}}"
         }, function(err, template) {
-            _client.deleteTemplate(template.TemplateId, done);
+            client.deleteTemplate(template.TemplateId, done);
         });
     });
 
-    it('send an email using a template.', function(done) {
-        _client.createTemplate({
+    it('sendEmailWithTemplate', function(done) {
+        client.createTemplate({
             name: "testing-template-node-js" + Date(),
             textBody: "text body for template {{id}}!",
             htmlBody: "{{content}}",
             subject: "{{subject}}"
         }, function(error, t) {
-            _client.sendEmailWithTemplate({
-                To: testingKeys.get('WRITE_TEST_EMAIL_RECIPIENT_ADDRESS'),
-                From: testingKeys.get('WRITE_TEST_SENDER_EMAIL_ADDRESS'),
+            client.sendEmailWithTemplate({
+                To: toAddress,
+                From: fromAddress,
                 TemplateId: t.TemplateId,
                 TemplateModel: {
                   subject: "Hello from the node.js client! " + new Date(),
@@ -104,8 +102,8 @@ describe('client template handling', function() {
         });
     });
 
-    it('should validate template', function(done) {
-        _client.validateTemplate({
+    it('validateTemplate', function(done) {
+        client.validateTemplate({
             testRenderModel: {
                 Name: "joe!"
             },
