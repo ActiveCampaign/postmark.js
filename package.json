@@ -39,8 +39,8 @@
   },
   "scripts": {
     "compile": "node_modules/.bin/tsc && git add -A ./dist",
-    "test": "mocha test/oldClient/*test.js",
-    "watchtests": "node_modules/.bin/mocha -R list -w --recursive -G test/oldClient/*test.js",
+    "test": "node_modules/.bin/mocha test/oldClient/**/*test.js",
+    "watchtests": "node_modules/.bin/mocha -R list -w --recursive -G test/oldClient/**/*test.js",
     "compile-docs": "echo 'Generating docs...' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/typedoc --options typedoc.json && git add -A ./docs && echo 'Generated docs!'",
     "pull-docs": "git subtree pull --prefix docs origin gh-pages",
     "push-docs": "git subtree push --prefix docs origin gh-pages"
@@ -63,7 +63,7 @@
     "@types/request-promise": "^4.1.42",
     "expect.js": "^0.3.1",
     "merge": "1.2.0",
-    "mocha": "^5.2.0",
+    "mocha": "3.0.0-2",
     "nconf": "0.7.1",
     "pre-commit": "1.0.2",
     "typedoc": "^0.11.1",
