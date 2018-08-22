@@ -8,6 +8,7 @@ var postmark = require('../../lib/postmark/index.js');
 var helpers = require('./helpers.js');
 
 describe('Client - Templates', function() {
+    this.retries(2);
     this.timeout(10000);
     var client = null;
     var serverToken = testingKeys.get('SERVER_TOKEN');
@@ -20,11 +21,12 @@ describe('Client - Templates', function() {
     });
 
     function cleanup() {
-        client.getTemplates({ offset : 0, count : 100 }, function(err, results) {
+        var c = new postmark.Client(serverToken);
+        c.getTemplates({ offset : 0, count : 100 }, function(err, results) {
             while (results.Templates.length > 0) {
                 var t = results.Templates.pop();
                 if (/testing-template-node-js/.test(t.Name)) {
-                    client.deleteTemplate(t.TemplateId, helpers.report);
+                    c.deleteTemplate(t.TemplateId, helpers.report);
                 }
             }
         });

@@ -8,6 +8,7 @@ var postmark = require('../../lib/postmark/index.js');
 var helpers = require('./helpers.js');
 
 describe("Client - Sender Signatures", function () {
+    this.retries(4);
     this.timeout(10000);
     var prefix = "node-js-tests";
 
@@ -25,13 +26,6 @@ describe("Client - Sender Signatures", function () {
         var c = new postmark.AdminClient(accountToken);
         c.listSenderSignatures(function (err, resp) {
             if (!err) {
-                for (var i = 0; i < resp.SenderSignatures.length; i++) {
-                    var signature = resp.SenderSignatures[i];
-                    if (rulePrefixTester.test(signature.Name)) {
-                        c.deleteSenderSignature(signature.ID, helpers.report);
-                    }
-                }
-
                 c.listDomains(function (err, resp) {
                     if (!err) {
                         var tester = new RegExp(email.split('@')[1]);
@@ -47,40 +41,31 @@ describe("Client - Sender Signatures", function () {
         });
     }
 
-    after(cleanup);
     before(cleanup);
+    after(cleanup);
 
     it("listSenderSignatures", function (done) {
         client.listSenderSignatures(done);
     });
 
-    xit("createSenderSignature", function (done) {
+    it("createSenderSignature", function (done) {
         var emailTest = testingKeys.get('SENDER_SIGNATURE_PROTOTYPE').replace(/\[TOKEN]/i, 'create' + new Date().valueOf());
 
         client.createSenderSignature({
             Name: emailTest,
             FromEmail: emailTest
         }, function (err, signature) {
-            if (!err) {
-                client.getSenderSignature(signature.ID, done);
-            } else {
-                done(err);
-            }
+            expect(signature).not.to.eql(undefined);
+            client.getSenderSignature(signature.ID, done);
         });
     });
 
-    it("listSenderSignatures", function (done) {
-        client.createSenderSignature({
-            Name: email,
-            FromEmail: email
-        }, done);
-    });
-
-    xit("editSenderSignature", function (done) {
+    it("editSenderSignature", function (done) {
         client.createSenderSignature({
             Name: email,
             FromEmail: email
         }, function (err, signature) {
+            expect(signature).not.to.eql(undefined);
             client.editSenderSignature(signature.ID, {
                 Name: email + "-updated"
             }, done);
@@ -92,6 +77,7 @@ describe("Client - Sender Signatures", function () {
             Name: email,
             FromEmail: email
         }, function (err, signature) {
+            expect(signature).not.to.eql(undefined);
             client.deleteSenderSignature(signature.ID, done);
         });
     });
@@ -101,6 +87,7 @@ describe("Client - Sender Signatures", function () {
             Name: email,
             FromEmail: email
         }, function (err, signature) {
+            expect(signature).not.to.eql(undefined);
             client.resendSenderSignatureConfirmation(signature.ID, done);
         });
     });
@@ -110,6 +97,7 @@ describe("Client - Sender Signatures", function () {
             Name: email,
             FromEmail: email
         }, function (err, signature) {
+            expect(signature).not.to.eql(undefined);
             client.verifySenderSignatureSPF(signature.ID, done);
         });
     });

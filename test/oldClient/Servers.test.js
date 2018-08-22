@@ -43,7 +43,7 @@ describe('Client - Servers', function () {
         client.getServer(done);
     });
 
-    it("editServer", function () {
+    xit("editServer", function () {
         var name = prefix;
 
         adminClient.createServer({
