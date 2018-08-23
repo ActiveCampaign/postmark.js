@@ -62,12 +62,12 @@
     "@types/bluebird": "^3.5.23",
     "@types/request-promise": "^4.1.42",
     "expect.js": "^0.3.1",
-    "merge": "1.2.0",
     "mocha": "3.0.0-2",
-    "nconf": "0.7.1",
-    "pre-commit": "1.0.2",
     "typedoc": "^0.11.1",
-    "typescript": "^2.7.2"
+    "typescript": "^2.7.2",
+    "pre-commit": "1.0.2",
+    "merge": "1.2.0",
+    "nconf": "0.7.1"
   },
   "dependencies": {
     "bluebird": "^3.5.1",

@@ -18,16 +18,12 @@ export class ErrorHandler {
         switch (error.name) {
             case "StatusCodeError":
                 return this.buildStatusError(<requestPromiseErrors.StatusCodeError>error);
-                break;
             case "RequestError":
                 return this.buildRequestError(<requestPromiseErrors.RequestError>error);
-                break;
             case "TransformError":
                 return this.buildTransformError(<requestPromiseErrors.TransformError>error);
-                break;
             default:
                 return this.buildError(error);
-                break;
         }
     }
 
@@ -75,23 +71,18 @@ export class ErrorHandler {
         switch (error.statusCode) {
             case 401:
                 return new PostmarkErrors.InvalidAPIKeyError(error.error.Message, error.error.ErrorCode, error.statusCode);
-                break;
 
             case 422:
                 return new PostmarkErrors.ApiInputError(error.error.Message, error.error.ErrorCode, error.statusCode);
-                break;
 
             case 500:
                 return new PostmarkErrors.InternalServerError(error.error.Message, error.error.ErrorCode, error.statusCode);
-                break;
 
             case 503:
                 return new PostmarkErrors.ServiceUnavailablerError(error.error.Message, error.error.ErrorCode, error.statusCode);
-                break;
 
             default:
                 return new PostmarkErrors.UnknownError(error.error.Message, error.error.ErrorCode, error.statusCode);
-                break;
         }
     }
 }
