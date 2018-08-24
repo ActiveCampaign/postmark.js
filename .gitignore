@@ -7,5 +7,6 @@ tests/testing_keys.json
 **/*.idea
 **/*.iml
 
-dist/**/*
+dist/**/*map
+dist/test*
 src/test*

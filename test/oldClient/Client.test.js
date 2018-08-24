@@ -1,6 +1,7 @@
 "use strict";
 
-var expect = require('expect.js');
+var chai  = require('chai');
+var expect = chai.expect;
 var nconf = require('nconf');
 var testingKeys = nconf.env().file({file: __dirname + '/../../testing_keys.json'});
 
@@ -23,7 +24,7 @@ describe('Client', function () {
                 ssl: false
             });
 
-            expect(client).not.to.be(null);
+            expect(client).not.to.eql(null);
             expect(client.options.apiKey).to.eql(serverToken);
             expect(client.options.testOption).to.eql('asdf');
             expect(client.options.ssl).to.eql(false);
@@ -46,11 +47,9 @@ describe('Errors', function () {
         var client = postmark(serverToken)
 
         client.getBounces({count: "invalid count"}, function (error, result) {
-            expect(result).to.be(undefined);
-            expect(error.status).to.eql(422);
-            expect(error.message).to.be('Parameter \'count\' should be integer value');
-
-            // callback function done
+            expect(result).to.equal(undefined);
+            expect(error.status).to.equal(422);
+            expect(error.message).to.equal('Parameter \'count\' should be integer value');
             done();
         });
     });

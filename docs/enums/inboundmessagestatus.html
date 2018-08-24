@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ClientOptions | Postmark.js</title>
+	<title>InboundMessageStatus | Postmark.js</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -907,17 +907,26 @@ img { max-width: 100%; }
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
-		<li class="current tsd-kind-interface">
-			<a href="clientoptions.html" class="tsd-kind-icon">Client<wbr>Options</a>
+		<li class="current tsd-kind-enum">
+			<a href="inboundmessagestatus.html" class="tsd-kind-icon">Inbound<wbr>Message<wbr>Status</a>
 			<ul>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="clientoptions.html#requesthost" class="tsd-kind-icon">request<wbr>Host</a>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="inboundmessagestatus.html#blocked" class="tsd-kind-icon">Blocked</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="clientoptions.html#timeout" class="tsd-kind-icon">timeout</a>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="inboundmessagestatus.html#failed" class="tsd-kind-icon">Failed</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="clientoptions.html#usehttps" class="tsd-kind-icon">use<wbr>Https</a>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="inboundmessagestatus.html#processed" class="tsd-kind-icon">Processed</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="inboundmessagestatus.html#queued" class="tsd-kind-icon">Queued</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="inboundmessagestatus.html#scheduled" class="tsd-kind-icon">Scheduled</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="inboundmessagestatus.html#sent" class="tsd-kind-icon">Sent</a>
 				</li>
 			</ul>
 		</li>
@@ -925,90 +934,85 @@ img { max-width: 100%; }
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
-		<section class="tsd-panel tsd-hierarchy">
-			<h3>Hierarchy</h3>
-			<ul class="tsd-hierarchy">
-				<li>
-					<span class="target">ClientOptions</span>
-				</li>
-			</ul>
-		</section>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
 					<section class="tsd-index-section ">
-						<h3>Properties</h3>
+						<h3>Enumeration members</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="clientoptions.html#requesthost" class="tsd-kind-icon">request<wbr>Host</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="clientoptions.html#timeout" class="tsd-kind-icon">timeout</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="clientoptions.html#usehttps" class="tsd-kind-icon">use<wbr>Https</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="inboundmessagestatus.html#blocked" class="tsd-kind-icon">Blocked</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="inboundmessagestatus.html#failed" class="tsd-kind-icon">Failed</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="inboundmessagestatus.html#processed" class="tsd-kind-icon">Processed</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="inboundmessagestatus.html#queued" class="tsd-kind-icon">Queued</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="inboundmessagestatus.html#scheduled" class="tsd-kind-icon">Scheduled</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="inboundmessagestatus.html#sent" class="tsd-kind-icon">Sent</a></li>
 						</ul>
 					</section>
 				</div>
 			</section>
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
-			<h2>Properties</h2>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="requesthost" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> request<wbr>Host</h3>
-				<div class="tsd-signature tsd-kind-icon">request<wbr>Host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+			<h2>Enumeration members</h2>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="blocked" class="tsd-anchor"></a>
+				<h3>Blocked</h3>
+				<div class="tsd-signature tsd-kind-icon">Blocked<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;blocked&quot;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/client/ClientOptions.ts:12</li>
+						<li>Defined in client/models/messages/FilteringParameters.ts:13</li>
 					</ul>
 				</aside>
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>The base url for accessing the Postmark API.</p>
-					</div>
-					<dl class="tsd-comment-tags">
-						<dt>default</dt>
-						<dd><p>api.postmarkapp.com</p>
-						</dd>
-					</dl>
-				</div>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="timeout" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> timeout</h3>
-				<div class="tsd-signature tsd-kind-icon">timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="failed" class="tsd-anchor"></a>
+				<h3>Failed</h3>
+				<div class="tsd-signature tsd-kind-icon">Failed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;failed&quot;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/client/ClientOptions.ts:18</li>
+						<li>Defined in client/models/messages/FilteringParameters.ts:14</li>
 					</ul>
 				</aside>
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>The request timeout (in seconds) for API calls.</p>
-					</div>
-					<dl class="tsd-comment-tags">
-						<dt>default</dt>
-						<dd><p>30</p>
-						</dd>
-					</dl>
-				</div>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="usehttps" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> use<wbr>Https</h3>
-				<div class="tsd-signature tsd-kind-icon">use<wbr>Https<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="processed" class="tsd-anchor"></a>
+				<h3>Processed</h3>
+				<div class="tsd-signature tsd-kind-icon">Processed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;processed&quot;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/client/ClientOptions.ts:6</li>
+						<li>Defined in client/models/messages/FilteringParameters.ts:12</li>
 					</ul>
 				</aside>
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Require HTTPS for API requests?</p>
-					</div>
-					<dl class="tsd-comment-tags">
-						<dt>default</dt>
-						<dd><p>true</p>
-						</dd>
-					</dl>
-				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="queued" class="tsd-anchor"></a>
+				<h3>Queued</h3>
+				<div class="tsd-signature tsd-kind-icon">Queued<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;queued&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/messages/FilteringParameters.ts:10</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="scheduled" class="tsd-anchor"></a>
+				<h3>Scheduled</h3>
+				<div class="tsd-signature tsd-kind-icon">Scheduled<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;scheduled&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/messages/FilteringParameters.ts:15</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="sent" class="tsd-anchor"></a>
+				<h3>Sent</h3>
+				<div class="tsd-signature tsd-kind-icon">Sent<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;sent&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/messages/FilteringParameters.ts:11</li>
+					</ul>
+				</aside>
 			</section>
 		</section>
 		<footer>

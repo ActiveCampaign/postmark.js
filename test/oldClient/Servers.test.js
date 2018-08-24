@@ -1,6 +1,7 @@
 "use strict";
 
-var expect = require('expect.js');
+var chai  = require('chai');
+var expect = chai.expect;
 var nconf = require('nconf');
 var testingKeys = nconf.env().file({file: __dirname + '/../../testing_keys.json'});
 var helpers = require('./helpers.js');
