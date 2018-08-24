@@ -1066,13 +1066,13 @@ img { max-width: 100%; }
 				<a name="constructor" class="tsd-anchor"></a>
 				<h3>constructor</h3>
 				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">new <wbr>Account<wbr>Client<span class="tsd-signature-symbol">(</span>accountToken<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">?: </span><a href="../interfaces/clientoptions.html" class="tsd-signature-type">ClientOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="accountclient.html" class="tsd-signature-type">AccountClient</a></li>
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Account<wbr>Client<span class="tsd-signature-symbol">(</span>accountToken<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, configOptions<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ClientOptions.Configuration</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="accountclient.html" class="tsd-signature-type">AccountClient</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:31</li>
+								<li>Defined in client/AccountClient.ts:27</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1091,7 +1091,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <a href="../interfaces/clientoptions.html" class="tsd-signature-type">ClientOptions</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> configOptions: <span class="tsd-signature-type">ClientOptions.Configuration</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<div class="lead">
 										<p>Various options to customize client behavior.</p>
@@ -1109,11 +1109,11 @@ img { max-width: 100%; }
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 				<a name="clientoptions" class="tsd-anchor"></a>
 				<h3>client<wbr>Options</h3>
-				<div class="tsd-signature tsd-kind-icon">client<wbr>Options<span class="tsd-signature-symbol">:</span> <a href="../interfaces/clientoptions.html" class="tsd-signature-type">ClientOptions</a></div>
+				<div class="tsd-signature tsd-kind-icon">client<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ClientOptions.Configuration</span></div>
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="baseclient.html">BaseClient</a>.<a href="baseclient.html#clientoptions">clientOptions</a></p>
 					<ul>
-						<li>Defined in client/BaseClient.ts:42</li>
+						<li>Defined in client/BaseClient.ts:29</li>
 					</ul>
 				</aside>
 			</section>
@@ -1124,7 +1124,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="baseclient.html">BaseClient</a>.<a href="baseclient.html#clientversion">clientVersion</a></p>
 					<ul>
-						<li>Defined in client/BaseClient.ts:43</li>
+						<li>Defined in client/BaseClient.ts:30</li>
 					</ul>
 				</aside>
 			</section>
@@ -1135,13 +1135,13 @@ img { max-width: 100%; }
 				<a name="createdomain" class="tsd-anchor"></a>
 				<h3>create<wbr>Domain</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">create<wbr>Domain<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/domainoptions.html" class="tsd-signature-type">DomainOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">create<wbr>Domain<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/domainoptions.html" class="tsd-signature-type">DomainOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:129</li>
+								<li>Defined in client/AccountClient.ts:125</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1158,7 +1158,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1173,13 +1173,13 @@ img { max-width: 100%; }
 				<a name="createsendersignature" class="tsd-anchor"></a>
 				<h3>create<wbr>Sender<wbr>Signature</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">create<wbr>Sender<wbr>Signature<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/signatureoptions.html" class="tsd-signature-type">SignatureOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">create<wbr>Sender<wbr>Signature<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/signatureoptions.html" class="tsd-signature-type">SignatureOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:231</li>
+								<li>Defined in client/AccountClient.ts:227</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1196,7 +1196,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1211,13 +1211,13 @@ img { max-width: 100%; }
 				<a name="createserver" class="tsd-anchor"></a>
 				<h3>create<wbr>Server</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">create<wbr>Server<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/serveroptions.html" class="tsd-signature-type">ServerOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">create<wbr>Server<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/serveroptions.html" class="tsd-signature-type">ServerOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:72</li>
+								<li>Defined in client/AccountClient.ts:68</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1234,7 +1234,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1249,13 +1249,13 @@ img { max-width: 100%; }
 				<a name="deletedomain" class="tsd-anchor"></a>
 				<h3>delete<wbr>Domain</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">delete<wbr>Domain<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">delete<wbr>Domain<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:153</li>
+								<li>Defined in client/AccountClient.ts:149</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1272,7 +1272,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1287,13 +1287,13 @@ img { max-width: 100%; }
 				<a name="deletesendersignature" class="tsd-anchor"></a>
 				<h3>delete<wbr>Sender<wbr>Signature</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">delete<wbr>Sender<wbr>Signature<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">delete<wbr>Sender<wbr>Signature<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:256</li>
+								<li>Defined in client/AccountClient.ts:252</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1310,7 +1310,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1325,13 +1325,13 @@ img { max-width: 100%; }
 				<a name="deleteserver" class="tsd-anchor"></a>
 				<h3>delete<wbr>Server</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">delete<wbr>Server<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">delete<wbr>Server<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:95</li>
+								<li>Defined in client/AccountClient.ts:91</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1348,7 +1348,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1363,13 +1363,13 @@ img { max-width: 100%; }
 				<a name="editdomain" class="tsd-anchor"></a>
 				<h3>edit<wbr>Domain</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">edit<wbr>Domain<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">edit<wbr>Domain<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/domainoptions.html" class="tsd-signature-type">DomainOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:141</li>
+								<li>Defined in client/AccountClient.ts:137</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1386,10 +1386,10 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5>options: <a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a></h5>
+								<h5>options: <a href="../interfaces/domainoptions.html" class="tsd-signature-type">DomainOptions</a></h5>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1404,13 +1404,13 @@ img { max-width: 100%; }
 				<a name="editsendersignature" class="tsd-anchor"></a>
 				<h3>edit<wbr>Sender<wbr>Signature</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">edit<wbr>Sender<wbr>Signature<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/basesignatureoptions.html" class="tsd-signature-type">BaseSignatureOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">edit<wbr>Sender<wbr>Signature<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/basesignatureoptions.html" class="tsd-signature-type">BaseSignatureOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:244</li>
+								<li>Defined in client/AccountClient.ts:240</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1433,7 +1433,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1448,13 +1448,13 @@ img { max-width: 100%; }
 				<a name="editserver" class="tsd-anchor"></a>
 				<h3>edit<wbr>Server</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">edit<wbr>Server<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/serveroptions.html" class="tsd-signature-type">ServerOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">edit<wbr>Server<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/serveroptions.html" class="tsd-signature-type">ServerOptions</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:84</li>
+								<li>Defined in client/AccountClient.ts:80</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1477,7 +1477,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1492,13 +1492,13 @@ img { max-width: 100%; }
 				<a name="getdomain" class="tsd-anchor"></a>
 				<h3>get<wbr>Domain</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Domain<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Domain<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:118</li>
+								<li>Defined in client/AccountClient.ts:114</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1515,7 +1515,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1530,13 +1530,13 @@ img { max-width: 100%; }
 				<a name="getdomains" class="tsd-anchor"></a>
 				<h3>get<wbr>Domains</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Domains<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/querystringparameters.html" class="tsd-signature-type">QueryStringParameters</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domains.html" class="tsd-signature-type">Domains</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domains.html" class="tsd-signature-type">Domains</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Domains<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/filteringparameters.html" class="tsd-signature-type">FilteringParameters</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domains.html" class="tsd-signature-type">Domains</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domains.html" class="tsd-signature-type">Domains</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:106</li>
+								<li>Defined in client/AccountClient.ts:102</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1547,13 +1547,13 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> filter: <a href="../interfaces/querystringparameters.html" class="tsd-signature-type">QueryStringParameters</a><span class="tsd-signature-symbol"> =&nbsp;{}</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/filteringparameters.html" class="tsd-signature-type">FilteringParameters</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>An optional filter for which data is retrieved.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domains.html" class="tsd-signature-type">Domains</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domains.html" class="tsd-signature-type">Domains</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1568,13 +1568,13 @@ img { max-width: 100%; }
 				<a name="getsendersignature" class="tsd-anchor"></a>
 				<h3>get<wbr>Sender<wbr>Signature</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Sender<wbr>Signature<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Sender<wbr>Signature<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:208</li>
+								<li>Defined in client/AccountClient.ts:204</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1591,7 +1591,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1606,13 +1606,13 @@ img { max-width: 100%; }
 				<a name="getsendersignatures" class="tsd-anchor"></a>
 				<h3>get<wbr>Sender<wbr>Signatures</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Sender<wbr>Signatures<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/querystringparameters.html" class="tsd-signature-type">QueryStringParameters</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signatures.html" class="tsd-signature-type">Signatures</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signatures.html" class="tsd-signature-type">Signatures</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Sender<wbr>Signatures<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/filteringparameters.html" class="tsd-signature-type">FilteringParameters</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signatures.html" class="tsd-signature-type">Signatures</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signatures.html" class="tsd-signature-type">Signatures</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:219</li>
+								<li>Defined in client/AccountClient.ts:215</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1623,13 +1623,13 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> filter: <a href="../interfaces/querystringparameters.html" class="tsd-signature-type">QueryStringParameters</a><span class="tsd-signature-symbol"> =&nbsp;{}</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/filteringparameters.html" class="tsd-signature-type">FilteringParameters</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>An optional filter for which data is retrieved.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signatures.html" class="tsd-signature-type">Signatures</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signatures.html" class="tsd-signature-type">Signatures</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1644,13 +1644,13 @@ img { max-width: 100%; }
 				<a name="getserver" class="tsd-anchor"></a>
 				<h3>get<wbr>Server</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Server<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Server<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:61</li>
+								<li>Defined in client/AccountClient.ts:57</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1667,7 +1667,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/server.html" class="tsd-signature-type">Server</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1682,13 +1682,13 @@ img { max-width: 100%; }
 				<a name="getservers" class="tsd-anchor"></a>
 				<h3>get<wbr>Servers</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Servers<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/querystringparameters.html" class="tsd-signature-type">QueryStringParameters</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/servers.html" class="tsd-signature-type">Servers</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/servers.html" class="tsd-signature-type">Servers</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Servers<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><a href="../interfaces/filteringparameters.html" class="tsd-signature-type">FilteringParameters</a>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/servers.html" class="tsd-signature-type">Servers</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/servers.html" class="tsd-signature-type">Servers</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:49</li>
+								<li>Defined in client/AccountClient.ts:45</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1699,13 +1699,13 @@ img { max-width: 100%; }
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> filter: <a href="../interfaces/querystringparameters.html" class="tsd-signature-type">QueryStringParameters</a><span class="tsd-signature-symbol"> =&nbsp;{}</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> filter: <a href="../interfaces/filteringparameters.html" class="tsd-signature-type">FilteringParameters</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>An optional filter for which data is retrieved.</p>
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/servers.html" class="tsd-signature-type">Servers</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/servers.html" class="tsd-signature-type">Servers</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1720,13 +1720,13 @@ img { max-width: 100%; }
 				<a name="requestnewdkimforsendersignature" class="tsd-anchor"></a>
 				<h3>request<wbr>NewDKIMFor<wbr>Sender<wbr>Signature</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">request<wbr>NewDKIMFor<wbr>Sender<wbr>Signature<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">request<wbr>NewDKIMFor<wbr>Sender<wbr>Signature<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:290</li>
+								<li>Defined in client/AccountClient.ts:286</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1743,7 +1743,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1758,13 +1758,13 @@ img { max-width: 100%; }
 				<a name="resendsendersignatureconfirmation" class="tsd-anchor"></a>
 				<h3>resend<wbr>Sender<wbr>Signature<wbr>Confirmation</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">resend<wbr>Sender<wbr>Signature<wbr>Confirmation<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">resend<wbr>Sender<wbr>Signature<wbr>Confirmation<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:267</li>
+								<li>Defined in client/AccountClient.ts:263</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1781,7 +1781,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/defaultresponse.html" class="tsd-signature-type">DefaultResponse</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1796,13 +1796,13 @@ img { max-width: 100%; }
 				<a name="rotatedomaindkim" class="tsd-anchor"></a>
 				<h3>rotate<wbr>DomainDKIM</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">rotate<wbr>DomainDKIM<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">rotate<wbr>DomainDKIM<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:197</li>
+								<li>Defined in client/AccountClient.ts:193</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1819,7 +1819,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1834,13 +1834,13 @@ img { max-width: 100%; }
 				<a name="verifydomaindkim" class="tsd-anchor"></a>
 				<h3>verify<wbr>DomainDKIM</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">verify<wbr>DomainDKIM<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">verify<wbr>DomainDKIM<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:164</li>
+								<li>Defined in client/AccountClient.ts:160</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1857,7 +1857,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1872,13 +1872,13 @@ img { max-width: 100%; }
 				<a name="verifydomainreturnpath" class="tsd-anchor"></a>
 				<h3>verify<wbr>Domain<wbr>Return<wbr>Path</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">verify<wbr>Domain<wbr>Return<wbr>Path<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">verify<wbr>Domain<wbr>Return<wbr>Path<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:175</li>
+								<li>Defined in client/AccountClient.ts:171</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1895,7 +1895,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1910,13 +1910,13 @@ img { max-width: 100%; }
 				<a name="verifydomainspf" class="tsd-anchor"></a>
 				<h3>verify<wbr>DomainSPF</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">verify<wbr>DomainSPF<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">verify<wbr>DomainSPF<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:186</li>
+								<li>Defined in client/AccountClient.ts:182</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1933,7 +1933,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/domaindetails.html" class="tsd-signature-type">DomainDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1948,13 +1948,13 @@ img { max-width: 100%; }
 				<a name="verifysendersignaturespf" class="tsd-anchor"></a>
 				<h3>verify<wbr>Sender<wbr>SignatureSPF</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">verify<wbr>Sender<wbr>SignatureSPF<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">verify<wbr>Sender<wbr>SignatureSPF<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/AccountClient.ts:278</li>
+								<li>Defined in client/AccountClient.ts:274</li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1971,7 +1971,7 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/postmarkcallback.html" class="tsd-signature-type">PostmarkCallback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../interfaces/callback.html" class="tsd-signature-type">Callback</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/signaturedetails.html" class="tsd-signature-type">SignatureDetails</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>If the callback is provided, it will be passed to the resulting promise as a continuation.</p>
 								</div>
@@ -1992,15 +1992,15 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="baseclient.html">BaseClient</a>.<a href="baseclient.html#defaultoptions">DefaultOptions</a></p>
 					<ul>
-						<li>Defined in client/BaseClient.ts:24</li>
+						<li>Defined in client/BaseClient.ts:23</li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Connection defaults that will be combined with any options that are provided during Client instantiation.
-						Any values provided to a Client constructor will override these defaults.</p>
+						<p>Client connection configuration options.
+							You may modify these values and new clients will use them.
+						Any values provided to a Client constructor will override default options.</p>
 					</div>
-					<p>You may modify these values and new clients will use them.</p>
 				</div>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
 					<a name="defaultoptions.requesthost" class="tsd-anchor"></a>
@@ -2008,19 +2008,9 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">request<wbr>Host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;api.postmarkapp.com&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in client/BaseClient.ts:34</li>
+							<li>Defined in client/BaseClient.ts:25</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The hostname that should be used for API requests.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>default</dt>
-							<dd><p>api.postmarkapp.com</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
 					<a name="defaultoptions.timeout" class="tsd-anchor"></a>
@@ -2028,19 +2018,9 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;30</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in client/BaseClient.ts:39</li>
+							<li>Defined in client/BaseClient.ts:26</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The number of seconds to wait before a client should timeout during an API request.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>default</dt>
-							<dd><p>30</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
 					<a name="defaultoptions.usehttps" class="tsd-anchor"></a>
@@ -2048,19 +2028,9 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">use<wbr>Https<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in client/BaseClient.ts:29</li>
+							<li>Defined in client/BaseClient.ts:24</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Should https be used for API requests?</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>default</dt>
-							<dd><p>true</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 			</section>
 		</section>

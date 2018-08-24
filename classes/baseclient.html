@@ -928,9 +928,9 @@ img { max-width: 100%; }
 		<section class="tsd-panel tsd-comment">
 			<div class="tsd-comment tsd-typography">
 				<div class="lead">
-					<p>Base client class from which both the AccountClient and ServerClient classes can be implemented.</p>
+					<p>Base client class from which both the AccountClient and ServerClient classes can be implemented.
+					This class is NOT intended to be instantiated directly.</p>
 				</div>
-				<p>This class is NOT intended to be instantiated directly.</p>
 			</div>
 		</section>
 		<section class="tsd-panel tsd-hierarchy">
@@ -974,10 +974,10 @@ img { max-width: 100%; }
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 				<a name="clientoptions" class="tsd-anchor"></a>
 				<h3>client<wbr>Options</h3>
-				<div class="tsd-signature tsd-kind-icon">client<wbr>Options<span class="tsd-signature-symbol">:</span> <a href="../interfaces/clientoptions.html" class="tsd-signature-type">ClientOptions</a></div>
+				<div class="tsd-signature tsd-kind-icon">client<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ClientOptions.Configuration</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/BaseClient.ts:42</li>
+						<li>Defined in client/BaseClient.ts:29</li>
 					</ul>
 				</aside>
 			</section>
@@ -987,7 +987,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">client<wbr>Version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/BaseClient.ts:43</li>
+						<li>Defined in client/BaseClient.ts:30</li>
 					</ul>
 				</aside>
 			</section>
@@ -1000,15 +1000,15 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Default<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/BaseClient.ts:24</li>
+						<li>Defined in client/BaseClient.ts:23</li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Connection defaults that will be combined with any options that are provided during Client instantiation.
-						Any values provided to a Client constructor will override these defaults.</p>
+						<p>Client connection configuration options.
+							You may modify these values and new clients will use them.
+						Any values provided to a Client constructor will override default options.</p>
 					</div>
-					<p>You may modify these values and new clients will use them.</p>
 				</div>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
 					<a name="defaultoptions.requesthost" class="tsd-anchor"></a>
@@ -1016,19 +1016,9 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">request<wbr>Host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;api.postmarkapp.com&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in client/BaseClient.ts:34</li>
+							<li>Defined in client/BaseClient.ts:25</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The hostname that should be used for API requests.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>default</dt>
-							<dd><p>api.postmarkapp.com</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
 					<a name="defaultoptions.timeout" class="tsd-anchor"></a>
@@ -1036,19 +1026,9 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;30</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in client/BaseClient.ts:39</li>
+							<li>Defined in client/BaseClient.ts:26</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The number of seconds to wait before a client should timeout during an API request.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>default</dt>
-							<dd><p>30</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
 					<a name="defaultoptions.usehttps" class="tsd-anchor"></a>
@@ -1056,19 +1036,9 @@ img { max-width: 100%; }
 					<div class="tsd-signature tsd-kind-icon">use<wbr>Https<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in client/BaseClient.ts:29</li>
+							<li>Defined in client/BaseClient.ts:24</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Should https be used for API requests?</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>default</dt>
-							<dd><p>true</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 			</section>
 		</section>

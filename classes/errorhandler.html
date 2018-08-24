@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Bounces | Postmark.js</title>
+	<title>ErrorHandler | Postmark.js</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -907,14 +907,11 @@ img { max-width: 100%; }
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
-		<li class="current tsd-kind-interface">
-			<a href="bounces.html" class="tsd-kind-icon">Bounces</a>
+		<li class="current tsd-kind-class">
+			<a href="errorhandler.html" class="tsd-kind-icon">Error<wbr>Handler</a>
 			<ul>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="bounces.html#bounces-1" class="tsd-kind-icon">Bounces</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="bounces.html#totalcount" class="tsd-kind-icon">Total<wbr>Count</a>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="errorhandler.html#generateerror" class="tsd-kind-icon">generate<wbr>Error</a>
 				</li>
 			</ul>
 		</li>
@@ -922,11 +919,18 @@ img { max-width: 100%; }
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
+		<section class="tsd-panel tsd-comment">
+			<div class="tsd-comment tsd-typography">
+				<div class="lead">
+					<p>This class handles all client request errors. Client response error is clasified so that proper response error is generated.</p>
+				</div>
+			</div>
+		</section>
 		<section class="tsd-panel tsd-hierarchy">
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
 				<li>
-					<span class="target">Bounces</span>
+					<span class="target">ErrorHandler</span>
 				</li>
 			</ul>
 		</section>
@@ -935,36 +939,47 @@ img { max-width: 100%; }
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
 					<section class="tsd-index-section ">
-						<h3>Properties</h3>
+						<h3>Methods</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bounces.html#bounces-1" class="tsd-kind-icon">Bounces</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bounces.html#totalcount" class="tsd-kind-icon">Total<wbr>Count</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="errorhandler.html#generateerror" class="tsd-kind-icon">generate<wbr>Error</a></li>
 						</ul>
 					</section>
 				</div>
 			</section>
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
-			<h2>Properties</h2>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="bounces-1" class="tsd-anchor"></a>
-				<h3>Bounces</h3>
-				<div class="tsd-signature tsd-kind-icon">Bounces<span class="tsd-signature-symbol">:</span> <a href="bounce.html" class="tsd-signature-type">Bounce</a><span class="tsd-signature-symbol">[]</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in client/models/bounces/Bounce.ts:33</li>
-					</ul>
-				</aside>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="totalcount" class="tsd-anchor"></a>
-				<h3>Total<wbr>Count</h3>
-				<div class="tsd-signature tsd-kind-icon">Total<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in client/models/bounces/Bounce.ts:32</li>
-					</ul>
-				</aside>
+			<h2>Methods</h2>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="generateerror" class="tsd-anchor"></a>
+				<h3>generate<wbr>Error</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">generate<wbr>Error<span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Error</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PostmarkErrors.PostmarkError</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in client/ErrorHandler.ts:17</li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Process callback function for HTTP request.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>error: <span class="tsd-signature-type">Error</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>error that needs to be identified and transformed to proper Postmark error.</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">PostmarkErrors.PostmarkError</span></h4>
+						<p>properly formatted Postmark error.</p>
+					</li>
+				</ul>
 			</section>
 		</section>
 		<footer>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Bounces | Postmark.js</title>
+	<title>BounceType | Postmark.js</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -907,14 +907,74 @@ img { max-width: 100%; }
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
-		<li class="current tsd-kind-interface">
-			<a href="bounces.html" class="tsd-kind-icon">Bounces</a>
+		<li class="current tsd-kind-enum">
+			<a href="bouncetype.html" class="tsd-kind-icon">Bounce<wbr>Type</a>
 			<ul>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="bounces.html#bounces-1" class="tsd-kind-icon">Bounces</a>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#addresschange" class="tsd-kind-icon">Address<wbr>Change</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="bounces.html#totalcount" class="tsd-kind-icon">Total<wbr>Count</a>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#autoresponder" class="tsd-kind-icon">Auto<wbr>Responder</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#bademailaddress" class="tsd-kind-icon">Bad<wbr>Email<wbr>Address</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#blocked" class="tsd-kind-icon">Blocked</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#challengeverification" class="tsd-kind-icon">Challenge<wbr>Verification</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#dmarcpolicy" class="tsd-kind-icon">DMARCPolicy</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#dnserror" class="tsd-kind-icon">Dns<wbr>Error</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#hardbounce" class="tsd-kind-icon">Hard<wbr>Bounce</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#inbounderror" class="tsd-kind-icon">Inbound<wbr>Error</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#manuallydeactivated" class="tsd-kind-icon">Manually<wbr>Deactivated</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#openrelaytest" class="tsd-kind-icon">Open<wbr>Relay<wbr>Test</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#smtpapierror" class="tsd-kind-icon">SMTPApi<wbr>Error</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#softbounce" class="tsd-kind-icon">Soft<wbr>Bounce</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#spamcomplaint" class="tsd-kind-icon">Spam<wbr>Complaint</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#spamnotification" class="tsd-kind-icon">Spam<wbr>Notification</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#subscribe" class="tsd-kind-icon">Subscribe</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#templaterenderingfailed" class="tsd-kind-icon">Template<wbr>Rendering<wbr>Failed</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#transient" class="tsd-kind-icon">Transient</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#unconfirmed" class="tsd-kind-icon">Unconfirmed</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#unknown" class="tsd-kind-icon">Unknown</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#unsubscribe" class="tsd-kind-icon">Unsubscribe</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="bouncetype.html#virusnotification" class="tsd-kind-icon">Virus<wbr>Notification</a>
 				</li>
 			</ul>
 		</li>
@@ -922,47 +982,259 @@ img { max-width: 100%; }
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
-		<section class="tsd-panel tsd-hierarchy">
-			<h3>Hierarchy</h3>
-			<ul class="tsd-hierarchy">
-				<li>
-					<span class="target">Bounces</span>
-				</li>
-			</ul>
-		</section>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
 					<section class="tsd-index-section ">
-						<h3>Properties</h3>
+						<h3>Enumeration members</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bounces.html#bounces-1" class="tsd-kind-icon">Bounces</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bounces.html#totalcount" class="tsd-kind-icon">Total<wbr>Count</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#addresschange" class="tsd-kind-icon">Address<wbr>Change</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#autoresponder" class="tsd-kind-icon">Auto<wbr>Responder</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#bademailaddress" class="tsd-kind-icon">Bad<wbr>Email<wbr>Address</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#blocked" class="tsd-kind-icon">Blocked</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#challengeverification" class="tsd-kind-icon">Challenge<wbr>Verification</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#dmarcpolicy" class="tsd-kind-icon">DMARCPolicy</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#dnserror" class="tsd-kind-icon">Dns<wbr>Error</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#hardbounce" class="tsd-kind-icon">Hard<wbr>Bounce</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#inbounderror" class="tsd-kind-icon">Inbound<wbr>Error</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#manuallydeactivated" class="tsd-kind-icon">Manually<wbr>Deactivated</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#openrelaytest" class="tsd-kind-icon">Open<wbr>Relay<wbr>Test</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#smtpapierror" class="tsd-kind-icon">SMTPApi<wbr>Error</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#softbounce" class="tsd-kind-icon">Soft<wbr>Bounce</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#spamcomplaint" class="tsd-kind-icon">Spam<wbr>Complaint</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#spamnotification" class="tsd-kind-icon">Spam<wbr>Notification</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#subscribe" class="tsd-kind-icon">Subscribe</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#templaterenderingfailed" class="tsd-kind-icon">Template<wbr>Rendering<wbr>Failed</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#transient" class="tsd-kind-icon">Transient</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#unconfirmed" class="tsd-kind-icon">Unconfirmed</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#unknown" class="tsd-kind-icon">Unknown</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#unsubscribe" class="tsd-kind-icon">Unsubscribe</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="bouncetype.html#virusnotification" class="tsd-kind-icon">Virus<wbr>Notification</a></li>
 						</ul>
 					</section>
 				</div>
 			</section>
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
-			<h2>Properties</h2>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="bounces-1" class="tsd-anchor"></a>
-				<h3>Bounces</h3>
-				<div class="tsd-signature tsd-kind-icon">Bounces<span class="tsd-signature-symbol">:</span> <a href="bounce.html" class="tsd-signature-type">Bounce</a><span class="tsd-signature-symbol">[]</span></div>
+			<h2>Enumeration members</h2>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="addresschange" class="tsd-anchor"></a>
+				<h3>Address<wbr>Change</h3>
+				<div class="tsd-signature tsd-kind-icon">Address<wbr>Change<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;AddressChange&quot;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/bounces/Bounce.ts:33</li>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:9</li>
 					</ul>
 				</aside>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="totalcount" class="tsd-anchor"></a>
-				<h3>Total<wbr>Count</h3>
-				<div class="tsd-signature tsd-kind-icon">Total<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="autoresponder" class="tsd-anchor"></a>
+				<h3>Auto<wbr>Responder</h3>
+				<div class="tsd-signature tsd-kind-icon">Auto<wbr>Responder<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;AutoResponder&quot;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/bounces/Bounce.ts:32</li>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:8</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="bademailaddress" class="tsd-anchor"></a>
+				<h3>Bad<wbr>Email<wbr>Address</h3>
+				<div class="tsd-signature tsd-kind-icon">Bad<wbr>Email<wbr>Address<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;BadEmailAddress&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:17</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="blocked" class="tsd-anchor"></a>
+				<h3>Blocked</h3>
+				<div class="tsd-signature tsd-kind-icon">Blocked<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;Blocked&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:21</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="challengeverification" class="tsd-anchor"></a>
+				<h3>Challenge<wbr>Verification</h3>
+				<div class="tsd-signature tsd-kind-icon">Challenge<wbr>Verification<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;ChallengeVerification&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:16</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="dmarcpolicy" class="tsd-anchor"></a>
+				<h3>DMARCPolicy</h3>
+				<div class="tsd-signature tsd-kind-icon">DMARCPolicy<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;DMARCPolicy&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:24</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="dnserror" class="tsd-anchor"></a>
+				<h3>Dns<wbr>Error</h3>
+				<div class="tsd-signature tsd-kind-icon">Dns<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;DnsError&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:10</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="hardbounce" class="tsd-anchor"></a>
+				<h3>Hard<wbr>Bounce</h3>
+				<div class="tsd-signature tsd-kind-icon">Hard<wbr>Bounce<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;HardBounce&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:4</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="inbounderror" class="tsd-anchor"></a>
+				<h3>Inbound<wbr>Error</h3>
+				<div class="tsd-signature tsd-kind-icon">Inbound<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;InboundError&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:23</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="manuallydeactivated" class="tsd-anchor"></a>
+				<h3>Manually<wbr>Deactivated</h3>
+				<div class="tsd-signature tsd-kind-icon">Manually<wbr>Deactivated<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;ManuallyDeactivated&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:19</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="openrelaytest" class="tsd-anchor"></a>
+				<h3>Open<wbr>Relay<wbr>Test</h3>
+				<div class="tsd-signature tsd-kind-icon">Open<wbr>Relay<wbr>Test<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;OpenRelayTest&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:12</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="smtpapierror" class="tsd-anchor"></a>
+				<h3>SMTPApi<wbr>Error</h3>
+				<div class="tsd-signature tsd-kind-icon">SMTPApi<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;SMTPApiError&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:22</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="softbounce" class="tsd-anchor"></a>
+				<h3>Soft<wbr>Bounce</h3>
+				<div class="tsd-signature tsd-kind-icon">Soft<wbr>Bounce<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;SoftBounce&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:14</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="spamcomplaint" class="tsd-anchor"></a>
+				<h3>Spam<wbr>Complaint</h3>
+				<div class="tsd-signature tsd-kind-icon">Spam<wbr>Complaint<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;SpamComplaint&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:18</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="spamnotification" class="tsd-anchor"></a>
+				<h3>Spam<wbr>Notification</h3>
+				<div class="tsd-signature tsd-kind-icon">Spam<wbr>Notification<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;SpamNotification&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:11</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="subscribe" class="tsd-anchor"></a>
+				<h3>Subscribe</h3>
+				<div class="tsd-signature tsd-kind-icon">Subscribe<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;Subscribe&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:7</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="templaterenderingfailed" class="tsd-anchor"></a>
+				<h3>Template<wbr>Rendering<wbr>Failed</h3>
+				<div class="tsd-signature tsd-kind-icon">Template<wbr>Rendering<wbr>Failed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;TemplateRenderingFailed&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:25</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="transient" class="tsd-anchor"></a>
+				<h3>Transient</h3>
+				<div class="tsd-signature tsd-kind-icon">Transient<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;Transient&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:5</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="unconfirmed" class="tsd-anchor"></a>
+				<h3>Unconfirmed</h3>
+				<div class="tsd-signature tsd-kind-icon">Unconfirmed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;Unconfirmed&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:20</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="unknown" class="tsd-anchor"></a>
+				<h3>Unknown</h3>
+				<div class="tsd-signature tsd-kind-icon">Unknown<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;Unknown&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:13</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="unsubscribe" class="tsd-anchor"></a>
+				<h3>Unsubscribe</h3>
+				<div class="tsd-signature tsd-kind-icon">Unsubscribe<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;Unsubscribe&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:6</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="virusnotification" class="tsd-anchor"></a>
+				<h3>Virus<wbr>Notification</h3>
+				<div class="tsd-signature tsd-kind-icon">Virus<wbr>Notification<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;VirusNotification&quot;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in client/models/bounces/FilteringParameters.ts:15</li>
 					</ul>
 				</aside>
 			</section>
