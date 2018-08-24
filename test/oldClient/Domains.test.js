@@ -92,4 +92,20 @@ describe('Client - Domains', function () {
             client.verifyDomainSPF(domain.ID, done);
         });
     });
+
+    it("verifyDomainDKIM", function (done) {
+        client.createDomain({
+            Name: 'dkim-test-' + domainName
+        }, function (err, domain) {
+            client.verifyDomainDKIM(domain.ID, done);
+        });
+    });
+
+    it("verifyDomainReturnPath", function (done) {
+        client.createDomain({
+            Name: 'returnpath-test-' + domainName
+        }, function (err, domain) {
+            client.verifyDomainReturnPath(domain.ID, done);
+        });
+    });
 });
