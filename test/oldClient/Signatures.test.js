@@ -57,7 +57,7 @@ describe("Client - Sender Signatures", function () {
             Name: emailTest,
             FromEmail: emailTest
         }, function (err, signature) {
-            expect(signature).not.to.eql(undefined);
+            expect(signature).not.to.equal(undefined);
             client.getSenderSignature(signature.ID, done);
         });
     });
@@ -67,7 +67,7 @@ describe("Client - Sender Signatures", function () {
             Name: email,
             FromEmail: email
         }, function (err, signature) {
-            expect(signature).not.to.eql(undefined);
+            expect(signature).not.to.equal(undefined);
             client.editSenderSignature(signature.ID, {
                 Name: email + "-updated"
             }, done);
@@ -79,7 +79,7 @@ describe("Client - Sender Signatures", function () {
             Name: email,
             FromEmail: email
         }, function (err, signature) {
-            expect(signature).not.to.eql(undefined);
+            expect(signature).not.to.equal(undefined);
             client.deleteSenderSignature(signature.ID, done);
         });
     });
@@ -89,7 +89,7 @@ describe("Client - Sender Signatures", function () {
             Name: email,
             FromEmail: email
         }, function (err, signature) {
-            expect(signature).not.to.eql(undefined);
+            expect(signature).not.to.equal(undefined);
             client.resendSenderSignatureConfirmation(signature.ID, done);
         });
     });
@@ -99,7 +99,7 @@ describe("Client - Sender Signatures", function () {
             Name: email,
             FromEmail: email
         }, function (err, signature) {
-            expect(signature).not.to.eql(undefined);
+            expect(signature).not.to.equal(undefined);
             client.verifySenderSignatureSPF(signature.ID, done);
         });
     });

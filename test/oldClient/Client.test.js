@@ -24,18 +24,18 @@ describe('Client', function () {
                 ssl: false
             });
 
-            expect(client).not.to.eql(null);
-            expect(client.options.apiKey).to.eql(serverToken);
-            expect(client.options.testOption).to.eql('asdf');
-            expect(client.options.ssl).to.eql(false);
+            expect(client).not.to.equal(null);
+            expect(client.options.apiKey).to.equal(serverToken);
+            expect(client.options.testOption).to.equal('asdf');
+            expect(client.options.ssl).to.equal(false);
         });
 
         it('.ssl', function () {
-            expect(client.options.apiKey).to.eql(serverToken)
+            expect(client.options.apiKey).to.equal(serverToken)
         });
 
         it('.apiKey', function () {
-            expect(client.options.apiKey).to.eql(serverToken)
+            expect(client.options.apiKey).to.equal(serverToken)
         });
     });
 });
