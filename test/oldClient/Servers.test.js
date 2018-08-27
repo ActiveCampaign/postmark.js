@@ -12,7 +12,7 @@ describe('Client - Servers', function () {
     this.timeout(10000);
     var client = null;
     var serverToken = testingKeys.get('SERVER_TOKEN');
-    
+
     beforeEach(function () {
         client = new postmark.Client(serverToken);
     });
