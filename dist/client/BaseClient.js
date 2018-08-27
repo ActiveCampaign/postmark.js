@@ -8,7 +8,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var request = require("request-promise");
+var request = require("request");
 var ErrorHandler_1 = require("./ErrorHandler");
 var models_1 = require("./models");
 var packageJson = require("../../package.json");
@@ -73,7 +73,7 @@ var BaseClient = /** @class */ (function () {
         var _this = this;
         return this.httpRequest(method, path, queryParameters, body)
             .then(function (response) {
-            return response;
+            return response.body;
         })
             .catch(function (error) {
             throw _this.errorHandler.generateError(error);
@@ -91,8 +91,7 @@ var BaseClient = /** @class */ (function () {
                 .then(function (response) {
                 callback(null, response);
             })
-                .tapCatch(function (error) { return callback(error, null); })
-                .suppressUnhandledRejections();
+                .catch(function (error) { return callback(error, null); });
         }
     };
     /**
@@ -106,14 +105,24 @@ var BaseClient = /** @class */ (function () {
      * @returns A promise that will complete when the API responds.
      */
     BaseClient.prototype.httpRequest = function (method, path, queryParameters, body) {
-        return request(this.getHttpRequestURL(path), {
-            method: method.toString(),
-            headers: this.getComposedHttpRequestHeaders(),
-            qs: queryParameters,
-            body: body,
-            timeout: this.getRequestTimeoutInSeconds(),
-            json: true,
-            gzip: true
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            request(_this.getHttpRequestURL(path), {
+                method: method.toString(),
+                headers: _this.getComposedHttpRequestHeaders(),
+                qs: queryParameters,
+                body: body,
+                timeout: _this.getRequestTimeoutInSeconds(),
+                json: true,
+                gzip: true
+            }, function (err, response) {
+                if (err) {
+                    reject(err);
+                }
+                else {
+                    resolve(response);
+                }
+            });
         });
     };
     BaseClient.prototype.getRequestTimeoutInSeconds = function () {

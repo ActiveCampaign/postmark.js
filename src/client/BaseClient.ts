@@ -1,6 +1,4 @@
-import {Promise} from 'bluebird'
-import Bluebird = require("bluebird");
-import * as request from 'request-promise';
+import * as request from 'request';
 
 import {ClientOptions} from './models'
 import {ErrorHandler} from "./ErrorHandler";
@@ -76,7 +74,7 @@ export default abstract class BaseClient {
     private processRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object,
                               body: (null | object), callback?: Callback<T>): Promise<T> {
 
-        let httpRequest: Bluebird<T> = this.processHttpRequest(method, path, queryParameters, body);
+        let httpRequest: Promise<T> = this.processHttpRequest(method, path, queryParameters, body);
         this.processCallbackRequest(httpRequest, callback);
         return httpRequest;
     }
@@ -91,10 +89,10 @@ export default abstract class BaseClient {
      *
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    private processHttpRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object, body: (null | object)): Bluebird<T> {
+    private processHttpRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object, body: (null | object)): Promise<T> {
         return this.httpRequest(method, path, queryParameters, body)
             .then(response => {
-                return <T>response;
+                return <T>response.body;
             })
             .catch(error => {
                 throw this.errorHandler.generateError(error);
@@ -107,14 +105,13 @@ export default abstract class BaseClient {
      * @param httpRequest - HTTP request for which callback will be executed
      * @param callback - callback function to be executed.
      */
-    private processCallbackRequest<T>(httpRequest: Bluebird<T>, callback?: Callback<T>): void {
+    private processCallbackRequest<T>(httpRequest: Promise<T>, callback?: Callback<T>): void {
         if (callback) {
             httpRequest
                 .then(response => {
                     callback(null, response);
                 })
-                .tapCatch(error => callback(error, null))
-                .suppressUnhandledRejections();
+                .catch(error => callback(error, null))
         }
     }
 
@@ -128,15 +125,21 @@ export default abstract class BaseClient {
      *
      * @returns A promise that will complete when the API responds.
      */
-    private httpRequest(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object), body: (null | object)): request.RequestPromise {
-        return request(this.getHttpRequestURL(path), {
-            method: method.toString(),
-            headers: this.getComposedHttpRequestHeaders(),
-            qs: queryParameters,
-            body: body,
-            timeout: this.getRequestTimeoutInSeconds(),
-            json: true,
-            gzip: true
+    private httpRequest(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object), 
+        body: (null | object)): Promise<request.Response> {
+        return new Promise((resolve, reject)=>{
+            request(this.getHttpRequestURL(path), {
+                method: method.toString(),
+                headers: this.getComposedHttpRequestHeaders(),
+                qs: queryParameters,
+                body: body,
+                timeout: this.getRequestTimeoutInSeconds(),
+                json: true,
+                gzip: true
+            }, (err, response)=>{
+                if(err){ reject(err); }
+                else{ resolve(response);}
+            });
         });
     }
 

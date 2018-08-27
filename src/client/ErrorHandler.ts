@@ -1,5 +1,5 @@
 import {PostmarkErrors} from "./models";
-import * as requestPromiseErrors from "request-promise/errors";
+import * as request from "request";
 
 /**
 * This class handles all client request errors. Client response error is clasified so that proper response error is generated.
@@ -17,11 +17,11 @@ export class ErrorHandler {
     public generateError(error: Error): PostmarkErrors.PostmarkError {
         switch (error.name) {
             case "StatusCodeError":
-                return this.buildStatusError(<requestPromiseErrors.StatusCodeError>error);
+                return this.buildStatusError(error);
             case "RequestError":
-                return this.buildRequestError(<requestPromiseErrors.RequestError>error);
+                return this.buildRequestError(error);
             case "TransformError":
-                return this.buildTransformError(<requestPromiseErrors.TransformError>error);
+                return this.buildTransformError(error);
             default:
                 return this.buildError(error);
         }
@@ -45,7 +45,7 @@ export class ErrorHandler {
      *
      * @returns properly formatted Postmark error.
      */
-    private buildRequestError(error: requestPromiseErrors.RequestError):PostmarkErrors.PostmarkHttpError {
+    private buildRequestError(error: Error):PostmarkErrors.PostmarkHttpError {
         return new PostmarkErrors.PostmarkHttpError(error.message, -1, 500)
     }
 
@@ -56,7 +56,7 @@ export class ErrorHandler {
      *
      * @returns properly formatted Postmark error.
      */
-    private buildTransformError(error: requestPromiseErrors.TransformError):PostmarkErrors.PostmarkHttpError {
+    private buildTransformError(error: Error):PostmarkErrors.PostmarkHttpError {
         return new PostmarkErrors.PostmarkHttpError(error.message, -1, 500);
     }
 
@@ -67,7 +67,7 @@ export class ErrorHandler {
      *
      * @returns properly formatted Postmark error.
      */
-    private buildStatusError(error: requestPromiseErrors.StatusCodeError) {
+    private buildStatusError(error: any) {
         switch (error.statusCode) {
             case 401:
                 return new PostmarkErrors.InvalidAPIKeyError(error.error.Message, error.error.ErrorCode, error.statusCode);

@@ -1,4 +1,3 @@
-import {Promise} from 'bluebird';
 import BaseClient from './BaseClient';
 
 import {
