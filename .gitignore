@@ -8,5 +8,6 @@ tests/testing_keys.json
 **/*.iml
 
 dist/**/*map
+dist/**/*test*
 dist/test*
 src/test*
