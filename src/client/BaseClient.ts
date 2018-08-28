@@ -90,7 +90,7 @@ export default abstract class BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     private processHttpRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object, body: (null | object)): Promise<T> {
-        return this.httpRequest(method, path, queryParameters, body)
+        return this.promisifiedHttpRequest(method, path, queryParameters, body)
             .then(response => {
                 return <T>response.body;
             })
@@ -122,12 +122,9 @@ export default abstract class BaseClient {
      * @param path - API URL endpoint.
      * @param queryParameters - Querystring parameters used for http request.
      * @param body - Data sent with http request.
-     *
-     * @returns A promise that will complete when the API responds.
      */
-    private httpRequest(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object), 
-        body: (null | object)): Promise<request.Response> {
-        return new Promise((resolve, reject)=>{
+    private httpRequest(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object),
+        body: (null | object), callback:any):void {
             request(this.getHttpRequestURL(path), {
                 method: method.toString(),
                 headers: this.getComposedHttpRequestHeaders(),
@@ -136,9 +133,29 @@ export default abstract class BaseClient {
                 timeout: this.getRequestTimeoutInSeconds(),
                 json: true,
                 gzip: true
-            }, (err, response)=>{
-                if(err){ reject(err); }
-                else{ resolve(response);}
+            }, callback);
+    }
+
+    /**
+     * Handle http request to return it as Promise.
+     *
+     * @param method - Which type of http request will be executed.
+     * @param path - API URL endpoint.
+     * @param queryParameters - Querystring parameters used for http request.
+     * @param body - Data sent with http request.
+     *
+     * @returns A promise that will complete when the API responds.
+     */
+    private promisifiedHttpRequest(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object),
+                                      body: (null | object)): Promise<request.Response> {
+
+        return new Promise((resolve, reject)=>{
+            this.httpRequest(method, path, queryParameters, body, (error: Error, response: request.Response) => {
+                if (error) { reject(error); }
+                else {
+                    if (response.statusCode !== 200) { reject(response); }
+                    else { resolve(response); }
+                }
             });
         });
     }

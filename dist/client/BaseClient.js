@@ -71,7 +71,7 @@ var BaseClient = /** @class */ (function () {
      */
     BaseClient.prototype.processHttpRequest = function (method, path, queryParameters, body) {
         var _this = this;
-        return this.httpRequest(method, path, queryParameters, body)
+        return this.promisifiedHttpRequest(method, path, queryParameters, body)
             .then(function (response) {
             return response.body;
         })
@@ -101,26 +101,42 @@ var BaseClient = /** @class */ (function () {
      * @param path - API URL endpoint.
      * @param queryParameters - Querystring parameters used for http request.
      * @param body - Data sent with http request.
+     */
+    BaseClient.prototype.httpRequest = function (method, path, queryParameters, body, callback) {
+        request(this.getHttpRequestURL(path), {
+            method: method.toString(),
+            headers: this.getComposedHttpRequestHeaders(),
+            qs: queryParameters,
+            body: body,
+            timeout: this.getRequestTimeoutInSeconds(),
+            json: true,
+            gzip: true
+        }, callback);
+    };
+    /**
+     * Handle http request to return it as Promise.
+     *
+     * @param method - Which type of http request will be executed.
+     * @param path - API URL endpoint.
+     * @param queryParameters - Querystring parameters used for http request.
+     * @param body - Data sent with http request.
      *
      * @returns A promise that will complete when the API responds.
      */
-    BaseClient.prototype.httpRequest = function (method, path, queryParameters, body) {
+    BaseClient.prototype.promisifiedHttpRequest = function (method, path, queryParameters, body) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            request(_this.getHttpRequestURL(path), {
-                method: method.toString(),
-                headers: _this.getComposedHttpRequestHeaders(),
-                qs: queryParameters,
-                body: body,
-                timeout: _this.getRequestTimeoutInSeconds(),
-                json: true,
-                gzip: true
-            }, function (err, response) {
-                if (err) {
-                    reject(err);
+            _this.httpRequest(method, path, queryParameters, body, function (error, response) {
+                if (error) {
+                    reject(error);
                 }
                 else {
-                    resolve(response);
+                    if (response.statusCode !== 200) {
+                        reject(response);
+                    }
+                    else {
+                        resolve(response);
+                    }
                 }
             });
         });

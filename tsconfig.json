@@ -12,5 +12,6 @@
     "noImplicitAny" :true,
     "noImplicitThis": true,
     "lib" : ["es2017"]
-  }
+  },
+  "exclude": ["**/*.test.ts"]
 }

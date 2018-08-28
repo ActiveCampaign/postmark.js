@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var models_1 = require("./models");
 /**
-* This class handles all client request errors. Client response error is clasified so that proper response error is generated.
-*
-**/
+ * This class handles all client request errors. Client response error is clasified so that proper response error is generated.
+ *
+ **/
 var ErrorHandler = /** @class */ (function () {
     function ErrorHandler() {
     }
@@ -16,15 +16,11 @@ var ErrorHandler = /** @class */ (function () {
      * @returns properly formatted Postmark error.
      */
     ErrorHandler.prototype.generateError = function (error) {
-        switch (error.name) {
-            case "StatusCodeError":
-                return this.buildStatusError(error);
-            case "RequestError":
-                return this.buildRequestError(error);
-            case "TransformError":
-                return this.buildTransformError(error);
-            default:
-                return this.buildError(error);
+        if (error.statusCode !== undefined) {
+            return this.buildStatusError(error);
+        }
+        else {
+            return this.buildError(error);
         }
     };
     /**
@@ -38,26 +34,6 @@ var ErrorHandler = /** @class */ (function () {
         return new models_1.PostmarkErrors.PostmarkError(error.message);
     };
     /**
-     * Build Postmark error. Error code from Postmark and HTTP request error can not be identified for this error, so they will be default.
-     *
-     * @param error - http request library error, that will be transformed to Postmark error.
-     *
-     * @returns properly formatted Postmark error.
-     */
-    ErrorHandler.prototype.buildRequestError = function (error) {
-        return new models_1.PostmarkErrors.PostmarkHttpError(error.message, -1, 500);
-    };
-    /**
-     * Build Postmark error. Error code from Postmark and HTTP request error can not be identified for this error, so they will be default.
-     *
-     * @param error - http request library error, that will be transformed to Postmark error.
-     *
-     * @returns properly formatted Postmark error.
-     */
-    ErrorHandler.prototype.buildTransformError = function (error) {
-        return new models_1.PostmarkErrors.PostmarkHttpError(error.message, -1, 500);
-    };
-    /**
      * Build Postmark error based on HTTP request status.
      *
      * @param error - http request library error, that will be transformed to Postmark error.
@@ -67,15 +43,15 @@ var ErrorHandler = /** @class */ (function () {
     ErrorHandler.prototype.buildStatusError = function (error) {
         switch (error.statusCode) {
             case 401:
-                return new models_1.PostmarkErrors.InvalidAPIKeyError(error.error.Message, error.error.ErrorCode, error.statusCode);
+                return new models_1.PostmarkErrors.InvalidAPIKeyError(error.body.Message, error.body.ErrorCode, error.statusCode);
             case 422:
-                return new models_1.PostmarkErrors.ApiInputError(error.error.Message, error.error.ErrorCode, error.statusCode);
+                return new models_1.PostmarkErrors.ApiInputError(error.body.Message, error.body.ErrorCode, error.statusCode);
             case 500:
-                return new models_1.PostmarkErrors.InternalServerError(error.error.Message, error.error.ErrorCode, error.statusCode);
+                return new models_1.PostmarkErrors.InternalServerError(error.body.Message, error.body.ErrorCode, error.statusCode);
             case 503:
-                return new models_1.PostmarkErrors.ServiceUnavailablerError(error.error.Message, error.error.ErrorCode, error.statusCode);
+                return new models_1.PostmarkErrors.ServiceUnavailablerError(error.body.Message, error.body.ErrorCode, error.statusCode);
             default:
-                return new models_1.PostmarkErrors.UnknownError(error.error.Message, error.error.ErrorCode, error.statusCode);
+                return new models_1.PostmarkErrors.UnknownError(error.body.Message, error.body.ErrorCode, error.statusCode);
         }
     };
     return ErrorHandler;
