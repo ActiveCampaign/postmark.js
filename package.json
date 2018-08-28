@@ -39,8 +39,8 @@
   },
   "scripts": {
     "compile": "node_modules/.bin/tsc && git add -A ./dist",
-    "test": "node_modules/.bin/mocha test/oldClient/**/*test.js",
-    "test-new": "node_modules/.bin/mocha test/newClient/**/*test.js",
+    "test-old": "node_modules/.bin/mocha test/oldClient/**/*test.js",
+    "test": "node_modules/mocha/bin/mocha -r ts-node/register test/newClient/**/*test.ts",
     "watchtests": "node_modules/.bin/mocha -R list -w --recursive -G test/oldClient/**/*test.js",
     "compile-docs": "echo 'Generating docs...' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/typedoc --options typedoc.json && git add -A ./docs && echo 'Generated docs!'",
     "pull-docs": "git subtree pull --prefix docs origin gh-pages",
@@ -60,7 +60,10 @@
     "test"
   ],
   "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.5",
     "@types/request": "^2.47.1",
+    "ts-node": "^7.0.1",
     "chai": "^4.1.2",
     "merge": "1.2.0",
     "mocha": "3.5.3",

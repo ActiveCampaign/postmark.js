@@ -11,5 +11,5 @@
   "excludeExternals": true,
   "externalPattern": "node_modules/**",
   "exclude": ["node_modules/**"],
-  "ignoreCompilerErrors":true
+  "ignoreCompilerErrors":false
 }
