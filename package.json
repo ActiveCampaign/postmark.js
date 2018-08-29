@@ -38,6 +38,7 @@
     "lib": "./dist/index.js"
   },
   "scripts": {
+    "cleanup": "rm -R ./dist",
     "compile": "node_modules/.bin/tsc && git add -A ./dist",
     "test-old": "node_modules/.bin/mocha test/oldClient/**/*test.js",
     "test": "node_modules/mocha/bin/mocha -r ts-node/register test/newClient/**/*test.ts",
@@ -55,6 +56,7 @@
     "url": "https://github.com/wildbit/postmark.js/issues"
   },
   "precommit": [
+    "cleanup",
     "compile",
     "compile-docs",
     "test"

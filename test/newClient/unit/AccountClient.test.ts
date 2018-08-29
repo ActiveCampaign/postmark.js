@@ -1,21 +1,20 @@
 'use strict';
 
-import { ServerClient } from '../../src/index'
+import { ServerClient } from '../../../src/index'
 import { expect } from 'chai';
 import 'mocha';
-import {PostmarkError} from "../../src/client/models/client/PostmarkError";
 
 const nconf = require('nconf');
-const packageJson = require("../../package.json")
-const testingKeys = nconf.env().file({file: __dirname + '/../../testing_keys.json'});
+const packageJson = require("../../../package.json")
+const testingKeys = nconf.env().file({file: __dirname + '/../../../testing_keys.json'});
 const clientVersion = packageJson.version;
 
-describe('ServerClient', () => {
+describe('AccountClient', () => {
     let client:ServerClient;
-    const serverToken:string = testingKeys.get('SERVER_TOKEN');
+    const accountToken:string = testingKeys.get('ACCOUNT_TOKEN');
 
     beforeEach(function () {
-        client = new ServerClient(serverToken);
+        client = new ServerClient(accountToken);
     });
 
     describe('#new', () => {
@@ -56,8 +55,25 @@ describe('ServerClient', () => {
     });
 
     describe('errors', () => {
+        const invalidTokenError:string = 'InvalidAPIKeyError';
+
         it('empty token', () => {
             expect(() => new ServerClient('')).to.throw('A valid API token must be provided when creating a ClientOptions');
+        });
+
+        it('promise error', () => {
+            let client: ServerClient = new ServerClient('testToken');
+            return client.getBounces().then(data => {}, error => {
+                expect(error.name).to.equal(invalidTokenError)
+            });
+        });
+
+        it('callback error', () => {
+            let client: ServerClient = new ServerClient('testToken');
+            return client.getBounces({}, (error, data) => {
+                if (error) { expect(error.name).to.equal(invalidTokenError); }
+                expect(data).to.equal(null);
+            }).then(data => {}, error => {})
         });
     });
 });
