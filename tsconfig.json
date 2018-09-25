@@ -11,7 +11,8 @@
     "moduleResolution": "node",              /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
     "noImplicitAny" :true,
     "noImplicitThis": true,
-    "lib" : ["es2017"]
+    "lib": ["es5", "es2017", "dom"],
+    "declaration": true
   },
   "exclude": ["**/*.test.ts"]
 }

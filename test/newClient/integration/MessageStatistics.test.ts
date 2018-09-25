@@ -36,7 +36,7 @@ describe('Client - Click Statistics', () => {
         const stats = await client.getTrackedEmailCounts();
         expect(stats.Tracked).to.be.gte(0)
     });
-    
+
     it('getOutboundOverview', async () => {
         var now:Date = new Date();
         var yesterday = new Date(now.valueOf() - (24 * 3600 * 1000));
