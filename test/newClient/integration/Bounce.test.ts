@@ -5,7 +5,9 @@ import 'mocha';
 const nconf = require('nconf');
 const testingKeys = nconf.env().file({file: __dirname + '/../../../testing_keys.json'});
 
-describe('Bounce', () => {
+describe('Bounce', function() {
+    this.timeout(5000);
+
     let client:ServerClient;
     const serverToken:string = testingKeys.get('SERVER_TOKEN');
 

@@ -13,12 +13,12 @@ As the official Node.js library for Postmark, postmark.js has support for the en
 
 ## Usage
 
-Please see the [wiki](https://github.com/wildbit/postmark.js/wiki) for detailed instructions about sending email, using the bounce api, and other Postmark API options.
+Please see the [wiki](https://github.com/wildbit/postmark.js/wiki) for quick start tutorial and detailed instructions about sending email at our [documentation page](https://wildbit.github.io/postmark.js/). 
 For details about Postmark API in general, please check out [Postmark developer docs](https://postmarkapp.com/developer).
 
 ### Installation
 
-Installing `postmark` is super simple. Use the following command in your terminal:
+Installing `postmark` javascript library is super simple. Use the following command in your terminal:
 
 ```bash
 npm install postmark
@@ -26,4 +26,10 @@ npm install postmark
 
 ## Issues & Comments
 
-Feel free to contact us if you encounter any issues with the library or Postmark API. Please leave all comments, bugs, requests and issues on the Issues page.
+Feel free to contact us if you encounter any issues with the library or Postmark API. 
+Please leave all comments, bugs, requests and issues on the Issues page.
+
+## License
+
+The Postmark Java Library is licensed under the [MIT](http://www.opensource.org/licenses/mit-license.php) license. 
+Refere to the [LICENSE](https://github.com/wildbit/postmark-java/blob/master/LICENSE) file for more information.

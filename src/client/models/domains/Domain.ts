@@ -8,7 +8,7 @@ export interface Domain {
 }
 
 export interface DomainOptions {
-    Name: string;
+    Name?: string;
     ReturnPathDomain?: string;
 }
 

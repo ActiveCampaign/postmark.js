@@ -27,8 +27,8 @@ export default abstract class BaseClient {
     public clientOptions: ClientOptions.Configuration;
     public clientVersion: string;
     protected errorHandler: ErrorHandler;
-    private authHeader: string;
-    private token: string;
+    private readonly authHeader: string;
+    private readonly token: string;
 
     protected constructor(token: string, authHeader: string, configOptions?: ClientOptions.Configuration) {
         this.verifyToken(token);

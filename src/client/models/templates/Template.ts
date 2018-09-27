@@ -5,10 +5,11 @@ export interface TemplateOptions {
     Subject?: string;
     HtmlBody?: string;
     TextBody?: string;
-    Alias?: string;
+    Alias?: string | null;
 }
 
 export interface Template extends TemplateOptions {
+    Name: string;
     TemplateId: number;
     AssociatedServerId?: number;
     Active: boolean;
@@ -21,7 +22,7 @@ export interface Templates {
             Active: boolean;
             TemplateId: number;
             Name: string;
-            Alias: string | null;
+            Alias?: string | null;
         }
         ]
 }
@@ -31,10 +32,9 @@ export interface TemplateValidationOptions {
     HtmlBody?: string;
     TextBody?: string;
     TestRenderModel?: object;
-    
 }
 
-interface ValidationSection {
+export interface ValidationSection {
     ContentIsValid: boolean;
     ValidationErrors: object,
     RenderedContent: string;
