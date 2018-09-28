@@ -1,23 +1,20 @@
 import * as postmark from '../../../src/index'
+import {Servers, Server, ServerOptions, DefaultResponse} from "../../../src/client/models";
+
 import { expect } from 'chai';
 import 'mocha';
-import Servers from "../../../src/client/models/server/Servers";
-import {Server, ServerOptions} from "../../../src/client/models";
-import DefaultResponse from "../../../src/client/models/client/PostmarkResponse";
 
 const nconf = require('nconf');
 const testingKeys = nconf.env().file({file: __dirname + '/../../../testing_keys.json'});
 
 describe('Servers', function() {
-    this.timeout(5000);
-
-    let client:postmark.AccountClient;
     const accountToken:string = testingKeys.get('ACCOUNT_TOKEN');
+    const client:postmark.AccountClient = new postmark.AccountClient(accountToken);
     const serverNamePrefix: string = 'node-js-test-server';
 
-    function serverToTest(name: string) {
-        return `${serverNamePrefix}-${name}`
-    }
+    function serverToTest():ServerOptions {
+        return { Name: `${serverNamePrefix}-${Date.now()}`};
+    };
 
     async function cleanup() {
         let client = new postmark.AccountClient(accountToken);
@@ -32,19 +29,15 @@ describe('Servers', function() {
     before(cleanup);
     after(cleanup);
 
-    beforeEach(function () {
-        client = new postmark.AccountClient(accountToken);
-    });
-
     it('getServers', async() => {
         const servers: Servers = await client.getServers();
         expect(servers.TotalCount).to.gte(1);
     });
 
     it("createServer", async () => {
-        const name: string = serverToTest('create-test-servers');
-        const serverDetails: Server = await client.createServer({Name: name});
-        expect(serverDetails.Name).to.equal(name);
+        const serverOptions: ServerOptions = serverToTest();
+        const serverDetails: Server = await client.createServer(serverOptions);
+        expect(serverDetails.Name).to.equal(serverOptions.Name);
     });
 
     it('editServer', async() => {
@@ -62,8 +55,7 @@ describe('Servers', function() {
     });
 
     it("deleteServer", async () => {
-        const name: string = serverToTest('delete-test-servers');
-        const serverDetails: Server = await client.createServer({Name: name});
+        const serverDetails: Server = await client.createServer(serverToTest());
         const result: DefaultResponse = await client.deleteServer(serverDetails.ID);
         expect(result.Message.length).to.gte(1);
     });

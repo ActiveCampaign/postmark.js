@@ -1,6 +1,5 @@
-'use strict';
+import * as postmark from '../../../src/index'
 
-import { ServerClient } from '../../../src/index'
 import { expect } from 'chai';
 import 'mocha';
 
@@ -9,12 +8,12 @@ const packageJson = require("../../../package.json")
 const testingKeys = nconf.env().file({file: __dirname + '/../../../testing_keys.json'});
 const clientVersion = packageJson.version;
 
-describe('ServerClient', () => {
-    let client:ServerClient;
+describe('postmark.ServerClient', () => {
+    let client:postmark.ServerClient;
     const serverToken:string = testingKeys.get('SERVER_TOKEN');
 
     beforeEach(function () {
-        client = new ServerClient(serverToken);
+        client = new postmark.ServerClient(serverToken);
     });
 
     describe('#new', () => {
@@ -58,22 +57,23 @@ describe('ServerClient', () => {
         const invalidTokenError:string = 'InvalidAPIKeyError';
 
         it('empty token', () => {
-            expect(() => new ServerClient('')).to.throw('A valid API token must be provided when creating a ClientOptions');
+            expect(() => new postmark.ServerClient('')).to.throw('A valid API token must be provided when creating a ClientOptions');
         });
 
         it('promise error', () => {
-            let client: ServerClient = new ServerClient('testToken');
+            let client: postmark.ServerClient = new postmark.ServerClient('testToken');
             return client.getBounces().then(data => {}, error => {
                 expect(error.name).to.equal(invalidTokenError)
             });
         });
 
-        it('callback error', () => {
-            let client: ServerClient = new ServerClient('testToken');
-            return client.getBounces({}, (error, data) => {
-                if (error) { expect(error.name).to.equal(invalidTokenError); }
+        it('callback error', function (done) {
+            let client: postmark.ServerClient = new postmark.ServerClient('testToken');
+            client.getBounces({}, (error: any, data) => {
                 expect(data).to.equal(null);
-            }).then(data => {}, error => {})
+                expect(error.name).to.equal(invalidTokenError);
+                done();
+            });
         });
     });
 });

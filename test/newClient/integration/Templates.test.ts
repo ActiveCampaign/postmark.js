@@ -1,12 +1,13 @@
 import * as postmark from '../../../src/index'
 import {
-    Template, TemplateMessage,
+    Template,
+    TemplateMessage,
     TemplateOptions,
     Templates,
     TemplateValidation,
-    TemplateValidationOptions
+    TemplateValidationOptions,
+    DefaultResponse
 } from "../../../src/client/models";
-import DefaultResponse from "../../../src/client/models/client/PostmarkResponse";
 
 import {expect} from 'chai';
 import 'mocha';
@@ -15,28 +16,19 @@ const nconf = require('nconf');
 const testingKeys = nconf.env().file({file: __dirname + '/../../../testing_keys.json'});
 
 describe('Client - Templates', function () {
-    this.timeout(5000);
-    this.retries(2);
-
-    let client: postmark.ServerClient;
     const serverToken: string = testingKeys.get('SERVER_TOKEN');
+    let client: postmark.ServerClient = new postmark.ServerClient(serverToken);
     const templatePrefix: string = 'testing-template-node-js';
     
-    function defaultTemplateToCreate(name:string) {
-        let template: TemplateOptions = {
-            Name: name,
+    function templateToCreate(): TemplateOptions {
+        return {
+            Name: `${templatePrefix}-${Date.now()}`,
             TextBody: 'Text body',
             HtmlBody: 'Html body',
             Subject: 'Subject'
         };
+    };
 
-        return template;
-    };
-    
-    function templateToTest(name:string) {
-        return `${name}-${templatePrefix}}`;
-    };
-    
     async function cleanup() {
         const client = new postmark.ServerClient(serverToken);
         const templates:Templates = await client.getTemplates();
@@ -47,10 +39,6 @@ describe('Client - Templates', function () {
         };
     };
 
-    beforeEach(function () {
-        client = new postmark.ServerClient(serverToken);
-    });
-
     before(cleanup);
     after(cleanup);
 
@@ -60,30 +48,26 @@ describe('Client - Templates', function () {
     });
 
     it('getTemplate', async () => {
-        const name: string = templateToTest('get-template-test');
-        const template: Template = await client.createTemplate(defaultTemplateToCreate(name));
+        const template: Template = await client.createTemplate(templateToCreate());
         const result: Template = await client.getTemplate(template.TemplateId);
         expect(result.TemplateId).to.above(-1);
     });
 
     it("createTemplate", async () => {
-        const name: string = templateToTest('create-test');
-        const result: Template = await client.createTemplate(defaultTemplateToCreate(name));
+        const result: Template = await client.createTemplate(templateToCreate());
         expect(result.TemplateId).to.above(0);
     });
 
     it('editTemplate', async () => {
-        const name: string = templateToTest('edit-template-test');
-        const updatedName: string = templateToTest('edit-update-template-test');
-        const subject = 'test edit';
-        const template: Template = await client.createTemplate(defaultTemplateToCreate(name));
-        const result: Template = await client.editTemplate(template.TemplateId, { Name: updatedName, Subject: subject});
+        const templateOptions: TemplateOptions = templateToCreate();
+        const updatedName: string = `${templateOptions.Name}-updated`
+        const template: Template = await client.createTemplate(templateOptions);
+        const result: Template = await client.editTemplate(template.TemplateId, { Name: updatedName});
         expect(result.Name).to.equal(updatedName);
     });
 
     it("deleteTemplate", async () => {
-        const name: string = templateToTest('delete-test');
-        const template: Template = await client.createTemplate(defaultTemplateToCreate(name));
+        const template: Template = await client.createTemplate(templateToCreate());
         const result: DefaultResponse = await client.deleteTemplate(template.TemplateId);
         expect(result.Message.length).to.above(0);
     });
@@ -96,7 +80,7 @@ describe('Client - Templates', function () {
             TextBody: "text body for template {{id}}!",
             HtmlBody: "{{content}}",
             Subject: "{{subject}}"
-        }
+        };
 
         const templateValidation: TemplateValidation = await client.validateTemplate(templateToValidate);
         expect(templateValidation.TextBody.ContentIsValid).to.eq(true);
@@ -107,8 +91,7 @@ describe('Client - Templates', function () {
         const toAddress: string = testingKeys.get('EMAIL_RECIPIENT_ADDRESS');
 
         it("sendEmailWithTemplate", async () => {
-            const name: string = templateToTest('send-test');
-            const template: Template = await client.createTemplate(defaultTemplateToCreate(name));
+            const template: Template = await client.createTemplate(templateToCreate());
 
             let templateMessage:TemplateMessage = {
                 To: toAddress,

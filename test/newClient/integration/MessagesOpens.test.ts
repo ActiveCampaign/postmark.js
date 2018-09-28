@@ -1,19 +1,15 @@
 import * as postmark from '../../../src/index'
+import { EmailClientUsageCounts, EmailPlaformUsageCounts, OpenCounts, OutboundMessageOpens } from "../../../src/client/models";
+
 import { expect } from 'chai';
 import 'mocha';
-
-import { EmailClientUsageCounts, EmailPlaformUsageCounts, OpenCounts, OutboundMessageOpens } from "../../../src/client/models";
 
 const nconf = require('nconf');
 const testingKeys = nconf.env().file({file: __dirname + '/../../../testing_keys.json'});
 
-describe('Client - Message Statistics', () => {
-    let client:postmark.ServerClient;
+describe('Client - Message Statistics', function() {
     const serverToken:string = testingKeys.get('SERVER_TOKEN');
-
-    beforeEach(function () {
-        client = new postmark.ServerClient(serverToken);
-    });
+    const client:postmark.ServerClient = new postmark.ServerClient(serverToken);
 
     it('getMessageOpens', async () =>{
         const result: OutboundMessageOpens = await client.getMessageOpens();

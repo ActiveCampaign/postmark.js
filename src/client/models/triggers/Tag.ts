@@ -3,8 +3,10 @@ export interface TagTriggerOptions {
     TrackOpens?: boolean;
 }
 
-export interface TagTrigger extends TagTriggerOptions{
+export interface TagTrigger {
     ID: number;
+    MatchName: string;
+    TrackOpens: boolean;
 }
 
 export interface TagTriggers {

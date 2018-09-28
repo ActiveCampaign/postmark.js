@@ -1,17 +1,17 @@
-import { ServerClient } from '../../../src/index'
+import * as postmark from '../../../src/index'
 import { expect } from 'chai';
 import 'mocha';
 
 const nconf = require('nconf');
 const testingKeys = nconf.env().file({file: __dirname + '/../../../testing_keys.json'});
 
-describe('Client - Click Statistics', () => {
-    let client:ServerClient;
+describe('Client - Message Statistics', function() {
     const serverToken:string = testingKeys.get('SERVER_TOKEN');
+    const client:postmark.ServerClient = new postmark.ServerClient(serverToken);
 
-    beforeEach(function () {
-        client = new ServerClient(serverToken);
-    });
+    function formattedDate(date: Date) {
+        return '' + date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    }
 
     it('getDeliveryStatistics', async () => {
         const stats = await client.getDeliveryStatistics();
@@ -40,11 +40,10 @@ describe('Client - Click Statistics', () => {
     it('getOutboundOverview', async () => {
         var now:Date = new Date();
         var yesterday = new Date(now.valueOf() - (24 * 3600 * 1000));
-        var toDate = '' + now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
-        var fromDate = '' + yesterday.getFullYear() + '-' + (yesterday.getMonth() + 1) + '-' + yesterday.getDate();
+        var toDate = formattedDate(now);
+        var fromDate = formattedDate(yesterday);
 
         const stats = await client.getOutboundOverview({fromDate: fromDate, toDate: toDate});
         expect(stats.Sent).to.be.gte(0);
     });
-
 });
