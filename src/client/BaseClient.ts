@@ -8,7 +8,7 @@ const packageJson = require("../../package.json")
 const CLIENT_VERSION = packageJson.version;
 
 /**
- * Base client class from which both the AccountClient and ServerClient classes can be implemented.
+ * Base client class from which client classes can be implemented, in our case, AccountClient and ServerClient classes.
  * This class is NOT intended to be instantiated directly.
  */
 export default abstract class BaseClient {

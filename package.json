@@ -39,9 +39,7 @@
     "lib": "./dist/index.js"
   },
   "scripts": {
-    "cleanup": "rm -r ./dist",
-    "compile": "node_modules/.bin/tsc",
-    "test-old": "node_modules/.bin/mocha test/oldClient/**/*test.js",
+    "compile": "rm -r ./dist && node_modules/.bin/tsc",
     "test": "node_modules/mocha/bin/mocha --timeout 10000 --retries 1 -r ts-node/register test/newClient/**/*test.ts",
     "watchtests": "node_modules/.bin/mocha --timeout 10000 --retries 1 -r ts-node/register -R list -w --recursive -G test/newClient/**/*test.ts",
     "compile-docs": "echo 'Generating docs...' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/typedoc --options typedoc.json && git add -A ./docs && echo 'Generated docs!'",
@@ -63,14 +61,14 @@
     "@types/chai": "^4.1.4",
     "@types/mocha": "^5.2.5",
     "@types/request": "^2.47.1",
-    "ts-node": "^7.0.1",
     "chai": "^4.1.2",
+    "merge": "1.2.0",
     "mocha": "3.5.3",
     "nconf": "0.7.1",
     "pre-commit": "1.0.2",
+    "ts-node": "^7.0.1",
     "typedoc": "^0.11.1",
-    "typescript": "^2.7.2",
-    "merge": "1.2.0"
+    "typescript": "^2.7.2"
   },
   "dependencies": {
     "request": "^2.88.0"

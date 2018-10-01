@@ -14,5 +14,6 @@
     "lib": ["es5", "es2017", "dom"],
     "declaration": true
   },
-  "exclude": ["**/*.test.ts"]
+  "include": ["src/**/*"],
+  "exclude": ["test/**/*"]
 }
