@@ -55,7 +55,9 @@
     "url": "https://github.com/wildbit/postmark.js/issues"
   },
   "precommit": [
-    "test"
+    "compile",
+    "test",
+    "compile-docs"
   ],
   "devDependencies": {
     "@types/chai": "^4.1.4",
@@ -63,7 +65,7 @@
     "@types/request": "^2.47.1",
     "chai": "^4.1.2",
     "merge": "1.2.0",
-    "mocha": "3.5.3",
+    "mocha": "^5.2.0",
     "nconf": "0.7.1",
     "pre-commit": "1.0.2",
     "ts-node": "^7.0.1",
