@@ -1,8 +1,8 @@
 /**
  * A standard node callback. All errors returned to this callback will be a subclass of @type PostmarkError
  */
-import {PostmarkError} from "./PostmarkError";
+import {PostmarkErrors} from "./PostmarkError";
 
-export default interface Callback<T> {
-    (error: (PostmarkError | null), result: (T | null)): void;
+export interface Callback<T> {
+    (error: (PostmarkErrors.PostmarkError | null), result: (T | null)): void;
 }

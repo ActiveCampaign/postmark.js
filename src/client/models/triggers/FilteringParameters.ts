@@ -1,5 +1,5 @@
-import FilteringParameters from "../client/FilteringParameters";
+import {FilteringParameters} from "../client/FilteringParameters";
 
-export default interface TagTriggerFilteringParameters extends FilteringParameters{
+export interface TagTriggerFilteringParameters extends FilteringParameters{
     match_name?: string;
 }

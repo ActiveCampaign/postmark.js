@@ -1,4 +1,4 @@
-import FilteringParameters from "../client/FilteringParameters";
+import {FilteringParameters} from "../client/FilteringParameters";
 
 export enum OutboundMessageStatus {
     Queued = "queued",

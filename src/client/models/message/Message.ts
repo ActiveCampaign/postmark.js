@@ -1,6 +1,6 @@
 import {Hash} from "../client/SupportingTypes"
 import { LinkTrackingOptions, Header, Attachment } from "../message/SupportingTypes";
-import DefaultResponse from "../client/PostmarkResponse";
+import {DefaultResponse} from "../client/PostmarkResponse";
 
 export interface Message {
     From: string;

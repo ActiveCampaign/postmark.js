@@ -1,4 +1,4 @@
-import FilteringParameters from "../client/FilteringParameters";
+import {FilteringParameters} from "../client/FilteringParameters";
 
 export enum BounceType {
     HardBounce = "HardBounce",
@@ -25,7 +25,7 @@ export enum BounceType {
     TemplateRenderingFailed = "TemplateRenderingFailed"
 }
 
-export default interface BounceFilteringParameters extends FilteringParameters {
+export interface BounceFilteringParameters extends FilteringParameters {
     type?: BounceType | string;
     inactive?: boolean;
     emailFilter?: string;

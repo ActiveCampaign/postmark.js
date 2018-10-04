@@ -1,6 +1,6 @@
 import {Server} from "./Server";
 
-export default interface Servers {
+export interface Servers {
     TotalCount: number;
     Servers: Server[];
 }

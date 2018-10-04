@@ -1,5 +1,5 @@
 import {ErrorHandler} from "../../../src/client/ErrorHandler";
-import {PostmarkError} from "../../../src/client/models/client/PostmarkError";
+import {PostmarkErrors} from "../../../src/client/models/client/PostmarkError";
 
 import { expect } from 'chai';
 import 'mocha';
@@ -12,7 +12,7 @@ describe('ErrorHandler', () => {
         error.name = "Test name";
         error.message = "Test message";
 
-        let postmarkError: PostmarkError = errorHandler.generateError(error);
+        let postmarkError: PostmarkErrors.PostmarkError = errorHandler.generateError(error);
         expect(postmarkError.message).to.equal(error.message);
         expect(postmarkError.name).to.equal('PostmarkError');
     });
@@ -29,7 +29,7 @@ describe('ErrorHandler', () => {
             statusCode: 500
         };
 
-        let postmarkError: PostmarkError = errorHandler.generateError(error);
+        let postmarkError: PostmarkErrors.PostmarkError = errorHandler.generateError(error);
         expect(postmarkError.name).to.equal('InternalServerError');
         expect(postmarkError.message).to.equal(error.body.Message);
     });

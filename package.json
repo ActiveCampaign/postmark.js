@@ -39,7 +39,7 @@
     "lib": "./dist/index.js"
   },
   "scripts": {
-    "compile": "rm -r ./dist && node_modules/.bin/tsc",
+    "compile": "rm -r -f ./dist && node_modules/.bin/tsc",
     "test": "node_modules/mocha/bin/mocha --timeout 10000 --retries 1 -r ts-node/register test/newClient/**/*test.ts",
     "watchtests": "node_modules/.bin/mocha --timeout 10000 --retries 1 -r ts-node/register -R list -w --recursive -G test/newClient/**/*test.ts",
     "compile-docs": "echo 'Generating docs...' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/typedoc --options typedoc.json && git add -A ./docs && echo 'Generated docs!'",
@@ -64,7 +64,6 @@
     "@types/mocha": "^5.2.5",
     "@types/request": "^2.47.1",
     "chai": "^4.1.2",
-    "merge": "1.2.0",
     "mocha": "^5.2.0",
     "nconf": "0.7.1",
     "pre-commit": "1.0.2",
