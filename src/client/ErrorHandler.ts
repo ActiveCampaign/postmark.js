@@ -1,5 +1,4 @@
 import {PostmarkErrors} from "./models";
-import * as request from "request";
 
 /**
  * This class handles all client request errors. Client response error is clasified so that proper response error is generated.

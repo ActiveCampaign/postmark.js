@@ -1,19 +1,18 @@
-import * as postmark from '../../../src/index'
-import {Bounce, BounceDump, Bounces} from "../../../src/client/models";
+import * as postmark from '../../src/index';
 
 import { expect } from 'chai';
 import 'mocha';
 
 const nconf = require('nconf');
-const testingKeys = nconf.env().file({file: __dirname + '/../../../testing_keys.json'});
+const testingKeys = nconf.env().file({file: __dirname + '/../../testing_keys.json'});
 
 describe('Bounce', function() {
     const serverToken:string = testingKeys.get('SERVER_TOKEN');
     const client:postmark.ServerClient = new postmark.ServerClient(serverToken);
 
     it('getBounce', async() => {
-        const bounces: Bounces = await client.getBounces();
-        const bounce: Bounce = await client.getBounce(bounces.Bounces[0].ID);
+        const bounces: postmark.DataTypes.Bounces = await client.getBounces();
+        const bounce: postmark.DataTypes.Bounce = await client.getBounce(bounces.Bounces[0].ID);
         expect(bounce.ID).to.be.gte(0);
     });
 
@@ -26,13 +25,13 @@ describe('Bounce', function() {
     });
 
     it('getBounces', async() => {
-        const bounces: Bounces = await client.getBounces();
+        const bounces: postmark.DataTypes.Bounces = await client.getBounces();
         expect(bounces.TotalCount).to.be.gte(0);
     });
 
     it('getBounceBump', async() => {
-        const bounces: Bounces = await client.getBounces();
-        const bounceDump: BounceDump = await client.getBounceDump(bounces.Bounces[0].ID);
+        const bounces: postmark.DataTypes.Bounces = await client.getBounces();
+        const bounceDump: postmark.DataTypes.BounceDump = await client.getBounceDump(bounces.Bounces[0].ID);
         expect(bounceDump.Body).to.be.string;
     });
 

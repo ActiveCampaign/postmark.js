@@ -1,15 +1,16 @@
-import * as postmark from '../../../src/index'
+import * as postmark from '../../src/index';
+
 import { expect } from 'chai';
 import 'mocha';
 
 const nconf = require('nconf');
-const testingKeys = nconf.env().file({file: __dirname + '/../../../testing_keys.json'});
+const testingKeys = nconf.env().file({file: __dirname + '/../../testing_keys.json'});
 
 describe('Client - Message Statistics', function() {
     const serverToken:string = testingKeys.get('SERVER_TOKEN');
     const client:postmark.ServerClient = new postmark.ServerClient(serverToken);
 
-    function formattedDate(date: Date) {
+    function formattedDate(date: Date):string {
         return '' + date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
     }
 
@@ -19,31 +20,32 @@ describe('Client - Message Statistics', function() {
     });
 
     it('getSentCounts', async () => {
-        const stats = await client.getSentCounts();
+        const stats:postmark.DataTypes.SentCounts = await client.getSentCounts();
         expect(stats.Sent).to.be.gte(0);
     });
 
     it('getBounceCounts', async () => {
-        const stats = await client.getBounceCounts();
+        const stats:postmark.DataTypes.BounceCounts = await client.getBounceCounts();
+        expect(stats).not.to.be.null;
     });
 
     it('getSpamComplaints', async () => {
-        const stats = await client.getSpamComplaintsCounts();
+        const stats:postmark.DataTypes.SpamCounts = await client.getSpamComplaintsCounts();
         expect(stats.Days.length).to.be.gte(0);
     });
 
     it('getTrackedEmailCounts', async () => {
-        const stats = await client.getTrackedEmailCounts();
+        const stats:postmark.DataTypes.TrackedEmailCounts = await client.getTrackedEmailCounts();
         expect(stats.Tracked).to.be.gte(0)
     });
 
     it('getOutboundOverview', async () => {
-        var now:Date = new Date();
-        var yesterday = new Date(now.valueOf() - (24 * 3600 * 1000));
-        var toDate = formattedDate(now);
-        var fromDate = formattedDate(yesterday);
+        let now:Date = new Date();
+        let yesterday:Date = new Date(now.valueOf() - (24 * 3600 * 1000));
+        let toDate:string = formattedDate(now);
+        let fromDate:string = formattedDate(yesterday);
 
-        const stats = await client.getOutboundOverview({fromDate: fromDate, toDate: toDate});
+        const stats:postmark.DataTypes.OutboundStatistics = await client.getOutboundOverview({fromDate: fromDate, toDate: toDate});
         expect(stats.Sent).to.be.gte(0);
     });
 });

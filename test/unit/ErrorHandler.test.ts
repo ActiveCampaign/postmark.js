@@ -1,5 +1,5 @@
-import {ErrorHandler} from "../../../src/client/ErrorHandler";
-import {PostmarkErrors} from "../../../src/client/models/client/PostmarkError";
+import {ErrorHandler} from "../../src/client/ErrorHandler";
+import {PostmarkErrors} from "../../src/client/models/client/PostmarkError";
 
 import { expect } from 'chai';
 import 'mocha';

@@ -1,8 +1,7 @@
 import * as request from 'request';
 
-import {ClientOptions} from './models'
+import {ClientOptions, Callback, PostmarkErrors} from './models'
 import {ErrorHandler} from "./ErrorHandler";
-import {PostmarkErrors, Callback} from './models';
 
 const packageJson = require("../../package.json")
 const CLIENT_VERSION = packageJson.version;

@@ -1,26 +1,17 @@
-import * as postmark from '../../../src/index'
-import {
-    Template,
-    TemplateMessage,
-    TemplateOptions,
-    Templates,
-    TemplateValidation,
-    TemplateValidationOptions,
-    DefaultResponse
-} from "../../../src/client/models";
+import * as postmark from '../../src/index';
 
-import {expect} from 'chai';
+import { expect } from 'chai';
 import 'mocha';
 
 const nconf = require('nconf');
-const testingKeys = nconf.env().file({file: __dirname + '/../../../testing_keys.json'});
+const testingKeys = nconf.env().file({file: __dirname + '/../../testing_keys.json'});
 
 describe('Client - Templates', function () {
     const serverToken: string = testingKeys.get('SERVER_TOKEN');
     let client: postmark.ServerClient = new postmark.ServerClient(serverToken);
     const templatePrefix: string = 'testing-template-node-js';
     
-    function templateToCreate(): TemplateOptions {
+    function templateToCreate(): postmark.DataTypes.TemplateOptions {
         return {
             Name: `${templatePrefix}-${Date.now()}`,
             TextBody: 'Text body',
@@ -30,11 +21,11 @@ describe('Client - Templates', function () {
     };
 
     async function cleanup() {
-        const client = new postmark.ServerClient(serverToken);
-        const templates:Templates = await client.getTemplates();
+        const client: postmark.ServerClient = new postmark.ServerClient(serverToken);
+        const templates: postmark.DataTypes.Templates = await client.getTemplates();
 
         for (let i = 0; i < templates.Templates.length; i++) {
-            let template:Template = templates.Templates[i];
+            let template: postmark.DataTypes.Template = templates.Templates[i];
             if (template.Name.includes(templatePrefix)) { await client.deleteTemplate(template.TemplateId); };
         };
     };
@@ -43,37 +34,37 @@ describe('Client - Templates', function () {
     after(cleanup);
 
     it('getTemplates', async () => {
-        const result: Templates = await client.getTemplates();
+        const result: postmark.DataTypes.Templates = await client.getTemplates();
         expect(result.TotalCount).to.above(-1);
     });
 
     it('getTemplate', async () => {
-        const template: Template = await client.createTemplate(templateToCreate());
-        const result: Template = await client.getTemplate(template.TemplateId);
+        const template: postmark.DataTypes.Template = await client.createTemplate(templateToCreate());
+        const result: postmark.DataTypes.Template = await client.getTemplate(template.TemplateId);
         expect(result.TemplateId).to.above(-1);
     });
 
     it("createTemplate", async () => {
-        const result: Template = await client.createTemplate(templateToCreate());
+        const result: postmark.DataTypes.Template = await client.createTemplate(templateToCreate());
         expect(result.TemplateId).to.above(0);
     });
 
     it('editTemplate', async () => {
-        const templateOptions: TemplateOptions = templateToCreate();
+        const templateOptions: postmark.DataTypes.TemplateOptions = templateToCreate();
         const updatedName: string = `${templateOptions.Name}-updated`
-        const template: Template = await client.createTemplate(templateOptions);
-        const result: Template = await client.editTemplate(template.TemplateId, { Name: updatedName});
+        const template: postmark.DataTypes.Template = await client.createTemplate(templateOptions);
+        const result: postmark.DataTypes.Template = await client.editTemplate(template.TemplateId, { Name: updatedName});
         expect(result.Name).to.equal(updatedName);
     });
 
     it("deleteTemplate", async () => {
-        const template: Template = await client.createTemplate(templateToCreate());
-        const result: DefaultResponse = await client.deleteTemplate(template.TemplateId);
+        const template: postmark.DataTypes.Template = await client.createTemplate(templateToCreate());
+        const result: postmark.DataTypes.DefaultResponse = await client.deleteTemplate(template.TemplateId);
         expect(result.Message.length).to.above(0);
     });
 
     it("validateTemplate", async () => {
-        const templateToValidate: TemplateValidationOptions = {
+        const templateToValidate: postmark.DataTypes.TemplateValidationOptions = {
             TestRenderModel: {
                 Name: "joe!"
             },
@@ -82,7 +73,7 @@ describe('Client - Templates', function () {
             Subject: "{{subject}}"
         };
 
-        const templateValidation: TemplateValidation = await client.validateTemplate(templateToValidate);
+        const templateValidation: postmark.DataTypes.TemplateValidation = await client.validateTemplate(templateToValidate);
         expect(templateValidation.TextBody.ContentIsValid).to.eq(true);
     });
 
@@ -91,16 +82,16 @@ describe('Client - Templates', function () {
         const toAddress: string = testingKeys.get('EMAIL_RECIPIENT_ADDRESS');
 
         it("sendEmailWithTemplate", async () => {
-            const template: Template = await client.createTemplate(templateToCreate());
+            const template: postmark.DataTypes.Template = await client.createTemplate(templateToCreate());
 
-            let templateMessage:TemplateMessage = {
+            let templateMessage: postmark.DataTypes.TemplateMessage = {
                 To: toAddress,
                 From: fromAddress,
                 TemplateId: template.TemplateId,
                 TemplateModel: {}
             };
 
-            const result: DefaultResponse = await client.sendEmailWithTemplate(templateMessage);
+            const result: postmark.DataTypes.DefaultResponse = await client.sendEmailWithTemplate(templateMessage);
             expect(result.Message).to.eq('OK');
         });
     });

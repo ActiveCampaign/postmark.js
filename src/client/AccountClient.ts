@@ -12,7 +12,6 @@ import {
     ServerOptions,
     Servers,
 
-    Domain,
     Domains,
     DomainDetails,
     DomainOptions,
