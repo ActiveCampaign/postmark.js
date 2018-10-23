@@ -1,5 +1,5 @@
 import {ErrorHandler} from "../../src/client/ErrorHandler";
-import {PostmarkErrors} from "../../src/client/models/client/PostmarkError";
+import {PostmarkError} from "../../src";
 
 import { expect } from 'chai';
 import 'mocha';
@@ -12,25 +12,44 @@ describe('ErrorHandler', () => {
         error.name = "Test name";
         error.message = "Test message";
 
-        let postmarkError: PostmarkErrors.PostmarkError = errorHandler.generateError(error);
+        let postmarkError: PostmarkError.StandardError = errorHandler.generateError(error);
         expect(postmarkError.message).to.equal(error.message);
-        expect(postmarkError.name).to.equal('PostmarkError');
+        expect(postmarkError.name).to.equal('StandardError');
     });
 
-    it('generateError - with status', () => {
-        const errorHandler: ErrorHandler = new ErrorHandler();
+    describe('statuses', () => {
+        it('401', () => {
+            const errorHandler: ErrorHandler = new ErrorHandler();
 
-        const error: any = {
-            name: "Test name",
-            body: {
-                Message: "Test message",
-                ErrorCode: 500
-            },
-            statusCode: 500
-        };
+            const error: any = {
+                name: "Test name",
+                body: {
+                    Message: "Test message",
+                    ErrorCode: 401
+                },
+                statusCode: 401
+            };
 
-        let postmarkError: PostmarkErrors.PostmarkError = errorHandler.generateError(error);
-        expect(postmarkError.name).to.equal('InternalServerError');
-        expect(postmarkError.message).to.equal(error.body.Message);
+            let postmarkError: PostmarkError.InvalidAPIKeyError = errorHandler.generateError(error);
+            expect(postmarkError.name).to.equal('InvalidAPIKeyError');
+            expect(postmarkError.message).to.equal(error.body.Message);
+        });
+
+        it('500', () => {
+            const errorHandler: ErrorHandler = new ErrorHandler();
+
+            const error: any = {
+                name: "Test name",
+                body: {
+                    Message: "Test message",
+                    ErrorCode: 500
+                },
+                statusCode: 500
+            };
+
+            let postmarkError: PostmarkError.InternalServerError = errorHandler.generateError(error);
+            expect(postmarkError.name).to.equal('InternalServerError');
+            expect(postmarkError.message).to.equal(error.body.Message);
+        });
     });
 });

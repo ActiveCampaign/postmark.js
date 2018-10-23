@@ -1,9 +1,9 @@
 import * as request from 'request';
 
-import {ClientOptions, Callback, PostmarkErrors} from './models'
+import {ClientOptions, Callback, PostmarkError} from './models';
 import {ErrorHandler} from "./ErrorHandler";
 
-const packageJson = require("../../package.json")
+const packageJson = require("../../package.json");
 const CLIENT_VERSION = packageJson.version;
 
 /**
@@ -186,7 +186,7 @@ export default abstract class BaseClient {
      */
     private verifyToken(token: string): void {
         if (!token || token.trim() == '') {
-            throw new PostmarkErrors.PostmarkError('A valid API token must be provided when creating a ClientOptions.');
+            throw new PostmarkError.StandardError('A valid API token must be provided when creating a ClientOptions.');
         }
     }
 }

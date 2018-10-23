@@ -5,12 +5,12 @@ import 'mocha';
 
 const nconf = require('nconf');
 const packageJson = require("../../package.json")
-const testingKeys = nconf.env().file({file: __dirname + '/../../../testing_keys.json'});
+const testingKeys = nconf.env().file({file: __dirname + '/../../testing_keys.json'});
 const clientVersion = packageJson.version;
 
 describe('postmark.ServerClient', () => {
     let client: postmark.ServerClient;
-    const serverToken: string = testingKeys.get('SERVER_TOKEN');
+    const serverToken:string = testingKeys.get('SERVER_TOKEN');
 
     beforeEach(function () {
         client = new postmark.ServerClient(serverToken);
