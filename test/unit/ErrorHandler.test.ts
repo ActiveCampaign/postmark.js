@@ -31,6 +31,7 @@ describe('ErrorHandler', () => {
             };
 
             let postmarkError: PostmarkError.InvalidAPIKeyError = errorHandler.generateError(error);
+            expect(postmarkError).to.be.an.instanceof(PostmarkError.InvalidAPIKeyError);
             expect(postmarkError.name).to.equal('InvalidAPIKeyError');
             expect(postmarkError.message).to.equal(error.body.Message);
         });
@@ -48,7 +49,8 @@ describe('ErrorHandler', () => {
             };
 
             let postmarkError: PostmarkError.InternalServerError = errorHandler.generateError(error);
-            expect(postmarkError.name).to.equal('InternalServerError');
+            expect(postmarkError).to.be.an.instanceof(PostmarkError.InternalServerError);
+            expect(postmarkError.name).to.equal('InternalServerError')
             expect(postmarkError.message).to.equal(error.body.Message);
         });
     });

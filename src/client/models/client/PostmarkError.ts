@@ -1,63 +1,74 @@
 export module PostmarkError {
 
+    /**
+     * Standard Postmark error on which all sub-errors are based.
+     */
     export class StandardError extends Error {
         public code: number;
         public statusCode: number;
 
         constructor(message: string, code: number = 0, statusCode: number = 0) {
             super(message);
-            this.name = (<any>PostmarkError.StandardError).name;
-            this.code = code;
             this.statusCode = statusCode;
-            Error.captureStackTrace(this, PostmarkError.StandardError);
+            this.code = code;
+
+            // this is mandatory due:
+            // https://github.com/Microsoft/TypeScript/wiki/Breaking-Changes#extending-built-ins-like-error-array-and-map-may-no-longer-work
+            Object.setPrototypeOf(this, StandardError.prototype);
+            this.setUpStackTrace();
+        }
+
+        protected setUpStackTrace() {
+            this.name = this.constructor.name;
+            Error.captureStackTrace(this, this.constructor);
         }
     }
 
     export class HttpError extends StandardError {
         constructor(message: string, code: number, statusCode: number) {
             super(message, code, statusCode);
-            this.name = (<any>PostmarkError.HttpError).name;
-            Error.captureStackTrace(this, PostmarkError.HttpError);
+            Object.setPrototypeOf(this, HttpError.prototype);
+            this.setUpStackTrace();
         }
     }
 
     export class InvalidAPIKeyError extends HttpError {
         constructor(message: string, code: number, statusCode: number) {
             super(message, code, statusCode);
-            this.name = (<any>PostmarkError.InvalidAPIKeyError).name;
-            Error.captureStackTrace(this, PostmarkError.InvalidAPIKeyError);
+            Object.setPrototypeOf(this, InvalidAPIKeyError.prototype);
+            this.setUpStackTrace();
         }
     }
 
     export class ApiInputError extends HttpError {
         constructor(message: string, code: number, statusCode: number) {
             super(message, code, statusCode);
-            this.name = (<any>PostmarkError.ApiInputError).name;
-            Error.captureStackTrace(this, PostmarkError.ApiInputError);
+            Object.setPrototypeOf(this, ApiInputError.prototype);
+            this.setUpStackTrace();
         }
     }
 
     export class InternalServerError extends HttpError {
         constructor(message: string, code: number, statusCode: number) {
             super(message, code, statusCode);
-            this.name = (<any>PostmarkError.InternalServerError).name;
-            Error.captureStackTrace(this, PostmarkError.InternalServerError);
+            Object.setPrototypeOf(this, InternalServerError.prototype);
+            this.setUpStackTrace();
         }
     }
 
     export class ServiceUnavailablerError extends HttpError {
         constructor(message: string, code: number, statusCode: number) {
             super(message, code, statusCode);
-            this.name = (<any>PostmarkError.ServiceUnavailablerError).name;
-            Error.captureStackTrace(this, PostmarkError.ServiceUnavailablerError);
+            Object.setPrototypeOf(this, ServiceUnavailablerError.prototype);
+            this.setUpStackTrace();
         }
     }
 
     export class UnknownError extends HttpError {
         constructor(message: string, code: number, statusCode: number) {
             super(message, code, statusCode);
-            this.name = (<any>PostmarkError.UnknownError).name;
-            Error.captureStackTrace(this, PostmarkError.UnknownError);
+            Object.setPrototypeOf(this, UnknownError.prototype);
+            this.setUpStackTrace();
         }
     }
 }
