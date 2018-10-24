@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SignatureOptions | Postmark.js</title>
+	<title>Configuration | Postmark.js</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -907,20 +907,26 @@ img { max-width: 100%; }
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
-		<li class="current tsd-kind-interface">
-			<a href="signatureoptions.html" class="tsd-kind-icon">Signature<wbr>Options</a>
+		<li class=" tsd-kind-enum tsd-parent-kind-module">
+			<a href="../enums/clientoptions.defaultheadernames.html" class="tsd-kind-icon">Default<wbr>Header<wbr>Names</a>
+		</li>
+		<li class=" tsd-kind-enum tsd-parent-kind-module">
+			<a href="../enums/clientoptions.httpmethod.html" class="tsd-kind-icon">Http<wbr>Method</a>
+		</li>
+		<li class="current tsd-kind-class tsd-parent-kind-module">
+			<a href="clientoptions.configuration.html" class="tsd-kind-icon">Configuration</a>
 			<ul>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="signatureoptions.html#fromemail" class="tsd-kind-icon">From<wbr>Email</a>
+				<li class=" tsd-kind-constructor tsd-parent-kind-class">
+					<a href="clientoptions.configuration.html#constructor" class="tsd-kind-icon">constructor</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a href="signatureoptions.html#name" class="tsd-kind-icon">Name</a>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="clientoptions.configuration.html#requesthost" class="tsd-kind-icon">request<wbr>Host</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a href="signatureoptions.html#replytoemail" class="tsd-kind-icon">Reply<wbr>ToEmail</a>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="clientoptions.configuration.html#timeout" class="tsd-kind-icon">timeout</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a href="signatureoptions.html#returnpathdomain" class="tsd-kind-icon">Return<wbr>Path<wbr>Domain</a>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="clientoptions.configuration.html#usehttps" class="tsd-kind-icon">use<wbr>Https</a>
 				</li>
 			</ul>
 		</li>
@@ -932,12 +938,7 @@ img { max-width: 100%; }
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
 				<li>
-					<a href="basesignatureoptions.html" class="tsd-signature-type">BaseSignatureOptions</a>
-					<ul class="tsd-hierarchy">
-						<li>
-							<span class="target">SignatureOptions</span>
-						</li>
-					</ul>
+					<span class="target">Configuration</span>
 				</li>
 			</ul>
 		</section>
@@ -946,59 +947,83 @@ img { max-width: 100%; }
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
 					<section class="tsd-index-section ">
+						<h3>Constructors</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="clientoptions.configuration.html#constructor" class="tsd-kind-icon">constructor</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="signatureoptions.html#fromemail" class="tsd-kind-icon">From<wbr>Email</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="signatureoptions.html#name" class="tsd-kind-icon">Name</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="signatureoptions.html#replytoemail" class="tsd-kind-icon">Reply<wbr>ToEmail</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="signatureoptions.html#returnpathdomain" class="tsd-kind-icon">Return<wbr>Path<wbr>Domain</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="clientoptions.configuration.html#requesthost" class="tsd-kind-icon">request<wbr>Host</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="clientoptions.configuration.html#timeout" class="tsd-kind-icon">timeout</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="clientoptions.configuration.html#usehttps" class="tsd-kind-icon">use<wbr>Https</a></li>
 						</ul>
 					</section>
 				</div>
 			</section>
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Constructors</h2>
+			<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+				<a name="constructor" class="tsd-anchor"></a>
+				<h3>constructor</h3>
+				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Configuration<span class="tsd-signature-symbol">(</span>useHttps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span>, requestHost<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, timeout<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="clientoptions.configuration.html" class="tsd-signature-type">Configuration</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in client/models/client/ClientOptions.ts:2</li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>useHttps: <span class="tsd-signature-type">boolean</span></h5>
+							</li>
+							<li>
+								<h5>requestHost: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>timeout: <span class="tsd-signature-type">number</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="clientoptions.configuration.html" class="tsd-signature-type">Configuration</a></h4>
+					</li>
+				</ul>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="fromemail" class="tsd-anchor"></a>
-				<h3>From<wbr>Email</h3>
-				<div class="tsd-signature tsd-kind-icon">From<wbr>Email<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="requesthost" class="tsd-anchor"></a>
+				<h3>request<wbr>Host</h3>
+				<div class="tsd-signature tsd-kind-icon">request<wbr>Host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/senders/Signature.ts:31</li>
+						<li>Defined in client/models/client/ClientOptions.ts:10</li>
 					</ul>
 				</aside>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-				<a name="name" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> Name</h3>
-				<div class="tsd-signature tsd-kind-icon">Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="timeout" class="tsd-anchor"></a>
+				<h3>timeout</h3>
+				<div class="tsd-signature tsd-kind-icon">timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
-					<p>Inherited from <a href="basesignatureoptions.html">BaseSignatureOptions</a>.<a href="basesignatureoptions.html#name">Name</a></p>
 					<ul>
-						<li>Defined in client/models/senders/Signature.ts:25</li>
+						<li>Defined in client/models/client/ClientOptions.ts:11</li>
 					</ul>
 				</aside>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-				<a name="replytoemail" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> Reply<wbr>ToEmail</h3>
-				<div class="tsd-signature tsd-kind-icon">Reply<wbr>ToEmail<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="usehttps" class="tsd-anchor"></a>
+				<h3>use<wbr>Https</h3>
+				<div class="tsd-signature tsd-kind-icon">use<wbr>Https<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 				<aside class="tsd-sources">
-					<p>Inherited from <a href="basesignatureoptions.html">BaseSignatureOptions</a>.<a href="basesignatureoptions.html#replytoemail">ReplyToEmail</a></p>
 					<ul>
-						<li>Defined in client/models/senders/Signature.ts:26</li>
-					</ul>
-				</aside>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-				<a name="returnpathdomain" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> Return<wbr>Path<wbr>Domain</h3>
-				<div class="tsd-signature tsd-kind-icon">Return<wbr>Path<wbr>Domain<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
-				<aside class="tsd-sources">
-					<p>Inherited from <a href="basesignatureoptions.html">BaseSignatureOptions</a>.<a href="basesignatureoptions.html#returnpathdomain">ReturnPathDomain</a></p>
-					<ul>
-						<li>Defined in client/models/senders/Signature.ts:27</li>
+						<li>Defined in client/models/client/ClientOptions.ts:9</li>
 					</ul>
 				</aside>
 			</section>
