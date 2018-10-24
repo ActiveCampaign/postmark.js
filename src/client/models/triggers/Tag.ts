@@ -1,6 +1,17 @@
-export interface TagTriggerOptions {
+export class TagTriggerOptions {
+    constructor(MatchName?: string, TrackOpens?: boolean) {
+        this.MatchName = MatchName;
+        this.TrackOpens = TrackOpens;
+    }
+
     MatchName?: string;
     TrackOpens?: boolean;
+}
+
+export class TagTriggerToCreate extends TagTriggerOptions{
+    constructor(MatchName: string, TrackOpens: boolean) {
+       super(MatchName, TrackOpens);
+    }
 }
 
 export interface TagTrigger {

@@ -9,16 +9,18 @@ import {
 
 import {
     Server,
+    ServerToCreate,
     ServerOptions,
     Servers,
 
     Domains,
     DomainDetails,
     DomainOptions,
+    DomainToCreate,
 
     Signatures,
     SignatureDetails,
-    BaseSignatureOptions,
+    SignatureToCreate,
     SignatureOptions
 } from './models'
 
@@ -63,7 +65,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    createServer(options: ServerOptions, callback?: Callback<Server>): Promise<Server> {
+    createServer(options: ServerToCreate, callback?: Callback<Server>): Promise<Server> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/servers', options, callback);
     };
 
@@ -120,7 +122,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    createDomain(options: DomainOptions, callback?:Callback<DomainDetails>) : Promise<DomainDetails> {
+    createDomain(options: DomainToCreate, callback?:Callback<DomainDetails>) : Promise<DomainDetails> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/domains/', options, callback);
     };
 
@@ -222,7 +224,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    createSenderSignature(options: SignatureOptions, callback?:Callback<SignatureDetails>) : Promise<SignatureDetails> {
+    createSenderSignature(options: SignatureToCreate, callback?:Callback<SignatureDetails>) : Promise<SignatureDetails> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/senders/', options, callback);
     };
 
@@ -235,7 +237,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    editSenderSignature(id: number, options: BaseSignatureOptions, callback?:Callback<SignatureDetails>) : Promise<SignatureDetails> {
+    editSenderSignature(id: number, options: SignatureOptions, callback?:Callback<SignatureDetails>) : Promise<SignatureDetails> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, `/senders/${id}`, options, callback);
     };
 

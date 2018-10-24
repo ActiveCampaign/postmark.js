@@ -21,13 +21,29 @@ export interface Signatures {
     SenderSignatures: Signature[];
 }
 
-export interface BaseSignatureOptions {
+export class SignatureOptions {
+    constructor(Name?: string, ReplyToEmail?: string, ReturnPathDomain?: string) {
+        this.Name = Name;
+        this.ReplyToEmail = ReplyToEmail;
+        this.ReturnPathDomain = ReturnPathDomain;
+    }
+
     Name?: string;
     ReplyToEmail?: string;
     ReturnPathDomain?: string;
 }
 
-export interface SignatureOptions extends BaseSignatureOptions{
+export class SignatureToCreate {
+    constructor(Name: string, FromEmail: string, ReplyToEmail?: string, ReturnPathDomain?: string, ) {
+        this.Name = Name;
+        this.ReplyToEmail = ReplyToEmail;
+        this.ReturnPathDomain = ReturnPathDomain;
+        this.FromEmail = FromEmail;
+    }
+
+    Name: string;
     FromEmail: string;
+    ReplyToEmail?: string;
+    ReturnPathDomain?: string;
 }
 

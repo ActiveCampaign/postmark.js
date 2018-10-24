@@ -8,7 +8,7 @@ const packageJson = require("../../package.json")
 const testingKeys = nconf.env().file({file: __dirname + '/../../testing_keys.json'});
 const clientVersion = packageJson.version;
 
-describe('postmark.ServerClient', () => {
+describe('ServerClient', () => {
     let client: postmark.ServerClient;
     const serverToken:string = testingKeys.get('SERVER_TOKEN');
 
@@ -37,20 +37,55 @@ describe('postmark.ServerClient', () => {
         expect(client.clientVersion).to.equal(customClientVersion);
     });
 
-    it('clientOptions=', () => {
-        const requestHost: string = 'test';
-        const useHttps: boolean = false;
-        const timeout: number = 10;
+    describe('clientOptions', () => {
+        it('clientOptions=', () => {
+            const requestHost: string = 'test';
+            const useHttps: boolean = false;
+            const timeout: number = 10;
 
-        client.clientOptions.requestHost = requestHost;
-        client.clientOptions.useHttps = useHttps;
-        client.clientOptions.timeout = timeout;
+            client.clientOptions.requestHost = requestHost;
+            client.clientOptions.useHttps = useHttps;
+            client.clientOptions.timeout = timeout;
 
-        expect(client.clientOptions).to.eql({
-            useHttps: useHttps,
-            requestHost: requestHost,
-            timeout: timeout
+            expect(client.clientOptions).to.eql({
+                useHttps: useHttps,
+                requestHost: requestHost,
+                timeout: timeout
+            });
         });
+
+        it('new clientOptions as object', () => {
+            const requestHost: string = 'test';
+            const useHttps: boolean = false;
+            const timeout: number = 50;
+            let clientOptions: postmark.Models.ClientOptions.Configuration = new postmark.Models.ClientOptions.Configuration(useHttps, requestHost, timeout)
+            client = new postmark.ServerClient(serverToken,clientOptions);
+
+            expect(client.clientOptions).to.eql({
+                useHttps: useHttps,
+                requestHost: requestHost,
+                timeout: timeout
+            });
+        });
+
+        it('new clientOptions as parameter', () => {
+            const requestHost: string = 'test';
+            const useHttps: boolean = false;
+            const timeout: number = 50;
+
+            client = new postmark.ServerClient(serverToken,{
+                useHttps: useHttps,
+                requestHost: requestHost,
+                timeout: timeout
+            });
+
+            expect(client.clientOptions).to.eql({
+                useHttps: useHttps,
+                requestHost: requestHost,
+                timeout: timeout
+            });
+        });
+
     });
 
     describe('errors', () => {

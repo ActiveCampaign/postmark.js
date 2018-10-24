@@ -11,22 +11,22 @@ describe('Client - Message Statistics', function() {
     const client:postmark.ServerClient = new postmark.ServerClient(serverToken);
 
     it('getMessageOpens', async () =>{
-        const result: postmark.DataTypes.OutboundMessageOpens = await client.getMessageOpens();
+        const result: postmark.Models.OutboundMessageOpens = await client.getMessageOpens();
         expect(result.TotalCount).to.gte(0);
     });
 
     it('getEmailOpenCounts', async () =>{
-        const result: postmark.DataTypes.OpenCounts = await client.getEmailOpenCounts();
+        const result: postmark.Models.OpenCounts = await client.getEmailOpenCounts();
         expect(result.Days.length).to.gte(0);
     });
 
     it('getEmailPlatformUsage', async () =>{
-        const result: postmark.DataTypes.EmailPlaformUsageCounts = await client.getEmailOpenPlatformUsage();
+        const result: postmark.Models.EmailPlaformUsageCounts = await client.getEmailOpenPlatformUsage();
         expect(result.Days.length).to.gte(0);
     });
 
     it('getEmailClientUsage', async () =>{
-        const result: postmark.DataTypes.EmailClientUsageCounts =  await client.getEmailOpenClientUsage();
+        const result: postmark.Models.EmailClientUsageCounts =  await client.getEmailOpenClientUsage();
         expect(result.Days.length).to.gte(0);
     });
 });

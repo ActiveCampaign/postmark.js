@@ -1,8 +1,12 @@
-export interface InboundRuleOptions {
+export class InboundRuleToCreate {
+    constructor(Rule: string) {
+        this.Rule = Rule;
+    }
+
     Rule: string;
 }
 
-export interface InboundRule extends InboundRuleOptions {
+export interface InboundRule extends InboundRuleToCreate {
     ID: number;
 }
 

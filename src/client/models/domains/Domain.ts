@@ -1,3 +1,21 @@
+export class DomainToCreate {
+    constructor(Name: string, ReturnPathDomain?: string) {
+        this.Name = Name;
+        this.ReturnPathDomain = ReturnPathDomain;
+    }
+
+    Name: string;
+    ReturnPathDomain?: string;
+}
+
+export class DomainOptions {
+    constructor(ReturnPathDomain: string) {
+        this.ReturnPathDomain = ReturnPathDomain;
+    }
+
+    ReturnPathDomain?: string;
+}
+
 export interface Domain {
     ID: number;
     Name: string;
@@ -5,11 +23,6 @@ export interface Domain {
     DKIMVerified: boolean;
     WeakDKIM: boolean;
     ReturnPathDomainVerified: boolean;
-}
-
-export interface DomainOptions {
-    Name?: string;
-    ReturnPathDomain?: string;
 }
 
 export interface DomainDetails extends Domain {

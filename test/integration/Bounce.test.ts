@@ -11,8 +11,8 @@ describe('Bounce', function() {
     const client:postmark.ServerClient = new postmark.ServerClient(serverToken);
 
     it('getBounce', async() => {
-        const bounces: postmark.DataTypes.Bounces = await client.getBounces();
-        const bounce: postmark.DataTypes.Bounce = await client.getBounce(bounces.Bounces[0].ID);
+        const bounces: postmark.Models.Bounces = await client.getBounces();
+        const bounce: postmark.Models.Bounce = await client.getBounce(bounces.Bounces[0].ID);
         expect(bounce.ID).to.be.gte(0);
     });
 
@@ -25,13 +25,13 @@ describe('Bounce', function() {
     });
 
     it('getBounces', async() => {
-        const bounces: postmark.DataTypes.Bounces = await client.getBounces();
+        const bounces: postmark.Models.Bounces = await client.getBounces();
         expect(bounces.TotalCount).to.be.gte(0);
     });
 
     it('getBounceBump', async() => {
-        const bounces: postmark.DataTypes.Bounces = await client.getBounces();
-        const bounceDump: postmark.DataTypes.BounceDump = await client.getBounceDump(bounces.Bounces[0].ID);
+        const bounces: postmark.Models.Bounces = await client.getBounces();
+        const bounceDump: postmark.Models.BounceDump = await client.getBounceDump(bounces.Bounces[0].ID);
         expect(bounceDump.Body).to.be.string;
     });
 

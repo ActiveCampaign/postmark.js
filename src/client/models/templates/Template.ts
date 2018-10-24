@@ -1,12 +1,41 @@
 import {Attachment, Header, LinkTrackingOptions} from "../message/SupportingTypes";
 
-export interface TemplateOptions {
+export class TemplateOptions {
+    constructor(Name?: string, Subject?: string, HtmlBody?: string, TextBody?: string, Alias?: string | null) {
+        this.Name = Name;
+        this.Subject = Subject;
+        this.HtmlBody = HtmlBody;
+        this.TextBody = TextBody;
+        this.Alias = Alias;
+    }
+
     Name?: string;
     Subject?: string;
     HtmlBody?: string;
     TextBody?: string;
     Alias?: string | null;
 }
+
+export class TemplateToCreate extends TemplateOptions {
+    constructor(Name: string, Subject?: string, HtmlBody?: string, TextBody?: string, Alias?: string | null) {
+        super(Name, Subject, HtmlBody, TextBody, Alias);
+    }
+}
+
+export class TemplateValidationOptions {
+    constructor(Subject?: string, HtmlBody?: string, TextBody?: string, TestRenderModel?: object) {
+        this.Subject = Subject;
+        this.HtmlBody = HtmlBody;
+        this.TextBody = TextBody;
+        this.TestRenderModel = TestRenderModel;
+    }
+
+    Subject?: string;
+    HtmlBody?: string;
+    TextBody?: string;
+    TestRenderModel?: object;
+}
+
 
 export interface Template extends TemplateOptions {
     Name: string;
@@ -25,13 +54,6 @@ export interface Templates {
             Alias?: string | null;
         }
         ]
-}
-
-export interface TemplateValidationOptions {
-    Subject?: string;
-    HtmlBody?: string;
-    TextBody?: string;
-    TestRenderModel?: object;
 }
 
 export interface ValidationSection {

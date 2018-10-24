@@ -11,15 +11,15 @@ describe('Server', function() {
     const client:postmark.ServerClient = new postmark.ServerClient(serverToken);
 
     it('getServer', async() => {
-        const server: postmark.DataTypes.Server = await client.getServer();
+        const server: postmark.Models.Server = await client.getServer();
         expect(server.ID).to.above(0);
     });
 
     it('editServer', async() => {
-        const serverOptions: postmark.DataTypes.ServerOptions = { Color: 'red'};
-        const updatedServerOptions: postmark.DataTypes.ServerOptions = { Color: 'green'};
+        const serverOptions: postmark.Models.ServerOptions = { Color: 'red'};
+        const updatedServerOptions: postmark.Models.ServerOptions = { Color: 'green'};
 
-        let server: postmark.DataTypes.Server = await client.editServer(serverOptions);
+        let server: postmark.Models.Server = await client.editServer(serverOptions);
         expect(server.Color).to.eq(serverOptions.Color);
 
         server = await client.editServer(updatedServerOptions);

@@ -1,8 +1,8 @@
 import ServerClient from './client/ServerClient';
 import AccountClient from './client/AccountClient';
 
-import * as DataTypes from './client/models';
-import {PostmarkError} from "./client/models";
+import * as Models from './client/models';
+import {Errors} from "./client/models";
 
-export {ServerClient, AccountClient, DataTypes, PostmarkError};
+export {ServerClient, AccountClient, Models, Errors};
 

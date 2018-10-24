@@ -1,5 +1,5 @@
 import {ErrorHandler} from "../../src/client/ErrorHandler";
-import {PostmarkError} from "../../src";
+import {Errors} from "../../src";
 
 import { expect } from 'chai';
 import 'mocha';
@@ -12,9 +12,9 @@ describe('ErrorHandler', () => {
         error.name = "Test name";
         error.message = "Test message";
 
-        let postmarkError: PostmarkError.StandardError = errorHandler.generateError(error);
+        let postmarkError: Errors.PostmarkError = errorHandler.generateError(error);
         expect(postmarkError.message).to.equal(error.message);
-        expect(postmarkError.name).to.equal('StandardError');
+        expect(postmarkError.name).to.equal('PostmarkError');
     });
 
     describe('statuses', () => {
@@ -30,8 +30,8 @@ describe('ErrorHandler', () => {
                 statusCode: 401
             };
 
-            let postmarkError: PostmarkError.InvalidAPIKeyError = errorHandler.generateError(error);
-            expect(postmarkError).to.be.an.instanceof(PostmarkError.InvalidAPIKeyError);
+            let postmarkError: Errors.InvalidAPIKeyError = errorHandler.generateError(error);
+            expect(postmarkError).to.be.an.instanceof(Errors.InvalidAPIKeyError);
             expect(postmarkError.name).to.equal('InvalidAPIKeyError');
             expect(postmarkError.message).to.equal(error.body.Message);
         });
@@ -48,8 +48,8 @@ describe('ErrorHandler', () => {
                 statusCode: 500
             };
 
-            let postmarkError: PostmarkError.InternalServerError = errorHandler.generateError(error);
-            expect(postmarkError).to.be.an.instanceof(PostmarkError.InternalServerError);
+            let postmarkError: Errors.InternalServerError = errorHandler.generateError(error);
+            expect(postmarkError).to.be.an.instanceof(Errors.InternalServerError);
             expect(postmarkError.name).to.equal('InternalServerError')
             expect(postmarkError.message).to.equal(error.body.Message);
         });

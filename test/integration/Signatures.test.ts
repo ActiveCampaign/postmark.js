@@ -12,18 +12,18 @@ describe('Client - Signatures', function () {
     const client: postmark.AccountClient = new postmark.AccountClient(accountToken);
     const domainName: string = `node-js-test-signatures-${testDomainName}`;
 
-    function signatureToTest(): postmark.DataTypes.SignatureOptions {
-        const fromEmail: string = `${Date.now()}@${domainName}`
+    function signatureToTest(): postmark.Models.SignatureToCreate {
+        const fromEmail: string = `${Date.now()}@${domainName}`;
         return {FromEmail: fromEmail, Name: 'John Smith'}
     }
 
     async function cleanup() {
         let client: postmark.AccountClient = new postmark.AccountClient(accountToken);
-        let domains: postmark.DataTypes.Domains = await client.getDomains()
+        let domains: postmark.Models.Domains = await client.getDomains();
 
         for (let i = 0; i < domains.Domains.length; i++) {
-            let domain: postmark.DataTypes.Domain = domains.Domains[i];
-            if (domain.Name.includes(domainName)) { await client.deleteDomain(domain.ID) }
+            let domain: postmark.Models.Domain = domains.Domains[i];
+            if (domain.Name.includes(domainName)) { await client.deleteDomain(domain.ID); }
         };
     };
 
@@ -31,55 +31,55 @@ describe('Client - Signatures', function () {
     after(cleanup);
 
     it("createSenderSignature", async () => {
-        const signatureOptions: postmark.DataTypes.SignatureOptions = signatureToTest();
+        const signatureOptions: postmark.Models.SignatureToCreate = signatureToTest();
 
-        const signatureDetails: postmark.DataTypes.SignatureDetails = await client.createSenderSignature(signatureOptions);
+        const signatureDetails: postmark.Models.SignatureDetails = await client.createSenderSignature(signatureOptions);
         expect(signatureDetails.EmailAddress).to.equal(signatureOptions.FromEmail);
     });
 
     it("getSenderSignatures", async () => {
-        const signatures: postmark.DataTypes.Signatures = await client.getSenderSignatures();
+        const signatures: postmark.Models.Signatures = await client.getSenderSignatures();
         expect(signatures.TotalCount).to.gte(0);
     });
 
     it("getSenderSignature", async () => {
-        const signatureOptions: postmark.DataTypes.SignatureOptions = signatureToTest();
-        const signature: postmark.DataTypes.SignatureDetails = await client.createSenderSignature(signatureOptions);
+        const signatureOptions: postmark.Models.SignatureToCreate = signatureToTest();
+        const signature: postmark.Models.SignatureDetails = await client.createSenderSignature(signatureOptions);
 
-        const signatureDetails: postmark.DataTypes.SignatureDetails = await client.getSenderSignature(signature.ID);
+        const signatureDetails: postmark.Models.SignatureDetails = await client.getSenderSignature(signature.ID);
         expect(signatureDetails.EmailAddress).to.equal(signatureOptions.FromEmail);
     });
 
     it("editSenderSignature", async () => {
         const editName: string = 'Updated name';
-        const signatureOptions: postmark.DataTypes.SignatureOptions = signatureToTest();
-        const signature: postmark.DataTypes.SignatureDetails = await client.createSenderSignature(signatureOptions);
+        const signatureOptions: postmark.Models.SignatureToCreate = signatureToTest();
+        const signature: postmark.Models.SignatureDetails = await client.createSenderSignature(signatureOptions);
 
-        const signatureDetails: postmark.DataTypes.SignatureDetails = await client.editSenderSignature(signature.ID, {Name: editName});
+        const signatureDetails: postmark.Models.SignatureDetails = await client.editSenderSignature(signature.ID, {Name: editName});
         expect(signatureDetails.Name).to.equal(editName);
     });
 
     it("deleteSenderSignature", async () => {
-        const signatureOptions: postmark.DataTypes.SignatureOptions = signatureToTest();
-        const signature: postmark.DataTypes.SignatureDetails = await client.createSenderSignature(signatureOptions);
+        const signatureOptions: postmark.Models.SignatureToCreate = signatureToTest();
+        const signature: postmark.Models.SignatureDetails = await client.createSenderSignature(signatureOptions);
 
-        const result: postmark.DataTypes.DefaultResponse = await client.deleteSenderSignature(signature.ID);
+        const result: postmark.Models.DefaultResponse = await client.deleteSenderSignature(signature.ID);
         expect(result.Message.length).to.above(0);
     });
 
     it("resendSenderSignatureConfirmation", async () => {
-        const signatureOptions: postmark.DataTypes.SignatureOptions = signatureToTest();
-        const signature: postmark.DataTypes.SignatureDetails = await client.createSenderSignature(signatureOptions);
+        const signatureOptions: postmark.Models.SignatureToCreate = signatureToTest();
+        const signature: postmark.Models.SignatureDetails = await client.createSenderSignature(signatureOptions);
 
-        const result: postmark.DataTypes.DefaultResponse = await client.resendSenderSignatureConfirmation(signature.ID);
+        const result: postmark.Models.DefaultResponse = await client.resendSenderSignatureConfirmation(signature.ID);
         expect(result.Message.length).to.above(0);
     });
 
     it("resendSenderSignatureConfirmation", async () => {
-        const signatureOptions: postmark.DataTypes.SignatureOptions = signatureToTest();
-        const signature: postmark.DataTypes.SignatureDetails = await client.createSenderSignature(signatureOptions);
+        const signatureOptions: postmark.Models.SignatureToCreate = signatureToTest();
+        const signature: postmark.Models.SignatureDetails = await client.createSenderSignature(signatureOptions);
 
-        const signatureDetails: postmark.DataTypes.SignatureDetails = await client.verifySenderSignatureSPF(signature.ID);
+        const signatureDetails: postmark.Models.SignatureDetails = await client.verifySenderSignatureSPF(signature.ID);
         expect(signatureDetails.ID).to.eq(signature.ID);
     });
 });

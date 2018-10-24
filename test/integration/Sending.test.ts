@@ -13,18 +13,18 @@ describe('Sending', function() {
     const fromAddress: string = testingKeys.get('SENDER_EMAIL_ADDRESS');
     const toAddress: string = testingKeys.get('EMAIL_RECIPIENT_ADDRESS');
 
-    function messageToSend():postmark.DataTypes.Message {
+    function messageToSend():postmark.Models.Message {
         return { From: fromAddress, To: toAddress, Subject: 'Test subject', HtmlBody: 'Test html body' };
     };
 
     it('sendEmail', async() => {
-        const response: postmark.DataTypes.MessageSendingResponse = await client.sendEmail(messageToSend());
+        const response: postmark.Models.MessageSendingResponse = await client.sendEmail(messageToSend());
         expect(response.Message).to.equal('OK')
     });
 
     it('sendEmailBatch', async() => {
-        const messages: postmark.DataTypes.Message[] = Array.from({length:3}, () => messageToSend())
-        const responses:postmark.DataTypes.MessageSendingResponse[] = await client.sendEmailBatch(messages);
+        const messages: postmark.Models.Message[] = Array.from({length:3}, () => messageToSend())
+        const responses:postmark.Models.MessageSendingResponse[] = await client.sendEmailBatch(messages);
 
         expect(responses[0].Message).to.equal('OK');
         expect(responses.length).to.equal(3);
@@ -32,7 +32,7 @@ describe('Sending', function() {
 
     describe('invalid', () => {
         it('sendEmail', () => {
-            let message: postmark.DataTypes.Message = messageToSend();
+            let message: postmark.Models.Message = messageToSend();
             message.HtmlBody = undefined;
 
             return client.sendEmail(message).then(result => {

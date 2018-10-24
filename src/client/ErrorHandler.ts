@@ -1,4 +1,4 @@
-import {PostmarkError} from "./models";
+import {Errors} from "./models";
 
 /**
  * This class handles all client request errors. Client response error is classified so that proper response error is generated.
@@ -13,7 +13,7 @@ export class ErrorHandler {
      *
      * @returns properly formatted Postmark error.
      */
-    public generateError(error: any): PostmarkError.StandardError  {
+    public generateError(error: any): Errors.PostmarkError  {
         if (error.statusCode !== undefined) {
             return this.buildStatusError(error);
         }
@@ -29,8 +29,8 @@ export class ErrorHandler {
      *
      * @returns properly formatted Postmark error.
      */
-    private buildError(error: Error): PostmarkError.StandardError {
-        return new PostmarkError.StandardError(error.message);
+    private buildError(error: Error): Errors.PostmarkError {
+        return new Errors.PostmarkError(error.message);
     }
 
     /**
@@ -40,22 +40,22 @@ export class ErrorHandler {
      *
      * @returns properly formatted Postmark error.
      */
-    private buildStatusError(error: any):PostmarkError.HttpError {
+    private buildStatusError(error: any):Errors.HttpError {
         switch (error.statusCode) {
             case 401:
-                return new PostmarkError.InvalidAPIKeyError(error.body.Message, error.body.ErrorCode, error.statusCode);
+                return new Errors.InvalidAPIKeyError(error.body.Message, error.body.ErrorCode, error.statusCode);
 
             case 422:
-                return new PostmarkError.ApiInputError(error.body.Message, error.body.ErrorCode, error.statusCode);
+                return new Errors.ApiInputError(error.body.Message, error.body.ErrorCode, error.statusCode);
 
             case 500:
-                return new PostmarkError.InternalServerError(error.body.Message, error.body.ErrorCode, error.statusCode);
+                return new Errors.InternalServerError(error.body.Message, error.body.ErrorCode, error.statusCode);
 
             case 503:
-                return new PostmarkError.ServiceUnavailablerError(error.body.Message, error.body.ErrorCode, error.statusCode);
+                return new Errors.ServiceUnavailablerError(error.body.Message, error.body.ErrorCode, error.statusCode);
 
             default:
-                return new PostmarkError.UnknownError(error.body.Message, error.body.ErrorCode, error.statusCode);
+                return new Errors.UnknownError(error.body.Message, error.body.ErrorCode, error.statusCode);
         }
     }
 }

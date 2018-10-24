@@ -11,24 +11,24 @@ describe('Client - Message Statistics', function() {
     const client:postmark.ServerClient = new postmark.ServerClient(serverToken);
 
     it('getOutboundMessages', async() => {
-        const messages: postmark.DataTypes.OutboundMessages = await client.getOutboundMessages({count:1});
+        const messages: postmark.Models.OutboundMessages = await client.getOutboundMessages({count:1});
         expect(messages.TotalCount).to.be.gte(0);
         expect(messages.Messages.length).to.be.gte(0);
     });
 
     it('getOutboundMessageDetails', async() => {
-        const messages: postmark.DataTypes.OutboundMessages = await client.getOutboundMessages({count:1});
+        const messages: postmark.Models.OutboundMessages = await client.getOutboundMessages({count:1});
         expect(messages.Messages[0].MessageID).to.be.string;
     });
 
     it('getInboundMessages', async() => {
-        const messages: postmark.DataTypes.InboundMessages = await client.getInboundMessages({count:1});
+        const messages: postmark.Models.InboundMessages = await client.getInboundMessages({count:1});
         expect(messages.TotalCount).to.be.gte(0);
         expect(messages.InboundMessages.length).to.be.gte(0);
     });
 
     it('getInboundMessageDetails', async() => {
-        const messages: postmark.DataTypes.InboundMessages = await client.getInboundMessages({count:1});
+        const messages: postmark.Models.InboundMessages = await client.getInboundMessages({count:1});
         expect(messages.TotalCount).to.be.gte(0);
         expect(messages.InboundMessages[0].MessageID.length).to.above(0);
     });

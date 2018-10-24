@@ -24,6 +24,7 @@ import {
     TemplateValidationOptions,
     TemplateValidation,
     TemplateMessage,
+    TemplateToCreate,
 
     Server,
     ServerOptions,
@@ -60,11 +61,12 @@ import {
     StatisticsFilteringParameters,
 
     TagTriggerOptions,
+    TagTriggerToCreate,
     TagTrigger,
     TagTriggers,
     TagTriggerFilteringParameters,
 
-    InboundRuleOptions,
+    InboundRuleToCreate,
     InboundRule,
     InboundRules,
 } from './models/index';
@@ -233,7 +235,7 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    createTemplate(options: TemplateOptions, callback?:Callback<Template>) : Promise<Template> {
+    createTemplate(options: TemplateToCreate, callback?:Callback<Template>) : Promise<Template> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/templates/', options, callback);
     }
 
@@ -565,7 +567,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    createTagTrigger(options: TagTriggerOptions, callback?:Callback<TagTrigger>) : Promise<TagTrigger> {
+    createTagTrigger(options: TagTriggerToCreate, callback?:Callback<TagTrigger>) : Promise<TagTrigger> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/triggers/tags', options, callback);
     };
 
@@ -622,7 +624,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    createInboundRuleTrigger(options: InboundRuleOptions, callback?:Callback<InboundRule>) : Promise<InboundRule> {
+    createInboundRuleTrigger(options: InboundRuleToCreate, callback?:Callback<InboundRule>) : Promise<InboundRule> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/triggers/inboundRules', options, callback);
     };
 

@@ -1,8 +1,14 @@
 export module ClientOptions {
-    export interface Configuration {
-        useHttps?: boolean;
-        requestHost?: string;
-        timeout?:number;
+    export class Configuration {
+        constructor(useHttps: boolean, requestHost: string, timeout: number) {
+            this.useHttps = useHttps;
+            this.requestHost = requestHost;
+            this.timeout = timeout;
+        }
+
+        useHttps: boolean;
+        requestHost: string;
+        timeout: number;
     }
 
     export enum HttpMethod {

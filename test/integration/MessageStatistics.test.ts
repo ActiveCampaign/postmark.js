@@ -20,22 +20,22 @@ describe('Client - Message Statistics', function() {
     });
 
     it('getSentCounts', async () => {
-        const stats:postmark.DataTypes.SentCounts = await client.getSentCounts();
+        const stats:postmark.Models.SentCounts = await client.getSentCounts();
         expect(stats.Sent).to.be.gte(0);
     });
 
     it('getBounceCounts', async () => {
-        const stats:postmark.DataTypes.BounceCounts = await client.getBounceCounts();
+        const stats:postmark.Models.BounceCounts = await client.getBounceCounts();
         expect(stats).not.to.be.null;
     });
 
     it('getSpamComplaints', async () => {
-        const stats:postmark.DataTypes.SpamCounts = await client.getSpamComplaintsCounts();
+        const stats:postmark.Models.SpamCounts = await client.getSpamComplaintsCounts();
         expect(stats.Days.length).to.be.gte(0);
     });
 
     it('getTrackedEmailCounts', async () => {
-        const stats:postmark.DataTypes.TrackedEmailCounts = await client.getTrackedEmailCounts();
+        const stats:postmark.Models.TrackedEmailCounts = await client.getTrackedEmailCounts();
         expect(stats.Tracked).to.be.gte(0)
     });
 
@@ -45,7 +45,7 @@ describe('Client - Message Statistics', function() {
         let toDate:string = formattedDate(now);
         let fromDate:string = formattedDate(yesterday);
 
-        const stats:postmark.DataTypes.OutboundStatistics = await client.getOutboundOverview({fromDate: fromDate, toDate: toDate});
+        const stats:postmark.Models.OutboundStatistics = await client.getOutboundOverview({fromDate: fromDate, toDate: toDate});
         expect(stats.Sent).to.be.gte(0);
     });
 });

@@ -1,9 +1,9 @@
-export module PostmarkError {
+export module Errors {
 
     /**
      * Standard Postmark error on which all sub-errors are based.
      */
-    export class StandardError extends Error {
+    export class PostmarkError extends Error {
         public code: number;
         public statusCode: number;
 
@@ -14,7 +14,7 @@ export module PostmarkError {
 
             // this is mandatory due:
             // https://github.com/Microsoft/TypeScript/wiki/Breaking-Changes#extending-built-ins-like-error-array-and-map-may-no-longer-work
-            Object.setPrototypeOf(this, StandardError.prototype);
+            Object.setPrototypeOf(this, PostmarkError.prototype);
             this.setUpStackTrace();
         }
 
@@ -24,7 +24,7 @@ export module PostmarkError {
         }
     }
 
-    export class HttpError extends StandardError {
+    export class HttpError extends PostmarkError {
         constructor(message: string, code: number, statusCode: number) {
             super(message, code, statusCode);
             Object.setPrototypeOf(this, HttpError.prototype);
