@@ -10,9 +10,8 @@
     "transactional"
   ],
   "version": "2.0.0",
-  "author": "Andrew Theken <andrew+postmark.js@wildbit.com>",
+  "author": "Igor Balos",
   "contributors": [
-    "Igor Balos <ibalosh@gmail.com>",
     "Aaron Blum",
     "Aleksey Aleksandrov",
     "Alex Shepard",
@@ -21,6 +20,7 @@
     "Ben Burwell",
     "Ben Williamson",
     "Chris Williams",
+    "Igor Balos",
     "Jakub Borys",
     "Mark Nguyen",
     "Matt",
