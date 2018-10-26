@@ -2,6 +2,7 @@ import * as postmark from '../../src/index';
 
 import { expect } from 'chai';
 import 'mocha';
+import { FilteringParameters } from '../../src/client/models';
 
 const nconf = require('nconf');
 const testingKeys = nconf.env().file({ file: __dirname + '/../../testing_keys.json' });
@@ -64,14 +65,14 @@ describe('AccountClient', () => {
 
         it('promise error', () => {
             let client = new postmark.AccountClient('testToken');
-            return client.getSenderSignatures().then(data => { }, error => {
+            return client.getSenderSignatures().then(_ => { }, error => {
                 expect(error.name).to.equal(invalidTokenError)
             });
         });
 
         it('callback error', function (done) {
             let client = new postmark.AccountClient('testToken');
-            client.getSenderSignatures({}, (error: any, data) => {
+            client.getSenderSignatures(null, (error: any, data) => {
                 expect(data).to.equal(null);
                 expect(error.name).to.equal(invalidTokenError);
                 done();
