@@ -47,6 +47,7 @@ export class InboundMessagesFilteringParameters extends FilteringParameters {
         toDate?: string,
         subject?: string) {
         super(count, offset);
+        this.status = status;
         this.mailboxHash = mailboxHash;
         this.recipient = recipient;
         this.fromEmail = fromEmail;

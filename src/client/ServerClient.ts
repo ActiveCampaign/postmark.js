@@ -137,13 +137,13 @@ export default class ServerClient extends BaseClient {
     };
 
     /**
-     * Get a batch of bounces. The default batch size is 100, and the offset is 0.
+     * Get a batch of bounces.
      *
      * @param filter - Optional filtering parameters.
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getBounces(filter: BounceFilteringParameters, callback?: Callback<Bounces>): Promise<Bounces> {
+    getBounces(filter: BounceFilteringParameters = new BounceFilteringParameters(), callback?: Callback<Bounces>): Promise<Bounces> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/bounces', filter, callback);
     };
 
@@ -197,7 +197,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getTemplates(filter: FilteringParameters, callback?: Callback<Templates>): Promise<Templates> {
+    getTemplates(filter: FilteringParameters = new FilteringParameters(), callback?: Callback<Templates>): Promise<Templates> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/templates', filter, callback);
     };
 
@@ -281,13 +281,13 @@ export default class ServerClient extends BaseClient {
     };
 
     /**
-     * Get a batch of Outbound Messages. The default batch size is 100, and the offset is 0.
+     * Get a batch of Outbound Messages.
      *
      * @param filter - Optional filtering parameters.
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getOutboundMessages(filter: OutboundMessagesFilteringParameters,
+    getOutboundMessages(filter: OutboundMessagesFilteringParameters = new OutboundMessagesFilteringParameters(),
         callback?: Callback<OutboundMessages>): Promise<OutboundMessages> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/messages/outbound', filter, callback);
     };
@@ -317,13 +317,13 @@ export default class ServerClient extends BaseClient {
     };
 
     /**
-     * Get a batch of Inbound Messages. The default batch size is 100, and the offset is 0.
+     * Get a batch of Inbound Messages.
      *
      * @param filter - Optional filtering parameters.
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getInboundMessages(filter: InboundMessagesFilteringParameters, callback?: Callback<InboundMessages>): Promise<InboundMessages> {
+    getInboundMessages(filter: InboundMessagesFilteringParameters = new InboundMessagesFilteringParameters(), callback?: Callback<InboundMessages>): Promise<InboundMessages> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/messages/inbound', filter, callback);
     };
 
@@ -361,13 +361,14 @@ export default class ServerClient extends BaseClient {
     };
 
     /**
-     * Get the Opens for Outbound Messages. The default batch size is 100, and offset is 0.
+     * Get the Opens for Outbound Messages.
      *
      * @param filter - Optional filtering parameters.
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getMessageOpens(filter: OutboundMessageOpensFilteringParameters, callback?: Callback<OutboundMessageOpens>): Promise<OutboundMessageOpens> {
+    getMessageOpens(filter: OutboundMessageOpensFilteringParameters = new OutboundMessageOpensFilteringParameters(),
+        callback?: Callback<OutboundMessageOpens>): Promise<OutboundMessageOpens> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/messages/outbound/opens', filter, callback);
     };
 
@@ -378,32 +379,32 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getMessageOpensForSingleMessage(messageId: string, filter?: OutboundMessageOpensFilteringParameters,
+    getMessageOpensForSingleMessage(messageId: string, filter: OutboundMessageOpensFilteringParameters = new OutboundMessageOpensFilteringParameters(50, 0),
         callback?: Callback<OutboundMessageOpens>): Promise<OutboundMessageOpens> {
-        filter = { ...{ count: 50, offset: 0 }, ...filter };
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/messages/outbound/opens/${messageId}`, filter, callback);
     };
 
     /**
-     * Get the Clicks for Outbound Messages. The default batch size is 100, and offset is 0.
+     * Get the Clicks for Outbound Messages.
      *
      * @param filter - Optional filtering parameters.
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getMessageClicks(filter: OutboundMessageClicksFilteringParameters, callback?: Callback<OutboundMessageClicks>): Promise<OutboundMessageClicks> {
+    getMessageClicks(filter: OutboundMessageClicksFilteringParameters = new OutboundMessageClicksFilteringParameters(), callback?: Callback<OutboundMessageClicks>): Promise<OutboundMessageClicks> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/messages/outbound/clicks', filter, callback);
     };
 
     /**
-     * Get Click information for a single Outbound Message. The default batch size is 100, and offset is 0.
+     * Get Click information for a single Outbound Message.
      *
      * @param messageId - The MessageID for which clicks should be retrieved.
      * @param filter - Optional filtering parameters.
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getMessageClicksForSingleMessage(messageId: string, filter: OutboundMessageClicksFilteringParameters,
+    getMessageClicksForSingleMessage(messageId: string,
+        filter: OutboundMessageClicksFilteringParameters = new OutboundMessageClicksFilteringParameters(),
         callback?: Callback<OutboundMessageClicks>): Promise<OutboundMessageClicks> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/messages/outbound/clicks/${messageId}`, filter, callback);
     };
@@ -415,7 +416,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getOutboundOverview(filter?: StatisticsFilteringParameters, callback?: Callback<OutboundStatistics>):
+    getOutboundOverview(filter: StatisticsFilteringParameters = new StatisticsFilteringParameters(), callback?: Callback<OutboundStatistics>):
         Promise<OutboundStatistics> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound', filter, callback);
     };
@@ -427,7 +428,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getSentCounts(filter?: StatisticsFilteringParameters, callback?: Callback<SentCounts>): Promise<SentCounts> {
+    getSentCounts(filter: StatisticsFilteringParameters = new StatisticsFilteringParameters(), callback?: Callback<SentCounts>): Promise<SentCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/sends', filter, callback);
     };
 
@@ -438,7 +439,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getBounceCounts(filter?: StatisticsFilteringParameters, callback?: Callback<BounceCounts>): Promise<BounceCounts> {
+    getBounceCounts(filter: StatisticsFilteringParameters = new StatisticsFilteringParameters(), callback?: Callback<BounceCounts>): Promise<BounceCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/bounces', filter, callback);
     };
 
@@ -449,7 +450,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getSpamComplaintsCounts(filter?: StatisticsFilteringParameters, callback?: Callback<SpamCounts>): Promise<SpamCounts> {
+    getSpamComplaintsCounts(filter: StatisticsFilteringParameters = new StatisticsFilteringParameters(), callback?: Callback<SpamCounts>): Promise<SpamCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/spam', filter, callback);
     };
 
@@ -460,7 +461,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getTrackedEmailCounts(filter?: StatisticsFilteringParameters, callback?: Callback<TrackedEmailCounts>): Promise<TrackedEmailCounts> {
+    getTrackedEmailCounts(filter: StatisticsFilteringParameters = new StatisticsFilteringParameters(), callback?: Callback<TrackedEmailCounts>): Promise<TrackedEmailCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/tracked', filter, callback);
     };
 
@@ -471,7 +472,8 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getEmailOpenCounts(filter?: StatisticsFilteringParameters, callback?: Callback<OpenCounts>): Promise<OpenCounts> {
+    getEmailOpenCounts(filter: StatisticsFilteringParameters = new StatisticsFilteringParameters(),
+        callback?: Callback<OpenCounts>): Promise<OpenCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/opens', filter, callback);
     };
 
@@ -482,7 +484,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getEmailOpenPlatformUsage(filter?: StatisticsFilteringParameters, callback?: Callback<EmailPlaformUsageCounts>): Promise<EmailPlaformUsageCounts> {
+    getEmailOpenPlatformUsage(filter: StatisticsFilteringParameters = new StatisticsFilteringParameters(), callback?: Callback<EmailPlaformUsageCounts>): Promise<EmailPlaformUsageCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/opens/platforms', filter, callback);
     };
 
@@ -493,7 +495,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getEmailOpenClientUsage(filter?: StatisticsFilteringParameters, callback?: Callback<EmailClientUsageCounts>): Promise<EmailClientUsageCounts> {
+    getEmailOpenClientUsage(filter: StatisticsFilteringParameters = new StatisticsFilteringParameters(), callback?: Callback<EmailClientUsageCounts>): Promise<EmailClientUsageCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/opens/emailClients', filter, callback);
     };
 
@@ -503,7 +505,8 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getEmailOpenReadTimes(filter?: StatisticsFilteringParameters, callback?: Callback<EmailReadTimesCounts>): Promise<EmailReadTimesCounts> {
+    getEmailOpenReadTimes(filter: StatisticsFilteringParameters = new StatisticsFilteringParameters(),
+        callback?: Callback<EmailReadTimesCounts>): Promise<EmailReadTimesCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/opens/readTimes', filter, callback);
     };
 
@@ -514,7 +517,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getClickCounts(filter?: StatisticsFilteringParameters, callback?: Callback<ClickCounts>): Promise<ClickCounts> {
+    getClickCounts(filter: StatisticsFilteringParameters = new StatisticsFilteringParameters(), callback?: Callback<ClickCounts>): Promise<ClickCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/clicks', filter, callback);
     };
 
@@ -524,7 +527,7 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getClickBrowserUsage(filter?: StatisticsFilteringParameters, callback?: Callback<BrowserUsageCounts>): Promise<BrowserUsageCounts> {
+    getClickBrowserUsage(filter: StatisticsFilteringParameters = new StatisticsFilteringParameters(), callback?: Callback<BrowserUsageCounts>): Promise<BrowserUsageCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/clicks/browserFamilies', filter, callback);
     };
 
@@ -535,7 +538,8 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getClickPlatformUsage(filter?: StatisticsFilteringParameters, callback?: Callback<ClickPlaformUsageCounts>): Promise<ClickPlaformUsageCounts> {
+    getClickPlatformUsage(filter: StatisticsFilteringParameters = new StatisticsFilteringParameters(),
+        callback?: Callback<ClickPlaformUsageCounts>): Promise<ClickPlaformUsageCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/clicks/platforms', filter, callback);
     };
 
@@ -546,7 +550,8 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getClickLocation(filter?: StatisticsFilteringParameters, callback?: Callback<ClickLocationCounts>): Promise<ClickLocationCounts> {
+    getClickLocation(filter: StatisticsFilteringParameters = new StatisticsFilteringParameters(),
+        callback?: Callback<ClickLocationCounts>): Promise<ClickLocationCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/stats/outbound/clicks/location', filter, callback);
     };
 
@@ -596,13 +601,13 @@ export default class ServerClient extends BaseClient {
     };
 
     /**
-     * Get a list of Tag Trigger. The default batch count is 100, and the offset is 0.
+     * Get a list of Tag Trigger.
      *
      * @param filter - Optional filtering parameters.
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getTagTriggers(filter: TagTriggerFilteringParameters, callback?: Callback<TagTriggers>): Promise<TagTriggers> {
+    getTagTriggers(filter: TagTriggerFilteringParameters = new TagTriggerFilteringParameters(), callback?: Callback<TagTriggers>): Promise<TagTriggers> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/triggers/tags/', filter, callback);
     };
 
@@ -629,13 +634,13 @@ export default class ServerClient extends BaseClient {
     };
 
     /**
-     * Get a list of Inbound Rule Triggers. The default batch count is 100, and the offset is 0.
+     * Get a list of Inbound Rule Triggers.
      *
      * @param filter - Optional filtering parameters.
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getInboundRuleTriggers(filter: FilteringParameters, callback?: Callback<InboundRules>): Promise<InboundRules> {
+    getInboundRuleTriggers(filter: FilteringParameters = new FilteringParameters(), callback?: Callback<InboundRules>): Promise<InboundRules> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/triggers/inboundRules', filter, callback);
     };
 }

@@ -2,6 +2,7 @@ import * as postmark from '../../src/index';
 
 import { expect } from 'chai';
 import 'mocha';
+import { BounceFilteringParameters } from '../../src/client/models';
 
 const nconf = require('nconf');
 const testingKeys = nconf.env().file({ file: __dirname + '/../../testing_keys.json' });

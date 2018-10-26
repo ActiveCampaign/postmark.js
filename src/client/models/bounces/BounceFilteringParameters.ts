@@ -26,7 +26,19 @@ export enum BounceType {
 }
 
 export class BounceFilteringParameters extends FilteringParameters {
-    type?: BounceType | string;
+    constructor(count: number = 100, offset: number = 0, type?: BounceType,
+        inactive?: boolean, emailFilter?: string,
+        tag?: string, messageID?: string, fromDate?: string, toDate?: string) {
+        super(count, offset);
+        this.type = type;
+        this.inactive = inactive;
+        this.emailFilter = emailFilter;
+        this.tag = tag;
+        this.messageID = messageID;
+        this.fromDate = fromDate;
+        this.toDate = toDate;
+    }
+    type?: BounceType;
     inactive?: boolean;
     emailFilter?: string;
     tag?: string;

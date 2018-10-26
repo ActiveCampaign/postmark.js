@@ -42,7 +42,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getServers(filter: FilteringParameters, callback?: Callback<Servers>): Promise<Servers> {
+    getServers(filter: FilteringParameters = new FilteringParameters(), callback?: Callback<Servers>): Promise<Servers> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/servers', filter, callback);
     };
 
@@ -98,7 +98,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getDomains(filter: FilteringParameters, callback?: Callback<Domains>): Promise<Domains> {
+    getDomains(filter: FilteringParameters = new FilteringParameters(), callback?: Callback<Domains>): Promise<Domains> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/domains', filter, callback);
     };
 
@@ -210,7 +210,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getSenderSignatures(filter: FilteringParameters, callback?: Callback<Signatures>): Promise<Signatures> {
+    getSenderSignatures(filter: FilteringParameters = new FilteringParameters(), callback?: Callback<Signatures>): Promise<Signatures> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/senders', filter, callback);
     };
 
