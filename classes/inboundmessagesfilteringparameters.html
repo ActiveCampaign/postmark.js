@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BounceFilteringParameters | Postmark.js</title>
+	<title>InboundMessagesFilteringParameters | Postmark.js</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -907,35 +907,38 @@ img { max-width: 100%; }
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
-		<li class="current tsd-kind-interface">
-			<a href="bouncefilteringparameters.html" class="tsd-kind-icon">Bounce<wbr>Filtering<wbr>Parameters</a>
+		<li class="current tsd-kind-class">
+			<a href="inboundmessagesfilteringparameters.html" class="tsd-kind-icon">Inbound<wbr>Messages<wbr>Filtering<wbr>Parameters</a>
 			<ul>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a href="bouncefilteringparameters.html#count" class="tsd-kind-icon">count</a>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a href="inboundmessagesfilteringparameters.html#count" class="tsd-kind-icon">count</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="bouncefilteringparameters.html#emailfilter" class="tsd-kind-icon">email<wbr>Filter</a>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="inboundmessagesfilteringparameters.html#fromdate" class="tsd-kind-icon">from<wbr>Date</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="bouncefilteringparameters.html#fromdate" class="tsd-kind-icon">from<wbr>Date</a>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="inboundmessagesfilteringparameters.html#fromemail" class="tsd-kind-icon">from<wbr>Email</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="bouncefilteringparameters.html#inactive" class="tsd-kind-icon">inactive</a>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="inboundmessagesfilteringparameters.html#mailboxhash" class="tsd-kind-icon">mailbox<wbr>Hash</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="bouncefilteringparameters.html#messageid" class="tsd-kind-icon">messageID</a>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a href="inboundmessagesfilteringparameters.html#offset" class="tsd-kind-icon">offset</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a href="bouncefilteringparameters.html#offset" class="tsd-kind-icon">offset</a>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="inboundmessagesfilteringparameters.html#recipient" class="tsd-kind-icon">recipient</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="bouncefilteringparameters.html#tag" class="tsd-kind-icon">tag</a>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="inboundmessagesfilteringparameters.html#status" class="tsd-kind-icon">status</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="bouncefilteringparameters.html#todate" class="tsd-kind-icon">to<wbr>Date</a>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="inboundmessagesfilteringparameters.html#subject" class="tsd-kind-icon">subject</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="bouncefilteringparameters.html#type" class="tsd-kind-icon">type</a>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="inboundmessagesfilteringparameters.html#tag" class="tsd-kind-icon">tag</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="inboundmessagesfilteringparameters.html#todate" class="tsd-kind-icon">to<wbr>Date</a>
 				</li>
 			</ul>
 		</li>
@@ -950,15 +953,17 @@ img { max-width: 100%; }
 					<a href="filteringparameters.html" class="tsd-signature-type">FilteringParameters</a>
 					<ul class="tsd-hierarchy">
 						<li>
-							<span class="target">BounceFilteringParameters</span>
+							<span class="target">InboundMessagesFilteringParameters</span>
 						</li>
 					</ul>
 				</li>
 			</ul>
 		</section>
-		<section class="tsd-panel tsd-kind-interface">
-			<h3 class="tsd-before-signature">Indexable</h3>
-			<div class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></div>
+		<section class="tsd-panel">
+			<h3>Implements</h3>
+			<ul class="tsd-hierarchy">
+				<li><a href="../interfaces/hash.html" class="tsd-signature-type">Hash</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+			</ul>
 		</section>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
@@ -967,15 +972,16 @@ img { max-width: 100%; }
 					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="bouncefilteringparameters.html#count" class="tsd-kind-icon">count</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bouncefilteringparameters.html#emailfilter" class="tsd-kind-icon">email<wbr>Filter</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bouncefilteringparameters.html#fromdate" class="tsd-kind-icon">from<wbr>Date</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bouncefilteringparameters.html#inactive" class="tsd-kind-icon">inactive</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bouncefilteringparameters.html#messageid" class="tsd-kind-icon">messageID</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="bouncefilteringparameters.html#offset" class="tsd-kind-icon">offset</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bouncefilteringparameters.html#tag" class="tsd-kind-icon">tag</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bouncefilteringparameters.html#todate" class="tsd-kind-icon">to<wbr>Date</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bouncefilteringparameters.html#type" class="tsd-kind-icon">type</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="inboundmessagesfilteringparameters.html#count" class="tsd-kind-icon">count</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="inboundmessagesfilteringparameters.html#fromdate" class="tsd-kind-icon">from<wbr>Date</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="inboundmessagesfilteringparameters.html#fromemail" class="tsd-kind-icon">from<wbr>Email</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="inboundmessagesfilteringparameters.html#mailboxhash" class="tsd-kind-icon">mailbox<wbr>Hash</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="inboundmessagesfilteringparameters.html#offset" class="tsd-kind-icon">offset</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="inboundmessagesfilteringparameters.html#recipient" class="tsd-kind-icon">recipient</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="inboundmessagesfilteringparameters.html#status" class="tsd-kind-icon">status</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="inboundmessagesfilteringparameters.html#subject" class="tsd-kind-icon">subject</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="inboundmessagesfilteringparameters.html#tag" class="tsd-kind-icon">tag</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="inboundmessagesfilteringparameters.html#todate" class="tsd-kind-icon">to<wbr>Date</a></li>
 						</ul>
 					</section>
 				</div>
@@ -983,95 +989,105 @@ img { max-width: 100%; }
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 				<a name="count" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagOptional">Optional</span> count</h3>
 				<div class="tsd-signature tsd-kind-icon">count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="filteringparameters.html">FilteringParameters</a>.<a href="filteringparameters.html#count">count</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9b53f1f/src/client/models/client/FilteringParameters.ts#L4">client/models/client/FilteringParameters.ts:4</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/109eb6a/src/client/models/client/FilteringParameters.ts#L4">client/models/client/FilteringParameters.ts:4</a></li>
 					</ul>
 				</aside>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="emailfilter" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> email<wbr>Filter</h3>
-				<div class="tsd-signature tsd-kind-icon">email<wbr>Filter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9b53f1f/src/client/models/bounces/BounceFilteringParameters.ts#L31">client/models/bounces/BounceFilteringParameters.ts:31</a></li>
-					</ul>
-				</aside>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 				<a name="fromdate" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagOptional">Optional</span> from<wbr>Date</h3>
 				<div class="tsd-signature tsd-kind-icon">from<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9b53f1f/src/client/models/bounces/BounceFilteringParameters.ts#L34">client/models/bounces/BounceFilteringParameters.ts:34</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/109eb6a/src/client/models/messages/MessageFilteringParameters.ts#L34">client/models/messages/MessageFilteringParameters.ts:34</a></li>
 					</ul>
 				</aside>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="inactive" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> inactive</h3>
-				<div class="tsd-signature tsd-kind-icon">inactive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="fromemail" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> from<wbr>Email</h3>
+				<div class="tsd-signature tsd-kind-icon">from<wbr>Email<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9b53f1f/src/client/models/bounces/BounceFilteringParameters.ts#L30">client/models/bounces/BounceFilteringParameters.ts:30</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/109eb6a/src/client/models/messages/MessageFilteringParameters.ts#L31">client/models/messages/MessageFilteringParameters.ts:31</a></li>
 					</ul>
 				</aside>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="messageid" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> messageID</h3>
-				<div class="tsd-signature tsd-kind-icon">messageID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="mailboxhash" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> mailbox<wbr>Hash</h3>
+				<div class="tsd-signature tsd-kind-icon">mailbox<wbr>Hash<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9b53f1f/src/client/models/bounces/BounceFilteringParameters.ts#L33">client/models/bounces/BounceFilteringParameters.ts:33</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/109eb6a/src/client/models/messages/MessageFilteringParameters.ts#L29">client/models/messages/MessageFilteringParameters.ts:29</a></li>
 					</ul>
 				</aside>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 				<a name="offset" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagOptional">Optional</span> offset</h3>
 				<div class="tsd-signature tsd-kind-icon">offset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="filteringparameters.html">FilteringParameters</a>.<a href="filteringparameters.html#offset">offset</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9b53f1f/src/client/models/client/FilteringParameters.ts#L5">client/models/client/FilteringParameters.ts:5</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/109eb6a/src/client/models/client/FilteringParameters.ts#L5">client/models/client/FilteringParameters.ts:5</a></li>
 					</ul>
 				</aside>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="recipient" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> recipient</h3>
+				<div class="tsd-signature tsd-kind-icon">recipient<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/109eb6a/src/client/models/messages/MessageFilteringParameters.ts#L30">client/models/messages/MessageFilteringParameters.ts:30</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="status" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> status</h3>
+				<div class="tsd-signature tsd-kind-icon">status<span class="tsd-signature-symbol">:</span> <a href="../enums/inboundmessagestatus.html" class="tsd-signature-type">InboundMessageStatus</a></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/109eb6a/src/client/models/messages/MessageFilteringParameters.ts#L33">client/models/messages/MessageFilteringParameters.ts:33</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="subject" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> subject</h3>
+				<div class="tsd-signature tsd-kind-icon">subject<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/109eb6a/src/client/models/messages/MessageFilteringParameters.ts#L36">client/models/messages/MessageFilteringParameters.ts:36</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 				<a name="tag" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagOptional">Optional</span> tag</h3>
 				<div class="tsd-signature tsd-kind-icon">tag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9b53f1f/src/client/models/bounces/BounceFilteringParameters.ts#L32">client/models/bounces/BounceFilteringParameters.ts:32</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/109eb6a/src/client/models/messages/MessageFilteringParameters.ts#L32">client/models/messages/MessageFilteringParameters.ts:32</a></li>
 					</ul>
 				</aside>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 				<a name="todate" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagOptional">Optional</span> to<wbr>Date</h3>
 				<div class="tsd-signature tsd-kind-icon">to<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9b53f1f/src/client/models/bounces/BounceFilteringParameters.ts#L35">client/models/bounces/BounceFilteringParameters.ts:35</a></li>
-					</ul>
-				</aside>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="type" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> type</h3>
-				<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <a href="../enums/bouncetype.html" class="tsd-signature-type">BounceType</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9b53f1f/src/client/models/bounces/BounceFilteringParameters.ts#L29">client/models/bounces/BounceFilteringParameters.ts:29</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/109eb6a/src/client/models/messages/MessageFilteringParameters.ts#L35">client/models/messages/MessageFilteringParameters.ts:35</a></li>
 					</ul>
 				</aside>
 			</section>
