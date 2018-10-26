@@ -72,7 +72,7 @@ describe('AccountClient', () => {
 
         it('callback error', function (done) {
             let client = new postmark.AccountClient('testToken');
-            client.getSenderSignatures(null, (error: any, data) => {
+            client.getSenderSignatures(undefined, (error: any, data) => {
                 expect(data).to.equal(null);
                 expect(error.name).to.equal(invalidTokenError);
                 done();

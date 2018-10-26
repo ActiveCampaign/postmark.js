@@ -104,7 +104,7 @@ describe('ServerClient', () => {
 
         it('callback error', function (done) {
             let client = new postmark.ServerClient('testToken');
-            client.getBounces(null, (error: any, data) => {
+            client.getBounces(undefined, (error: any, data) => {
                 expect(data).to.equal(null);
                 expect(error.name).to.equal(invalidTokenError);
                 done();
