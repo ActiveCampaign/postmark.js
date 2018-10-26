@@ -2,27 +2,26 @@ import * as postmark from '../../src/index';
 
 import { expect } from 'chai';
 import 'mocha';
+import { CreateDomainRequest } from '../../src/client/models';
 
 const nconf = require('nconf');
-const testingKeys = nconf.env().file({file: __dirname + '/../../testing_keys.json'});
+const testingKeys = nconf.env().file({ file: __dirname + '/../../testing_keys.json' });
 
 describe('Client - Domains', function () {
     const accountToken: string = testingKeys.get('ACCOUNT_TOKEN');
-    const client: postmark.AccountClient = new postmark.AccountClient(accountToken);
+    const client = new postmark.AccountClient(accountToken);
     const domainName: string = testingKeys.get('DOMAIN_NAME');
 
     function returnPathToTest(domainName: string) {
         return `return.${domainName}`
     }
 
-    function domainToTest():postmark.Models.DomainToCreate {
-        return {
-            Name: `${Date.now()}-${domainName}`
-        }
+    function domainToTest() {
+        return new CreateDomainRequest(`${Date.now()}-${domainName}`);
     }
 
     async function cleanup() {
-        let domains: postmark.Models.Domains = await client.getDomains()
+        let domains = await client.getDomains()
 
         for (let i = 0; i < domains.Domains.length; i++) {
             let domain = domains.Domains[i];
@@ -34,8 +33,8 @@ describe('Client - Domains', function () {
     after(cleanup);
 
     it("createDomain", async () => {
-        const domainOptions: postmark.Models.DomainToCreate = domainToTest();
-        const domainDetails: postmark.Models.DomainDetails = await client.createDomain(domainOptions);
+        const domainOptions = domainToTest();
+        const domainDetails = await client.createDomain(domainOptions);
         expect(domainDetails.Name).to.equal(domainOptions.Name);
     });
 
@@ -45,38 +44,38 @@ describe('Client - Domains', function () {
     });
 
     it("getDomain", async () => {
-        const domainOptions: postmark.Models.DomainToCreate = domainToTest();
-        const domain: postmark.Models.DomainDetails = await client.createDomain(domainOptions);
+        const domainOptions = domainToTest();
+        const domain = await client.createDomain(domainOptions);
 
-        const domainDetails: postmark.Models.DomainDetails = await client.getDomain(domain.ID);
+        const domainDetails = await client.getDomain(domain.ID);
         expect(domainDetails.Name).to.equal(domainOptions.Name);
     });
 
     it("editDomain", async () => {
-        const domainOptions: postmark.Models.DomainToCreate = domainToTest();
-        const returnPath: string = returnPathToTest(domainOptions.Name);
-        const domain: postmark.Models.DomainDetails = await client.createDomain(domainOptions);
+        const domainOptions = domainToTest();
+        const returnPath = returnPathToTest(domainOptions.Name);
+        const domain = await client.createDomain(domainOptions);
 
-        const domainDetails: postmark.Models.DomainDetails = await client.editDomain(domain.ID, {ReturnPathDomain: returnPath});
+        const domainDetails = await client.editDomain(domain.ID, { ReturnPathDomain: returnPath });
         expect(domainDetails.ReturnPathDomain).to.equal(returnPath);
     });
 
     it("deleteDomain", async () => {
-        const domain: postmark.Models.DomainDetails = await client.createDomain(domainToTest());
+        const domain = await client.createDomain(domainToTest());
 
-        const response: postmark.Models.DefaultResponse = await client.deleteDomain(domain.ID);
+        const response = await client.deleteDomain(domain.ID);
         expect(response.Message.length).to.above(0);
     });
 
     it("verifyDomainDKIM", async () => {
-        const domain: postmark.Models.DomainDetails = await client.createDomain(domainToTest());
-        const response: postmark.Models.DomainDetails = await client.verifyDomainDKIM(domain.ID);
+        const domain = await client.createDomain(domainToTest());
+        const response = await client.verifyDomainDKIM(domain.ID);
         expect(response.ID).to.eq(domain.ID);
     });
 
     it("verifyDomainReturnPath", async () => {
-        const domain: postmark.Models.DomainDetails = await client.createDomain(domainToTest());
-        const response: postmark.Models.DomainDetails = await client.verifyDomainReturnPath(domain.ID);
+        const domain = await client.createDomain(domainToTest());
+        const response = await client.verifyDomainReturnPath(domain.ID);
         expect(response.ID).to.eq(domain.ID);
     });
 });

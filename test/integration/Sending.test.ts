@@ -4,27 +4,27 @@ import { expect } from 'chai';
 import 'mocha';
 
 const nconf = require('nconf');
-const testingKeys = nconf.env().file({file: __dirname + '/../../testing_keys.json'});
+const testingKeys = nconf.env().file({ file: __dirname + '/../../testing_keys.json' });
 
-describe('Sending', function() {
+describe('Sending', function () {
     const serverToken: string = testingKeys.get('SERVER_TOKEN');
-    const client: postmark.ServerClient = new postmark.ServerClient(serverToken);
-    
+    const client = new postmark.ServerClient(serverToken);
+
     const fromAddress: string = testingKeys.get('SENDER_EMAIL_ADDRESS');
     const toAddress: string = testingKeys.get('EMAIL_RECIPIENT_ADDRESS');
 
-    function messageToSend():postmark.Models.Message {
-        return { From: fromAddress, To: toAddress, Subject: 'Test subject', HtmlBody: 'Test html body' };
+    function messageToSend() {
+        return new postmark.Models.Message(fromAddress, 'Test subject', 'Test html body', null, toAddress);
     };
 
-    it('sendEmail', async() => {
-        const response: postmark.Models.MessageSendingResponse = await client.sendEmail(messageToSend());
+    it('sendEmail', async () => {
+        const response = await client.sendEmail(messageToSend());
         expect(response.Message).to.equal('OK')
     });
 
-    it('sendEmailBatch', async() => {
-        const messages: postmark.Models.Message[] = Array.from({length:3}, () => messageToSend())
-        const responses:postmark.Models.MessageSendingResponse[] = await client.sendEmailBatch(messages);
+    it('sendEmailBatch', async () => {
+        const messages = Array.from({ length: 3 }, () => messageToSend())
+        const responses = await client.sendEmailBatch(messages);
 
         expect(responses[0].Message).to.equal('OK');
         expect(responses.length).to.equal(3);
@@ -32,7 +32,7 @@ describe('Sending', function() {
 
     describe('invalid', () => {
         it('sendEmail', () => {
-            let message: postmark.Models.Message = messageToSend();
+            let message = messageToSend();
             message.HtmlBody = undefined;
 
             return client.sendEmail(message).then(result => {

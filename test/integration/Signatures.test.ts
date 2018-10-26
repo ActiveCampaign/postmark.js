@@ -2,9 +2,10 @@ import * as postmark from '../../src/index';
 
 import { expect } from 'chai';
 import 'mocha';
+import { CreateSignatureRequest } from '../../src/client/models';
 
 const nconf = require('nconf');
-const testingKeys = nconf.env().file({file: __dirname + '/../../testing_keys.json'});
+const testingKeys = nconf.env().file({ file: __dirname + '/../../testing_keys.json' });
 
 describe('Client - Signatures', function () {
     const accountToken: string = testingKeys.get('ACCOUNT_TOKEN');
@@ -12,17 +13,16 @@ describe('Client - Signatures', function () {
     const client: postmark.AccountClient = new postmark.AccountClient(accountToken);
     const domainName: string = `node-js-test-signatures-${testDomainName}`;
 
-    function signatureToTest(): postmark.Models.SignatureToCreate {
-        const fromEmail: string = `${Date.now()}@${domainName}`;
-        return {FromEmail: fromEmail, Name: 'John Smith'}
+    function signatureToTest() {
+        return new CreateSignatureRequest('John Smith', `${Date.now()}@${domainName}`);
     }
 
     async function cleanup() {
-        let client: postmark.AccountClient = new postmark.AccountClient(accountToken);
-        let domains: postmark.Models.Domains = await client.getDomains();
+        let client = new postmark.AccountClient(accountToken);
+        let domains = await client.getDomains();
 
         for (let i = 0; i < domains.Domains.length; i++) {
-            let domain: postmark.Models.Domain = domains.Domains[i];
+            let domain = domains.Domains[i];
             if (domain.Name.includes(domainName)) { await client.deleteDomain(domain.ID); }
         };
     };
@@ -31,55 +31,55 @@ describe('Client - Signatures', function () {
     after(cleanup);
 
     it("createSenderSignature", async () => {
-        const signatureOptions: postmark.Models.SignatureToCreate = signatureToTest();
+        const signatureOptions = signatureToTest();
 
-        const signatureDetails: postmark.Models.SignatureDetails = await client.createSenderSignature(signatureOptions);
+        const signatureDetails = await client.createSenderSignature(signatureOptions);
         expect(signatureDetails.EmailAddress).to.equal(signatureOptions.FromEmail);
     });
 
     it("getSenderSignatures", async () => {
-        const signatures: postmark.Models.Signatures = await client.getSenderSignatures();
+        const signatures = await client.getSenderSignatures();
         expect(signatures.TotalCount).to.gte(0);
     });
 
     it("getSenderSignature", async () => {
-        const signatureOptions: postmark.Models.SignatureToCreate = signatureToTest();
-        const signature: postmark.Models.SignatureDetails = await client.createSenderSignature(signatureOptions);
+        const signatureOptions = signatureToTest();
+        const signature = await client.createSenderSignature(signatureOptions);
 
-        const signatureDetails: postmark.Models.SignatureDetails = await client.getSenderSignature(signature.ID);
+        const signatureDetails = await client.getSenderSignature(signature.ID);
         expect(signatureDetails.EmailAddress).to.equal(signatureOptions.FromEmail);
     });
 
     it("editSenderSignature", async () => {
-        const editName: string = 'Updated name';
-        const signatureOptions: postmark.Models.SignatureToCreate = signatureToTest();
-        const signature: postmark.Models.SignatureDetails = await client.createSenderSignature(signatureOptions);
+        const editName = 'Updated name';
+        const signatureOptions = signatureToTest();
+        const signature = await client.createSenderSignature(signatureOptions);
 
-        const signatureDetails: postmark.Models.SignatureDetails = await client.editSenderSignature(signature.ID, {Name: editName});
+        const signatureDetails = await client.editSenderSignature(signature.ID, { Name: editName });
         expect(signatureDetails.Name).to.equal(editName);
     });
 
     it("deleteSenderSignature", async () => {
-        const signatureOptions: postmark.Models.SignatureToCreate = signatureToTest();
-        const signature: postmark.Models.SignatureDetails = await client.createSenderSignature(signatureOptions);
+        const signatureOptions = signatureToTest();
+        const signature = await client.createSenderSignature(signatureOptions);
 
         const result: postmark.Models.DefaultResponse = await client.deleteSenderSignature(signature.ID);
         expect(result.Message.length).to.above(0);
     });
 
     it("resendSenderSignatureConfirmation", async () => {
-        const signatureOptions: postmark.Models.SignatureToCreate = signatureToTest();
-        const signature: postmark.Models.SignatureDetails = await client.createSenderSignature(signatureOptions);
+        const signatureOptions = signatureToTest();
+        const signature = await client.createSenderSignature(signatureOptions);
 
         const result: postmark.Models.DefaultResponse = await client.resendSenderSignatureConfirmation(signature.ID);
         expect(result.Message.length).to.above(0);
     });
 
     it("resendSenderSignatureConfirmation", async () => {
-        const signatureOptions: postmark.Models.SignatureToCreate = signatureToTest();
-        const signature: postmark.Models.SignatureDetails = await client.createSenderSignature(signatureOptions);
+        const signatureOptions = signatureToTest();
+        const signature = await client.createSenderSignature(signatureOptions);
 
-        const signatureDetails: postmark.Models.SignatureDetails = await client.verifySenderSignatureSPF(signature.ID);
+        const signatureDetails = await client.verifySenderSignatureSPF(signature.ID);
         expect(signatureDetails.ID).to.eq(signature.ID);
     });
 });

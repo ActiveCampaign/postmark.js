@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import 'mocha';
 
 const nconf = require('nconf');
-const testingKeys = nconf.env().file({file: __dirname + '/../../testing_keys.json'});
+const testingKeys = nconf.env().file({ file: __dirname + '/../../testing_keys.json' });
 
 
 const packageJson = require("../../package.json")
@@ -12,7 +12,7 @@ const clientVersion = packageJson.version;
 
 describe('AccountClient', () => {
     let client: postmark.AccountClient;
-    const accountToken:string = testingKeys.get('ACCOUNT_TOKEN');
+    const accountToken: string = testingKeys.get('ACCOUNT_TOKEN');
 
     beforeEach(function () {
         client = new postmark.AccountClient(accountToken);
@@ -35,14 +35,14 @@ describe('AccountClient', () => {
     it('clientVersion=', () => {
         const customClientVersion: string = "test"
 
-        client.clientVersion=customClientVersion;
+        client.clientVersion = customClientVersion;
         expect(client.clientVersion).to.equal(customClientVersion);
     });
 
     it('clientOptions=', () => {
-        const requestHost: string = 'test';
-        const useHttps: boolean = false;
-        const timeout: number = 10;
+        const requestHost = 'test';
+        const useHttps = false;
+        const timeout = 10;
 
         client.clientOptions.requestHost = requestHost;
         client.clientOptions.useHttps = useHttps;
@@ -56,21 +56,21 @@ describe('AccountClient', () => {
     });
 
     describe('errors', () => {
-        const invalidTokenError: string = 'InvalidAPIKeyError';
+        const invalidTokenError = 'InvalidAPIKeyError';
 
         it('empty token', () => {
             expect(() => new postmark.AccountClient('')).to.throw('A valid API token must be provided when creating a ClientOptions');
         });
 
         it('promise error', () => {
-            let client: postmark.AccountClient = new postmark.AccountClient('testToken');
-            return client.getSenderSignatures().then(data => {}, error => {
+            let client = new postmark.AccountClient('testToken');
+            return client.getSenderSignatures().then(data => { }, error => {
                 expect(error.name).to.equal(invalidTokenError)
             });
         });
 
         it('callback error', function (done) {
-            let client: postmark.AccountClient = new postmark.AccountClient('testToken');
+            let client = new postmark.AccountClient('testToken');
             client.getSenderSignatures({}, (error: any, data) => {
                 expect(data).to.equal(null);
                 expect(error.name).to.equal(invalidTokenError);

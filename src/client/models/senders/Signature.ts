@@ -34,14 +34,14 @@ export class UpdateSignatureRequest {
 }
 
 export class CreateSignatureRequest {
-    constructor(Name: string, FromEmail: string, ReplyToEmail?: string, ReturnPathDomain?: string, ) {
-        this.Name = Name;
-        this.ReplyToEmail = ReplyToEmail;
-        this.ReturnPathDomain = ReturnPathDomain;
-        this.FromEmail = FromEmail;
+    constructor(name: string, fromEmail: string, replyToEmail?: string, returnPathDomain?: string) {
+        this.Name = name;
+        this.ReplyToEmail = replyToEmail;
+        this.ReturnPathDomain = returnPathDomain;
+        this.FromEmail = fromEmail;
     }
 
-    Name: string;
+    Name?: string;
     FromEmail: string;
     ReplyToEmail?: string;
     ReturnPathDomain?: string;

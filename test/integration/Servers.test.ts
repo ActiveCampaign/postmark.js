@@ -2,25 +2,26 @@ import * as postmark from '../../src/index';
 
 import { expect } from 'chai';
 import 'mocha';
+import { CreateServerRequest, UpdateServerRequest } from '../../src/client/models';
 
 const nconf = require('nconf');
-const testingKeys = nconf.env().file({file: __dirname + '/../../testing_keys.json'});
+const testingKeys = nconf.env().file({ file: __dirname + '/../../testing_keys.json' });
 
-describe('Servers', function() {
+describe('Servers', function () {
     const accountToken: string = testingKeys.get('ACCOUNT_TOKEN');
-    const client: postmark.AccountClient = new postmark.AccountClient(accountToken);
+    const client = new postmark.AccountClient(accountToken);
     const serverNamePrefix: string = 'node-js-test-server';
 
-    function serverToTest():postmark.Models.ServerOptions {
-        return { Name: `${serverNamePrefix}-${Date.now()}`};
+    function serverToTest() {
+        return new CreateServerRequest(`${serverNamePrefix}-${Date.now()}`);
     };
 
     async function cleanup() {
-        let client:postmark.AccountClient = new postmark.AccountClient(accountToken);
-        const servers: postmark.Models.Servers = await client.getServers();
+        let client = new postmark.AccountClient(accountToken);
+        const servers = await client.getServers();
 
         for (let i = 0; i < servers.Servers.length; i++) {
-            let server:postmark.Models.Server = servers.Servers[i];
+            let server = servers.Servers[i];
             if (server.Name.includes(serverNamePrefix)) { await client.deleteServer(server.ID) }
         };
     };
@@ -28,25 +29,25 @@ describe('Servers', function() {
     before(cleanup);
     after(cleanup);
 
-    it('getServers', async() => {
-        const servers: postmark.Models.Servers = await client.getServers();
+    it('getServers', async () => {
+        const servers = await client.getServers();
         expect(servers.TotalCount).to.gte(1);
     });
 
     it("createServer", async () => {
-        const serverOptions: postmark.Models.ServerOptions = serverToTest();
-        const serverDetails: postmark.Models.Server = await client.createServer(serverOptions);
+        const serverOptions = serverToTest();
+        const serverDetails = await client.createServer(serverOptions);
         expect(serverDetails.Name).to.equal(serverOptions.Name);
     });
 
-    it('editServer', async() => {
-        let serverOptions: postmark.Models.ServerOptions = { Color: 'red'};
-        let updatedServerOptions: postmark.Models.ServerOptions = { Color: 'green'};
+    it('editServer', async () => {
+        let serverOptions = new UpdateServerRequest(null, 'red');
+        let updatedServerOptions = new UpdateServerRequest(null, 'green');
 
-        const servers: postmark.Models.Servers = await client.getServers();
-        const server:postmark.Models.Server = servers.Servers[0];
+        const servers = await client.getServers();
+        const server = servers.Servers[0];
 
-        let result: postmark.Models.Server = await client.editServer(server.ID, serverOptions);
+        let result = await client.editServer(server.ID, serverOptions);
         expect(result.Color).to.eq(serverOptions.Color);
 
         result = await client.editServer(server.ID, updatedServerOptions);
@@ -54,8 +55,8 @@ describe('Servers', function() {
     });
 
     it("deleteServer", async () => {
-        const serverDetails: postmark.Models.Server = await client.createServer(serverToTest());
-        const result: postmark.Models.DefaultResponse = await client.deleteServer(serverDetails.ID);
+        const serverDetails = await client.createServer(serverToTest());
+        const result = await client.deleteServer(serverDetails.ID);
         expect(result.Message.length).to.gte(1);
     });
 });

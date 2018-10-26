@@ -4,13 +4,13 @@ import { expect } from 'chai';
 import 'mocha';
 
 const nconf = require('nconf');
-const packageJson = require("../../package.json")
-const testingKeys = nconf.env().file({file: __dirname + '/../../testing_keys.json'});
+const packageJson = require('../../package.json');
+const testingKeys = nconf.env().file({ file: __dirname + '/../../testing_keys.json' });
 const clientVersion = packageJson.version;
 
 describe('ServerClient', () => {
     let client: postmark.ServerClient;
-    const serverToken:string = testingKeys.get('SERVER_TOKEN');
+    const serverToken: string = testingKeys.get('SERVER_TOKEN');
 
     beforeEach(function () {
         client = new postmark.ServerClient(serverToken);
@@ -31,17 +31,16 @@ describe('ServerClient', () => {
     });
 
     it('clientVersion=', () => {
-        const customClientVersion: string = "test"
-
-        client.clientVersion=customClientVersion;
+        const customClientVersion = 'test';
+        client.clientVersion = customClientVersion;
         expect(client.clientVersion).to.equal(customClientVersion);
     });
 
     describe('clientOptions', () => {
         it('clientOptions=', () => {
-            const requestHost: string = 'test';
-            const useHttps: boolean = false;
-            const timeout: number = 10;
+            const requestHost = 'test';
+            const useHttps = false;
+            const timeout = 10;
 
             client.clientOptions.requestHost = requestHost;
             client.clientOptions.useHttps = useHttps;
@@ -55,11 +54,11 @@ describe('ServerClient', () => {
         });
 
         it('new clientOptions as object', () => {
-            const requestHost: string = 'test';
-            const useHttps: boolean = false;
-            const timeout: number = 50;
-            let clientOptions: postmark.Models.ClientOptions.Configuration = new postmark.Models.ClientOptions.Configuration(useHttps, requestHost, timeout)
-            client = new postmark.ServerClient(serverToken,clientOptions);
+            const requestHost = 'test';
+            const useHttps = false;
+            const timeout = 50;
+            let clientOptions = new postmark.Models.ClientOptions.Configuration(useHttps, requestHost, timeout)
+            client = new postmark.ServerClient(serverToken, clientOptions);
 
             expect(client.clientOptions).to.eql({
                 useHttps: useHttps,
@@ -69,11 +68,11 @@ describe('ServerClient', () => {
         });
 
         it('new clientOptions as parameter', () => {
-            const requestHost: string = 'test';
-            const useHttps: boolean = false;
-            const timeout: number = 50;
+            const requestHost = 'test';
+            const useHttps = false;
+            const timeout = 50;
 
-            client = new postmark.ServerClient(serverToken,{
+            client = new postmark.ServerClient(serverToken, {
                 useHttps: useHttps,
                 requestHost: requestHost,
                 timeout: timeout
@@ -89,21 +88,22 @@ describe('ServerClient', () => {
     });
 
     describe('errors', () => {
-        const invalidTokenError: string = 'InvalidAPIKeyError';
+        const invalidTokenError = 'InvalidAPIKeyError';
 
         it('empty token', () => {
-            expect(() => new postmark.ServerClient('')).to.throw('A valid API token must be provided when creating a ClientOptions');
+            expect(() => new postmark.ServerClient(''))
+                .to.throw('A valid API token must be provided when creating a ClientOptions');
         });
 
         it('promise error', () => {
-            let client: postmark.ServerClient = new postmark.ServerClient('testToken');
-            return client.getBounces().then(data => {}, error => {
-                expect(error.name).to.equal(invalidTokenError)
+            let client = new postmark.ServerClient('testToken');
+            return client.getBounces().then(_ => { }, error => {
+                expect(error.name).to.equal(invalidTokenError);
             });
         });
 
         it('callback error', function (done) {
-            let client: postmark.ServerClient = new postmark.ServerClient('testToken');
+            let client = new postmark.ServerClient('testToken');
             client.getBounces({}, (error: any, data) => {
                 expect(data).to.equal(null);
                 expect(error.name).to.equal(invalidTokenError);

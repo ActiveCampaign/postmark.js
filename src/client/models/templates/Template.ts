@@ -70,7 +70,28 @@ export interface TemplateValidation {
     SuggestedTemplateModel: object;
 }
 
-export interface TemplateMessage {
+export class TemplateMessage {
+    constructor(from: string, templateIdOrAlias: (number | string),
+        templateModel: object, to?: string, cc?: string, bcc?: string,
+        replyTo?: string, tag?: string, trackOpens?: boolean,
+        trackLinks?: LinkTrackingOptions, headers?: Header[], attachments?: Attachment[]) {
+        this.From = from;
+        this.TemplateModel = templateModel;
+        if (typeof templateIdOrAlias === 'number') {
+            this.TemplateId = templateIdOrAlias;
+        } else {
+            this.TemplateAlias = templateIdOrAlias;
+        }
+        this.To = to;
+        this.Cc = cc;
+        this.Bcc = bcc;
+        this.ReplyTo = replyTo;
+        this.Tag = tag;
+        this.TrackOpens = trackOpens;
+        this.TrackLinks = trackLinks;
+        this.Headers = headers;
+        this.Attachments = attachments;
+    }
     TemplateId?: number;
     TemplateAlias?: string;
     TemplateModel?: object;
