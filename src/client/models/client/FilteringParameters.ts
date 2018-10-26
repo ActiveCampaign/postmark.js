@@ -1,6 +1,10 @@
 import { Hash } from "./SupportingTypes";
 
 export class FilteringParameters implements Hash<any>{
-    count?: number;
-    offset?: number;
+    constructor(count: number, offset: number) {
+        this.count = count;
+        this.offset = offset;
+    }
+    count: number;
+    offset: number;
 }

@@ -1,7 +1,8 @@
 import * as request from 'request';
 
-import {ClientOptions, Callback, Errors} from './models';
-import {ErrorHandler} from "./ErrorHandler";
+import { ClientOptions, Callback } from './models';
+import * as Errors from './models/client/Errors';
+import { ErrorHandler } from "./ErrorHandler";
 
 const packageJson = require("../../package.json");
 const CLIENT_VERSION = packageJson.version;
@@ -35,7 +36,7 @@ export default abstract class BaseClient {
         this.clientVersion = CLIENT_VERSION;
         this.token = token.trim();
         this.authHeader = authHeader;
-        this.clientOptions = {...BaseClient.DefaultOptions, ...configOptions};
+        this.clientOptions = { ...BaseClient.DefaultOptions, ...configOptions };
         this.errorHandler = new ErrorHandler();
     }
 
@@ -45,7 +46,7 @@ export default abstract class BaseClient {
      * @see processRequest for more details.
      **/
     protected processRequestWithBody<T>(method: ClientOptions.HttpMethod, path: string, body: (null | object),
-                                        callback?: Callback<T>): Promise<T> {
+        callback?: Callback<T>): Promise<T> {
         return this.processRequest(method, path, {}, body, callback);
     }
 
@@ -55,7 +56,7 @@ export default abstract class BaseClient {
      * @see processRequest for more details.
      **/
     protected processRequestWithoutBody<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object = {},
-                                           callback?: Callback<T>): Promise<T> {
+        callback?: Callback<T>): Promise<T> {
         return this.processRequest(method, path, queryParameters, null, callback);
     }
 
@@ -71,7 +72,7 @@ export default abstract class BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      **/
     private processRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object,
-                              body: (null | object), callback?: Callback<T>): Promise<T> {
+        body: (null | object), callback?: Callback<T>): Promise<T> {
 
         let httpRequest: Promise<T> = this.processHttpRequest(method, path, queryParameters, body);
         this.processCallbackRequest(httpRequest, callback);
@@ -123,16 +124,16 @@ export default abstract class BaseClient {
      * @param body - Data sent with http request.
      */
     private httpRequest(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object),
-        body: (null | object), callback:any):void {
-            request(this.getHttpRequestURL(path), {
-                method: method.toString(),
-                headers: this.getComposedHttpRequestHeaders(),
-                qs: queryParameters,
-                body: body,
-                timeout: this.getRequestTimeoutInSeconds(),
-                json: true,
-                gzip: true
-            }, callback);
+        body: (null | object), callback: any): void {
+        request(this.getHttpRequestURL(path), {
+            method: method.toString(),
+            headers: this.getComposedHttpRequestHeaders(),
+            qs: queryParameters,
+            body: body,
+            timeout: this.getRequestTimeoutInSeconds(),
+            json: true,
+            gzip: true
+        }, callback);
     }
 
     /**
@@ -146,9 +147,9 @@ export default abstract class BaseClient {
      * @returns A promise that will complete when the API responds.
      */
     private promisifiedHttpRequest(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object),
-                                      body: (null | object)): Promise<request.Response> {
+        body: (null | object)): Promise<request.Response> {
 
-        return new Promise((resolve, reject)=>{
+        return new Promise((resolve, reject) => {
             this.httpRequest(method, path, queryParameters, body, (error: Error, response: request.Response) => {
                 if (error) { reject(error); }
                 else {
@@ -159,11 +160,11 @@ export default abstract class BaseClient {
         });
     }
 
-    private getRequestTimeoutInSeconds():number {
+    private getRequestTimeoutInSeconds(): number {
         return (this.clientOptions.timeout || 30) * 1000
     }
 
-    private getHttpRequestURL(path: string):string {
+    private getHttpRequestURL(path: string): string {
         const scheme = this.clientOptions.useHttps ? 'https' : 'http';
         return `${scheme}://${this.clientOptions.requestHost}/${path}`;
     }

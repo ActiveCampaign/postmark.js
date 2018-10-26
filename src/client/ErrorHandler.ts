@@ -1,4 +1,4 @@
-import {Errors} from "./models";
+import * as Errors from "./models/client/Errors";
 
 /**
  * This class handles all client request errors. Client response error is classified so that proper response error is generated.
@@ -13,7 +13,7 @@ export class ErrorHandler {
      *
      * @returns properly formatted Postmark error.
      */
-    public generateError(error: any): Errors.PostmarkError  {
+    public generateError(error: any): Errors.PostmarkError {
         if (error.statusCode !== undefined) {
             return this.buildStatusError(error);
         }
@@ -40,7 +40,7 @@ export class ErrorHandler {
      *
      * @returns properly formatted Postmark error.
      */
-    private buildStatusError(error: any):Errors.HttpError {
+    private buildStatusError(error: any): Errors.HttpError {
         switch (error.statusCode) {
             case 401:
                 return new Errors.InvalidAPIKeyError(error.body.Message, error.body.ErrorCode, error.statusCode);

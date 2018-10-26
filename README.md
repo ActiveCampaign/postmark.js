@@ -31,4 +31,4 @@ Please leave all comments, bugs, requests and issues on the Issues page.
 
 ## License
 
-The Postmark Java Library is licensed under the **MIT** license. Refer to the [LICENSE](https://github.com/wildbit/postmark-java/blob/master/LICENSE) for more information.
+The Postmark Java Library is licensed under the **MIT** license. Please refer to the [LICENSE](https://github.com/wildbit/postmark-java/blob/master/LICENSE) for more information.

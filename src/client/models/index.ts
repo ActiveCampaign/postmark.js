@@ -1,9 +1,7 @@
 export * from './client/ClientOptions';
 export * from './client/Callback';
 export * from './client/DefaultResponse';
-export * from './client/Errors';
 export * from './client/FilteringParameters';
-
 export * from './bounces/Bounce';
 export * from './bounces/BounceFilteringParameters';
 export * from './message/Message';
