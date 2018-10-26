@@ -4,9 +4,7 @@ export interface ClientDetails {
     Family: string;
 }
 
-export type OSDetails = ClientDetails;
-
-export interface GEOLocation {
+export interface GeoLocation {
     CountryISOCode?: string;
     Country?: string;
     RegionISOCode?: string;
@@ -20,11 +18,11 @@ export interface GEOLocation {
 export interface OpenEvent {
     RecordType: string,
     Client: ClientDetails;
-    OS: OSDetails;
+    OS: ClientDetails;
     Platform: string;
     UserAgent: string;
     ReadSeconds: number;
-    Geo: GEOLocation;
+    Geo: GeoLocation;
     MessageID: string;
     ReceivedAt: string;
     Tag: string,

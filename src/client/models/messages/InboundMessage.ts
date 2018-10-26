@@ -1,7 +1,7 @@
-import {Attachment, Header} from "../message/SupportingTypes";
-import {Recipient} from "./OutboundMessage";
+import { Attachment, Header } from "../message/SupportingTypes";
+import { Recipient } from "./OutboundMessage";
 
-export interface InboundRecipient extends Recipient{
+export interface InboundRecipient extends Recipient {
     MailboxHash: string
 }
 
@@ -16,7 +16,7 @@ export interface InboundMessage {
     Bcc: string;
     BccFull: InboundRecipient[];
     ReplyTo: string;
-    OriginalRecipient:string;
+    OriginalRecipient: string;
     Subject: string;
     Date: string;
     MailboxHash: string;
@@ -26,7 +26,7 @@ export interface InboundMessage {
     Attachments: Attachment[];
 }
 
-export interface InboundMessageDetails extends InboundMessage{
+export interface InboundMessageDetails extends InboundMessage {
     TextBody: string;
     HtmlBody: string;
     StrippedTextReply: string;

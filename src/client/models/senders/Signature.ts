@@ -1,4 +1,4 @@
-import {DomainDetails} from "../domains/Domain";
+import { DomainDetails } from "../domains/Domain";
 
 export interface Signature {
     ID: number;
@@ -21,7 +21,7 @@ export interface Signatures {
     SenderSignatures: Signature[];
 }
 
-export class SignatureOptions {
+export class UpdateSignatureRequest {
     constructor(Name?: string, ReplyToEmail?: string, ReturnPathDomain?: string) {
         this.Name = Name;
         this.ReplyToEmail = ReplyToEmail;
@@ -33,7 +33,7 @@ export class SignatureOptions {
     ReturnPathDomain?: string;
 }
 
-export class SignatureToCreate {
+export class CreateSignatureRequest {
     constructor(Name: string, FromEmail: string, ReplyToEmail?: string, ReturnPathDomain?: string, ) {
         this.Name = Name;
         this.ReplyToEmail = ReplyToEmail;

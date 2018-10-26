@@ -1,12 +1,12 @@
-export class InboundRuleToCreate {
+export class CreateInboundRuleRequest {
     constructor(Rule: string) {
         this.Rule = Rule;
     }
-
     Rule: string;
 }
 
-export interface InboundRule extends InboundRuleToCreate {
+export interface InboundRule {
+    Rule: string;
     ID: number;
 }
 

@@ -1,4 +1,4 @@
-import {FilteringParameters} from "../client/FilteringParameters";
+import { FilteringParameters } from "../client/FilteringParameters";
 
 export enum BounceType {
     HardBounce = "HardBounce",
@@ -7,7 +7,7 @@ export enum BounceType {
     Subscribe = "Subscribe",
     AutoResponder = "AutoResponder",
     AddressChange = "AddressChange",
-    DnsError ="DnsError",
+    DnsError = "DnsError",
     SpamNotification = "SpamNotification",
     OpenRelayTest = "OpenRelayTest",
     Unknown = "Unknown",
@@ -25,12 +25,12 @@ export enum BounceType {
     TemplateRenderingFailed = "TemplateRenderingFailed"
 }
 
-export interface BounceFilteringParameters extends FilteringParameters {
+export class BounceFilteringParameters extends FilteringParameters {
     type?: BounceType | string;
     inactive?: boolean;
     emailFilter?: string;
     tag?: string;
     messageID?: string;
-    fromDate?:string;
-    toDate?:string;
+    fromDate?: string;
+    toDate?: string;
 }

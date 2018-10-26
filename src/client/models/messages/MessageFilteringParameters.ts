@@ -1,4 +1,4 @@
-import {FilteringParameters} from "../client/FilteringParameters";
+import { FilteringParameters } from "../client/FilteringParameters";
 
 export enum OutboundMessageStatus {
     Queued = "queued",
@@ -15,28 +15,28 @@ export enum InboundMessageStatus {
     Scheduled = "scheduled"
 }
 
-export interface OutboundMessagesFilteringParameters extends FilteringParameters {
+export class OutboundMessagesFilteringParameters extends FilteringParameters {
     recipient?: string;
     fromEmail?: string;
     tag?: string;
     status?: OutboundMessageStatus;
-    fromDate?:string;
-    toDate?:string;
+    fromDate?: string;
+    toDate?: string;
     subject?: string;
 }
 
-export interface InboundMessagesFilteringParameters extends FilteringParameters {
+export class InboundMessagesFilteringParameters extends FilteringParameters {
     mailboxHash?: string;
     recipient?: string;
     fromEmail?: string;
     tag?: string;
     status?: InboundMessageStatus;
-    fromDate?:string;
-    toDate?:string;
+    fromDate?: string;
+    toDate?: string;
     subject?: string;
 }
 
-export interface OutboundMessageOpensFilteringParameters extends FilteringParameters {
+export class OutboundMessageTrackingFilteringParameters extends FilteringParameters {
     recipient?: string;
     tag?: string;
     client_name?: string;
@@ -51,4 +51,5 @@ export interface OutboundMessageOpensFilteringParameters extends FilteringParame
     city?: string;
 }
 
-export interface OutboundMessageClicksFilteringParameters extends  OutboundMessageOpensFilteringParameters {}
+export class OutboundMessageOpensFilteringParameters extends OutboundMessageTrackingFilteringParameters { }
+export class OutboundMessageClicksFilteringParameters extends OutboundMessageTrackingFilteringParameters { }

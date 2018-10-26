@@ -79,7 +79,7 @@ export interface EmailClientUsageCounts {
     [key: string]: any;
 }
 
-export interface EmailReadTimesCounts extends EmailClientUsageCounts {}
+export interface EmailReadTimesCounts extends EmailClientUsageCounts { }
 
 export interface ClickCounts {
     Days: [{
@@ -91,7 +91,7 @@ export interface ClickCounts {
     Unique: number;
 }
 
-export interface BrowserUsageCounts extends  EmailClientUsageCounts {}
+export interface BrowserUsageCounts extends EmailClientUsageCounts { }
 
 export interface ClickPlaformUsageCounts {
     Days: [{

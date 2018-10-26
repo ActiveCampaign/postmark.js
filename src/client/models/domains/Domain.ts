@@ -1,4 +1,4 @@
-export class DomainToCreate {
+export class CreateDomainRequest {
     constructor(Name: string, ReturnPathDomain?: string) {
         this.Name = Name;
         this.ReturnPathDomain = ReturnPathDomain;
@@ -8,11 +8,10 @@ export class DomainToCreate {
     ReturnPathDomain?: string;
 }
 
-export class DomainOptions {
+export class UpdateDomainRequest {
     constructor(ReturnPathDomain: string) {
         this.ReturnPathDomain = ReturnPathDomain;
     }
-
     ReturnPathDomain?: string;
 }
 

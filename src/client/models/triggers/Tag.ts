@@ -1,4 +1,4 @@
-export class TagTriggerOptions {
+export class UpdateTagTriggerRequest {
     constructor(MatchName?: string, TrackOpens?: boolean) {
         this.MatchName = MatchName;
         this.TrackOpens = TrackOpens;
@@ -8,9 +8,9 @@ export class TagTriggerOptions {
     TrackOpens?: boolean;
 }
 
-export class TagTriggerToCreate extends TagTriggerOptions{
+export class CreateTagTriggerRequest extends UpdateTagTriggerRequest {
     constructor(MatchName: string, TrackOpens: boolean) {
-       super(MatchName, TrackOpens);
+        super(MatchName, TrackOpens);
     }
 }
 

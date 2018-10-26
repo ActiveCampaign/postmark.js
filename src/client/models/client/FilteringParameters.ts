@@ -1,6 +1,6 @@
-import {Hash} from "./SupportingTypes";
+import { Hash } from "./SupportingTypes";
 
-export interface FilteringParameters extends Hash<any>{
+export class FilteringParameters implements Hash<any>{
     count?: number;
     offset?: number;
 }

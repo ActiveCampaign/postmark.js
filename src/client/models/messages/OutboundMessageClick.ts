@@ -1,15 +1,15 @@
-import {LinkClickLocation} from "../message/SupportingTypes";
-import {ClientDetails, OSDetails, GEOLocation} from "./OutboundMessageOpen";
+import { LinkClickLocation } from "../message/SupportingTypes";
+import { ClientDetails, GeoLocation } from "./OutboundMessageOpen";
 
 export interface ClickEvent {
     RecordType: string;
     ClickLocation: LinkClickLocation;
     Client: ClientDetails;
-    OS: OSDetails;
+    OS: ClientDetails;
     Platform: string;
     UserAgent: string;
     OriginalLink: string;
-    Geo: GEOLocation;
+    Geo: GeoLocation;
     MessageID: string;
     ReceivedAt: string;
     Tag: string,

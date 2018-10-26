@@ -1,6 +1,6 @@
-import {Attachment, Header, LinkTrackingOptions} from "../message/SupportingTypes";
+import { Attachment, Header, LinkTrackingOptions } from "../message/SupportingTypes";
 
-export class TemplateOptions {
+export class UpdateTemplateRequest {
     constructor(Name?: string, Subject?: string, HtmlBody?: string, TextBody?: string, Alias?: string | null) {
         this.Name = Name;
         this.Subject = Subject;
@@ -16,7 +16,7 @@ export class TemplateOptions {
     Alias?: string | null;
 }
 
-export class TemplateToCreate extends TemplateOptions {
+export class CreateTemplateRequest extends UpdateTemplateRequest {
     constructor(Name: string, Subject?: string, HtmlBody?: string, TextBody?: string, Alias?: string | null) {
         super(Name, Subject, HtmlBody, TextBody, Alias);
     }
@@ -37,7 +37,7 @@ export class TemplateValidationOptions {
 }
 
 
-export interface Template extends TemplateOptions {
+export interface Template extends UpdateTemplateRequest {
     Name: string;
     TemplateId: number;
     AssociatedServerId?: number;
@@ -53,7 +53,7 @@ export interface Templates {
             Name: string;
             Alias?: string | null;
         }
-        ]
+    ]
 }
 
 export interface ValidationSection {
