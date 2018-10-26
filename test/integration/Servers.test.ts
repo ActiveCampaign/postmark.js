@@ -41,8 +41,8 @@ describe('Servers', function () {
     });
 
     it('editServer', async () => {
-        let serverOptions = new UpdateServerRequest(null, 'red');
-        let updatedServerOptions = new UpdateServerRequest(null, 'green');
+        let serverOptions = new UpdateServerRequest(undefined, 'red');
+        let updatedServerOptions = new UpdateServerRequest(undefined, 'green');
 
         const servers = await client.getServers();
         const server = servers.Servers[0];

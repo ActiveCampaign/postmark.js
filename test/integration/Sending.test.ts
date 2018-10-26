@@ -14,7 +14,7 @@ describe('Sending', function () {
     const toAddress: string = testingKeys.get('EMAIL_RECIPIENT_ADDRESS');
 
     function messageToSend() {
-        return new postmark.Models.Message(fromAddress, 'Test subject', 'Test html body', null, toAddress);
+        return new postmark.Models.Message(fromAddress, 'Test subject', 'Test html body', undefined, toAddress);
     };
 
     it('sendEmail', async () => {

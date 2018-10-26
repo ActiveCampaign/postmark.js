@@ -16,8 +16,8 @@ describe('Server', function () {
     });
 
     it('editServer', async () => {
-        const serverOptions = new postmark.Models.UpdateServerRequest(null, 'red');
-        const updatedServerOptions = new postmark.Models.UpdateServerRequest(null, 'green');
+        const serverOptions = new postmark.Models.UpdateServerRequest(undefined, 'red');
+        const updatedServerOptions = new postmark.Models.UpdateServerRequest(undefined, 'green');
 
         let server: postmark.Models.Server = await client.editServer(serverOptions);
         expect(server.Color).to.eq(serverOptions.Color);

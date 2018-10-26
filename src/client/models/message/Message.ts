@@ -1,12 +1,12 @@
-import {Hash} from "../client/SupportingTypes"
+import { Hash } from "../client/SupportingTypes"
 import { LinkTrackingOptions, Header, Attachment } from "../message/SupportingTypes";
-import {DefaultResponse} from "../client/DefaultResponse";
+import { DefaultResponse } from "../client/DefaultResponse";
 
 export class Message {
     constructor(From: string, Subject: string, HtmlBody?: string, TextBody?: string,
-                To?: string, Cc?: string, Bcc?: string, ReplyTo?: string, Tag?: string,
-                TrackOpens?: boolean, TrackLinks?: LinkTrackingOptions, Headers?: Header[],
-                Attachments?: Attachment[], Metadata?: Hash<string>) {
+        To?: string, Cc?: string, Bcc?: string, ReplyTo?: string, Tag?: string,
+        TrackOpens?: boolean, TrackLinks?: LinkTrackingOptions, Headers?: Header[],
+        Attachments?: Attachment[], Metadata?: Hash<string>) {
 
         this.From = From;
         this.To = To;
