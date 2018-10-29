@@ -11,10 +11,10 @@ describe('Client - Signatures', function () {
     const accountToken: string = testingKeys.get('ACCOUNT_TOKEN');
     const testDomainName: string = testingKeys.get('DOMAIN_NAME');
     const client: postmark.AccountClient = new postmark.AccountClient(accountToken);
-    const domainName: string = `node-js-test-signatures-${testDomainName}`;
+    const domainName: string = testDomainName;
 
     function signatureToTest() {
-        return new CreateSignatureRequest('John Smith', `${Date.now()}@${domainName}`);
+        return new CreateSignatureRequest('John Smith', `mailing+${Date.now()}@${domainName}`);
     }
 
     async function cleanup() {
