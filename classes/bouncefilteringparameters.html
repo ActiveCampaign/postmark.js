@@ -946,6 +946,14 @@ img { max-width: 100%; }
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
+		<section class="tsd-panel tsd-comment">
+			<div class="tsd-comment tsd-typography">
+				<div class="lead">
+					<p>Describes filtering parameters that can be used when retrieving bounces.
+					When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.</p>
+				</div>
+			</div>
+		</section>
 		<section class="tsd-panel tsd-hierarchy">
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
@@ -1005,16 +1013,16 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Overrides <a href="filteringparameters.html">FilteringParameters</a>.<a href="filteringparameters.html#constructor">constructor</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/bounces/BounceFilteringParameters.ts#L28">client/models/bounces/BounceFilteringParameters.ts:28</a></li>
+								<li>Defined in client/models/bounces/BounceFilteringParameters.ts:32</li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> count: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;100</span></h5>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> count: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;DefaultPaginationValues.count</span></h5>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> offset: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></h5>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> offset: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;DefaultPaginationValues.offset</span></h5>
 							</li>
 							<li>
 								<h5><span class="tsd-flag ts-flagOptional">Optional</span> type: <a href="../enums/bouncetype.html" class="tsd-signature-type">BounceType</a></h5>
@@ -1052,7 +1060,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="filteringparameters.html">FilteringParameters</a>.<a href="filteringparameters.html#count">count</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/client/FilteringParameters.ts#L8">client/models/client/FilteringParameters.ts:8</a></li>
+						<li>Defined in client/models/client/FilteringParameters.ts:17</li>
 					</ul>
 				</aside>
 			</section>
@@ -1062,7 +1070,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">email<wbr>Filter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/bounces/BounceFilteringParameters.ts#L43">client/models/bounces/BounceFilteringParameters.ts:43</a></li>
+						<li>Defined in client/models/bounces/BounceFilteringParameters.ts:47</li>
 					</ul>
 				</aside>
 			</section>
@@ -1072,7 +1080,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">from<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/bounces/BounceFilteringParameters.ts#L46">client/models/bounces/BounceFilteringParameters.ts:46</a></li>
+						<li>Defined in client/models/bounces/BounceFilteringParameters.ts:50</li>
 					</ul>
 				</aside>
 			</section>
@@ -1082,7 +1090,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">inactive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/bounces/BounceFilteringParameters.ts#L42">client/models/bounces/BounceFilteringParameters.ts:42</a></li>
+						<li>Defined in client/models/bounces/BounceFilteringParameters.ts:46</li>
 					</ul>
 				</aside>
 			</section>
@@ -1092,7 +1100,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">messageID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/bounces/BounceFilteringParameters.ts#L45">client/models/bounces/BounceFilteringParameters.ts:45</a></li>
+						<li>Defined in client/models/bounces/BounceFilteringParameters.ts:49</li>
 					</ul>
 				</aside>
 			</section>
@@ -1103,7 +1111,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="filteringparameters.html">FilteringParameters</a>.<a href="filteringparameters.html#offset">offset</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/client/FilteringParameters.ts#L9">client/models/client/FilteringParameters.ts:9</a></li>
+						<li>Defined in client/models/client/FilteringParameters.ts:18</li>
 					</ul>
 				</aside>
 			</section>
@@ -1113,7 +1121,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">tag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/bounces/BounceFilteringParameters.ts#L44">client/models/bounces/BounceFilteringParameters.ts:44</a></li>
+						<li>Defined in client/models/bounces/BounceFilteringParameters.ts:48</li>
 					</ul>
 				</aside>
 			</section>
@@ -1123,7 +1131,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">to<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/bounces/BounceFilteringParameters.ts#L47">client/models/bounces/BounceFilteringParameters.ts:47</a></li>
+						<li>Defined in client/models/bounces/BounceFilteringParameters.ts:51</li>
 					</ul>
 				</aside>
 			</section>
@@ -1133,7 +1141,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <a href="../enums/bouncetype.html" class="tsd-signature-type">BounceType</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/bounces/BounceFilteringParameters.ts#L41">client/models/bounces/BounceFilteringParameters.ts:41</a></li>
+						<li>Defined in client/models/bounces/BounceFilteringParameters.ts:45</li>
 					</ul>
 				</aside>
 			</section>
