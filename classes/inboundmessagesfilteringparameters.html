@@ -949,6 +949,14 @@ img { max-width: 100%; }
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
+		<section class="tsd-panel tsd-comment">
+			<div class="tsd-comment tsd-typography">
+				<div class="lead">
+					<p>Describes filtering parameters that can be used when retrieving inbound messages.
+					When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.</p>
+				</div>
+			</div>
+		</section>
 		<section class="tsd-panel tsd-hierarchy">
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
@@ -1002,23 +1010,23 @@ img { max-width: 100%; }
 				<a name="constructor" class="tsd-anchor"></a>
 				<h3>constructor</h3>
 				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-					<li class="tsd-signature tsd-kind-icon">new <wbr>Inbound<wbr>Messages<wbr>Filtering<wbr>Parameters<span class="tsd-signature-symbol">(</span>count<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, offset<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, mailboxHash<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, recipient<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, fromEmail<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, tag<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, status<span class="tsd-signature-symbol">?: </span><a href="../enums/inboundmessagestatus.html" class="tsd-signature-type">InboundMessageStatus</a>, fromDate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, toDate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, subject<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="inboundmessagesfilteringparameters.html" class="tsd-signature-type">InboundMessagesFilteringParameters</a></li>
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Inbound<wbr>Messages<wbr>Filtering<wbr>Parameters<span class="tsd-signature-symbol">(</span>count<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, offset<span class="tsd-signature-symbol">?: </span><a href="../enums/defaultpaginationvalues.html" class="tsd-signature-type">DefaultPaginationValues</a>, mailboxHash<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, recipient<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, fromEmail<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, tag<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, status<span class="tsd-signature-symbol">?: </span><a href="../enums/inboundmessagestatus.html" class="tsd-signature-type">InboundMessageStatus</a>, fromDate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, toDate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, subject<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="inboundmessagesfilteringparameters.html" class="tsd-signature-type">InboundMessagesFilteringParameters</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<p>Overrides <a href="filteringparameters.html">FilteringParameters</a>.<a href="filteringparameters.html#constructor">constructor</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/messages/MessageFilteringParameters.ts#L42">client/models/messages/MessageFilteringParameters.ts:42</a></li>
+								<li>Defined in client/models/messages/MessageFilteringParameters.ts:50</li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> count: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;100</span></h5>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> count: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;DefaultPaginationValues.count</span></h5>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> offset: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></h5>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> offset: <a href="../enums/defaultpaginationvalues.html" class="tsd-signature-type">DefaultPaginationValues</a><span class="tsd-signature-symbol"> =&nbsp;DefaultPaginationValues.offset</span></h5>
 							</li>
 							<li>
 								<h5><span class="tsd-flag ts-flagOptional">Optional</span> mailboxHash: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
@@ -1059,7 +1067,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="filteringparameters.html">FilteringParameters</a>.<a href="filteringparameters.html#count">count</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/client/FilteringParameters.ts#L8">client/models/client/FilteringParameters.ts:8</a></li>
+						<li>Defined in client/models/client/FilteringParameters.ts:17</li>
 					</ul>
 				</aside>
 			</section>
@@ -1069,7 +1077,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">from<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/messages/MessageFilteringParameters.ts#L64">client/models/messages/MessageFilteringParameters.ts:64</a></li>
+						<li>Defined in client/models/messages/MessageFilteringParameters.ts:72</li>
 					</ul>
 				</aside>
 			</section>
@@ -1079,7 +1087,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">from<wbr>Email<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/messages/MessageFilteringParameters.ts#L61">client/models/messages/MessageFilteringParameters.ts:61</a></li>
+						<li>Defined in client/models/messages/MessageFilteringParameters.ts:69</li>
 					</ul>
 				</aside>
 			</section>
@@ -1089,7 +1097,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">mailbox<wbr>Hash<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/messages/MessageFilteringParameters.ts#L59">client/models/messages/MessageFilteringParameters.ts:59</a></li>
+						<li>Defined in client/models/messages/MessageFilteringParameters.ts:67</li>
 					</ul>
 				</aside>
 			</section>
@@ -1100,7 +1108,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="filteringparameters.html">FilteringParameters</a>.<a href="filteringparameters.html#offset">offset</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/client/FilteringParameters.ts#L9">client/models/client/FilteringParameters.ts:9</a></li>
+						<li>Defined in client/models/client/FilteringParameters.ts:18</li>
 					</ul>
 				</aside>
 			</section>
@@ -1110,7 +1118,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">recipient<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/messages/MessageFilteringParameters.ts#L60">client/models/messages/MessageFilteringParameters.ts:60</a></li>
+						<li>Defined in client/models/messages/MessageFilteringParameters.ts:68</li>
 					</ul>
 				</aside>
 			</section>
@@ -1120,7 +1128,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">status<span class="tsd-signature-symbol">:</span> <a href="../enums/inboundmessagestatus.html" class="tsd-signature-type">InboundMessageStatus</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/messages/MessageFilteringParameters.ts#L63">client/models/messages/MessageFilteringParameters.ts:63</a></li>
+						<li>Defined in client/models/messages/MessageFilteringParameters.ts:71</li>
 					</ul>
 				</aside>
 			</section>
@@ -1130,7 +1138,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">subject<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/messages/MessageFilteringParameters.ts#L66">client/models/messages/MessageFilteringParameters.ts:66</a></li>
+						<li>Defined in client/models/messages/MessageFilteringParameters.ts:74</li>
 					</ul>
 				</aside>
 			</section>
@@ -1140,7 +1148,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">tag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/messages/MessageFilteringParameters.ts#L62">client/models/messages/MessageFilteringParameters.ts:62</a></li>
+						<li>Defined in client/models/messages/MessageFilteringParameters.ts:70</li>
 					</ul>
 				</aside>
 			</section>
@@ -1150,7 +1158,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">to<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/863ee74/src/client/models/messages/MessageFilteringParameters.ts#L65">client/models/messages/MessageFilteringParameters.ts:65</a></li>
+						<li>Defined in client/models/messages/MessageFilteringParameters.ts:73</li>
 					</ul>
 				</aside>
 			</section>
