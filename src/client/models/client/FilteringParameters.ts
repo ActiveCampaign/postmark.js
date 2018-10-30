@@ -14,6 +14,6 @@ export class FilteringParameters implements Hash<any>{
         this.count = count;
         this.offset = offset;
     }
-    count: number;
-    offset: number;
+    count?: number;
+    offset?: number;
 }

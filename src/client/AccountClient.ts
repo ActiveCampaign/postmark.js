@@ -43,6 +43,7 @@ export default class AccountClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getServers(filter: FilteringParameters = new FilteringParameters(), callback?: Callback<Servers>): Promise<Servers> {
+        this.setDefaultPaginationValues(filter);
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/servers', filter, callback);
     };
 
@@ -99,6 +100,7 @@ export default class AccountClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getDomains(filter: FilteringParameters = new FilteringParameters(), callback?: Callback<Domains>): Promise<Domains> {
+        this.setDefaultPaginationValues(filter);
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/domains', filter, callback);
     };
 
@@ -211,6 +213,7 @@ export default class AccountClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getSenderSignatures(filter: FilteringParameters = new FilteringParameters(), callback?: Callback<Signatures>): Promise<Signatures> {
+        this.setDefaultPaginationValues(filter);
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/senders', filter, callback);
     };
 

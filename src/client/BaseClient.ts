@@ -1,6 +1,6 @@
 import * as request from 'request';
 
-import { ClientOptions, Callback } from './models';
+import {ClientOptions, Callback, DefaultPaginationValues, FilteringParameters} from './models';
 import * as Errors from './models/client/Errors';
 import { ErrorHandler } from "./ErrorHandler";
 
@@ -189,5 +189,14 @@ export default abstract class BaseClient {
         if (!token || token.trim() == '') {
             throw new Errors.PostmarkError('A valid API token must be provided when creating a ClientOptions.');
         }
+    }
+
+    /**
+     * Set default values for count and offset when doing filtering with API requests.
+     * Defaults can be seen in [[DefaultPaginationValues]].
+     */
+    protected setDefaultPaginationValues(filter: FilteringParameters) {
+        filter.count = filter.count || DefaultPaginationValues.count;
+        filter.offset = filter.offset || DefaultPaginationValues.offset;
     }
 }

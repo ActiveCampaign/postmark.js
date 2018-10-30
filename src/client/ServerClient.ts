@@ -5,6 +5,7 @@ import {
     Callback,
     DefaultResponse,
     FilteringParameters,
+    DefaultPaginationValues,
 } from './models/index';
 
 import {
@@ -144,6 +145,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getBounces(filter: BounceFilteringParameters = new BounceFilteringParameters(), callback?: Callback<Bounces>): Promise<Bounces> {
+        this.setDefaultPaginationValues(filter);
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/bounces', filter, callback);
     };
 
@@ -198,6 +200,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getTemplates(filter: FilteringParameters = new FilteringParameters(), callback?: Callback<Templates>): Promise<Templates> {
+        this.setDefaultPaginationValues(filter);
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/templates', filter, callback);
     };
 
@@ -289,6 +292,7 @@ export default class ServerClient extends BaseClient {
      */
     getOutboundMessages(filter: OutboundMessagesFilteringParameters = new OutboundMessagesFilteringParameters(),
         callback?: Callback<OutboundMessages>): Promise<OutboundMessages> {
+        this.setDefaultPaginationValues(filter);
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/messages/outbound', filter, callback);
     };
 
@@ -324,6 +328,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getInboundMessages(filter: InboundMessagesFilteringParameters = new InboundMessagesFilteringParameters(), callback?: Callback<InboundMessages>): Promise<InboundMessages> {
+        this.setDefaultPaginationValues(filter);
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/messages/inbound', filter, callback);
     };
 
@@ -369,6 +374,7 @@ export default class ServerClient extends BaseClient {
      */
     getMessageOpens(filter: OutboundMessageOpensFilteringParameters = new OutboundMessageOpensFilteringParameters(),
         callback?: Callback<OutboundMessageOpens>): Promise<OutboundMessageOpens> {
+        this.setDefaultPaginationValues(filter);
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/messages/outbound/opens', filter, callback);
     };
 
@@ -381,6 +387,7 @@ export default class ServerClient extends BaseClient {
      */
     getMessageOpensForSingleMessage(messageId: string, filter: OutboundMessageOpensFilteringParameters = new OutboundMessageOpensFilteringParameters(50, 0),
         callback?: Callback<OutboundMessageOpens>): Promise<OutboundMessageOpens> {
+        this.setDefaultPaginationValues(filter);
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/messages/outbound/opens/${messageId}`, filter, callback);
     };
 
@@ -392,6 +399,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getMessageClicks(filter: OutboundMessageClicksFilteringParameters = new OutboundMessageClicksFilteringParameters(), callback?: Callback<OutboundMessageClicks>): Promise<OutboundMessageClicks> {
+        this.setDefaultPaginationValues(filter);
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/messages/outbound/clicks', filter, callback);
     };
 
@@ -406,6 +414,7 @@ export default class ServerClient extends BaseClient {
     getMessageClicksForSingleMessage(messageId: string,
         filter: OutboundMessageClicksFilteringParameters = new OutboundMessageClicksFilteringParameters(),
         callback?: Callback<OutboundMessageClicks>): Promise<OutboundMessageClicks> {
+        this.setDefaultPaginationValues(filter);
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/messages/outbound/clicks/${messageId}`, filter, callback);
     };
 
@@ -608,6 +617,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getTagTriggers(filter: TagTriggerFilteringParameters = new TagTriggerFilteringParameters(), callback?: Callback<TagTriggers>): Promise<TagTriggers> {
+        this.setDefaultPaginationValues(filter);
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/triggers/tags/', filter, callback);
     };
 
@@ -641,6 +651,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     getInboundRuleTriggers(filter: FilteringParameters = new FilteringParameters(), callback?: Callback<InboundRules>): Promise<InboundRules> {
+        this.setDefaultPaginationValues(filter);
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/triggers/inboundRules', filter, callback);
     };
 }
