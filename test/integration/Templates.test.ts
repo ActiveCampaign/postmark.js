@@ -85,8 +85,8 @@ describe('Client - Templates', function () {
         it("sendEmailWithTemplate", async () => {
             const template = await client.createTemplate(templateToCreate());
 
-            let templateMessage = new postmark.Models.TemplateMessage(fromAddress, template.TemplateId, {}, toAddress);
-            const result = await client.sendEmailWithTemplate(templateMessage);
+            let templatedMessage = new postmark.Models.TemplatedMessage(fromAddress, template.TemplateId, {}, toAddress);
+            const result = await client.sendEmailWithTemplate(templatedMessage);
             expect(result.Message).to.eq('OK');
         });
     });

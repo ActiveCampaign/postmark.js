@@ -1,4 +1,4 @@
-import { FilteringParameters } from "../client/FilteringParameters";
+import {DefaultPaginationValues, FilteringParameters} from "../client/FilteringParameters";
 
 export enum OutboundMessageStatus {
     Queued = "queued",
@@ -15,6 +15,10 @@ export enum InboundMessageStatus {
     Scheduled = "scheduled"
 }
 
+/**
+ * Describes filtering parameters that can be used when retrieving outbound messages.
+ * When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.
+ */
 export class OutboundMessagesFilteringParameters extends FilteringParameters {
     constructor(count: number = 100, offset: number = 0,
         recipient?: string, fromEmail?: string, tag?: string,
@@ -39,8 +43,12 @@ export class OutboundMessagesFilteringParameters extends FilteringParameters {
     subject?: string;
 }
 
+/**
+ * Describes filtering parameters that can be used when retrieving inbound messages.
+ * When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.
+ */
 export class InboundMessagesFilteringParameters extends FilteringParameters {
-    constructor(count: number = 100, offset = 0,
+    constructor(count: number = DefaultPaginationValues.count, offset = DefaultPaginationValues.offset,
         mailboxHash?: string, recipient?: string, fromEmail?: string,
         tag?: string, status?: InboundMessageStatus,
         fromDate?: string,
@@ -66,8 +74,12 @@ export class InboundMessagesFilteringParameters extends FilteringParameters {
     subject?: string;
 }
 
+/**
+ * Describes filtering parameters that can be used when retrieving tracked outbound messages.
+ * When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.
+ */
 export class OutboundMessageTrackingFilteringParameters extends FilteringParameters {
-    constructor(count: number = 100, offset: number = 0,
+    constructor(count: number = DefaultPaginationValues.count, offset: number = DefaultPaginationValues.offset,
         recipient?: string, tag?: string, client_name?: string,
         client_company?: string, client_family?: string,
         os_name?: string, os_family?: string, os_company?: string,

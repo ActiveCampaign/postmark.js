@@ -70,7 +70,7 @@ export interface TemplateValidation {
     SuggestedTemplateModel: object;
 }
 
-export class TemplateMessage {
+export class TemplatedMessage {
     constructor(from: string, templateIdOrAlias: (number | string),
         templateModel: object, to?: string, cc?: string, bcc?: string,
         replyTo?: string, tag?: string, trackOpens?: boolean,

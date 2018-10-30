@@ -23,7 +23,7 @@ import {
     Templates,
     TemplateValidationOptions,
     TemplateValidation,
-    TemplateMessage,
+    TemplatedMessage,
     CreateTemplateRequest,
 
     Server,
@@ -111,7 +111,7 @@ export default class ServerClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    sendEmailWithTemplate(template: TemplateMessage, callback?: Callback<MessageSendingResponse>): Promise<MessageSendingResponse> {
+    sendEmailWithTemplate(template: TemplatedMessage, callback?: Callback<MessageSendingResponse>): Promise<MessageSendingResponse> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/email/withTemplate', template, callback);
     };
 
@@ -122,7 +122,7 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    sendEmailBatchWithTemplates(templates: TemplateMessage[], callback?: Callback<MessageSendingResponse[]>): Promise<MessageSendingResponse[]> {
+    sendEmailBatchWithTemplates(templates: TemplatedMessage[], callback?: Callback<MessageSendingResponse[]>): Promise<MessageSendingResponse[]> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/email/batchWithTemplates', { Messages: templates }, callback);
     };
 
