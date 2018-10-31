@@ -1,4 +1,4 @@
-import {DefaultPaginationValues, FilteringParameters} from "../client/FilteringParameters";
+import {FilteringParameters} from "../client/FilteringParameters";
 
 export enum OutboundMessageStatus {
     Queued = "queued",
@@ -48,7 +48,7 @@ export class OutboundMessagesFilteringParameters extends FilteringParameters {
  * When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.
  */
 export class InboundMessagesFilteringParameters extends FilteringParameters {
-    constructor(count: number = DefaultPaginationValues.count, offset = DefaultPaginationValues.offset,
+    constructor(count: number = 100, offset = 0,
         mailboxHash?: string, recipient?: string, fromEmail?: string,
         tag?: string, status?: InboundMessageStatus,
         fromDate?: string,
@@ -79,7 +79,7 @@ export class InboundMessagesFilteringParameters extends FilteringParameters {
  * When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.
  */
 export class OutboundMessageTrackingFilteringParameters extends FilteringParameters {
-    constructor(count: number = DefaultPaginationValues.count, offset: number = DefaultPaginationValues.offset,
+    constructor(count: number = 100, offset: number = 0,
         recipient?: string, tag?: string, client_name?: string,
         client_company?: string, client_family?: string,
         os_name?: string, os_family?: string, os_company?: string,

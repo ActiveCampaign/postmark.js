@@ -11,8 +11,5 @@ import {TemplatedMessage} from "./client/models";
 import {Attachment} from "./client/models";
 import {Header} from "./client/models";
 
-export {ServerClient, AccountClient, Models, Errors};
+export {ServerClient, ServerClient as Client, AccountClient, AccountClient as AdminClient, Models, Errors};
 export {Message, TemplatedMessage, Attachment, Header}
-
-// Client aliases are provided for backward compatibility with version 1.x
-export {ServerClient as Client, AccountClient as AdminClient}

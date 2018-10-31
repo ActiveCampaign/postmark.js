@@ -1,4 +1,4 @@
-import {DefaultPaginationValues, FilteringParameters} from "../client/FilteringParameters";
+import {FilteringParameters} from "../client/FilteringParameters";
 
 export enum BounceType {
     HardBounce = "HardBounce",
@@ -30,7 +30,7 @@ export enum BounceType {
  * When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.
  */
 export class BounceFilteringParameters extends FilteringParameters {
-    constructor(count: number = DefaultPaginationValues.count, offset: number = DefaultPaginationValues.offset, type?: BounceType,
+    constructor(count: number = 100, offset: number = 0, type?: BounceType,
         inactive?: boolean, emailFilter?: string,
         tag?: string, messageID?: string, fromDate?: string, toDate?: string) {
         super(count, offset);

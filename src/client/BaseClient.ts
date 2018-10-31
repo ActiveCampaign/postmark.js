@@ -1,6 +1,6 @@
 import * as request from 'request';
 
-import {ClientOptions, Callback, DefaultPaginationValues, FilteringParameters} from './models';
+import {ClientOptions, Callback, FilteringParameters} from './models';
 import * as Errors from './models/client/Errors';
 import { ErrorHandler } from "./ErrorHandler";
 
@@ -193,10 +193,9 @@ export default abstract class BaseClient {
 
     /**
      * Set default values for count and offset when doing filtering with API requests if they are not specified by filter.
-     * Defaults can be seen in [[DefaultPaginationValues]].
      */
     protected setDefaultPaginationValues(filter: FilteringParameters): void {
-        filter.count = filter.count || DefaultPaginationValues.count;
-        filter.offset = filter.offset || DefaultPaginationValues.offset;
+        filter.count = filter.count || 100;
+        filter.offset = filter.offset || 0;
     }
 }
