@@ -5,7 +5,6 @@ import {
     Callback,
     DefaultResponse,
     FilteringParameters,
-    DefaultPaginationValues,
 } from './models/index';
 
 import {
