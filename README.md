@@ -4,6 +4,7 @@
 
 # Postmark Node.js Library
 [![Build Status](https://travis-ci.org/wildbit/postmark.js.svg?branch=master)](https://travis-ci.org/wildbit/postmark.js)
+[![npm version](https://badge.fury.io/js/postmark.svg)](https://badge.fury.io/js/postmark)
 
 Send emails with the greatest of ease! [Postmark](http://www.postmarkapp.com) allows you to send your application's emails with high delivery rates, including bounce/spam processing and detailed statistics.
 In addition, Postmark can parse incoming emails which are forwarded back to your application.
