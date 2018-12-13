@@ -14,7 +14,7 @@ export class ErrorHandler {
      * @returns properly formatted Postmark error.
      */
     public generateError(error: any): Errors.PostmarkError {
-        if (error.statusCode !== undefined) {
+        if (error.body !== undefined && error.statusCode !== undefined) {
             return this.buildStatusError(error);
         }
         else {

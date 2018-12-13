@@ -53,5 +53,20 @@ describe('ErrorHandler', () => {
             expect(postmarkError.name).to.equal('InternalServerError')
             expect(postmarkError.message).to.equal(error.body.Message);
         });
+
+        it('unknown', () => {
+            const errorHandler = new ErrorHandler();
+
+            const error: any = {
+                name: "Test name",
+                message: "test message",
+                statusCode: 600
+            };
+
+            let postmarkError = errorHandler.generateError(error);
+            expect(postmarkError).to.be.an.instanceof(Errors.PostmarkError);
+            expect(postmarkError.name).to.equal('PostmarkError')
+            expect(postmarkError.message).to.equal(error.message);
+        });
     });
 });
