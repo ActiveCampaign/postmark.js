@@ -36,6 +36,24 @@ describe('ErrorHandler', () => {
             expect(postmarkError.message).to.equal(error.body.Message);
         });
 
+        it('422', () => {
+            const errorHandler = new ErrorHandler();
+
+            const error: any = {
+                name: "Test name",
+                body: {
+                    Message: "Test message",
+                    ErrorCode: 422
+                },
+                statusCode: 422
+            };
+
+            let postmarkError = errorHandler.generateError(error);
+            expect(postmarkError).to.be.an.instanceof(Errors.ApiInputError);
+            expect(postmarkError.name).to.equal('ApiInputError')
+            expect(postmarkError.message).to.equal(error.body.Message);
+        });
+
         it('500', () => {
             const errorHandler = new ErrorHandler();
 
