@@ -2,14 +2,16 @@ import * as postmark from '../../src/index';
 
 import { expect } from 'chai';
 import 'mocha';
-import { CreateTemplateRequest } from '../../src/client/models';
+import {CreateTemplateRequest, TemplatesPushRequest} from '../../src/client/models';
 
 const nconf = require('nconf');
 const testingKeys = nconf.env().file({ file: __dirname + '/../../testing_keys.json' });
 
 describe('Client - Templates', function () {
     const serverToken: string = testingKeys.get('SERVER_TOKEN');
+    const accountToken: string = testingKeys.get('ACCOUNT_TOKEN');
     let client = new postmark.ServerClient(serverToken);
+    let accountClient = new postmark.AccountClient(accountToken);
     const templatePrefix: string = 'testing-template-node-js';
 
     function templateToCreate() {
@@ -88,6 +90,27 @@ describe('Client - Templates', function () {
             let templatedMessage = new postmark.Models.TemplatedMessage(fromAddress, template.TemplateId, {}, toAddress);
             const result = await client.sendEmailWithTemplate(templatedMessage);
             expect(result.Message).to.eq('OK');
+        });
+    });
+
+    describe('push templates', () => {
+        it("non existing servers error", () => {
+            let pushRequest = new TemplatesPushRequest(0,1, false);
+
+            return accountClient.pushTemplates(pushRequest).then(()=> { }, error => {
+                expect(error.name).to.equal('ApiInputError');
+                expect(error.message).to.equal('The source and destination servers were not found.');
+            });
+        });
+
+        it('no templates with aliases', async () => {
+            const server = await client.getServer();
+            let pushRequest = new TemplatesPushRequest(server.ID,server.ID, false);
+
+            return accountClient.pushTemplates(pushRequest).then(()=> { }, error => {
+                expect(error.name).to.equal('ApiInputError');
+                expect(error.message).to.equal(`No templates with aliases were found for server ${server.ID}.`);
+            });
         });
     });
 });

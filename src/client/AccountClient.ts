@@ -21,7 +21,10 @@ import {
     Signatures,
     SignatureDetails,
     CreateSignatureRequest,
-    UpdateSignatureRequest
+    UpdateSignatureRequest,
+
+    TemplatesPush,
+    TemplatesPushRequest
 } from './models'
 
 export default class AccountClient extends BaseClient {
@@ -275,7 +278,6 @@ export default class AccountClient extends BaseClient {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.POST, `/senders/${id}/verifySpf`, {}, callback);
     };
 
-
     /**
      * Request that the SPF records for Sender Signature be verified.
      *
@@ -285,5 +287,16 @@ export default class AccountClient extends BaseClient {
      */
     requestNewDKIMForSenderSignature(id: number, callback?: Callback<SignatureDetails>): Promise<SignatureDetails> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.POST, `/senders/${id}/requestNewDkim`, {}, callback);
+    };
+
+    /**
+     * Request a push of templates from one server to another.
+     *
+     * @param options - details for pushing templates from one place to another.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    pushTemplates(options: TemplatesPushRequest, callback?: Callback<TemplatesPush>): Promise<TemplatesPush> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, '/templates/push', options, callback);
     };
 }
