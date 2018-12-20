@@ -1,47 +1,45 @@
-import * as postmark from '../../src/index';
+import * as postmark from "../../src/index";
 
-import { expect } from 'chai';
-import 'mocha';
-import {CreateTemplateRequest, TemplatesPushRequest} from '../../src/client/models';
+import { expect } from "chai";
+import "mocha";
+import {CreateTemplateRequest, TemplatesPushRequest} from "../../src/client/models";
 
-const nconf = require('nconf');
-const testingKeys = nconf.env().file({ file: __dirname + '/../../testing_keys.json' });
+import * as nconf from "nconf";
+const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
 
-describe('Client - Templates', function () {
-    const serverToken: string = testingKeys.get('SERVER_TOKEN');
-    const accountToken: string = testingKeys.get('ACCOUNT_TOKEN');
-    let client = new postmark.ServerClient(serverToken);
-    let accountClient = new postmark.AccountClient(accountToken);
-    const templatePrefix: string = 'testing-template-node-js';
+describe("Client - Templates", () => {
+    const serverToken: string = testingKeys.get("SERVER_TOKEN");
+    const accountToken: string = testingKeys.get("ACCOUNT_TOKEN");
+    const client = new postmark.ServerClient(serverToken);
+    const accountClient = new postmark.AccountClient(accountToken);
+    const templatePrefix: string = "testing-template-node-js";
 
     function templateToCreate() {
         return new CreateTemplateRequest(
             `${templatePrefix}-${Date.now()}`,
-            'Subject',
-            'Html body',
-            'Text body',
+            "Subject",
+            "Html body",
+            "Text body",
         );
-    };
-
+    }
     async function cleanup() {
-        const client = new postmark.ServerClient(serverToken);
         const templates = await client.getTemplates();
 
-        for (let i = 0; i < templates.Templates.length; i++) {
-            let template = templates.Templates[i];
-            if (template.Name.includes(templatePrefix)) { await client.deleteTemplate(template.TemplateId); };
-        };
-    };
-
+        for (const template of templates.Templates) {
+            if (template.Name.includes(templatePrefix)) {
+                await client.deleteTemplate(template.TemplateId);
+            }
+        }
+    }
     before(cleanup);
     after(cleanup);
 
-    it('getTemplates', async () => {
+    it("getTemplates", async () => {
         const result = await client.getTemplates();
         expect(result.TotalCount).to.above(-1);
     });
 
-    it('getTemplate', async () => {
+    it("getTemplate", async () => {
         const template = await client.createTemplate(templateToCreate());
         const result = await client.getTemplate(template.TemplateId);
         expect(result.TemplateId).to.above(-1);
@@ -52,9 +50,9 @@ describe('Client - Templates', function () {
         expect(result.TemplateId).to.above(0);
     });
 
-    it('editTemplate', async () => {
+    it("editTemplate", async () => {
         const templateOptions = templateToCreate();
-        const updatedName = `${templateOptions.Name}-updated`
+        const updatedName = `${templateOptions.Name}-updated`;
         const template = await client.createTemplate(templateOptions);
         const result = await client.editTemplate(template.TemplateId, { Name: updatedName });
         expect(result.Name).to.equal(updatedName);
@@ -69,47 +67,64 @@ describe('Client - Templates', function () {
     it("validateTemplate", async () => {
         const templateToValidate = {
             TestRenderModel: {
-                Name: "joe!"
+                Name: "joe!",
             },
-            TextBody: "text body for template {{id}}!",
             HtmlBody: "{{content}}",
-            Subject: "{{subject}}"
+            TextBody: "text body for template {{id}}!",
+            Subject: "{{subject}}",
         };
 
         const templateValidation = await client.validateTemplate(templateToValidate);
         expect(templateValidation.TextBody.ContentIsValid).to.eq(true);
     });
 
-    describe('sending', () => {
-        const fromAddress = testingKeys.get('SENDER_EMAIL_ADDRESS');
-        const toAddress = testingKeys.get('EMAIL_RECIPIENT_ADDRESS');
+    describe("sending", () => {
+        const fromAddress = testingKeys.get("SENDER_EMAIL_ADDRESS");
+        const toAddress = testingKeys.get("EMAIL_RECIPIENT_ADDRESS");
 
         it("sendEmailWithTemplate", async () => {
             const template = await client.createTemplate(templateToCreate());
 
-            let templatedMessage = new postmark.Models.TemplatedMessage(fromAddress, template.TemplateId, {}, toAddress);
+            const templatedMessage = new postmark.Models.TemplatedMessage(
+                fromAddress, template.TemplateId, {}, toAddress);
             const result = await client.sendEmailWithTemplate(templatedMessage);
-            expect(result.Message).to.eq('OK');
+            expect(result.Message).to.eq("OK");
         });
     });
 
-    describe('push templates', () => {
+    describe("push templates", () => {
         it("non existing servers error", () => {
-            let pushRequest = new TemplatesPushRequest(0,1, false);
+            const pushRequest = new TemplatesPushRequest(0, 1, false);
 
-            return accountClient.pushTemplates(pushRequest).then(()=> { }, error => {
-                expect(error.name).to.equal('ApiInputError');
-                expect(error.message).to.equal('The source and destination servers were not found.');
+            return accountClient.pushTemplates(pushRequest).then((result) => {
+                throw Error(`Should not be here with result: ${result}`);
+            }, (error) => {
+                expect(error.name).to.equal("ApiInputError");
+                expect(error.message).to.equal("The source and destination servers were not found.");
             });
         });
 
-        it('no templates with aliases', async () => {
+        it("bad destination server", async () => {
             const server = await client.getServer();
-            let pushRequest = new TemplatesPushRequest(server.ID,server.ID, false);
+            const pushRequest = new TemplatesPushRequest(server.ID, 1, false);
 
-            return accountClient.pushTemplates(pushRequest).then(()=> { }, error => {
-                expect(error.name).to.equal('ApiInputError');
-                expect(error.message).to.equal(`No templates with aliases were found for server ${server.ID}.`);
+            return accountClient.pushTemplates(pushRequest).then((result) => {
+                throw Error(`Should not be here with result: ${result}`);
+            }, (error) => {
+                expect(error.name).to.equal("ApiInputError");
+                expect(error.message).to.equal(`The destination server was not found.`);
+            });
+        });
+
+        it("bad source server", async () => {
+            const server = await client.getServer();
+            const pushRequest = new TemplatesPushRequest(1, server.ID, false);
+
+            return accountClient.pushTemplates(pushRequest).then((result) => {
+                throw Error(`Should not be here with result: ${result}`);
+            }, (error) => {
+                expect(error.name).to.equal("ApiInputError");
+                expect(error.message).to.equal(`The source server was not found.`);
             });
         });
     });

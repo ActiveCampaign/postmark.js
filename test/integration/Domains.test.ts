@@ -1,19 +1,19 @@
-import * as postmark from '../../src/index';
+import * as postmark from "../../src/index";
 
-import { expect } from 'chai';
-import 'mocha';
-import { CreateDomainRequest } from '../../src/client/models';
+import { expect } from "chai";
+import "mocha";
+import { CreateDomainRequest } from "../../src/client/models";
 
-const nconf = require('nconf');
-const testingKeys = nconf.env().file({ file: __dirname + '/../../testing_keys.json' });
+import * as nconf from "nconf";
+const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
 
-describe('Client - Domains', function () {
-    const accountToken: string = testingKeys.get('ACCOUNT_TOKEN');
+describe("Client - Domains", () => {
+    const accountToken: string = testingKeys.get("ACCOUNT_TOKEN");
     const client = new postmark.AccountClient(accountToken);
-    const domainName: string = testingKeys.get('DOMAIN_NAME');
+    const domainName: string = testingKeys.get("DOMAIN_NAME");
 
-    function returnPathToTest(domainName: string) {
-        return `return.${domainName}`
+    function returnPathToTest(domainNameForReturnPath: string) {
+        return `return.${domainNameForReturnPath}`;
     }
 
     function domainToTest() {
@@ -21,13 +21,12 @@ describe('Client - Domains', function () {
     }
 
     async function cleanup() {
-        let domains = await client.getDomains()
+        const domains = await client.getDomains();
 
-        for (let i = 0; i < domains.Domains.length; i++) {
-            let domain = domains.Domains[i];
-            if (domain.Name.includes(domainName)) { await client.deleteDomain(domain.ID) }
-        };
-    };
+        for (const domain of domains.Domains) {
+            if (domain.Name.includes(domainName)) { await client.deleteDomain(domain.ID); }
+        }
+    }
 
     before(cleanup);
     after(cleanup);

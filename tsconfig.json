@@ -10,7 +10,8 @@
     "noImplicitAny" :true,
     "noImplicitThis": true,
     "lib": ["es5", "es2017", "dom"],
-    "declaration": true
+    "declaration": true,
+    "resolveJsonModule": true
   },
   "include": ["src/**/*"],
   "exclude": ["test/**/*"]
