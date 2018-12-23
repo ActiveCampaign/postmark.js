@@ -1,28 +1,31 @@
-import BaseClient from './BaseClient';
+import BaseClient from "./BaseClient";
 
 import {
-    ClientOptions,
-    FilteringParameters,
     Callback,
+    ClientOptions,
     DefaultResponse,
-} from './models';
+    FilteringParameters,
+} from "./models";
 
 import {
-    Server,
+    CreateDomainRequest,
     CreateServerRequest,
-    UpdateServerRequest,
-    Servers,
+    CreateSignatureRequest,
+    DomainDetails,
 
     Domains,
-    DomainDetails,
-    UpdateDomainRequest,
-    CreateDomainRequest,
+    Server,
+    Servers,
+    SignatureDetails,
 
     Signatures,
-    SignatureDetails,
-    CreateSignatureRequest,
-    UpdateSignatureRequest
-} from './models'
+    TemplatesPush,
+    TemplatesPushRequest,
+    UpdateDomainRequest,
+
+    UpdateServerRequest,
+    UpdateSignatureRequest,
+} from "./models";
 
 export default class AccountClient extends BaseClient {
 
@@ -42,10 +45,10 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getServers(filter: FilteringParameters = new FilteringParameters(), callback?: Callback<Servers>): Promise<Servers> {
+    public getServers(filter: FilteringParameters = new FilteringParameters(), callback?: Callback<Servers>): Promise<Servers> {
         this.setDefaultPaginationValues(filter);
-        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/servers', filter, callback);
-    };
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, "/servers", filter, callback);
+    }
 
     /**
      * Retrieve a single server by ID.
@@ -54,9 +57,9 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getServer(id: number, callback?: Callback<Server>): Promise<Server> {
+    public getServer(id: number, callback?: Callback<Server>): Promise<Server> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/servers/${id}`, {}, callback);
-    };
+    }
 
     /**
      * Create a new Server.
@@ -65,9 +68,9 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    createServer(options: CreateServerRequest, callback?: Callback<Server>): Promise<Server> {
-        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/servers', options, callback);
-    };
+    public createServer(options: CreateServerRequest, callback?: Callback<Server>): Promise<Server> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, "/servers", options, callback);
+    }
 
     /**
      * Modify the Server associated with this Client.
@@ -77,9 +80,9 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    editServer(id: number, options: UpdateServerRequest, callback?: Callback<Server>): Promise<Server> {
+    public editServer(id: number, options: UpdateServerRequest, callback?: Callback<Server>): Promise<Server> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, `/servers/${id}`, options, callback);
-    };
+    }
 
     /**
      * Modify the Server associated with this Client.
@@ -88,9 +91,9 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    deleteServer(id: number, callback?: Callback<DefaultResponse>): Promise<DefaultResponse> {
+    public deleteServer(id: number, callback?: Callback<DefaultResponse>): Promise<DefaultResponse> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.DELETE, `/servers/${id}`, {}, callback);
-    };
+    }
 
     /**
      * Retrieve a batch of Domains.
@@ -99,10 +102,10 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getDomains(filter: FilteringParameters = new FilteringParameters(), callback?: Callback<Domains>): Promise<Domains> {
+    public getDomains(filter: FilteringParameters = new FilteringParameters(), callback?: Callback<Domains>): Promise<Domains> {
         this.setDefaultPaginationValues(filter);
-        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/domains', filter, callback);
-    };
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, "/domains", filter, callback);
+    }
 
     /**
      * Retrieve a single Domain by ID.
@@ -111,9 +114,9 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getDomain(id: number, callback?: Callback<DomainDetails>): Promise<DomainDetails> {
+    public getDomain(id: number, callback?: Callback<DomainDetails>): Promise<DomainDetails> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/domains/${id}`, {}, callback);
-    };
+    }
 
     /**
      * Create a new Domain.
@@ -122,9 +125,9 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    createDomain(options: CreateDomainRequest, callback?: Callback<DomainDetails>): Promise<DomainDetails> {
-        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/domains/', options, callback);
-    };
+    public createDomain(options: CreateDomainRequest, callback?: Callback<DomainDetails>): Promise<DomainDetails> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, "/domains/", options, callback);
+    }
 
     /**
      * Update a Domain.
@@ -134,7 +137,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    editDomain(id: number, options: UpdateDomainRequest, callback?: Callback<DomainDetails>): Promise<DomainDetails> {
+    public editDomain(id: number, options: UpdateDomainRequest, callback?: Callback<DomainDetails>): Promise<DomainDetails> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, `/domains/${id}`, options, callback);
     }
 
@@ -146,9 +149,9 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    deleteDomain(id: number, callback?: Callback<DefaultResponse>): Promise<DefaultResponse> {
+    public deleteDomain(id: number, callback?: Callback<DefaultResponse>): Promise<DefaultResponse> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.DELETE, `/domains/${id}`, {}, callback);
-    };
+    }
 
     /**
      * Trigger Domain DKIM key verification.
@@ -157,7 +160,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    verifyDomainDKIM(id: number, callback?: Callback<DomainDetails>): Promise<DomainDetails> {
+    public verifyDomainDKIM(id: number, callback?: Callback<DomainDetails>): Promise<DomainDetails> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.PUT, `/domains/${id}/verifyDKIM`, {}, callback);
     }
 
@@ -168,7 +171,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    verifyDomainReturnPath(id: number, callback?: Callback<DomainDetails>): Promise<DomainDetails> {
+    public verifyDomainReturnPath(id: number, callback?: Callback<DomainDetails>): Promise<DomainDetails> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.PUT, `/domains/${id}/verifyReturnPath`, {}, callback);
     }
 
@@ -179,7 +182,7 @@ export default class AccountClient extends BaseClient {
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    verifyDomainSPF(id: number, callback?: Callback<DomainDetails>): Promise<DomainDetails> {
+    public verifyDomainSPF(id: number, callback?: Callback<DomainDetails>): Promise<DomainDetails> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.PUT, `/domains/${id}/verifySPF`, {}, callback);
     }
 
@@ -190,7 +193,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    rotateDomainDKIM(id: number, callback?: Callback<DomainDetails>): Promise<DomainDetails> {
+    public rotateDomainDKIM(id: number, callback?: Callback<DomainDetails>): Promise<DomainDetails> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.PUT, `/domains/${id}/rotateDKIM`, {}, callback);
     }
 
@@ -201,9 +204,9 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getSenderSignature(id: number, callback?: Callback<SignatureDetails>): Promise<SignatureDetails> {
+    public getSenderSignature(id: number, callback?: Callback<SignatureDetails>): Promise<SignatureDetails> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/senders/${id}`, {}, callback);
-    };
+    }
 
     /**
      * Retrieve a batch of Sender Signatures.
@@ -212,10 +215,11 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    getSenderSignatures(filter: FilteringParameters = new FilteringParameters(), callback?: Callback<Signatures>): Promise<Signatures> {
+    public getSenderSignatures(filter: FilteringParameters = new FilteringParameters(),
+                               callback?: Callback<Signatures>): Promise<Signatures> {
         this.setDefaultPaginationValues(filter);
-        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, '/senders', filter, callback);
-    };
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, "/senders", filter, callback);
+    }
 
     /**
      * Create a new Sender Signature.
@@ -224,10 +228,9 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    createSenderSignature(options: CreateSignatureRequest, callback?: Callback<SignatureDetails>): Promise<SignatureDetails> {
-        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, '/senders/', options, callback);
-    };
-
+    public createSenderSignature(options: CreateSignatureRequest, callback?: Callback<SignatureDetails>): Promise<SignatureDetails> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, "/senders/", options, callback);
+    }
 
     /**
      * Update a Sender Signature.
@@ -237,9 +240,10 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    editSenderSignature(id: number, options: UpdateSignatureRequest, callback?: Callback<SignatureDetails>): Promise<SignatureDetails> {
+    public editSenderSignature(id: number, options: UpdateSignatureRequest,
+                               callback?: Callback<SignatureDetails>): Promise<SignatureDetails> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, `/senders/${id}`, options, callback);
-    };
+    }
 
     /**
      * Delete a Domain.
@@ -249,9 +253,9 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    deleteSenderSignature(id: number, callback?: Callback<DefaultResponse>): Promise<DefaultResponse> {
+    public deleteSenderSignature(id: number, callback?: Callback<DefaultResponse>): Promise<DefaultResponse> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.DELETE, `/senders/${id}`, {}, callback);
-    };
+    }
 
     /**
      * Request a new confirmation email to be sent to the email address associated with a Sender Signature.
@@ -260,9 +264,9 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    resendSenderSignatureConfirmation(id: number, callback?: Callback<DefaultResponse>): Promise<DefaultResponse> {
+    public resendSenderSignatureConfirmation(id: number, callback?: Callback<DefaultResponse>): Promise<DefaultResponse> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.POST, `/senders/${id}/resend`, {}, callback);
-    };
+    }
 
     /**
      * Request that the SPF records for Sender Signature be verified.
@@ -271,10 +275,9 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    verifySenderSignatureSPF(id: number, callback?: Callback<SignatureDetails>): Promise<SignatureDetails> {
+    public verifySenderSignatureSPF(id: number, callback?: Callback<SignatureDetails>): Promise<SignatureDetails> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.POST, `/senders/${id}/verifySpf`, {}, callback);
-    };
-
+    }
 
     /**
      * Request that the SPF records for Sender Signature be verified.
@@ -283,7 +286,18 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    requestNewDKIMForSenderSignature(id: number, callback?: Callback<SignatureDetails>): Promise<SignatureDetails> {
+    public requestNewDKIMForSenderSignature(id: number, callback?: Callback<SignatureDetails>): Promise<SignatureDetails> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.POST, `/senders/${id}/requestNewDkim`, {}, callback);
-    };
+    }
+
+    /**
+     * Request a push of templates from one server to another.
+     *
+     * @param options - details for pushing templates from one place to another.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public pushTemplates(options: TemplatesPushRequest, callback?: Callback<TemplatesPush>): Promise<TemplatesPush> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, "/templates/push", options, callback);
+    }
 }

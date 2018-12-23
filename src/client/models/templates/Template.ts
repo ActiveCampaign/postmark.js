@@ -56,6 +56,30 @@ export interface Templates {
     ]
 }
 
+export class TemplatesPushRequest {
+    SourceServerID: number;
+    DestinationServerID: number;
+    PerformChanges: boolean;
+
+    constructor(SourceServerID: number, DestinationServerID: number, PerformChanges: boolean) {
+        this.SourceServerID = SourceServerID;
+        this.DestinationServerID = DestinationServerID;
+        this.PerformChanges = PerformChanges;
+    }
+}
+
+export interface TemplatePushAction {
+    Action: string;
+    TemplateId?: number;
+    Alias: string;
+    Name: string;
+}
+
+export interface TemplatesPush {
+    TotalCount: number;
+    Templates: TemplatePushAction[];
+}
+
 export interface ValidationSection {
     ContentIsValid: boolean;
     ValidationErrors: object,

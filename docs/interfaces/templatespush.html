@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>TemplateValidation | Postmark.js</title>
+	<title>TemplatesPush | Postmark.js</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -908,22 +908,13 @@ img { max-width: 100%; }
 <nav class="tsd-navigation secondary">
 	<ul>
 		<li class="current tsd-kind-interface">
-			<a href="templatevalidation.html" class="tsd-kind-icon">Template<wbr>Validation</a>
+			<a href="templatespush.html" class="tsd-kind-icon">Templates<wbr>Push</a>
 			<ul>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="templatevalidation.html#allcontentisvalid" class="tsd-kind-icon">All<wbr>Content<wbr>IsValid</a>
+					<a href="templatespush.html#templates" class="tsd-kind-icon">Templates</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="templatevalidation.html#htmlbody" class="tsd-kind-icon">Html<wbr>Body</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="templatevalidation.html#subject" class="tsd-kind-icon">Subject</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="templatevalidation.html#suggestedtemplatemodel" class="tsd-kind-icon">Suggested<wbr>Template<wbr>Model</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="templatevalidation.html#textbody" class="tsd-kind-icon">Text<wbr>Body</a>
+					<a href="templatespush.html#totalcount" class="tsd-kind-icon">Total<wbr>Count</a>
 				</li>
 			</ul>
 		</li>
@@ -935,7 +926,7 @@ img { max-width: 100%; }
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
 				<li>
-					<span class="target">TemplateValidation</span>
+					<span class="target">TemplatesPush</span>
 				</li>
 			</ul>
 		</section>
@@ -946,11 +937,8 @@ img { max-width: 100%; }
 					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="templatevalidation.html#allcontentisvalid" class="tsd-kind-icon">All<wbr>Content<wbr>IsValid</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="templatevalidation.html#htmlbody" class="tsd-kind-icon">Html<wbr>Body</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="templatevalidation.html#subject" class="tsd-kind-icon">Subject</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="templatevalidation.html#suggestedtemplatemodel" class="tsd-kind-icon">Suggested<wbr>Template<wbr>Model</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="templatevalidation.html#textbody" class="tsd-kind-icon">Text<wbr>Body</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="templatespush.html#templates" class="tsd-kind-icon">Templates</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="templatespush.html#totalcount" class="tsd-kind-icon">Total<wbr>Count</a></li>
 						</ul>
 					</section>
 				</div>
@@ -959,52 +947,22 @@ img { max-width: 100%; }
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="allcontentisvalid" class="tsd-anchor"></a>
-				<h3>All<wbr>Content<wbr>IsValid</h3>
-				<div class="tsd-signature tsd-kind-icon">All<wbr>Content<wbr>IsValid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+				<a name="templates" class="tsd-anchor"></a>
+				<h3>Templates</h3>
+				<div class="tsd-signature tsd-kind-icon">Templates<span class="tsd-signature-symbol">:</span> <a href="templatepushaction.html" class="tsd-signature-type">TemplatePushAction</a><span class="tsd-signature-symbol">[]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/templates/Template.ts:90</li>
+						<li>Defined in client/models/templates/Template.ts:80</li>
 					</ul>
 				</aside>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="htmlbody" class="tsd-anchor"></a>
-				<h3>Html<wbr>Body</h3>
-				<div class="tsd-signature tsd-kind-icon">Html<wbr>Body<span class="tsd-signature-symbol">:</span> <a href="validationsection.html" class="tsd-signature-type">ValidationSection</a></div>
+				<a name="totalcount" class="tsd-anchor"></a>
+				<h3>Total<wbr>Count</h3>
+				<div class="tsd-signature tsd-kind-icon">Total<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/templates/Template.ts:91</li>
-					</ul>
-				</aside>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="subject" class="tsd-anchor"></a>
-				<h3>Subject</h3>
-				<div class="tsd-signature tsd-kind-icon">Subject<span class="tsd-signature-symbol">:</span> <a href="validationsection.html" class="tsd-signature-type">ValidationSection</a></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in client/models/templates/Template.ts:93</li>
-					</ul>
-				</aside>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="suggestedtemplatemodel" class="tsd-anchor"></a>
-				<h3>Suggested<wbr>Template<wbr>Model</h3>
-				<div class="tsd-signature tsd-kind-icon">Suggested<wbr>Template<wbr>Model<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in client/models/templates/Template.ts:94</li>
-					</ul>
-				</aside>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="textbody" class="tsd-anchor"></a>
-				<h3>Text<wbr>Body</h3>
-				<div class="tsd-signature tsd-kind-icon">Text<wbr>Body<span class="tsd-signature-symbol">:</span> <a href="validationsection.html" class="tsd-signature-type">ValidationSection</a></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in client/models/templates/Template.ts:92</li>
+						<li>Defined in client/models/templates/Template.ts:79</li>
 					</ul>
 				</aside>
 			</section>

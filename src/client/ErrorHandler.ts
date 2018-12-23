@@ -3,7 +3,7 @@ import * as Errors from "./models/client/Errors";
 /**
  * This class handles all client request errors. Client response error is classified so that proper response error is generated.
  *
- **/
+ */
 export class ErrorHandler {
 
     /**
@@ -16,8 +16,7 @@ export class ErrorHandler {
     public generateError(error: any): Errors.PostmarkError {
         if (error.body !== undefined && error.statusCode !== undefined) {
             return this.buildStatusError(error);
-        }
-        else {
+        } else {
             return this.buildError(error);
         }
     }

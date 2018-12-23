@@ -1,8 +1,8 @@
-import * as request from 'request';
+import * as request from "request";
 
-import {ClientOptions, Callback, FilteringParameters} from './models';
-import * as Errors from './models/client/Errors';
 import { ErrorHandler } from "./ErrorHandler";
+import {Callback, ClientOptions, FilteringParameters} from "./models";
+import * as Errors from "./models/client/Errors";
 
 const packageJson = require("../../package.json");
 const CLIENT_VERSION = packageJson.version;
@@ -20,8 +20,8 @@ export default abstract class BaseClient {
      */
     public static DefaultOptions: ClientOptions.Configuration = {
         useHttps: true,
-        requestHost: 'api.postmarkapp.com',
-        timeout: 30
+        requestHost: "api.postmarkapp.com",
+        timeout: 30,
     };
 
     public clientOptions: ClientOptions.Configuration;
@@ -44,9 +44,9 @@ export default abstract class BaseClient {
      * Process http request with sending body - data.
      *
      * @see processRequest for more details.
-     **/
+     */
     protected processRequestWithBody<T>(method: ClientOptions.HttpMethod, path: string, body: (null | object),
-        callback?: Callback<T>): Promise<T> {
+                                        callback?: Callback<T>): Promise<T> {
         return this.processRequest(method, path, {}, body, callback);
     }
 
@@ -54,10 +54,18 @@ export default abstract class BaseClient {
      * Process http request without sending body - data.
      *
      * @see processRequest for more details.
-     **/
+     */
     protected processRequestWithoutBody<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object = {},
-        callback?: Callback<T>): Promise<T> {
+                                           callback?: Callback<T>): Promise<T> {
         return this.processRequest(method, path, queryParameters, null, callback);
+    }
+
+    /**
+     * Set default values for count and offset when doing filtering with API requests if they are not specified by filter.
+     */
+    protected setDefaultPaginationValues(filter: FilteringParameters): void {
+        filter.count = filter.count || 100;
+        filter.offset = filter.offset || 0;
     }
 
     /**
@@ -70,11 +78,11 @@ export default abstract class BaseClient {
      * @param callback - callback function to be executed.
      *
      * @returns A promise that will complete when the API responds (or an error occurs).
-     **/
+     */
     private processRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object,
-        body: (null | object), callback?: Callback<T>): Promise<T> {
+                              body: (null | object), callback?: Callback<T>): Promise<T> {
 
-        let httpRequest: Promise<T> = this.processHttpRequest(method, path, queryParameters, body);
+        const httpRequest: Promise<T> = this.processHttpRequest(method, path, queryParameters, body);
         this.processCallbackRequest(httpRequest, callback);
         return httpRequest;
     }
@@ -91,10 +99,10 @@ export default abstract class BaseClient {
      */
     private processHttpRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object, body: (null | object)): Promise<T> {
         return this.promisifiedHttpRequest(method, path, queryParameters, body)
-            .then(response => {
-                return <T>response.body;
+            .then((response) => {
+                return response.body as T;
             })
-            .catch(error => {
+            .catch((error) => {
                 throw this.errorHandler.generateError(error);
             });
     }
@@ -108,10 +116,10 @@ export default abstract class BaseClient {
     private processCallbackRequest<T>(httpRequest: Promise<T>, callback?: Callback<T>): void {
         if (callback) {
             httpRequest
-                .then(response => {
+                .then((response) => {
                     callback(null, response);
                 })
-                .catch(error => callback(error, null))
+                .catch((error) => callback(error, null));
         }
     }
 
@@ -124,15 +132,15 @@ export default abstract class BaseClient {
      * @param body - Data sent with http request.
      */
     private httpRequest(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object),
-        body: (null | object), callback: any): void {
+                        body: (null | object), callback: any): void {
         request(this.getHttpRequestURL(path), {
             method: method.toString(),
             headers: this.getComposedHttpRequestHeaders(),
             qs: queryParameters,
-            body: body,
+            body,
             timeout: this.getRequestTimeoutInSeconds(),
             json: true,
-            gzip: true
+            gzip: true,
         }, callback);
     }
 
@@ -147,37 +155,35 @@ export default abstract class BaseClient {
      * @returns A promise that will complete when the API responds.
      */
     private promisifiedHttpRequest(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object),
-        body: (null | object)): Promise<request.Response> {
+                                   body: (null | object)): Promise<request.Response> {
 
         return new Promise((resolve, reject) => {
             this.httpRequest(method, path, queryParameters, body, (error: Error, response: request.Response) => {
-                if (error) { reject(error); }
-                else {
-                    if (response.statusCode !== 200) { reject(response); }
-                    else { resolve(response); }
+                if (error) { reject(error); } else {
+                    if (response.statusCode !== 200) { reject(response); } else { resolve(response); }
                 }
             });
         });
     }
 
     private getRequestTimeoutInSeconds(): number {
-        return (this.clientOptions.timeout || 30) * 1000
+        return (this.clientOptions.timeout || 30) * 1000;
     }
 
     private getHttpRequestURL(path: string): string {
-        const scheme = this.clientOptions.useHttps ? 'https' : 'http';
+        const scheme = this.clientOptions.useHttps ? "https" : "http";
         return `${scheme}://${this.clientOptions.requestHost}/${path}`;
     }
 
     /**
      * JSON object with default headers sent by HTTP request.
-     **/
+     */
     private getComposedHttpRequestHeaders(): object {
         return {
             [this.authHeader]: this.token,
-            'Accept': 'application/json',
-            'User-Agent': `Postmark.JS - ${this.clientVersion}`
-        }
+            "Accept": "application/json",
+            "User-Agent": `Postmark.JS - ${this.clientVersion}`,
+        };
     }
 
     /**
@@ -186,16 +192,8 @@ export default abstract class BaseClient {
      * @param {string} token - HTTP request token
      */
     private verifyToken(token: string): void {
-        if (!token || token.trim() == '') {
-            throw new Errors.PostmarkError('A valid API token must be provided when creating a ClientOptions.');
+        if (!token || token.trim() === "") {
+            throw new Errors.PostmarkError("A valid API token must be provided when creating a ClientOptions.");
         }
-    }
-
-    /**
-     * Set default values for count and offset when doing filtering with API requests if they are not specified by filter.
-     */
-    protected setDefaultPaginationValues(filter: FilteringParameters): void {
-        filter.count = filter.count || 100;
-        filter.offset = filter.offset || 0;
     }
 }

@@ -7,3 +7,4 @@ testing_keys.json
 tsconfig.json
 src
 src/test*
+dist/test*

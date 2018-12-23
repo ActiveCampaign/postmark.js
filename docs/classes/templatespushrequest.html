@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>TemplateValidation | Postmark.js</title>
+	<title>TemplatesPushRequest | Postmark.js</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -907,23 +907,20 @@ img { max-width: 100%; }
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
-		<li class="current tsd-kind-interface">
-			<a href="templatevalidation.html" class="tsd-kind-icon">Template<wbr>Validation</a>
+		<li class="current tsd-kind-class">
+			<a href="templatespushrequest.html" class="tsd-kind-icon">Templates<wbr>Push<wbr>Request</a>
 			<ul>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="templatevalidation.html#allcontentisvalid" class="tsd-kind-icon">All<wbr>Content<wbr>IsValid</a>
+				<li class=" tsd-kind-constructor tsd-parent-kind-class">
+					<a href="templatespushrequest.html#constructor" class="tsd-kind-icon">constructor</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="templatevalidation.html#htmlbody" class="tsd-kind-icon">Html<wbr>Body</a>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="templatespushrequest.html#destinationserverid" class="tsd-kind-icon">Destination<wbr>ServerID</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="templatevalidation.html#subject" class="tsd-kind-icon">Subject</a>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="templatespushrequest.html#performchanges" class="tsd-kind-icon">Perform<wbr>Changes</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="templatevalidation.html#suggestedtemplatemodel" class="tsd-kind-icon">Suggested<wbr>Template<wbr>Model</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="templatevalidation.html#textbody" class="tsd-kind-icon">Text<wbr>Body</a>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="templatespushrequest.html#sourceserverid" class="tsd-kind-icon">Source<wbr>ServerID</a>
 				</li>
 			</ul>
 		</li>
@@ -935,7 +932,7 @@ img { max-width: 100%; }
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
 				<li>
-					<span class="target">TemplateValidation</span>
+					<span class="target">TemplatesPushRequest</span>
 				</li>
 			</ul>
 		</section>
@@ -944,67 +941,83 @@ img { max-width: 100%; }
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
 					<section class="tsd-index-section ">
+						<h3>Constructors</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="templatespushrequest.html#constructor" class="tsd-kind-icon">constructor</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="templatevalidation.html#allcontentisvalid" class="tsd-kind-icon">All<wbr>Content<wbr>IsValid</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="templatevalidation.html#htmlbody" class="tsd-kind-icon">Html<wbr>Body</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="templatevalidation.html#subject" class="tsd-kind-icon">Subject</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="templatevalidation.html#suggestedtemplatemodel" class="tsd-kind-icon">Suggested<wbr>Template<wbr>Model</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="templatevalidation.html#textbody" class="tsd-kind-icon">Text<wbr>Body</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="templatespushrequest.html#destinationserverid" class="tsd-kind-icon">Destination<wbr>ServerID</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="templatespushrequest.html#performchanges" class="tsd-kind-icon">Perform<wbr>Changes</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="templatespushrequest.html#sourceserverid" class="tsd-kind-icon">Source<wbr>ServerID</a></li>
 						</ul>
 					</section>
 				</div>
 			</section>
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Constructors</h2>
+			<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+				<a name="constructor" class="tsd-anchor"></a>
+				<h3>constructor</h3>
+				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Templates<wbr>Push<wbr>Request<span class="tsd-signature-symbol">(</span>SourceServerID<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, DestinationServerID<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, PerformChanges<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="templatespushrequest.html" class="tsd-signature-type">TemplatesPushRequest</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in client/models/templates/Template.ts:62</li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>SourceServerID: <span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li>
+								<h5>DestinationServerID: <span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li>
+								<h5>PerformChanges: <span class="tsd-signature-type">boolean</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="templatespushrequest.html" class="tsd-signature-type">TemplatesPushRequest</a></h4>
+					</li>
+				</ul>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="allcontentisvalid" class="tsd-anchor"></a>
-				<h3>All<wbr>Content<wbr>IsValid</h3>
-				<div class="tsd-signature tsd-kind-icon">All<wbr>Content<wbr>IsValid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="destinationserverid" class="tsd-anchor"></a>
+				<h3>Destination<wbr>ServerID</h3>
+				<div class="tsd-signature tsd-kind-icon">Destination<wbr>ServerID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/templates/Template.ts:90</li>
+						<li>Defined in client/models/templates/Template.ts:61</li>
 					</ul>
 				</aside>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="htmlbody" class="tsd-anchor"></a>
-				<h3>Html<wbr>Body</h3>
-				<div class="tsd-signature tsd-kind-icon">Html<wbr>Body<span class="tsd-signature-symbol">:</span> <a href="validationsection.html" class="tsd-signature-type">ValidationSection</a></div>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="performchanges" class="tsd-anchor"></a>
+				<h3>Perform<wbr>Changes</h3>
+				<div class="tsd-signature tsd-kind-icon">Perform<wbr>Changes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/templates/Template.ts:91</li>
+						<li>Defined in client/models/templates/Template.ts:62</li>
 					</ul>
 				</aside>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="subject" class="tsd-anchor"></a>
-				<h3>Subject</h3>
-				<div class="tsd-signature tsd-kind-icon">Subject<span class="tsd-signature-symbol">:</span> <a href="validationsection.html" class="tsd-signature-type">ValidationSection</a></div>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="sourceserverid" class="tsd-anchor"></a>
+				<h3>Source<wbr>ServerID</h3>
+				<div class="tsd-signature tsd-kind-icon">Source<wbr>ServerID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/templates/Template.ts:93</li>
-					</ul>
-				</aside>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="suggestedtemplatemodel" class="tsd-anchor"></a>
-				<h3>Suggested<wbr>Template<wbr>Model</h3>
-				<div class="tsd-signature tsd-kind-icon">Suggested<wbr>Template<wbr>Model<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in client/models/templates/Template.ts:94</li>
-					</ul>
-				</aside>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="textbody" class="tsd-anchor"></a>
-				<h3>Text<wbr>Body</h3>
-				<div class="tsd-signature tsd-kind-icon">Text<wbr>Body<span class="tsd-signature-symbol">:</span> <a href="validationsection.html" class="tsd-signature-type">ValidationSection</a></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in client/models/templates/Template.ts:92</li>
+						<li>Defined in client/models/templates/Template.ts:60</li>
 					</ul>
 				</aside>
 			</section>

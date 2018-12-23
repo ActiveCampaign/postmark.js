@@ -1,31 +1,28 @@
-import * as postmark from '../../src/index';
+import { expect } from "chai";
+import "mocha";
+import { CreateSignatureRequest } from "../../src/client/models";
+import * as postmark from "../../src/index";
 
-import { expect } from 'chai';
-import 'mocha';
-import { CreateSignatureRequest } from '../../src/client/models';
+import * as nconf from "nconf";
+const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
 
-const nconf = require('nconf');
-const testingKeys = nconf.env().file({ file: __dirname + '/../../testing_keys.json' });
-
-describe('Client - Signatures', function () {
-    const accountToken: string = testingKeys.get('ACCOUNT_TOKEN');
-    const testDomainName: string = testingKeys.get('DOMAIN_NAME');
+describe("Client - Signatures", () => {
+    const accountToken: string = testingKeys.get("ACCOUNT_TOKEN");
+    const testDomainName: string = testingKeys.get("DOMAIN_NAME");
     const client: postmark.AccountClient = new postmark.AccountClient(accountToken);
     const domainName: string = testDomainName;
 
     function signatureToTest() {
-        return new CreateSignatureRequest('John Smith', `mailing+${Date.now()}@${domainName}`);
+        return new CreateSignatureRequest("John Smith", `mailing+${Date.now()}@${domainName}`);
     }
 
     async function cleanup() {
-        let client = new postmark.AccountClient(accountToken);
-        let domains = await client.getDomains();
+        const domains = await client.getDomains();
 
-        for (let i = 0; i < domains.Domains.length; i++) {
-            let domain = domains.Domains[i];
+        for (const domain of domains.Domains) {
             if (domain.Name.includes(domainName)) { await client.deleteDomain(domain.ID); }
-        };
-    };
+        }
+    }
 
     before(cleanup);
     after(cleanup);
@@ -51,7 +48,7 @@ describe('Client - Signatures', function () {
     });
 
     it("editSenderSignature", async () => {
-        const editName = 'Updated name';
+        const editName = "Updated name";
         const signatureOptions = signatureToTest();
         const signature = await client.createSenderSignature(signatureOptions);
 
