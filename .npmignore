@@ -5,6 +5,7 @@
 
 testing_keys.json
 tsconfig.json
+tslint.json
 src
 src/test*
 dist/test*
