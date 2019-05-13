@@ -9,3 +9,4 @@ tslint.json
 src
 src/test*
 dist/test*
+docs
