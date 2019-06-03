@@ -19,6 +19,15 @@ export class Header {
     Name: string;
     Value: string;
 }
+
+
+/**
+ * Attachment content
+ *
+ * @param Name - name of the attachment, for example book.pdf
+ * @param Content - Base64 encoded content, for example: fs.readFileSync('/Folder/book.pdf').toString('base64')
+ * @param ContentID - id of the attachment, in case we are referencing it, for example: cid:123book.pdf
+ */
 export class Attachment {
     constructor(Name: string, Content: string, ContentType: string, ContentID: string | null = null) {
         this.Name = Name;

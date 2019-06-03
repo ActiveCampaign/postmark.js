@@ -1,4 +1,5 @@
 import { Attachment, Header, LinkTrackingOptions } from "../message/SupportingTypes";
+import {Hash} from "../client/SupportingTypes";
 
 export class UpdateTemplateRequest {
     constructor(Name?: string, Subject?: string, HtmlBody?: string, TextBody?: string, Alias?: string | null) {
@@ -129,5 +130,6 @@ export class TemplatedMessage {
     TrackOpens?: boolean;
     TrackLinks?: LinkTrackingOptions;
     Headers?: Header[];
+    Metadata?: Hash<string>;
     Attachments?: Attachment[];
 }
