@@ -932,6 +932,9 @@ img { max-width: 100%; }
 					<a href="templatedmessage.html#inlinecss" class="tsd-kind-icon">Inline<wbr>Css</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="templatedmessage.html#metadata" class="tsd-kind-icon">Metadata</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
 					<a href="templatedmessage.html#replyto" class="tsd-kind-icon">Reply<wbr>To</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-class">
@@ -988,6 +991,7 @@ img { max-width: 100%; }
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="templatedmessage.html#from" class="tsd-kind-icon">From</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="templatedmessage.html#headers" class="tsd-kind-icon">Headers</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="templatedmessage.html#inlinecss" class="tsd-kind-icon">Inline<wbr>Css</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="templatedmessage.html#metadata" class="tsd-kind-icon">Metadata</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="templatedmessage.html#replyto" class="tsd-kind-icon">Reply<wbr>To</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="templatedmessage.html#tag" class="tsd-kind-icon">Tag</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="templatedmessage.html#templatealias" class="tsd-kind-icon">Template<wbr>Alias</a></li>
@@ -1007,13 +1011,13 @@ img { max-width: 100%; }
 				<a name="constructor" class="tsd-anchor"></a>
 				<h3>constructor</h3>
 				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">new <wbr>Templated<wbr>Message<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, templateIdOrAlias<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span>, templateModel<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span>, to<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, cc<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, bcc<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, replyTo<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, tag<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, trackOpens<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span>, trackLinks<span class="tsd-signature-symbol">?: </span><a href="../enums/linktrackingoptions.html" class="tsd-signature-type">LinkTrackingOptions</a>, headers<span class="tsd-signature-symbol">?: </span><a href="header.html" class="tsd-signature-type">Header</a><span class="tsd-signature-symbol">[]</span>, attachments<span class="tsd-signature-symbol">?: </span><a href="attachment.html" class="tsd-signature-type">Attachment</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="templatedmessage.html" class="tsd-signature-type">TemplatedMessage</a></li>
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Templated<wbr>Message<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, templateIdOrAlias<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span>, templateModel<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span>, to<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, cc<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, bcc<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, replyTo<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, tag<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, trackOpens<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span>, trackLinks<span class="tsd-signature-symbol">?: </span><a href="../enums/linktrackingoptions.html" class="tsd-signature-type">LinkTrackingOptions</a>, headers<span class="tsd-signature-symbol">?: </span><a href="header.html" class="tsd-signature-type">Header</a><span class="tsd-signature-symbol">[]</span>, attachments<span class="tsd-signature-symbol">?: </span><a href="attachment.html" class="tsd-signature-type">Attachment</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="templatedmessage.html" class="tsd-signature-type">TemplatedMessage</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in client/models/templates/Template.ts:97</li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9214933/src/client/models/templates/Template.ts#L98">client/models/templates/Template.ts:98</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1043,7 +1047,7 @@ img { max-width: 100%; }
 								<h5><span class="tsd-flag ts-flagOptional">Optional</span> tag: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> trackOpens: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> trackOpens: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></h5>
 							</li>
 							<li>
 								<h5><span class="tsd-flag ts-flagOptional">Optional</span> trackLinks: <a href="../enums/linktrackingoptions.html" class="tsd-signature-type">LinkTrackingOptions</a></h5>
@@ -1068,7 +1072,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Attachments<span class="tsd-signature-symbol">:</span> <a href="attachment.html" class="tsd-signature-type">Attachment</a><span class="tsd-signature-symbol">[]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/templates/Template.ts:132</li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9214933/src/client/models/templates/Template.ts#L134">client/models/templates/Template.ts:134</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1078,7 +1082,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Bcc<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/templates/Template.ts:126</li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9214933/src/client/models/templates/Template.ts#L127">client/models/templates/Template.ts:127</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1088,7 +1092,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Cc<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/templates/Template.ts:125</li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9214933/src/client/models/templates/Template.ts#L126">client/models/templates/Template.ts:126</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1098,7 +1102,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">From<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/templates/Template.ts:123</li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9214933/src/client/models/templates/Template.ts#L124">client/models/templates/Template.ts:124</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1108,17 +1112,27 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Headers<span class="tsd-signature-symbol">:</span> <a href="header.html" class="tsd-signature-type">Header</a><span class="tsd-signature-symbol">[]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/templates/Template.ts:131</li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9214933/src/client/models/templates/Template.ts#L132">client/models/templates/Template.ts:132</a></li>
 					</ul>
 				</aside>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 				<a name="inlinecss" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagOptional">Optional</span> Inline<wbr>Css</h3>
-				<div class="tsd-signature tsd-kind-icon">Inline<wbr>Css<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
+				<div class="tsd-signature tsd-kind-icon">Inline<wbr>Css<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/templates/Template.ts:122</li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9214933/src/client/models/templates/Template.ts#L123">client/models/templates/Template.ts:123</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="metadata" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> Metadata</h3>
+				<div class="tsd-signature tsd-kind-icon">Metadata<span class="tsd-signature-symbol">:</span> <a href="../interfaces/hash.html" class="tsd-signature-type">Hash</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9214933/src/client/models/templates/Template.ts#L133">client/models/templates/Template.ts:133</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1128,7 +1142,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Reply<wbr>To<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/templates/Template.ts:127</li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9214933/src/client/models/templates/Template.ts#L128">client/models/templates/Template.ts:128</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1138,7 +1152,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Tag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/templates/Template.ts:128</li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9214933/src/client/models/templates/Template.ts#L129">client/models/templates/Template.ts:129</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1148,7 +1162,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Template<wbr>Alias<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/templates/Template.ts:120</li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9214933/src/client/models/templates/Template.ts#L121">client/models/templates/Template.ts:121</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1158,7 +1172,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Template<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/templates/Template.ts:119</li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9214933/src/client/models/templates/Template.ts#L120">client/models/templates/Template.ts:120</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1168,7 +1182,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Template<wbr>Model<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/templates/Template.ts:121</li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9214933/src/client/models/templates/Template.ts#L122">client/models/templates/Template.ts:122</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1178,7 +1192,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">To<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/templates/Template.ts:124</li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9214933/src/client/models/templates/Template.ts#L125">client/models/templates/Template.ts:125</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1188,17 +1202,17 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Track<wbr>Links<span class="tsd-signature-symbol">:</span> <a href="../enums/linktrackingoptions.html" class="tsd-signature-type">LinkTrackingOptions</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/templates/Template.ts:130</li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9214933/src/client/models/templates/Template.ts#L131">client/models/templates/Template.ts:131</a></li>
 					</ul>
 				</aside>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 				<a name="trackopens" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagOptional">Optional</span> Track<wbr>Opens</h3>
-				<div class="tsd-signature tsd-kind-icon">Track<wbr>Opens<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
+				<div class="tsd-signature tsd-kind-icon">Track<wbr>Opens<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in client/models/templates/Template.ts:129</li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/9214933/src/client/models/templates/Template.ts#L130">client/models/templates/Template.ts:130</a></li>
 					</ul>
 				</aside>
 			</section>
