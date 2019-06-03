@@ -88,7 +88,7 @@ describe("Client - Templates", () => {
             const templatedMessage = new postmark.Models.TemplatedMessage(
                 fromAddress, template.TemplateId, {}, toAddress);
             templatedMessage.Metadata = { "Key": "Value"};
-            
+
             const result = await client.sendEmailWithTemplate(templatedMessage);
             expect(result.Message).to.eq("OK");
         });
