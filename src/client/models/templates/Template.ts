@@ -2,12 +2,14 @@ import { Attachment, Header, LinkTrackingOptions } from "../message/SupportingTy
 import {Hash} from "../client/SupportingTypes";
 
 export class UpdateTemplateRequest {
-    constructor(Name?: string, Subject?: string, HtmlBody?: string, TextBody?: string, Alias?: string | null) {
+    constructor(Name?: string, Subject?: string, HtmlBody?: string, TextBody?: string, Alias?: string | null, TemplateType?: string, LayoutTemplate?: string) {
         this.Name = Name;
         this.Subject = Subject;
         this.HtmlBody = HtmlBody;
         this.TextBody = TextBody;
         this.Alias = Alias;
+        this.TemplateType = TemplateType;
+        this.LayoutTemplate = LayoutTemplate;
     }
 
     Name?: string;
@@ -15,26 +17,32 @@ export class UpdateTemplateRequest {
     HtmlBody?: string;
     TextBody?: string;
     Alias?: string | null;
+    TemplateType?: string;
+    LayoutTemplate?: string;
 }
 
 export class CreateTemplateRequest extends UpdateTemplateRequest {
-    constructor(Name: string, Subject?: string, HtmlBody?: string, TextBody?: string, Alias?: string | null) {
-        super(Name, Subject, HtmlBody, TextBody, Alias);
+    constructor(Name: string, Subject?: string, HtmlBody?: string, TextBody?: string, Alias?: string | null, TemplateType?: string, LayoutTemplate?: string) {
+        super(Name, Subject, HtmlBody, TextBody, Alias, TemplateType, LayoutTemplate);
     }
 }
 
 export class TemplateValidationOptions {
-    constructor(Subject?: string, HtmlBody?: string, TextBody?: string, TestRenderModel?: object) {
+    constructor(Subject?: string, HtmlBody?: string, TextBody?: string, TestRenderModel?: object, TemplateType?: string, LayoutTemplate?: string) {
         this.Subject = Subject;
         this.HtmlBody = HtmlBody;
         this.TextBody = TextBody;
         this.TestRenderModel = TestRenderModel;
+        this.TemplateType = TemplateType;
+        this.LayoutTemplate = LayoutTemplate;
     }
 
     Subject?: string;
     HtmlBody?: string;
     TextBody?: string;
     TestRenderModel?: object;
+    TemplateType?: string;
+    LayoutTemplate?: string;
 }
 
 
@@ -53,6 +61,8 @@ export interface Templates {
             TemplateId: number;
             Name: string;
             Alias?: string | null;
+            TemplateType: string;
+            LayoutTemplate: string | null;
         }
     ]
 }
