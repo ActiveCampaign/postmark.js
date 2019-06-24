@@ -13,7 +13,8 @@
             "allow-leading-underscore"
         ],
         "no-namespace": false,
-        "max-classes-per-file": [true, 10]
+        "max-classes-per-file": [true, 10],
+        "no-var-requires": false
     },
     "linterOptions": {
         "exclude": [
