@@ -5,6 +5,7 @@ import {
     ClientOptions,
     DefaultResponse,
     FilteringParameters,
+    TemplateFilteringParameters,
 } from "./models/index";
 
 import {
@@ -199,7 +200,8 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    public getTemplates(filter: FilteringParameters = new FilteringParameters(), callback?: Callback<Templates>): Promise<Templates> {
+    public getTemplates(filter: TemplateFilteringParameters = new TemplateFilteringParameters(),
+                        callback?: Callback<Templates>): Promise<Templates> {
         this.setDefaultPaginationValues(filter);
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, "/templates", filter, callback);
     }
