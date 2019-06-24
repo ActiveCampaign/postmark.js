@@ -2,7 +2,7 @@ import * as postmark from "../../src/index";
 
 import { expect } from "chai";
 import "mocha";
-import {CreateTemplateRequest, TemplatesPushRequest} from "../../src/client/models";
+import {CreateTemplateRequest, TemplatesPushRequest, TemplateType} from "../../src/client/models";
 
 import * as nconf from "nconf";
 const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
@@ -20,10 +20,24 @@ describe("Client - Templates", () => {
             "Subject",
             "Html body",
             "Text body",
+            null,
+            postmark.Models.TemplateType.Standard,
         );
     }
+
+    function templateLayoutToCreate() {
+        return new CreateTemplateRequest(
+            `${templatePrefix}-${Date.now()}`,
+            undefined,
+            "Html body {{{@content}}}",
+            "Text body {{{@content}}}",
+            null,
+            postmark.Models.TemplateType.Layout,
+    );
+    }
+
     async function cleanup() {
-        const templates = await client.getTemplates();
+        const templates = await client.getTemplates({count: 50});
 
         for (const template of templates.Templates) {
             if (template.Name.includes(templatePrefix)) {
@@ -35,7 +49,7 @@ describe("Client - Templates", () => {
     after(cleanup);
 
     it("getTemplates", async () => {
-        const result = await client.getTemplates();
+        const result = await client.getTemplates({count:5, offset:0, templateType: TemplateType.Standard});
         expect(result.TotalCount).to.above(-1);
     });
 
@@ -45,9 +59,20 @@ describe("Client - Templates", () => {
         expect(result.TemplateId).to.above(-1);
     });
 
+    it("getTemplate - layout", async () => {
+        const template = await client.createTemplate(templateLayoutToCreate());
+        const result = await client.getTemplate(template.TemplateId);
+        expect(result.TemplateType).to.equal(TemplateType.Layout);
+    });
+
     it("createTemplate", async () => {
         const result = await client.createTemplate(templateToCreate());
-        expect(result.TemplateId).to.above(0);
+        expect(result.TemplateType).to.equal(TemplateType.Standard)
+    });
+
+    it("createTemplate - layout", async () => {
+        const result = await client.createTemplate(templateLayoutToCreate());
+        expect(result.TemplateType).to.equal(TemplateType.Layout)
     });
 
     it("editTemplate", async () => {
@@ -56,6 +81,30 @@ describe("Client - Templates", () => {
         const template = await client.createTemplate(templateOptions);
         const result = await client.editTemplate(template.TemplateId, { Name: updatedName });
         expect(result.Name).to.equal(updatedName);
+    });
+
+    describe("editTemplate - layout", () => {
+        it("valid", async () => {
+            const templateOptions = templateLayoutToCreate();
+            const updatedName = `${templateOptions.Name}-updated`;
+            const template = await client.createTemplate(templateOptions);
+            const result = await client.editTemplate(template.TemplateId, { Name: updatedName });
+            expect(result.Name).to.equal(updatedName);
+        });
+
+        it("invalid", async () => {
+            const templateOptions = templateLayoutToCreate();
+            const updatedContent = 'Html content';
+            const template = await client.createTemplate(templateOptions);
+
+            return await client.editTemplate(template.TemplateId, { HtmlBody: updatedContent }).then((result) => {
+                throw Error(`Should not be here with result: ${result}`);
+            }, (error) => {
+                expect(error.name).to.equal("ApiInputError");
+                expect(error.message).to.include('The layout content placeholder must be present');
+            });
+
+        });
     });
 
     it("deleteTemplate", async () => {
@@ -72,6 +121,20 @@ describe("Client - Templates", () => {
             HtmlBody: "{{content}}",
             TextBody: "text body for template {{id}}!",
             Subject: "{{subject}}",
+        };
+
+        const templateValidation = await client.validateTemplate(templateToValidate);
+        expect(templateValidation.TextBody.ContentIsValid).to.eq(true);
+    });
+
+    it("validateTemplate - layout", async () => {
+        const templateToValidate = {
+            TemplateType: TemplateType.Layout,
+            TestRenderModel: {
+                Name: "joe!",
+            },
+            HtmlBody: "{{{@content}}}",
+            TextBody: "text body for template {{id}} {{{@content}}}!"
         };
 
         const templateValidation = await client.validateTemplate(templateToValidate);
