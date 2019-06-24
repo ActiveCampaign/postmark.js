@@ -2,7 +2,7 @@ import * as postmark from "../../src/index";
 
 import { expect } from "chai";
 import "mocha";
-import {CreateTemplateRequest, TemplatesPushRequest, TemplateType} from "../../src/client/models";
+import {CreateTemplateRequest, TemplatesPushRequest, TemplateTypes} from "../../src/client/models";
 
 import * as nconf from "nconf";
 const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
@@ -21,7 +21,7 @@ describe("Client - Templates", () => {
             "Html body",
             "Text body",
             null,
-            postmark.Models.TemplateType.Standard,
+            postmark.Models.TemplateTypes.Standard,
         );
     }
 
@@ -32,7 +32,7 @@ describe("Client - Templates", () => {
             "Html body {{{@content}}}",
             "Text body {{{@content}}}",
             null,
-            postmark.Models.TemplateType.Layout,
+            postmark.Models.TemplateTypes.Layout,
     );
     }
 
@@ -49,7 +49,7 @@ describe("Client - Templates", () => {
     after(cleanup);
 
     it("getTemplates", async () => {
-        const result = await client.getTemplates({count:5, offset:0, templateType: TemplateType.Standard});
+        const result = await client.getTemplates({count:5, offset:0, templateType: TemplateTypes.Standard});
         expect(result.TotalCount).to.above(-1);
     });
 
@@ -62,17 +62,17 @@ describe("Client - Templates", () => {
     it("getTemplate - layout", async () => {
         const template = await client.createTemplate(templateLayoutToCreate());
         const result = await client.getTemplate(template.TemplateId);
-        expect(result.TemplateType).to.equal(TemplateType.Layout);
+        expect(result.TemplateType).to.equal(TemplateTypes.Layout);
     });
 
     it("createTemplate", async () => {
         const result = await client.createTemplate(templateToCreate());
-        expect(result.TemplateType).to.equal(TemplateType.Standard)
+        expect(result.TemplateType).to.equal(TemplateTypes.Standard)
     });
 
     it("createTemplate - layout", async () => {
         const result = await client.createTemplate(templateLayoutToCreate());
-        expect(result.TemplateType).to.equal(TemplateType.Layout)
+        expect(result.TemplateType).to.equal(TemplateTypes.Layout)
     });
 
     it("editTemplate", async () => {
@@ -129,7 +129,7 @@ describe("Client - Templates", () => {
 
     it("validateTemplate - layout", async () => {
         const templateToValidate = {
-            TemplateType: TemplateType.Layout,
+            TemplateType: TemplateTypes.Layout,
             TestRenderModel: {
                 Name: "joe!",
             },

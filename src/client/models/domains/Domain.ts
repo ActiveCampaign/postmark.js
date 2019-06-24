@@ -1,18 +1,18 @@
 export class CreateDomainRequest {
+
+    public Name: string;
+    public ReturnPathDomain?: string;
     constructor(Name: string, ReturnPathDomain?: string) {
         this.Name = Name;
         this.ReturnPathDomain = ReturnPathDomain;
     }
-
-    Name: string;
-    ReturnPathDomain?: string;
 }
 
 export class UpdateDomainRequest {
+    public ReturnPathDomain?: string;
     constructor(ReturnPathDomain: string) {
         this.ReturnPathDomain = ReturnPathDomain;
     }
-    ReturnPathDomain?: string;
 }
 
 export interface Domain {

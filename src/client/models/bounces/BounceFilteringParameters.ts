@@ -22,7 +22,7 @@ export enum BounceType {
     SMTPApiError = "SMTPApiError",
     InboundError = "InboundError",
     DMARCPolicy = "DMARCPolicy",
-    TemplateRenderingFailed = "TemplateRenderingFailed"
+    TemplateRenderingFailed = "TemplateRenderingFailed",
 }
 
 /**
@@ -30,9 +30,16 @@ export enum BounceType {
  * When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.
  */
 export class BounceFilteringParameters extends FilteringParameters {
+    public type?: BounceType;
+    public inactive?: boolean;
+    public emailFilter?: string;
+    public tag?: string;
+    public messageID?: string;
+    public fromDate?: string;
+    public toDate?: string;
     constructor(count: number = 100, offset: number = 0, type?: BounceType,
-        inactive?: boolean, emailFilter?: string,
-        tag?: string, messageID?: string, fromDate?: string, toDate?: string) {
+                inactive?: boolean, emailFilter?: string,
+                tag?: string, messageID?: string, fromDate?: string, toDate?: string) {
         super(count, offset);
         this.type = type;
         this.inactive = inactive;
@@ -42,11 +49,4 @@ export class BounceFilteringParameters extends FilteringParameters {
         this.fromDate = fromDate;
         this.toDate = toDate;
     }
-    type?: BounceType;
-    inactive?: boolean;
-    emailFilter?: string;
-    tag?: string;
-    messageID?: string;
-    fromDate?: string;
-    toDate?: string;
 }

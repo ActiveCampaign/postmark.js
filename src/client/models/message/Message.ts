@@ -1,12 +1,27 @@
-import { Hash } from "../client/SupportingTypes"
-import { LinkTrackingOptions, Header, Attachment } from "../message/SupportingTypes";
 import { DefaultResponse } from "../client/DefaultResponse";
+import { Hash } from "../client/SupportingTypes";
+import { Attachment, Header, LinkTrackingOptions } from "../message/SupportingTypes";
 
 export class Message {
+
+    public From: string;
+    public To?: string;
+    public Cc?: string;
+    public Bcc?: string;
+    public Subject: string;
+    public ReplyTo?: string;
+    public HtmlBody?: string;
+    public TextBody?: string;
+    public Tag?: string;
+    public TrackOpens?: boolean;
+    public TrackLinks?: LinkTrackingOptions;
+    public Headers?: Header[];
+    public Attachments?: Attachment[];
+    public Metadata?: Hash<string>;
     constructor(From: string, Subject: string, HtmlBody?: string, TextBody?: string,
-        To?: string, Cc?: string, Bcc?: string, ReplyTo?: string, Tag?: string,
-        TrackOpens?: boolean, TrackLinks?: LinkTrackingOptions, Headers?: Header[],
-        Attachments?: Attachment[], Metadata?: Hash<string>) {
+                To?: string, Cc?: string, Bcc?: string, ReplyTo?: string, Tag?: string,
+                TrackOpens?: boolean, TrackLinks?: LinkTrackingOptions, Headers?: Header[],
+                Attachments?: Attachment[], Metadata?: Hash<string>) {
 
         this.From = From;
         this.To = To;
@@ -23,22 +38,7 @@ export class Message {
         this.Attachments = Attachments;
         this.Metadata = Metadata;
     }
-
-    From: string;
-    To?: string;
-    Cc?: string;
-    Bcc?: string;
-    Subject: string;
-    ReplyTo?: string;
-    HtmlBody?: string;
-    TextBody?: string;
-    Tag?: string;
-    TrackOpens?: boolean;
-    TrackLinks?: LinkTrackingOptions;
-    Headers?: Header[];
-    Attachments?: Attachment[];
-    Metadata?: Hash<string>;
-};
+}
 
 export interface MessageSendingResponse extends DefaultResponse {
     To?: string;
@@ -46,5 +46,4 @@ export interface MessageSendingResponse extends DefaultResponse {
     Bcc?: string;
     SubmittedAt: string;
     MessageID: string;
-};
-
+}

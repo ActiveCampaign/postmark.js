@@ -1,11 +1,12 @@
 import * as request from "request";
 
+import * as fs from "fs";
 import { ErrorHandler } from "./ErrorHandler";
 import {Callback, ClientOptions, FilteringParameters} from "./models";
 import * as Errors from "./models/client/Errors";
 
-const packageJson = require("../../package.json");
-const CLIENT_VERSION = packageJson.version;
+const packageJson = fs.readFileSync("package.json");
+const CLIENT_VERSION = JSON.parse(packageJson.toString()).version;
 
 /**
  * Base client class from which client classes can be implemented, in our case, AccountClient and ServerClient classes.

@@ -22,28 +22,27 @@ export interface Signatures {
 }
 
 export class UpdateSignatureRequest {
+
+    public Name?: string;
+    public ReplyToEmail?: string;
+    public ReturnPathDomain?: string;
     constructor(Name?: string, ReplyToEmail?: string, ReturnPathDomain?: string) {
         this.Name = Name;
         this.ReplyToEmail = ReplyToEmail;
         this.ReturnPathDomain = ReturnPathDomain;
     }
-
-    Name?: string;
-    ReplyToEmail?: string;
-    ReturnPathDomain?: string;
 }
 
 export class CreateSignatureRequest {
+
+    public Name?: string;
+    public FromEmail: string;
+    public ReplyToEmail?: string;
+    public ReturnPathDomain?: string;
     constructor(name: string, fromEmail: string, replyToEmail?: string, returnPathDomain?: string) {
         this.Name = name;
         this.ReplyToEmail = replyToEmail;
         this.ReturnPathDomain = returnPathDomain;
         this.FromEmail = fromEmail;
     }
-
-    Name?: string;
-    FromEmail: string;
-    ReplyToEmail?: string;
-    ReturnPathDomain?: string;
 }
-

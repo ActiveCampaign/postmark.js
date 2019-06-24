@@ -56,7 +56,6 @@ export interface OpenCounts {
     Unique: number;
 }
 
-
 export interface EmailPlaformUsageCounts {
     Days: [{
         Date: string;
@@ -75,11 +74,17 @@ export interface EmailClientUsageCounts {
     Days: [{
         Date: string;
         [key: string]: any;
-    }]
+    }];
     [key: string]: any;
 }
 
-export interface EmailReadTimesCounts extends EmailClientUsageCounts { }
+export interface EmailReadTimesCounts {
+    Days: [{
+        Date: string;
+        [key: string]: any;
+    }];
+    [key: string]: any;
+}
 
 export interface ClickCounts {
     Days: [{
@@ -91,7 +96,13 @@ export interface ClickCounts {
     Unique: number;
 }
 
-export interface BrowserUsageCounts extends EmailClientUsageCounts { }
+export interface BrowserUsageCounts {
+    Days: [{
+        Date: string;
+        [key: string]: any;
+    }];
+    [key: string]: any;
+}
 
 export interface ClickPlaformUsageCounts {
     Days: [{

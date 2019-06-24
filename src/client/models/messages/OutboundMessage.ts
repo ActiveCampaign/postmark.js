@@ -1,10 +1,10 @@
-import {Hash} from "../client/SupportingTypes"
+import {Hash} from "../client/SupportingTypes";
 import {Attachment, LinkTrackingOptions} from "../message/SupportingTypes";
-import * as OutboundMessageEvents from "./OutboundMessageEvents"
+import * as OutboundMessageEvents from "./OutboundMessageEvents";
 
 export interface Recipient {
-    Email: string
-    Name: string
+    Email: string;
+    Name: string;
 }
 
 export interface OutboundMessage {

@@ -1,10 +1,17 @@
-import { Attachment, Header, LinkTrackingOptions } from "../message/SupportingTypes";
-import {Hash} from "../client/SupportingTypes";
 import {FilteringParameters} from "../client/FilteringParameters";
+import {Hash} from "../client/SupportingTypes";
+import { Attachment, Header, LinkTrackingOptions } from "../message/SupportingTypes";
 
 export class UpdateTemplateRequest {
+    public TemplateType?: TemplateTypes;
+    public Name?: string;
+    public Subject?: string;
+    public HtmlBody?: string;
+    public TextBody?: string;
+    public Alias?: string | null;
+    public LayoutTemplate?: string;
     constructor(Name?: string, Subject?: string, HtmlBody?: string, TextBody?: string,
-                Alias?: string | null, TemplateType?: TemplateType, LayoutTemplate?: string) {
+                Alias?: string | null, TemplateType?: TemplateTypes, LayoutTemplate?: string) {
         this.Name = Name;
         this.Subject = Subject;
         this.HtmlBody = HtmlBody;
@@ -13,26 +20,25 @@ export class UpdateTemplateRequest {
         this.LayoutTemplate = LayoutTemplate;
         this.TemplateType = TemplateType;
     }
-
-    TemplateType?: TemplateType;
-    Name?: string;
-    Subject?: string;
-    HtmlBody?: string;
-    TextBody?: string;
-    Alias?: string | null;
-    LayoutTemplate?: string;
 }
 
 export class CreateTemplateRequest extends UpdateTemplateRequest {
     constructor(Name: string, Subject?: string, HtmlBody?: string, TextBody?: string, Alias?: string | null,
-                TemplateType?: TemplateType, LayoutTemplate?: string) {
+                TemplateType?: TemplateTypes, LayoutTemplate?: string) {
         super(Name, Subject, HtmlBody, TextBody, Alias, TemplateType, LayoutTemplate);
     }
 }
 
 export class TemplateValidationOptions {
+    public Subject?: string;
+    public HtmlBody?: string;
+    public TextBody?: string;
+    public TestRenderModel?: object;
+    public TemplateType?: TemplateTypes;
+    public LayoutTemplate?: string;
+    public InlineCssForHtmlTestRender?: boolean;
     constructor(Subject?: string, HtmlBody?: string, TextBody?: string, TestRenderModel?: object,
-                TemplateType?: TemplateType, LayoutTemplate?: string,
+                TemplateType?: TemplateTypes, LayoutTemplate?: string,
                 InlineCssForHtmlTestRender?: boolean) {
         this.Subject = Subject;
         this.HtmlBody = HtmlBody;
@@ -42,17 +48,9 @@ export class TemplateValidationOptions {
         this.LayoutTemplate = LayoutTemplate;
         this.InlineCssForHtmlTestRender = InlineCssForHtmlTestRender;
     }
-
-    Subject?: string;
-    HtmlBody?: string;
-    TextBody?: string;
-    TestRenderModel?: object;
-    TemplateType?: TemplateType;
-    LayoutTemplate?: string;
-    InlineCssForHtmlTestRender?: boolean;
 }
 
-export enum TemplateType { Standard = 'Standard', Layout = 'Layout' };
+export enum TemplateTypes { Standard = "Standard", Layout = "Layout" }
 
 export interface Template extends UpdateTemplateRequest {
     Name: string;
@@ -65,20 +63,20 @@ export interface Templates {
     TotalCount: number;
     Templates: [
         {
-            TemplateType: TemplateType;
+            TemplateType: TemplateTypes;
             Active: boolean;
             TemplateId: number;
             Name: string;
             Alias?: string | null;
             LayoutTemplate: string | null;
         }
-    ]
+    ];
 }
 
 export class TemplatesPushRequest {
-    SourceServerID: number;
-    DestinationServerID: number;
-    PerformChanges: boolean;
+    public SourceServerID: number;
+    public DestinationServerID: number;
+    public PerformChanges: boolean;
 
     constructor(SourceServerID: number, DestinationServerID: number, PerformChanges: boolean) {
         this.SourceServerID = SourceServerID;
@@ -101,7 +99,7 @@ export interface TemplatesPush {
 
 export interface ValidationSection {
     ContentIsValid: boolean;
-    ValidationErrors: object,
+    ValidationErrors: object;
     RenderedContent: string;
 }
 
@@ -114,13 +112,28 @@ export interface TemplateValidation {
 }
 
 export class TemplatedMessage {
+    public TemplateId?: number;
+    public TemplateAlias?: string;
+    public TemplateModel?: object;
+    public InlineCss?: boolean;
+    public From: string;
+    public To?: string;
+    public Cc?: string;
+    public Bcc?: string;
+    public ReplyTo?: string;
+    public Tag?: string;
+    public TrackOpens?: boolean;
+    public TrackLinks?: LinkTrackingOptions;
+    public Headers?: Header[];
+    public Metadata?: Hash<string>;
+    public Attachments?: Attachment[];
     constructor(from: string, templateIdOrAlias: (number | string),
-        templateModel: object, to?: string, cc?: string, bcc?: string,
-        replyTo?: string, tag?: string, trackOpens?: boolean,
-        trackLinks?: LinkTrackingOptions, headers?: Header[], attachments?: Attachment[]) {
+                templateModel: object, to?: string, cc?: string, bcc?: string,
+                replyTo?: string, tag?: string, trackOpens?: boolean,
+                trackLinks?: LinkTrackingOptions, headers?: Header[], attachments?: Attachment[]) {
         this.From = from;
         this.TemplateModel = templateModel;
-        if (typeof templateIdOrAlias === 'number') {
+        if (typeof templateIdOrAlias === "number") {
             this.TemplateId = templateIdOrAlias;
         } else {
             this.TemplateAlias = templateIdOrAlias;
@@ -135,21 +148,6 @@ export class TemplatedMessage {
         this.Headers = headers;
         this.Attachments = attachments;
     }
-    TemplateId?: number;
-    TemplateAlias?: string;
-    TemplateModel?: object;
-    InlineCss?: boolean;
-    From: string;
-    To?: string;
-    Cc?: string;
-    Bcc?: string;
-    ReplyTo?: string;
-    Tag?: string;
-    TrackOpens?: boolean;
-    TrackLinks?: LinkTrackingOptions;
-    Headers?: Header[];
-    Metadata?: Hash<string>;
-    Attachments?: Attachment[];
 }
 
 /**
@@ -157,12 +155,12 @@ export class TemplatedMessage {
  * When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.
  */
 export class TemplateFilteringParameters extends FilteringParameters {
+    public templateType?: TemplateTypes;
+    public layoutTemplate?: string;
     constructor(count: number = 100, offset: number = 0,
-                templateType?: TemplateType, layoutTemplate?: string) {
+                templateType?: TemplateTypes, layoutTemplate?: string) {
         super(count, offset);
         this.templateType = templateType;
         this.layoutTemplate = layoutTemplate;
     }
-    templateType?: TemplateType;
-    layoutTemplate?: string;
 }

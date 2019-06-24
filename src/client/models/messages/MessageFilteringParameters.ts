@@ -3,7 +3,7 @@ import {FilteringParameters} from "../client/FilteringParameters";
 export enum OutboundMessageStatus {
     Queued = "queued",
     Sent = "sent",
-    Processed = "processed"
+    Processed = "processed",
 }
 
 export enum InboundMessageStatus {
@@ -12,7 +12,7 @@ export enum InboundMessageStatus {
     Processed = "processed",
     Blocked = "blocked",
     Failed = "failed",
-    Scheduled = "scheduled"
+    Scheduled = "scheduled",
 }
 
 /**
@@ -20,10 +20,17 @@ export enum InboundMessageStatus {
  * When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.
  */
 export class OutboundMessagesFilteringParameters extends FilteringParameters {
+    public recipient?: string;
+    public fromEmail?: string;
+    public tag?: string;
+    public status?: OutboundMessageStatus;
+    public fromDate?: string;
+    public toDate?: string;
+    public subject?: string;
     constructor(count: number = 100, offset: number = 0,
-        recipient?: string, fromEmail?: string, tag?: string,
-        status?: OutboundMessageStatus, fromDate?: string,
-        toDate?: string, subject?: string) {
+                recipient?: string, fromEmail?: string, tag?: string,
+                status?: OutboundMessageStatus, fromDate?: string,
+                toDate?: string, subject?: string) {
         super(count, offset);
 
         this.recipient = recipient;
@@ -34,13 +41,6 @@ export class OutboundMessagesFilteringParameters extends FilteringParameters {
         this.toDate = toDate;
         this.subject = subject;
     }
-    recipient?: string;
-    fromEmail?: string;
-    tag?: string;
-    status?: OutboundMessageStatus;
-    fromDate?: string;
-    toDate?: string;
-    subject?: string;
 }
 
 /**
@@ -48,12 +48,20 @@ export class OutboundMessagesFilteringParameters extends FilteringParameters {
  * When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.
  */
 export class InboundMessagesFilteringParameters extends FilteringParameters {
+    public mailboxHash?: string;
+    public recipient?: string;
+    public fromEmail?: string;
+    public tag?: string;
+    public status?: InboundMessageStatus;
+    public fromDate?: string;
+    public toDate?: string;
+    public subject?: string;
     constructor(count: number = 100, offset = 0,
-        mailboxHash?: string, recipient?: string, fromEmail?: string,
-        tag?: string, status?: InboundMessageStatus,
-        fromDate?: string,
-        toDate?: string,
-        subject?: string) {
+                mailboxHash?: string, recipient?: string, fromEmail?: string,
+                tag?: string, status?: InboundMessageStatus,
+                fromDate?: string,
+                toDate?: string,
+                subject?: string) {
         super(count, offset);
         this.status = status;
         this.mailboxHash = mailboxHash;
@@ -64,14 +72,6 @@ export class InboundMessagesFilteringParameters extends FilteringParameters {
         this.toDate = toDate;
         this.subject = subject;
     }
-    mailboxHash?: string;
-    recipient?: string;
-    fromEmail?: string;
-    tag?: string;
-    status?: InboundMessageStatus;
-    fromDate?: string;
-    toDate?: string;
-    subject?: string;
 }
 
 /**
@@ -79,11 +79,23 @@ export class InboundMessagesFilteringParameters extends FilteringParameters {
  * When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.
  */
 export class OutboundMessageTrackingFilteringParameters extends FilteringParameters {
+    public recipient?: string;
+    public tag?: string;
+    public client_name?: string;
+    public client_company?: string;
+    public client_family?: string;
+    public os_name?: string;
+    public os_family?: string;
+    public os_company?: string;
+    public platform?: string;
+    public country?: string;
+    public region?: string;
+    public city?: string;
     constructor(count: number = 100, offset: number = 0,
-        recipient?: string, tag?: string, client_name?: string,
-        client_company?: string, client_family?: string,
-        os_name?: string, os_family?: string, os_company?: string,
-        platform?: string, country?: string, region?: string, city?: string,
+                recipient?: string, tag?: string, client_name?: string,
+                client_company?: string, client_family?: string,
+                os_name?: string, os_family?: string, os_company?: string,
+                platform?: string, country?: string, region?: string, city?: string,
     ) {
         super(count, offset);
         this.recipient = recipient;
@@ -99,18 +111,6 @@ export class OutboundMessageTrackingFilteringParameters extends FilteringParamet
         this.region = region;
         this.city = city;
     }
-    recipient?: string;
-    tag?: string;
-    client_name?: string;
-    client_company?: string;
-    client_family?: string;
-    os_name?: string;
-    os_family?: string;
-    os_company?: string;
-    platform?: string;
-    country?: string;
-    region?: string;
-    city?: string;
 }
 
 export class OutboundMessageOpensFilteringParameters extends OutboundMessageTrackingFilteringParameters { }

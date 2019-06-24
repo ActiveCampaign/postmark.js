@@ -12,13 +12,11 @@ export interface ClickEvent {
     Geo: GeoLocation;
     MessageID: string;
     ReceivedAt: string;
-    Tag: string,
+    Tag: string;
     Recipient: string;
 }
-
 
 export interface OutboundMessageClicks {
     TotalCount: number;
     Clicks: ClickEvent[];
 }
-

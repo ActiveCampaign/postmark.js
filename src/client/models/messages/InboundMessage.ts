@@ -2,7 +2,7 @@ import { Attachment, Header } from "../message/SupportingTypes";
 import { Recipient } from "./OutboundMessage";
 
 export interface InboundRecipient extends Recipient {
-    MailboxHash: string
+    MailboxHash: string;
 }
 
 export interface InboundMessage {

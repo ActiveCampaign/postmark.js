@@ -16,7 +16,7 @@ export interface GeoLocation {
 }
 
 export interface OpenEvent {
-    RecordType: string,
+    RecordType: string;
     Client: ClientDetails;
     OS: ClientDetails;
     Platform: string;
@@ -25,7 +25,7 @@ export interface OpenEvent {
     Geo: GeoLocation;
     MessageID: string;
     ReceivedAt: string;
-    Tag: string,
+    Tag: string;
     Recipient: string;
 }
 
@@ -33,4 +33,3 @@ export interface OutboundMessageOpens {
     TotalCount: number;
     Opens: OpenEvent[];
 }
-

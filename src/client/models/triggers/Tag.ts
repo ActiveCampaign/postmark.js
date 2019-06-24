@@ -1,11 +1,11 @@
 export class UpdateTagTriggerRequest {
+
+    public MatchName?: string;
+    public TrackOpens?: boolean;
     constructor(MatchName?: string, TrackOpens?: boolean) {
         this.MatchName = MatchName;
         this.TrackOpens = TrackOpens;
     }
-
-    MatchName?: string;
-    TrackOpens?: boolean;
 }
 
 export class CreateTagTriggerRequest extends UpdateTagTriggerRequest {

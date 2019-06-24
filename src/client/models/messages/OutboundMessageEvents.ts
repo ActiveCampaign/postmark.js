@@ -12,7 +12,7 @@ export interface ClickEvent extends MessageEvent {
         Summary: string;
         Link: string;
         ClickLocation: LinkClickLocation;
-    }
+    };
 }
 
 export interface DeliveryEvent extends MessageEvent {
@@ -20,7 +20,7 @@ export interface DeliveryEvent extends MessageEvent {
         DeliveryMessage: string;
         DestinationServer: string;
         DestinationIP: string;
-    }
+    };
 }
 
 export interface TransientDelayEvent extends MessageEvent {
@@ -28,18 +28,18 @@ export interface TransientDelayEvent extends MessageEvent {
         DeliveryMessage: string;
         DestinationServer: string;
         DestinationIP: string;
-    }
+    };
 }
 
 export interface BounceEvent extends MessageEvent {
     Details: {
         Summary: string;
         BounceID: number;
-    }
+    };
 }
 
 export interface OpenEvent extends MessageEvent {
     Details: {
         Summary: string;
-    }
+    };
 }

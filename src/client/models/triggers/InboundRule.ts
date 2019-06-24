@@ -1,8 +1,8 @@
 export class CreateInboundRuleRequest {
+    public Rule: string;
     constructor(Rule: string) {
         this.Rule = Rule;
     }
-    Rule: string;
 }
 
 export interface InboundRule {

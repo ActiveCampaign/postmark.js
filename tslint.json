@@ -6,7 +6,19 @@
     "jsRules": {},
     "rules": {
         "object-literal-sort-keys": false,
-        "max-line-length": [ true, 150 ]
+        "max-line-length": [ true, 150 ],
+        "interface-name" : [true, "never-prefix"],
+        "variable-name": [
+            false,
+            "allow-leading-underscore"
+        ],
+        "no-namespace": false,
+        "max-classes-per-file": [true, 10]
+    },
+    "linterOptions": {
+        "exclude": [
+            "src/test.ts"
+        ]
     },
     "rulesDirectory": []
 }
