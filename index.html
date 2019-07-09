@@ -923,7 +923,7 @@ img { max-width: 100%; }
 			<a href="enums/outboundmessagestatus.html" class="tsd-kind-icon">Outbound<wbr>Message<wbr>Status</a>
 		</li>
 		<li class=" tsd-kind-enum">
-			<a href="enums/templatetype.html" class="tsd-kind-icon">Template<wbr>Type</a>
+			<a href="enums/templatetypes.html" class="tsd-kind-icon">Template<wbr>Types</a>
 		</li>
 		<li class=" tsd-kind-class">
 			<a href="classes/accountclient.html" class="tsd-kind-icon">Account<wbr>Client</a>
@@ -1001,6 +1001,9 @@ img { max-width: 100%; }
 			<a href="classes/serverclient.html" class="tsd-kind-icon">Server<wbr>Client</a>
 		</li>
 		<li class=" tsd-kind-class">
+			<a href="classes/serverfilteringparameters.html" class="tsd-kind-icon">Server<wbr>Filtering<wbr>Parameters</a>
+		</li>
+		<li class=" tsd-kind-class">
 			<a href="classes/serviceunavailablererror.html" class="tsd-kind-icon">Service<wbr>Unavailabler<wbr>Error</a>
 		</li>
 		<li class=" tsd-kind-class">
@@ -1062,9 +1065,6 @@ img { max-width: 100%; }
 		</li>
 		<li class=" tsd-kind-interface">
 			<a href="interfaces/browserusagecounts.html" class="tsd-kind-icon">Browser<wbr>Usage<wbr>Counts</a>
-		</li>
-		<li class=" tsd-kind-interface tsd-has-type-parameter">
-			<a href="interfaces/callback.html" class="tsd-kind-icon">Callback</a>
 		</li>
 		<li class=" tsd-kind-interface">
 			<a href="interfaces/clickcounts.html" class="tsd-kind-icon">Click<wbr>Counts</a>
@@ -1219,6 +1219,9 @@ img { max-width: 100%; }
 		<li class=" tsd-kind-interface">
 			<a href="interfaces/validationsection.html" class="tsd-kind-icon">Validation<wbr>Section</a>
 		</li>
+		<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+			<a href="globals.html#callback" class="tsd-kind-icon">Callback</a>
+		</li>
 	</ul>
 </nav>
 <div class="container container-main">
@@ -1268,7 +1271,7 @@ img { max-width: 100%; }
 							<li class="tsd-kind-enum"><a href="enums/linkclicklocation.html" class="tsd-kind-icon">Link<wbr>Click<wbr>Location</a></li>
 							<li class="tsd-kind-enum"><a href="enums/linktrackingoptions.html" class="tsd-kind-icon">Link<wbr>Tracking<wbr>Options</a></li>
 							<li class="tsd-kind-enum"><a href="enums/outboundmessagestatus.html" class="tsd-kind-icon">Outbound<wbr>Message<wbr>Status</a></li>
-							<li class="tsd-kind-enum"><a href="enums/templatetype.html" class="tsd-kind-icon">Template<wbr>Type</a></li>
+							<li class="tsd-kind-enum"><a href="enums/templatetypes.html" class="tsd-kind-icon">Template<wbr>Types</a></li>
 						</ul>
 					</section>
 					<section class="tsd-index-section ">
@@ -1299,6 +1302,7 @@ img { max-width: 100%; }
 							<li class="tsd-kind-class"><a href="classes/outboundmessagesfilteringparameters.html" class="tsd-kind-icon">Outbound<wbr>Messages<wbr>Filtering<wbr>Parameters</a></li>
 							<li class="tsd-kind-class"><a href="classes/postmarkerror.html" class="tsd-kind-icon">Postmark<wbr>Error</a></li>
 							<li class="tsd-kind-class"><a href="classes/serverclient.html" class="tsd-kind-icon">Server<wbr>Client</a></li>
+							<li class="tsd-kind-class"><a href="classes/serverfilteringparameters.html" class="tsd-kind-icon">Server<wbr>Filtering<wbr>Parameters</a></li>
 							<li class="tsd-kind-class"><a href="classes/serviceunavailablererror.html" class="tsd-kind-icon">Service<wbr>Unavailabler<wbr>Error</a></li>
 							<li class="tsd-kind-class"><a href="classes/statisticsfilteringparameters.html" class="tsd-kind-icon">Statistics<wbr>Filtering<wbr>Parameters</a></li>
 							<li class="tsd-kind-class"><a href="classes/tagtriggerfilteringparameters.html" class="tsd-kind-icon">Tag<wbr>Trigger<wbr>Filtering<wbr>Parameters</a></li>
@@ -1325,7 +1329,6 @@ img { max-width: 100%; }
 							<li class="tsd-kind-interface"><a href="interfaces/bouncemetric.html" class="tsd-kind-icon">Bounce<wbr>Metric</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/bounces.html" class="tsd-kind-icon">Bounces</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/browserusagecounts.html" class="tsd-kind-icon">Browser<wbr>Usage<wbr>Counts</a></li>
-							<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/callback.html" class="tsd-kind-icon">Callback</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/clickcounts.html" class="tsd-kind-icon">Click<wbr>Counts</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/clickevent.html" class="tsd-kind-icon">Click<wbr>Event</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/clicklocationcounts.html" class="tsd-kind-icon">Click<wbr>Location<wbr>Counts</a></li>
@@ -1379,6 +1382,54 @@ img { max-width: 100%; }
 							<li class="tsd-kind-interface"><a href="interfaces/validationsection.html" class="tsd-kind-icon">Validation<wbr>Section</a></li>
 						</ul>
 					</section>
+					<section class="tsd-index-section ">
+						<h3>Type aliases</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#callback" class="tsd-kind-icon">Callback</a></li>
+						</ul>
+					</section>
+				</div>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Type aliases</h2>
+			<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
+				<a name="callback" class="tsd-anchor"></a>
+				<h3>Callback</h3>
+				<div class="tsd-signature tsd-kind-icon">Callback<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/ba72251/src/client/models/client/Callback.ts#L6">client/models/client/Callback.ts:6</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>A standard node callback. All errors returned to this callback will be a in namespace &#39;PostmarkError&#39;</p>
+					</div>
+				</div>
+				<div class="tsd-type-declaration">
+					<h4>Type declaration</h4>
+					<ul class="tsd-parameters">
+						<li class="tsd-parameter-siganture">
+							<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
+								<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="classes/postmarkerror.html" class="tsd-signature-type">PostmarkError</a>, result<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+							</ul>
+							<ul class="tsd-descriptions">
+								<li class="tsd-description">
+									<h4 class="tsd-parameters-title">Parameters</h4>
+									<ul class="tsd-parameters">
+										<li>
+											<h5>error: <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="classes/postmarkerror.html" class="tsd-signature-type">PostmarkError</a></h5>
+										</li>
+										<li>
+											<h5>result: <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">T</span></h5>
+										</li>
+									</ul>
+									<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+								</li>
+							</ul>
+						</li>
+					</ul>
 				</div>
 			</section>
 		</section>
