@@ -15,6 +15,7 @@ import {
 
     Domains,
     Server,
+    ServerFilteringParameters,
     Servers,
     SignatureDetails,
 
@@ -45,7 +46,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    public getServers(filter: FilteringParameters = new FilteringParameters(), callback?: Callback<Servers>): Promise<Servers> {
+    public getServers(filter: ServerFilteringParameters = new ServerFilteringParameters(), callback?: Callback<Servers>): Promise<Servers> {
         this.setDefaultPaginationValues(filter);
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, "/servers", filter, callback);
     }

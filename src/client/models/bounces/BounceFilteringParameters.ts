@@ -27,7 +27,7 @@ export enum BounceType {
 
 /**
  * Describes filtering parameters that can be used when retrieving bounces.
- * When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.
+ * When pagination parameters are not specified, default values are set.
  */
 export class BounceFilteringParameters extends FilteringParameters {
     public type?: BounceType;

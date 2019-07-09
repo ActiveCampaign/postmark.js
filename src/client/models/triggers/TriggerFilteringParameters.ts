@@ -2,7 +2,7 @@ import {FilteringParameters} from "../client/FilteringParameters";
 
 /**
  * Describes filtering parameters that can be used when retrieving tags.
- * When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.
+ * When pagination parameters are not specified, default values are set.
  */
 export class TagTriggerFilteringParameters extends FilteringParameters {
     public match_name?: string;

@@ -152,7 +152,7 @@ export class TemplatedMessage {
 
 /**
  * Describes filtering parameters that can be used when retrieving templates.
- * When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.
+ * When pagination parameters are not specified, default values are set.
  */
 export class TemplateFilteringParameters extends FilteringParameters {
     public templateType?: TemplateTypes;

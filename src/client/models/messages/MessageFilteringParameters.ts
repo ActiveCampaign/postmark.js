@@ -17,7 +17,7 @@ export enum InboundMessageStatus {
 
 /**
  * Describes filtering parameters that can be used when retrieving outbound messages.
- * When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.
+ * When pagination parameters are not specified, default values are set.
  */
 export class OutboundMessagesFilteringParameters extends FilteringParameters {
     public recipient?: string;
@@ -45,7 +45,7 @@ export class OutboundMessagesFilteringParameters extends FilteringParameters {
 
 /**
  * Describes filtering parameters that can be used when retrieving inbound messages.
- * When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.
+ * When pagination parameters are not specified, default values are set.
  */
 export class InboundMessagesFilteringParameters extends FilteringParameters {
     public mailboxHash?: string;
@@ -76,7 +76,7 @@ export class InboundMessagesFilteringParameters extends FilteringParameters {
 
 /**
  * Describes filtering parameters that can be used when retrieving tracked outbound messages.
- * When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.
+ * When pagination parameters are not specified, default values are set.
  */
 export class OutboundMessageTrackingFilteringParameters extends FilteringParameters {
     public recipient?: string;

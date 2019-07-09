@@ -14,6 +14,7 @@ export * from "./messages/MessageFilteringParameters";
 export * from "./templates/Template";
 export * from "./server/Server";
 export * from "./server/Servers";
+export * from "./server/ServerFilteringParameters";
 export * from "./domains/Domain";
 export * from "./senders/Signature";
 export * from "./stats/Stats";

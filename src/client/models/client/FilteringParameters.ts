@@ -2,7 +2,7 @@ import { Hash } from "./SupportingTypes";
 
 /**
  * Describes default filtering parameters that can be used.
- * When pagination parameters are not specified, default values provided by [[DefaultPaginationFilterValues]] are set.
+ * When pagination parameters are not specified, default values are set.
  */
 export class FilteringParameters implements Hash<any> {
     public count?: number;
