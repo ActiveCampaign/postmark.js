@@ -52,25 +52,31 @@ export class TemplateValidationOptions {
 
 export enum TemplateTypes { Standard = "Standard", Layout = "Layout" }
 
-export interface Template extends UpdateTemplateRequest {
+export interface Template {
+    TemplateType: TemplateTypes;
     Name: string;
     TemplateId: number;
+    Alias: string | null;
+    Subject: string;
+    HtmlBody: string | null;
+    TextBody: string | null;
     Active: boolean;
-    AssociatedServerId?: number;
+    AssociatedServerId: number;
+    LayoutTemplate: string | null;
+}
+
+export interface TemplateInList {
+    TemplateType: TemplateTypes;
+    Active: boolean;
+    TemplateId: number;
+    Name: string;
+    Alias: string | null;
+    LayoutTemplate: string | null;
 }
 
 export interface Templates {
     TotalCount: number;
-    Templates: [
-        {
-            TemplateType: TemplateTypes;
-            Active: boolean;
-            TemplateId: number;
-            Name: string;
-            Alias?: string | null;
-            LayoutTemplate: string | null;
-        }
-    ];
+    Templates: TemplateInList[];
 }
 
 export class TemplatesPushRequest {
