@@ -14,22 +14,23 @@ export class ErrorHandler {
      * @returns properly formatted Postmark error.
      */
     public generateError(error: any): Errors.PostmarkError {
-        if (error.body !== undefined && error.statusCode !== undefined) {
-            return this.buildStatusError(error);
+        if (error.body !== undefined && error.body.Message !== undefined && error.statusCode !== undefined) {
+            return this.buildStatusError(error.body.Message, error.body.ErrorCode, error.statusCode);
         } else {
-            return this.buildError(error);
+            const errorMessage: string = (error.message === undefined) ? error.statusMessage : error.message;
+            return this.buildError(errorMessage);
         }
     }
 
     /**
      * Build general Postmark error.
      *
-     * @param error - error that needs to be identified and transformed to proper Postmark error.
+     * @param errorMessage - error message that needs to be identified and transformed to proper Postmark error.
      *
      * @returns properly formatted Postmark error.
      */
-    private buildError(error: Error): Errors.PostmarkError {
-        return new Errors.PostmarkError(error.message);
+    private buildError(errorMessage: string): Errors.PostmarkError {
+        return new Errors.PostmarkError(errorMessage);
     }
 
     /**
@@ -39,22 +40,22 @@ export class ErrorHandler {
      *
      * @returns properly formatted Postmark error.
      */
-    private buildStatusError(error: any): Errors.HttpError {
-        switch (error.statusCode) {
+    private buildStatusError(errorMessage: string, errorCode: number, errorStatusCode: number): Errors.HttpError {
+        switch (errorStatusCode) {
             case 401:
-                return new Errors.InvalidAPIKeyError(error.body.Message, error.body.ErrorCode, error.statusCode);
+                return new Errors.InvalidAPIKeyError(errorMessage, errorCode, errorStatusCode);
 
             case 422:
-                return new Errors.ApiInputError(error.body.Message, error.body.ErrorCode, error.statusCode);
+                return new Errors.ApiInputError(errorMessage, errorCode, errorStatusCode);
 
             case 500:
-                return new Errors.InternalServerError(error.body.Message, error.body.ErrorCode, error.statusCode);
+                return new Errors.InternalServerError(errorMessage, errorCode, errorStatusCode);
 
             case 503:
-                return new Errors.ServiceUnavailablerError(error.body.Message, error.body.ErrorCode, error.statusCode);
+                return new Errors.ServiceUnavailablerError(errorMessage, errorCode, errorStatusCode);
 
             default:
-                return new Errors.UnknownError(error.body.Message, error.body.ErrorCode, error.statusCode);
+                return new Errors.UnknownError(errorMessage, errorCode, errorStatusCode);
         }
     }
 }
