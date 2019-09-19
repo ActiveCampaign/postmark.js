@@ -83,6 +83,20 @@ describe("ErrorHandler", () => {
 
             const postmarkError = errorHandler.generateError(error);
             expect(postmarkError).to.be.an.instanceof(Errors.PostmarkError);
+            expect(postmarkError.name).to.equal("UnknownError");
+            expect(postmarkError.message).to.equal(error.message);
+        });
+
+        it("postmark error", () => {
+            const errorHandler = new ErrorHandler();
+
+            const error: any = {
+                name: "Test name",
+                message: "test message"
+            };
+
+            const postmarkError = errorHandler.generateError(error);
+            expect(postmarkError).to.be.an.instanceof(Errors.PostmarkError);
             expect(postmarkError.name).to.equal("PostmarkError");
             expect(postmarkError.message).to.equal(error.message);
         });
