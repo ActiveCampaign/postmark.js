@@ -16,9 +16,12 @@ export class ErrorHandler {
     public generateError(error: any): Errors.PostmarkError {
         if (error.body !== undefined && error.body.Message !== undefined && error.statusCode !== undefined) {
             return this.buildStatusError(error.body.Message, error.body.ErrorCode, error.statusCode);
-        } else {
+        }
+        else if (error.statusCode !== undefined) {
             const errorMessage: string = (error.message === undefined) ? error.statusMessage : error.message;
-            return this.buildError(errorMessage);
+            return this.buildStatusError(errorMessage, 0, error.statusCode)
+        } else {
+            return this.buildGeneralError(error.message);
         }
     }
 
@@ -29,7 +32,7 @@ export class ErrorHandler {
      *
      * @returns properly formatted Postmark error.
      */
-    private buildError(errorMessage: string): Errors.PostmarkError {
+    private buildGeneralError(errorMessage: string): Errors.PostmarkError {
         return new Errors.PostmarkError(errorMessage);
     }
 
@@ -44,6 +47,9 @@ export class ErrorHandler {
         switch (errorStatusCode) {
             case 401:
                 return new Errors.InvalidAPIKeyError(errorMessage, errorCode, errorStatusCode);
+
+            case 404:
+                return new Errors.PostmarkError(errorMessage, errorCode, errorStatusCode);
 
             case 422:
                 return new Errors.ApiInputError(errorMessage, errorCode, errorStatusCode);

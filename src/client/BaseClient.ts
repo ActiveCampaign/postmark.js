@@ -31,13 +31,13 @@ export default abstract class BaseClient {
     private readonly token: string;
 
     protected constructor(token: string, authHeader: string, configOptions?: ClientOptions.Configuration) {
-        this.verifyToken(token);
-
         this.clientVersion = CLIENT_VERSION;
         this.token = token.trim();
         this.authHeader = authHeader;
         this.clientOptions = { ...BaseClient.DefaultOptions, ...configOptions };
         this.errorHandler = new ErrorHandler();
+
+        this.verifyToken(token);
     }
 
     /**
@@ -193,7 +193,7 @@ export default abstract class BaseClient {
      */
     private verifyToken(token: string): void {
         if (!token || token.trim() === "") {
-            throw new Errors.PostmarkError("A valid API token must be provided when creating a ClientOptions.");
+            throw this.errorHandler.generateError(new Error("A valid API token must be provided."));
         }
     }
 }
