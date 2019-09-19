@@ -93,7 +93,7 @@ describe("ServerClient", () => {
 
         it("empty token", () => {
             expect(() => new postmark.ServerClient(""))
-                .to.throw("A valid API token must be provided when creating a ClientOptions");
+                .to.throw("A valid API token must be provided.");
         });
 
         it("promise error", () => {

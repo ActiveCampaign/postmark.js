@@ -59,7 +59,7 @@ describe("AccountClient", () => {
 
         it("empty token", () => {
             expect(() => new postmark.AccountClient(""))
-                .to.throw("A valid API token must be provided when creating a ClientOptions");
+                .to.throw("A valid API token must be provided.");
         });
 
         it("promise error", () => {

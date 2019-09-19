@@ -172,7 +172,7 @@ export default abstract class BaseClient {
 
     private getHttpRequestURL(path: string): string {
         const scheme = this.clientOptions.useHttps ? "https" : "http";
-        return `${scheme}://${this.clientOptions.requestHost}/${path}`;
+        return `${scheme}://${this.clientOptions.requestHost}${path}`;
     }
 
     /**
