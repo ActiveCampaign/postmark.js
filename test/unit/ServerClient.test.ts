@@ -4,6 +4,9 @@ import { expect } from "chai";
 import "mocha";
 
 import * as nconf from "nconf";
+import BaseClient from "../../src/client/BaseClient";
+import * as sinon from 'sinon';
+
 const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
 
 const packageJson = require("../../package.json");
@@ -90,6 +93,60 @@ describe("ServerClient", () => {
 
     describe("errors", () => {
         const invalidTokenError = "InvalidAPIKeyError";
+
+        describe("handling errors", () => {
+            let sandbox: sinon.SinonSandbox;
+
+            beforeEach(() => {
+                sandbox = sinon.createSandbox();
+            });
+
+            afterEach(() => {
+                sandbox.restore();
+            });
+
+            it("throw basic error - promise", () => {
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").throws(new Error("Basic error"))
+
+                const serverToken: string = testingKeys.get("SERVER_TOKEN");
+                let client: postmark.ServerClient = new postmark.ServerClient(serverToken);
+
+                return client.getServer().then((result) => {
+                    return result;
+                }, (error) => {
+                    expect(error).to.be.instanceOf(postmark.Errors.PostmarkError)
+                    expect(error.message).to.equal("Basic error");
+                });
+            });
+
+            it("throw api key error - promise", () => {
+                let error:any = new Error("Basic error");
+                error.statusCode = 401;
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").throws(error)
+
+                const serverToken: string = testingKeys.get("SERVER_TOKEN");
+                let client: postmark.ServerClient = new postmark.ServerClient(serverToken);
+
+                return client.getServer().then((result) => {
+                    return result;
+                }, (error) => {
+                    expect(error).to.be.instanceOf(postmark.Errors.InvalidAPIKeyError);
+                });
+            });
+
+            it("throw basic error - callback", (done) => {
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").throws(new Error("Basic error"))
+
+                const serverToken: string = testingKeys.get("SERVER_TOKEN");
+                let client: postmark.ServerClient = new postmark.ServerClient(serverToken);
+
+                client.getServer((error: any, data) => {
+                    expect(data).to.equal(null);
+                    expect(error.name).to.equal('PostmarkError');
+                    done();
+                });
+            });
+        });
 
         it("empty token", () => {
             expect(() => new postmark.ServerClient(""))
