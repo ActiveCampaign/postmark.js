@@ -2,7 +2,6 @@ import * as request from "request";
 
 import { ErrorHandler } from "./ErrorHandler";
 import {Callback, ClientOptions, FilteringParameters} from "./models";
-import * as Errors from "./models/client/Errors";
 
 const packageJson = require("../../package.json");
 const CLIENT_VERSION = packageJson.version;
