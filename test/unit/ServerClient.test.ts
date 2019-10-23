@@ -126,18 +126,6 @@ describe("ServerClient", () => {
 
             expect(callback.calledOnce).to.be.true
         });
-
-        it('process callback when there are errors', async() => {
-            let callback = sinon.spy();
-            sandbox.stub(BaseClient.prototype, <any> "processHttpRequest").returns(new Promise( function(resolve, reject) { reject("test"); }));
-            try {
-                await client.getServer(callback);    
-            } catch (e) {
-                expect(callback.calledOnce).to.be.true
-            }
-
-            expect(callback.calledOnce).to.be.true
-        });
     });
 
 });
