@@ -40,6 +40,17 @@ export default abstract class BaseClient {
     }
 
     /**
+     * JSON object with default headers sent by HTTP request.
+     */
+    public getComposedHttpRequestHeaders(): object {
+        return {
+            [this.authHeader]: this.token,
+            "Accept": "application/json",
+            "User-Agent": `Postmark.JS - ${this.clientVersion}`,
+        };
+    }
+
+    /**
      * Process http request with sending body - data.
      *
      * @see processRequest for more details.
@@ -107,6 +118,28 @@ export default abstract class BaseClient {
     }
 
     /**
+     * Handle http request to return it as Promise.
+     *
+     * @param method - Which type of http request will be executed.
+     * @param path - API URL endpoint.
+     * @param queryParameters - Querystring parameters used for http request.
+     * @param body - Data sent with http request.
+     *
+     * @returns A promise that will complete when the API responds.
+     */
+    private promisifiedHttpRequest(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object),
+                                   body: (null | object)): Promise<request.Response> {
+
+        return new Promise((resolve, reject) => {
+            this.httpRequest(method, path, queryParameters, body, (error: Error, response: request.Response) => {
+                if (error) { reject(error); } else {
+                    if (response.statusCode !== 200) { reject(response); } else { resolve(response); }
+                }
+            });
+        });
+    }
+
+    /**
      * Process callback function for HTTP request.
      *
      * @param httpRequest - HTTP request for which callback will be executed
@@ -143,28 +176,6 @@ export default abstract class BaseClient {
         }, callback);
     }
 
-    /**
-     * Handle http request to return it as Promise.
-     *
-     * @param method - Which type of http request will be executed.
-     * @param path - API URL endpoint.
-     * @param queryParameters - Querystring parameters used for http request.
-     * @param body - Data sent with http request.
-     *
-     * @returns A promise that will complete when the API responds.
-     */
-    private promisifiedHttpRequest(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object),
-                                   body: (null | object)): Promise<request.Response> {
-
-        return new Promise((resolve, reject) => {
-            this.httpRequest(method, path, queryParameters, body, (error: Error, response: request.Response) => {
-                if (error) { reject(error); } else {
-                    if (response.statusCode !== 200) { reject(response); } else { resolve(response); }
-                }
-            });
-        });
-    }
-
     private getRequestTimeoutInSeconds(): number {
         return (this.clientOptions.timeout || 30) * 1000;
     }
@@ -172,17 +183,6 @@ export default abstract class BaseClient {
     private getHttpRequestURL(path: string): string {
         const scheme = this.clientOptions.useHttps ? "https" : "http";
         return `${scheme}://${this.clientOptions.requestHost}${path}`;
-    }
-
-    /**
-     * JSON object with default headers sent by HTTP request.
-     */
-    public getComposedHttpRequestHeaders(): object {
-        return {
-            [this.authHeader]: this.token,
-            "Accept": "application/json",
-            "User-Agent": `Postmark.JS - ${this.clientVersion}`,
-        };
     }
 
     /**

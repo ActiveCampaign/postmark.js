@@ -109,22 +109,40 @@ describe("ServerClient", () => {
             sandbox.restore();
         });
 
-        it('process request without body called', () => {
+        it('processRequest - without body called', () => {
             sandbox.stub(BaseClient.prototype, <any> "processRequest").returns("called")
             expect(client.getServer()).to.eq("called")
         });
 
-        it('process request with body called', () => {
+        it('processRequest - with body called', () => {
             sandbox.stub(BaseClient.prototype, <any> "processRequest").returns("called");
             expect(client.editServer({Name: 'Test'})).to.eq("called")
         });
 
-        it('process callback when there are no errors', async() => {
-            let callback = sinon.spy();
-            sandbox.stub(BaseClient.prototype, <any> "processHttpRequest").returns(new Promise( function(resolve) { resolve("test"); }));
-            await client.getServer(callback);
+        describe("callback", () => {
+            it('process it when there are no errors', async() => {
+                let callback = sinon.spy();
+                sandbox.stub(BaseClient.prototype, <any> "processHttpRequest").returns(new Promise( function(resolve) { resolve("test"); }));
+                await client.getServer(callback);
 
-            expect(callback.calledOnce).to.be.true
+                expect(callback.calledOnce).to.be.true
+            });
+
+            it('process regular response based on request status', () => {
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").yields(undefined, {statusCode: 200, body: 'response'});
+
+                return client.getServer( (error, result) => {
+                    expect(result).to.eq('response');
+                });
+            });
+
+            it('process error response based on request status',  () => {
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").yields(undefined, {statusCode: 201, body: 'response'});
+
+                return client.getServer( (error: any, result) => {
+                    expect(error.name).to.eq('UnknownError');
+                }).catch( error => {});
+            });
         });
     });
 

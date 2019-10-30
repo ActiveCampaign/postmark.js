@@ -16,10 +16,9 @@ export class ErrorHandler {
     public generateError(error: any): Errors.PostmarkError {
         if (error.body !== undefined && error.body.Message !== undefined && error.statusCode !== undefined) {
             return this.buildStatusError(error.body.Message, error.body.ErrorCode, error.statusCode);
-        }
-        else if (error.statusCode !== undefined) {
+        } else if (error.statusCode !== undefined) {
             const errorMessage: string = (error.message === undefined) ? error.statusMessage : error.message;
-            return this.buildStatusError(errorMessage, 0, error.statusCode)
+            return this.buildStatusError(errorMessage, 0, error.statusCode);
         } else {
             return this.buildGeneralError(error.message);
         }
