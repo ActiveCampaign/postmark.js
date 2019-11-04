@@ -14,6 +14,7 @@ export interface ClickEvent {
     ReceivedAt: string;
     Tag: string;
     Recipient: string;
+    MessageStream: string;
 }
 
 export interface OutboundMessageClicks {

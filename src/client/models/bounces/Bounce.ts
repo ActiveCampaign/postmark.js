@@ -17,6 +17,7 @@ export interface Bounce {
     CanActivate: boolean;
     Subject: string;
     Content?: string;
+    MessageStream: string;
 }
 
 export interface BounceDump {

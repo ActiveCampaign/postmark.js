@@ -22,6 +22,7 @@ export interface OutboundMessage {
     TrackOpens: boolean;
     TrackLinks: LinkTrackingOptions;
     Metadata: Hash<string>;
+    MessageStream: string;
 }
 
 export interface OutboundMessageDetails extends OutboundMessage {

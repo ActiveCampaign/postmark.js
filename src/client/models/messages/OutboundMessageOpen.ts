@@ -27,6 +27,7 @@ export interface OpenEvent {
     ReceivedAt: string;
     Tag: string;
     Recipient: string;
+    MessageStream: string;
 }
 
 export interface OutboundMessageOpens {

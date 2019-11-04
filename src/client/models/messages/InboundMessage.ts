@@ -24,6 +24,7 @@ export interface InboundMessage {
     MessageID: string;
     Status: string;
     Attachments: Attachment[];
+    MessageStream: string;
 }
 
 export interface InboundMessageDetails extends InboundMessage {
