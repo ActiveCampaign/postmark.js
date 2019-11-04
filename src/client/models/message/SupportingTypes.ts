@@ -11,7 +11,6 @@ export enum LinkClickLocation {
 }
 
 export class Header {
-
     public Name: string;
     public Value: string;
     constructor(Name: string, Value: string) {

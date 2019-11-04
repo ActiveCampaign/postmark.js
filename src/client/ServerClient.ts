@@ -5,7 +5,6 @@ import {
     ClientOptions,
     DefaultResponse,
     FilteringParameters,
-    TemplateFilteringParameters,
 } from "./models/index";
 
 import {
@@ -56,8 +55,9 @@ import {
     TagTrigger,
     TagTriggerFilteringParameters,
     TagTriggers,
-    Template,
 
+    Template,
+    TemplateFilteringParameters,
     TemplatedMessage,
     Templates,
     TemplateValidation,
@@ -67,6 +67,12 @@ import {
     UpdateServerRequest,
     UpdateTagTriggerRequest,
     UpdateTemplateRequest,
+
+    Webhooks,
+    Webhook,
+    WebhookFilteringParameters,
+    CreateWebhookRequest,
+    UpdateWebhookRequest,
 } from "./models/index";
 
 /**
@@ -669,4 +675,61 @@ export default class ServerClient extends BaseClient {
         this.setDefaultPaginationValues(filter);
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, "/triggers/inboundRules", filter, callback);
     }
+
+    /**
+     * Get the list Webhooks for specific server.
+     *
+     * @param filter - Optional filtering parameters
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public getWebhooks(filter: WebhookFilteringParameters = {}, callback?: Callback<Webhooks>): Promise<Webhooks> {
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, "/webhooks", filter, callback);
+    }
+
+    /**
+     * Get details for a specific Webhook.
+     *
+     * @param id - The ID of the Webhook you wish to retrieve.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public getWebhook(id: number, callback?: Callback<Webhook>): Promise<Webhook> {
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/webhooks/${id}`, {}, callback);
+    }
+
+    /**
+     * Create a Webhook on the associated server.
+     *
+     * @param options - Configuration options to be used when creating Webhook trigger.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public createWebhook(options: CreateWebhookRequest, callback?: Callback<Webhook>): Promise<Webhook> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, "/webhooks", options, callback);
+    }
+
+    /**
+     * Update Webhook on the associated server.
+     *
+     * @param id - Id of the webhook you wish to update.
+     * @param options - Webhook options you wish to update.
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public editWebhook(id: number, options: UpdateWebhookRequest, callback?: Callback<Webhook>): Promise<Webhook> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, `/webhooks/${id}`, options, callback);
+    }
+
+    /**
+     * Delete an existing Webhook.
+     *
+     * @param id - The ID of the Webhook you wish to delete.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public deleteWebhook(id: number, callback?: Callback<DefaultResponse>): Promise<DefaultResponse> {
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.DELETE, `/webhooks/${id}`, {}, callback);
+    }
 }
+

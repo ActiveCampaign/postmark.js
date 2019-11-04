@@ -22,3 +22,6 @@ export * from "./stats/StatsFilteringParameters";
 export * from "./triggers/Tag";
 export * from "./triggers/InboundRule";
 export * from "./triggers/TriggerFilteringParameters";
+export * from "./webhooks/Webhooks"
+export * from "./webhooks/Webhook"
+export * from "./webhooks/WebhookFilteringParameters"
