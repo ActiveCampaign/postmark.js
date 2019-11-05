@@ -677,7 +677,7 @@ export default class ServerClient extends BaseClient {
     }
 
     /**
-     * Get the list Webhooks for specific server.
+     * Get the list of Webhooks for specific server.
      *
      * @param filter - Optional filtering parameters
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.

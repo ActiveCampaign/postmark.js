@@ -14,7 +14,7 @@ export class UpdateWebhookRequest {
     HttpHeaders?: Header[];
     Triggers?: WebhookRequestTriggers;
 
-    constructor(Url?: string, HttpAuth?: HttpAuth, HttpHeaders?: Header[], Triggers?: WebhookRequestTriggers) {
+    public constructor(Url?: string, Triggers?: WebhookRequestTriggers, HttpAuth?: HttpAuth, HttpHeaders?: Header[]) {
         this.Url = Url;
         this.HttpAuth = HttpAuth;
         this.HttpHeaders = HttpHeaders;
@@ -23,8 +23,8 @@ export class UpdateWebhookRequest {
 }
 
 export class CreateWebhookRequest extends UpdateWebhookRequest{
-    constructor(Url?: string, HttpAuth?: HttpAuth, HttpHeaders?: Header[], Triggers?: WebhookRequestTriggers) {
-        super(Url, HttpAuth, HttpHeaders, Triggers);
+    public constructor(Url?: string, Triggers?: WebhookRequestTriggers, HttpAuth?: HttpAuth, HttpHeaders?: Header[]) {
+        super(Url, Triggers, HttpAuth, HttpHeaders);
     }
 }
 
@@ -46,7 +46,6 @@ export interface HttpAuth {
     Username: string,
     Password: string;
 }
-
 
 export interface Webhook {
   ID: number;

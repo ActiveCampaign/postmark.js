@@ -19,17 +19,17 @@ describe("ServerClient - Errors", () => {
 
     const invalidTokenError = "InvalidAPIKeyError";
 
+    let sandbox: sinon.SinonSandbox;
+
+    beforeEach(() => {
+        sandbox = sinon.createSandbox();
+    });
+
+    afterEach(() => {
+        sandbox.restore();
+    });
+
     describe("handling errors", () => {
-        let sandbox: sinon.SinonSandbox;
-
-        beforeEach(() => {
-            sandbox = sinon.createSandbox();
-        });
-
-        afterEach(() => {
-            sandbox.restore();
-        });
-
         it("throw basic error - promise", () => {
             sandbox.stub(BaseClient.prototype, <any> "httpRequest").throws(new Error("Basic error"));
 
@@ -156,6 +156,8 @@ describe("ServerClient - Errors", () => {
     });
 
     it("promise error", () => {
+        sandbox.stub(BaseClient.prototype, <any> "httpRequest").yields(undefined, {statusCode: 401, body: 'response'});
+
         return client.getBounces().then((result) => {
             return result;
         }, (error) => {
@@ -165,6 +167,8 @@ describe("ServerClient - Errors", () => {
 
     it("callback error", (done) => {
         client = new postmark.ServerClient("testToken");
+        sandbox.stub(BaseClient.prototype, <any> "httpRequest").yields(undefined, {statusCode: 401, body: 'response'});
+
         client.getBounces(undefined, (error: any, data) => {
             expect(data).to.equal(null);
             expect(error.name).to.equal(invalidTokenError);

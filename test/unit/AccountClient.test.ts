@@ -3,7 +3,9 @@ import * as postmark from "../../src/index";
 import { expect } from "chai";
 import "mocha";
 
+import * as sinon from 'sinon';
 import * as nconf from "nconf";
+import BaseClient from "../../src/client/BaseClient";
 const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
 
 const packageJson = require("../../package.json");
@@ -55,28 +57,43 @@ describe("AccountClient", () => {
     });
 
     describe("errors", () => {
-        const invalidTokenError = "InvalidAPIKeyError";
-
         it("empty token", () => {
             expect(() => new postmark.AccountClient(""))
                 .to.throw("A valid API token must be provided.");
         });
 
-        it("promise error", () => {
-            client = new postmark.AccountClient("testToken");
-            return client.getSenderSignatures().then((result) => {
-                throw Error(`Should not be here with result: ${result}`);
-            }, (error) => {
-                expect(error.name).to.equal(invalidTokenError);
-            });
-        });
+        describe("request errors", () => {
+            const invalidTokenError = "InvalidAPIKeyError";
+            let sandbox: sinon.SinonSandbox;
 
-        it("callback error", (done) => {
-            client = new postmark.AccountClient("testToken");
-            client.getSenderSignatures(undefined, (error: any, data) => {
-                expect(data).to.equal(null);
-                expect(error.name).to.equal(invalidTokenError);
-                done();
+            beforeEach(() => {
+                sandbox = sinon.createSandbox();
+            });
+
+            afterEach(() => {
+                sandbox.restore();
+            });
+
+            it("promise error", () => {
+                client = new postmark.AccountClient("testToken");
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").yields(undefined, {statusCode: 401, body: 'response'});
+
+                return client.getSenderSignatures().then((result) => {
+                    throw Error(`Should not be here with result: ${result}`);
+                }, (error) => {
+                    expect(error.name).to.equal(invalidTokenError);
+                });
+            });
+
+            it("callback error", (done) => {
+                client = new postmark.AccountClient("testToken");
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").yields(undefined, {statusCode: 401, body: 'response'});
+
+                client.getSenderSignatures(undefined, (error: any, data) => {
+                    expect(data).to.equal(null);
+                    expect(error.name).to.equal(invalidTokenError);
+                    done();
+                });
             });
         });
     });

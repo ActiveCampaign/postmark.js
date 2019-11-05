@@ -41,6 +41,7 @@
   "scripts": {
     "compile": "rm -r -f ./dist && node_modules/.bin/tsc",
     "test": "node_modules/mocha/bin/mocha --timeout 10000 --retries 1 -r ts-node/register test/**/*test.ts",
+    "unittest": "node_modules/mocha/bin/mocha --timeout 10000 --retries 1 -r ts-node/register test/unit/**/*test.ts",
     "watchtests": "node_modules/.bin/mocha --timeout 10000 --retries 1 -r ts-node/register -R list -w --recursive -G test/**/*test.ts",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "compile-docs": "echo 'Generating docs...' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/typedoc --options typedoc.json && git add -A ./docs && echo 'Generated docs!'",
