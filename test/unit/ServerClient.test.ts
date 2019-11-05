@@ -135,7 +135,7 @@ describe("ServerClient", () => {
                     expect(result).to.eq('response');
                 });
             });
-
+            
             it('process error response based on request status',  () => {
                 sandbox.stub(BaseClient.prototype, <any> "httpRequest").yields(undefined, {statusCode: 201, body: 'response'});
 

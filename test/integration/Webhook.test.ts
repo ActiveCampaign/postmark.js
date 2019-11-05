@@ -2,7 +2,6 @@ import * as postmark from "../../src/index";
 
 import { expect } from "chai";
 import "mocha";
-import {CreateWebhookRequest} from "../../src/client/models";
 
 import * as nconf from "nconf";
 const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
@@ -12,10 +11,8 @@ describe("Client - Webhooks", () => {
     const client = new postmark.ServerClient(serverToken);
 
     function webhookToCreate() {
-        return new CreateWebhookRequest(
+        return new postmark.Models.CreateWebhookRequest(
             'https://example.com',
-            undefined,
-            undefined,
             { Open: { Enabled: true } }
         );
     }
