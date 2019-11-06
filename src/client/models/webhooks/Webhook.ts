@@ -9,22 +9,22 @@ interface WebhookRequestTriggers {
 }
 
 export class UpdateWebhookRequest {
-    Url?: string;
-    HttpAuth?: HttpAuth;
-    HttpHeaders?: Header[];
-    Triggers?: WebhookRequestTriggers;
+    public Url?: string;
+    public HttpAuth?: HttpAuth;
+    public HttpHeaders?: Header[];
+    public Triggers?: WebhookRequestTriggers;
 
-    public constructor(Url?: string, Triggers?: WebhookRequestTriggers, HttpAuth?: HttpAuth, HttpHeaders?: Header[]) {
-        this.Url = Url;
-        this.HttpAuth = HttpAuth;
-        this.HttpHeaders = HttpHeaders;
-        this.Triggers = Triggers;
+    public constructor(url?: string, triggers?: WebhookRequestTriggers, httpAuth?: HttpAuth, httpHeaders?: Header[]) {
+        this.Url = url;
+        this.HttpAuth = httpAuth;
+        this.HttpHeaders = httpHeaders;
+        this.Triggers = triggers;
     }
 }
 
-export class CreateWebhookRequest extends UpdateWebhookRequest{
-    public constructor(Url?: string, Triggers?: WebhookRequestTriggers, HttpAuth?: HttpAuth, HttpHeaders?: Header[]) {
-        super(Url, Triggers, HttpAuth, HttpHeaders);
+export class CreateWebhookRequest extends UpdateWebhookRequest {
+    public constructor(url?: string, triggers?: WebhookRequestTriggers, httpAuth?: HttpAuth, httpHeaders?: Header[]) {
+        super(url, triggers, httpAuth, httpHeaders);
     }
 }
 
@@ -40,10 +40,12 @@ export interface BounceWebhookTrigger extends WebhookTrigger {
     IncludeContent?: boolean;
 }
 
-export interface SpamWebhookTrigger extends BounceWebhookTrigger {}
+export interface SpamWebhookTrigger extends WebhookTrigger {
+    IncludeContent?: boolean;
+}
 
 export interface HttpAuth {
-    Username: string,
+    Username: string;
     Password: string;
 }
 
@@ -59,5 +61,5 @@ export interface Webhook {
     Delivery: WebhookTrigger;
     Bounce: BounceWebhookTrigger;
     SpamComplaint: SpamWebhookTrigger;
-  }
+  };
 }

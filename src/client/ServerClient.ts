@@ -23,12 +23,13 @@ import {
     CreateInboundRuleRequest,
     CreateTagTriggerRequest,
     CreateTemplateRequest,
+    CreateWebhookRequest,
     DeliveryStatistics,
+
     EmailClientUsageCounts,
-
     EmailPlaformUsageCounts,
-    EmailReadTimesCounts,
 
+    EmailReadTimesCounts,
     InboundMessageDetails,
     InboundMessages,
     InboundMessagesFilteringParameters,
@@ -36,12 +37,12 @@ import {
     InboundRules,
     Message,
     MessageSendingResponse,
-    OpenCounts,
 
+    OpenCounts,
     OutboundMessageClicks,
     OutboundMessageClicksFilteringParameters,
-    OutboundMessageDetails,
 
+    OutboundMessageDetails,
     OutboundMessageDump,
     OutboundMessageOpens,
     OutboundMessageOpensFilteringParameters,
@@ -54,25 +55,24 @@ import {
     StatisticsFilteringParameters,
     TagTrigger,
     TagTriggerFilteringParameters,
-    TagTriggers,
 
+    TagTriggers,
     Template,
-    TemplateFilteringParameters,
     TemplatedMessage,
+    TemplateFilteringParameters,
     Templates,
     TemplateValidation,
     TemplateValidationOptions,
-    TrackedEmailCounts,
 
+    TrackedEmailCounts,
     UpdateServerRequest,
     UpdateTagTriggerRequest,
-    UpdateTemplateRequest,
 
-    Webhooks,
+    UpdateTemplateRequest,
+    UpdateWebhookRequest,
     Webhook,
     WebhookFilteringParameters,
-    CreateWebhookRequest,
-    UpdateWebhookRequest,
+    Webhooks,
 } from "./models/index";
 
 /**
@@ -732,4 +732,3 @@ export default class ServerClient extends BaseClient {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.DELETE, `/webhooks/${id}`, {}, callback);
     }
 }
-
