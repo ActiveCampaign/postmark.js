@@ -27,6 +27,7 @@ export class OutboundMessagesFilteringParameters extends FilteringParameters {
     public fromDate?: string;
     public toDate?: string;
     public subject?: string;
+    public messageStream?: string;
     constructor(count: number = 100, offset: number = 0,
                 recipient?: string, fromEmail?: string, tag?: string,
                 status?: OutboundMessageStatus, fromDate?: string,
@@ -91,6 +92,7 @@ export class OutboundMessageTrackingFilteringParameters extends FilteringParamet
     public country?: string;
     public region?: string;
     public city?: string;
+    public messageStream?: string;
     constructor(count: number = 100, offset: number = 0,
                 recipient?: string, tag?: string, client_name?: string,
                 client_company?: string, client_family?: string,
