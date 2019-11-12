@@ -190,16 +190,6 @@ export default class ServerClient extends BaseClient {
     }
 
     /**
-     * Get an array of tags associated with bounces.
-     *
-     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
-     * @returns A promise that will complete when the API responds (or an error occurs).
-     */
-    public getBounceTags(callback?: Callback<string[]>): Promise<string[]> {
-        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, "/bounces/tags", {}, callback);
-    }
-
-    /**
      * Get the list of templates associated with this server.
      *
      * @param filter - Optional filtering options.

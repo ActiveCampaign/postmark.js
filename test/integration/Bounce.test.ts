@@ -34,9 +34,4 @@ describe("Bounce", () => {
         const bounceDump = await client.getBounceDump(bounces.Bounces[0].ID);
         expect(bounceDump.Body.length).to.be.gt(0);
     });
-
-    it("getBounceTags", async () => {
-        const tags: string[] = await client.getBounceTags();
-        expect(tags.length).to.be.gte(0);
-    });
 });
