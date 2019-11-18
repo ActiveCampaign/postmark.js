@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import "mocha";
-import { CreateInboundRuleRequest, CreateTagTriggerRequest } from "../../src/client/models";
+import { CreateInboundRuleRequest } from "../../src/client/models";
 import * as postmark from "../../src/index";
 
 import * as nconf from "nconf";

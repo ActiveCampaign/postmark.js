@@ -21,7 +21,6 @@ import {
     ClickLocationCounts,
     ClickPlaformUsageCounts,
     CreateInboundRuleRequest,
-    CreateTagTriggerRequest,
     CreateTemplateRequest,
     CreateWebhookRequest,
     DeliveryStatistics,
@@ -53,10 +52,7 @@ import {
     Server,
     SpamCounts,
     StatisticsFilteringParameters,
-    TagTrigger,
-    TagTriggerFilteringParameters,
 
-    TagTriggers,
     Template,
     TemplatedMessage,
     TemplateFilteringParameters,
@@ -66,7 +62,6 @@ import {
 
     TrackedEmailCounts,
     UpdateServerRequest,
-    UpdateTagTriggerRequest,
 
     UpdateTemplateRequest,
     UpdateWebhookRequest,
