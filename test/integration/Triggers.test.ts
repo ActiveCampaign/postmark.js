@@ -11,22 +11,8 @@ describe("Client - Triggers", () => {
     const client = new postmark.ServerClient(serverToken);
     const triggerName: string = "node-js";
 
-    function tagTriggerToTest() {
-        return new CreateTagTriggerRequest(`${triggerName}_${Date.now()}`, true);
-    }
-
     function inboundRuleTriggerToTest() {
         return new CreateInboundRuleRequest(`${triggerName}-${Date.now()}.com`);
-    }
-
-    async function cleanupTagTriggers() {
-        const tagTriggers = await client.getTagTriggers();
-
-        for (const tagTrigger of tagTriggers.Tags) {
-            if (tagTrigger.MatchName.includes(triggerName)) {
-                await client.deleteTagTrigger(tagTrigger.ID);
-            }
-        }
     }
 
     async function cleanupInboundRuleTriggers() {
@@ -40,53 +26,12 @@ describe("Client - Triggers", () => {
     }
 
     async function cleanup() {
-        await cleanupTagTriggers();
         await cleanupInboundRuleTriggers();
     }
 
     before(cleanup);
     after(cleanup);
-
-    it("createTagTrigger", async () => {
-        const tagTriggerOptions = tagTriggerToTest();
-        const result = await client.createTagTrigger(tagTriggerOptions);
-        expect(result.MatchName).to.equal(tagTriggerOptions.MatchName);
-    });
-
-    it("editTagTrigger", async () => {
-        const tagTriggerOptions = tagTriggerToTest();
-        const editMatchName: string = `${tagTriggerOptions.MatchName}-updated`;
-        const tagTrigger = await client.createTagTrigger(tagTriggerOptions);
-
-        const tagTriggerDetails = await client.editTagTrigger(tagTrigger.ID, { MatchName: editMatchName });
-        expect(tagTriggerDetails.MatchName).to.equal(editMatchName);
-    });
-
-    it("deleteTagTrigger", async () => {
-        const tagTriggerOptions = tagTriggerToTest();
-        const tagTrigger = await client.createTagTrigger(tagTriggerOptions);
-
-        const response = await client.deleteTagTrigger(tagTrigger.ID);
-        expect(response.Message.length).to.above(0);
-    });
-
-    it("getTagTriggers", async () => {
-        const tagTriggerOptions = tagTriggerToTest();
-        await client.createTagTrigger(tagTriggerOptions);
-
-        const tagTriggers = await client.getTagTriggers();
-        expect(tagTriggers.Tags.length).to.above(0);
-    });
-
-    it("getTagTrigger", async () => {
-        const tagTriggerOptions = tagTriggerToTest();
-        await client.createTagTrigger(tagTriggerOptions);
-
-        const tagTriggers = await client.getTagTriggers();
-        const tagTrigger = await client.getTagTrigger(tagTriggers.Tags[0].ID);
-        expect(tagTrigger.ID).to.above(0);
-    });
-
+    
     it("createInboundRuleTrigger", async () => {
         const inboundRuleTriggerOptions = inboundRuleTriggerToTest();
         const result = await client.createInboundRuleTrigger(inboundRuleTriggerOptions);

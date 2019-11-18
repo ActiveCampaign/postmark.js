@@ -575,64 +575,6 @@ export default class ServerClient extends BaseClient {
     }
 
     /**
-     * Create a new Tag Trigger.
-     *
-     * @param options - Configuration options to be used to create the trigger.
-     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
-     * @returns A promise that will complete when the API responds (or an error occurs).
-     */
-    public createTagTrigger(options: CreateTagTriggerRequest, callback?: Callback<TagTrigger>): Promise<TagTrigger> {
-        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, "/triggers/tags", options, callback);
-    }
-
-    /**
-     * Modify an existing Tag Trigger.
-     *
-     * @param id - The ID of the Tag Trigger you wish to modify.
-     * @param options - Tag trigger options
-     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
-     * @returns A promise that will complete when the API responds (or an error occurs).
-     */
-    public editTagTrigger(id: number, options: UpdateTagTriggerRequest, callback?: Callback<TagTrigger>): Promise<TagTrigger> {
-        return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, `/triggers/tags/${id}`, options, callback);
-    }
-
-    /**
-     * Delete an existing Tag Trigger.
-     *
-     * @param id - The ID of the Tag Trigger you wish to delete.
-     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
-     * @returns A promise that will complete when the API responds (or an error occurs).
-     */
-    public deleteTagTrigger(id: number, callback?: Callback<DefaultResponse>): Promise<DefaultResponse> {
-        return this.processRequestWithoutBody(ClientOptions.HttpMethod.DELETE, `/triggers/tags/${id}`, {}, callback);
-    }
-
-    /**
-     * Get a specific Tag Trigger.
-     *
-     * @param id - The ID of the Tag Trigger you wish to retrieve.
-     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
-     * @returns A promise that will complete when the API responds (or an error occurs).
-     */
-    public getTagTrigger(id: number, callback?: Callback<TagTrigger>): Promise<TagTrigger> {
-        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/triggers/tags/${id}`, {}, callback);
-    }
-
-    /**
-     * Get a list of Tag Trigger.
-     *
-     * @param filter - Optional filtering parameters.
-     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
-     * @returns A promise that will complete when the API responds (or an error occurs).
-     */
-    public getTagTriggers(filter: TagTriggerFilteringParameters = new TagTriggerFilteringParameters(),
-                          callback?: Callback<TagTriggers>): Promise<TagTriggers> {
-        this.setDefaultPaginationValues(filter);
-        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, "/triggers/tags/", filter, callback);
-    }
-
-    /**
      * Create an Inbound Rule Trigger.
      *
      * @param options - Configuration options to be used when creating this Trigger.
