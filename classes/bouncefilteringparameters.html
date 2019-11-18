@@ -2396,6 +2396,9 @@ img {
 				<li class=" tsd-kind-property tsd-parent-kind-class">
 					<a href="bouncefilteringparameters.html#messageid" class="tsd-kind-icon">messageID</a>
 				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="bouncefilteringparameters.html#messagestream" class="tsd-kind-icon">message<wbr>Stream</a>
+				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a href="bouncefilteringparameters.html#offset" class="tsd-kind-icon">offset</a>
 				</li>
@@ -2459,6 +2462,7 @@ img {
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="bouncefilteringparameters.html#fromdate" class="tsd-kind-icon">from<wbr>Date</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="bouncefilteringparameters.html#inactive" class="tsd-kind-icon">inactive</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="bouncefilteringparameters.html#messageid" class="tsd-kind-icon">messageID</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="bouncefilteringparameters.html#messagestream" class="tsd-kind-icon">message<wbr>Stream</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="bouncefilteringparameters.html#offset" class="tsd-kind-icon">offset</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="bouncefilteringparameters.html#tag" class="tsd-kind-icon">tag</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="bouncefilteringparameters.html#todate" class="tsd-kind-icon">to<wbr>Date</a></li>
@@ -2474,14 +2478,14 @@ img {
 				<a name="constructor" class="tsd-anchor"></a>
 				<h3>constructor</h3>
 				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-					<li class="tsd-signature tsd-kind-icon">new <wbr>Bounce<wbr>Filtering<wbr>Parameters<span class="tsd-signature-symbol">(</span>count<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, offset<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, type<span class="tsd-signature-symbol">?: </span><a href="../enums/bouncetype.html" class="tsd-signature-type">BounceType</a>, inactive<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span>, emailFilter<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, tag<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, messageID<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, fromDate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, toDate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="bouncefilteringparameters.html" class="tsd-signature-type">BounceFilteringParameters</a></li>
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Bounce<wbr>Filtering<wbr>Parameters<span class="tsd-signature-symbol">(</span>count<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, offset<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, type<span class="tsd-signature-symbol">?: </span><a href="../enums/bouncetype.html" class="tsd-signature-type">BounceType</a>, inactive<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span>, emailFilter<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, tag<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, messageID<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, fromDate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, toDate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, messageStream<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="bouncefilteringparameters.html" class="tsd-signature-type">BounceFilteringParameters</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<p>Overrides <a href="filteringparameters.html">FilteringParameters</a>.<a href="filteringparameters.html#constructor">constructor</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/f2982d5/src/client/models/bounces/BounceFilteringParameters.ts#L39">client/models/bounces/BounceFilteringParameters.ts:39</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/490df30/src/client/models/bounces/BounceFilteringParameters.ts#L40">client/models/bounces/BounceFilteringParameters.ts:40</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2513,6 +2517,9 @@ img {
 							<li>
 								<h5><span class="tsd-flag ts-flagOptional">Optional</span> toDate: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> messageStream: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="bouncefilteringparameters.html" class="tsd-signature-type">BounceFilteringParameters</a></h4>
 					</li>
@@ -2528,7 +2535,7 @@ img {
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="filteringparameters.html">FilteringParameters</a>.<a href="filteringparameters.html#count">count</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/f2982d5/src/client/models/client/FilteringParameters.ts#L8">client/models/client/FilteringParameters.ts:8</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/490df30/src/client/models/client/FilteringParameters.ts#L8">client/models/client/FilteringParameters.ts:8</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -2538,7 +2545,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">email<wbr>Filter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/f2982d5/src/client/models/bounces/BounceFilteringParameters.ts#L35">client/models/bounces/BounceFilteringParameters.ts:35</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/490df30/src/client/models/bounces/BounceFilteringParameters.ts#L35">client/models/bounces/BounceFilteringParameters.ts:35</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -2548,7 +2555,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">from<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/f2982d5/src/client/models/bounces/BounceFilteringParameters.ts#L38">client/models/bounces/BounceFilteringParameters.ts:38</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/490df30/src/client/models/bounces/BounceFilteringParameters.ts#L38">client/models/bounces/BounceFilteringParameters.ts:38</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -2558,7 +2565,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">inactive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/f2982d5/src/client/models/bounces/BounceFilteringParameters.ts#L34">client/models/bounces/BounceFilteringParameters.ts:34</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/490df30/src/client/models/bounces/BounceFilteringParameters.ts#L34">client/models/bounces/BounceFilteringParameters.ts:34</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -2568,7 +2575,17 @@ img {
 				<div class="tsd-signature tsd-kind-icon">messageID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/f2982d5/src/client/models/bounces/BounceFilteringParameters.ts#L37">client/models/bounces/BounceFilteringParameters.ts:37</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/490df30/src/client/models/bounces/BounceFilteringParameters.ts#L37">client/models/bounces/BounceFilteringParameters.ts:37</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="messagestream" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> message<wbr>Stream</h3>
+				<div class="tsd-signature tsd-kind-icon">message<wbr>Stream<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/490df30/src/client/models/bounces/BounceFilteringParameters.ts#L40">client/models/bounces/BounceFilteringParameters.ts:40</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -2579,7 +2596,7 @@ img {
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="filteringparameters.html">FilteringParameters</a>.<a href="filteringparameters.html#offset">offset</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/f2982d5/src/client/models/client/FilteringParameters.ts#L9">client/models/client/FilteringParameters.ts:9</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/490df30/src/client/models/client/FilteringParameters.ts#L9">client/models/client/FilteringParameters.ts:9</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -2589,7 +2606,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">tag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/f2982d5/src/client/models/bounces/BounceFilteringParameters.ts#L36">client/models/bounces/BounceFilteringParameters.ts:36</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/490df30/src/client/models/bounces/BounceFilteringParameters.ts#L36">client/models/bounces/BounceFilteringParameters.ts:36</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -2599,7 +2616,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">to<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/f2982d5/src/client/models/bounces/BounceFilteringParameters.ts#L39">client/models/bounces/BounceFilteringParameters.ts:39</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/490df30/src/client/models/bounces/BounceFilteringParameters.ts#L39">client/models/bounces/BounceFilteringParameters.ts:39</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -2609,7 +2626,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <a href="../enums/bouncetype.html" class="tsd-signature-type">BounceType</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/f2982d5/src/client/models/bounces/BounceFilteringParameters.ts#L33">client/models/bounces/BounceFilteringParameters.ts:33</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/490df30/src/client/models/bounces/BounceFilteringParameters.ts#L33">client/models/bounces/BounceFilteringParameters.ts:33</a></li>
 					</ul>
 				</aside>
 			</section>
