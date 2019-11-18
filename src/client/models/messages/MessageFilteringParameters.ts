@@ -31,7 +31,7 @@ export class OutboundMessagesFilteringParameters extends FilteringParameters {
     constructor(count: number = 100, offset: number = 0,
                 recipient?: string, fromEmail?: string, tag?: string,
                 status?: OutboundMessageStatus, fromDate?: string,
-                toDate?: string, subject?: string) {
+                toDate?: string, subject?: string, messageStream?: string) {
         super(count, offset);
 
         this.recipient = recipient;
@@ -41,6 +41,7 @@ export class OutboundMessagesFilteringParameters extends FilteringParameters {
         this.fromDate = fromDate;
         this.toDate = toDate;
         this.subject = subject;
+        this.messageStream = messageStream;
     }
 }
 
@@ -98,6 +99,7 @@ export class OutboundMessageTrackingFilteringParameters extends FilteringParamet
                 client_company?: string, client_family?: string,
                 os_name?: string, os_family?: string, os_company?: string,
                 platform?: string, country?: string, region?: string, city?: string,
+                messageStream?: string,
     ) {
         super(count, offset);
         this.recipient = recipient;
@@ -112,6 +114,7 @@ export class OutboundMessageTrackingFilteringParameters extends FilteringParamet
         this.country = country;
         this.region = region;
         this.city = city;
+        this.messageStream = messageStream;
     }
 }
 

@@ -37,9 +37,11 @@ export class BounceFilteringParameters extends FilteringParameters {
     public messageID?: string;
     public fromDate?: string;
     public toDate?: string;
+    public messageStream?: string;
+
     constructor(count: number = 100, offset: number = 0, type?: BounceType,
                 inactive?: boolean, emailFilter?: string,
-                tag?: string, messageID?: string, fromDate?: string, toDate?: string) {
+                tag?: string, messageID?: string, fromDate?: string, toDate?: string, messageStream?: string) {
         super(count, offset);
         this.type = type;
         this.inactive = inactive;
@@ -48,5 +50,6 @@ export class BounceFilteringParameters extends FilteringParameters {
         this.messageID = messageID;
         this.fromDate = fromDate;
         this.toDate = toDate;
+        this.messageStream = messageStream;
     }
 }
