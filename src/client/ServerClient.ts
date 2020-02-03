@@ -698,6 +698,6 @@ export default class ServerClient extends BaseClient {
      */
     public deleteSuppressions(messageStream: string, options: DeleteSuppressionsRequest,
                               callback?: Callback<SuppressionsStatus>): Promise<SuppressionsStatus> {
-        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, `/message-streams/${messageStream}/suppressions`, options, callback);
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, `/message-streams/${messageStream}/suppressions/delete`, options, callback);
     }
 }
