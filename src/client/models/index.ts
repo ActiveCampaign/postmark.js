@@ -23,3 +23,4 @@ export * from "./triggers/InboundRule";
 export * from "./webhooks/Webhooks";
 export * from "./webhooks/Webhook";
 export * from "./webhooks/WebhookFilteringParameters";
+export * from "./suppressions/Suppression";

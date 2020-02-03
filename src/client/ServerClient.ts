@@ -4,7 +4,7 @@ import {
     Callback,
     ClientOptions,
     DefaultResponse,
-    FilteringParameters,
+    FilteringParameters
 } from "./models/index";
 
 import {
@@ -68,6 +68,11 @@ import {
     Webhook,
     WebhookFilteringParameters,
     Webhooks,
+
+    Suppressions,
+    SuppressionsStatus,
+    CreateSuppressionsRequest,
+    DeleteSuppressionsRequest,
 } from "./models/index";
 
 /**
@@ -657,5 +662,42 @@ export default class ServerClient extends BaseClient {
      */
     public deleteWebhook(id: number, callback?: Callback<DefaultResponse>): Promise<DefaultResponse> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.DELETE, `/webhooks/${id}`, {}, callback);
+    }
+
+    /**
+     * Get the list of suppressions for a message stream on a server.
+     *
+     * @param messageStream - Select message stream
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public getSuppressions(messageStream: string, callback?: Callback<Suppressions>): Promise<Suppressions> {
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/message-streams/${messageStream}/suppressions/dump`, callback);
+    }
+
+    /**
+     * Add email addresses to a suppressions list on a message stream on a server.
+     *
+     * @param messageStream - Select message stream
+     * @param options - Suppressions you wish to add.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public createSuppressions(messageStream: string, options: CreateSuppressionsRequest,
+                              callback?: Callback<SuppressionsStatus>): Promise<SuppressionsStatus> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, `/message-streams/${messageStream}/suppressions`, options, callback);
+    }
+
+    /**
+     * Delete email addresses from a suppressions list on a message stream on a server.
+     *
+     * @param messageStream - Select message stream
+     * @param options - Suppressions you wish to delete.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public deleteSuppressions(messageStream: string, options: DeleteSuppressionsRequest,
+                              callback?: Callback<SuppressionsStatus>): Promise<SuppressionsStatus> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, `/message-streams/${messageStream}/suppressions`, options, callback);
     }
 }
