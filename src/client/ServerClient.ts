@@ -4,7 +4,7 @@ import {
     Callback,
     ClientOptions,
     DefaultResponse,
-    FilteringParameters
+    FilteringParameters,
 } from "./models/index";
 
 import {
@@ -21,26 +21,28 @@ import {
     ClickLocationCounts,
     ClickPlaformUsageCounts,
     CreateInboundRuleRequest,
+    CreateSuppressionsRequest,
     CreateTemplateRequest,
     CreateWebhookRequest,
+
+    DeleteSuppressionsRequest,
     DeliveryStatistics,
 
     EmailClientUsageCounts,
     EmailPlaformUsageCounts,
-
     EmailReadTimesCounts,
     InboundMessageDetails,
     InboundMessages,
     InboundMessagesFilteringParameters,
     InboundRule,
     InboundRules,
+
     Message,
     MessageSendingResponse,
-
     OpenCounts,
+
     OutboundMessageClicks,
     OutboundMessageClicksFilteringParameters,
-
     OutboundMessageDetails,
     OutboundMessageDump,
     OutboundMessageOpens,
@@ -50,29 +52,27 @@ import {
     OutboundStatistics,
     SentCounts,
     Server,
+
     SpamCounts,
     StatisticsFilteringParameters,
-
+    Suppressions,
+    SuppressionStatuses,
     Template,
     TemplatedMessage,
+
     TemplateFilteringParameters,
     Templates,
+
     TemplateValidation,
     TemplateValidationOptions,
-
     TrackedEmailCounts,
     UpdateServerRequest,
-
     UpdateTemplateRequest,
+
     UpdateWebhookRequest,
     Webhook,
     WebhookFilteringParameters,
     Webhooks,
-
-    Suppressions,
-    SuppressionStatuses,
-    CreateSuppressionsRequest,
-    DeleteSuppressionsRequest,
 } from "./models/index";
 
 /**
