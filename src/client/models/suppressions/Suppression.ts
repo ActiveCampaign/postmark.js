@@ -15,7 +15,7 @@ export interface SuppressionStatus {
     Message: string;
 }
 
-export interface SuppressionsStatus {
+export interface SuppressionStatuses {
     Suppressions: SuppressionStatus[];
 }
 

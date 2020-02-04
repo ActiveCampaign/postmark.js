@@ -4,7 +4,7 @@ import { expect } from "chai";
 import "mocha";
 
 import * as nconf from "nconf";
-import {Suppression, Suppressions, SuppressionsStatus} from "../../src/client/models";
+import {Suppression, Suppressions, SuppressionStatuses} from "../../src/client/models";
 const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
 
 describe("Client - Suppressions", () => {
@@ -26,7 +26,7 @@ describe("Client - Suppressions", () => {
 
     it("createSuppression", async () => {
         const emailAddress = `nothing+create@${suppression_email_domain}`;
-        const suppression: SuppressionsStatus = await client.createSuppressions('outbound', {
+        const suppression: SuppressionStatuses = await client.createSuppressions('outbound', {
             Suppressions: [ { EmailAddress: emailAddress} ]
         });
 
@@ -46,7 +46,7 @@ describe("Client - Suppressions", () => {
 
     it("deleteSuppression", async () => {
         const emailAddress = `nothing+delete@${suppression_email_domain}`;
-        const suppression: SuppressionsStatus = await client.deleteSuppressions('outbound', {
+        const suppression: SuppressionStatuses = await client.deleteSuppressions('outbound', {
             Suppressions: [ { EmailAddress: emailAddress} ]
         });
 

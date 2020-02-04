@@ -70,7 +70,7 @@ import {
     Webhooks,
 
     Suppressions,
-    SuppressionsStatus,
+    SuppressionStatuses,
     CreateSuppressionsRequest,
     DeleteSuppressionsRequest,
 } from "./models/index";
@@ -684,7 +684,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     public createSuppressions(messageStream: string, options: CreateSuppressionsRequest,
-                              callback?: Callback<SuppressionsStatus>): Promise<SuppressionsStatus> {
+                              callback?: Callback<SuppressionStatuses>): Promise<SuppressionStatuses> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, `/message-streams/${messageStream}/suppressions`, options, callback);
     }
 
@@ -697,7 +697,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     public deleteSuppressions(messageStream: string, options: DeleteSuppressionsRequest,
-                              callback?: Callback<SuppressionsStatus>): Promise<SuppressionsStatus> {
+                              callback?: Callback<SuppressionStatuses>): Promise<SuppressionStatuses> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, `/message-streams/${messageStream}/suppressions/delete`, options, callback);
     }
 }
