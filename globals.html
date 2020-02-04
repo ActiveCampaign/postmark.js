@@ -2670,6 +2670,18 @@ img {
 			<a href="interfaces/spamwebhooktrigger.html" class="tsd-kind-icon">Spam<wbr>Webhook<wbr>Trigger</a>
 		</li>
 		<li class=" tsd-kind-interface">
+			<a href="interfaces/suppression.html" class="tsd-kind-icon">Suppression</a>
+		</li>
+		<li class=" tsd-kind-interface">
+			<a href="interfaces/suppressionstatus.html" class="tsd-kind-icon">Suppression<wbr>Status</a>
+		</li>
+		<li class=" tsd-kind-interface">
+			<a href="interfaces/suppressionstatuses.html" class="tsd-kind-icon">Suppression<wbr>Statuses</a>
+		</li>
+		<li class=" tsd-kind-interface">
+			<a href="interfaces/suppressions.html" class="tsd-kind-icon">Suppressions</a>
+		</li>
+		<li class=" tsd-kind-interface">
 			<a href="interfaces/template.html" class="tsd-kind-icon">Template</a>
 		</li>
 		<li class=" tsd-kind-interface">
@@ -2707,6 +2719,12 @@ img {
 		</li>
 		<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 			<a href="globals.html#callback" class="tsd-kind-icon">Callback</a>
+		</li>
+		<li class=" tsd-kind-type-alias">
+			<a href="globals.html#createsuppressionsrequest" class="tsd-kind-icon">Create<wbr>Suppressions<wbr>Request</a>
+		</li>
+		<li class=" tsd-kind-type-alias">
+			<a href="globals.html#deletesuppressionsrequest" class="tsd-kind-icon">Delete<wbr>Suppressions<wbr>Request</a>
 		</li>
 	</ul>
 </nav>
@@ -2871,6 +2889,10 @@ img {
 							<li class="tsd-kind-interface"><a href="interfaces/signatures.html" class="tsd-kind-icon">Signatures</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/spamcounts.html" class="tsd-kind-icon">Spam<wbr>Counts</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/spamwebhooktrigger.html" class="tsd-kind-icon">Spam<wbr>Webhook<wbr>Trigger</a></li>
+							<li class="tsd-kind-interface"><a href="interfaces/suppression.html" class="tsd-kind-icon">Suppression</a></li>
+							<li class="tsd-kind-interface"><a href="interfaces/suppressionstatus.html" class="tsd-kind-icon">Suppression<wbr>Status</a></li>
+							<li class="tsd-kind-interface"><a href="interfaces/suppressionstatuses.html" class="tsd-kind-icon">Suppression<wbr>Statuses</a></li>
+							<li class="tsd-kind-interface"><a href="interfaces/suppressions.html" class="tsd-kind-icon">Suppressions</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/template.html" class="tsd-kind-icon">Template</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/templateinlist.html" class="tsd-kind-icon">Template<wbr>InList</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/templatepushaction.html" class="tsd-kind-icon">Template<wbr>Push<wbr>Action</a></li>
@@ -2889,6 +2911,8 @@ img {
 						<h3>Type aliases</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#callback" class="tsd-kind-icon">Callback</a></li>
+							<li class="tsd-kind-type-alias"><a href="globals.html#createsuppressionsrequest" class="tsd-kind-icon">Create<wbr>Suppressions<wbr>Request</a></li>
+							<li class="tsd-kind-type-alias"><a href="globals.html#deletesuppressionsrequest" class="tsd-kind-icon">Delete<wbr>Suppressions<wbr>Request</a></li>
 						</ul>
 					</section>
 				</div>
@@ -2902,7 +2926,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Callback&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/6a68d91/src/client/models/client/Callback.ts#L6">client/models/client/Callback.ts:6</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/efbe9f3/src/client/models/client/Callback.ts#L6">client/models/client/Callback.ts:6</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -2940,6 +2964,26 @@ img {
 						</li>
 					</ul>
 				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-type-alias">
+				<a name="createsuppressionsrequest" class="tsd-anchor"></a>
+				<h3>Create<wbr>Suppressions<wbr>Request</h3>
+				<div class="tsd-signature tsd-kind-icon">Create<wbr>Suppressions<wbr>Request<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SuppressionEntries</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/efbe9f3/src/client/models/suppressions/Suppression.ts#L26">client/models/suppressions/Suppression.ts:26</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-type-alias">
+				<a name="deletesuppressionsrequest" class="tsd-anchor"></a>
+				<h3>Delete<wbr>Suppressions<wbr>Request</h3>
+				<div class="tsd-signature tsd-kind-icon">Delete<wbr>Suppressions<wbr>Request<span class="tsd-signature-symbol">:</span> <a href="globals.html#createsuppressionsrequest" class="tsd-signature-type">CreateSuppressionsRequest</a></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/efbe9f3/src/client/models/suppressions/Suppression.ts#L27">client/models/suppressions/Suppression.ts:27</a></li>
+					</ul>
+				</aside>
 			</section>
 		</section>
 		<footer>
