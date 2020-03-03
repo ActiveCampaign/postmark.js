@@ -76,7 +76,7 @@ describe("AccountClient", () => {
 
             it("promise error", () => {
                 client = new postmark.AccountClient("testToken");
-                sandbox.stub(BaseClient.prototype, <any> "httpRequest").yields(undefined, {statusCode: 401, body: 'response'});
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects({response: {status: 401, data: 'response'}});
 
                 return client.getSenderSignatures().then((result) => {
                     throw Error(`Should not be here with result: ${result}`);
@@ -87,7 +87,7 @@ describe("AccountClient", () => {
 
             it("callback error", (done) => {
                 client = new postmark.AccountClient("testToken");
-                sandbox.stub(BaseClient.prototype, <any> "httpRequest").yields(undefined, {statusCode: 401, body: 'response'});
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects({response: {status: 401, data: 'response'}});
 
                 client.getSenderSignatures(undefined, (error: any, data) => {
                     expect(data).to.equal(null);

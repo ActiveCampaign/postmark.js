@@ -1,4 +1,6 @@
 import * as Errors from "./models/client/Errors";
+import {AxiosError, AxiosResponse} from "axios";
+import {DefaultResponse} from "./models";
 
 /**
  * This class handles all client request errors. Client response error is classified so that proper response error is generated.
@@ -13,15 +15,23 @@ export class ErrorHandler {
      *
      * @returns properly formatted Postmark error.
      */
-    public generateError(error: any): Errors.PostmarkError {
-        if (error.body !== undefined && error.body.Message !== undefined && error.statusCode !== undefined) {
-            return this.buildStatusError(error.body.Message, error.body.ErrorCode, error.statusCode);
-        } else if (error.statusCode !== undefined) {
-            const errorMessage: string = (error.message === undefined) ? error.statusMessage : error.message;
-            return this.buildStatusError(errorMessage, 0, error.statusCode);
-        } else {
-            return this.buildGeneralError(error.message);
+    public buildRequestError(error: AxiosError): Errors.PostmarkError {
+        const response: AxiosResponse | undefined = error.response;
+        if (response !== undefined) {
+            return this.buildErrorForResponse(response);
         }
+        else {
+            return this.buildGeneralError(error.toJSON.toString());
+        }
+    }
+
+    private buildErrorForResponse(response: AxiosResponse): Errors.PostmarkError {
+        const data: DefaultResponse = response.data;
+        const errorCode = (data.ErrorCode === undefined) ? 0 : data.ErrorCode;
+        const message = (data.Message === undefined) ? response.data.toString() : data.Message;
+        const status = (response.status === undefined) ? -1 : response.status;
+
+        return this.buildStatusError(message, errorCode, status);
     }
 
     /**
@@ -31,7 +41,7 @@ export class ErrorHandler {
      *
      * @returns properly formatted Postmark error.
      */
-    private buildGeneralError(errorMessage: string): Errors.PostmarkError {
+    public buildGeneralError(errorMessage: string): Errors.PostmarkError {
         return new Errors.PostmarkError(errorMessage);
     }
 

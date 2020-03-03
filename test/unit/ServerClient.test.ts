@@ -128,16 +128,15 @@ describe("ServerClient", () => {
                 expect(callback.calledOnce).to.be.true
             });
 
-            it('process regular response based on request status', () => {
-                sandbox.stub(BaseClient.prototype, <any> "httpRequest").yields(undefined, {statusCode: 200, body: 'response'});
-
+            it('process regular response based on request status', async () => {
+                sandbox.stub(BaseClient.prototype, <any> "processHttpRequest").returns(new Promise( function(resolve) { resolve("test"); }));
                 return client.getServer( (error, result) => {
-                    expect(result).to.eq('response');
+                    expect(result).to.eq('test');
                 });
             });
             
             it('process error response based on request status',  () => {
-                sandbox.stub(BaseClient.prototype, <any> "httpRequest").yields(undefined, {statusCode: 201, body: 'response'});
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects( {response: {data: {status: 201, message: 'response'}}});
 
                 return client.getServer( (error: any, result) => {
                     expect(error.name).to.eq('UnknownError');
