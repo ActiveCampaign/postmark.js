@@ -30,33 +30,62 @@ describe("ServerClient - Errors", () => {
     });
 
     describe("handling errors", () => {
-        it("throw basic error - promise", () => {
-            sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects({ response: {data: "Basic error" }});
+        describe("promise error", () => {
+            it("instance", () => {
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects({ message: "Basic error", response: {data: "Basic error" }});
 
-            const serverToken: string = testingKeys.get("SERVER_TOKEN");
-            let client: postmark.ServerClient = new postmark.ServerClient(serverToken);
+                const serverToken: string = testingKeys.get("SERVER_TOKEN");
+                let client: postmark.ServerClient = new postmark.ServerClient(serverToken);
 
-            return client.getServer().then((result) => {
-                return result;
-            }, (error) => {
-                expect(error).to.be.instanceOf(postmark.Errors.PostmarkError);
-                expect(error.message).to.equal("Basic error");
+                return client.getServer().then((result) => {
+                    return result;
+                }, (error) => {
+                    expect(error).to.be.instanceOf(postmark.Errors.PostmarkError);
+                });
+            });
+
+            it("message", () => {
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects({ message: "Basic error", response: {data: "Basic error" }});
+
+                const serverToken: string = testingKeys.get("SERVER_TOKEN");
+                let client: postmark.ServerClient = new postmark.ServerClient(serverToken);
+
+                return client.getServer().then((result) => {
+                    return result;
+                }, (error) => {
+                    expect(error.message).to.equal("Basic error");
+                });
+            });
+
+            it("name", () => {
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects({ response: { data: 'response', status: 401} });
+
+                return client.getBounces().then((result) => {
+                    return result;
+                }, (error) => {
+                    expect(error.name).to.equal(invalidTokenError);
+                });
             });
         });
 
-        it("throw api key error - promise", () => {
-            let error: any = new Error("Basic error");
-            error.statusCode = 401;
-            sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects({response: { data: "Basic error", status: 401}});
+        describe("callback error", () => {
+            it("name", (done) => {
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects({ response: {data: "Basic error", status: 404}});
 
-            const serverToken: string = testingKeys.get("SERVER_TOKEN");
-            let client: postmark.ServerClient = new postmark.ServerClient(serverToken);
+                const serverToken: string = testingKeys.get("SERVER_TOKEN");
+                let client: postmark.ServerClient = new postmark.ServerClient(serverToken);
 
-            return client.getServer().then((result) => {
-                return result;
-            }, (error) => {
-                expect(error).to.be.instanceOf(postmark.Errors.InvalidAPIKeyError);
+                client.getServer((error: any, data) => {
+                    expect(data).to.equal(null);
+                    expect(error.name).to.equal('PostmarkError');
+                    done();
+                });
             });
+        });
+
+        it("empty token", () => {
+            expect(() => new postmark.ServerClient(""))
+                .to.throw("A valid API token must be provided.");
         });
 
         describe("http status code errors", () => {
@@ -66,6 +95,20 @@ describe("ServerClient - Errors", () => {
                     status: 505
                 }
             };
+
+            it("401", () => {
+                error.response.status = 401;
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects(error);
+
+                const serverToken: string = testingKeys.get("SERVER_TOKEN");
+                let client: postmark.ServerClient = new postmark.ServerClient(serverToken);
+
+                return client.getServer().then((result) => {
+                    return result;
+                }, (error) => {
+                    expect(error).to.be.instanceOf(postmark.Errors.InvalidAPIKeyError);
+                });
+            });
 
             it("404", () => {
                 error.response.status = 404;
@@ -136,45 +179,6 @@ describe("ServerClient - Errors", () => {
                     expect(error).to.be.instanceOf(postmark.Errors.UnknownError);
                 });
             });
-        });
-
-        it("throw basic error - callback", (done) => {
-            sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects({ response: {data: "Basic error", status: 404}});
-
-            const serverToken: string = testingKeys.get("SERVER_TOKEN");
-            let client: postmark.ServerClient = new postmark.ServerClient(serverToken);
-
-            client.getServer((error: any, data) => {
-                expect(data).to.equal(null);
-                expect(error.name).to.equal('PostmarkError');
-                done();
-            });
-        });
-    });
-
-    it("empty token", () => {
-        expect(() => new postmark.ServerClient(""))
-            .to.throw("A valid API token must be provided.");
-    });
-
-    it("promise error", () => {
-        sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects({ response: { data: 'response', status: 401} });
-
-        return client.getBounces().then((result) => {
-            return result;
-        }, (error) => {
-            expect(error.name).to.equal(invalidTokenError);
-        });
-    });
-
-    it("callback error", (done) => {
-        client = new postmark.ServerClient("testToken");
-        sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects({ response: { data: 'response', status: 401} });
-
-        client.getBounces(undefined, (error: any, data) => {
-            expect(data).to.equal(null);
-            expect(error.name).to.equal(invalidTokenError);
-            done();
         });
     });
 });

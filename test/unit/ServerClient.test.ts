@@ -21,11 +21,8 @@ describe("ServerClient", () => {
 
     describe("#new", () => {
         it("default clientOptions", () => {
-            expect(client.clientOptions).to.eql({
-                useHttps: true,
-                requestHost: "api.postmarkapp.com",
-                timeout: 30,
-            });
+            const defaultClientOptions = { useHttps: true, requestHost: "api.postmarkapp.com", timeout: 30 };
+            expect(client.clientOptions).to.eql(defaultClientOptions);
         });
 
         it("clientVersion", () => {
@@ -122,7 +119,7 @@ describe("ServerClient", () => {
         describe("callback", () => {
             it('process it when there are no errors', async() => {
                 let callback = sinon.spy();
-                sandbox.stub(BaseClient.prototype, <any> "processHttpRequest").returns(new Promise( function(resolve) { resolve("test"); }));
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").returns(new Promise( function(resolve) { resolve("test"); }));
                 await client.getServer(callback);
 
                 expect(callback.calledOnce).to.be.true

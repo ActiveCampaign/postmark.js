@@ -1,37 +1,29 @@
-import * as Errors from "./models/client/Errors";
 import {AxiosError, AxiosResponse} from "axios";
 import {DefaultResponse} from "./models";
+import * as Errors from "./models/client/Errors";
 
 /**
- * This class handles all client request errors. Client response error is classified so that proper response error is generated.
- *
+ * This class handles general errors and all client request errors.
+ * Client response errors are classified so that proper response error is generated.
  */
 export class ErrorHandler {
 
     /**
      * Process callback function for HTTP request.
      *
-     * @param error - error that needs to be identified and transformed to proper Postmark error.
+     * @param error - request error that needs to be transformed to proper Postmark error.
      *
-     * @returns properly formatted Postmark error.
+     * @return {PostmarkError} - formatted Postmark error
      */
     public buildRequestError(error: AxiosError): Errors.PostmarkError {
         const response: AxiosResponse | undefined = error.response;
         if (response !== undefined) {
-            return this.buildErrorForResponse(response);
-        }
-        else {
+            return this.buildErrorForResponse(response, error.message);
+        } else if (error.message !== undefined) {
+            return this.buildGeneralError(error.message);
+        } else {
             return this.buildGeneralError(error.toJSON.toString());
         }
-    }
-
-    private buildErrorForResponse(response: AxiosResponse): Errors.PostmarkError {
-        const data: DefaultResponse = response.data;
-        const errorCode = (data.ErrorCode === undefined) ? 0 : data.ErrorCode;
-        const message = (data.Message === undefined) ? response.data.toString() : data.Message;
-        const status = (response.status === undefined) ? -1 : response.status;
-
-        return this.buildStatusError(message, errorCode, status);
     }
 
     /**
@@ -46,13 +38,32 @@ export class ErrorHandler {
     }
 
     /**
+     * Build Postmark error based on response from http client.
+     *
+     * @param {AxiosResponse} response - request response used to transform to Postmark error.
+     * @return {PostmarkError} - formatted Postmark error
+     */
+    private buildErrorForResponse(response: AxiosResponse, errorMessage: string): Errors.PostmarkError {
+        const data: DefaultResponse = response.data;
+        const errorCode = this.retrieveDefaultOrValue<number>(0, data.ErrorCode);
+        const status = this.retrieveDefaultOrValue<number>(0, response.status);
+        const message = this.retrieveDefaultOrValue<string>(errorMessage, data.Message);
+
+        return this.buildRequestErrorByStatus(message, errorCode, status);
+    }
+
+    private retrieveDefaultOrValue<T>(defaultValue: T, data: T): T {
+        return (data === undefined) ? defaultValue : data;
+    }
+
+    /**
      * Build Postmark error based on HTTP request status.
      *
      * @param error - http request library error, that will be transformed to Postmark error.
      *
      * @returns properly formatted Postmark error.
      */
-    private buildStatusError(errorMessage: string, errorCode: number, errorStatusCode: number): Errors.HttpError {
+    private buildRequestErrorByStatus(errorMessage: string, errorCode: number, errorStatusCode: number): Errors.HttpError {
         switch (errorStatusCode) {
             case 401:
                 return new Errors.InvalidAPIKeyError(errorMessage, errorCode, errorStatusCode);
