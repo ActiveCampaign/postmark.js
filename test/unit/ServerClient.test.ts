@@ -9,7 +9,6 @@ const testingKeys = nconf.env().file({file: __dirname + "/../../testing_keys.jso
 const packageJson = require("../../package.json");
 const clientVersion = packageJson.version;
 import * as sinon from 'sinon';
-import axios from "axios";
 
 describe("ServerClient", () => {
     let client: postmark.ServerClient;
@@ -109,14 +108,14 @@ describe("ServerClient", () => {
         describe("callback", () => {
             it('process it when there are no errors', async() => {
                 let callback = sinon.spy();
-                sandbox.stub(axios, "request").returns(Promise.resolve("test"));
+                sandbox.stub(client.httpClient, "request").returns(Promise.resolve("test"));
 
                 await client.getServer(callback);
                 expect(callback.calledOnce).to.be.true
             });
 
             it('process regular response based on request status', () => {
-                sandbox.stub(axios, "request").returns(Promise.resolve("test"));
+                sandbox.stub(client.httpClient, "request").returns(Promise.resolve("test"));
 
                 return client.getServer().then((result) => {
                     expect(result).to.eq('test');
@@ -126,7 +125,7 @@ describe("ServerClient", () => {
             });
             
             it('process error response based on request status',  () => {
-                sandbox.stub(axios, "request").rejects({response: {status: 600, data: 'response'}});
+                sandbox.stub(client.httpClient, "request").rejects({response: {status: 600, data: 'response'}});
 
                 return client.getServer().then((result) => {
                     throw Error(`Should not be here with result: ${result}`);

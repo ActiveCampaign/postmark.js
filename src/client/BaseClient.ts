@@ -28,7 +28,7 @@ export default abstract class BaseClient {
     protected errorHandler: ErrorHandler;
     private readonly authHeader: string;
     private readonly token: string;
-    private httpClient: AxiosInstance;
+    public readonly httpClient: AxiosInstance;
 
     protected constructor(token: string, authHeader: string, configOptions?: ClientOptions.Configuration) {
         this.clientVersion = CLIENT_VERSION;
