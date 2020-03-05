@@ -1,4 +1,4 @@
-import axios, {AxiosError} from "axios";
+import axios, {AxiosError, AxiosInstance} from "axios";
 
 import { ErrorHandler } from "./ErrorHandler";
 import {Callback, ClientOptions, FilteringParameters} from "./models";
@@ -28,6 +28,7 @@ export default abstract class BaseClient {
     protected errorHandler: ErrorHandler;
     private readonly authHeader: string;
     private readonly token: string;
+    private httpClient: AxiosInstance;
 
     protected constructor(token: string, authHeader: string, configOptions?: ClientOptions.Configuration) {
         this.clientVersion = CLIENT_VERSION;
@@ -35,6 +36,7 @@ export default abstract class BaseClient {
         this.authHeader = authHeader;
         this.clientOptions = { ...BaseClient.DefaultOptions, ...configOptions };
         this.errorHandler = new ErrorHandler();
+        this.httpClient = this.buildDefaultHttpClient();
 
         this.verifyToken(token);
     }
@@ -139,21 +141,28 @@ export default abstract class BaseClient {
      */
     private httpRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object),
                            body: (null | object)): Promise<T> {
-        axios.interceptors.response.use((response) => (response.data));
 
-        return axios.request<void, T>({
+        return this.httpClient.request<void, T>({
             method,
-            headers: this.getComposedHttpRequestHeaders(),
-            baseURL: this.getBaseHttpRequestURL(),
             url: path,
+            data: body,
+            headers: this.getComposedHttpRequestHeaders(),
             params: queryParameters,
+        });
+    }
+
+    private buildDefaultHttpClient(): AxiosInstance {
+        const httpClient = axios.create({
+            baseURL: this.getBaseHttpRequestURL(),
             timeout: this.getRequestTimeoutInSeconds(),
             responseType: "json",
-            data: body,
             validateStatus(status) {
                 return status >= 200 && status < 300;
             },
         });
+
+        httpClient.interceptors.response.use((response) => (response.data));
+        return httpClient;
     }
 
     private getRequestTimeoutInSeconds(): number {
