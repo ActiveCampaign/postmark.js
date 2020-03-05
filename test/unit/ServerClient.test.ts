@@ -9,7 +9,7 @@ const testingKeys = nconf.env().file({file: __dirname + "/../../testing_keys.jso
 const packageJson = require("../../package.json");
 const clientVersion = packageJson.version;
 import * as sinon from 'sinon';
-import BaseClient from "../../src/client/BaseClient";
+import axios from "axios";
 
 describe("ServerClient", () => {
     let client: postmark.ServerClient;
@@ -106,38 +106,33 @@ describe("ServerClient", () => {
             sandbox.restore();
         });
 
-        it('processRequest - without body called', () => {
-            sandbox.stub(BaseClient.prototype, <any> "processRequest").returns("called")
-            expect(client.getServer()).to.eq("called")
-        });
-
-        it('processRequest - with body called', () => {
-            sandbox.stub(BaseClient.prototype, <any> "processRequest").returns("called");
-            expect(client.editServer({Name: 'Test'})).to.eq("called")
-        });
-
         describe("callback", () => {
             it('process it when there are no errors', async() => {
                 let callback = sinon.spy();
-                sandbox.stub(BaseClient.prototype, <any> "httpRequest").returns(new Promise( function(resolve) { resolve("test"); }));
-                await client.getServer(callback);
+                sandbox.stub(axios, "request").returns(Promise.resolve("test"));
 
+                await client.getServer(callback);
                 expect(callback.calledOnce).to.be.true
             });
 
-            it('process regular response based on request status', async () => {
-                sandbox.stub(BaseClient.prototype, <any> "processHttpRequest").returns(new Promise( function(resolve) { resolve("test"); }));
-                return client.getServer( (error, result) => {
+            it('process regular response based on request status', () => {
+                sandbox.stub(axios, "request").returns(Promise.resolve("test"));
+
+                return client.getServer().then((result) => {
                     expect(result).to.eq('test');
+                }, (error) => {
+                    throw Error(`Should not be here with error: ${error}`);
                 });
             });
             
             it('process error response based on request status',  () => {
-                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects( {response: {data: {status: 201, message: 'response'}}});
+                sandbox.stub(axios, "request").rejects({response: {status: 600, data: 'response'}});
 
-                return client.getServer( (error: any, result) => {
+                return client.getServer().then((result) => {
+                    throw Error(`Should not be here with result: ${result}`);
+                }, (error) => {
                     expect(error.name).to.eq('UnknownError');
-                }).catch( error => {});
+                });
             });
         });
     });

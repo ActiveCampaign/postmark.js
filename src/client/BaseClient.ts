@@ -1,4 +1,4 @@
-import axios, {AxiosError, AxiosResponse} from "axios";
+import axios, {AxiosError} from "axios";
 
 import { ErrorHandler } from "./ErrorHandler";
 import {Callback, ClientOptions, FilteringParameters} from "./models";
@@ -108,10 +108,8 @@ export default abstract class BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     private processHttpRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object, body: (null | object)): Promise<T> {
-        return this.httpRequest(method, path, queryParameters, body)
-            .then((response: AxiosResponse) => {
-                return response.data as T;
-            })
+        return this.httpRequest<T>(method, path, queryParameters, body)
+            .then((response) => response)
             .catch((error: AxiosError) => {
                 throw this.errorHandler.buildRequestError(error);
             });
@@ -126,7 +124,7 @@ export default abstract class BaseClient {
     private processCallbackRequest<T>(httpRequest: Promise<T>, callback?: Callback<T>): void {
         if (callback) {
             httpRequest
-                .then((response) => { callback(null, response); })
+                .then((response) => callback(null, response))
                 .catch((error) => callback(error, null));
         }
     }
@@ -139,9 +137,11 @@ export default abstract class BaseClient {
      * @param queryParameters - Querystring parameters used for http request.
      * @param body - Data sent with http request.
      */
-    private httpRequest(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object),
-                        body: (null | object)): Promise<AxiosResponse> {
-        return axios.request({
+    private httpRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object),
+                           body: (null | object)): Promise<T> {
+        axios.interceptors.response.use((response) => (response.data));
+
+        return axios.request<void, T>({
             method,
             headers: this.getComposedHttpRequestHeaders(),
             baseURL: this.getBaseHttpRequestURL(),
@@ -163,10 +163,6 @@ export default abstract class BaseClient {
     private getBaseHttpRequestURL(): string {
         const scheme = this.clientOptions.useHttps ? "https" : "http";
         return `${scheme}://${this.clientOptions.requestHost}`;
-    }
-
-    private getHttpRequestURL(path: string): string {
-        return `${this.getBaseHttpRequestURL()}${path}`;
     }
 
     /**

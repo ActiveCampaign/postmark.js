@@ -89,16 +89,15 @@ describe("ServerClient - Errors", () => {
         });
 
         describe("http status code errors", () => {
-            let error: any = {
+            const buildError = (statusNumber: number) => ({
                 response: {
                     data: "Basic error",
-                    status: 505
+                    status: statusNumber
                 }
-            };
+            });
 
             it("401", () => {
-                error.response.status = 401;
-                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects(error);
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects(buildError(401));
 
                 const serverToken: string = testingKeys.get("SERVER_TOKEN");
                 let client: postmark.ServerClient = new postmark.ServerClient(serverToken);
@@ -111,8 +110,7 @@ describe("ServerClient - Errors", () => {
             });
 
             it("404", () => {
-                error.response.status = 404;
-                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects(error);
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects(buildError(404));
 
                 const serverToken: string = testingKeys.get("SERVER_TOKEN");
                 let client: postmark.ServerClient = new postmark.ServerClient(serverToken);
@@ -125,8 +123,7 @@ describe("ServerClient - Errors", () => {
             });
 
             it("422", () => {
-                error.response.status = 422;
-                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects(error);
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects(buildError(422));
 
                 const serverToken: string = testingKeys.get("SERVER_TOKEN");
                 let client: postmark.ServerClient = new postmark.ServerClient(serverToken);
@@ -139,8 +136,7 @@ describe("ServerClient - Errors", () => {
             });
 
             it("500", () => {
-                error.response.status = 500;
-                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects(error);
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects(buildError(500));
 
                 const serverToken: string = testingKeys.get("SERVER_TOKEN");
                 let client: postmark.ServerClient = new postmark.ServerClient(serverToken);
@@ -153,8 +149,7 @@ describe("ServerClient - Errors", () => {
             });
 
             it("503", () => {
-                error.response.status = 503;
-                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects(error);
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects(buildError(503));
 
                 const serverToken: string = testingKeys.get("SERVER_TOKEN");
                 let client: postmark.ServerClient = new postmark.ServerClient(serverToken);
@@ -167,8 +162,7 @@ describe("ServerClient - Errors", () => {
             });
 
             it("505", () => {
-                error.response.status = 505;
-                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects(error);
+                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects(buildError(505));
 
                 const serverToken: string = testingKeys.get("SERVER_TOKEN");
                 let client: postmark.ServerClient = new postmark.ServerClient(serverToken);

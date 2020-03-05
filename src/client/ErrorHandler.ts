@@ -3,7 +3,7 @@ import {DefaultResponse} from "./models";
 import * as Errors from "./models/client/Errors";
 
 /**
- * This class handles general errors and all client request errors.
+ * Handles general errors and all client request errors.
  * Client response errors are classified so that proper response error is generated.
  */
 export class ErrorHandler {

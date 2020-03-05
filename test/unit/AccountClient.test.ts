@@ -5,15 +5,17 @@ import "mocha";
 
 import * as sinon from 'sinon';
 import * as nconf from "nconf";
-import BaseClient from "../../src/client/BaseClient";
 const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
 
 const packageJson = require("../../package.json");
 const clientVersion = packageJson.version;
 
+import axios from "axios";
+
 describe("AccountClient", () => {
     let client: postmark.AccountClient;
     const accountToken: string = testingKeys.get("ACCOUNT_TOKEN");
+    const serverToken: string = testingKeys.get("SERVER_TOKEN");
 
     beforeEach(() => {
         client = new postmark.AccountClient(accountToken);
@@ -63,7 +65,8 @@ describe("AccountClient", () => {
         });
 
         describe("request errors", () => {
-            const invalidTokenError = "InvalidAPIKeyError";
+            const errorType = "InternalServerError";
+            const rejectError = {response: {status: 500, data: 'response'}}
             let sandbox: sinon.SinonSandbox;
 
             beforeEach(() => {
@@ -75,23 +78,23 @@ describe("AccountClient", () => {
             });
 
             it("promise error", () => {
-                client = new postmark.AccountClient("testToken");
-                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects({response: {status: 401, data: 'response'}});
+                client = new postmark.AccountClient(serverToken);
+                sandbox.stub(axios, "request").rejects(rejectError);
 
                 return client.getSenderSignatures().then((result) => {
                     throw Error(`Should not be here with result: ${result}`);
                 }, (error) => {
-                    expect(error.name).to.equal(invalidTokenError);
+                    expect(error.name).to.equal(errorType);
                 });
             });
 
             it("callback error", (done) => {
                 client = new postmark.AccountClient("testToken");
-                sandbox.stub(BaseClient.prototype, <any> "httpRequest").rejects({response: {status: 401, data: 'response'}});
+                sandbox.stub(axios, "request").rejects(rejectError);
 
                 client.getSenderSignatures(undefined, (error: any, data) => {
                     expect(data).to.equal(null);
-                    expect(error.name).to.equal(invalidTokenError);
+                    expect(error.name).to.equal(errorType);
                     done();
                 });
             });
