@@ -2379,7 +2379,10 @@ img {
 			<a href="errorhandler.html" class="tsd-kind-icon">Error<wbr>Handler</a>
 			<ul>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
-					<a href="errorhandler.html#generateerror" class="tsd-kind-icon">generate<wbr>Error</a>
+					<a href="errorhandler.html#buildgeneralerror" class="tsd-kind-icon">build<wbr>General<wbr>Error</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="errorhandler.html#buildrequesterror" class="tsd-kind-icon">build<wbr>Request<wbr>Error</a>
 				</li>
 			</ul>
 		</li>
@@ -2387,13 +2390,6 @@ img {
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
-		<section class="tsd-panel tsd-comment">
-			<div class="tsd-comment tsd-typography">
-				<div class="lead">
-					<p>This class handles all client request errors. Client response error is classified so that proper response error is generated.</p>
-				</div>
-			</div>
-		</section>
 		<section class="tsd-panel tsd-hierarchy">
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
@@ -2409,7 +2405,8 @@ img {
 					<section class="tsd-index-section ">
 						<h3>Methods</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-method tsd-parent-kind-class"><a href="errorhandler.html#generateerror" class="tsd-kind-icon">generate<wbr>Error</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="errorhandler.html#buildgeneralerror" class="tsd-kind-icon">build<wbr>General<wbr>Error</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="errorhandler.html#buildrequesterror" class="tsd-kind-icon">build<wbr>Request<wbr>Error</a></li>
 						</ul>
 					</section>
 				</div>
@@ -2418,34 +2415,52 @@ img {
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Methods</h2>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-				<a name="generateerror" class="tsd-anchor"></a>
-				<h3>generate<wbr>Error</h3>
+				<a name="buildgeneralerror" class="tsd-anchor"></a>
+				<h3>build<wbr>General<wbr>Error</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">generate<wbr>Error<span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="postmarkerror.html" class="tsd-signature-type">PostmarkError</a></li>
+					<li class="tsd-signature tsd-kind-icon">build<wbr>General<wbr>Error<span class="tsd-signature-symbol">(</span>errorMessage<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="postmarkerror.html" class="tsd-signature-type">PostmarkError</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/efbe9f3/src/client/ErrorHandler.ts#L16">client/ErrorHandler.ts:16</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/a2b014b/src/client/ErrorHandler.ts#L36">client/ErrorHandler.ts:36</a></li>
 							</ul>
 						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Process callback function for HTTP request.</p>
-							</div>
-						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>error: <span class="tsd-signature-type">any</span></h5>
-								<div class="tsd-comment tsd-typography">
-									<p>error that needs to be identified and transformed to proper Postmark error.</p>
-								</div>
+								<h5>errorMessage: <span class="tsd-signature-type">string</span></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="postmarkerror.html" class="tsd-signature-type">PostmarkError</a></h4>
 						<p>properly formatted Postmark error.</p>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="buildrequesterror" class="tsd-anchor"></a>
+				<h3>build<wbr>Request<wbr>Error</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">build<wbr>Request<wbr>Error<span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AxiosError</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="postmarkerror.html" class="tsd-signature-type">PostmarkError</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/a2b014b/src/client/ErrorHandler.ts#L18">client/ErrorHandler.ts:18</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>error: <span class="tsd-signature-type">AxiosError</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="postmarkerror.html" class="tsd-signature-type">PostmarkError</a></h4>
+						<ul>
+							<li>formatted Postmark error</li>
+						</ul>
 					</li>
 				</ul>
 			</section>

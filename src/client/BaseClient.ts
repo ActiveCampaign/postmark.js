@@ -25,10 +25,10 @@ export default abstract class BaseClient {
 
     public clientOptions: ClientOptions.Configuration;
     public clientVersion: string;
+    public readonly httpClient: AxiosInstance;
     protected errorHandler: ErrorHandler;
     private readonly authHeader: string;
     private readonly token: string;
-    public readonly httpClient: AxiosInstance;
 
     protected constructor(token: string, authHeader: string, configOptions?: ClientOptions.Configuration) {
         this.clientVersion = CLIENT_VERSION;
@@ -151,6 +151,11 @@ export default abstract class BaseClient {
         });
     }
 
+    /**
+     * Create http client instance with default settings.
+     *
+     * @return {AxiosInstance}
+     */
     private buildDefaultHttpClient(): AxiosInstance {
         const httpClient = axios.create({
             baseURL: this.getBaseHttpRequestURL(),
