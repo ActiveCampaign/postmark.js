@@ -127,6 +127,7 @@ export class TemplatedMessage {
     public Cc?: string;
     public Bcc?: string;
     public ReplyTo?: string;
+    public MessageStream?: string;
     public Tag?: string;
     public TrackOpens?: boolean;
     public TrackLinks?: LinkTrackingOptions;

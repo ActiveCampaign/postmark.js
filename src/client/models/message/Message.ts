@@ -8,6 +8,7 @@ export class Message {
     public To?: string;
     public Cc?: string;
     public Bcc?: string;
+    public MessageStream?: string;
     public Subject: string;
     public ReplyTo?: string;
     public HtmlBody?: string;
