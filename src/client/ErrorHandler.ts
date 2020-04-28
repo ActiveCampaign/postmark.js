@@ -17,12 +17,13 @@ export class ErrorHandler {
      */
     public buildRequestError(error: AxiosError): Errors.PostmarkError {
         const response: AxiosResponse | undefined = error.response;
+
         if (response !== undefined) {
             return this.buildErrorForResponse(response, error.message);
         } else if (error.message !== undefined) {
             return this.buildGeneralError(error.message);
         } else {
-            return this.buildGeneralError(error.toJSON.toString());
+            return this.buildGeneralError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
         }
     }
 

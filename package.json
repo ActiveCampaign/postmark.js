@@ -65,19 +65,19 @@
   ],
   "devDependencies": {
     "@types/chai": "^4.1.4",
-    "@types/mocha": "^5.2.5",
+    "@types/mocha": "^7.0.2",
     "@types/nconf": "0.0.37",
     "@types/request": "^2.47.1",
     "@types/sinon": "^7.5.0",
     "chai": "^4.1.2",
-    "mocha": "^5.2.0",
-    "nconf": "0.7.1",
+    "mocha": "^7.1.2",
+    "nconf": "^0.10.0",
     "pre-commit": "1.2.2",
+    "sinon": "^7.5.0",
     "ts-node": "^7.0.1",
     "tslint": "^5.12.0",
     "typedoc": "^0.15.0",
-    "typescript": "^2.9.2",
-    "sinon": "^7.5.0"
+    "typescript": "^2.9.2"
   },
   "dependencies": {
     "axios": "^0.19.2"

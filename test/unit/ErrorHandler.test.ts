@@ -17,6 +17,26 @@ describe("ErrorHandler", () => {
         expect(postmarkError.name).to.equal("PostmarkError");
     });
 
+    it("no response", () => {
+        const errorHandler = new ErrorHandler();
+        const error: any = { message: 'Hello Error' };
+
+        const postmarkError = errorHandler.buildRequestError(error);
+        expect(postmarkError).to.be.an.instanceof(Errors.PostmarkError);
+        expect(postmarkError.name).to.equal("PostmarkError");
+        expect(postmarkError.message).to.equal(error.message);
+    });
+
+    it("no message", () => {
+        const errorHandler = new ErrorHandler();
+        const error: any = { stack: 'Hello stack' };
+
+        const postmarkError = errorHandler.buildRequestError(error);
+        expect(postmarkError).to.be.an.instanceof(Errors.PostmarkError);
+        expect(postmarkError.name).to.equal("PostmarkError");
+        expect(postmarkError.message).to.equal(JSON.stringify(error));
+    });
+
     describe("statuses", () => {
         it("401", () => {
             const errorHandler = new ErrorHandler();
