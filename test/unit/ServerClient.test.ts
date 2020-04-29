@@ -8,7 +8,7 @@ const testingKeys = nconf.env().file({file: __dirname + "/../../testing_keys.jso
 
 const packageJson = require("../../package.json");
 const clientVersion = packageJson.version;
-import * as sinon from 'sinon';
+import * as sinon from "sinon";
 
 describe("ServerClient", () => {
     let client: postmark.ServerClient;
@@ -20,8 +20,8 @@ describe("ServerClient", () => {
 
     describe("#new", () => {
         it("default clientOptions", () => {
-            const defaultClientOptions = { useHttps: true, requestHost: "api.postmarkapp.com", timeout: 30 };
-            expect(client.clientOptions).to.eql(defaultClientOptions);
+            const defaultClientOptions = { useHttps: true, requestHost: "api.postmarkapp.com", timeout: 60 };
+            expect(client.getClientOptions()).to.eql(defaultClientOptions);
         });
 
         it("clientVersion", () => {
@@ -48,12 +48,9 @@ describe("ServerClient", () => {
             const requestHost = "test";
             const useHttps = false;
             const timeout = 10;
+            client.setClientOptions({requestHost, useHttps, timeout});
 
-            client.clientOptions.requestHost = requestHost;
-            client.clientOptions.useHttps = useHttps;
-            client.clientOptions.timeout = timeout;
-
-            expect(client.clientOptions).to.eql({
+            expect(client.getClientOptions()).to.eql({
                 useHttps,
                 requestHost,
                 timeout,
@@ -67,7 +64,7 @@ describe("ServerClient", () => {
             const clientOptions = new postmark.Models.ClientOptions.Configuration(useHttps, requestHost, timeout);
             client = new postmark.ServerClient(serverToken, clientOptions);
 
-            expect(client.clientOptions).to.eql({
+            expect(client.getClientOptions()).to.eql({
                 useHttps,
                 requestHost,
                 timeout,
@@ -85,7 +82,7 @@ describe("ServerClient", () => {
                 timeout,
             });
 
-            expect(client.clientOptions).to.eql({
+            expect(client.getClientOptions()).to.eql({
                 useHttps,
                 requestHost,
                 timeout,
@@ -106,7 +103,7 @@ describe("ServerClient", () => {
         });
 
         describe("callback", () => {
-            it('process it when there are no errors', async() => {
+            it("process it when there are no errors", async() => {
                 let callback = sinon.spy();
                 sandbox.stub(client.httpClient, "request").returns(Promise.resolve("test"));
 
@@ -114,23 +111,23 @@ describe("ServerClient", () => {
                 expect(callback.calledOnce).to.be.true
             });
 
-            it('process regular response based on request status', () => {
+            it("process regular response based on request status", () => {
                 sandbox.stub(client.httpClient, "request").returns(Promise.resolve("test"));
 
                 return client.getServer().then((result) => {
-                    expect(result).to.eq('test');
+                    expect(result).to.eq("test");
                 }, (error) => {
                     throw Error(`Should not be here with error: ${error}`);
                 });
             });
             
-            it('process error response based on request status',  () => {
-                sandbox.stub(client.httpClient, "request").rejects({response: {status: 600, data: 'response'}});
+            it("process error response based on request status",  () => {
+                sandbox.stub(client.httpClient, "request").rejects({response: {status: 600, data: "response"}});
 
                 return client.getServer().then((result) => {
                     throw Error(`Should not be here with result: ${result}`);
                 }, (error) => {
-                    expect(error.name).to.eq('UnknownError');
+                    expect(error.name).to.eq("UnknownError");
                 });
             });
         });

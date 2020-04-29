@@ -3,8 +3,8 @@ import * as postmark from "../../src/index";
 import { expect } from "chai";
 import "mocha";
 
-import * as sinon from 'sinon';
 import * as nconf from "nconf";
+import * as sinon from "sinon";
 const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
 
 const packageJson = require("../../package.json");
@@ -21,10 +21,10 @@ describe("AccountClient", () => {
 
     describe("#new", () => {
         it("default clientOptions", () => {
-            expect(client.clientOptions).to.eql({
+            expect(client.getClientOptions()).to.eql({
                 useHttps: true,
                 requestHost: "api.postmarkapp.com",
-                timeout: 30,
+                timeout: 60,
             });
         });
 
@@ -44,12 +44,9 @@ describe("AccountClient", () => {
         const requestHost = "test";
         const useHttps = false;
         const timeout = 10;
+        client.setClientOptions({requestHost, useHttps, timeout});
 
-        client.clientOptions.requestHost = requestHost;
-        client.clientOptions.useHttps = useHttps;
-        client.clientOptions.timeout = timeout;
-
-        expect(client.clientOptions).to.eql({
+        expect(client.getClientOptions()).to.eql({
             useHttps,
             requestHost,
             timeout,
@@ -64,7 +61,7 @@ describe("AccountClient", () => {
 
         describe("request errors", () => {
             const errorType = "InternalServerError";
-            const rejectError = {response: {status: 500, data: 'response'}}
+            const rejectError = {response: {status: 500, data: "response"}};
             let sandbox: sinon.SinonSandbox;
 
             beforeEach(() => {

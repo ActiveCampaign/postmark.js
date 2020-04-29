@@ -20,13 +20,13 @@ export default abstract class BaseClient {
     public static DefaultOptions: ClientOptions.Configuration = {
         useHttps: true,
         requestHost: "api.postmarkapp.com",
-        timeout: 30,
+        timeout: 60,
     };
 
-    public clientOptions: ClientOptions.Configuration;
     public clientVersion: string;
     public readonly httpClient: AxiosInstance;
     protected errorHandler: ErrorHandler;
+    private clientOptions: ClientOptions.Configuration;
     private readonly authHeader: string;
     private readonly token: string;
 
@@ -35,10 +35,18 @@ export default abstract class BaseClient {
         this.token = token.trim();
         this.authHeader = authHeader;
         this.clientOptions = { ...BaseClient.DefaultOptions, ...configOptions };
-        this.errorHandler = new ErrorHandler();
         this.httpClient = this.buildDefaultHttpClient();
-
+        this.errorHandler = new ErrorHandler();
         this.verifyToken(token);
+    }
+
+    public setClientOptions(configOptions: ClientOptions.Configuration): void {
+      this.clientOptions = configOptions;
+      this.buildDefaultHttpClient();
+    }
+
+    public getClientOptions(): ClientOptions.Configuration {
+      return this.clientOptions;
     }
 
     /**
@@ -171,7 +179,7 @@ export default abstract class BaseClient {
     }
 
     private getRequestTimeoutInSeconds(): number {
-        return (this.clientOptions.timeout || 30) * 1000;
+        return (this.clientOptions.timeout || 60) * 1000;
     }
 
     private getBaseHttpRequestURL(): string {
