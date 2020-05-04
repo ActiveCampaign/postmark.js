@@ -169,6 +169,7 @@ export default abstract class BaseClient {
             baseURL: this.getBaseHttpRequestURL(),
             timeout: this.getRequestTimeoutInSeconds(),
             responseType: "json",
+            maxContentLength: Infinity,
             validateStatus(status) {
                 return status >= 200 && status < 300;
             },
