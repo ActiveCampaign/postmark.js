@@ -18,15 +18,15 @@ export class UpdateDomainRequest {
 export interface Domain {
     ID: number;
     Name: string;
-    SpfVerified: boolean;
+    SPFVerified: boolean;
     DKIMVerified: boolean;
     WeakDKIM: boolean;
     ReturnPathDomainVerified: boolean;
 }
 
 export interface DomainDetails extends Domain {
-    SpfHost: string;
-    SpfTextValue: string;
+    SPFHost: string;
+    SPFTextValue: string;
     DKIMHost: string;
     DKIMTextValue: string;
     DKIMPendingHost: string;
