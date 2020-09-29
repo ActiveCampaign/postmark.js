@@ -8,7 +8,7 @@ When releasing a new version of the library, make sure to follow these steps:
 
 Pre-release recommendations:
 
-1. Make sure to run `npm run lint` to check if there are any styling or code errors
+* Make sure to check if there are any styling or code errors by running lint tools defined in package.json
 
 Release steps:
 
@@ -18,6 +18,6 @@ Release steps:
 4. Make sure tests pass (details how to run in package.json)
 5. Compile the docs (details in the package.json - unless it's a very small change) 
 6. Push the changes to Github and wait for tests to pass
-7. Push the changes to NPM with `npm-publish`
+7. Push the changes to NPM with `npm publish`
 8. Update any related content in the [Github wiki](https://github.com/wildbit/postmark.js/wiki)
 9. Add release version in the [Github releases](https://github.com/wildbit/postmark.js/releases)
