@@ -24,3 +24,5 @@ export * from "./webhooks/Webhooks";
 export * from "./webhooks/Webhook";
 export * from "./webhooks/WebhookFilteringParameters";
 export * from "./suppressions/Suppression";
+export * from "./streams/MessageStream";
+export * from "./streams/MessageStreamsFilteringParameters";

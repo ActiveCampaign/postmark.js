@@ -6,6 +6,12 @@
 
 When releasing a new version of the library, make sure to follow these steps:
 
+Pre-release recommendations:
+
+1. Make sure to run `npm run lint` to check if there are any styling or code errors
+
+Release steps:
+
 1. Merge your branch to master
 2. Update version in package.json
 3. Compile latest version (details how to run in package.json)

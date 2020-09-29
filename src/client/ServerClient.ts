@@ -21,13 +21,14 @@ import {
     ClickLocationCounts,
     ClickPlaformUsageCounts,
     CreateInboundRuleRequest,
+    CreateMessageStreamRequest,
     CreateSuppressionsRequest,
     CreateTemplateRequest,
+
     CreateWebhookRequest,
-
     DeleteSuppressionsRequest,
-    DeliveryStatistics,
 
+    DeliveryStatistics,
     EmailClientUsageCounts,
     EmailPlaformUsageCounts,
     EmailReadTimesCounts,
@@ -35,17 +36,23 @@ import {
     InboundMessages,
     InboundMessagesFilteringParameters,
     InboundRule,
-    InboundRules,
 
+    InboundRules,
     Message,
     MessageSendingResponse,
-    OpenCounts,
 
+    MessageStream,
+    MessageStreamArchiveResponse,
+    MessageStreams,
+    MessageStreamsFilteringParameters,
+    MessageStreamUnarchiveResponse,
+    OpenCounts,
     OutboundMessageClicks,
     OutboundMessageClicksFilteringParameters,
     OutboundMessageDetails,
     OutboundMessageDump,
     OutboundMessageOpens,
+
     OutboundMessageOpensFilteringParameters,
     OutboundMessages,
     OutboundMessagesFilteringParameters,
@@ -55,20 +62,21 @@ import {
 
     SpamCounts,
     StatisticsFilteringParameters,
+
     Suppressions,
     SuppressionStatuses,
     Template,
     TemplatedMessage,
-
     TemplateFilteringParameters,
-    Templates,
 
+    Templates,
     TemplateValidation,
     TemplateValidationOptions,
     TrackedEmailCounts,
+
+    UpdateMessageStreamRequest,
     UpdateServerRequest,
     UpdateTemplateRequest,
-
     UpdateWebhookRequest,
     Webhook,
     WebhookFilteringParameters,
@@ -662,6 +670,72 @@ export default class ServerClient extends BaseClient {
      */
     public deleteWebhook(id: number, callback?: Callback<DefaultResponse>): Promise<DefaultResponse> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.DELETE, `/webhooks/${id}`, {}, callback);
+    }
+
+    /**
+     * Get the list of message streams on a server.
+     *
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public getMessageStreams(filter: MessageStreamsFilteringParameters = {}, callback?: Callback<MessageStreams>): Promise<MessageStreams> {
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, "/message-streams", filter, callback);
+    }
+
+    /**
+     * Get details for a specific message stream on a server.
+     *
+     * @param id - The ID of the message stream you wish to retrieve.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public getMessageStream(id: string, callback?: Callback<MessageStream>): Promise<MessageStream> {
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/message-streams/${id}`, {}, callback);
+    }
+
+    /**
+     * Update message stream on the associated server.
+     *
+     * @param id - Id of the webhook you wish to update.
+     * @param options - Webhook options you wish to update.
+     * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public editMessageStream(id: string, options: UpdateMessageStreamRequest, callback?: Callback<MessageStream>): Promise<MessageStream> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.PATCH, `/message-streams/${id}`, options, callback);
+    }
+
+    /**
+     * Create a message stream on the associated server.
+     *
+     * @param options - Configuration options to be used when creating message stream on the server.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public createMessageStream(options: CreateMessageStreamRequest, callback?: Callback<MessageStream>): Promise<MessageStream> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, "/message-streams", options, callback);
+    }
+
+    /**
+     * Archive a message stream on the associated server.
+     *
+     * @param options - Configuration options to be used when creating message stream on the server.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public archiveMessageStream(id: string , callback?: Callback<MessageStreamArchiveResponse>): Promise<MessageStreamArchiveResponse> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, `/message-streams/${id}/archive`, {}, callback);
+    }
+
+    /**
+     * Unrchive a message stream on the associated server.
+     *
+     * @param options - Configuration options to be used when creating message stream on the server.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public unarchiveMessageStream(id: string , callback?: Callback<MessageStreamUnarchiveResponse>): Promise<MessageStreamUnarchiveResponse> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, `/message-streams/${id}/unarchive`, {}, callback);
     }
 
     /**

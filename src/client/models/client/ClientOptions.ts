@@ -18,6 +18,7 @@ export namespace ClientOptions {
         PUT = "PUT",
         OPTIONS = "OPTIONS",
         HEAD = "HEAD",
+        PATCH = "PATCH",
     }
 
     export enum DefaultHeaderNames {
