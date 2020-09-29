@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Suppression | Postmark.js</title>
+	<title>MessageStreamArchiveResponse | Postmark.js</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -2376,19 +2376,16 @@ img {
 <nav class="tsd-navigation secondary">
 	<ul>
 		<li class="current tsd-kind-interface">
-			<a href="suppression.html" class="tsd-kind-icon">Suppression</a>
+			<a href="messagestreamarchiveresponse.html" class="tsd-kind-icon">Message<wbr>Stream<wbr>Archive<wbr>Response</a>
 			<ul>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="suppression.html#createdat" class="tsd-kind-icon">Created<wbr>At</a>
+					<a href="messagestreamarchiveresponse.html#expectedpurgedate" class="tsd-kind-icon">Expected<wbr>Purge<wbr>Date</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="suppression.html#emailaddress" class="tsd-kind-icon">Email<wbr>Address</a>
+					<a href="messagestreamarchiveresponse.html#id" class="tsd-kind-icon">ID</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="suppression.html#origin" class="tsd-kind-icon">Origin</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="suppression.html#suppressionreason" class="tsd-kind-icon">Suppression<wbr>Reason</a>
+					<a href="messagestreamarchiveresponse.html#serverid" class="tsd-kind-icon">ServerID</a>
 				</li>
 			</ul>
 		</li>
@@ -2400,7 +2397,7 @@ img {
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
 				<li>
-					<span class="target">Suppression</span>
+					<span class="target">MessageStreamArchiveResponse</span>
 				</li>
 			</ul>
 		</section>
@@ -2411,10 +2408,9 @@ img {
 					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="suppression.html#createdat" class="tsd-kind-icon">Created<wbr>At</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="suppression.html#emailaddress" class="tsd-kind-icon">Email<wbr>Address</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="suppression.html#origin" class="tsd-kind-icon">Origin</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="suppression.html#suppressionreason" class="tsd-kind-icon">Suppression<wbr>Reason</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="messagestreamarchiveresponse.html#expectedpurgedate" class="tsd-kind-icon">Expected<wbr>Purge<wbr>Date</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="messagestreamarchiveresponse.html#id" class="tsd-kind-icon">ID</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="messagestreamarchiveresponse.html#serverid" class="tsd-kind-icon">ServerID</a></li>
 						</ul>
 					</section>
 				</div>
@@ -2423,42 +2419,32 @@ img {
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="createdat" class="tsd-anchor"></a>
-				<h3>Created<wbr>At</h3>
-				<div class="tsd-signature tsd-kind-icon">Created<wbr>At<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<a name="expectedpurgedate" class="tsd-anchor"></a>
+				<h3>Expected<wbr>Purge<wbr>Date</h3>
+				<div class="tsd-signature tsd-kind-icon">Expected<wbr>Purge<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5ea4923/src/client/models/suppressions/Suppression.ts#L5">client/models/suppressions/Suppression.ts:5</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5ea4923/src/client/models/streams/MessageStream.ts#L26">client/models/streams/MessageStream.ts:26</a></li>
 					</ul>
 				</aside>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="emailaddress" class="tsd-anchor"></a>
-				<h3>Email<wbr>Address</h3>
-				<div class="tsd-signature tsd-kind-icon">Email<wbr>Address<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<a name="id" class="tsd-anchor"></a>
+				<h3>ID</h3>
+				<div class="tsd-signature tsd-kind-icon">ID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5ea4923/src/client/models/suppressions/Suppression.ts#L2">client/models/suppressions/Suppression.ts:2</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5ea4923/src/client/models/streams/MessageStream.ts#L24">client/models/streams/MessageStream.ts:24</a></li>
 					</ul>
 				</aside>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="origin" class="tsd-anchor"></a>
-				<h3>Origin</h3>
-				<div class="tsd-signature tsd-kind-icon">Origin<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<a name="serverid" class="tsd-anchor"></a>
+				<h3>ServerID</h3>
+				<div class="tsd-signature tsd-kind-icon">ServerID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5ea4923/src/client/models/suppressions/Suppression.ts#L4">client/models/suppressions/Suppression.ts:4</a></li>
-					</ul>
-				</aside>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="suppressionreason" class="tsd-anchor"></a>
-				<h3>Suppression<wbr>Reason</h3>
-				<div class="tsd-signature tsd-kind-icon">Suppression<wbr>Reason<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5ea4923/src/client/models/suppressions/Suppression.ts#L3">client/models/suppressions/Suppression.ts:3</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5ea4923/src/client/models/streams/MessageStream.ts#L25">client/models/streams/MessageStream.ts:25</a></li>
 					</ul>
 				</aside>
 			</section>
