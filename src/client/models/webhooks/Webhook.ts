@@ -23,8 +23,11 @@ export class UpdateWebhookRequest {
 }
 
 export class CreateWebhookRequest extends UpdateWebhookRequest {
-    public constructor(url?: string, triggers?: WebhookRequestTriggers, httpAuth?: HttpAuth, httpHeaders?: Header[]) {
+    public MessageStream?: string;
+
+    public constructor(url?: string, triggers?: WebhookRequestTriggers, httpAuth?: HttpAuth, httpHeaders?: Header[], messageStream?: string) {
         super(url, triggers, httpAuth, httpHeaders);
+        this.MessageStream = messageStream;
     }
 }
 

@@ -28,6 +28,9 @@ export class OutboundMessagesFilteringParameters extends FilteringParameters {
     public toDate?: string;
     public subject?: string;
     public messageStream?: string;
+
+    // added to support metadata_... parameters
+    [key: string]: any;
     constructor(count: number = 100, offset: number = 0,
                 recipient?: string, fromEmail?: string, tag?: string,
                 status?: OutboundMessageStatus, fromDate?: string,
