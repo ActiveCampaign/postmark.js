@@ -2387,6 +2387,9 @@ img {
 				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a href="createwebhookrequest.html#httpheaders" class="tsd-kind-icon">Http<wbr>Headers</a>
 				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="createwebhookrequest.html#messagestream" class="tsd-kind-icon">Message<wbr>Stream</a>
+				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a href="createwebhookrequest.html#triggers" class="tsd-kind-icon">Triggers</a>
 				</li>
@@ -2422,11 +2425,12 @@ img {
 							<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="createwebhookrequest.html#constructor" class="tsd-kind-icon">constructor</a></li>
 						</ul>
 					</section>
-					<section class="tsd-index-section tsd-is-inherited">
+					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="createwebhookrequest.html#httpauth" class="tsd-kind-icon">Http<wbr>Auth</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="createwebhookrequest.html#httpheaders" class="tsd-kind-icon">Http<wbr>Headers</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="createwebhookrequest.html#messagestream" class="tsd-kind-icon">Message<wbr>Stream</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="createwebhookrequest.html#triggers" class="tsd-kind-icon">Triggers</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="createwebhookrequest.html#url" class="tsd-kind-icon">Url</a></li>
 						</ul>
@@ -2440,14 +2444,14 @@ img {
 				<a name="constructor" class="tsd-anchor"></a>
 				<h3>constructor</h3>
 				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-					<li class="tsd-signature tsd-kind-icon">new <wbr>Create<wbr>Webhook<wbr>Request<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, triggers<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">WebhookRequestTriggers</span>, httpAuth<span class="tsd-signature-symbol">: </span><a href="createwebhookrequest.html#httpauth" class="tsd-signature-type">HttpAuth</a>, httpHeaders<span class="tsd-signature-symbol">: </span><a href="header.html" class="tsd-signature-type">Header</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="createwebhookrequest.html" class="tsd-signature-type">CreateWebhookRequest</a></li>
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Create<wbr>Webhook<wbr>Request<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, triggers<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">WebhookRequestTriggers</span>, httpAuth<span class="tsd-signature-symbol">: </span><a href="createwebhookrequest.html#httpauth" class="tsd-signature-type">HttpAuth</a>, httpHeaders<span class="tsd-signature-symbol">: </span><a href="header.html" class="tsd-signature-type">Header</a><span class="tsd-signature-symbol">[]</span>, messageStream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="createwebhookrequest.html" class="tsd-signature-type">CreateWebhookRequest</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<p>Overrides <a href="updatewebhookrequest.html">UpdateWebhookRequest</a>.<a href="updatewebhookrequest.html#constructor">constructor</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5ea4923/src/client/models/webhooks/Webhook.ts#L25">client/models/webhooks/Webhook.ts:25</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/bcc4e95/src/client/models/webhooks/Webhook.ts#L26">client/models/webhooks/Webhook.ts:26</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2464,13 +2468,16 @@ img {
 							<li>
 								<h5><span class="tsd-flag ts-flagOptional">Optional</span> httpHeaders: <a href="header.html" class="tsd-signature-type">Header</a><span class="tsd-signature-symbol">[]</span></h5>
 							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> messageStream: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="createwebhookrequest.html" class="tsd-signature-type">CreateWebhookRequest</a></h4>
 					</li>
 				</ul>
 			</section>
 		</section>
-		<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 				<a name="httpauth" class="tsd-anchor"></a>
@@ -2479,7 +2486,7 @@ img {
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="updatewebhookrequest.html">UpdateWebhookRequest</a>.<a href="updatewebhookrequest.html#httpauth">HttpAuth</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5ea4923/src/client/models/webhooks/Webhook.ts#L13">client/models/webhooks/Webhook.ts:13</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/bcc4e95/src/client/models/webhooks/Webhook.ts#L13">client/models/webhooks/Webhook.ts:13</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -2490,7 +2497,17 @@ img {
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="updatewebhookrequest.html">UpdateWebhookRequest</a>.<a href="updatewebhookrequest.html#httpheaders">HttpHeaders</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5ea4923/src/client/models/webhooks/Webhook.ts#L14">client/models/webhooks/Webhook.ts:14</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/bcc4e95/src/client/models/webhooks/Webhook.ts#L14">client/models/webhooks/Webhook.ts:14</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="messagestream" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> Message<wbr>Stream</h3>
+				<div class="tsd-signature tsd-kind-icon">Message<wbr>Stream<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/bcc4e95/src/client/models/webhooks/Webhook.ts#L26">client/models/webhooks/Webhook.ts:26</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -2501,7 +2518,7 @@ img {
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="updatewebhookrequest.html">UpdateWebhookRequest</a>.<a href="updatewebhookrequest.html#triggers">Triggers</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5ea4923/src/client/models/webhooks/Webhook.ts#L15">client/models/webhooks/Webhook.ts:15</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/bcc4e95/src/client/models/webhooks/Webhook.ts#L15">client/models/webhooks/Webhook.ts:15</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -2512,7 +2529,7 @@ img {
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="updatewebhookrequest.html">UpdateWebhookRequest</a>.<a href="updatewebhookrequest.html#url">Url</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/5ea4923/src/client/models/webhooks/Webhook.ts#L12">client/models/webhooks/Webhook.ts:12</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/bcc4e95/src/client/models/webhooks/Webhook.ts#L12">client/models/webhooks/Webhook.ts:12</a></li>
 					</ul>
 				</aside>
 			</section>
