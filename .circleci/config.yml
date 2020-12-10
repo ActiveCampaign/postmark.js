@@ -4,18 +4,8 @@ workflows:
   node-tests:
     jobs:
       - unit-tests:
-          name: node4
-          version: "4"
-      - unit-tests:
-          name: node5
-          version: "5"
-          requires:
-            - node4
-      - unit-tests:
           name: node6
           version: "6"
-          requires:
-            - node5
       - unit-tests:
           name: node7
           version: "7"
