@@ -1,0 +1,62 @@
+version: 2.1
+
+workflows:
+  node-tests:
+    jobs:
+      - unit-tests:
+          name: node4
+          version: "4"
+      - unit-tests:
+          name: node5
+          version: "5"
+          requires:
+            - node4
+      - unit-tests:
+          name: node6
+          version: "6"
+          requires:
+            - node5
+      - unit-tests:
+          name: node7
+          version: "7"
+          requires:
+            - node6
+      - unit-tests:
+          name: node8
+          version: "8"
+          requires:
+            - node7
+      - unit-tests:
+          name: node9
+          version: "9"
+          requires:
+            - node8
+      - unit-tests:
+          name: node10
+          version: "10"
+          requires:
+            - node9
+
+jobs:
+  unit-tests:
+    parameters:
+      version:
+        type: string
+    docker:
+      - image: circleci/node:<< parameters.version >>
+    steps:
+      - checkout
+      - run:
+          name: Versions
+          command: |
+            echo "npm: $(npm --version)"
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Install typescript
+          command: |
+            npm install --no-save typescript
+      - run:
+          name: Run tests
+          command: npm test

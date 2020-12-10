@@ -8,7 +8,7 @@ const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.js
 
 describe("Servers - Message Streams", () => {
     const serverNamePrefix: string = "node-js-test-message-streams";
-    const accountToken: string = testingKeys.get("ACCOUNT_TOKEN");
+    const accountToken: string = testingKeys.get("ACCOUNT_API_TOKEN");
     const accountClient = new postmark.AccountClient(accountToken);
 
     async function serverToTestApiToken() {

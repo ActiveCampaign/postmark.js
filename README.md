@@ -2,8 +2,10 @@
     <img src="https://github.com/wildbit/postmark.js/raw/master/postmark.png" alt="Postmark Logo" title="Postmark" width="120" height="120" align="right">
 </a>
 
+
+
 # Postmark Node.js Library
-[![Build Status](https://travis-ci.org/wildbit/postmark.js.svg?branch=master)](https://travis-ci.org/wildbit/postmark.js)
+[![Build Status](https://circleci.com/gh/wildbit/postmark.js.svg?style=shield)](https://circleci.com/gh/wildbit/postmark.js.svg?style=shield)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://www.opensource.org/licenses/MIT)
 [![npm version](https://badge.fury.io/js/postmark.svg)](https://badge.fury.io/js/postmark)
 

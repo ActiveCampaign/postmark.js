@@ -8,7 +8,7 @@ import * as nconf from "nconf";
 const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
 
 describe("Client - Message Statistics", () => {
-    const serverToken: string = testingKeys.get("SERVER_TOKEN");
+    const serverToken: string = testingKeys.get("SERVER_API_TOKEN");
     const client = new postmark.ServerClient(serverToken);
     const filter = new OutboundMessagesFilteringParameters(1, 0);
 

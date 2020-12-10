@@ -12,8 +12,8 @@ const clientVersion = packageJson.version;
 
 describe("AccountClient", () => {
     let client: postmark.AccountClient;
-    const accountToken: string = testingKeys.get("ACCOUNT_TOKEN");
-    const serverToken: string = testingKeys.get("SERVER_TOKEN");
+    const accountToken: string = testingKeys.get("ACCOUNT_API_TOKEN");
+    const serverToken: string = testingKeys.get("SERVER_API_TOKEN");
 
     beforeEach(() => {
         client = new postmark.AccountClient(accountToken);

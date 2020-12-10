@@ -10,7 +10,7 @@ const testingKeys = nconf.env().file({file: __dirname + "/../../testing_keys.jso
 
 describe("ServerClient - Errors", () => {
     let client: postmark.ServerClient;
-    const serverToken: string = testingKeys.get("SERVER_TOKEN");
+    const serverToken: string = testingKeys.get("SERVER_API_TOKEN");
 
     beforeEach(() => {
         client = new postmark.ServerClient(serverToken);
@@ -29,7 +29,7 @@ describe("ServerClient - Errors", () => {
     });
 
     describe("handling errors", () => {
-        const serverToken: string = testingKeys.get("SERVER_TOKEN");
+        const serverToken: string = testingKeys.get("SERVER_API_TOKEN");
         const client: postmark.ServerClient = new postmark.ServerClient(serverToken);
 
         describe("promise error", () => {

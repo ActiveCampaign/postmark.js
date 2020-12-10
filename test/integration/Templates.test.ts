@@ -8,8 +8,8 @@ import * as nconf from "nconf";
 const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
 
 describe("Client - Templates", () => {
-    const serverToken: string = testingKeys.get("SERVER_TOKEN");
-    const accountToken: string = testingKeys.get("ACCOUNT_TOKEN");
+    const serverToken: string = testingKeys.get("SERVER_API_TOKEN");
+    const accountToken: string = testingKeys.get("ACCOUNT_API_TOKEN");
     const client = new postmark.ServerClient(serverToken);
     const accountClient = new postmark.AccountClient(accountToken);
     const templatePrefix: string = "testing-template-node-js";
@@ -143,7 +143,7 @@ describe("Client - Templates", () => {
 
     describe("sending", () => {
         const fromAddress = testingKeys.get("SENDER_EMAIL_ADDRESS");
-        const toAddress = testingKeys.get("EMAIL_RECIPIENT_ADDRESS");
+        const toAddress = testingKeys.get("RECIPIENT_EMAIL_ADDRESS");
 
         it("sendEmailWithTemplate", async () => {
             const template = await client.createTemplate(templateToCreate());

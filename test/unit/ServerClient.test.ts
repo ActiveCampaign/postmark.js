@@ -12,7 +12,7 @@ import * as sinon from "sinon";
 
 describe("ServerClient", () => {
     let client: postmark.ServerClient;
-    const serverToken: string = testingKeys.get("SERVER_TOKEN");
+    const serverToken: string = testingKeys.get("SERVER_API_TOKEN");
 
     beforeEach(() => {
         client = new postmark.ServerClient(serverToken);

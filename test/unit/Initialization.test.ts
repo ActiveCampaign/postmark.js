@@ -7,7 +7,7 @@ import * as nconf from "nconf";
 const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
 
 describe("Clients initialization", () => {
-    const serverToken: string = testingKeys.get("SERVER_TOKEN");
+    const serverToken: string = testingKeys.get("SERVER_API_TOKEN");
 
     it("#new ServerClient", () => {
         let client = new postmark.ServerClient(serverToken);

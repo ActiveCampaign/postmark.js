@@ -8,7 +8,7 @@ import {Suppression, Suppressions, SuppressionStatuses} from "../../src/client/m
 const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
 
 describe("Client - Suppressions", () => {
-    const serverToken: string = testingKeys.get("SERVER_TOKEN");
+    const serverToken: string = testingKeys.get("SERVER_API_TOKEN");
     const client = new postmark.ServerClient(serverToken);
     const suppression_email_domain:string = 'supression.example.com';
 

@@ -7,11 +7,11 @@ import * as nconf from "nconf";
 const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
 
 describe("Sending", () => {
-    const serverToken: string = testingKeys.get("SERVER_TOKEN");
+    const serverToken: string = testingKeys.get("SERVER_API_TOKEN");
     const client = new postmark.ServerClient(serverToken);
 
     const fromAddress: string = testingKeys.get("SENDER_EMAIL_ADDRESS");
-    const toAddress: string = testingKeys.get("EMAIL_RECIPIENT_ADDRESS");
+    const toAddress: string = testingKeys.get("RECIPIENT_EMAIL_ADDRESS");
 
     function messageToSend() {
         return new postmark.Models.Message(fromAddress, "Test subject", "Test html body", undefined, toAddress);

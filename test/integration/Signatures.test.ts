@@ -7,7 +7,7 @@ import * as nconf from "nconf";
 const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
 
 describe("Client - Signatures", () => {
-    const accountToken: string = testingKeys.get("ACCOUNT_TOKEN");
+    const accountToken: string = testingKeys.get("ACCOUNT_API_TOKEN");
     const testDomainName: string = testingKeys.get("DOMAIN_NAME");
     const client: postmark.AccountClient = new postmark.AccountClient(accountToken);
     const domainName: string = testDomainName;

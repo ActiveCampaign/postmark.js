@@ -1,11 +1,9 @@
 {
-	"SERVER_TOKEN" : "<token>",
-	"ACCOUNT_TOKEN" : "<token>",
+	"SERVER_API_TOKEN" : "<token>",
+	"ACCOUNT_API_TOKEN" : "<token>",
 
 	"SENDER_EMAIL_ADDRESS" : "apps@example.com",
-	"SENDER_SIGNATURE_PROTOTYPE": "anything+[TOKEN]@example.com",
-	"EMAIL_RECIPIENT_ADDRESS" : "andrew+testing@example.com",
+	"RECIPIENT_EMAIL_ADDRESS" : "andrew+testing@example.com",
 	"DOMAIN_NAME" : "<domain.name>",
-
-	"BASE_URL" : "https://api.postmarkapp.com"
+	"API_URL" : "https://api.postmarkapp.com"
 }
