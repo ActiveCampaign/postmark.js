@@ -5,7 +5,7 @@
 
 
 # Postmark Node.js Library
-[![Build Status](https://circleci.com/gh/wildbit/postmark.js.svg?style=shield)](https://circleci.com/gh/wildbit/postmark.js.svg?style=shield)
+[![Build Status](https://circleci.com/gh/wildbit/postmark.js.svg?style=shield)](https://circleci.com/gh/wildbit/postmark.js)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://www.opensource.org/licenses/MIT)
 [![npm version](https://badge.fury.io/js/postmark.svg)](https://badge.fury.io/js/postmark)
 
