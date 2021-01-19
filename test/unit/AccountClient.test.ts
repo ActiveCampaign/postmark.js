@@ -24,7 +24,7 @@ describe("AccountClient", () => {
             expect(client.getClientOptions()).to.eql({
                 useHttps: true,
                 requestHost: "api.postmarkapp.com",
-                timeout: 60,
+                timeout: 180,
             });
         });
 
@@ -51,6 +51,28 @@ describe("AccountClient", () => {
             requestHost,
             timeout,
         });
+    });
+
+    it("set clientOptions timeout", () => {
+      const timeoutValue: number = 10;
+      client.setClientOptions({timeout: timeoutValue});
+
+      expect(client.getClientOptions()).to.eql({
+        useHttps: true,
+        requestHost: "api.postmarkapp.com",
+        timeout: timeoutValue,
+      });
+    });
+
+    it("set clientOptions https", () => {
+      const https: boolean = false;
+      client.setClientOptions({useHttps: https});
+
+      expect(client.getClientOptions()).to.eql({
+        useHttps: https,
+        requestHost: "api.postmarkapp.com",
+        timeout: 180,
+      });
     });
 
     describe("errors", () => {

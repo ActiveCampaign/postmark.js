@@ -41,7 +41,7 @@ export default abstract class BaseClient {
     }
 
     public setClientOptions(configOptions: ClientOptions.Configuration): void {
-      this.clientOptions = configOptions;
+      this.clientOptions = { ...BaseClient.DefaultOptions, ...configOptions };
       this.buildDefaultHttpClient();
     }
 

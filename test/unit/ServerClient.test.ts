@@ -20,7 +20,7 @@ describe("ServerClient", () => {
 
     describe("#new", () => {
         it("default clientOptions", () => {
-            const defaultClientOptions = { useHttps: true, requestHost: "api.postmarkapp.com", timeout: 60 };
+            const defaultClientOptions = { useHttps: true, requestHost: "api.postmarkapp.com", timeout: 180 };
             expect(client.getClientOptions()).to.eql(defaultClientOptions);
         });
 
@@ -55,6 +55,27 @@ describe("ServerClient", () => {
                 requestHost,
                 timeout,
             });
+        });
+
+        it("set clientOptions timeout", () => {
+          const timeoutValue: number = 10;
+          client.setClientOptions({timeout: timeoutValue});
+
+          expect(client.getClientOptions()).to.eql({
+            useHttps: true,
+            requestHost: "api.postmarkapp.com",
+            timeout: timeoutValue,
+          });
+        });
+
+        it("set clientOptions https", () => {
+          client.setClientOptions({useHttps: false});
+
+          expect(client.getClientOptions()).to.eql({
+            useHttps: false,
+            requestHost: "api.postmarkapp.com",
+            timeout: 180,
+          });
         });
 
         it("new clientOptions as object", () => {
