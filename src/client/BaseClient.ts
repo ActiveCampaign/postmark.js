@@ -20,7 +20,7 @@ export default abstract class BaseClient {
     public static DefaultOptions: ClientOptions.Configuration = {
         useHttps: true,
         requestHost: "api.postmarkapp.com",
-        timeout: 60,
+        timeout: 180,
     };
 
     public clientVersion: string;
@@ -170,6 +170,7 @@ export default abstract class BaseClient {
             timeout: this.getRequestTimeoutInSeconds(),
             responseType: "json",
             maxContentLength: Infinity,
+            maxBodyLength: Infinity,
             validateStatus(status) {
                 return status >= 200 && status < 300;
             },
