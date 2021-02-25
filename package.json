@@ -62,10 +62,10 @@
     "compile-docs"
   ],
   "devDependencies": {
+    "@types/node": "^4.0.29",
     "@types/chai": "^4.1.4",
     "@types/mocha": "^5.2.5",
     "@types/nconf": "0.0.37",
-    "@types/request": "^2.47.1",
     "@types/sinon": "^7.5.0",
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
