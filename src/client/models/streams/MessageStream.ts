@@ -1,5 +1,12 @@
-interface SubscriptionManagementConfiguration {
-  UnsubscribeHandlingType: string;
+
+export enum UnsubscribeHandlingTypes {
+  None = "None",
+  Postmark = "Postmark",
+  Custom = "Custom",
+}
+
+export interface SubscriptionManagementConfiguration {
+  UnsubscribeHandlingType: UnsubscribeHandlingTypes;
 }
 
 export interface MessageStream {
@@ -42,23 +49,28 @@ export interface MessageStreamUnarchiveResponse {
 export class UpdateMessageStreamRequest {
     public Name?: string;
     public Description?: string;
+    public SubscriptionManagementConfiguration?: SubscriptionManagementConfiguration;
 
-    public constructor(name?: string, description?: string) {
+    public constructor(name?: string, description?: string, subscriptionManagementConfiguration?: SubscriptionManagementConfiguration) {
         this.Name = name;
         this.Description = description;
+        this.SubscriptionManagementConfiguration = subscriptionManagementConfiguration;
     }
 }
 
 export class CreateMessageStreamRequest {
-    public Name: string;
-    public Description?: string;
     public ID: string;
+    public Name: string;
     public MessageStreamType: string;
+    public Description?: string;
+    public SubscriptionManagementConfiguration?: SubscriptionManagementConfiguration;
 
-    public constructor(id: string, name: string, messageStreamType: string, description?: string) {
+    public constructor(id: string, name: string, messageStreamType: string, description?: string,
+                       subscriptionManagementConfiguration?: SubscriptionManagementConfiguration) {
         this.Name = name;
         this.Description = description;
         this.ID = id;
         this.MessageStreamType = messageStreamType;
+        this.SubscriptionManagementConfiguration = subscriptionManagementConfiguration;
     }
 }
