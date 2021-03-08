@@ -2387,6 +2387,9 @@ img {
 				<li class=" tsd-kind-property tsd-parent-kind-class">
 					<a href="updatemessagestreamrequest.html#name" class="tsd-kind-icon">Name</a>
 				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="updatemessagestreamrequest.html#subscriptionmanagementconfiguration" class="tsd-kind-icon">Subscription<wbr>Management<wbr>Configuration</a>
+				</li>
 			</ul>
 		</li>
 	</ul>
@@ -2416,6 +2419,7 @@ img {
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="updatemessagestreamrequest.html#description" class="tsd-kind-icon">Description</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="updatemessagestreamrequest.html#name" class="tsd-kind-icon">Name</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="updatemessagestreamrequest.html#subscriptionmanagementconfiguration" class="tsd-kind-icon">Subscription<wbr>Management<wbr>Configuration</a></li>
 						</ul>
 					</section>
 				</div>
@@ -2427,13 +2431,13 @@ img {
 				<a name="constructor" class="tsd-anchor"></a>
 				<h3>constructor</h3>
 				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">new <wbr>Update<wbr>Message<wbr>Stream<wbr>Request<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, description<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="updatemessagestreamrequest.html" class="tsd-signature-type">UpdateMessageStreamRequest</a></li>
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Update<wbr>Message<wbr>Stream<wbr>Request<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, description<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, subscriptionManagementConfiguration<span class="tsd-signature-symbol">: </span><a href="updatemessagestreamrequest.html#subscriptionmanagementconfiguration" class="tsd-signature-type">SubscriptionManagementConfiguration</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="updatemessagestreamrequest.html" class="tsd-signature-type">UpdateMessageStreamRequest</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/8400c1f/src/client/models/streams/MessageStream.ts#L44">client/models/streams/MessageStream.ts:44</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/51387cb/src/client/models/streams/MessageStream.ts#L52">client/models/streams/MessageStream.ts:52</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2443,6 +2447,9 @@ img {
 							</li>
 							<li>
 								<h5><span class="tsd-flag ts-flagOptional">Optional</span> description: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> subscriptionManagementConfiguration: <a href="updatemessagestreamrequest.html#subscriptionmanagementconfiguration" class="tsd-signature-type">SubscriptionManagementConfiguration</a></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="updatemessagestreamrequest.html" class="tsd-signature-type">UpdateMessageStreamRequest</a></h4>
@@ -2458,7 +2465,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/8400c1f/src/client/models/streams/MessageStream.ts#L44">client/models/streams/MessageStream.ts:44</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/51387cb/src/client/models/streams/MessageStream.ts#L51">client/models/streams/MessageStream.ts:51</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -2468,7 +2475,17 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/8400c1f/src/client/models/streams/MessageStream.ts#L43">client/models/streams/MessageStream.ts:43</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/51387cb/src/client/models/streams/MessageStream.ts#L50">client/models/streams/MessageStream.ts:50</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="subscriptionmanagementconfiguration" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> Subscription<wbr>Management<wbr>Configuration</h3>
+				<div class="tsd-signature tsd-kind-icon">Subscription<wbr>Management<wbr>Configuration<span class="tsd-signature-symbol">:</span> <a href="updatemessagestreamrequest.html#subscriptionmanagementconfiguration" class="tsd-signature-type">SubscriptionManagementConfiguration</a></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/51387cb/src/client/models/streams/MessageStream.ts#L52">client/models/streams/MessageStream.ts:52</a></li>
 					</ul>
 				</aside>
 			</section>
