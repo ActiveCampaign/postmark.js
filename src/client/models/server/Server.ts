@@ -31,6 +31,7 @@ export class UpdateServerRequest {
     public SmtpApiActivated?: boolean;
     public RawEmailEnabled?: boolean;
     public InboundHookUrl?: string;
+    public InboundDomain?: string;
     public BounceHookUrl?: string;
     public OpenHookUrl?: string;
     public DeliveryHookUrl?: string;
@@ -45,7 +46,7 @@ export class UpdateServerRequest {
     constructor(Name?: string, Color?: string, SmtpApiActivated?: boolean, RawEmailEnabled?: boolean,
                 InboundHookUrl?: string, BounceHookUrl?: string, OpenHookUrl?: string, DeliveryHookUrl?: string,
                 ClickHookUrl?: string, PostFirstOpenOnly?: boolean, InboundSpamThreshold?: number, TrackOpens?: boolean,
-                TrackLinks?: LinkTrackingOptions, IncludeBounceContentInHook?: boolean, EnableSmtpApiErrorHooks?: boolean) {
+                TrackLinks?: LinkTrackingOptions, IncludeBounceContentInHook?: boolean, EnableSmtpApiErrorHooks?: boolean, InboundDomain?: string) {
 
         this.Name = Name;
         this.Color = Color;
@@ -58,6 +59,7 @@ export class UpdateServerRequest {
         this.ClickHookUrl = ClickHookUrl;
         this.PostFirstOpenOnly = PostFirstOpenOnly;
         this.InboundSpamThreshold = InboundSpamThreshold;
+        this.InboundDomain = InboundDomain;
         this.TrackOpens = TrackOpens;
         this.TrackLinks = TrackLinks;
         this.IncludeBounceContentInHook = IncludeBounceContentInHook;
@@ -69,10 +71,10 @@ export class CreateServerRequest extends UpdateServerRequest {
     constructor(Name: string, Color?: string, SmtpApiActivated?: boolean, RawEmailEnabled?: boolean,
                 InboundHookUrl?: string, BounceHookUrl?: string, OpenHookUrl?: string, DeliveryHookUrl?: string,
                 ClickHookUrl?: string, PostFirstOpenOnly?: boolean, InboundSpamThreshold?: number, TrackOpens?: boolean,
-                TrackLinks?: LinkTrackingOptions, IncludeBounceContentInHook?: boolean, EnableSmtpApiErrorHooks?: boolean) {
+                TrackLinks?: LinkTrackingOptions, IncludeBounceContentInHook?: boolean, EnableSmtpApiErrorHooks?: boolean, InboundDomain?: string) {
 
         super(Name, Color, SmtpApiActivated, RawEmailEnabled, InboundHookUrl, BounceHookUrl, OpenHookUrl,
             DeliveryHookUrl, ClickHookUrl, PostFirstOpenOnly, InboundSpamThreshold, TrackOpens, TrackLinks,
-            IncludeBounceContentInHook, EnableSmtpApiErrorHooks);
+            IncludeBounceContentInHook, EnableSmtpApiErrorHooks, InboundDomain);
     }
 }
