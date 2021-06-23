@@ -49,7 +49,7 @@ describe("Servers - Message Streams", () => {
       const streamsToCount: MessageStreams = await client.getMessageStreams();
 
       expect(streams.Description).to.eq("test description");
-      expect(streamsToCount.TotalCount).to.eq(3);
+      expect(streamsToCount.TotalCount).to.eq(4);
     });
 
     it("archive message stream", async () => {
