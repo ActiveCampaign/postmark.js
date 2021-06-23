@@ -6,6 +6,7 @@ interface WebhookRequestTriggers {
     Delivery?: WebhookTrigger;
     Bounce?: BounceWebhookTrigger;
     SpamComplaint?: SpamWebhookTrigger;
+    SubscriptionChange?: WebhookTrigger;
 }
 
 export class UpdateWebhookRequest {
@@ -64,5 +65,6 @@ export interface Webhook {
     Delivery: WebhookTrigger;
     Bounce: BounceWebhookTrigger;
     SpamComplaint: SpamWebhookTrigger;
+    SubscriptionChange: WebhookTrigger;
   };
 }

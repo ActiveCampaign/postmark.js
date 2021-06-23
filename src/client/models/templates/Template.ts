@@ -120,7 +120,7 @@ export interface TemplateValidation {
 export class TemplatedMessage {
     public TemplateId?: number;
     public TemplateAlias?: string;
-    public TemplateModel?: object;
+    public TemplateModel: object;
     public InlineCss?: boolean;
     public From: string;
     public To?: string;
