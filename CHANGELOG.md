@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.7.6
+
+* Improved data model for webhook triggers
+
 ## 2.7.4
 
 * Small update to the server update model

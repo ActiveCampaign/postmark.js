@@ -12,13 +12,15 @@ Pre-release recommendations:
 
 Release steps:
 
+1. Make sure the tests pass for your branch in CI 
 1. Merge your branch to master
-2. Update version in package.json
-3. Compile the latest version (details how to run command are in the package.json)
-4. Make sure the tests pass (details how to run them in the package.json)
-5. Update CHANGELOG.md with the latest release details   
-6. Compile the docs (details in the package.json - unless it's a very small change)
-7. Push the changes to Github and wait for tests to pass
-8. Push the changes to NPM with `npm publish`
-9. Update any related content in the [Github wiki](https://github.com/wildbit/postmark.js/wiki)
-10. Add release version in the [Github releases](https://github.com/wildbit/postmark.js/releases) so it has a tag.
+1. Determine the next version of the library by following the [SemVer](https://semver.org/) guidelines
+1. Update version in package.json
+1. Compile the latest version (details how to run command are in the package.json)
+1. Make sure the tests pass locally (details how to run them in the package.json)
+1. Update CHANGELOG.md with the latest release details   
+1. Compile the docs (details in the package.json - unless it's a very small change)
+1. Push the changes to Github and wait for tests to pass in CI
+1. Push the changes to NPM with `npm publish`
+1. Update any related content in the [Github wiki](https://github.com/wildbit/postmark.js/wiki)
+1. Add release version in the [Github releases](https://github.com/wildbit/postmark.js/releases) so it has a tag.
