@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.7.7
+
+* Added delivery types to server model
+
 ## 2.7.6
 
 * Improved data model for webhook triggers

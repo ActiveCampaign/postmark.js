@@ -1,9 +1,10 @@
-import { expect } from "chai";
+import {expect} from "chai";
 import "mocha";
-import { CreateServerRequest, UpdateServerRequest } from "../../src/client/models";
-import * as postmark from "../../src/index";
 
 import * as nconf from "nconf";
+import {CreateServerRequest, ServerDeliveryTypes, UpdateServerRequest} from "../../src/client/models";
+import * as postmark from "../../src/index";
+
 const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
 
 describe("Servers", () => {
@@ -35,6 +36,13 @@ describe("Servers", () => {
         const serverOptions = serverToTest();
         const serverDetails = await client.createServer(serverOptions);
         expect(serverDetails.Name).to.equal(serverOptions.Name);
+    });
+
+    it("createServer - delivery type - sandbox", async () => {
+      const serverOptions = serverToTest();
+      serverOptions.DeliveryType = ServerDeliveryTypes.Sandbox;
+      const serverDetails = await client.createServer(serverOptions);
+      expect(serverDetails.DeliveryType).to.equal("Sandbox");
     });
 
     it("editServer", async () => {

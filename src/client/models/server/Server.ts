@@ -1,4 +1,4 @@
-import { LinkTrackingOptions } from "../message/SupportingTypes";
+import { LinkTrackingOptions, ServerDeliveryTypes } from "../message/SupportingTypes";
 
 export interface Server {
     ID: number;
@@ -8,6 +8,7 @@ export interface Server {
     Color: string;
     SmtpApiActivated: boolean;
     RawEmailEnabled: boolean;
+    DeliveryType: ServerDeliveryTypes;
     InboundAddress: string;
     InboundHookUrl?: string;
     BounceHookUrl?: string;
@@ -25,7 +26,6 @@ export interface Server {
 }
 
 export class UpdateServerRequest {
-
     public Name?: string;
     public Color?: string;
     public SmtpApiActivated?: boolean;
@@ -68,13 +68,18 @@ export class UpdateServerRequest {
 }
 
 export class CreateServerRequest extends UpdateServerRequest {
+    public DeliveryType?: ServerDeliveryTypes;
+
     constructor(Name: string, Color?: string, SmtpApiActivated?: boolean, RawEmailEnabled?: boolean,
                 InboundHookUrl?: string, BounceHookUrl?: string, OpenHookUrl?: string, DeliveryHookUrl?: string,
                 ClickHookUrl?: string, PostFirstOpenOnly?: boolean, InboundSpamThreshold?: number, TrackOpens?: boolean,
-                TrackLinks?: LinkTrackingOptions, IncludeBounceContentInHook?: boolean, EnableSmtpApiErrorHooks?: boolean, InboundDomain?: string) {
+                TrackLinks?: LinkTrackingOptions, IncludeBounceContentInHook?: boolean, EnableSmtpApiErrorHooks?: boolean,
+                InboundDomain?: string, DeliveryType?: ServerDeliveryTypes) {
 
         super(Name, Color, SmtpApiActivated, RawEmailEnabled, InboundHookUrl, BounceHookUrl, OpenHookUrl,
             DeliveryHookUrl, ClickHookUrl, PostFirstOpenOnly, InboundSpamThreshold, TrackOpens, TrackLinks,
             IncludeBounceContentInHook, EnableSmtpApiErrorHooks, InboundDomain);
+
+        this.DeliveryType = DeliveryType;
     }
 }

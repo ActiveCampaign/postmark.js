@@ -10,6 +10,11 @@ export enum LinkClickLocation {
     Text = "Text",
 }
 
+export enum ServerDeliveryTypes {
+  Live = "Live",
+  Sandbox = "Sandbox",
+}
+
 export class Header {
     public Name: string;
     public Value: string;
@@ -27,7 +32,6 @@ export class Header {
  * @param ContentID - id of the attachment, in case we are referencing it, for example: cid:123book.pdf
  */
 export class Attachment {
-
     public Name: string;
     public ContentID: string | null;
     public Content: string;
