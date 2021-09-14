@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.7.8
+
+* Updated axios client version
+
 ## 2.7.7
 
 * Added delivery types to server model
