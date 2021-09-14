@@ -3,6 +3,7 @@
 **/*.idea
 **/*.iml
 
+.circleci
 testing_keys.json
 tsconfig.json
 tslint.json
