@@ -52,7 +52,7 @@ export default abstract class BaseClient {
     /**
      * JSON object with default headers sent by HTTP request.
      */
-    public getComposedHttpRequestHeaders(): object {
+    public getComposedHttpRequestHeaders(): any {
         return {
             [this.authHeader]: this.token,
             "Accept": "application/json",
