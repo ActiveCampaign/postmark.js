@@ -42,7 +42,7 @@ export class CreateSignatureRequest {
     public ReturnPathDomain?: string;
     public ConfirmationPersonalNote?: string;
     constructor(Name: string, FromEmail: string, ReplyToEmail?: string, ReturnPathDomain?: string, ConfirmationPersonalNote?: string) {
-        this.Name = name;
+        this.Name = Name;
         this.ReplyToEmail = ReplyToEmail;
         this.ReturnPathDomain = ReturnPathDomain;
         this.FromEmail = FromEmail;
