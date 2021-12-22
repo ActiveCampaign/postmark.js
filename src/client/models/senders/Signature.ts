@@ -14,6 +14,7 @@ export interface SignatureDetails extends DomainDetails {
     EmailAddress: string;
     ReplyToEmailAddress: string;
     Confirmed: boolean;
+    ConfirmationPersonalNote: string;
 }
 
 export interface Signatures {
@@ -22,27 +23,29 @@ export interface Signatures {
 }
 
 export class UpdateSignatureRequest {
-
     public Name?: string;
     public ReplyToEmail?: string;
     public ReturnPathDomain?: string;
-    constructor(Name?: string, ReplyToEmail?: string, ReturnPathDomain?: string) {
+    public ConfirmationPersonalNote?: string;
+    constructor(Name?: string, ReplyToEmail?: string, ReturnPathDomain?: string, ConfirmationPersonalNote?: string) {
         this.Name = Name;
         this.ReplyToEmail = ReplyToEmail;
         this.ReturnPathDomain = ReturnPathDomain;
+        this.ConfirmationPersonalNote = ConfirmationPersonalNote;
     }
 }
 
 export class CreateSignatureRequest {
-
     public Name?: string;
     public FromEmail: string;
     public ReplyToEmail?: string;
     public ReturnPathDomain?: string;
-    constructor(name: string, fromEmail: string, replyToEmail?: string, returnPathDomain?: string) {
+    public ConfirmationPersonalNote?: string;
+    constructor(Name: string, FromEmail: string, ReplyToEmail?: string, ReturnPathDomain?: string, ConfirmationPersonalNote?: string) {
         this.Name = name;
-        this.ReplyToEmail = replyToEmail;
-        this.ReturnPathDomain = returnPathDomain;
-        this.FromEmail = fromEmail;
+        this.ReplyToEmail = ReplyToEmail;
+        this.ReturnPathDomain = ReturnPathDomain;
+        this.FromEmail = FromEmail;
+        this.ConfirmationPersonalNote = ConfirmationPersonalNote;
     }
 }
