@@ -2382,6 +2382,9 @@ img {
 					<a href="updatesignaturerequest.html#constructor" class="tsd-kind-icon">constructor</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="updatesignaturerequest.html#confirmationpersonalnote" class="tsd-kind-icon">Confirmation<wbr>Personal<wbr>Note</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
 					<a href="updatesignaturerequest.html#name" class="tsd-kind-icon">Name</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-class">
@@ -2417,6 +2420,7 @@ img {
 					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="updatesignaturerequest.html#confirmationpersonalnote" class="tsd-kind-icon">Confirmation<wbr>Personal<wbr>Note</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="updatesignaturerequest.html#name" class="tsd-kind-icon">Name</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="updatesignaturerequest.html#replytoemail" class="tsd-kind-icon">Reply<wbr>ToEmail</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="updatesignaturerequest.html#returnpathdomain" class="tsd-kind-icon">Return<wbr>Path<wbr>Domain</a></li>
@@ -2431,13 +2435,13 @@ img {
 				<a name="constructor" class="tsd-anchor"></a>
 				<h3>constructor</h3>
 				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">new <wbr>Update<wbr>Signature<wbr>Request<span class="tsd-signature-symbol">(</span>Name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, ReplyToEmail<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, ReturnPathDomain<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="updatesignaturerequest.html" class="tsd-signature-type">UpdateSignatureRequest</a></li>
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Update<wbr>Signature<wbr>Request<span class="tsd-signature-symbol">(</span>Name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, ReplyToEmail<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, ReturnPathDomain<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, ConfirmationPersonalNote<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="updatesignaturerequest.html" class="tsd-signature-type">UpdateSignatureRequest</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/dec65b0/src/client/models/senders/Signature.ts#L28">client/models/senders/Signature.ts:28</a></li>
+								<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/801db81/src/client/models/senders/Signature.ts#L29">client/models/senders/Signature.ts:29</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2451,6 +2455,9 @@ img {
 							<li>
 								<h5><span class="tsd-flag ts-flagOptional">Optional</span> ReturnPathDomain: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> ConfirmationPersonalNote: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="updatesignaturerequest.html" class="tsd-signature-type">UpdateSignatureRequest</a></h4>
 					</li>
@@ -2460,12 +2467,22 @@ img {
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="confirmationpersonalnote" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> Confirmation<wbr>Personal<wbr>Note</h3>
+				<div class="tsd-signature tsd-kind-icon">Confirmation<wbr>Personal<wbr>Note<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/801db81/src/client/models/senders/Signature.ts#L29">client/models/senders/Signature.ts:29</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 				<a name="name" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagOptional">Optional</span> Name</h3>
 				<div class="tsd-signature tsd-kind-icon">Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/dec65b0/src/client/models/senders/Signature.ts#L26">client/models/senders/Signature.ts:26</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/801db81/src/client/models/senders/Signature.ts#L26">client/models/senders/Signature.ts:26</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -2475,7 +2492,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Reply<wbr>ToEmail<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/dec65b0/src/client/models/senders/Signature.ts#L27">client/models/senders/Signature.ts:27</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/801db81/src/client/models/senders/Signature.ts#L27">client/models/senders/Signature.ts:27</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -2485,7 +2502,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Return<wbr>Path<wbr>Domain<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/dec65b0/src/client/models/senders/Signature.ts#L28">client/models/senders/Signature.ts:28</a></li>
+						<li>Defined in <a href="https://github.com/wildbit/postmark.js/blob/801db81/src/client/models/senders/Signature.ts#L28">client/models/senders/Signature.ts:28</a></li>
 					</ul>
 				</aside>
 			</section>
