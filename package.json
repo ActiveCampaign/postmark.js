@@ -74,10 +74,10 @@
     "sinon": "^7.5.0",
     "ts-node": "^7.0.1",
     "tslint": "^5.12.0",
-    "typedoc": "^0.15.0",
+    "typedoc": "^0.16.11",
     "typescript": "3.5.1"
   },
   "dependencies": {
-    "axios": "^0.24.0"
+    "axios": "^0.25.0"
   }
 }
