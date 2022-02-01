@@ -2,7 +2,8 @@
 
 ## 2.8.2
 
-Update attachments model for inbound and outbound messages
+Updated attachments model for inbound and outbound messages
+Updated library versions for typedoc, axios, typescript 
 
 ## 2.8.1
 
