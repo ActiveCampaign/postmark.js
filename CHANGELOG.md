@@ -1,8 +1,16 @@
 # Changelog
 
-## 2.7.8
+## 2.8.2
 
-* Updated axios client version
+Update attachments model for inbound and outbound messages
+
+## 2.8.1
+
+Updated sender signature model with personal note
+
+## 2.7.9
+
+Updated axios client version
 
 ## 2.7.7
 

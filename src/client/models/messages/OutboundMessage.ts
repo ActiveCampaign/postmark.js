@@ -1,5 +1,5 @@
 import {Hash} from "../client/SupportingTypes";
-import {Attachment, LinkTrackingOptions} from "../message/SupportingTypes";
+import {LinkTrackingOptions} from "../message/SupportingTypes";
 import * as OutboundMessageEvents from "./OutboundMessageEvents";
 
 export interface Recipient {
@@ -17,7 +17,7 @@ export interface OutboundMessage {
     ReceivedAt: string;
     From: string;
     Subject: string;
-    Attachments: Attachment[];
+    Attachments: string[];
     Status: string;
     TrackOpens: boolean;
     TrackLinks: LinkTrackingOptions;
