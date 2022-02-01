@@ -1,3 +1,4 @@
+export * from "./client/SupportingTypes";
 export * from "./client/ClientOptions";
 export * from "./client/Callback";
 export * from "./client/DefaultResponse";

@@ -1,15 +1,12 @@
 {
-  "mode": "file",
   "out": "docs",
   "hideGenerator": true,
-  "theme": "minimal",
+  "theme": "default",
   "name": "Postmark.js",
-  "module": "postmark",
+  "entryPoints": ["./src/index.ts"],
   "excludePrivate": true,
   "excludeProtected": true,
-  "excludeNotExported": true,
   "excludeExternals": true,
   "externalPattern": "node_modules/**",
-  "exclude": ["node_modules/**"],
-  "ignoreCompilerErrors":false
+  "exclude": ["node_modules/**"]
 }

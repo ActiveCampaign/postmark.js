@@ -39,7 +39,7 @@ export class Attachment {
     public Content: string;
     public ContentType: string;
     public ContentLength?: number;
-    constructor(Name: string, Content: string, ContentType: string, ContentID: string | null = null, ContentLength? :number) {
+    constructor(Name: string, Content: string, ContentType: string, ContentID: string | null = null, ContentLength?: number) {
         this.Name = Name;
         this.Content = Content;
         this.ContentType = ContentType;
