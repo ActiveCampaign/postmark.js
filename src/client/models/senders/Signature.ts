@@ -36,7 +36,7 @@ export class UpdateSignatureRequest {
 }
 
 export class CreateSignatureRequest {
-    public Name?: string;
+    public Name: string;
     public FromEmail: string;
     public ReplyToEmail?: string;
     public ReturnPathDomain?: string;
