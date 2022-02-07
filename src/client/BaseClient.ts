@@ -31,13 +31,13 @@ export default abstract class BaseClient {
     private readonly token: string;
 
     protected constructor(token: string, authHeader: string, configOptions?: ClientOptions.Configuration) {
+        this.errorHandler = new ErrorHandler();
+        this.verifyToken(token);
         this.clientVersion = CLIENT_VERSION;
         this.token = token.trim();
         this.authHeader = authHeader;
         this.clientOptions = { ...BaseClient.DefaultOptions, ...configOptions };
         this.httpClient = this.buildDefaultHttpClient();
-        this.errorHandler = new ErrorHandler();
-        this.verifyToken(token);
     }
 
     public setClientOptions(configOptions: ClientOptions.Configuration): void {

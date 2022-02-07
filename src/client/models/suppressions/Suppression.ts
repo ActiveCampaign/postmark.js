@@ -20,7 +20,7 @@ export interface SuppressionStatuses {
 }
 
 interface SuppressionEntries {
-    Suppressions: Array<{EmailAddress: string}>;
+    Suppressions: {EmailAddress: string}[];
 }
 
 export type CreateSuppressionsRequest = SuppressionEntries;

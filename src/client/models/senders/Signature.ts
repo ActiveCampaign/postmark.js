@@ -23,11 +23,11 @@ export interface Signatures {
 }
 
 export class UpdateSignatureRequest {
-    public Name?: string;
+    public Name: string;
     public ReplyToEmail?: string;
     public ReturnPathDomain?: string;
     public ConfirmationPersonalNote?: string;
-    constructor(Name?: string, ReplyToEmail?: string, ReturnPathDomain?: string, ConfirmationPersonalNote?: string) {
+    constructor(Name: string, ReplyToEmail?: string, ReturnPathDomain?: string, ConfirmationPersonalNote?: string) {
         this.Name = Name;
         this.ReplyToEmail = ReplyToEmail;
         this.ReturnPathDomain = ReturnPathDomain;
