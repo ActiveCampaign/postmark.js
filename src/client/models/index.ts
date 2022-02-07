@@ -1,4 +1,5 @@
 export * from "./client/ClientOptions";
+export * from "./client/SupportingTypes";
 export * from "./client/Callback";
 export * from "./client/DefaultResponse";
 export * from "./client/FilteringParameters";
@@ -17,6 +18,7 @@ export * from "./server/Servers";
 export * from "./server/ServerFilteringParameters";
 export * from "./domains/Domain";
 export * from "./senders/Signature";
+export * from "./suppressions/Suppression";
 export * from "./stats/Stats";
 export * from "./stats/StatsFilteringParameters";
 export * from "./triggers/InboundRule";

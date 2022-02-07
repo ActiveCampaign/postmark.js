@@ -19,7 +19,7 @@ export interface SuppressionStatuses {
     Suppressions: SuppressionStatus[];
 }
 
-interface SuppressionEntries {
+export interface SuppressionEntries {
     Suppressions: {EmailAddress: string}[];
 }
 

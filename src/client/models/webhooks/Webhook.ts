@@ -1,6 +1,6 @@
 import {Header} from "../message/SupportingTypes";
 
-interface WebhookRequestTriggers {
+export interface WebhookRequestTriggers {
     Open?: OpenWebhookTrigger;
     Click?: WebhookTrigger;
     Delivery?: WebhookTrigger;
