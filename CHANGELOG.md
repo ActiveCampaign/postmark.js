@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.9.0
+
+* Update sender signature name field to match documentation by being required
+* Updated dev libraries to resolve security issues (typedoc, typescript)
+* Updated axios http client version
+
 ## 2.8.2
 
 Update attachments model for inbound and outbound messages
