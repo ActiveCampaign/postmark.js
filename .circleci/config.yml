@@ -47,9 +47,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Versions
+          name: Node Version
           command: |
-            echo "npm: $(npm --version)"
+            echo "node: $(node --version)"
       - run:
           name: Install dependencies
           command: npm install
