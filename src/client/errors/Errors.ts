@@ -73,7 +73,7 @@ export class UnknownError extends HttpError {
 export class ApiInputError extends HttpError {
     public static ERROR_CODES = {
         inactiveRecipient: 406,
-        invalidEmailReqest: 300
+        invalidEmailRequest: 300
     };
 
     constructor(message: string, code: number, statusCode: number) {
@@ -85,8 +85,8 @@ export class ApiInputError extends HttpError {
     public static buildSpecificError(message: string, code: number, statusCode: number): ApiInputError {
         switch (code) {
             case this.ERROR_CODES.inactiveRecipient:
-                return new InactiveRecipientError(message, code, statusCode);
-            case this.ERROR_CODES.invalidEmailReqest:
+                return new InactiveRecipientsError(message, code, statusCode);
+            case this.ERROR_CODES.invalidEmailRequest:
                 return new InvalidEmailRequestError(message, code, statusCode);
             default:
                 return new ApiInputError(message, code, statusCode);
@@ -94,8 +94,8 @@ export class ApiInputError extends HttpError {
     }
 }
 
-export class InactiveRecipientError extends ApiInputError {
-    public static searchRecipientsPatterns = [
+export class InactiveRecipientsError extends ApiInputError {
+    public static inactiveRecipientsPatterns = [
         /Found inactive addresses: (.+?)\.?$/m,
         /these inactive addresses: (.+?)\. Inactive/,
         /these inactive addresses: (.+?)\.?$/
@@ -105,16 +105,16 @@ export class InactiveRecipientError extends ApiInputError {
 
     constructor(message: string, code: number, statusCode: number) {
         super(message, code, statusCode);
-        Object.setPrototypeOf(this, InactiveRecipientError.prototype);
+        Object.setPrototypeOf(this, InactiveRecipientsError.prototype);
         this.setUpStackTrace();
-        this.recipients = InactiveRecipientError.parseRecipients(message);
+        this.recipients = InactiveRecipientsError.parseInactiveRecipients(message);
     }
 
-    public static parseRecipients(message: string): string[] {
+    public static parseInactiveRecipients(message: string): string[] {
         let result: string[] = [];
 
-        this.searchRecipientsPatterns.some(pattern => {
-            let regexResult = message.match(pattern)
+        this.inactiveRecipientsPatterns.some(pattern => {
+            const regexResult = message.match(pattern)
             if (regexResult !== null) {
                 result = regexResult[1].split(', ')
                 return result;

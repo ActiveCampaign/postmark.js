@@ -167,7 +167,7 @@ describe("ErrorHandler", () => {
             const error: any = {
                 response: {
                     data: {
-                        Message: "InactiveRecipientError: You tried to send to recipients " +
+                        Message: "InactiveRecipientsError: You tried to send to recipients " +
                             "that have all been marked as inactive.\n" +
                             "Found inactive addresses: nothing2@example.com, nothing@example.com.\n" +
                             "Inactive recipients are ones that have generated a hard bounce, " +
@@ -179,8 +179,8 @@ describe("ErrorHandler", () => {
             };
 
             const postmarkError: any = errorHandler.buildRequestError(error);
-            expect(postmarkError).to.be.an.instanceof(Errors.InactiveRecipientError);
-            expect(postmarkError.name).to.equal("InactiveRecipientError");
+            expect(postmarkError).to.be.an.instanceof(Errors.InactiveRecipientsError);
+            expect(postmarkError.name).to.equal("InactiveRecipientsError");
             expect(postmarkError.recipients).to.eql([ 'nothing2@example.com', 'nothing@example.com' ])
         });
 
@@ -190,7 +190,18 @@ describe("ErrorHandler", () => {
             const message = "Message OK, but will not deliver to these inactive addresses: " +
                 "nothing2@example.com, nothing@example.com"
 
-            const inactiveRecipients = Errors.InactiveRecipientError.parseRecipients(message)
+            const inactiveRecipients = Errors.InactiveRecipientsError.parseInactiveRecipients(message)
+            expect(inactiveRecipients).to.eql([ 'nothing2@example.com', 'nothing@example.com' ])
+
+        });
+
+        it("parse some inactive recipients - different error message", () => {
+            const errorHandler = new ErrorHandler();
+
+            const message = "Message OK, but will not deliver to these inactive addresses: " +
+                "nothing2@example.com, nothing@example.com. Inactive addresses can be activated."
+
+            const inactiveRecipients = Errors.InactiveRecipientsError.parseInactiveRecipients(message)
             expect(inactiveRecipients).to.eql([ 'nothing2@example.com', 'nothing@example.com' ])
 
         });

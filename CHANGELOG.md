@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.9.5
+
+* Improved error handling 
+* Parsed inactive recipients when email sending  
+
 ## 2.9.0
 
 * Update sender signature name field to match documentation by being required

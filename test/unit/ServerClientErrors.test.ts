@@ -119,6 +119,16 @@ describe("ServerClient - Errors", () => {
                 });
             });
 
+            it("429", () => {
+                sandbox.stub(client.httpClient, "request").rejects(buildError(429));
+
+                return client.getServer().then((result) => {
+                    return result;
+                }, (error) => {
+                    expect(error).to.be.instanceOf(postmark.Errors.RateLimitExceededError);
+                });
+            });
+
             it("500", () => {
                 sandbox.stub(client.httpClient, "request").rejects(buildError(500));
 
