@@ -34,7 +34,7 @@ describe("ServerClient - Errors", () => {
 
         describe("promise error", () => {
             it("instance", () => {
-                sandbox.stub(client.httpClient, "request").rejects({ message: "Basic error", response: {data: "Basic error" }});
+                sandbox.stub(client.httpClient, "httpRequest").rejects({ message: "Basic error", response: {data: "Basic error" }});
 
                 return client.getServer().then((result) => {
                     return result;
@@ -44,7 +44,7 @@ describe("ServerClient - Errors", () => {
             });
 
             it("message", () => {
-                sandbox.stub(client.httpClient, "request").rejects({ message: "Basic error", response: {data: "Basic error" }});
+                sandbox.stub(client.httpClient, "httpRequest").rejects({ message: "Basic error", response: {data: "Basic error" }});
 
                 return client.getServer().then((result) => {
                     return result;
@@ -54,7 +54,7 @@ describe("ServerClient - Errors", () => {
             });
 
             it("name", () => {
-                sandbox.stub(client.httpClient, "request").rejects({ response: { data: 'response', status: 401} });
+                sandbox.stub(client.httpClient, "httpRequest").rejects({ response: { data: 'response', status: 401} });
 
                 return client.getBounces().then((result) => {
                     return result;
@@ -66,7 +66,7 @@ describe("ServerClient - Errors", () => {
 
         describe("callback error", () => {
             it("name", (done) => {
-                sandbox.stub(client.httpClient, "request").rejects({ response: {data: "Basic error", status: 404}});
+                sandbox.stub(client.httpClient, "httpRequest").rejects({ response: {data: "Basic error", status: 404}});
 
                 client.getServer((error: any, data) => {
                     expect(data).to.equal(null);
@@ -90,7 +90,7 @@ describe("ServerClient - Errors", () => {
             });
 
             it("401", () => {
-                sandbox.stub(client.httpClient, "request").rejects(buildError(401));
+                sandbox.stub(client.httpClient, "httpRequest").rejects(buildError(401));
 
                 return client.getServer().then((result) => {
                     return result;
@@ -100,7 +100,7 @@ describe("ServerClient - Errors", () => {
             });
 
             it("404", () => {
-                sandbox.stub(client.httpClient, "request").rejects(buildError(404));
+                sandbox.stub(client.httpClient, "httpRequest").rejects(buildError(404));
 
                 return client.getServer().then((result) => {
                     return result;
@@ -110,7 +110,7 @@ describe("ServerClient - Errors", () => {
             });
 
             it("422", () => {
-                sandbox.stub(client.httpClient, "request").rejects(buildError(422));
+                sandbox.stub(client.httpClient, "httpRequest").rejects(buildError(422));
 
                 return client.getServer().then((result) => {
                     return result;
@@ -120,7 +120,7 @@ describe("ServerClient - Errors", () => {
             });
 
             it("429", () => {
-                sandbox.stub(client.httpClient, "request").rejects(buildError(429));
+                sandbox.stub(client.httpClient, "httpRequest").rejects(buildError(429));
 
                 return client.getServer().then((result) => {
                     return result;
@@ -130,7 +130,7 @@ describe("ServerClient - Errors", () => {
             });
 
             it("500", () => {
-                sandbox.stub(client.httpClient, "request").rejects(buildError(500));
+                sandbox.stub(client.httpClient, "httpRequest").rejects(buildError(500));
 
                 return client.getServer().then((result) => {
                     return result;
@@ -140,7 +140,7 @@ describe("ServerClient - Errors", () => {
             });
 
             it("503", () => {
-                sandbox.stub(client.httpClient, "request").rejects(buildError(503));
+                sandbox.stub(client.httpClient, "httpRequest").rejects(buildError(503));
 
                 return client.getServer().then((result) => {
                     return result;
@@ -150,7 +150,7 @@ describe("ServerClient - Errors", () => {
             });
 
             it("505", () => {
-                sandbox.stub(client.httpClient, "request").rejects(buildError(505));
+                sandbox.stub(client.httpClient, "httpRequest").rejects(buildError(505));
 
                 return client.getServer().then((result) => {
                     return result;

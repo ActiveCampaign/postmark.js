@@ -1,4 +1,4 @@
-import {AxiosError, AxiosResponse} from "axios";
+import {HttpClientError, HttpClientResponse} from "../HttpClient"
 import {DefaultResponse} from "../models";
 import * as Errors from "./Errors";
 
@@ -15,8 +15,8 @@ export class ErrorHandler {
      *
      * @return {PostmarkError} - formatted Postmark error
      */
-    public buildRequestError(error: AxiosError): Errors.PostmarkError {
-        const response: AxiosResponse | undefined = error.response;
+    public buildRequestError(error: HttpClientError): Errors.PostmarkError {
+        const response: HttpClientResponse | undefined = error.response;
 
         if (response !== undefined) {
             return this.buildErrorForResponse(response, error.message);
@@ -44,10 +44,10 @@ export class ErrorHandler {
      * @param {AxiosResponse} response - request response used to transform to Postmark error.
      * @return {PostmarkError} - formatted Postmark error
      */
-    private buildErrorForResponse(response: AxiosResponse, errorMessage: string): Errors.PostmarkError {
+    private buildErrorForResponse(response: HttpClientResponse, errorMessage: string): Errors.PostmarkError {
         const data: DefaultResponse = response.data;
-        const errorCode = this.retrieveDefaultOrValue<number>(0, data.ErrorCode);
         const status = this.retrieveDefaultOrValue<number>(0, response.status);
+        const errorCode = this.retrieveDefaultOrValue<number>(0, data.ErrorCode);
         const message = this.retrieveDefaultOrValue<string>(errorMessage, data.Message);
 
         return this.buildRequestErrorByStatus(message, errorCode, status);

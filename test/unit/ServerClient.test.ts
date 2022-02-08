@@ -36,7 +36,7 @@ describe("ServerClient", () => {
     });
 
     it("getComposedHttpRequestHeaders", () => {
-        expect(client.getComposedHttpRequestHeaders()).to.eql({
+        expect(client.httpClient.getComposedHttpRequestHeaders()).to.eql({
             "X-Postmark-Server-Token": serverToken,
             "Accept": "application/json",
             "User-Agent": `Postmark.JS - ${clientVersion}`,
@@ -126,14 +126,14 @@ describe("ServerClient", () => {
         describe("callback", () => {
             it("process it when there are no errors", async() => {
                 let callback = sinon.spy();
-                sandbox.stub(client.httpClient, "request").returns(Promise.resolve("test"));
+                sandbox.stub(client.httpClient, "httpRequest").returns(Promise.resolve("test"));
 
                 await client.getServer(callback);
                 expect(callback.calledOnce).to.be.true
             });
 
             it("process regular response based on request status", () => {
-                sandbox.stub(client.httpClient, "request").returns(Promise.resolve("test"));
+                sandbox.stub(client.httpClient, "httpRequest").returns(Promise.resolve("test"));
 
                 return client.getServer().then((result) => {
                     expect(result).to.eq("test");
@@ -143,7 +143,7 @@ describe("ServerClient", () => {
             });
             
             it("process error response based on request status",  () => {
-                sandbox.stub(client.httpClient, "request").rejects({response: {status: 600, data: "response"}});
+                sandbox.stub(client.httpClient, "httpRequest").rejects({response: {status: 600, data: "response"}});
 
                 return client.getServer().then((result) => {
                     throw Error(`Should not be here with result: ${result}`);

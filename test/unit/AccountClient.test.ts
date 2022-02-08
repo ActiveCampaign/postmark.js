@@ -81,7 +81,7 @@ describe("AccountClient", () => {
                 .to.throw("A valid API token must be provided.");
         });
 
-        describe("request errors", () => {
+        describe("httpRequest errors", () => {
             const errorType = "InternalServerError";
             const rejectError = {response: {status: 500, data: "response"}};
             let sandbox: sinon.SinonSandbox;
@@ -96,7 +96,7 @@ describe("AccountClient", () => {
 
             it("promise error", () => {
                 client = new postmark.AccountClient(serverToken);
-                sandbox.stub(client.httpClient, "request").rejects(rejectError);
+                sandbox.stub(client.httpClient, "httpRequest").rejects(rejectError);
 
                 return client.getSenderSignatures().then((result) => {
                     throw Error(`Should not be here with result: ${result}`);
@@ -107,7 +107,7 @@ describe("AccountClient", () => {
 
             it("callback error", (done) => {
                 client = new postmark.AccountClient("testToken");
-                sandbox.stub(client.httpClient, "request").rejects(rejectError);
+                sandbox.stub(client.httpClient, "httpRequest").rejects(rejectError);
 
                 client.getSenderSignatures(undefined, (error: any, data) => {
                     expect(data).to.equal(null);
