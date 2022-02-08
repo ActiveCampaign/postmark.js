@@ -11,7 +11,7 @@ const CLIENT_VERSION = packageJson.version;
  */
 export default abstract class BaseClient {
     public clientVersion: string;
-    protected httpClient: HttpClient;
+    public httpClient: HttpClient;
     protected errorHandler: ErrorHandler;
 
     protected constructor(token: string, authHeader: string, configOptions?: ClientOptions.Configuration) {
