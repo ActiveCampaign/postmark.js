@@ -32,7 +32,7 @@ export interface InboundMessageDetails extends InboundMessage {
     HtmlBody: string;
     StrippedTextReply: string;
     Headers: Header[];
-    BlockedReason: string;
+    BlockedReason?: string;
 }
 
 export interface InboundMessages {
