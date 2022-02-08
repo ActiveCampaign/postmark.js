@@ -76,6 +76,25 @@ describe("ErrorHandler", () => {
             expect(postmarkError.message).to.equal(error.response.data.Message);
         });
 
+        it("429", () => {
+            const errorHandler = new ErrorHandler();
+
+            const error: any = {
+                response: {
+                    data: {
+                        Message: "Test message",
+                        ErrorCode: 429,
+                    },
+                    status: 429,
+                }
+            };
+
+            const postmarkError = errorHandler.buildRequestError(error);
+            expect(postmarkError).to.be.an.instanceof(Errors.RateLimitExceededError);
+            expect(postmarkError.name).to.equal("RateLimitExceededError");
+            expect(postmarkError.message).to.equal(error.response.data.Message);
+        });
+
         it("500", () => {
             const errorHandler = new ErrorHandler();
 

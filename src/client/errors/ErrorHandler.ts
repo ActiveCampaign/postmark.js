@@ -75,6 +75,9 @@ export class ErrorHandler {
             case 422:
                 return Errors.ApiInputError.buildSpecificError(errorMessage, errorCode, errorStatusCode);
 
+            case 429:
+                return new Errors.RateLimitExceededError(errorMessage, errorCode, errorStatusCode);
+
             case 500:
                 return new Errors.InternalServerError(errorMessage, errorCode, errorStatusCode);
 

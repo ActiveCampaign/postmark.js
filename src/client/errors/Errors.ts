@@ -54,6 +54,14 @@ export class ServiceUnavailablerError extends HttpError {
     }
 }
 
+export class RateLimitExceededError extends HttpError {
+    constructor(message: string, code: number, statusCode: number) {
+        super(message, code, statusCode);
+        Object.setPrototypeOf(this, RateLimitExceededError.prototype);
+        this.setUpStackTrace();
+    }
+}
+
 export class UnknownError extends HttpError {
     constructor(message: string, code: number, statusCode: number) {
         super(message, code, statusCode);
@@ -65,7 +73,7 @@ export class UnknownError extends HttpError {
 export class ApiInputError extends HttpError {
     public static ERROR_CODES = {
         inactiveRecipient: 406,
-        invalidEmailAddress: 300
+        invalidEmailReqest: 300
     };
 
     constructor(message: string, code: number, statusCode: number) {
@@ -78,8 +86,8 @@ export class ApiInputError extends HttpError {
         switch (code) {
             case this.ERROR_CODES.inactiveRecipient:
                 return new InactiveRecipientError(message, code, statusCode);
-            case this.ERROR_CODES.invalidEmailAddress:
-                return new InvalidEmailAddressError(message, code, statusCode);
+            case this.ERROR_CODES.invalidEmailReqest:
+                return new InvalidEmailRequestError(message, code, statusCode);
             default:
                 return new ApiInputError(message, code, statusCode);
         }
@@ -120,10 +128,10 @@ export class InactiveRecipientError extends ApiInputError {
     }
 }
 
-export class InvalidEmailAddressError extends ApiInputError {
+export class InvalidEmailRequestError extends ApiInputError {
     constructor(message: string, code: number, statusCode: number) {
         super(message, code, statusCode);
-        Object.setPrototypeOf(this, InvalidEmailAddressError.prototype);
+        Object.setPrototypeOf(this, InvalidEmailRequestError.prototype);
         this.setUpStackTrace();
     }
 }

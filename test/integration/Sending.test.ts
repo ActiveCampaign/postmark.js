@@ -38,7 +38,7 @@ describe("Sending", () => {
             return client.sendEmail(message).then((result) => {
                 throw Error(`Should not be here with result: ${result}`);
             }).catch((error) => {
-                expect(error.name).to.equal("ApiInputError");
+                expect(error.name).to.equal("InvalidEmailRequestError");
             });
         });
     });
