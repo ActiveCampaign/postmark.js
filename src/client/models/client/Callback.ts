@@ -1,4 +1,4 @@
-import * as Errors from "./Errors";
+import * as Errors from "../../errors/Errors";
 
 /**
  * A standard node callback. All errors returned to this callback will be a in namespace 'PostmarkError'

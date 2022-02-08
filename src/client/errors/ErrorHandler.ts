@@ -1,6 +1,6 @@
 import {AxiosError, AxiosResponse} from "axios";
-import {DefaultResponse} from "./models";
-import * as Errors from "./models/client/Errors";
+import {DefaultResponse} from "../models";
+import * as Errors from "./Errors";
 
 /**
  * Handles general errors and all client request errors.
@@ -73,7 +73,7 @@ export class ErrorHandler {
                 return new Errors.PostmarkError(errorMessage, errorCode, errorStatusCode);
 
             case 422:
-                return new Errors.ApiInputError(errorMessage, errorCode, errorStatusCode);
+                return Errors.ApiInputError.buildSpecificError(errorMessage, errorCode, errorStatusCode);
 
             case 500:
                 return new Errors.InternalServerError(errorMessage, errorCode, errorStatusCode);

@@ -2,7 +2,7 @@ import AccountClient from "./client/AccountClient";
 import ServerClient from "./client/ServerClient";
 
 import * as Models from "./client/models";
-import * as Errors from "./client/models/client/Errors";
+import * as Errors from "./client/errors/Errors";
 
 // Essential types are exposed directly
 // to make working with common requests simpler.

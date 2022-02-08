@@ -1,5 +1,5 @@
 import { Errors } from "../../src";
-import { ErrorHandler } from "../../src/client/ErrorHandler";
+import { ErrorHandler } from "../../src/client/errors/ErrorHandler";
 
 import { expect } from "chai";
 import "mocha";
@@ -138,6 +138,42 @@ describe("ErrorHandler", () => {
             expect(postmarkError).to.be.an.instanceof(Errors.PostmarkError);
             expect(postmarkError.name).to.equal("PostmarkError");
             expect(postmarkError.message).to.equal("Test message");
+        });
+    });
+
+    describe("api input error classifications", () => {
+        it("all inactive recipients", () => {
+            const errorHandler = new ErrorHandler();
+
+            const error: any = {
+                response: {
+                    data: {
+                        Message: "InactiveRecipientError: You tried to send to recipients " +
+                            "that have all been marked as inactive.\n" +
+                            "Found inactive addresses: nothing2@example.com, nothing@example.com.\n" +
+                            "Inactive recipients are ones that have generated a hard bounce, " +
+                            "a spam complaint, or a manual suppression.\n",
+                        ErrorCode: 406,
+                    },
+                    status: 422,
+                }
+            };
+
+            const postmarkError: any = errorHandler.buildRequestError(error);
+            expect(postmarkError).to.be.an.instanceof(Errors.InactiveRecipientError);
+            expect(postmarkError.name).to.equal("InactiveRecipientError");
+            expect(postmarkError.recipients).to.eql([ 'nothing2@example.com', 'nothing@example.com' ])
+        });
+
+        it("parse some inactive recipients", () => {
+            const errorHandler = new ErrorHandler();
+
+            const message = "Message OK, but will not deliver to these inactive addresses: " +
+                "nothing2@example.com, nothing@example.com"
+
+            const inactiveRecipients = Errors.InactiveRecipientError.parseRecipients(message)
+            expect(inactiveRecipients).to.eql([ 'nothing2@example.com', 'nothing@example.com' ])
+
         });
     });
 });

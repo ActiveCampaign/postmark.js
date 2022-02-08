@@ -1,6 +1,6 @@
 import axios, {AxiosError, AxiosInstance} from "axios";
 
-import { ErrorHandler } from "./ErrorHandler";
+import { ErrorHandler } from "./errors/ErrorHandler";
 import {Callback, ClientOptions, FilteringParameters} from "./models";
 
 const packageJson = require("../../package.json");
