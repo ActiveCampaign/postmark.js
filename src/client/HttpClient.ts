@@ -2,7 +2,7 @@ import axios, {AxiosInstance} from "axios";
 import {ClientOptions, HttpClient } from "./models";
 
 export class AxiosHttpClient extends HttpClient {
-    protected client: AxiosInstance;
+    public client: AxiosInstance;
 
     public constructor(token: string, authHeader: string, clientVersion: string) {
         super(token, authHeader, clientVersion);

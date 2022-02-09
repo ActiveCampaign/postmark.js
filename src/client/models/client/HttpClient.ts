@@ -28,7 +28,7 @@ export abstract class HttpClient {
     protected readonly authHeader: string;
     protected readonly token: string;
     protected readonly clientVersion: string;
-    protected abstract client: any;
+    public abstract client: any;
 
     protected constructor(token: string, authHeader: string, clientVersion: string) {
         this.clientOptions = HttpClient.DefaultOptions;
