@@ -2,12 +2,7 @@ import axios, {AxiosInstance} from "axios";
 import {ClientOptions, HttpClient } from "./models";
 
 export class AxiosHttpClient extends HttpClient {
-    public client: AxiosInstance;
-
-    public constructor(token: string, authHeader: string, clientVersion: string) {
-        super(token, authHeader, clientVersion);
-        this.client = this.buildHttpClient(this.clientOptions);
-    }
+    public client!: AxiosInstance;
 
     /**
      * Create http client instance with default settings.
@@ -41,13 +36,13 @@ export class AxiosHttpClient extends HttpClient {
      * @param body - Data sent with http request.
      */
     public httpRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object),
-                           body: (null | object)): Promise<T> {
+                           body: (null | object), requestHeaders: any): Promise<T> {
 
         return this.client.request<void, T>({
             method,
             url: path,
             data: body,
-            headers: this.getComposedHttpRequestHeaders(),
+            headers: requestHeaders,
             params: queryParameters,
         });
     }

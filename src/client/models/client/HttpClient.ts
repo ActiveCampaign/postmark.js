@@ -25,28 +25,11 @@ export abstract class HttpClient {
     };
 
     public clientOptions: ClientOptions.Configuration;
-    protected readonly authHeader: string;
-    protected readonly token: string;
-    protected readonly clientVersion: string;
-    public abstract client: any;
+    public client: any;
 
-    protected constructor(token: string, authHeader: string, clientVersion: string) {
-        this.clientOptions = HttpClient.DefaultOptions;
-        this.authHeader = authHeader;
-        this.token = token;
-        this.clientVersion = clientVersion;
-        this.buildHttpClient(this.clientOptions);
-    }
-
-    /**
-     * JSON object with default headers sent by HTTP request.
-     */
-    public getComposedHttpRequestHeaders(): any {
-        return {
-            [this.authHeader]: this.token,
-            "Accept": "application/json",
-            "User-Agent": `Postmark.JS - ${this.clientVersion}`,
-        };
+    public constructor(configOptions?: ClientOptions.Configuration) {
+        this.clientOptions = { ...HttpClient.DefaultOptions, ...configOptions };
+        this.client = this.buildHttpClient(this.clientOptions);
     }
 
     public getBaseHttpRequestURL(): string {
@@ -56,5 +39,5 @@ export abstract class HttpClient {
 
     public abstract buildHttpClient(configOptions?: ClientOptions.Configuration): any;
     public abstract httpRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object),
-                                   body: (null | object)): Promise<T>;
+                                   body: (null | object), headers: any): Promise<T>;
 }

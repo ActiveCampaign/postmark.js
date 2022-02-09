@@ -53,6 +53,7 @@ describe("AccountClient", () => {
         });
     });
 
+/*
     it("getComposedHttpRequestHeaders", () => {
         expect(client.httpClient.getComposedHttpRequestHeaders()).to.eql({
             "X-Postmark-Account-Token": accountToken,
@@ -60,6 +61,7 @@ describe("AccountClient", () => {
             "User-Agent": `Postmark.JS - ${clientVersion}`,
         });
     });
+*/
 
     it("set clientOptions timeout", () => {
       const timeoutValue: number = 10;

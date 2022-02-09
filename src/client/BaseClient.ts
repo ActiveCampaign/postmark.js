@@ -13,13 +13,16 @@ export default abstract class BaseClient {
     public clientVersion: string;
     public httpClient: HttpClient;
     protected errorHandler: ErrorHandler;
+    private readonly authHeader: string;
+    private readonly token: string;
 
     protected constructor(token: string, authHeader: string, configOptions?: ClientOptions.Configuration) {
         this.errorHandler = new ErrorHandler();
         this.verifyToken(token);
+        this.token = token.trim();
+        this.authHeader = authHeader;
         this.clientVersion = CLIENT_VERSION;
-        this.httpClient = new AxiosHttpClient(token.trim(), authHeader, CLIENT_VERSION);
-        this.httpClient.buildHttpClient(configOptions)
+        this.httpClient = new AxiosHttpClient(configOptions);
     }
 
     public setClientOptions(configOptions: ClientOptions.Configuration): void {
@@ -88,7 +91,7 @@ export default abstract class BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     private processHttpRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object, body: (null | object)): Promise<T> {
-        return this.httpClient.httpRequest<T>(method, path, queryParameters, body)
+        return this.httpClient.httpRequest<T>(method, path, queryParameters, body, this.getComposedHttpRequestHeaders())
             .then((response: any) => response)
             .catch((error: HttpClientError) => {
                 throw this.errorHandler.buildRequestError(error);
@@ -107,6 +110,17 @@ export default abstract class BaseClient {
                 .then((response) => callback(null, response))
                 .catch((error) => callback(error, null));
         }
+    }
+
+    /**
+     * JSON object with default headers sent by HTTP request.
+     */
+    private getComposedHttpRequestHeaders(): any {
+        return {
+            [this.authHeader]: this.token,
+            "Accept": "application/json",
+            "User-Agent": `Postmark.JS - ${this.clientVersion}`,
+        };
     }
 
     /**

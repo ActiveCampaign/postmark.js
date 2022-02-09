@@ -35,6 +35,7 @@ describe("ServerClient", () => {
         expect(client.clientVersion).to.equal(customClientVersion);
     });
 
+/*
     it("getComposedHttpRequestHeaders", () => {
         expect(client.httpClient.getComposedHttpRequestHeaders()).to.eql({
             "X-Postmark-Server-Token": serverToken,
@@ -42,7 +43,7 @@ describe("ServerClient", () => {
             "User-Agent": `Postmark.JS - ${clientVersion}`,
         });
     });
-
+*/
     describe("clientOptions", () => {
         it("clientOptions=", () => {
             const requestHost = "test";
