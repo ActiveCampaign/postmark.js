@@ -95,7 +95,7 @@ export default class ServerClient extends BaseClient {
      * @param configOptions - Options to customize the behavior of the this client.
      */
     constructor(serverToken: string, configOptions?: ClientOptions.Configuration) {
-        super(serverToken, ClientOptions.DefaultHeaderNames.SERVER_TOKEN, configOptions);
+        super(serverToken, ClientOptions.AuthHeaderNames.SERVER_TOKEN, configOptions);
     }
 
     /** Send a single email message.

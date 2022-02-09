@@ -1,80 +1,12 @@
 import axios, {AxiosInstance} from "axios";
-import { ClientOptions } from "./models";
-
-export interface HttpClientError<T = any> extends Error {
-    code?: string;
-    request?: any;
-    response?: HttpClientResponse<T>;
-}
-
-export interface HttpClientResponse<T = any>  {
-    data: T;
-    status: number;
-    statusText: string;
-    request?: any;
-}
-
-export abstract class HttpClient {
-    /**
-     * Http Client connection configuration options.
-     * You may modify these values and new clients will use them.
-     * Any values provided to a Client constructor will override default options.
-     */
-    public static DefaultOptions: ClientOptions.Configuration = {
-        useHttps: true,
-        requestHost: "api.postmarkapp.com",
-        timeout: 180,
-    };
-
-    public abstract client:any;
-    public clientOptions: ClientOptions.Configuration;
-    protected readonly authHeader: string;
-    protected readonly token: string;
-    protected readonly clientVersion: string;
-
-    public constructor(authHeader: string, token: string, clientVersion: string) {
-        this.clientOptions = HttpClient.DefaultOptions;
-        this.authHeader = authHeader;
-        this.token = token;
-        this.clientVersion = clientVersion;
-    }
-
-    public setClientOptions(configOptions?: ClientOptions.Configuration): void {
-        this.clientOptions = { ...HttpClient.DefaultOptions, ...configOptions };
-    }
-
-    /**
-     * JSON object with default headers sent by HTTP request.
-     */
-    public getComposedHttpRequestHeaders(): any {
-        return {
-            [this.authHeader]: this.token,
-            "Accept": "application/json",
-            "User-Agent": `Postmark.JS - ${this.clientVersion}`,
-        };
-    }
-
-    protected getBaseHttpRequestURL(): string {
-        const scheme = this.clientOptions.useHttps ? "https" : "http";
-        return `${scheme}://${this.clientOptions.requestHost}`;
-    }
-
-    public abstract buildHttpClient(configOptions?: ClientOptions.Configuration): void;
-    public abstract httpRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object),
-                                body: (null | object)): Promise<T>;
-}
+import {ClientOptions, HttpClient } from "./models";
 
 export class AxiosHttpClient extends HttpClient {
-    public client: AxiosInstance;
+    protected client: AxiosInstance;
 
-    public constructor(authHeader: string, token: string, clientVersion: string) {
-        super(authHeader, token, clientVersion);
-        this.client = this.buildHttpClient();
-
-    }
-
-    public setHttpClient(configOptions?: ClientOptions.Configuration): void {
-        this.client = this.buildHttpClient(configOptions);
+    public constructor(token: string, authHeader: string, clientVersion: string) {
+        super(token, authHeader, clientVersion);
+        this.client = this.buildHttpClient(this.clientOptions);
     }
 
     /**
@@ -83,7 +15,7 @@ export class AxiosHttpClient extends HttpClient {
      * @return {AxiosInstance}
      */
     public buildHttpClient(configOptions?: ClientOptions.Configuration): AxiosInstance {
-        this.setClientOptions(configOptions);
+        this.clientOptions = { ...HttpClient.DefaultOptions, ...configOptions };
 
         const httpClient = axios.create({
             baseURL: this.getBaseHttpRequestURL(),

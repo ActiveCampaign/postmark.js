@@ -21,7 +21,7 @@ export namespace ClientOptions {
         PATCH = "PATCH",
     }
 
-    export enum DefaultHeaderNames {
+    export enum AuthHeaderNames {
         SERVER_TOKEN = "X-Postmark-Server-Token",
         ACCOUNT_TOKEN = "X-Postmark-Account-Token",
     }

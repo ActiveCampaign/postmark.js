@@ -1,5 +1,6 @@
 export * from "./client/ClientOptions";
 export * from "./client/SupportingTypes";
+export * from "./client/HttpClient";
 export * from "./client/Callback";
 export * from "./client/DefaultResponse";
 export * from "./client/FilteringParameters";

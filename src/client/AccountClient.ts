@@ -36,7 +36,7 @@ export default class AccountClient extends BaseClient {
      * @param configOptions Various options to customize client behavior.
      */
     constructor(accountToken: string, configOptions?: ClientOptions.Configuration) {
-        super(accountToken, ClientOptions.DefaultHeaderNames.ACCOUNT_TOKEN, configOptions);
+        super(accountToken, ClientOptions.AuthHeaderNames.ACCOUNT_TOKEN, configOptions);
     }
 
     /**
