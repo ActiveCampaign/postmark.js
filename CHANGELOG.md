@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.0
+
+* Updated message response for sending
+* Decoupled and refactored http client part of the library
+
 ## 2.9.5
 
 * Improved error handling 
