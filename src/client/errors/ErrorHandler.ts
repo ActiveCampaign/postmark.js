@@ -15,11 +15,11 @@ export class ErrorHandler {
      * @returns properly formatted Postmark error.
      */
     public buildError(errorMessage: string, code: number = 0, statusCode: number = 0): Errors.PostmarkError|Errors.HttpError {
-        if (statusCode !== 0) {
-            return this.buildRequestErrorByStatus(errorMessage, code, statusCode);
+        if (statusCode === 0 && code === 0) {
+            return new Errors.PostmarkError(errorMessage);
         }
         else {
-            return new Errors.PostmarkError(errorMessage);
+            return this.buildRequestErrorByStatus(errorMessage, code, statusCode);
         }
     }
 
