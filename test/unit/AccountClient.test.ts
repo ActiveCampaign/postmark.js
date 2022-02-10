@@ -5,6 +5,7 @@ import "mocha";
 
 import * as nconf from "nconf";
 import * as sinon from "sinon";
+import {InternalServerError, PostmarkError} from "../../src/client/errors/Errors";
 const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
 
 const packageJson = require("../../package.json");
@@ -93,7 +94,7 @@ describe("AccountClient", () => {
 
         describe("httpRequest errors", () => {
             const errorType = "InternalServerError";
-            const rejectError = {response: {status: 500, data: "response"}};
+            const rejectError = new InternalServerError("response", 500, 500);
             let sandbox: sinon.SinonSandbox;
 
             beforeEach(() => {

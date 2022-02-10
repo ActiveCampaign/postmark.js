@@ -74,18 +74,19 @@ export class AxiosHttpClient extends HttpClient {
      *
      * @return {PostmarkError} - formatted Postmark error
      */
-    private transformError(error:AxiosError): Errors.PostmarkError {
-        const response: AxiosResponse | undefined = error.response;
+    private transformError(errorThrown:AxiosError): Errors.PostmarkError {
+        const response: AxiosResponse | undefined = errorThrown.response;
 
         if (response !== undefined) {
             const data: DefaultResponse = response.data;
             const status = this.adjustValue<number>(0, response.status);
             const errorCode = this.adjustValue<number>(0, data.ErrorCode);
-            const message = this.adjustValue<string>(error.message, data.Message);
+            const message = this.adjustValue<string>(errorThrown.message, data.Message);
 
             return this.errorHandler.buildError(message, errorCode, status);
         } else {
-            const message:string = (error.message !== undefined) ? error.message : JSON.stringify(error, Object.getOwnPropertyNames(error))
+            const message:string = (errorThrown.message !== undefined) ?
+                errorThrown.message : JSON.stringify(errorThrown, Object.getOwnPropertyNames(errorThrown))
             return this.errorHandler.buildError(message);
         }
     }
