@@ -26,7 +26,7 @@ export default abstract class BaseClient {
     }
 
     public setClientOptions(configOptions: ClientOptions.Configuration): void {
-        this.httpClient.buildHttpClient(configOptions)
+        this.httpClient.initHttpClient(configOptions)
     }
 
     public getClientOptions(): ClientOptions.Configuration {
@@ -51,14 +51,6 @@ export default abstract class BaseClient {
     protected processRequestWithoutBody<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object = {},
                                            callback?: Callback<T>): Promise<T> {
         return this.processRequest(method, path, queryParameters, null, callback);
-    }
-
-    /**
-     * Set default values for count and offset when doing filtering with API requests if they are not specified by filter.
-     */
-    protected setDefaultPaginationValues(filter: FilteringParameters): void {
-        filter.count = filter.count || 100;
-        filter.offset = filter.offset || 0;
     }
 
     /**
@@ -132,5 +124,13 @@ export default abstract class BaseClient {
         if (!token || token.trim() === "") {
             throw this.errorHandler.buildGeneralError("A valid API token must be provided.");
         }
+    }
+
+    /**
+     * Set default values for count and offset when doing filtering with API requests if they are not specified by filter.
+     */
+    protected setDefaultPaginationValues(filter: FilteringParameters): void {
+        filter.count = filter.count || 100;
+        filter.offset = filter.offset || 0;
     }
 }

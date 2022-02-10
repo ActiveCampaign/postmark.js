@@ -2,14 +2,14 @@ import axios, {AxiosInstance} from "axios";
 import {ClientOptions, HttpClient } from "./models";
 
 export class AxiosHttpClient extends HttpClient {
-    public client!: AxiosInstance;
+    protected client!: AxiosInstance;
 
     /**
      * Create http client instance with default settings.
      *
      * @return {AxiosInstance}
      */
-    public buildHttpClient(configOptions?: ClientOptions.Configuration): AxiosInstance {
+    public initHttpClient(configOptions?: ClientOptions.Configuration): void {
         this.clientOptions = { ...HttpClient.DefaultOptions, ...configOptions };
 
         const httpClient = axios.create({
@@ -24,7 +24,7 @@ export class AxiosHttpClient extends HttpClient {
         });
 
         httpClient.interceptors.response.use((response: any) => (response.data));
-        return httpClient;
+        this.client = httpClient;
     }
 
     /**
@@ -47,6 +47,11 @@ export class AxiosHttpClient extends HttpClient {
         });
     }
 
+    /**
+     * Timeout in seconds is adjusted to Axios format.
+     *
+     * @private
+     */
     private getRequestTimeoutInSeconds(): number {
         return (this.clientOptions.timeout || 60) * 1000;
     }

@@ -46,5 +46,5 @@ export interface MessageSendingResponse extends DefaultResponse {
     Cc?: string;
     Bcc?: string;
     SubmittedAt: string;
-    MessageID?: string;
+    MessageID: string;
 }

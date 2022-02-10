@@ -1,12 +1,17 @@
 import { ClientOptions } from "./ClientOptions";
 
 /**
- * Minimum data that has to be provided by HttpClient error so that it can be classified.
+ * Minimum data that has to be provided by HttpClient error
+ * so that Error can be classified.
  */
 export interface HttpClientError<T = any> extends Error {
     response?: HttpClientErrorResponse<T>;
 }
 
+/**
+ * Minimum data that has to be provided by HttpClient error response
+ * so that Error can be classified.
+ */
 export interface HttpClientErrorResponse<T = any>  {
     data: T;
     status: number;
@@ -25,11 +30,11 @@ export abstract class HttpClient {
     };
 
     public clientOptions: ClientOptions.Configuration;
-    public client: any;
+    protected client: any;
 
     public constructor(configOptions?: ClientOptions.Configuration) {
         this.clientOptions = { ...HttpClient.DefaultOptions, ...configOptions };
-        this.client = this.buildHttpClient(this.clientOptions);
+        this.initHttpClient(this.clientOptions);
     }
 
     public getBaseHttpRequestURL(): string {
@@ -37,7 +42,7 @@ export abstract class HttpClient {
         return `${scheme}://${this.clientOptions.requestHost}`;
     }
 
-    public abstract buildHttpClient(configOptions?: ClientOptions.Configuration): any;
+    public abstract initHttpClient(configOptions?: ClientOptions.Configuration): void;
     public abstract httpRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object),
                                    body: (null | object), headers: any): Promise<T>;
 }
