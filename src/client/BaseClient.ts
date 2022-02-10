@@ -1,6 +1,7 @@
 import { ErrorHandler } from "./errors/ErrorHandler";
-import {Callback, ClientOptions, FilteringParameters, HttpClient, HttpClientError} from "./models";
+import {Callback, ClientOptions, FilteringParameters, HttpClient} from "./models";
 import {AxiosHttpClient} from "./HttpClient"
+import {Errors} from "../index";
 
 const packageJson = require("../../package.json");
 const CLIENT_VERSION = packageJson.version;
@@ -85,9 +86,7 @@ export default abstract class BaseClient {
     private processHttpRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object, body: (null | object)): Promise<T> {
         return this.httpClient.httpRequest<T>(method, path, queryParameters, body, this.getComposedHttpRequestHeaders())
             .then((response: any) => response)
-            .catch((error: HttpClientError) => {
-                throw this.errorHandler.buildRequestError(error);
-            });
+            .catch((error: Errors.PostmarkError) => { throw error; });
     }
 
     /**
@@ -122,7 +121,7 @@ export default abstract class BaseClient {
      */
     private verifyToken(token: string): void {
         if (!token || token.trim() === "") {
-            throw this.errorHandler.buildGeneralError("A valid API token must be provided.");
+            throw this.errorHandler.buildError("A valid API token must be provided.");
         }
     }
 

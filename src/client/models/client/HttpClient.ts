@@ -1,22 +1,5 @@
 import { ClientOptions } from "./ClientOptions";
 
-/**
- * Minimum data that has to be provided by HttpClient error
- * so that Error can be classified.
- */
-export interface HttpClientError<T = any> extends Error {
-    response?: HttpClientErrorResponse<T>;
-}
-
-/**
- * Minimum data that has to be provided by HttpClient error response
- * so that Error can be classified.
- */
-export interface HttpClientErrorResponse<T = any>  {
-    data: T;
-    status: number;
-}
-
 export abstract class HttpClient {
     /**
      * Http Client connection configuration options.

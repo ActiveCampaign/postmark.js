@@ -1,8 +1,17 @@
-import axios, {AxiosInstance} from "axios";
-import {ClientOptions, HttpClient } from "./models";
+import axios, {AxiosInstance, AxiosError, AxiosResponse} from "axios";
+import {ClientOptions, DefaultResponse, HttpClient} from "./models";
+import {ErrorHandler} from "./errors/ErrorHandler";
+import * as Errors from "./errors/Errors";
+import {error} from "util";
 
 export class AxiosHttpClient extends HttpClient {
     protected client!: AxiosInstance;
+    private errorHandler: ErrorHandler;
+
+    public constructor(configOptions?: ClientOptions.Configuration) {
+        super(configOptions);
+        this.errorHandler = new ErrorHandler();
+    }
 
     /**
      * Create http client instance with default settings.
@@ -44,7 +53,9 @@ export class AxiosHttpClient extends HttpClient {
             data: body,
             headers: requestHeaders,
             params: queryParameters,
-        });
+        }).catch((errorThrown: AxiosError) => {
+            throw this.transformError(errorThrown);
+        })
     }
 
     /**
@@ -54,5 +65,32 @@ export class AxiosHttpClient extends HttpClient {
      */
     private getRequestTimeoutInSeconds(): number {
         return (this.clientOptions.timeout || 60) * 1000;
+    }
+
+    /**
+     * Process callback function for HTTP request.
+     *
+     * @param error - request error that needs to be transformed to proper Postmark error.
+     *
+     * @return {PostmarkError} - formatted Postmark error
+     */
+    private transformError(error:AxiosError): Errors.PostmarkError {
+        const response: AxiosResponse | undefined = error.response;
+
+        if (response !== undefined) {
+            const data: DefaultResponse = response.data;
+            const status = this.adjustValue<number>(0, response.status);
+            const errorCode = this.adjustValue<number>(0, data.ErrorCode);
+            const message = this.adjustValue<string>(error.message, data.Message);
+
+            return this.errorHandler.buildError(message, errorCode, status);
+        } else {
+            const message:string = (error.message !== undefined) ? error.message : JSON.stringify(error, Object.getOwnPropertyNames(error))
+            return this.errorHandler.buildError(message);
+        }
+    }
+
+    private adjustValue<T>(defaultValue: T, data: T): T {
+        return (data === undefined) ? defaultValue : data;
     }
 }
