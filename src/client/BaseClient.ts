@@ -86,7 +86,7 @@ export default abstract class BaseClient {
     private processHttpRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object, body: (null | object)): Promise<T> {
         return this.httpClient.httpRequest<T>(method, path, queryParameters, body, this.getComposedHttpRequestHeaders())
             .then((response: any) => response)
-            .catch((error: Errors.PostmarkError) => { throw error; });
+            .catch((error: Errors.PostmarkError) => { return Promise.reject(error); });
     }
 
     /**

@@ -54,7 +54,7 @@ export class AxiosHttpClient extends HttpClient {
             headers: requestHeaders,
             params: queryParameters,
         }).catch((errorThrown: AxiosError) => {
-            throw this.transformError(errorThrown);
+            return Promise.reject(this.transformError(errorThrown));
         })
     }
 
