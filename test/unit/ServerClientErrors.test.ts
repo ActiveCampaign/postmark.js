@@ -29,9 +29,6 @@ describe("ServerClient - Errors", () => {
     });
 
     describe("handling errors", () => {
-        const serverToken: string = testingKeys.get("SERVER_API_TOKEN");
-        const client: postmark.ServerClient = new postmark.ServerClient(serverToken);
-
         describe("promise error", () => {
             it("instance", () => {
                 sandbox.stub(client.httpClient, "httpRequest").rejects({ message: "Basic error", response: {data: "Basic error" }});
@@ -44,12 +41,13 @@ describe("ServerClient - Errors", () => {
             });
 
             it("message", () => {
-                sandbox.stub(client.httpClient, "httpRequest").rejects({ message: "Basic error", response: {data: "Basic error" }});
+                const errorMessage = "error message";
+                sandbox.stub(client.httpClient, "httpRequest").rejects(errorMessage);
 
                 return client.getServer().then((result) => {
                     return result;
                 }, (error) => {
-                    expect(error.message).to.equal("Basic error");
+                    expect(error.message).to.equal(errorMessage);
                 });
             });
 

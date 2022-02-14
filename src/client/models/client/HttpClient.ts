@@ -13,9 +13,9 @@ export abstract class HttpClient {
     };
 
     public clientOptions: ClientOptions.Configuration;
-    protected client: any;
+    public client: any;
 
-    public constructor(configOptions?: ClientOptions.Configuration) {
+    protected constructor(configOptions?: ClientOptions.Configuration) {
         this.clientOptions = { ...HttpClient.DefaultOptions, ...configOptions };
         this.initHttpClient(this.clientOptions);
     }

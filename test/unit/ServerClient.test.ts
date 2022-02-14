@@ -9,6 +9,7 @@ const testingKeys = nconf.env().file({file: __dirname + "/../../testing_keys.jso
 const packageJson = require("../../package.json");
 const clientVersion = packageJson.version;
 import * as sinon from "sinon";
+import {InternalServerError} from "../../src/client/errors/Errors";
 
 describe("ServerClient", () => {
     let client: postmark.ServerClient;
@@ -27,6 +28,10 @@ describe("ServerClient", () => {
         it("clientVersion", () => {
             expect(client.clientVersion).to.equal(clientVersion);
         });
+
+        it("httpClient initialized", () => {
+            expect(client.httpClient.client.defaults).not.to.eql(180000);
+        });
     });
 
     it("clientVersion=", () => {
@@ -35,15 +40,6 @@ describe("ServerClient", () => {
         expect(client.clientVersion).to.equal(customClientVersion);
     });
 
-/*
-    it("getComposedHttpRequestHeaders", () => {
-        expect(client.httpClient.getComposedHttpRequestHeaders()).to.eql({
-            "X-Postmark-Server-Token": serverToken,
-            "Accept": "application/json",
-            "User-Agent": `Postmark.JS - ${clientVersion}`,
-        });
-    });
-*/
     describe("clientOptions", () => {
         it("clientOptions=", () => {
             const requestHost = "test";
@@ -111,9 +107,19 @@ describe("ServerClient", () => {
             });
         });
 
+        it("set clientOptions requestHost", () => {
+            const host: string = "test.com";
+            client.setClientOptions({requestHost: host});
+
+            expect(client.getClientOptions()).to.eql({
+                useHttps: true,
+                requestHost: host,
+                timeout: 180,
+            });
+        });
     });
 
-    describe("requests", () => {
+    describe("valid requests", () => {
         let sandbox: sinon.SinonSandbox;
 
         beforeEach(() => {
@@ -124,35 +130,75 @@ describe("ServerClient", () => {
             sandbox.restore();
         });
 
-        describe("callback", () => {
-            it("process it when there are no errors", async() => {
-                let callback = sinon.spy();
-                sandbox.stub(client.httpClient, "httpRequest").returns(Promise.resolve("test"));
+        describe("httpRequest", () => {
+            it("callback called once", async() => {
+                const callback = sinon.spy();
+                sandbox.stub(client.httpClient, "httpRequest").resolves("test");
 
                 await client.getServer(callback);
                 expect(callback.calledOnce).to.be.true
             });
 
-            it("process regular response based on request status", () => {
-                sandbox.stub(client.httpClient, "httpRequest").returns(Promise.resolve("test"));
+            it("callback result",(done) => {
+                const successMessage = "success!"
+                sandbox.stub(client.httpClient, "httpRequest").resolves(successMessage);
 
-                return client.getServer().then((result) => {
-                    expect(result).to.eq("test");
-                }, (error) => {
-                    throw Error(`Should not be here with error: ${error}`);
+                client.getServer((error: any, data) => {
+                    expect(data).to.equal(successMessage);
+                    expect(error).to.equal(null);
+                    done();
                 });
             });
-            
-            it("process error response based on request status",  () => {
-                sandbox.stub(client.httpClient, "httpRequest").rejects({response: {status: 600, data: "response"}});
+
+            it("promise result", () => {
+                const successMessage = "success!"
+                sandbox.stub(client.httpClient, "httpRequest").resolves(successMessage);
 
                 return client.getServer().then((result) => {
-                    throw Error(`Should not be here with result: ${result}`);
+                    expect(result).to.eq(successMessage);
                 }, (error) => {
-                    expect(error.name).to.eq("UnknownError");
+                    throw Error(`Should not be here with error: ${error}`);
                 });
             });
         });
     });
 
+    describe("invalid requests", () => {
+        let sandbox: sinon.SinonSandbox;
+
+        beforeEach(() => {
+            sandbox = sinon.createSandbox();
+        });
+
+        afterEach(() => {
+            sandbox.restore();
+        });
+
+        describe("httpRequest", () => {
+            it("promise error",  () => {
+                const rejectError = new InternalServerError("response", 500, 500);
+                sandbox.stub(client.httpClient, "httpRequest").rejects(rejectError);
+
+                return client.getServer().then((result) => {
+                    throw Error(`Should not be here with result: ${result}`);
+                }, (error) => {
+                    expect(error.name).to.eq(rejectError.name);
+                });
+            });
+
+            it("callback error",(done) => {
+                const errorType = "InternalServerError";
+                const rejectError = new InternalServerError("response", 500, 500);
+
+                client = new postmark.ServerClient("testToken");
+                sandbox.stub(client.httpClient, "httpRequest").rejects(rejectError);
+
+                client.getServer((error: any, data) => {
+                    expect(data).to.equal(null);
+                    expect(error.name).to.equal(errorType);
+                    done();
+                });
+            });
+        });
+    });
 });

@@ -25,95 +25,44 @@ describe("ErrorHandler", () => {
         expect(postmarkError).to.be.an.instanceof(Errors.PostmarkError);
         expect(postmarkError.name).to.equal("PostmarkError");
         expect(postmarkError.message).to.equal(error.message);
+        expect(postmarkError.code).to.equal(0);
+        expect(postmarkError.statusCode).to.equal(0)
     });
 
-/*
-
-    it("no message", () => {
-        const errorHandler = new ErrorHandler();
-        const error: any = { stack: 'Hello stack' };
-
-        const postmarkError = errorHandler.buildError(error);
-        expect(postmarkError).to.be.an.instanceof(Errors.PostmarkError);
-        expect(postmarkError.name).to.equal("PostmarkError");
-        expect(postmarkError.message).to.equal(JSON.stringify(error));
-    });
-*/
     describe("statuses", () => {
         it("401", () => {
             const errorHandler = new ErrorHandler();
+            const postmarkError = errorHandler.buildError("Test message", 401, 401);
 
-            const error: any = {
-                response: {
-                    data: {
-                        Message: "Test message",
-                        ErrorCode: 401,
-                    },
-                    status: 401,
-                }
-            };
-
-            const postmarkError = errorHandler.buildError(error.response.data.Message, error.response.data.ErrorCode, error.response.status);
             expect(postmarkError).to.be.an.instanceof(Errors.InvalidAPIKeyError);
             expect(postmarkError.name).to.equal("InvalidAPIKeyError");
-            expect(postmarkError.message).to.equal(error.response.data.Message);
+            expect(postmarkError.message).to.equal("Test message");
         });
 
         it("422", () => {
             const errorHandler = new ErrorHandler();
-
-            const error: any = {
-                response: {
-                    data: {
-                        Message: "Test message",
-                        ErrorCode: 422,
-                    },
-                    status: 422,
-                }
-            };
-
-            const postmarkError = errorHandler.buildError(error.response.data.Message, error.response.data.ErrorCode, error.response.status);
+            const postmarkError = errorHandler.buildError("Test message", 423, 422);
             expect(postmarkError).to.be.an.instanceof(Errors.ApiInputError);
             expect(postmarkError.name).to.equal("ApiInputError");
-            expect(postmarkError.message).to.equal(error.response.data.Message);
+            expect(postmarkError.message).to.equal("Test message");
+            expect(postmarkError.code).to.equal(423);
+            expect(postmarkError.statusCode).to.equal(422);
         });
 
         it("429", () => {
             const errorHandler = new ErrorHandler();
-
-            const error: any = {
-                response: {
-                    data: {
-                        Message: "Test message",
-                        ErrorCode: 429,
-                    },
-                    status: 429,
-                }
-            };
-
-            const postmarkError = errorHandler.buildError(error.response.data.Message, error.response.data.ErrorCode, error.response.status);
+            const postmarkError = errorHandler.buildError("Test message", 429, 429);
             expect(postmarkError).to.be.an.instanceof(Errors.RateLimitExceededError);
             expect(postmarkError.name).to.equal("RateLimitExceededError");
-            expect(postmarkError.message).to.equal(error.response.data.Message);
+            expect(postmarkError.message).to.equal("Test message");
         });
 
         it("500", () => {
             const errorHandler = new ErrorHandler();
-
-            const error: any = {
-                response: {
-                    data: {
-                        Message: "Test message",
-                        ErrorCode: 500,
-                    },
-                    status: 500,
-                }
-            };
-
-            const postmarkError = errorHandler.buildError(error.response.data.Message, error.response.data.ErrorCode, error.response.status);
+            const postmarkError = errorHandler.buildError("Test message", 500, 500);
             expect(postmarkError).to.be.an.instanceof(Errors.InternalServerError);
             expect(postmarkError.name).to.equal("InternalServerError");
-            expect(postmarkError.message).to.equal(error.response.data.Message);
+            expect(postmarkError.message).to.equal("Test message");
         });
 
         it("unknown", () => {
@@ -129,27 +78,26 @@ describe("ErrorHandler", () => {
                 }
             };
 
-            const postmarkError = errorHandler.buildError(error.response.data.Message, error.response.data.ErrorCode, error.response.status);
+            const postmarkError = errorHandler.buildError("Test message", 600, 600);
             expect(postmarkError).to.be.an.instanceof(Errors.PostmarkError);
             expect(postmarkError.name).to.equal("UnknownError");
-            expect(postmarkError.message).to.equal(error.response.data.Message);
+            expect(postmarkError.message).to.equal("Test message");
         });
 
-        it("no status", () => {
+        it("no http status", () => {
             const errorHandler = new ErrorHandler();
+            const postmarkError = errorHandler.buildError("Test message");
+            expect(postmarkError).to.be.an.instanceof(Errors.PostmarkError);
+            expect(postmarkError.name).to.equal("PostmarkError");
+            expect(postmarkError.message).to.equal("Test message");
+        });
 
-            const error: any = {
-                response: {
-                    data: {
-                        Message: "Test message"
-                    }
-                }
-            };
-
-            const postmarkError = errorHandler.buildError(error.response.data.Message);
+        it("unknown http status", () => {
+            const errorHandler = new ErrorHandler();
+            const postmarkError = errorHandler.buildError("Test message", 500, 15);
             expect(postmarkError).to.be.an.instanceof(Errors.PostmarkError);
             expect(postmarkError.name).to.equal("UnknownError");
-            expect(postmarkError.message).to.equal(error.response.data.Message);
+            expect(postmarkError.message).to.equal("Test message");
         });
 
         it("postmark default error", () => {
@@ -167,28 +115,20 @@ describe("ErrorHandler", () => {
             const errorHandler = new ErrorHandler();
 
             const error: any = {
-                response: {
-                    data: {
-                        Message: "InactiveRecipientsError: You tried to send to recipients " +
+                message: "InactiveRecipientsError: You tried to send to recipients " +
                             "that have all been marked as inactive.\n" +
                             "Found inactive addresses: nothing2@example.com, nothing@example.com.\n" +
                             "Inactive recipients are ones that have generated a hard bounce, " +
-                            "a spam complaint, or a manual suppression.\n",
-                        ErrorCode: 406,
-                    },
-                    status: 422,
-                }
+                            "a spam complaint, or a manual suppression.\n", errorCode: 406, status: 422
             };
 
-            const postmarkError:any = errorHandler.buildError(error.response.data.Message, error.response.data.ErrorCode, error.response.status);
+            const postmarkError:any = errorHandler.buildError(error.message, error.errorCode, error.status);
             expect(postmarkError).to.be.an.instanceof(Errors.InactiveRecipientsError);
             expect(postmarkError.name).to.equal("InactiveRecipientsError");
             expect(postmarkError.recipients).to.eql([ 'nothing2@example.com', 'nothing@example.com' ])
         });
 
         it("parse some inactive recipients", () => {
-            const errorHandler = new ErrorHandler();
-
             const message = "Message OK, but will not deliver to these inactive addresses: " +
                 "nothing2@example.com, nothing@example.com"
 
@@ -198,8 +138,6 @@ describe("ErrorHandler", () => {
         });
 
         it("parse some inactive recipients - different error message", () => {
-            const errorHandler = new ErrorHandler();
-
             const message = "Message OK, but will not deliver to these inactive addresses: " +
                 "nothing2@example.com, nothing@example.com. Inactive addresses can be activated."
 

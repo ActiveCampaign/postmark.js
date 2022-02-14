@@ -32,6 +32,10 @@ describe("AccountClient", () => {
         it("clientVersion", () => {
             expect(client.clientVersion).to.equal(clientVersion);
         });
+
+        it("httpClient initialized", () => {
+            expect(client.httpClient.client.defaults).not.to.eql(180000);
+        });
     });
 
     it("clientVersion=", () => {
@@ -53,16 +57,6 @@ describe("AccountClient", () => {
             timeout,
         });
     });
-
-/*
-    it("getComposedHttpRequestHeaders", () => {
-        expect(client.httpClient.getComposedHttpRequestHeaders()).to.eql({
-            "X-Postmark-Account-Token": accountToken,
-            "Accept": "application/json",
-            "User-Agent": `Postmark.JS - ${clientVersion}`,
-        });
-    });
-*/
 
     it("set clientOptions timeout", () => {
       const timeoutValue: number = 10;
@@ -86,7 +80,18 @@ describe("AccountClient", () => {
       });
     });
 
-    describe("errors", () => {
+    it("set clientOptions requestHost", () => {
+        const host: string = "test.com";
+        client.setClientOptions({requestHost: host});
+
+        expect(client.getClientOptions()).to.eql({
+            useHttps: true,
+            requestHost: host,
+            timeout: 180,
+        });
+    });
+
+    describe("invalid requests", () => {
         it("empty token", () => {
             expect(() => new postmark.AccountClient(""))
                 .to.throw("A valid API token must be provided.");
@@ -105,7 +110,7 @@ describe("AccountClient", () => {
                 sandbox.restore();
             });
 
-            it("promise error", () => {
+            it("promise error",() => {
                 client = new postmark.AccountClient(serverToken);
                 sandbox.stub(client.httpClient, "httpRequest").rejects(rejectError);
 
@@ -116,7 +121,7 @@ describe("AccountClient", () => {
                 });
             });
 
-            it("callback error", (done) => {
+            it("callback error",(done) => {
                 client = new postmark.AccountClient("testToken");
                 sandbox.stub(client.httpClient, "httpRequest").rejects(rejectError);
 
@@ -125,6 +130,53 @@ describe("AccountClient", () => {
                     expect(error.name).to.equal(errorType);
                     done();
                 });
+            });
+        });
+    });
+
+    describe("valid requests", () => {
+        describe("httpRequest", () => {
+            const errorType = "InternalServerError";
+            const rejectError = new InternalServerError("response", 500, 500);
+            let sandbox: sinon.SinonSandbox;
+
+            beforeEach(() => {
+                sandbox = sinon.createSandbox();
+            });
+
+            afterEach(() => {
+                sandbox.restore();
+            });
+
+            it("promise result",() => {
+                const successMessage = "success!"
+                client = new postmark.AccountClient(serverToken);
+                sandbox.stub(client.httpClient, "httpRequest").resolves(successMessage);
+
+                return client.getSenderSignatures().then((result) => {
+                    expect(result).to.equal(successMessage)
+                }, (error) => {
+                    throw Error(`Should not be here with error: ${error}`);
+                });
+            });
+
+            it("callback result",(done) => {
+                const successMessage = "success!"
+                sandbox.stub(client.httpClient, "httpRequest").resolves(successMessage);
+
+                client.getSenderSignatures(undefined, (error: any, data) => {
+                    expect(data).to.equal(successMessage);
+                    expect(error).to.equal(null);
+                    done();
+                });
+            });
+
+            it("callback called once", async() => {
+                const callback = sinon.spy();
+                sandbox.stub(client.httpClient, "httpRequest").resolves("test");
+
+                await client.getSenderSignatures(undefined, callback);
+                expect(callback.calledOnce).to.be.true
             });
         });
     });

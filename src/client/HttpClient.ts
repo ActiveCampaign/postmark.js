@@ -5,7 +5,7 @@ import * as Errors from "./errors/Errors";
 import {error} from "util";
 
 export class AxiosHttpClient extends HttpClient {
-    protected client!: AxiosInstance;
+    public client!: AxiosInstance;
     private errorHandler: ErrorHandler;
 
     public constructor(configOptions?: ClientOptions.Configuration) {
@@ -78,10 +78,9 @@ export class AxiosHttpClient extends HttpClient {
         const response: AxiosResponse | undefined = errorThrown.response;
 
         if (response !== undefined) {
-            const data: DefaultResponse = response.data;
             const status = this.adjustValue<number>(0, response.status);
-            const errorCode = this.adjustValue<number>(0, data.ErrorCode);
-            const message = this.adjustValue<string>(errorThrown.message, data.Message);
+            const errorCode = this.adjustValue<number>(0, response.data.ErrorCode);
+            const message = this.adjustValue<string>(errorThrown.message, response.data.Message);
 
             return this.errorHandler.buildError(message, errorCode, status);
         } else {
