@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.1
+
+* Separated error handling responsibility between postmark client and http client 
+
 ## 3.0.0
 
 * Updated message response for sending

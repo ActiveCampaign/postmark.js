@@ -1,8 +1,6 @@
 import axios, {AxiosInstance, AxiosError, AxiosResponse} from "axios";
-import {ClientOptions, DefaultResponse, HttpClient} from "./models";
-import {ErrorHandler} from "./errors/ErrorHandler";
-import * as Errors from "./errors/Errors";
-import {error} from "util";
+import {ClientOptions, HttpClient} from "./models";
+import {ErrorHandler, PostmarkError} from "./errors/index";
 
 export class AxiosHttpClient extends HttpClient {
     public client!: AxiosInstance;
@@ -59,22 +57,13 @@ export class AxiosHttpClient extends HttpClient {
     }
 
     /**
-     * Timeout in seconds is adjusted to Axios format.
-     *
-     * @private
-     */
-    private getRequestTimeoutInSeconds(): number {
-        return (this.clientOptions.timeout || 60) * 1000;
-    }
-
-    /**
      * Process callback function for HTTP request.
      *
      * @param error - request error that needs to be transformed to proper Postmark error.
      *
      * @return {PostmarkError} - formatted Postmark error
      */
-    private transformError(errorThrown:AxiosError): Errors.PostmarkError {
+    private transformError(errorThrown:AxiosError): PostmarkError {
         const response: AxiosResponse | undefined = errorThrown.response;
 
         if (response !== undefined) {
@@ -89,6 +78,15 @@ export class AxiosHttpClient extends HttpClient {
         else {
             return this.errorHandler.buildError(JSON.stringify(errorThrown, Object.getOwnPropertyNames(errorThrown)));
         }
+    }
+
+    /**
+     * Timeout in seconds is adjusted to Axios format.
+     *
+     * @private
+     */
+    private getRequestTimeoutInSeconds(): number {
+        return (this.clientOptions.timeout || 60) * 1000;
     }
 
     private adjustValue<T>(defaultValue: T, data: T): T {

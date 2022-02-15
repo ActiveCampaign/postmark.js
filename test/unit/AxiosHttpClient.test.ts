@@ -4,7 +4,6 @@ import * as sinon from "sinon";
 import {AxiosHttpClient} from "../../src/client/HttpClient";
 import {ClientOptions} from "../../src/client/models";
 import {Errors} from "../../src";
-import {ErrorHandler} from "../../src/client/errors/ErrorHandler";
 
 describe("AxiosHttpClient", () => {
     let sandbox: sinon.SinonSandbox;
