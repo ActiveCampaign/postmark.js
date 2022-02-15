@@ -7,12 +7,11 @@ import "mocha";
 describe("ErrorHandler", () => {
     it("buildError", () => {
         const errorHandler = new ErrorHandler();
-
         const error = new Error();
+        const postmarkError = errorHandler.buildError("Test message");
         error.name = "Test name";
         error.message = "Test message";
 
-        const postmarkError = errorHandler.buildError("Test message");
         expect(postmarkError.message).to.equal(error.message);
         expect(postmarkError.name).to.equal("PostmarkError");
     });
@@ -20,8 +19,8 @@ describe("ErrorHandler", () => {
     it("no response", () => {
         const errorHandler = new ErrorHandler();
         const error: any = { message: 'Hello Error' };
-
         const postmarkError = errorHandler.buildError(error.message);
+
         expect(postmarkError).to.be.an.instanceof(Errors.PostmarkError);
         expect(postmarkError.name).to.equal("PostmarkError");
         expect(postmarkError.message).to.equal(error.message);
@@ -42,6 +41,7 @@ describe("ErrorHandler", () => {
         it("422", () => {
             const errorHandler = new ErrorHandler();
             const postmarkError = errorHandler.buildError("Test message", 423, 422);
+
             expect(postmarkError).to.be.an.instanceof(Errors.ApiInputError);
             expect(postmarkError.name).to.equal("ApiInputError");
             expect(postmarkError.message).to.equal("Test message");
@@ -52,6 +52,7 @@ describe("ErrorHandler", () => {
         it("429", () => {
             const errorHandler = new ErrorHandler();
             const postmarkError = errorHandler.buildError("Test message", 429, 429);
+
             expect(postmarkError).to.be.an.instanceof(Errors.RateLimitExceededError);
             expect(postmarkError.name).to.equal("RateLimitExceededError");
             expect(postmarkError.message).to.equal("Test message");
@@ -60,6 +61,7 @@ describe("ErrorHandler", () => {
         it("500", () => {
             const errorHandler = new ErrorHandler();
             const postmarkError = errorHandler.buildError("Test message", 500, 500);
+
             expect(postmarkError).to.be.an.instanceof(Errors.InternalServerError);
             expect(postmarkError.name).to.equal("InternalServerError");
             expect(postmarkError.message).to.equal("Test message");
@@ -67,18 +69,8 @@ describe("ErrorHandler", () => {
 
         it("unknown", () => {
             const errorHandler = new ErrorHandler();
-
-            const error: any = {
-                response: {
-                    data: {
-                        Message: "Test message",
-                        ErrorCode: 600,
-                    },
-                    status: 600,
-                }
-            };
-
             const postmarkError = errorHandler.buildError("Test message", 600, 600);
+
             expect(postmarkError).to.be.an.instanceof(Errors.PostmarkError);
             expect(postmarkError.name).to.equal("UnknownError");
             expect(postmarkError.message).to.equal("Test message");
@@ -87,6 +79,7 @@ describe("ErrorHandler", () => {
         it("no http status", () => {
             const errorHandler = new ErrorHandler();
             const postmarkError = errorHandler.buildError("Test message");
+
             expect(postmarkError).to.be.an.instanceof(Errors.PostmarkError);
             expect(postmarkError.name).to.equal("PostmarkError");
             expect(postmarkError.message).to.equal("Test message");
@@ -95,6 +88,7 @@ describe("ErrorHandler", () => {
         it("unknown http status", () => {
             const errorHandler = new ErrorHandler();
             const postmarkError = errorHandler.buildError("Test message", 500, 15);
+
             expect(postmarkError).to.be.an.instanceof(Errors.PostmarkError);
             expect(postmarkError.name).to.equal("UnknownError");
             expect(postmarkError.message).to.equal("Test message");
@@ -102,8 +96,8 @@ describe("ErrorHandler", () => {
 
         it("postmark default error", () => {
             const errorHandler = new ErrorHandler();
-
             const postmarkError = errorHandler.buildError("Test message");
+
             expect(postmarkError).to.be.an.instanceof(Errors.PostmarkError);
             expect(postmarkError.name).to.equal("PostmarkError");
             expect(postmarkError.message).to.equal("Test message");
@@ -123,6 +117,7 @@ describe("ErrorHandler", () => {
             };
 
             const postmarkError:any = errorHandler.buildError(error.message, error.errorCode, error.status);
+
             expect(postmarkError).to.be.an.instanceof(Errors.InactiveRecipientsError);
             expect(postmarkError.name).to.equal("InactiveRecipientsError");
             expect(postmarkError.recipients).to.eql([ 'nothing2@example.com', 'nothing@example.com' ])
@@ -130,12 +125,9 @@ describe("ErrorHandler", () => {
 
         it("email error", () => {
             const errorHandler = new ErrorHandler();
-
-            const error: any = {
-                message: "Error message", errorCode: 300, status: 422
-            };
-
+            const error: any = { message: "Error message", errorCode: 300, status: 422 };
             const postmarkError:any = errorHandler.buildError(error.message, error.errorCode, error.status);
+
             expect(postmarkError).to.be.an.instanceof(Errors.InvalidEmailRequestError);
             expect(postmarkError.name).to.equal("InvalidEmailRequestError");
         });
