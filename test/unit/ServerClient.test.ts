@@ -174,6 +174,11 @@ describe("ServerClient", () => {
             sandbox.restore();
         });
 
+        it("empty token", () => {
+            expect(() => new postmark.ServerClient(""))
+                .to.throw("A valid API token must be provided.");
+        });
+
         describe("httpRequest", () => {
             it("promise error",  () => {
                 const rejectError = new InternalServerError("response", 500, 500);

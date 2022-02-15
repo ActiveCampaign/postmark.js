@@ -5,7 +5,7 @@ import "mocha";
 
 import * as nconf from "nconf";
 import * as sinon from "sinon";
-import {InternalServerError, PostmarkError} from "../../src/client/errors/Errors";
+import {InternalServerError} from "../../src/client/errors/Errors";
 const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
 
 const packageJson = require("../../package.json");

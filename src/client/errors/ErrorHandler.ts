@@ -19,7 +19,7 @@ export class ErrorHandler {
             return new Errors.PostmarkError(errorMessage);
         }
         else {
-            return this.buildRequestErrorByStatus(errorMessage, code, statusCode);
+            return this.buildErrorByHttpStatusCode(errorMessage, code, statusCode);
         }
     }
 
@@ -30,7 +30,7 @@ export class ErrorHandler {
      *
      * @returns properly formatted Postmark error.
      */
-    private buildRequestErrorByStatus(errorMessage: string, errorCode: number, errorStatusCode: number): Errors.HttpError {
+    private buildErrorByHttpStatusCode(errorMessage: string, errorCode: number, errorStatusCode: number): Errors.HttpError {
         switch (errorStatusCode) {
             case 401:
                 return new Errors.InvalidAPIKeyError(errorMessage, errorCode, errorStatusCode);

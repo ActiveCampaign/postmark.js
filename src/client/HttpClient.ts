@@ -83,10 +83,11 @@ export class AxiosHttpClient extends HttpClient {
             const message = this.adjustValue<string>(errorThrown.message, response.data.Message);
 
             return this.errorHandler.buildError(message, errorCode, status);
-        } else {
-            const message:string = (errorThrown.message !== undefined) ?
-                errorThrown.message : JSON.stringify(errorThrown, Object.getOwnPropertyNames(errorThrown))
-            return this.errorHandler.buildError(message);
+        } else if (errorThrown.message !== undefined) {
+            return this.errorHandler.buildError(errorThrown.message);
+        }
+        else {
+            return this.errorHandler.buildError(JSON.stringify(errorThrown, Object.getOwnPropertyNames(errorThrown)));
         }
     }
 

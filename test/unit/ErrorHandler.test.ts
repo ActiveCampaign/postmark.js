@@ -128,6 +128,18 @@ describe("ErrorHandler", () => {
             expect(postmarkError.recipients).to.eql([ 'nothing2@example.com', 'nothing@example.com' ])
         });
 
+        it("email error", () => {
+            const errorHandler = new ErrorHandler();
+
+            const error: any = {
+                message: "Error message", errorCode: 300, status: 422
+            };
+
+            const postmarkError:any = errorHandler.buildError(error.message, error.errorCode, error.status);
+            expect(postmarkError).to.be.an.instanceof(Errors.InvalidEmailRequestError);
+            expect(postmarkError.name).to.equal("InvalidEmailRequestError");
+        });
+
         it("parse some inactive recipients", () => {
             const message = "Message OK, but will not deliver to these inactive addresses: " +
                 "nothing2@example.com, nothing@example.com"
