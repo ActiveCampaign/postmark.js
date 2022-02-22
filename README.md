@@ -28,9 +28,9 @@ Installing `postmark` javascript library is super simple. Use the following comm
 npm install postmark
 ```
 
-## Migrating from version 1x
+## Migrating from older versions of the library
 
-Please see [wiki](https://github.com/wildbit/postmark.js/wiki/Migrating-from-1.x-to-2.x-version) for more details.
+Please see [wiki](https://github.com/wildbit/postmark.js/wiki/Migrating-from-older-version) for more details.
 
 ## Issues & Comments
 
