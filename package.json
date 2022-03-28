@@ -1,7 +1,7 @@
 {
   "name": "postmark",
   "description": "Official Node.js client library for the Postmark HTTP API - https://www.postmarkapp.com",
-  "license": "MITNFA",
+  "license": "MIT",
   "tags": [
     "email",
     "utility",
