@@ -19,7 +19,7 @@ import {
 
     ClickCounts,
     ClickLocationCounts,
-    ClickPlaformUsageCounts,
+    ClickPlatformUsageCounts,
     CreateInboundRuleRequest,
     CreateMessageStreamRequest,
     CreateSuppressionsRequest,
@@ -565,7 +565,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     public getClickPlatformUsage(filter: StatisticsFilteringParameters = new StatisticsFilteringParameters(),
-                                 callback?: Callback<ClickPlaformUsageCounts>): Promise<ClickPlaformUsageCounts> {
+                                 callback?: Callback<ClickPlatformUsageCounts>): Promise<ClickPlatformUsageCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, "/stats/outbound/clicks/platforms", filter, callback);
     }
 

@@ -104,7 +104,7 @@ export interface BrowserUsageCounts {
     [key: string]: any;
 }
 
-export interface ClickPlaformUsageCounts {
+export interface ClickPlatformUsageCounts {
     Days: [{
         Date: string;
         Desktop: number;
