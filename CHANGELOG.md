@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.11
+
+* Small bug fix to data model
+
 ## 3.0.1
 
 * Separated error handling responsibility between postmark client and http client
