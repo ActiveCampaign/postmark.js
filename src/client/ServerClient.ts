@@ -19,7 +19,7 @@ import {
 
     ClickCounts,
     ClickLocationCounts,
-    ClickPlaformUsageCounts,
+    ClickPlatformUsageCounts,
     CreateInboundRuleRequest,
     CreateMessageStreamRequest,
     CreateSuppressionsRequest,
@@ -565,7 +565,7 @@ export default class ServerClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     public getClickPlatformUsage(filter: StatisticsFilteringParameters = new StatisticsFilteringParameters(),
-                                 callback?: Callback<ClickPlaformUsageCounts>): Promise<ClickPlaformUsageCounts> {
+                                 callback?: Callback<ClickPlatformUsageCounts>): Promise<ClickPlatformUsageCounts> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, "/stats/outbound/clicks/platforms", filter, callback);
     }
 
@@ -728,7 +728,7 @@ export default class ServerClient extends BaseClient {
     }
 
     /**
-     * Unrchive a message stream on the associated server.
+     * Unarchive a message stream on the associated server.
      *
      * @param options - Configuration options to be used when creating message stream on the server.
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
