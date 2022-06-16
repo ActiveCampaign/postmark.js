@@ -1,5 +1,5 @@
 <a href="https://postmarkapp.com">
-    <img src="https://github.com/ActiveCampaign/postmark.js/raw/master/postmark.png" alt="Postmark Logo" title="Postmark" width="120" height="120" align="right">
+    <img src="https://github.com/ActiveCampaign/postmark.js/raw/main/postmark.png" alt="Postmark Logo" title="Postmark" width="120" height="120" align="right">
 </a>
 
 
