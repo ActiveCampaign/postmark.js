@@ -1,11 +1,11 @@
 <a href="https://postmarkapp.com">
-    <img src="https://github.com/wildbit/postmark.js/raw/master/postmark.png" alt="Postmark Logo" title="Postmark" width="120" height="120" align="right">
+    <img src="https://github.com/ActiveCampaign/postmark.js/raw/master/postmark.png" alt="Postmark Logo" title="Postmark" width="120" height="120" align="right">
 </a>
 
 
 
 # Postmark Node.js Library
-[![Build Status](https://circleci.com/gh/wildbit/postmark.js.svg?style=shield)](https://circleci.com/gh/wildbit/postmark.js)
+[![Build Status](https://circleci.com/gh/ActiveCampaign/postmark.js.svg?style=shield)](https://circleci.com/gh/ActiveCampaign/postmark.js)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://www.opensource.org/licenses/MIT)
 [![npm version](https://badge.fury.io/js/postmark.svg)](https://badge.fury.io/js/postmark)
 
@@ -17,7 +17,7 @@ As the official Node.js library for Postmark, postmark.js has support for the en
 
 ## Usage
 
-Please see the [wiki](https://github.com/wildbit/postmark.js/wiki) for quick start tutorial and detailed instructions about sending email at our [documentation page](https://wildbit.github.io/postmark.js/). 
+Please see the [wiki](https://github.com/ActiveCampaign/postmark.js/wiki) for quick start tutorial and detailed instructions about sending email at our [documentation page](https://ActiveCampaign.github.io/postmark.js/). 
 For details about Postmark API in general, please check out [Postmark developer docs](https://postmarkapp.com/developer).
 
 ### Installation
@@ -30,7 +30,7 @@ npm install postmark
 
 ## Migrating from older versions of the library
 
-Please see [wiki](https://github.com/wildbit/postmark.js/wiki/Migrating-from-older-version) for more details.
+Please see [wiki](https://github.com/ActiveCampaign/postmark.js/wiki/Migrating-from-older-version) for more details.
 
 ## Issues & Comments
 
@@ -39,4 +39,4 @@ Please leave all comments, bugs, requests and issues on the Issues page.
 
 ## License
 
-The Postmark JavaScript Library is licensed under the **MIT** license. Please refer to the [LICENSE](https://github.com/wildbit/postmark.js/blob/master/LICENSE) for more information.
+The Postmark JavaScript Library is licensed under the **MIT** license. Please refer to the [LICENSE](https://github.com/ActiveCampaign/postmark.js/blob/master/LICENSE) for more information.
