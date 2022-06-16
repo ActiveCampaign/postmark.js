@@ -1,5 +1,5 @@
 <a href="https://postmarkapp.com">
-    <img src="https://github.com/ActiveCampaign/postmark.js/raw/master/postmark.png" alt="Postmark Logo" title="Postmark" width="120" height="120" align="right">
+    <img src="https://github.com/ActiveCampaign/postmark.js/raw/main/postmark.png" alt="Postmark Logo" title="Postmark" width="120" height="120" align="right">
 </a>
 
 # Release process
@@ -13,7 +13,7 @@ Pre-release recommendations:
 Release steps:
 
 1. Make sure the tests pass for your branch in CI 
-1. Merge your branch to master
+1. Merge your branch to main
 1. Determine the next version of the library by following the [SemVer](https://semver.org/) guidelines
 1. Update version in package.json
 1. Compile the latest version (details how to run command are in the package.json)

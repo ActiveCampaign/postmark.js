@@ -39,4 +39,4 @@ Please leave all comments, bugs, requests and issues on the Issues page.
 
 ## License
 
-The Postmark JavaScript Library is licensed under the **MIT** license. Please refer to the [LICENSE](https://github.com/ActiveCampaign/postmark.js/blob/master/LICENSE) for more information.
+The Postmark JavaScript Library is licensed under the **MIT** license. Please refer to the [LICENSE](https://github.com/ActiveCampaign/postmark.js/blob/main/LICENSE) for more information.
