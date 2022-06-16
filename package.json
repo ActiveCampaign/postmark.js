@@ -47,13 +47,13 @@
     "lintfix": "tslint -c tslint.json 'src/**/*.ts' --fix",
     "compile-docs": "echo 'Generating docs...' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/typedoc --options typedoc.json && git add -A ./docs && echo 'Generated docs!'"
   },
-  "homepage": "http://wildbit.github.io/postmark.js",
+  "homepage": "http://ActiveCampaign.github.io/postmark.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wildbit/postmark.js.git"
+    "url": "https://github.com/ActiveCampaign/postmark.js.git"
   },
   "bugs": {
-    "url": "https://github.com/wildbit/postmark.js/issues"
+    "url": "https://github.com/ActiveCampaign/postmark.js/issues"
   },
   "precommit": [
     "compile",

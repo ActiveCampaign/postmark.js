@@ -1,5 +1,5 @@
 <a href="https://postmarkapp.com">
-    <img src="https://github.com/wildbit/postmark.js/raw/master/postmark.png" alt="Postmark Logo" title="Postmark" width="120" height="120" align="right">
+    <img src="https://github.com/ActiveCampaign/postmark.js/raw/master/postmark.png" alt="Postmark Logo" title="Postmark" width="120" height="120" align="right">
 </a>
 
 # Release process
@@ -22,5 +22,5 @@ Release steps:
 1. Compile the docs (details in the package.json - unless it's a very small change)
 1. Push the changes to Github and wait for tests to pass in CI
 1. Push the changes to NPM with `npm publish`
-1. Update any related content in the [Github wiki](https://github.com/wildbit/postmark.js/wiki)
-1. Add release version in the [Github releases](https://github.com/wildbit/postmark.js/releases) so it has a tag.
+1. Update any related content in the [Github wiki](https://github.com/ActiveCampaign/postmark.js/wiki)
+1. Add release version in the [Github releases](https://github.com/ActiveCampaign/postmark.js/releases) so it has a tag.
