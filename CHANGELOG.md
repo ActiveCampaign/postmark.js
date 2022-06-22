@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.12
+
+* Migrated to ActiveCampaign
+
 ## 3.0.11
 
 * Small bug fix to data model
