@@ -14,15 +14,4 @@ describe("Server", () => {
         const server: postmark.Models.Server = await client.getServer();
         expect(server.ID).to.above(0);
     });
-
-    it("editServer", async () => {
-        const serverOptions = new postmark.Models.UpdateServerRequest(undefined, undefined, undefined, true);
-        const updatedServerOptions = new postmark.Models.UpdateServerRequest(undefined, undefined, undefined, false);
-
-        let server: postmark.Models.Server = await client.editServer(serverOptions);
-        expect(server.RawEmailEnabled).to.eq(serverOptions.RawEmailEnabled);
-
-        server = await client.editServer(updatedServerOptions);
-        expect(server.RawEmailEnabled).to.eq(updatedServerOptions.RawEmailEnabled);
-    });
 });
