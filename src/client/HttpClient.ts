@@ -21,7 +21,7 @@ export class AxiosHttpClient extends HttpClient {
 
         const httpClient = axios.create({
             baseURL: this.getBaseHttpRequestURL(),
-            timeout: this.getRequestTimeoutInSeconds(),
+            timeout: this.getRequestTimeoutInMilliseconds(),
             responseType: "json",
             maxContentLength: Infinity,
             maxBodyLength: Infinity,
@@ -85,7 +85,7 @@ export class AxiosHttpClient extends HttpClient {
      *
      * @private
      */
-    private getRequestTimeoutInSeconds(): number {
+    private getRequestTimeoutInMilliseconds(): number {
         return (this.clientOptions.timeout || 60) * 1000;
     }
 
