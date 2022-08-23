@@ -16,13 +16,13 @@ describe("Server", () => {
     });
 
     it("editServer", async () => {
-        const serverOptions = new postmark.Models.UpdateServerRequest(undefined, "red");
-        const updatedServerOptions = new postmark.Models.UpdateServerRequest(undefined, "green");
+        const serverOptions = new postmark.Models.UpdateServerRequest(undefined, undefined, undefined, true);
+        const updatedServerOptions = new postmark.Models.UpdateServerRequest(undefined, undefined, undefined, false);
 
         let server: postmark.Models.Server = await client.editServer(serverOptions);
-        expect(server.Color).to.eq(serverOptions.Color);
+        expect(server.RawEmailEnabled).to.eq(serverOptions.RawEmailEnabled);
 
         server = await client.editServer(updatedServerOptions);
-        expect(server.Color).to.eq(updatedServerOptions.Color);
+        expect(server.RawEmailEnabled).to.eq(updatedServerOptions.RawEmailEnabled);
     });
 });
