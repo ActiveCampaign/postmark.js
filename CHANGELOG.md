@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.13
+
+* Minor code fix, fixing up library versions for older versions of node
+
 ## 3.0.12
 
 * Migrated to ActiveCampaign
