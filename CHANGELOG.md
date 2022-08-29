@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.14
+
+* Updated statistics filtering parameter
+
 ## 3.0.13
 
 * Minor code fix, fixing up library versions for older versions of node
