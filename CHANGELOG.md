@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.15
+
+* added Sanboxed field to the outbound message model
+* fix parsing bounced messages
+
 ## 3.0.14
 
 * Updated statistics filtering parameter
