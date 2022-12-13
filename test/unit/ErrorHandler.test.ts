@@ -109,18 +109,18 @@ describe("ErrorHandler", () => {
             const errorHandler = new ErrorHandler();
 
             const error: any = {
-                message: "InactiveRecipientsError: You tried to send to recipients " +
-                            "that have all been marked as inactive.\n" +
-                            "Found inactive addresses: nothing2@example.com, nothing@example.com.\n" +
-                            "Inactive recipients are ones that have generated a hard bounce, " +
-                            "a spam complaint, or a manual suppression.\n", errorCode: 406, status: 422
+
+                message: "You tried to send to recipient(s) that have been marked as inactive. " +
+                    "Found inactive addresses: bounce@example.com, bounce2@example.com. " +
+                    "Inactive recipients are ones that have generated a hard bounce, a spam complaint, or a manual suppression."
+                , errorCode: 406, status: 422
             };
 
             const postmarkError:any = errorHandler.buildError(error.message, error.errorCode, error.status);
 
             expect(postmarkError).to.be.an.instanceof(Errors.InactiveRecipientsError);
             expect(postmarkError.name).to.equal("InactiveRecipientsError");
-            expect(postmarkError.recipients).to.eql([ 'nothing2@example.com', 'nothing@example.com' ])
+            expect(postmarkError.recipients).to.eql([ 'bounce@example.com', 'bounce2@example.com' ])
         });
 
         it("email error", () => {
@@ -132,22 +132,38 @@ describe("ErrorHandler", () => {
             expect(postmarkError.name).to.equal("InvalidEmailRequestError");
         });
 
-        it("parse some inactive recipients", () => {
-            const message = "Message OK, but will not deliver to these inactive addresses: " +
-                "nothing2@example.com, nothing@example.com"
+        it("parse some inactive recipients - single", () => {
+            const message = "Message OK, but will not deliver to these inactive addresses: bounce@example.com"
 
             const inactiveRecipients = Errors.InactiveRecipientsError.parseInactiveRecipients(message)
-            expect(inactiveRecipients).to.eql([ 'nothing2@example.com', 'nothing@example.com' ])
+            expect(inactiveRecipients).to.eql([ 'bounce@example.com' ])
 
         });
 
-        it("parse some inactive recipients - different error message", () => {
-            const message = "Message OK, but will not deliver to these inactive addresses: " +
-                "nothing2@example.com, nothing@example.com. Inactive addresses can be activated."
+        it("parse some inactive recipients - multiple", () => {
+            const message = "Message OK, but will not deliver to these inactive addresses: bounce@example.com, bounce2@example.com"
 
             const inactiveRecipients = Errors.InactiveRecipientsError.parseInactiveRecipients(message)
-            expect(inactiveRecipients).to.eql([ 'nothing2@example.com', 'nothing@example.com' ])
+            expect(inactiveRecipients).to.eql([ 'bounce@example.com', 'bounce2@example.com' ])
 
+        });
+
+        it("parse all inactive recipients - multiple", () => {
+            const message = "You tried to send to recipient(s) that have been marked as inactive. Found inactive addresses: " +
+            "bounce@example.com, bounce2@example.com. " +
+            "Inactive recipients are ones that have generated a hard bounce, a spam complaint, or a manual suppression."
+
+            const inactiveRecipients = Errors.InactiveRecipientsError.parseInactiveRecipients(message);
+            expect(inactiveRecipients).to.eql([ 'bounce@example.com', 'bounce2@example.com' ])
+        });
+
+        it("parse all inactive recipients - multiple - no whitespace between addresses", () => {
+            const message = "You tried to send to recipient(s) that have been marked as inactive. Found inactive addresses: " +
+                "bounce@example.com,bounce2@example.com " +
+                "Inactive recipients are ones that have generated a hard bounce, a spam complaint, or a manual suppression."
+
+            const inactiveRecipients = Errors.InactiveRecipientsError.parseInactiveRecipients(message);
+            expect(inactiveRecipients).to.eql([ 'bounce@example.com', 'bounce2@example.com' ])
         });
     });
 });

@@ -96,8 +96,7 @@ export class ApiInputError extends HttpError {
 
 export class InactiveRecipientsError extends ApiInputError {
     public static inactiveRecipientsPatterns = [
-        /Found inactive addresses: (.+?)\.?$/m,
-        /these inactive addresses: (.+?)\. Inactive/,
+        /Found inactive addresses: (.+?)\.? Inactive/,
         /these inactive addresses: (.+?)\.?$/
     ]
 
@@ -116,7 +115,7 @@ export class InactiveRecipientsError extends ApiInputError {
         this.inactiveRecipientsPatterns.some(pattern => {
             const regexResult = message.match(pattern)
             if (regexResult !== null) {
-                result = regexResult[1].split(', ')
+                result = regexResult[1].split(',').map(element => element.trim());
                 return result;
             }
             else {
