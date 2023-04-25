@@ -12,3 +12,4 @@ src
 src/test*
 dist/test*
 docs
+.env

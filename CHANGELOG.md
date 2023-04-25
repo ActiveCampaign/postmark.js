@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.17
+
+* updated test library versions
+* switched from nconf to dotenv for configuration loading for tests
+
 ## 3.0.15
 
 * added Sanboxed field to the outbound message model
