@@ -1,6 +1,6 @@
 # Changelog
 
-## 3.0.16
+## 3.0.17
 
 * updated test library versions
 * switched from nconf to dotenv for configuration loading for tests
