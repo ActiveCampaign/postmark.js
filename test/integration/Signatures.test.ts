@@ -3,12 +3,12 @@ import "mocha";
 import { CreateSignatureRequest } from "../../src/client/models";
 import * as postmark from "../../src/index";
 
-import * as nconf from "nconf";
-const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
+import * as dotenv from "dotenv";
+dotenv.config();
 
 describe("Client - Signatures", () => {
-    const accountToken: string = testingKeys.get("ACCOUNT_API_TOKEN");
-    const testDomainName: string = testingKeys.get("DOMAIN_NAME");
+    const accountToken: any = process.env.ACCOUNT_API_TOKEN;
+    const testDomainName: any = process.env.DOMAIN_NAME;
     const client: postmark.AccountClient = new postmark.AccountClient(accountToken);
     const domainName: string = testDomainName;
 

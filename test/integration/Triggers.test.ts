@@ -3,11 +3,11 @@ import "mocha";
 import { CreateInboundRuleRequest } from "../../src/client/models";
 import * as postmark from "../../src/index";
 
-import * as nconf from "nconf";
-const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
+import * as dotenv from "dotenv";
+dotenv.config();
 
 describe("Client - Triggers", () => {
-    const serverToken: string = testingKeys.get("SERVER_API_TOKEN");
+    const serverToken: any = process.env.SERVER_API_TOKEN;
     const client = new postmark.ServerClient(serverToken);
     const triggerName: string = "node-js";
 
@@ -31,7 +31,7 @@ describe("Client - Triggers", () => {
 
     before(cleanup);
     after(cleanup);
-    
+
     it("createInboundRuleTrigger", async () => {
         const inboundRuleTriggerOptions = inboundRuleTriggerToTest();
         const result = await client.createInboundRuleTrigger(inboundRuleTriggerOptions);

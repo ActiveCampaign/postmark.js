@@ -11,3 +11,4 @@ tests/testing_keys.json
 dist
 src/test*
 .zshrc
+.env

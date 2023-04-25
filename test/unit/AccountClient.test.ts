@@ -3,18 +3,18 @@ import * as postmark from "../../src/index";
 import { expect } from "chai";
 import "mocha";
 
-import * as nconf from "nconf";
 import * as sinon from "sinon";
 import {InternalServerError} from "../../src/client/errors/Errors";
-const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
+import * as dotenv from "dotenv";
+dotenv.config();
 
 const packageJson = require("../../package.json");
 const clientVersion = packageJson.version;
 
 describe("AccountClient", () => {
     let client: postmark.AccountClient;
-    const accountToken: string = testingKeys.get("ACCOUNT_API_TOKEN");
-    const serverToken: string = testingKeys.get("SERVER_API_TOKEN");
+    const accountToken: any = process.env.ACCOUNT_API_TOKEN;
+    const serverToken: any = process.env.SERVER_API_TOKEN;
 
     beforeEach(() => {
         client = new postmark.AccountClient(accountToken);
