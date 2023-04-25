@@ -1,14 +1,14 @@
 import {expect} from "chai";
 import "mocha";
 
-import * as nconf from "nconf";
 import {CreateServerRequest, ServerDeliveryTypes, UpdateServerRequest} from "../../src/client/models";
 import * as postmark from "../../src/index";
 
-const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
+import * as dotenv from "dotenv";
+dotenv.config();
 
 describe("Servers", () => {
-    const accountToken: string = testingKeys.get("ACCOUNT_API_TOKEN");
+    const accountToken: any = process.env.ACCOUNT_API_TOKEN;
     const client = new postmark.AccountClient(accountToken);
     const serverNamePrefix: string = "node-js-test-server";
 

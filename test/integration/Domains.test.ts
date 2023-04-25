@@ -4,13 +4,13 @@ import { expect } from "chai";
 import "mocha";
 import { CreateDomainRequest } from "../../src/client/models";
 
-import * as nconf from "nconf";
-const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
+import * as dotenv from "dotenv";
+dotenv.config();
 
 describe("Client - Domains", () => {
-    const accountToken: string = testingKeys.get("ACCOUNT_API_TOKEN");
+    const accountToken: any = process.env.ACCOUNT_API_TOKEN
     const client = new postmark.AccountClient(accountToken);
-    const domainName: string = testingKeys.get("DOMAIN_NAME");
+    const domainName: string = process.env.DOMAIN_NAME || "";
 
     function returnPathToTest(domainNameForReturnPath: string) {
         return `return.${domainNameForReturnPath}`;

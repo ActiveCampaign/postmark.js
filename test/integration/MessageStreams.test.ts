@@ -3,12 +3,12 @@ import "mocha";
 import {MessageStream, MessageStreamArchiveResponse, MessageStreams, MessageStreamUnarchiveResponse} from "../../src/client/models";
 import * as postmark from "../../src/index";
 
-import * as nconf from "nconf";
-const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
+import * as dotenv from "dotenv";
+dotenv.config();
 
 describe("Servers - Message Streams", () => {
     const serverNamePrefix: string = "node-js-test-message-streams";
-    const accountToken: string = testingKeys.get("ACCOUNT_API_TOKEN");
+    const accountToken: any = process.env.ACCOUNT_API_TOKEN;
     const accountClient = new postmark.AccountClient(accountToken);
 
     async function serverToTestApiToken() {

@@ -4,11 +4,11 @@ import { expect } from "chai";
 import "mocha";
 import { InboundMessagesFilteringParameters, OutboundMessagesFilteringParameters } from "../../src/client/models";
 
-import * as nconf from "nconf";
-const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
+import * as dotenv from "dotenv";
+dotenv.config();
 
 describe("Client - Message Statistics", () => {
-    const serverToken: string = testingKeys.get("SERVER_API_TOKEN");
+    const serverToken: any = process.env.SERVER_API_TOKEN;
     const client = new postmark.ServerClient(serverToken);
     const filter = new OutboundMessagesFilteringParameters(1, 0);
 

@@ -3,12 +3,12 @@ import * as postmark from "../../src/index";
 import { expect } from "chai";
 import "mocha";
 
-import * as nconf from "nconf";
 import {Suppression, Suppressions, SuppressionStatuses} from "../../src/client/models";
-const testingKeys = nconf.env().file({ file: __dirname + "/../../testing_keys.json" });
+import * as dotenv from "dotenv";
+dotenv.config();
 
 describe("Client - Suppressions", () => {
-    const serverToken: string = testingKeys.get("SERVER_API_TOKEN");
+    const serverToken: any = process.env.SERVER_API_TOKEN;
     const client = new postmark.ServerClient(serverToken);
     const suppression_email_domain:string = 'supression.example.com';
 
