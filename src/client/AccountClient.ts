@@ -184,7 +184,7 @@ export default class AccountClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     public verifyDomainSPF(id: number, callback?: Callback<DomainDetails>): Promise<DomainDetails> {
-        return this.processRequestWithoutBody(ClientOptions.HttpMethod.PUT, `/domains/${id}/verifySPF`, {}, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.POST, `/domains/${id}/verifySPF`, {}, callback);
     }
 
     /**
@@ -195,7 +195,7 @@ export default class AccountClient extends BaseClient {
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
     public rotateDomainDKIM(id: number, callback?: Callback<DomainDetails>): Promise<DomainDetails> {
-        return this.processRequestWithoutBody(ClientOptions.HttpMethod.PUT, `/domains/${id}/rotateDKIM`, {}, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.POST, `/domains/${id}/rotateDKIM`, {}, callback);
     }
 
     /**

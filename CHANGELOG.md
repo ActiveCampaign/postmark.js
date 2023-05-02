@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.18
+
+* fix domain endpoint request types
+
 ## 3.0.17
 
 * updated test library versions
