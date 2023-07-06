@@ -55,7 +55,7 @@ jobs:
             matches: { pattern: "(4|6|7)", value: << parameters.version >> }
           steps:
             - run:
-                name: Install dependencies
+                name: Install dependencies - legacy mode
                 command: npm install
       - when:
           condition:
