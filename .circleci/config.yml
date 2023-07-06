@@ -52,7 +52,7 @@ jobs:
             echo "node: $(node --version)"
       - when:
           condition:
-            matches: { pattern: "(4|6)", value: << parameters.version >> }
+            matches: { pattern: "(4|6|7)", value: << parameters.version >> }
           steps:
             - run:
                 name: Install dependencies
@@ -60,7 +60,7 @@ jobs:
       - when:
           condition:
             not:
-              matches: { pattern: "(4|6)", value: << parameters.version >> }
+              matches: { pattern: "(4|6|7)", value: << parameters.version >> }
           steps:
             - run:
                 name: Install dependencies
