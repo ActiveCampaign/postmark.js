@@ -52,7 +52,7 @@ jobs:
             echo "node: $(node --version)"
       - run:
           name: Install dependencies
-          command: npm install
+          command: npm ci
       - run:
           name: Install typescript
           command: |
