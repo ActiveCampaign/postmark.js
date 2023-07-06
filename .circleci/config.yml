@@ -50,9 +50,22 @@ jobs:
           name: Node Version
           command: |
             echo "node: $(node --version)"
-      - run:
-          name: Install dependencies
-          command: npm install
+      - when:
+          condition:
+            matches: { pattern: "(4|5)", value: << parameters.version >> }
+          steps:
+            - run:
+                name: Install dependencies
+                command: npm install
+      - when:
+          condition:
+            not:
+              matches: { pattern: "(4|5)", value: << parameters.version >> }
+          steps:
+            - run:
+                name: Install dependencies
+                command: npm ci
+
       - run:
           name: Install typescript
           command: |
