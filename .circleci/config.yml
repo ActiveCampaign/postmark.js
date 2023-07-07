@@ -52,7 +52,12 @@ jobs:
             echo "node: $(node --version)"
       - run:
           name: Install dependencies
-          command: npm install
+          command: |
+            {% if parameters.version in ['7', '8', '9'] %}
+              npm ci
+            {% else %}
+              npm install
+            {% endif %}
       - run:
           name: Install typescript
           command: |
