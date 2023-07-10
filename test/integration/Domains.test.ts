@@ -10,7 +10,7 @@ dotenv.config();
 describe("Client - Domains", () => {
     const accountToken: any = process.env.ACCOUNT_API_TOKEN
     const client = new postmark.AccountClient(accountToken);
-    const domainName: string = process.env.DOMAIN_NAME || "";
+    const domainName: string = `nodejs-test.${process.env.DOMAIN_NAME}`;
 
     function returnPathToTest(domainNameForReturnPath: string) {
         return `return.${domainNameForReturnPath}`;

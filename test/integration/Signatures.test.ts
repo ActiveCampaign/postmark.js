@@ -11,16 +11,19 @@ describe("Client - Signatures", () => {
     const testDomainName: any = process.env.DOMAIN_NAME;
     const client: postmark.AccountClient = new postmark.AccountClient(accountToken);
     const domainName: string = testDomainName;
+    const signatureTag: string = 'nodejs-sig-test'
 
     function signatureToTest() {
-        return new CreateSignatureRequest("John Smith", `mailing+${Date.now()}@${domainName}`);
+        return new CreateSignatureRequest("John Smith", `qa+${signatureTag}-${Date.now()}@${domainName}`);
     }
 
     async function cleanup() {
-        const domains = await client.getDomains();
+        const signatures = await client.getSenderSignatures();
 
-        for (const domain of domains.Domains) {
-            if (domain.Name.includes(domainName)) { await client.deleteDomain(domain.ID); }
+        for (const sig of signatures.SenderSignatures) {
+            if (sig.EmailAddress.includes(signatureTag)) {
+                await client.deleteSenderSignature(sig.ID);
+            }
         }
     }
 
