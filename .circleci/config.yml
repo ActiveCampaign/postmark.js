@@ -45,7 +45,7 @@ workflows:
           name: node-latest
           version: "latest"
           requires:
-            - node13
+            - node14
 
 jobs:
   unit-tests:
