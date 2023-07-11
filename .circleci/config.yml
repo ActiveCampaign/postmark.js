@@ -4,13 +4,38 @@ workflows:
   node-tests:
     jobs:
       - unit-tests:
+          name: node4
+          version: "4"
+      - unit-tests:
+          name: node6
+          version: "6"
+          requires:
+            - node4
+      - unit-tests:
+          name: node7
+          version: "7"
+          requires:
+            - node6
+      - unit-tests:
+          name: node8
+          version: "8"
+          requires:
+            - node7
+      - unit-tests:
           name: node9
           version: "9"
+          requires:
+            - node8
       - unit-tests:
           name: node10
           version: "10"
           requires:
             - node9
+      - unit-tests:
+          name: node13
+          version: "13"
+          requires:
+            - node10
       - unit-tests:
           name: node-latest
           version: "latest"
@@ -32,7 +57,7 @@ jobs:
             echo "node: $(node --version)"
       - when:
           condition:
-            matches: { pattern: "(4|6|7)", value: << parameters.version >> }
+            matches: { pattern: "^4$|^5$|^6$|^7$|^9$", value: << parameters.version >> }
           steps:
             - run:
                 name: Install dependencies - legacy mode
@@ -40,7 +65,7 @@ jobs:
       - when:
           condition:
             not:
-              matches: { pattern: "(4|6|7)", value: << parameters.version >> }
+              matches: { pattern: "^4$|^5$|^6$|^7$|^9$", value: << parameters.version >> }
           steps:
             - run:
                 name: Install dependencies
