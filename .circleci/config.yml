@@ -32,15 +32,20 @@ workflows:
           requires:
             - node9
       - unit-tests:
-          name: node13
-          version: "13"
+          name: node12
+          version: "12"
           requires:
             - node10
+      - unit-tests:
+          name: node14
+          version: "14"
+          requires:
+            - node12
       - unit-tests:
           name: node-latest
           version: "latest"
           requires:
-            - node10
+            - node13
 
 jobs:
   unit-tests:
