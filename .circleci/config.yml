@@ -4,28 +4,8 @@ workflows:
   node-tests:
     jobs:
       - unit-tests:
-          name: node4
-          version: "4"
-      - unit-tests:
-          name: node6
-          version: "6"
-          requires:
-            - node4
-      - unit-tests:
-          name: node7
-          version: "7"
-          requires:
-            - node6
-      - unit-tests:
-          name: node8
-          version: "8"
-          requires:
-            - node7
-      - unit-tests:
           name: node9
           version: "9"
-          requires:
-            - node8
       - unit-tests:
           name: node10
           version: "10"
@@ -50,9 +30,21 @@ jobs:
           name: Node Version
           command: |
             echo "node: $(node --version)"
-      - run:
-          name: Install dependencies
-          command: npm install
+      - when:
+          condition:
+            matches: { pattern: "(4|6|7)", value: << parameters.version >> }
+          steps:
+            - run:
+                name: Install dependencies - legacy mode
+                command: npm install
+      - when:
+          condition:
+            not:
+              matches: { pattern: "(4|6|7)", value: << parameters.version >> }
+          steps:
+            - run:
+                name: Install dependencies
+                command: npm ci
       - run:
           name: Install typescript
           command: |
