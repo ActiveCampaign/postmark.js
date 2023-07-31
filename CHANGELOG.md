@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.19
+
+* updated model to contain webhook types
+
 ## 3.0.18
 
 * fix domain endpoint request types
