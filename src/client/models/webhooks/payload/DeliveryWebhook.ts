@@ -6,7 +6,7 @@ export interface DeliveryWebhook {
     MessageStream: string;
     MessageId: string;
     Recipient: string;
-    Tag: string;
+    Tag?: string;
     DeliveredAt: string;
     Details: string;
     Metadata: Hash<string>;
