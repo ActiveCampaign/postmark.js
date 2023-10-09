@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.0
+
+* added data removal endpoints
+
 ## 3.0.20
 
 * small fix to webhook types model
