@@ -26,6 +26,8 @@ import {
 
     UpdateServerRequest,
     UpdateSignatureRequest,
+    CreateDataRemovalRequest,
+    DataRemovalStatus
 } from "./models";
 
 export default class AccountClient extends BaseClient {
@@ -300,5 +302,27 @@ export default class AccountClient extends BaseClient {
      */
     public pushTemplates(options: TemplatesPushRequest, callback?: Callback<TemplatesPush>): Promise<TemplatesPush> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.PUT, "/templates/push", options, callback);
+    }
+
+    /**
+     * Request a data removal.
+     *
+     * @param options - details for creating data removal request
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public createDataRemoval(options: CreateDataRemovalRequest, callback?: Callback<DataRemovalStatus>): Promise<DataRemovalStatus> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, "/data-removals", options, callback);
+    }
+
+    /**
+     * Retrieve a single data removal status by ID.
+     *
+     * @param id - The ID of the DataRemoval for which you wish to retrieve details.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public getDataRemoval(id: number, callback?: Callback<DataRemovalStatus>): Promise<DataRemovalStatus> {
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/data-removals/${id}`, {}, callback);
     }
 }
