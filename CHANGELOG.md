@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.20
+
+* small fix to webhook types model
+
 ## 3.0.19
 
 * updated model to contain webhook types
