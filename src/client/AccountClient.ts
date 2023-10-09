@@ -26,7 +26,7 @@ import {
 
     UpdateServerRequest,
     UpdateSignatureRequest,
-    CreateDataRemovalRequest,
+    DataRemovalRequest,
     DataRemovalStatus
 } from "./models";
 
@@ -311,7 +311,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    public createDataRemoval(options: CreateDataRemovalRequest, callback?: Callback<DataRemovalStatus>): Promise<DataRemovalStatus> {
+    public requestDataRemoval(options: DataRemovalRequest, callback?: Callback<DataRemovalStatus>): Promise<DataRemovalStatus> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, "/data-removals", options, callback);
     }
 
@@ -322,7 +322,7 @@ export default class AccountClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    public getDataRemoval(id: number, callback?: Callback<DataRemovalStatus>): Promise<DataRemovalStatus> {
+    public getDataRemovalStatus(id: number, callback?: Callback<DataRemovalStatus>): Promise<DataRemovalStatus> {
         return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/data-removals/${id}`, {}, callback);
     }
 }

@@ -9,7 +9,7 @@ export interface DataRemovalStatus {
 }
 
 
-export class CreateDataRemovalRequest {
+export class DataRemovalRequest {
     public RequestedBy: string;
     public RequestedFor: string;
     public NotifyWhenCompleted: boolean;

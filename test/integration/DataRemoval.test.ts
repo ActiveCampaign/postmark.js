@@ -13,7 +13,7 @@ describe("DataRemoval", () => {
     const fromAddress: any = process.env.SENDER_EMAIL_ADDRESS;
 
     it("createDataRemoval", async () => {
-        const dataRemovalStatus:DataRemovalStatus = await client.createDataRemoval({
+        const dataRemovalStatus:DataRemovalStatus = await client.requestDataRemoval({
             RequestedBy: fromAddress.toString(),
             RequestedFor: 'test@example.com',
             NotifyWhenCompleted: false})
@@ -23,13 +23,13 @@ describe("DataRemoval", () => {
     });
 
     it("getDataRemoval", async () => {
-        let dataRemovalStatus: DataRemovalStatus = await client.createDataRemoval({
+        let dataRemovalStatus: DataRemovalStatus = await client.requestDataRemoval({
             RequestedBy: fromAddress.toString(),
             RequestedFor: 'test@example.com',
             NotifyWhenCompleted: false})
 
         const dataRemovalStatusId:number = dataRemovalStatus.ID;
-        dataRemovalStatus = await client.getDataRemoval(dataRemovalStatusId);
+        dataRemovalStatus = await client.getDataRemovalStatus(dataRemovalStatusId);
         expect(dataRemovalStatus.ID).to.eq(dataRemovalStatusId)
     });
 });

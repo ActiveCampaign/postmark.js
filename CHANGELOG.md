@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.1
+
+* small naming update for data removal endpoints
+
 ## 3.1.0
 
 * added data removal endpoints
