@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.2
+
+* add content type header to the http client default headers list
+
 ## 3.1.1
 
 * small naming update for data removal endpoints

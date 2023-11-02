@@ -110,6 +110,7 @@ export default abstract class BaseClient {
         return {
             [this.authHeader]: this.token,
             "Accept": "application/json",
+            "Content-Type": "application/json",
             "User-Agent": `Postmark.JS - ${this.clientVersion}`,
         };
     }
