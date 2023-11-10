@@ -64,6 +64,7 @@ import {
     StatisticsFilteringParameters,
 
     Suppressions,
+    SuppressionFilteringParameters,
     SuppressionStatuses,
     Template,
     TemplatedMessage,
@@ -745,8 +746,9 @@ export default class ServerClient extends BaseClient {
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
-    public getSuppressions(messageStream: string, callback?: Callback<Suppressions>): Promise<Suppressions> {
-        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/message-streams/${messageStream}/suppressions/dump`, callback);
+    public getSuppressions(messageStream: string, filter: SuppressionFilteringParameters = new SuppressionFilteringParameters(),
+                            callback?: Callback<Suppressions>): Promise<Suppressions> {
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/message-streams/${messageStream}/suppressions/dump`, filter, callback);
     }
 
     /**

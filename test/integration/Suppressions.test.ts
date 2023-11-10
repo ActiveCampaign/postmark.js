@@ -9,6 +9,7 @@ dotenv.config();
 
 describe("Client - Suppressions", () => {
     const serverToken: any = process.env.SERVER_API_TOKEN;
+    console.log(serverToken)
     const client = new postmark.ServerClient(serverToken);
     const suppression_email_domain:string = 'supression.example.com';
 
