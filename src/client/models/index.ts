@@ -33,6 +33,7 @@ export * from "./webhooks/payload/OpenWebhook";
 export * from "./webhooks/payload/SubscriptionChangeWebhook";
 export * from "./webhooks/payload/InboundWebhook";
 export * from "./suppressions/Suppression";
+export * from "./suppressions/SuppressionFilteringParameters";
 export * from "./streams/MessageStream";
 export * from "./streams/MessageStreamsFilteringParameters";
 export * from "./data_removal/DataRemovals";
