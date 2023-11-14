@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.11.0
+
+* added filtering to get suppressions endpoint
+
 ## 3.1.2
 
 * add content type header to the http client default headers list
