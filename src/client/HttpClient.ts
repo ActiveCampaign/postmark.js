@@ -17,6 +17,10 @@ export class AxiosHttpClient extends HttpClient {
      * @return {AxiosInstance}
      */
     public initHttpClient(configOptions?: ClientOptions.Configuration): void {
+        // patched version is used to resolve CVE-2023-45857 - https://github.com/axios/axios/pull/6028/files
+        // which happens if withCredentials: true is used when creating an instance - https://github.com/axios/axios/issues/6006
+        this.checkIfPatchedClientIsUsed();
+
         this.clientOptions = { ...HttpClient.DefaultOptions, ...configOptions };
 
         const httpClient = axios.create({
@@ -54,6 +58,15 @@ export class AxiosHttpClient extends HttpClient {
         }).catch((errorThrown: AxiosError) => {
             return Promise.reject(this.transformError(errorThrown));
         })
+    }
+
+    private checkIfPatchedClientIsUsed():void {
+        const PATCHED_AXIOS_VERSION = "0.25.0"
+
+        if (axios.VERSION !== PATCHED_AXIOS_VERSION) {
+            // tslint:disable-next-line:no-console
+            console.log(`WARNING: Axios version changed from patched version: ${PATCHED_AXIOS_VERSION}`)
+        }
     }
 
     /**

@@ -1,0 +1,14 @@
+diff --git a/node_modules/axios/lib/adapters/xhr.js b/node_modules/axios/lib/adapters/xhr.js
+index 77246f8..1c28ba0 100644
+--- a/node_modules/axios/lib/adapters/xhr.js
++++ b/node_modules/axios/lib/adapters/xhr.js
+@@ -142,7 +142,8 @@ module.exports = function xhrAdapter(config) {
+     // Specifically not if we're in a web worker, or react-native.
+     if (utils.isStandardBrowserEnv()) {
+       // Add xsrf header
+-      var xsrfValue = (config.withCredentials || isURLSameOrigin(fullPath)) && config.xsrfCookieName ?
++      // regarding CVE-2023-45857 - https://github.com/axios/axios/pull/6028/files
++      var xsrfValue = isURLSameOrigin(fullPath) && config.xsrfCookieName ?
+         cookies.read(config.xsrfCookieName) :
+         undefined;
+ 
