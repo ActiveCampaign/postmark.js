@@ -1,12 +1,11 @@
 export interface Bounce {
-    RecordType: string;
     ID: number;
     Type: string;
     TypeCode: number;
     Name: string;
     Tag?: string;
     MessageID: string;
-    ServerID: string;
+    ServerID: number;
     Description: string;
     Details: string;
     Email: string;

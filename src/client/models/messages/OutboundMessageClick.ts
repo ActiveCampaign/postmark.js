@@ -2,7 +2,6 @@ import { LinkClickLocation } from "../message/SupportingTypes";
 import { ClientDetails, GeoLocation } from "./OutboundMessageOpen";
 
 export interface ClickEvent {
-    RecordType: string;
     ClickLocation: LinkClickLocation;
     Client: ClientDetails;
     OS: ClientDetails;

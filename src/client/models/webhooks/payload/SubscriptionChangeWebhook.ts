@@ -1,7 +1,7 @@
 import {Hash} from "../../client/SupportingTypes";
 
 export interface SubscriptionChangeWebhook {
-    RecordType: string;
+    RecordType: "SubscriptionChange";
     MessageID: string;
     ServerID: number;
     MessageStream: string;

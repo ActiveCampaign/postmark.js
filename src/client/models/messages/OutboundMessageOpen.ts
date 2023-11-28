@@ -16,7 +16,6 @@ export interface GeoLocation {
 }
 
 export interface OpenEvent {
-    RecordType: string;
     Client: ClientDetails;
     OS: ClientDetails;
     Platform: string;
