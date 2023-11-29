@@ -5,25 +5,25 @@ workflows:
     jobs:
       - unit-tests:
           name: node12
-          version: "12"
+          version: "12.0"
       - unit-tests:
           name: node14
-          version: "14"
+          version: "14.0"
           requires:
             - node12
       - unit-tests:
           name: node16
-          version: "16"
+          version: "16.0"
           requires:
             - node14
       - unit-tests:
           name: node18
-          version: "18"
+          version: "18.0"
           requires:
             - node16
       - unit-tests:
-          name: node-latest
-          version: "latest"
+          name: node20
+          version: "20.0"
           requires:
             - node18
 
