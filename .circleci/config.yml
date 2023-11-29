@@ -18,7 +18,7 @@ workflows:
             - node14
       - unit-tests:
           name: node18
-          version: "18.0.0"
+          version: "18"
           requires:
             - node16
       - unit-tests:
@@ -33,28 +33,16 @@ jobs:
       version:
         type: string
     docker:
-      - image: circleci/node:<< parameters.version >>
+      - image: cimg/node:<< parameters.version >>
     steps:
       - checkout
       - run:
           name: Node Version
           command: |
             echo "node: $(node --version)"
-      - when:
-          condition:
-            matches: { pattern: "^4$|^5$|^6$|^7$|^9$", value: << parameters.version >> }
-          steps:
-            - run:
-                name: Install dependencies - legacy mode
-                command: npm install
-      - when:
-          condition:
-            not:
-              matches: { pattern: "^4$|^5$|^6$|^7$|^9$", value: << parameters.version >> }
-          steps:
-            - run:
-                name: Install dependencies
-                command: npm ci
+      - run:
+          name: Install dependencies
+          command: npm ci
       - run:
           name: Install typescript
           command: |
