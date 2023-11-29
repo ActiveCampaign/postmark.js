@@ -9,7 +9,7 @@
     "sending",
     "transactional"
   ],
-  "version": "3.11.0",
+  "version": "4.0.0",
   "author": "Igor Balos",
   "contributors": [
     "Igor Balos",
@@ -78,6 +78,6 @@
     "typescript": "4.5.5"
   },
   "dependencies": {
-    "axios": "^0.25.0"
+    "axios": "^1.6.2"
   }
 }
