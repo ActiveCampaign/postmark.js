@@ -21,6 +21,11 @@ workflows:
           version: "20.0"
           requires:
             - node18
+      - unit-tests:
+          name: node21
+          version: "2.0"
+          requires:
+            - node20
 
 jobs:
   unit-tests:
