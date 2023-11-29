@@ -4,13 +4,8 @@ workflows:
   node-tests:
     jobs:
       - unit-tests:
-          name: node12
-          version: "12.0"
-      - unit-tests:
           name: node14
           version: "14.0"
-          requires:
-            - node12
       - unit-tests:
           name: node16
           version: "16.0"
