@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.0.0
+
+* Dropped support for older EOL Node JS versions, minimum supported version is 14.0.0
+* updated axios to latest version
+
 ## 3.11.0
 
 * added filtering to get suppressions endpoint

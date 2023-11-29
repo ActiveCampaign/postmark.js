@@ -2,18 +2,22 @@
     <img src="https://github.com/ActiveCampaign/postmark.js/raw/main/postmark.png" alt="Postmark Logo" title="Postmark" width="120" height="120" align="right">
 </a>
 
-
-
 # Postmark Node.js Library
 [![Build Status](https://circleci.com/gh/ActiveCampaign/postmark.js.svg?style=shield)](https://circleci.com/gh/ActiveCampaign/postmark.js)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://www.opensource.org/licenses/MIT)
 [![npm version](https://badge.fury.io/js/postmark.svg)](https://badge.fury.io/js/postmark)
+
+[Node support - from 14.0.0 -> latest](https://nodejs.org/en/blog/release/v14.0.0)
 
 Send emails with the greatest of ease! [Postmark](http://www.postmarkapp.com) allows you to send your application's emails with high delivery rates, including bounce/spam processing and detailed statistics.
 In addition, Postmark can parse incoming emails which are forwarded back to your application.
 
 Now your node.js application can send emails through [Postmark](http://www.postmarkapp.com).
 As the official Node.js library for Postmark, postmark.js has support for the entire REST API.
+
+## Requirements
+
+Minimum supported [Node](https://endoflife.date/nodejs) version `v14.0.0`.
 
 ## Usage
 
