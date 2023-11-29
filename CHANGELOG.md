@@ -3,7 +3,7 @@
 ## 4.0.0
 
 * Dropped support for older EOL Node JS versions, minimum supported version is 14.0.0
-* updated axios to latest version
+* updated axios to the latest version
 
 ## 3.11.0
 
