@@ -26,6 +26,6 @@ export abstract class HttpClient {
     }
 
     public abstract initHttpClient(configOptions?: ClientOptions.Configuration): void;
-    public abstract httpRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object),
+    public abstract httpRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object,
                                    body: (null | object), headers: any): Promise<T>;
 }

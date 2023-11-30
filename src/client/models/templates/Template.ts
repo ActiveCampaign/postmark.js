@@ -164,7 +164,7 @@ export class TemplatedMessage {
 export class TemplateFilteringParameters extends FilteringParameters {
     public templateType?: TemplateTypes;
     public layoutTemplate?: string;
-    constructor(count: number = 100, offset: number = 0,
+    constructor(count = 100, offset = 0,
                 templateType?: TemplateTypes, layoutTemplate?: string) {
         super(count, offset);
         this.templateType = templateType;

@@ -43,8 +43,8 @@
     "test": "node_modules/.bin/mocha --timeout 30000 --retries 1 -r ts-node/register test/**/*test.ts",
     "unittest": "node_modules/.bin/mocha --timeout 30000 --retries 1 -r ts-node/register test/unit/**/*test.ts",
     "watchtests": "node_modules/.bin/mocha --timeout 30000 --retries 1 -r ts-node/register -R list -w --recursive -G test/**/*test.ts",
-    "lint": "npx eslint src --ext ts; exit 0",
-    "lintfix": "npx eslint src --ext ts --fix; exit 0",
+    "lint": "npx eslint src --ext ts --ignore-pattern 'src/*test*'; exit 0",
+    "lintfix": "npx eslint src --ext ts --fix --ignore-pattern 'src/test*.ts'; exit 0",
     "compile-docs": "echo 'Generating docs...' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/typedoc --options typedoc.json && git add -A ./docs && echo 'Generated docs!'"
   },
   "homepage": "http://ActiveCampaign.github.io/postmark.js",

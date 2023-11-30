@@ -42,7 +42,7 @@ export class AxiosHttpClient extends HttpClient {
      * @param queryParameters - Querystring parameters used for http request.
      * @param body - Data sent with http request.
      */
-    public httpRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: ({} | object),
+    public httpRequest<T>(method: ClientOptions.HttpMethod, path: string, queryParameters: object,
                            body: (null | object), requestHeaders: any): Promise<T> {
 
         return this.client.request<void, T>({

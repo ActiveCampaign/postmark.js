@@ -31,7 +31,7 @@ export class OutboundMessagesFilteringParameters extends FilteringParameters {
 
     // added to support metadata_... parameters
     [key: string]: any;
-    constructor(count: number = 100, offset: number = 0,
+    constructor(count = 100, offset = 0,
                 recipient?: string, fromEmail?: string, tag?: string,
                 status?: OutboundMessageStatus, fromDate?: string,
                 toDate?: string, subject?: string, messageStream?: string) {
@@ -61,7 +61,7 @@ export class InboundMessagesFilteringParameters extends FilteringParameters {
     public fromDate?: string;
     public toDate?: string;
     public subject?: string;
-    constructor(count: number = 100, offset = 0,
+    constructor(count = 100, offset = 0,
                 mailboxHash?: string, recipient?: string, fromEmail?: string,
                 tag?: string, status?: InboundMessageStatus,
                 fromDate?: string,
@@ -97,7 +97,7 @@ export class OutboundMessageTrackingFilteringParameters extends FilteringParamet
     public region?: string;
     public city?: string;
     public messageStream?: string;
-    constructor(count: number = 100, offset: number = 0,
+    constructor(count = 100, offset = 0,
                 recipient?: string, tag?: string, client_name?: string,
                 client_company?: string, client_family?: string,
                 os_name?: string, os_family?: string, os_company?: string,

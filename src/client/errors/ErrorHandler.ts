@@ -1,4 +1,3 @@
-import {DefaultResponse} from "../models";
 import * as Errors from "./Errors";
 
 /**
@@ -14,7 +13,7 @@ export class ErrorHandler {
      *
      * @returns properly formatted Postmark error.
      */
-    public buildError(errorMessage: string, code: number = 0, statusCode: number = 0): Errors.PostmarkError|Errors.HttpError {
+    public buildError(errorMessage: string, code = 0, statusCode = 0): Errors.PostmarkError|Errors.HttpError {
         if (statusCode === 0 && code === 0) {
             return new Errors.PostmarkError(errorMessage);
         }

@@ -7,7 +7,7 @@ import {FilteringParameters} from "../client/FilteringParameters";
 export class ServerFilteringParameters extends FilteringParameters {
     public name?: string;
 
-    constructor(count: number = 100, offset: number = 0, name?: string) {
+    constructor(count = 100, offset = 0, name?: string) {
         super(count, offset);
         this.name = name;
     }

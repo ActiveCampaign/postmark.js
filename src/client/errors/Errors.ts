@@ -5,7 +5,7 @@ export class PostmarkError extends Error {
     public code: number;
     public statusCode: number;
 
-    constructor(message: string, code: number = 0, statusCode: number = 0) {
+    constructor(message: string, code = 0, statusCode = 0) {
         super(message);
         this.statusCode = statusCode;
         this.code = code;

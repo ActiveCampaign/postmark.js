@@ -23,7 +23,7 @@ export class SuppressionFilteringParameters extends FilteringParameters {
     public fromDate?: string;
     public emailAddress?: string;
 
-    constructor(count: number = 100, offset: number = 0, suppressionReason?: SuppressionReason,
+    constructor(count = 100, offset = 0, suppressionReason?: SuppressionReason,
                 origin?: SuppressionOrigin, emailAddress?: string,
                 fromDate?: string, toDate?: string) {
         super(count, offset);
