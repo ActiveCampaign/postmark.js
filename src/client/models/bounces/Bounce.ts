@@ -1,4 +1,5 @@
 export interface Bounce {
+    RecordType: "Bounce";
     ID: number;
     Type: string;
     TypeCode: number;
