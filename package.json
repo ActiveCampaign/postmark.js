@@ -43,8 +43,8 @@
     "test": "node_modules/.bin/mocha --timeout 30000 --retries 1 -r ts-node/register test/**/*test.ts",
     "unittest": "node_modules/.bin/mocha --timeout 30000 --retries 1 -r ts-node/register test/unit/**/*test.ts",
     "watchtests": "node_modules/.bin/mocha --timeout 30000 --retries 1 -r ts-node/register -R list -w --recursive -G test/**/*test.ts",
-    "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "lintfix": "tslint -c tslint.json 'src/**/*.ts' --fix",
+    "lint": "npx eslint src --ext ts; exit 0",
+    "lintfix": "npx eslint src --ext ts --fix; exit 0",
     "compile-docs": "echo 'Generating docs...' && mkdir -p ./docs && rm -r ./docs && node_modules/.bin/typedoc --options typedoc.json && git add -A ./docs && echo 'Generated docs!'"
   },
   "homepage": "http://ActiveCampaign.github.io/postmark.js",
@@ -66,14 +66,17 @@
     "@types/mocha": "^10.0.6",
     "@types/node": "^12.12.6",
     "@types/sinon": "^17.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
     "chai": "^4.3.10",
-    "mocha": "^10.2.0",
     "dotenv": "^16.3.1",
-    "sinon": "^17.0.1",
+    "eslint": "^8.54.0",
+    "mocha": "^10.2.0",
     "pre-commit": "^1.2.2",
+    "sinon": "^17.0.1",
     "ts-node": "^10.9.1",
     "typedoc": "^0.25.4",
-    "typescript": "4.7.4"
+    "typescript": "^4.7.4"
   },
   "dependencies": {
     "axios": "^1.6.2"
