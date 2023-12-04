@@ -2,7 +2,6 @@ import {Hash} from "../../client/SupportingTypes";
 
 export interface SpamComplaintWebhook {
     RecordType: "SpamComplaint";
-    Metadata: Hash<string>;
     ID: number;
     Type: string;
     TypeCode: number;
@@ -21,4 +20,5 @@ export interface SpamComplaintWebhook {
     Subject: string;
     Content?: string;
     MessageStream: string;
+    Metadata: Hash<string>;
 }
