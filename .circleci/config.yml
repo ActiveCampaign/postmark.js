@@ -42,7 +42,7 @@ jobs:
             echo "node: $(node --version)"
       - when:
           condition:
-            matches: { pattern: "^14$", value: << parameters.version >> }
+            matches: { pattern: "14.0", value: << parameters.version >> }
           steps:
             - run:
                 name: Install dependencies - legacy mode
@@ -50,7 +50,7 @@ jobs:
       - when:
           condition:
             not:
-              matches: { pattern: "^14$", value: << parameters.version >> }
+              matches: { pattern: "14.0", value: << parameters.version >> }
           steps:
             - run:
                 name: Install dependencies
