@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.2
+
+* updated models to be more accurate mostly within webhook payloads area
+
 ## 4.0.1
 
 * update development libraries
