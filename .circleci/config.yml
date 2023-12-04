@@ -58,7 +58,7 @@ jobs:
       - run:
           name: Install typescript
           command: |
-            npm install --no-save typescript@4.5.5
+            npm install --no-save typescript@4.7.4
       - run:
           name: Run tests
           command: npm test
