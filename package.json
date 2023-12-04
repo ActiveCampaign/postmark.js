@@ -31,7 +31,8 @@
     "Sebastien Chopin",
     "Theophane RUPIN",
     "codesplicer",
-    "francescoRubini"
+    "francescoRubini",
+    "Matthew Reff"
   ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
