@@ -1,7 +1,7 @@
 import {Hash} from "../../client/SupportingTypes";
 
 export interface DeliveryWebhook {
-    RecordType: string;
+    RecordType: "Delivery";
     ServerID: number;
     MessageStream: string;
     MessageID: string;
