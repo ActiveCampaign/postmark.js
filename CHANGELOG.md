@@ -1,8 +1,12 @@
 # Changelog
 
+## 4.0.1
+
+* update development libraries
+
 ## 4.0.0
 
-* Dropped support for older EOL Node JS versions, minimum supported Node version is 14.0.0
+* dropped support for older EOL Node JS versions, minimum supported Node version is 14.0.0
 * updated axios to the version 1.6.2
 
 ## 3.11.0
