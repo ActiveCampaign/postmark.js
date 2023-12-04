@@ -33,7 +33,6 @@ export * from "./webhooks/payload/ClickWebhook";
 export * from "./webhooks/payload/OpenWebhook";
 export * from "./webhooks/payload/SubscriptionChangeWebhook";
 export * from "./webhooks/payload/InboundWebhook";
-export * from "./webhooks/enums/BounceTypeCode";
 export * from "./suppressions/Suppression";
 export * from "./suppressions/SuppressionFilteringParameters";
 export * from "./streams/MessageStream";
