@@ -28,18 +28,15 @@ export abstract class HttpClient {
 
     public getHttpProxy(): AxiosProxyConfig | false {
         if (this.clientOptions.proxy){
-            let proxy: AxiosProxyConfig | false = {
+            return {
                 host: this.client.proxy.host,
                 port: this.client.proxy.port,
                 protocol: this.client.proxy.protocol,
-            };
-            if (this.clientOptions.proxy.username && this.clientOptions.proxy.password){
-                proxy.auth = {
+                auth: (this.clientOptions.proxy.username && this.clientOptions.proxy.password) ? {
                     username: this.clientOptions.proxy.username,
                     password: this.clientOptions.proxy.password,
-                };
-            }
-            return proxy;
+                } : undefined,
+            };
         }
         return false;
     }
