@@ -1,4 +1,4 @@
-import axios, {AxiosInstance, AxiosError, AxiosResponse} from "axios";
+import axios, {AxiosInstance, AxiosError, AxiosResponse } from "axios";
 import {ClientOptions, HttpClient} from "./models";
 import {ErrorHandler, PostmarkError} from "./errors/index";
 
@@ -28,6 +28,7 @@ export class AxiosHttpClient extends HttpClient {
             validateStatus(status: number) {
                 return status >= 200 && status < 300;
             },
+            proxy: this.getHttpProxy(),
         });
 
         httpClient.interceptors.response.use((response: any) => (response.data));

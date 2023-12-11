@@ -4,10 +4,29 @@ export namespace ClientOptions {
         public useHttps?: boolean;
         public requestHost?: string;
         public timeout?: number;
-        constructor(useHttps?: boolean, requestHost?: string, timeout?: number) {
+        public proxy?: ProxyConfiguration 
+
+        constructor(useHttps?: boolean, requestHost?: string, timeout?: number, proxy?: ProxyConfiguration) {
             this.useHttps = useHttps;
             this.requestHost = requestHost;
             this.timeout = timeout;
+            this.proxy = proxy
+        }
+    }
+
+    export class ProxyConfiguration {
+        public host: string;
+        public port: number;
+        public protocol?: string;
+        public username?: string;
+        public password?: string;
+
+        constructor(host: string, port: number, protocol?: string, username?: string, passwrod?: string){
+            this.host = host;
+            this.port = port;
+            this.port = port;
+            this.username = username;
+            this.password = passwrod;
         }
     }
 
