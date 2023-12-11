@@ -24,7 +24,7 @@ export namespace ClientOptions {
         constructor(host: string, port: number, protocol?: string, username?: string, password?: string){
             this.host = host;
             this.port = port;
-            this.port = port;
+            this.protocol = protocol;
             this.username = username;
             this.password = password;
         }
