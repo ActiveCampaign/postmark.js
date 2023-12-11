@@ -1,4 +1,5 @@
 import { ClientOptions } from "./ClientOptions";
+import { AxiosProxyConfig } from "axios";
 
 export abstract class HttpClient {
     /**
@@ -23,6 +24,21 @@ export abstract class HttpClient {
     public getBaseHttpRequestURL(): string {
         const scheme = this.clientOptions.useHttps ? "https" : "http";
         return `${scheme}://${this.clientOptions.requestHost}`;
+    }
+
+    public getHttpProxy(): AxiosProxyConfig | false {
+        if (this.clientOptions.proxy){
+            return {
+                host: this.client.proxy.host,
+                port: this.client.proxy.port,
+                protocol: this.client.proxy.protocol,
+                auth: (this.clientOptions.proxy.username && this.clientOptions.proxy.password) ? {
+                    username: this.clientOptions.proxy.username,
+                    password: this.clientOptions.proxy.password,
+                } : undefined,
+            };
+        }
+        return false;
     }
 
     public abstract initHttpClient(configOptions?: ClientOptions.Configuration): void;
