@@ -1,4 +1,4 @@
-import axios, {AxiosInstance, AxiosError, AxiosResponse } from "axios";
+import axios, {AxiosInstance, AxiosError, AxiosResponse} from "axios";
 import {ClientOptions, HttpClient} from "./models";
 import {ErrorHandler, PostmarkError} from "./errors/index";
 
