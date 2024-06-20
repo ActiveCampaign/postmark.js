@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.4
+
+* update axios to 1.7.2
+
 ## 4.0.3
 
 * updated models to support adding content disposition to attachments
