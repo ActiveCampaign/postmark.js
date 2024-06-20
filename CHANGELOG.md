@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.0.3
+
+* updated models to support adding content disposition to attachments
+* update domain model
+
 ## 4.0.2
 
 * updated models to be more accurate mostly within webhook payloads area
