@@ -33,7 +33,7 @@ export interface DomainDetails extends Domain {
     DKIMPendingTextValue: string;
     DKIMRevokedHost: string;
     DKIMRevokedTextValue: string;
-    SafeToRemoveRevokedKeyFromDNS: string;
+    SafeToRemoveRevokedKeyFromDNS: boolean;
     DKIMUpdateStatus: string;
     ReturnPathDomain: string;
     ReturnPathDomainCNAMEValue: string;
