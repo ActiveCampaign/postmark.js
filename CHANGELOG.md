@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.5
+
+* update axios to 1.7.4
+
 ## 4.0.4
 
 * update axios to 1.7.2
