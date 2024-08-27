@@ -159,7 +159,7 @@ export default class AccountClient extends BaseClient {
     /**
      * Trigger Domain DKIM key verification.
      *
-     * @param id - The ID of the Domain you wish to trigger DKIM verification for.
+     * @param id - The ID of the Domain you wish to trigger verification for.
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
@@ -168,9 +168,9 @@ export default class AccountClient extends BaseClient {
     }
 
     /**
-     * Trigger Domain DKIM key verification.
+     * Trigger Domain Return Path verification.
      *
-     * @param id - The ID of the Domain you wish to trigger DKIM verification for.
+     * @param id - The ID of the Domain you wish to trigger verification for.
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
      * @returns A promise that will complete when the API responds (or an error occurs).
      */
@@ -179,7 +179,19 @@ export default class AccountClient extends BaseClient {
     }
 
     /**
-     * Trigger Domain DKIM key verification.
+     * Trigger Domain Custom Tracking verification.
+     *
+     * @param id - The ID of the Domain you wish to trigger verification for.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public verifyDomainCustomTracking(id: number, callback?: Callback<DomainDetails>): Promise<DomainDetails> {
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.PUT, `/domains/${id}/verifyCustomTracking`, {}, callback);
+    }
+
+
+    /**
+     * Trigger Domain SPF key verification.
      *
      * @param id - The ID of the Domain you wish to trigger DKIM verification for.
      * @param callback If the callback is provided, it will be passed to the resulting promise as a continuation.
@@ -190,7 +202,7 @@ export default class AccountClient extends BaseClient {
     }
 
     /**
-     * Trigger Domain DKIM key verification.
+     * Trigger Domain DKIM rotation
      *
      * @param id - The ID of the Domain you wish to trigger DKIM verification for.
      * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.

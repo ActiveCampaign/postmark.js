@@ -1,17 +1,20 @@
 export class CreateDomainRequest {
-
     public Name: string;
     public ReturnPathDomain?: string;
-    constructor(Name: string, ReturnPathDomain?: string) {
+    public CustomTrackingDomain?: string;
+    constructor(Name: string, ReturnPathDomain?: string, CustomTrackingDomain?: string) {
         this.Name = Name;
         this.ReturnPathDomain = ReturnPathDomain;
+        this.CustomTrackingDomain = CustomTrackingDomain;
     }
 }
 
 export class UpdateDomainRequest {
     public ReturnPathDomain?: string;
-    constructor(ReturnPathDomain: string) {
+    public CustomTrackingDomain?: string;
+    constructor(ReturnPathDomain: string, CustomTrackingDomain?: string) {
         this.ReturnPathDomain = ReturnPathDomain;
+        this.CustomTrackingDomain = CustomTrackingDomain;
     }
 }
 
@@ -22,6 +25,7 @@ export interface Domain {
     DKIMVerified: boolean;
     WeakDKIM: boolean;
     ReturnPathDomainVerified: boolean;
+    CustomTrackingVerified: boolean;
 }
 
 export interface DomainDetails extends Domain {
@@ -37,6 +41,8 @@ export interface DomainDetails extends Domain {
     DKIMUpdateStatus: string;
     ReturnPathDomain: string;
     ReturnPathDomainCNAMEValue: string;
+    CustomTrackingDomain: string;
+    CustomTrackingDomainCNAMEValue: string;
 }
 
 export interface Domains {
