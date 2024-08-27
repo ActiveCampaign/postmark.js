@@ -77,4 +77,10 @@ describe("Client - Domains", () => {
         const response = await client.verifyDomainReturnPath(domain.ID);
         expect(response.ID).to.eq(domain.ID);
     });
+
+    it("verifyDomainCustomTracking", async () => {
+        const domain = await client.createDomain(domainToTest());
+        const response = await client.verifyDomainCustomTracking(domain.ID);
+        expect(response.ID).to.eq(domain.ID);
+    });
 });
