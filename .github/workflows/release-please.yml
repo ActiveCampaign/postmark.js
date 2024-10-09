@@ -1,0 +1,23 @@
+# Automate generation of release PRs using Conventional Commits
+# This workflow will create a release PR when a branch is merged into master,
+# reading the conventional commit message to determine the next semantic version 
+# for the package. This commit data is also used to generate a changelog for the release.
+# See:
+# - https://github.com/googleapis/release-please
+# - https://www.conventionalcommits.org/en/v1.0.0/
+on:
+  push:
+    branches:
+      - master
+
+name: release-please
+jobs:
+  release-please:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v4
+        with:
+          release-type: node
+          # See https://github.com/googleapis/release-please-action#github-credentials
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
