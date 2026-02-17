@@ -65,11 +65,25 @@ describe("Client - Message Statistics", () => {
         expect(sendResponse.MessageID.length).to.be.gt(0);
         messageId = sendResponse.MessageID;
 
-        // Postmark message endpoints can be eventually consistent (esp. after send).
+        // The Messages API can lag behind sending. First, poll the outbound search endpoint
+        // until the MessageID shows up for the recipient, then query details.
+        const searchFilter = new OutboundMessagesFilteringParameters(10, 0, toAddress);
+        for (let attempt = 0; attempt < 20; attempt++) {
+            try {
+                const found = await client.getOutboundMessages(searchFilter);
+                const ids = (found.Messages || []).map((m) => m.MessageID);
+                if (ids.includes(messageId)) break;
+            } catch {
+                // ignore and keep polling
+            }
+            await delay(1500 + attempt * 250);
+        }
+
+        // Postmark message endpoints can be eventually consistent (esp. after send/search).
         // Retry briefly to avoid failing when the message isn't queryable yet.
         let details: any;
         let lastError: any;
-        for (let attempt = 0; attempt < 10; attempt++) {
+        for (let attempt = 0; attempt < 20; attempt++) {
             try {
                 details = await client.getOutboundMessageDetails(messageId);
                 break;
@@ -90,7 +104,7 @@ describe("Client - Message Statistics", () => {
                     throw err;
                 }
 
-                await delay(1000 + attempt * 500);
+                await delay(1500 + attempt * 400);
             }
         }
 
