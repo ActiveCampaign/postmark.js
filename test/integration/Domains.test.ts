@@ -8,9 +8,19 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 describe("Client - Domains", () => {
+    const runId: string = (() => {
+        const base =
+            process.env.CIRCLE_WORKFLOW_ID ||
+            process.env.CIRCLE_BUILD_NUM ||
+            process.env.GITHUB_RUN_ID ||
+            `${Date.now()}`;
+        const job = process.env.CIRCLE_JOB || process.env.GITHUB_JOB || process.version;
+        return `${base}-${job}`.replace(/[^a-zA-Z0-9._-]/g, "-");
+    })();
+    const domainSafeRunId: string = runId.toLowerCase().replace(/[^a-z0-9-]/g, "-");
     const accountToken: any = process.env.ACCOUNT_API_TOKEN
     const client = new postmark.AccountClient(accountToken);
-    const domainName: string = `nodejs-test.${process.env.DOMAIN_NAME}`;
+    const domainName: string = `nodejs-test-${domainSafeRunId}.${process.env.DOMAIN_NAME}`;
 
     function returnPathToTest(domainNameForReturnPath: string) {
         return `return.${domainNameForReturnPath}`;
@@ -24,7 +34,14 @@ describe("Client - Domains", () => {
         const domains = await client.getDomains();
 
         for (const domain of domains.Domains) {
-            if (domain.Name.includes(domainName)) { await client.deleteDomain(domain.ID); }
+            if (domain.Name.includes(domainName)) {
+                try {
+                    await client.deleteDomain(domain.ID);
+                } catch (err) {
+                    const statusCode = (err as any)?.statusCode as number | undefined;
+                    if (statusCode !== 404) throw err;
+                }
+            }
         }
     }
 

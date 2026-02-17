@@ -7,12 +7,21 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 describe("Client - Webhooks", () => {
+    const runId: string = (() => {
+        const base =
+            process.env.CIRCLE_WORKFLOW_ID ||
+            process.env.CIRCLE_BUILD_NUM ||
+            process.env.GITHUB_RUN_ID ||
+            `${Date.now()}`;
+        const job = process.env.CIRCLE_JOB || process.env.GITHUB_JOB || process.version;
+        return `${base}-${job}`.replace(/[^a-zA-Z0-9._-]/g, "-");
+    })();
     const serverToken: any = process.env.SERVER_API_TOKEN;
     const client = new postmark.ServerClient(serverToken);
 
     function webhookToCreate() {
         return new postmark.Models.CreateWebhookRequest(
-            'https://example.com',
+            `https://example.com/postmark-js-ci/${runId}`,
             { Open: { Enabled: true } }
         );
     }
@@ -21,7 +30,23 @@ describe("Client - Webhooks", () => {
         const webhooks = await client.getWebhooks();
 
         for (const webhook of webhooks.Webhooks) {
-            await client.deleteWebhook(webhook.ID)
+            if ((webhook as any)?.Url?.includes(`/postmark-js-ci/${runId}`)) {
+                try {
+                    await client.deleteWebhook(webhook.ID)
+                } catch (err) {
+                    const name = (err as any)?.name as string | undefined;
+                    const statusCode = (err as any)?.statusCode as number | undefined;
+                    const message = (err as any)?.message as string | undefined;
+
+                    const isGone =
+                        statusCode === 404 ||
+                        (name === "ApiInputError" &&
+                            typeof message === "string" &&
+                            message.toLowerCase().includes("not found"));
+
+                    if (!isGone) throw err;
+                }
+            }
         }
     }
 

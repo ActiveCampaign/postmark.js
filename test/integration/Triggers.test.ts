@@ -7,9 +7,18 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 describe("Client - Triggers", () => {
+    const runId: string = (() => {
+        const base =
+            process.env.CIRCLE_WORKFLOW_ID ||
+            process.env.CIRCLE_BUILD_NUM ||
+            process.env.GITHUB_RUN_ID ||
+            `${Date.now()}`;
+        const job = process.env.CIRCLE_JOB || process.env.GITHUB_JOB || process.version;
+        return `${base}-${job}`.replace(/[^a-zA-Z0-9._-]/g, "-");
+    })();
     const serverToken: any = process.env.SERVER_API_TOKEN;
     const client = new postmark.ServerClient(serverToken);
-    const triggerName: string = "node-js";
+    const triggerName: string = `node-js-${runId}`;
 
     function inboundRuleTriggerToTest() {
         return new CreateInboundRuleRequest(`${triggerName}-${Date.now()}.com`);
@@ -20,7 +29,12 @@ describe("Client - Triggers", () => {
 
         for (const inboundRuleTrigger of inboundRuleTriggers.InboundRules) {
             if (inboundRuleTrigger.Rule.includes(triggerName)) {
-                await client.deleteInboundRuleTrigger(inboundRuleTrigger.ID);
+                try {
+                    await client.deleteInboundRuleTrigger(inboundRuleTrigger.ID);
+                } catch (err) {
+                    const statusCode = (err as any)?.statusCode as number | undefined;
+                    if (statusCode !== 404) throw err;
+                }
             }
         }
     }

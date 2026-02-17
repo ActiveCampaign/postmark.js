@@ -8,9 +8,18 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 describe("Servers", () => {
+    const runId: string = (() => {
+        const base =
+            process.env.CIRCLE_WORKFLOW_ID ||
+            process.env.CIRCLE_BUILD_NUM ||
+            process.env.GITHUB_RUN_ID ||
+            `${Date.now()}`;
+        const job = process.env.CIRCLE_JOB || process.env.GITHUB_JOB || process.version;
+        return `${base}-${job}`.replace(/[^a-zA-Z0-9._-]/g, "-");
+    })();
     const accountToken: any = process.env.ACCOUNT_API_TOKEN;
     const client = new postmark.AccountClient(accountToken);
-    const serverNamePrefix: string = "node-js-test-server";
+    const serverNamePrefix: string = `node-js-test-server-${runId}`;
 
     function serverToTest() {
         return new CreateServerRequest(`${serverNamePrefix}-${Date.now()}`);
@@ -20,7 +29,14 @@ describe("Servers", () => {
         const servers = await client.getServers();
 
         for (const server of servers.Servers) {
-            if (server.Name.includes(serverNamePrefix)) { await client.deleteServer(server.ID); }
+            if (server.Name.includes(serverNamePrefix)) {
+                try {
+                    await client.deleteServer(server.ID);
+                } catch (err) {
+                    const statusCode = (err as any)?.statusCode as number | undefined;
+                    if (statusCode !== 404) throw err;
+                }
+            }
         }
     }
 

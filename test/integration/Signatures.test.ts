@@ -7,11 +7,20 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 describe("Client - Signatures", () => {
+    const runId: string = (() => {
+        const base =
+            process.env.CIRCLE_WORKFLOW_ID ||
+            process.env.CIRCLE_BUILD_NUM ||
+            process.env.GITHUB_RUN_ID ||
+            `${Date.now()}`;
+        const job = process.env.CIRCLE_JOB || process.env.GITHUB_JOB || process.version;
+        return `${base}-${job}`.replace(/[^a-zA-Z0-9._-]/g, "-");
+    })();
     const accountToken: any = process.env.ACCOUNT_API_TOKEN;
     const testDomainName: any = process.env.DOMAIN_NAME;
     const client: postmark.AccountClient = new postmark.AccountClient(accountToken);
     const domainName: string = testDomainName;
-    const signatureTag: string = 'nodejs-sig-test'
+    const signatureTag: string = `nodejs-sig-test-${runId}`
 
     function signatureToTest() {
         return new CreateSignatureRequest("John Smith", `qa+${signatureTag}-${Date.now()}@${domainName}`);
@@ -22,7 +31,12 @@ describe("Client - Signatures", () => {
 
         for (const sig of signatures.SenderSignatures) {
             if (sig.EmailAddress.includes(signatureTag)) {
-                await client.deleteSenderSignature(sig.ID);
+                try {
+                    await client.deleteSenderSignature(sig.ID);
+                } catch (err) {
+                    const statusCode = (err as any)?.statusCode as number | undefined;
+                    if (statusCode !== 404) throw err;
+                }
             }
         }
     }

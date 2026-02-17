@@ -7,7 +7,16 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 describe("Servers - Message Streams", () => {
-    const serverNamePrefix: string = "node-js-test-message-streams";
+    const runId: string = (() => {
+        const base =
+            process.env.CIRCLE_WORKFLOW_ID ||
+            process.env.CIRCLE_BUILD_NUM ||
+            process.env.GITHUB_RUN_ID ||
+            `${Date.now()}`;
+        const job = process.env.CIRCLE_JOB || process.env.GITHUB_JOB || process.version;
+        return `${base}-${job}`.replace(/[^a-zA-Z0-9._-]/g, "-");
+    })();
+    const serverNamePrefix: string = `node-js-test-message-streams-${runId}`;
     const accountToken: any = process.env.ACCOUNT_API_TOKEN;
     const accountClient = new postmark.AccountClient(accountToken);
 
@@ -20,7 +29,15 @@ describe("Servers - Message Streams", () => {
         const servers = await accountClient.getServers();
 
         for (const server of servers.Servers) {
-            if (server.Name.includes(serverNamePrefix)) { await accountClient.deleteServer(server.ID); }
+            if (server.Name.includes(serverNamePrefix)) {
+                try {
+                    await accountClient.deleteServer(server.ID);
+                } catch (err) {
+                    // Ignore deletes racing with other jobs/cleanup.
+                    const statusCode = (err as any)?.statusCode as number | undefined;
+                    if (statusCode !== 404) throw err;
+                }
+            }
         }
     }
 
