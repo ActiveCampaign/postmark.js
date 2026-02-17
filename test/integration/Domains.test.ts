@@ -5,26 +5,36 @@ import "mocha";
 import { CreateDomainRequest } from "../../src/client/models";
 
 import * as dotenv from "dotenv";
+import { getTestRunTag } from "./testRunTag";
 dotenv.config();
 
 describe("Client - Domains", () => {
+    const tag = getTestRunTag().toLowerCase().replace(/[^a-z0-9-]/g, "-");
     const accountToken: any = process.env.ACCOUNT_API_TOKEN
     const client = new postmark.AccountClient(accountToken);
-    const domainName: string = `nodejs-test.${process.env.DOMAIN_NAME}`;
+    const domainName: string = `nodejs-${tag}.${process.env.DOMAIN_NAME}`;
 
     function returnPathToTest(domainNameForReturnPath: string) {
         return `return.${domainNameForReturnPath}`;
     }
 
     function domainToTest() {
-        return new CreateDomainRequest(`${Date.now()}-${domainName}`);
+        // Keep the first label starting with a letter.
+        return new CreateDomainRequest(`nodejs-${tag}-${Date.now()}.${process.env.DOMAIN_NAME}`);
     }
 
     async function cleanup() {
         const domains = await client.getDomains();
 
         for (const domain of domains.Domains) {
-            if (domain.Name.includes(domainName)) { await client.deleteDomain(domain.ID); }
+            if (domain.Name.includes(domainName)) {
+                try {
+                    await client.deleteDomain(domain.ID);
+                } catch (err) {
+                    const statusCode = (err as any)?.statusCode as number | undefined;
+                    if (statusCode !== 404) throw err;
+                }
+            }
         }
     }
 

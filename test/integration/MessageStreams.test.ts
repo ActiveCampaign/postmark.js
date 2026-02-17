@@ -4,10 +4,12 @@ import {MessageStream, MessageStreamArchiveResponse, MessageStreams, MessageStre
 import * as postmark from "../../src/index";
 
 import * as dotenv from "dotenv";
+import { getTestRunTag } from "./testRunTag";
 dotenv.config();
 
 describe("Servers - Message Streams", () => {
-    const serverNamePrefix: string = "node-js-test-message-streams";
+    const tag = getTestRunTag();
+    const serverNamePrefix: string = `node-js-test-message-streams-${tag}`;
     const accountToken: any = process.env.ACCOUNT_API_TOKEN;
     const accountClient = new postmark.AccountClient(accountToken);
 
@@ -20,7 +22,15 @@ describe("Servers - Message Streams", () => {
         const servers = await accountClient.getServers();
 
         for (const server of servers.Servers) {
-            if (server.Name.includes(serverNamePrefix)) { await accountClient.deleteServer(server.ID); }
+            if (server.Name.includes(serverNamePrefix)) {
+                try {
+                    await accountClient.deleteServer(server.ID);
+                } catch (err) {
+                    // Ignore deletes racing with other jobs/cleanup.
+                    const statusCode = (err as any)?.statusCode as number | undefined;
+                    if (statusCode !== 404) throw err;
+                }
+            }
         }
     }
 

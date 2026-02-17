@@ -5,12 +5,14 @@ import {CreateServerRequest, ServerDeliveryTypes, UpdateServerRequest} from "../
 import * as postmark from "../../src/index";
 
 import * as dotenv from "dotenv";
+import { getTestRunTag } from "./testRunTag";
 dotenv.config();
 
 describe("Servers", () => {
+    const tag = getTestRunTag();
     const accountToken: any = process.env.ACCOUNT_API_TOKEN;
     const client = new postmark.AccountClient(accountToken);
-    const serverNamePrefix: string = "node-js-test-server";
+    const serverNamePrefix: string = `node-js-test-server-${tag}`;
 
     function serverToTest() {
         return new CreateServerRequest(`${serverNamePrefix}-${Date.now()}`);
@@ -20,7 +22,14 @@ describe("Servers", () => {
         const servers = await client.getServers();
 
         for (const server of servers.Servers) {
-            if (server.Name.includes(serverNamePrefix)) { await client.deleteServer(server.ID); }
+            if (server.Name.includes(serverNamePrefix)) {
+                try {
+                    await client.deleteServer(server.ID);
+                } catch (err) {
+                    const statusCode = (err as any)?.statusCode as number | undefined;
+                    if (statusCode !== 404) throw err;
+                }
+            }
         }
     }
 
