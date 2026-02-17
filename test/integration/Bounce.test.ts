@@ -9,8 +9,13 @@ describe("Bounce", () => {
     const serverToken: any = process.env.SERVER_API_TOKEN;
     const client = new postmark.ServerClient(serverToken);
 
-    it("getBounce", async () => {
+    it("getBounce", async function () {
         const bounces = await client.getBounces();
+        if (!bounces.Bounces || bounces.Bounces.length === 0) {
+            this.skip();
+            return;
+        }
+
         const bounce = await client.getBounce(bounces.Bounces[0].ID);
         expect(bounce.ID).to.be.gte(0);
     });
@@ -28,8 +33,12 @@ describe("Bounce", () => {
         expect(bounces.TotalCount).to.be.gte(0);
     });
 
-    it("getBounceBump", async () => {
+    it("getBounceBump", async function () {
         const bounces = await client.getBounces();
+        if (!bounces.Bounces || bounces.Bounces.length === 0) {
+            this.skip();
+            return;
+        }
         const bounceDump = await client.getBounceDump(bounces.Bounces[0].ID);
         expect(bounceDump.Body.length).to.be.gt(0);
     });
