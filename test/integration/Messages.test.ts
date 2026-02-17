@@ -7,6 +7,10 @@ import { InboundMessagesFilteringParameters, OutboundMessagesFilteringParameters
 import * as dotenv from "dotenv";
 dotenv.config();
 
+function delay(ms: number) {
+    return new Promise<void>((resolve) => setTimeout(resolve, ms));
+}
+
 describe("Client - Message Statistics", () => {
     const serverToken: any = process.env.SERVER_API_TOKEN;
     const client = new postmark.ServerClient(serverToken);
@@ -21,21 +25,60 @@ describe("Client - Message Statistics", () => {
     });
 
     it("getOutboundMessageDetails", async function () {
-        // Ensure we have a MessageID to test details retrieval against.
-        // Using sendEmail avoids relying on pre-existing message history in the server.
-        if (!fromAddress || !toAddress) {
-            this.skip();
-            return;
+        this.timeout(60_000);
+
+        // Prefer using an existing message to avoid eventual consistency delays.
+        const existing = await client.getOutboundMessages(new OutboundMessagesFilteringParameters(1, 0));
+        const existingMessageId = existing.Messages?.[0]?.MessageID;
+
+        // If there is no message history, fall back to sending a message (if configured).
+        let messageId: string | undefined = existingMessageId;
+        if (!messageId) {
+            if (!fromAddress || !toAddress) {
+                this.skip();
+                return;
+            }
+
+            const sendResponse = await client.sendEmail(
+                new postmark.Models.Message(fromAddress, "SDK integration test", "Test html body", undefined, toAddress),
+            );
+            expect(sendResponse.MessageID.length).to.be.gt(0);
+            messageId = sendResponse.MessageID;
         }
 
-        const sendResponse = await client.sendEmail(
-            new postmark.Models.Message(fromAddress, "SDK integration test", "Test html body", undefined, toAddress),
-        );
+        // Postmark message endpoints can be eventually consistent (esp. after send).
+        // Retry briefly to avoid failing when the message isn't queryable yet.
+        let details: any;
+        let lastError: any;
+        for (let attempt = 0; attempt < 10; attempt++) {
+            try {
+                details = await client.getOutboundMessageDetails(messageId);
+                break;
+            } catch (err) {
+                lastError = err;
+                const message = (err as any)?.message as string | undefined;
+                const name = (err as any)?.name as string | undefined;
+                const statusCode = (err as any)?.statusCode as number | undefined;
 
-        expect(sendResponse.MessageID.length).to.be.gt(0);
+                // Only retry the known eventual-consistency error.
+                const isNotFoundYet =
+                    name === "ApiInputError" &&
+                    statusCode === 422 &&
+                    typeof message === "string" &&
+                    message.toLowerCase().includes("not found");
 
-        const details = await client.getOutboundMessageDetails(sendResponse.MessageID);
-        expect(details.MessageID).to.equal(sendResponse.MessageID);
+                if (!isNotFoundYet) {
+                    throw err;
+                }
+
+                await delay(1000 + attempt * 500);
+            }
+        }
+
+        if (!details) {
+            throw lastError;
+        }
+        expect(details.MessageID).to.equal(messageId);
     });
 
     const inboundFilter = new InboundMessagesFilteringParameters(1, 0);
