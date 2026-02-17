@@ -94,26 +94,6 @@ describe("Client - Message Statistics", () => {
             }
         }
 
-        if (!details) {
-            // Some environments (sandbox servers, disabled message queries, etc.) never expose outbound details.
-            // Treat "not found" as an environment limitation rather than a hard failure.
-            const message = (lastError as any)?.message as string | undefined;
-            const name = (lastError as any)?.name as string | undefined;
-            const statusCode = (lastError as any)?.statusCode as number | undefined;
-
-            const isNotFound =
-                name === "ApiInputError" &&
-                statusCode === 422 &&
-                typeof message === "string" &&
-                message.toLowerCase().includes("not found");
-
-            if (isNotFound) {
-                this.skip();
-                return;
-            }
-
-            throw lastError;
-        }
         expect(details.MessageID).to.equal(messageId);
     });
 
