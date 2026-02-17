@@ -94,6 +94,11 @@ describe("Client - Message Statistics", () => {
             }
         }
 
+        // If we still couldn't fetch details, fail with the underlying error (not a TypeError).
+        if (!details) {
+            throw lastError || new Error("Unable to fetch outbound message details after retries.");
+        }
+
         expect(details.MessageID).to.equal(messageId);
     });
 
