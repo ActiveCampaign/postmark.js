@@ -4,19 +4,12 @@ import {MessageStream, MessageStreamArchiveResponse, MessageStreams, MessageStre
 import * as postmark from "../../src/index";
 
 import * as dotenv from "dotenv";
+import { getTestRunTag } from "./testRunTag";
 dotenv.config();
 
 describe("Servers - Message Streams", () => {
-    const runId: string = (() => {
-        const base =
-            process.env.CIRCLE_WORKFLOW_ID ||
-            process.env.CIRCLE_BUILD_NUM ||
-            process.env.GITHUB_RUN_ID ||
-            `${Date.now()}`;
-        const job = process.env.CIRCLE_JOB || process.env.GITHUB_JOB || process.version;
-        return `${base}-${job}`.replace(/[^a-zA-Z0-9._-]/g, "-");
-    })();
-    const serverNamePrefix: string = `node-js-test-message-streams-${runId}`;
+    const tag = getTestRunTag();
+    const serverNamePrefix: string = `node-js-test-message-streams-${tag}`;
     const accountToken: any = process.env.ACCOUNT_API_TOKEN;
     const accountClient = new postmark.AccountClient(accountToken);
 

@@ -5,21 +5,14 @@ import {CreateServerRequest, ServerDeliveryTypes, UpdateServerRequest} from "../
 import * as postmark from "../../src/index";
 
 import * as dotenv from "dotenv";
+import { getTestRunTag } from "./testRunTag";
 dotenv.config();
 
 describe("Servers", () => {
-    const runId: string = (() => {
-        const base =
-            process.env.CIRCLE_WORKFLOW_ID ||
-            process.env.CIRCLE_BUILD_NUM ||
-            process.env.GITHUB_RUN_ID ||
-            `${Date.now()}`;
-        const job = process.env.CIRCLE_JOB || process.env.GITHUB_JOB || process.version;
-        return `${base}-${job}`.replace(/[^a-zA-Z0-9._-]/g, "-");
-    })();
+    const tag = getTestRunTag();
     const accountToken: any = process.env.ACCOUNT_API_TOKEN;
     const client = new postmark.AccountClient(accountToken);
-    const serverNamePrefix: string = `node-js-test-server-${runId}`;
+    const serverNamePrefix: string = `node-js-test-server-${tag}`;
 
     function serverToTest() {
         return new CreateServerRequest(`${serverNamePrefix}-${Date.now()}`);

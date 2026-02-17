@@ -5,29 +5,22 @@ import "mocha";
 import { CreateDomainRequest } from "../../src/client/models";
 
 import * as dotenv from "dotenv";
+import { getTestRunTag } from "./testRunTag";
 dotenv.config();
 
 describe("Client - Domains", () => {
-    const runId: string = (() => {
-        const base =
-            process.env.CIRCLE_WORKFLOW_ID ||
-            process.env.CIRCLE_BUILD_NUM ||
-            process.env.GITHUB_RUN_ID ||
-            `${Date.now()}`;
-        const job = process.env.CIRCLE_JOB || process.env.GITHUB_JOB || process.version;
-        return `${base}-${job}`.replace(/[^a-zA-Z0-9._-]/g, "-");
-    })();
-    const domainSafeRunId: string = runId.toLowerCase().replace(/[^a-z0-9-]/g, "-");
+    const tag = getTestRunTag().toLowerCase().replace(/[^a-z0-9-]/g, "-");
     const accountToken: any = process.env.ACCOUNT_API_TOKEN
     const client = new postmark.AccountClient(accountToken);
-    const domainName: string = `nodejs-test-${domainSafeRunId}.${process.env.DOMAIN_NAME}`;
+    const domainName: string = `nodejs-${tag}.${process.env.DOMAIN_NAME}`;
 
     function returnPathToTest(domainNameForReturnPath: string) {
         return `return.${domainNameForReturnPath}`;
     }
 
     function domainToTest() {
-        return new CreateDomainRequest(`${Date.now()}-${domainName}`);
+        // Keep the first label starting with a letter.
+        return new CreateDomainRequest(`nodejs-${tag}-${Date.now()}.${process.env.DOMAIN_NAME}`);
     }
 
     async function cleanup() {
