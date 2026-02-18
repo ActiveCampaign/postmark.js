@@ -9,23 +9,15 @@ workflows:
       - unit-tests:
           name: node16
           version: "16.0"
-          requires:
-            - node14
       - unit-tests:
           name: node18
           version: "18.0"
-          requires:
-            - node16
       - unit-tests:
           name: node20
           version: "20.0"
-          requires:
-            - node18
       - unit-tests:
           name: node21
           version: "21.0"
-          requires:
-            - node20
 
 jobs:
   unit-tests:

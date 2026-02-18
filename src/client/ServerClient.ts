@@ -312,7 +312,7 @@ export default class ServerClient extends BaseClient {
      */
     public getOutboundMessageDetails(messageId: string,
                                      callback?: Callback<OutboundMessageDetails>): Promise<OutboundMessageDetails> {
-        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/messages/outbound/${messageId}`, {}, callback);
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/messages/outbound/${messageId}/details`, {}, callback);
     }
 
     /**

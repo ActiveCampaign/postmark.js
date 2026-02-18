@@ -4,15 +4,17 @@ import { expect } from "chai";
 import "mocha";
 
 import * as dotenv from "dotenv";
+import { getTestRunTag } from "./testRunTag";
 dotenv.config();
 
 describe("Client - Webhooks", () => {
+    const tag = getTestRunTag();
     const serverToken: any = process.env.SERVER_API_TOKEN;
     const client = new postmark.ServerClient(serverToken);
 
     function webhookToCreate() {
         return new postmark.Models.CreateWebhookRequest(
-            'https://example.com',
+            `https://example.com/postmark-js-ci/${tag}`,
             { Open: { Enabled: true } }
         );
     }
@@ -21,7 +23,24 @@ describe("Client - Webhooks", () => {
         const webhooks = await client.getWebhooks();
 
         for (const webhook of webhooks.Webhooks) {
-            await client.deleteWebhook(webhook.ID)
+            if (typeof webhook.Url === "string" && webhook.Url.includes(`/postmark-js-ci/${tag}`)) {
+                try {
+                    await client.deleteWebhook(webhook.ID)
+                } catch (err) {
+                    const e = err as { name?: string; statusCode?: number; message?: string };
+                    const name = e?.name;
+                    const statusCode = e?.statusCode;
+                    const message = e?.message;
+
+                    const isGone =
+                        statusCode === 404 ||
+                        (name === "ApiInputError" &&
+                            typeof message === "string" &&
+                            message.toLowerCase().includes("not found"));
+
+                    if (!isGone) throw err;
+                }
+            }
         }
     }
 

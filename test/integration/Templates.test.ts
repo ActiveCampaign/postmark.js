@@ -5,14 +5,16 @@ import "mocha";
 import {CreateTemplateRequest, TemplatesPushRequest, TemplateTypes} from "../../src/client/models";
 
 import * as dotenv from "dotenv";
+import { getTestRunTag } from "./testRunTag";
 dotenv.config();
 
 describe("Client - Templates", () => {
+    const tag = getTestRunTag();
     const serverToken: any = process.env.SERVER_API_TOKEN;
     const accountToken: any = process.env.ACCOUNT_API_TOKEN;
     const client = new postmark.ServerClient(serverToken);
     const accountClient = new postmark.AccountClient(accountToken);
-    const templatePrefix: string = "testing-template-node-js";
+    const templatePrefix: string = `testing-template-node-js-${tag}`;
 
     function templateToCreate() {
         return new CreateTemplateRequest(
@@ -41,7 +43,23 @@ describe("Client - Templates", () => {
 
         for (const template of templates.Templates) {
             if (template.Name.includes(templatePrefix)) {
-                await client.deleteTemplate(template.TemplateId);
+                try {
+                    await client.deleteTemplate(template.TemplateId);
+                } catch (err) {
+                    const e = err as { name?: string; statusCode?: number; message?: string };
+                    const name = e?.name;
+                    const statusCode = e?.statusCode;
+                    const message = e?.message;
+
+                    const isGone =
+                        statusCode === 404 ||
+                        (name === "ApiInputError" &&
+                            typeof message === "string" &&
+                            message.toLowerCase().includes("not valid") &&
+                            message.toLowerCase().includes("not found"));
+
+                    if (!isGone) throw err;
+                }
             }
         }
     }
