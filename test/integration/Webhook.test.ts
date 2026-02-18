@@ -23,13 +23,14 @@ describe("Client - Webhooks", () => {
         const webhooks = await client.getWebhooks();
 
         for (const webhook of webhooks.Webhooks) {
-            if ((webhook as any)?.Url?.includes(`/postmark-js-ci/${tag}`)) {
+            if (typeof webhook.Url === "string" && webhook.Url.includes(`/postmark-js-ci/${tag}`)) {
                 try {
                     await client.deleteWebhook(webhook.ID)
                 } catch (err) {
-                    const name = (err as any)?.name as string | undefined;
-                    const statusCode = (err as any)?.statusCode as number | undefined;
-                    const message = (err as any)?.message as string | undefined;
+                    const e = err as { name?: string; statusCode?: number; message?: string };
+                    const name = e?.name;
+                    const statusCode = e?.statusCode;
+                    const message = e?.message;
 
                     const isGone =
                         statusCode === 404 ||

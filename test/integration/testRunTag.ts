@@ -19,6 +19,6 @@ export function getTestRunTag(): string {
     const hash = createHash("md5").update(base).digest("hex").slice(0, 6);
 
     // Example: ci14-a1b2c3
-    return `ci${nodeMajor}-${hash}`;
+    return `ci-${nodeMajor}-${hash}`;
 }
 

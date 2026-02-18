@@ -46,9 +46,10 @@ describe("Client - Templates", () => {
                 try {
                     await client.deleteTemplate(template.TemplateId);
                 } catch (err) {
-                    const name = (err as any)?.name as string | undefined;
-                    const statusCode = (err as any)?.statusCode as number | undefined;
-                    const message = (err as any)?.message as string | undefined;
+                    const e = err as { name?: string; statusCode?: number; message?: string };
+                    const name = e?.name;
+                    const statusCode = e?.statusCode;
+                    const message = e?.message;
 
                     const isGone =
                         statusCode === 404 ||

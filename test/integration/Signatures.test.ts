@@ -34,7 +34,7 @@ describe("Client - Signatures", () => {
                 try {
                     await client.deleteSenderSignature(sig.ID);
                 } catch (err) {
-                    const statusCode = (err as any)?.statusCode as number | undefined;
+                    const statusCode = (err as { statusCode?: number } | undefined)?.statusCode;
                     if (statusCode !== 404) throw err;
                 }
             }

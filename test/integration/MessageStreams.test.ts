@@ -27,7 +27,7 @@ describe("Servers - Message Streams", () => {
                     await accountClient.deleteServer(server.ID);
                 } catch (err) {
                     // Ignore deletes racing with other jobs/cleanup.
-                    const statusCode = (err as any)?.statusCode as number | undefined;
+                    const statusCode = (err as { statusCode?: number } | undefined)?.statusCode;
                     if (statusCode !== 404) throw err;
                 }
             }

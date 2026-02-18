@@ -7,10 +7,6 @@ import { InboundMessagesFilteringParameters, OutboundMessagesFilteringParameters
 import * as dotenv from "dotenv";
 dotenv.config();
 
-function delay(ms: number) {
-    return new Promise<void>((resolve) => setTimeout(resolve, ms));
-}
-
 describe("Client - Message Statistics", () => {
     const serverToken: any = process.env.SERVER_API_TOKEN;
     const client = new postmark.ServerClient(serverToken);
@@ -39,9 +35,10 @@ describe("Client - Message Statistics", () => {
                 expect(details.MessageID).to.equal(candidateId);
                 return;
             } catch (err) {
-                const name = (err as any)?.name as string | undefined;
-                const statusCode = (err as any)?.statusCode as number | undefined;
-                const message = (err as any)?.message as string | undefined;
+                const e = err as { name?: string; statusCode?: number; message?: string };
+                const name = e?.name;
+                const statusCode = e?.statusCode;
+                const message = e?.message;
 
                 const isNotFound =
                     name === "ApiInputError" &&
@@ -69,15 +66,16 @@ describe("Client - Message Statistics", () => {
         // Retry briefly to avoid failing when the message isn't queryable yet.
         let details: any;
         let lastError: any;
-        for (let attempt = 0; attempt < 10; attempt++) {
+        for (let attempt = 0; attempt < 5; attempt++) {
             try {
                 details = await client.getOutboundMessageDetails(messageId);
                 break;
             } catch (err) {
                 lastError = err;
-                const message = (err as any)?.message as string | undefined;
-                const name = (err as any)?.name as string | undefined;
-                const statusCode = (err as any)?.statusCode as number | undefined;
+                const e = err as { name?: string; statusCode?: number; message?: string };
+                const message = e?.message;
+                const name = e?.name;
+                const statusCode = e?.statusCode;
 
                 // Only retry the known eventual-consistency error.
                 const isNotFoundYet =
@@ -90,16 +88,17 @@ describe("Client - Message Statistics", () => {
                     throw err;
                 }
 
-                await delay(1000 + attempt * 500);
+                await new Promise<void>((resolve) => setTimeout(resolve, 1000 + attempt * 1000));
             }
         }
 
         if (!details) {
             // Some environments (sandbox servers, disabled message queries, etc.) never expose outbound details.
             // Treat "not found" as an environment limitation rather than a hard failure.
-            const message = (lastError as any)?.message as string | undefined;
-            const name = (lastError as any)?.name as string | undefined;
-            const statusCode = (lastError as any)?.statusCode as number | undefined;
+            const e = lastError as { name?: string; statusCode?: number; message?: string } | undefined;
+            const message = e?.message;
+            const name = e?.name;
+            const statusCode = e?.statusCode;
 
             const isNotFound =
                 name === "ApiInputError" &&
@@ -128,7 +127,7 @@ describe("Client - Message Statistics", () => {
     it("getInboundMessageDetails", async function () {
         const messages = await client.getInboundMessages(inboundFilter);
         expect(messages.TotalCount).to.be.gte(0);
-        if (!messages.InboundMessages || messages.InboundMessages.length === 0) {
+        if (messages.InboundMessages.length === 0) {
             this.skip();
             return;
         }
