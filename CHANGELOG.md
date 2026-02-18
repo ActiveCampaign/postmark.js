@@ -1,4 +1,9 @@
 # Changelog
+## 4.0.7
+
+* update axios to 1.13.5
+* fix getOutboundMessageDetails route to be consistent with public documentation 
+
 ## 4.0.6
 
 * update axios to 1.13.4
