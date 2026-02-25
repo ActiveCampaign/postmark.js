@@ -30,7 +30,7 @@ describe("ServerClient", () => {
         });
 
         it("httpClient initialized", () => {
-            expect(client.httpClient.client.defaults).not.to.eql(180000);
+            expect(client.httpClient.client).not.to.equal(undefined);
         });
     });
 

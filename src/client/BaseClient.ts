@@ -1,6 +1,6 @@
 import { ErrorHandler } from "./errors/ErrorHandler";
 import {Callback, ClientOptions, FilteringParameters, HttpClient} from "./models";
-import {AxiosHttpClient} from "./HttpClient"
+import {FetchHttpClient} from "./HttpClient"
 import {Errors} from "../index";
 
 const packageJson = require("../../package.json");
@@ -23,7 +23,7 @@ export default abstract class BaseClient {
         this.token = token.trim();
         this.authHeader = authHeader;
         this.clientVersion = CLIENT_VERSION;
-        this.httpClient = new AxiosHttpClient(configOptions);
+        this.httpClient = new FetchHttpClient(configOptions);
     }
 
     public setClientOptions(configOptions: ClientOptions.Configuration): void {
