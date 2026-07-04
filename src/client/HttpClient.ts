@@ -41,7 +41,7 @@ export class FetchHttpClient extends HttpClient {
                 method,
                 headers: requestHeaders,
                 body: (body === null || body === undefined) ? undefined : JSON.stringify(body),
-                signal: AbortSignal.timeout(this.getRequestTimeoutInMilliseconds()),
+                signal: this.buildTimeoutSignal(),
             });
         } catch (errorThrown) {
             // Network errors, aborts and timeouts reject the fetch promise.
@@ -137,6 +137,20 @@ export class FetchHttpClient extends HttpClient {
         }
 
         return this.errorHandler.buildError(JSON.stringify(errorThrown, Object.getOwnPropertyNames(errorThrown)));
+    }
+
+    /**
+     * Build an AbortSignal that aborts the request once the configured timeout elapses.
+     *
+     * AbortSignal.timeout() is available at runtime in Node 18+, but is not present in the
+     * lib.dom typings shipped with the TypeScript version this project pins, so it is
+     * referenced through an explicit cast.
+     *
+     * @private
+     */
+    private buildTimeoutSignal(): AbortSignal {
+        const abortSignal = AbortSignal as unknown as { timeout(milliseconds: number): AbortSignal };
+        return abortSignal.timeout(this.getRequestTimeoutInMilliseconds());
     }
 
     /**
