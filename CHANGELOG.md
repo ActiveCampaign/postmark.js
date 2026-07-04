@@ -1,4 +1,10 @@
 # Changelog
+## Unreleased
+
+* migrated the HTTP client from axios to the native Fetch API, making the SDK dependency-free
+* bumped minimum supported Node version to 18.0.0
+* removed the `axios` dependency (resolves CVE exposure and `url.parse()` deprecation warnings, and restores compatibility with Edge/Workers runtimes)
+
 ## 4.0.7
 
 * update axios to 1.13.5

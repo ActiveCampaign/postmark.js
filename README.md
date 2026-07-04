@@ -15,8 +15,9 @@ As the official Node.js library for Postmark, postmark.js has support for the en
 
 ## Requirements
 
-Minimum supported [Node](https://endoflife.date/nodejs) version `v14.0.0`. If you use older Node versions for which 
-[active and security support ended](https://endoflife.date/nodejs) , you will need to use older library versions (3.x.x).
+Minimum supported [Node](https://endoflife.date/nodejs) version `v18.0.0`. The library uses the native Fetch API and has
+no runtime dependencies. If you use older Node versions for which
+[active and security support ended](https://endoflife.date/nodejs), you will need to use older library versions (3.x.x for Node < 14, 4.x.x for Node < 18).
 
 ## Usage
 
