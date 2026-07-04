@@ -40,6 +40,7 @@
     "lib": "./dist/index.js"
   },
   "scripts": {
+    "check-lockfile": "node scripts/check-lockfile-registry.js",
     "compile": "rm -r -f ./dist && node_modules/.bin/tsc",
     "test": "node_modules/.bin/mocha --timeout 30000 --retries 1 -r ts-node/register test/**/*test.ts",
     "unittest": "node_modules/.bin/mocha --timeout 30000 --retries 1 -r ts-node/register test/unit/**/*test.ts",
@@ -57,6 +58,7 @@
     "url": "https://github.com/ActiveCampaign/postmark.js/issues"
   },
   "precommit": [
+    "check-lockfile",
     "compile",
     "lint",
     "test",
