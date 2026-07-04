@@ -3,6 +3,7 @@ version: 2.1
 workflows:
   node-tests:
     jobs:
+      - lockfile-check
       - unit-tests:
           name: node18
           version: "18.0"
@@ -17,6 +18,14 @@ workflows:
           version: "24.0"
 
 jobs:
+  lockfile-check:
+    docker:
+      - image: cimg/node:24.0
+    steps:
+      - checkout
+      - run:
+          name: Check lockfile registry URLs
+          command: npm run check-lockfile
   unit-tests:
     parameters:
       version:
