@@ -82,6 +82,30 @@ describe("FetchHttpClient", () => {
             const init: any = stub.firstCall.args[1];
             expect(init.body).to.equal(undefined);
         });
+
+        it("expands array query params to repeated keys and serializes Dates as ISO strings", async () => {
+            const stub = stubFetch().resolves(buildResponse(200, {}));
+            const since = new Date("2026-01-02T03:04:05.000Z");
+
+            await httpClient.httpRequest(ClientOptions.HttpMethod.GET, "/x",
+                {tags: ["a", "b"], since} as any, null, {});
+
+            expect(stub.firstCall.args[0])
+                .to.equal("https://api.postmarkapp.com/x?tags=a&tags=b&since=2026-01-02T03%3A04%3A05.000Z");
+        });
+    });
+
+    describe("custom fetch option", () => {
+        it("uses a caller-supplied fetch implementation (e.g. for proxy support)", async () => {
+            const customFetch = sinon.stub().resolves(buildResponse(200, {ok: true}));
+            const clientWithFetch = new FetchHttpClient({fetch: customFetch} as any);
+
+            const result: any = await clientWithFetch.httpRequest(ClientOptions.HttpMethod.GET, "/server", {}, null, {});
+
+            expect(customFetch.calledOnce).to.be.true;
+            expect(customFetch.firstCall.args[0]).to.equal("https://api.postmarkapp.com/server");
+            expect(result).to.eql({ok: true});
+        });
     });
 
     describe("network / timeout errors", () => {

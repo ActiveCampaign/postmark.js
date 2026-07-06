@@ -36,6 +36,9 @@ const resolvedUrls = [];
 collectResolvedUrls(lockfile, resolvedUrls);
 
 const offenders = resolvedUrls.filter((url) => {
+    // This check is intentionally HTTP(S)-scoped: it targets registry tarball URLs, which is where an
+    // internal mirror host would appear. Non-HTTP resolved entries (e.g. git+ssh:, git+https:, file:,
+    // link:) are skipped, since they are not registry mirror URLs.
     if (!/^https?:\/\//.test(url)) { return false; }
     try {
         return new URL(url).host !== ALLOWED_HOST;

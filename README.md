@@ -19,6 +19,28 @@ Minimum supported [Node](https://endoflife.date/nodejs) version `v18.0.0`. The l
 no runtime dependencies. If you use older Node versions for which
 [active and security support ended](https://endoflife.date/nodejs), you will need to use older library versions (3.x.x for Node < 14, 4.x.x for Node < 18).
 
+> **Note:** The global Fetch API is stable from Node 21. On Node 18–20 it works but may log an
+> `ExperimentalWarning: The Fetch API is an experimental feature`. This is emitted by Node itself, not by this library.
+
+## Proxies / custom fetch
+
+Unlike axios, Node's built-in fetch (undici) does **not** read the `HTTP_PROXY` / `HTTPS_PROXY` / `NO_PROXY`
+environment variables. If you run behind a corporate egress proxy, supply your own fetch implementation via the
+`fetch` client option — for example one bound to an undici [`ProxyAgent`](https://undici.nodejs.org/#/docs/api/ProxyAgent) dispatcher:
+
+```js
+import { ServerClient } from "postmark";
+import { ProxyAgent } from "undici";
+
+const dispatcher = new ProxyAgent("http://proxy.internal:8080");
+
+const client = new ServerClient("server-token", {
+    fetch: (input, init) => fetch(input, { ...init, dispatcher }),
+});
+```
+
+The same option can be used to inject a mock/instrumented fetch for testing or other transport customization.
+
 ## Usage
 
 Please see the [wiki](https://github.com/ActiveCampaign/postmark.js/wiki) for quick start tutorial and detailed instructions about sending email at our [documentation page](https://ActiveCampaign.github.io/postmark.js/). 

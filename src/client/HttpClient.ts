@@ -6,7 +6,7 @@ import {ErrorHandler, PostmarkError} from "./errors/index";
  * This keeps the SDK dependency-free while preserving the previous error handling contract.
  */
 export class FetchHttpClient extends HttpClient {
-    public client!: typeof fetch;
+    public client!: ClientOptions.FetchImplementation;
     private errorHandler: ErrorHandler;
 
     public constructor(configOptions?: ClientOptions.Configuration) {
@@ -19,8 +19,9 @@ export class FetchHttpClient extends HttpClient {
      */
     public initHttpClient(configOptions?: ClientOptions.Configuration): void {
         this.clientOptions = { ...HttpClient.DefaultOptions, ...configOptions };
-        // Keep a reference to fetch so it can be configured/stubbed if needed.
-        this.client = (input: any, init?: any) => fetch(input, init);
+        // Use a caller-supplied fetch when provided (e.g. bound to a proxy dispatcher),
+        // otherwise wrap the global fetch. The reference is stored so it can also be stubbed in tests.
+        this.client = this.clientOptions.fetch ?? ((input, init) => fetch(input, init));
     }
 
     /**
@@ -74,19 +75,34 @@ export class FetchHttpClient extends HttpClient {
     /**
      * Serialize query parameters into a querystring, ignoring undefined and null values.
      *
+     * Every current *FilteringParameters query value is a string, number, boolean or enum, so
+     * primitive serialization is sufficient today. Arrays are still expanded to repeated keys and
+     * Date values to ISO strings (as axios used to do) so that adding such a filter param later
+     * cannot silently produce a malformed URL via String([1,2]) or String(new Date()).
+     *
      * @private
      */
     private serializeQueryParameters(queryParameters: object): string {
         const searchParams = new URLSearchParams();
 
         Object.entries(queryParameters || {}).forEach(([key, value]) => {
-            if (value !== undefined && value !== null) {
-                searchParams.append(key, String(value));
+            if (value === undefined || value === null) { return; }
+
+            if (Array.isArray(value)) {
+                value.forEach((item) => {
+                    if (item !== undefined && item !== null) { searchParams.append(key, this.stringifyQueryValue(item)); }
+                });
+            } else {
+                searchParams.append(key, this.stringifyQueryValue(value));
             }
         });
 
         const queryString = searchParams.toString();
         return queryString === "" ? "" : `?${queryString}`;
+    }
+
+    private stringifyQueryValue(value: any): string {
+        return (value instanceof Date) ? value.toISOString() : String(value);
     }
 
     /**

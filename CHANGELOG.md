@@ -1,9 +1,14 @@
 # Changelog
-## Unreleased
+## 5.0.0
+
+This is a major release with breaking changes.
 
 * migrated the HTTP client from axios to the native Fetch API, making the SDK dependency-free
-* bumped minimum supported Node version to 18.0.0
+* **BREAKING:** bumped minimum supported Node version to 18.0.0 (dropped Node 14 and 16)
 * removed the `axios` dependency (resolves CVE exposure and `url.parse()` deprecation warnings, and restores compatibility with Edge/Workers runtimes)
+* **BREAKING:** proxy environment variables (`HTTP_PROXY` / `HTTPS_PROXY` / `NO_PROXY`) are no longer honored automatically. axios read them via `proxy-from-env`, but Node's built-in fetch (undici) does not. To route requests through a proxy, pass a custom fetch via the new `fetch` client option (e.g. bound to an undici `ProxyAgent` dispatcher) — see the README "Proxies / custom fetch" section
+* added the `fetch` client option, allowing a custom fetch implementation to be supplied for proxy support, testing, or other transport customization
+* an empty `2xx` response body now resolves to `{}` (axios previously surfaced an empty string `""`)
 
 ## 4.0.7
 
