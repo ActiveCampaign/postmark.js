@@ -1,14 +1,21 @@
 # Changelog
 ## 5.0.0
 
-This is a major release with breaking changes.
+Migrated the HTTP client from axios to the native Fetch API, making the SDK dependency-free.
+This is a major release; the migration introduces five breaking changes, detailed below.
 
-* migrated the HTTP client from axios to the native Fetch API, making the SDK dependency-free
-* **BREAKING:** bumped minimum supported Node version to 18.0.0 (dropped Node 14 and 16)
+### Breaking changes
+
+1. **Minimum Node version is now 18.0.0** (dropped Node 14 and 16). The native Fetch API requires Node 18+.
+2. **Proxy environment variables (`HTTP_PROXY` / `HTTPS_PROXY` / `NO_PROXY`) are no longer honored automatically.** axios read them via `proxy-from-env`, but Node's built-in fetch (undici) does not. To route requests through a proxy, pass a custom fetch via the new `fetch` client option (e.g. bound to an undici `ProxyAgent` dispatcher) — see the README "Proxies / custom fetch" section.
+3. **An empty `2xx` response body now resolves to `{}`** instead of the empty string `""` that axios surfaced.
+4. **`client.httpClient.client` is no longer an axios instance** — it is now a `fetch` function. Code that reached into it to add axios interceptors, set `defaults`, or attach an axios adapter/proxy will no longer work; use the new `fetch` client option for transport customization instead.
+5. **Request `timeout` semantics changed.** With axios `timeout` was a response/inactivity timeout; it is now mapped to `AbortSignal.timeout()`, which is a total deadline for the entire request. Slow-but-progressing responses that previously completed may now abort once the total duration exceeds the configured `timeout`.
+
+### Other changes
+
 * removed the `axios` dependency (resolves CVE exposure and `url.parse()` deprecation warnings, and restores compatibility with Edge/Workers runtimes)
-* **BREAKING:** proxy environment variables (`HTTP_PROXY` / `HTTPS_PROXY` / `NO_PROXY`) are no longer honored automatically. axios read them via `proxy-from-env`, but Node's built-in fetch (undici) does not. To route requests through a proxy, pass a custom fetch via the new `fetch` client option (e.g. bound to an undici `ProxyAgent` dispatcher) — see the README "Proxies / custom fetch" section
 * added the `fetch` client option, allowing a custom fetch implementation to be supplied for proxy support, testing, or other transport customization
-* an empty `2xx` response body now resolves to `{}` (axios previously surfaced an empty string `""`)
 
 ## 4.0.7
 
