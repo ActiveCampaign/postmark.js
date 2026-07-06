@@ -9,7 +9,7 @@
     "sending",
     "transactional"
   ],
-  "version": "4.0.7",
+  "version": "5.0.0",
   "author": "Postmark (under ActiveCampaign LLC)",
   "contributors": [
     "Igor Balos",
@@ -40,6 +40,7 @@
     "lib": "./dist/index.js"
   },
   "scripts": {
+    "check-lockfile": "node scripts/check-lockfile-registry.js",
     "compile": "rm -r -f ./dist && node_modules/.bin/tsc",
     "test": "node_modules/.bin/mocha --timeout 30000 --retries 1 -r ts-node/register test/**/*test.ts",
     "unittest": "node_modules/.bin/mocha --timeout 30000 --retries 1 -r ts-node/register test/unit/**/*test.ts",
@@ -57,6 +58,7 @@
     "url": "https://github.com/ActiveCampaign/postmark.js/issues"
   },
   "precommit": [
+    "check-lockfile",
     "compile",
     "lint",
     "test",
@@ -79,7 +81,7 @@
     "typedoc": "^0.25.4",
     "typescript": "^4.7.4"
   },
-  "dependencies": {
-    "axios": "^1.13.5"
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

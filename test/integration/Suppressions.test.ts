@@ -40,6 +40,21 @@ describe("Client - Suppressions", () => {
     before(cleanup);
     after(cleanup);
 
+    // Postmark's suppression list is eventually consistent, so a record created via the API
+    // may not be immediately queryable. Poll until the expected state is reached (or time out),
+    // which keeps the assertions deterministic across fast and slow Node runtimes.
+    async function getSuppressionsUntil(filter: object, predicate: (result: Suppressions) => boolean): Promise<Suppressions> {
+        const maxAttempts = 15;
+        let suppressions: Suppressions = await client.getSuppressions('outbound', filter);
+
+        for (let attempt = 0; attempt < maxAttempts && !predicate(suppressions); attempt++) {
+            await new Promise((resolve) => setTimeout(resolve, 500));
+            suppressions = await client.getSuppressions('outbound', filter);
+        }
+
+        return suppressions;
+    }
+
     it("createSuppression", async () => {
         const emailAddress = `nothing+create@${suppression_email_domain}`;
         const suppression: SuppressionStatuses = await client.createSuppressions('outbound', {
@@ -55,7 +70,7 @@ describe("Client - Suppressions", () => {
             Suppressions: [ { EmailAddress: emailAddress} ]
         });
 
-        const suppressions: Suppressions = await client.getSuppressions('outbound');
+        const suppressions: Suppressions = await getSuppressionsUntil({}, (result) => result.Suppressions.length >= 1);
         expect(suppressions.Suppressions.length).to.be.gte(1);
     });
 
@@ -65,11 +80,11 @@ describe("Client - Suppressions", () => {
             Suppressions: [ { EmailAddress: email} ]
         });
 
-        let suppressions = await client.getSuppressions('outbound', {
+        let suppressions = await getSuppressionsUntil({
             emailAddress: email,
             origin: SuppressionOrigin.Customer,
             suppressionReason: SuppressionReason.ManualSuppression
-        });
+        }, (result) => result.Suppressions.length === 1);
         expect(suppressions.Suppressions.length).to.eq(1);
 
         suppressions = await client.getSuppressions('outbound', {emailAddress: "invalid"});

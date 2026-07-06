@@ -3,12 +3,7 @@ version: 2.1
 workflows:
   node-tests:
     jobs:
-      - unit-tests:
-          name: node14
-          version: "14.0"
-      - unit-tests:
-          name: node16
-          version: "16.0"
+      - lockfile-check
       - unit-tests:
           name: node18
           version: "18.0"
@@ -16,10 +11,21 @@ workflows:
           name: node20
           version: "20.0"
       - unit-tests:
-          name: node21
-          version: "21.0"
+          name: node22
+          version: "22.0"
+      - unit-tests:
+          name: node24
+          version: "24.0"
 
 jobs:
+  lockfile-check:
+    docker:
+      - image: cimg/node:24.0
+    steps:
+      - checkout
+      - run:
+          name: Check lockfile registry URLs
+          command: npm run check-lockfile
   unit-tests:
     parameters:
       version:
@@ -32,21 +38,9 @@ jobs:
           name: Node Version
           command: |
             echo "node: $(node --version)"
-      - when:
-          condition:
-            matches: { pattern: "14.0", value: << parameters.version >> }
-          steps:
-            - run:
-                name: Install dependencies - legacy mode
-                command: npm install
-      - when:
-          condition:
-            not:
-              matches: { pattern: "14.0", value: << parameters.version >> }
-          steps:
-            - run:
-                name: Install dependencies
-                command: npm ci
+      - run:
+          name: Install dependencies
+          command: npm ci
       - run:
           name: Install typescript
           command: |
