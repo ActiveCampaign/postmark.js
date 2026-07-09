@@ -30,6 +30,34 @@ describe("Sending", () => {
         expect(responses.length).to.equal(3);
     });
 
+    describe("bulk", () => {
+        function bulkRequest(recipientCount: number) {
+            const messages = Array.from({ length: recipientCount }, () =>
+                new postmark.BulkEmailMessage(toAddress, { name: "Test" }));
+
+            const request = new postmark.BulkEmailRequest(
+                fromAddress, messages, "Test bulk subject",
+                "<html><body>Test html body</body></html>", "Test text body");
+            request.MessageStream = "broadcast";
+            return request;
+        }
+
+        it("sendBulkEmail", async () => {
+            const response = await client.sendBulkEmail(bulkRequest(2));
+
+            expect(response.Status).to.equal("Accepted");
+            expect(response.Id).to.be.a("string");
+        });
+
+        it("getBulkEmailStatus", async () => {
+            const sent = await client.sendBulkEmail(bulkRequest(1));
+            const status = await client.getBulkEmailStatus(sent.Id);
+
+            expect(status.Id).to.equal(sent.Id);
+            expect(status.TotalMessages).to.be.a("number");
+        });
+    });
+
     describe("invalid", () => {
         it("sendEmail", () => {
             const message = messageToSend();

@@ -17,6 +17,9 @@ import {
     Bounces,
     BrowserUsageCounts,
 
+    BulkEmailRequest,
+    BulkEmailSendingResponse,
+    BulkEmailStatusResponse,
     ClickCounts,
     ClickLocationCounts,
     ClickPlatformUsageCounts,
@@ -141,6 +144,33 @@ export default class ServerClient extends BaseClient {
     public sendEmailBatchWithTemplates(templates: TemplatedMessage[],
                                        callback?: Callback<MessageSendingResponse[]>): Promise<MessageSendingResponse[]> {
         return this.processRequestWithBody(ClientOptions.HttpMethod.POST, "/email/batchWithTemplates", { Messages: templates }, callback);
+    }
+
+    /**
+     * Send a bulk email.
+     *
+     * The Bulk API is intended for broadcast sends (newsletters, announcements, marketing campaigns).
+     * Message content is defined once, with per-recipient template variables, and Postmark manages the
+     * send-rate optimization for deliverability. The response contains a request ID that can be polled
+     * with {@link getBulkEmailStatus}.
+     *
+     * @param bulkEmail - The bulk email request describing the shared content and the list of recipients.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public sendBulkEmail(bulkEmail: BulkEmailRequest, callback?: Callback<BulkEmailSendingResponse>): Promise<BulkEmailSendingResponse> {
+        return this.processRequestWithBody(ClientOptions.HttpMethod.POST, "/email/bulk", bulkEmail, callback);
+    }
+
+    /**
+     * Get the status and progress of a previously submitted bulk email request.
+     *
+     * @param bulkRequestId - The request ID returned by {@link sendBulkEmail}.
+     * @param callback - If the callback is provided, it will be passed to the resulting promise as a continuation.
+     * @returns A promise that will complete when the API responds (or an error occurs).
+     */
+    public getBulkEmailStatus(bulkRequestId: string, callback?: Callback<BulkEmailStatusResponse>): Promise<BulkEmailStatusResponse> {
+        return this.processRequestWithoutBody(ClientOptions.HttpMethod.GET, `/email/bulk/${bulkRequestId}`, {}, callback);
     }
 
     /**
