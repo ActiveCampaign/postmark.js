@@ -1,4 +1,11 @@
 # Changelog
+## 5.1.0
+
+* added support for the Bulk Email API ([#185](https://github.com/ActiveCampaign/postmark.js/issues/185)):
+  * `ServerClient.sendBulkEmail()` — send a bulk email (`POST /email/bulk`)
+  * `ServerClient.getBulkEmailStatus()` — poll a bulk request's status (`GET /email/bulk/{bulk-request-id}`)
+  * new models `BulkEmailRequest`, `BulkEmailMessage`, `BulkEmailSendingResponse`, `BulkEmailStatusResponse`, and the `BulkEmailStatus` enum, with `BulkEmailRequest`/`BulkEmailMessage` exposed as top-level exports
+
 ## 5.0.0
 
 Migrated the HTTP client from axios to the native Fetch API, making the SDK dependency-free.

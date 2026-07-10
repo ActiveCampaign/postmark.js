@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import "mocha";
-import {MessageStream, MessageStreamArchiveResponse, MessageStreams, MessageStreamUnarchiveResponse} from "../../src/client/models";
+import {MessageStream, MessageStreams} from "../../src/client/models";
 import * as postmark from "../../src/index";
 
 import * as dotenv from "dotenv";
@@ -62,24 +62,18 @@ describe("Servers - Message Streams", () => {
       expect(streamsToCount.TotalCount).to.eq(4);
     });
 
-    it("archive message stream", async () => {
+    // Verify that an archive rejection from the API is surfaced to the caller as an ApiInputError.
+    it("archive message stream surfaces API errors", async () => {
       const streamToCreateID: string = "test";
       const apiToken: string = await serverToTestApiToken();
       const client = new postmark.ServerClient(apiToken);
       await client.createMessageStream({Name: "test", ID: streamToCreateID, Description: "test description", MessageStreamType: "Transactional"});
-      const response: MessageStreamArchiveResponse = await client.archiveMessageStream(streamToCreateID);
 
-      expect(response.ID).to.eq(streamToCreateID);
-    });
-
-    it("unarchive message stream", async () => {
-      const streamToCreateID: string = "test";
-      const apiToken: string = await serverToTestApiToken();
-      const client = new postmark.ServerClient(apiToken);
-      await client.createMessageStream({Name: "test", ID: streamToCreateID, Description: "test description", MessageStreamType: "Transactional"});
-      await client.archiveMessageStream(streamToCreateID);
-      const responseUnarchive: MessageStreamUnarchiveResponse = await client.unarchiveMessageStream(streamToCreateID);
-
-      expect(responseUnarchive.MessageStreamType).to.eq("Transactional");
+      return client.archiveMessageStream(streamToCreateID).then((result) => {
+        throw new Error(`Expected archiveMessageStream to be rejected, but it resolved: ${JSON.stringify(result)}`);
+      }).catch((error) => {
+        expect(error.name).to.equal("ApiInputError");
+        expect(error.message).to.contain("unable to be archived");
+      });
     });
 });

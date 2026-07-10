@@ -7,6 +7,7 @@ export * from "./client/FilteringParameters";
 export * from "./bounces/Bounce";
 export * from "./bounces/BounceFilteringParameters";
 export * from "./message/Message";
+export * from "./message/BulkEmail";
 export * from "./message/SupportingTypes";
 export * from "./messages/OutboundMessage";
 export * from "./messages/OutboundMessageOpen";
