@@ -7,7 +7,8 @@ import * as dotenv from "dotenv";
 import { getTestRunTag } from "./testRunTag";
 dotenv.config();
 
-describe("Client - Webhooks", () => {
+// Skipped until PMK-3627: the API now verifies webhook endpoints on create, and this suite has no way to send verify=false.
+describe.skip("Client - Webhooks", () => {
     const tag = getTestRunTag();
     const serverToken: any = process.env.SERVER_API_TOKEN;
     const client = new postmark.ServerClient(serverToken);
