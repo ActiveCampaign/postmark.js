@@ -110,6 +110,8 @@ export default abstract class BaseClient {
         return {
             [this.authHeader]: this.token,
             "Accept": "application/json",
+            // Native fetch advertises br by default; never ask for it (CVE-2026-111497).
+            "Accept-Encoding": "gzip, deflate",
             "Content-Type": "application/json",
             "User-Agent": `Postmark.JS - ${this.clientVersion}`,
         };
