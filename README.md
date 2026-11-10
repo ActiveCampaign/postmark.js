@@ -19,9 +19,10 @@ Minimum supported [Node](https://endoflife.date/nodejs) version `v18.0.0`. The l
 no runtime dependencies. If you use older Node versions for which
 [active and security support ended](https://endoflife.date/nodejs), you will need to use older library versions (3.x.x for Node < 14, 4.x.x for Node < 18).
 
-> **Security:** Node's bundled Brotli decoder is affected by CVE-2026-111497. Only Node 22.23.4+, 24.22.1+ and 26.12.1+
-> are fixed ([Node.js security release](https://nodejs.org/en/blog/vulnerability/october-2026-security-releases)); other
-> lines, including 18, 20, 23 and 25, will not receive the fix. By default the library never requests Brotli-encoded
+> **Security:** Node's bundled Brotli decoder is affected by CVE-2026-111497. Only official Node 22.23.4+, 24.22.1+ and 26.12.1+
+> builds are fixed ([Node.js security release](https://nodejs.org/en/blog/vulnerability/october-2026-security-releases)); other
+> lines, including 18, 20, 23 and 25, will not receive the fix. Node builds linked against the system Brotli library
+> (`node_shared_brotli`, for example Homebrew's) also need that library updated, whatever the Node version. By default the library never requests Brotli-encoded
 > responses, but that does not protect an unpatched runtime from a server or proxy that sends them anyway.
 > The 4.x line receives no further fixes; upgrade to 5.x.
 
