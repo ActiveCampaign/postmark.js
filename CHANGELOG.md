@@ -1,4 +1,9 @@
 # Changelog
+## 5.1.1
+
+* stop requesting Brotli-encoded responses: requests now send `Accept-Encoding: gzip, deflate` (hardening for [CVE-2026-111497](https://www.cve.org/CVERecord?id=CVE-2026-111497), [#197](https://github.com/ActiveCampaign/postmark.js/pull/197)). This does not protect an unpatched runtime; the fix is Node 22.23.4+, 24.22.1+ or 26.12.1+ (official builds; builds linked against the system Brotli library also need that library updated). See the [Node.js security release](https://nodejs.org/en/blog/vulnerability/october-2026-security-releases).
+* the 4.x line receives no further fixes; upgrade to 5.x.
+
 ## 5.1.0
 
 * added support for the Bulk Email API ([#185](https://github.com/ActiveCampaign/postmark.js/issues/185)):
