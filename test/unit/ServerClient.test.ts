@@ -32,6 +32,18 @@ describe("ServerClient", () => {
         it("httpClient initialized", () => {
             expect(client.httpClient.client).to.be.a("function");
         });
+
+        it("does not request Brotli-encoded responses", async () => {
+            const stub = sinon.stub(client.httpClient, "client").resolves({ status: 200, text: async () => "{}" } as any);
+            try {
+                await client.getServer();
+                const acceptEncoding = (stub.firstCall.args[1] as any).headers["Accept-Encoding"];
+                expect(acceptEncoding).to.be.a("string");
+                expect(acceptEncoding).to.not.match(/\bbr\b/i);
+            } finally {
+                stub.restore();
+            }
+        });
     });
 
     it("clientVersion=", () => {
